@@ -1,0 +1,9 @@
+﻿{
+  "RootNamespace": "PGMS",
+  "ServerTypings": {
+    "Assemblies": []
+  },
+  "Connections": [],
+  "BaseRowClasses": [],
+  "RemoveForeignFields": []
+}
