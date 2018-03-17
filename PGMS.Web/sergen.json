@@ -14,6 +14,12 @@
           "PermissionKey": "Erp:Accounts:General"
         },
         {
+          "Tablename": "dbo.Companies",
+          "Identifier": "Companies",
+          "Module": "Erp",
+          "PermissionKey": "Erp:Companies:General"
+        },
+        {
           "Tablename": "dbo.Suppliers",
           "Identifier": "Suppliers",
           "Module": "Erp",

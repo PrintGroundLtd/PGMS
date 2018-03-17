@@ -431,6 +431,78 @@ var PGMS;
 (function (PGMS) {
     var Erp;
     (function (Erp) {
+        var CompaniesForm = /** @class */ (function (_super) {
+            __extends(CompaniesForm, _super);
+            function CompaniesForm(prefix) {
+                var _this = _super.call(this, prefix) || this;
+                if (!CompaniesForm.init) {
+                    CompaniesForm.init = true;
+                    var s = Serenity;
+                    var w0 = s.StringEditor;
+                    Q.initFormType(CompaniesForm, [
+                        'Name', w0,
+                        'PhoneNumber', w0,
+                        'Address', w0,
+                        'City', w0,
+                        'Country', w0,
+                        'Eik', w0,
+                        'Mol', w0,
+                        'Iban', w0,
+                        'BankName', w0,
+                        'BankSwift', w0
+                    ]);
+                }
+                return _this;
+            }
+            CompaniesForm.formKey = 'Erp.Companies';
+            return CompaniesForm;
+        }(Serenity.PrefixedContext));
+        Erp.CompaniesForm = CompaniesForm;
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var CompaniesRow;
+        (function (CompaniesRow) {
+            CompaniesRow.idProperty = 'CompanyId';
+            CompaniesRow.isActiveProperty = 'IsActive';
+            CompaniesRow.nameProperty = 'Name';
+            CompaniesRow.localTextPrefix = 'Erp.Companies';
+            CompaniesRow.lookupKey = 'Erp.Companies';
+            function getLookup() {
+                return Q.getLookup('Erp.Companies');
+            }
+            CompaniesRow.getLookup = getLookup;
+        })(CompaniesRow = Erp.CompaniesRow || (Erp.CompaniesRow = {}));
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var CompaniesService;
+        (function (CompaniesService) {
+            CompaniesService.baseUrl = 'Erp/Companies';
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                CompaniesService[x] = function (r, s, o) {
+                    return Q.serviceRequest(CompaniesService.baseUrl + '/' + x, r, s, o);
+                };
+            });
+        })(CompaniesService = Erp.CompaniesService || (Erp.CompaniesService = {}));
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
         var NoteRow;
         (function (NoteRow) {
             NoteRow.idProperty = 'NoteId';
@@ -2906,6 +2978,52 @@ var PGMS;
             return AccountsGrid;
         }(Serenity.EntityGrid));
         Erp.AccountsGrid = AccountsGrid;
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var CompaniesDialog = /** @class */ (function (_super) {
+            __extends(CompaniesDialog, _super);
+            function CompaniesDialog() {
+                var _this = _super !== null && _super.apply(this, arguments) || this;
+                _this.form = new Erp.CompaniesForm(_this.idPrefix);
+                return _this;
+            }
+            CompaniesDialog.prototype.getFormKey = function () { return Erp.CompaniesForm.formKey; };
+            CompaniesDialog.prototype.getIdProperty = function () { return Erp.CompaniesRow.idProperty; };
+            CompaniesDialog.prototype.getLocalTextPrefix = function () { return Erp.CompaniesRow.localTextPrefix; };
+            CompaniesDialog.prototype.getNameProperty = function () { return Erp.CompaniesRow.nameProperty; };
+            CompaniesDialog.prototype.getService = function () { return Erp.CompaniesService.baseUrl; };
+            CompaniesDialog = __decorate([
+                Serenity.Decorators.registerClass()
+            ], CompaniesDialog);
+            return CompaniesDialog;
+        }(Serenity.EntityDialog));
+        Erp.CompaniesDialog = CompaniesDialog;
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var CompaniesGrid = /** @class */ (function (_super) {
+            __extends(CompaniesGrid, _super);
+            function CompaniesGrid(container) {
+                return _super.call(this, container) || this;
+            }
+            CompaniesGrid.prototype.getColumnsKey = function () { return 'Erp.Companies'; };
+            CompaniesGrid.prototype.getDialogType = function () { return Erp.CompaniesDialog; };
+            CompaniesGrid.prototype.getIdProperty = function () { return Erp.CompaniesRow.idProperty; };
+            CompaniesGrid.prototype.getLocalTextPrefix = function () { return Erp.CompaniesRow.localTextPrefix; };
+            CompaniesGrid.prototype.getService = function () { return Erp.CompaniesService.baseUrl; };
+            CompaniesGrid = __decorate([
+                Serenity.Decorators.registerClass()
+            ], CompaniesGrid);
+            return CompaniesGrid;
+        }(Serenity.EntityGrid));
+        Erp.CompaniesGrid = CompaniesGrid;
     })(Erp = PGMS.Erp || (PGMS.Erp = {}));
 })(PGMS || (PGMS = {}));
 var PGMS;
