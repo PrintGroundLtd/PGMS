@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Core: General Layout Style
  * -------------------------
  */
@@ -7787,4 +7787,10 @@ section.content > .s-DataGrid {
   width: 100%;
   padding: 2px 4px;
   border: 1px solid #a3b2d2;
+}
+.s-Erp-PartnerTypesDialog > .size {
+  width: 650px;
+}
+.s-Erp-PartnerTypesDialog .caption {
+  width: 150px;
 }

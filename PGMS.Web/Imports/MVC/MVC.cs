@@ -45,6 +45,15 @@ namespace MVC
             {
                 public const string ReportPage = "~/Modules/Common/Reporting/ReportPage.cshtml";
             }
+
+        }
+
+        public static class Erp
+        {
+            public static class PartnerTypes
+            {
+                public const string PartnerTypesIndex = "~/Modules/Erp/PartnerTypes/PartnerTypesIndex.cshtml";
+            }
         }
 
         public static class Errors

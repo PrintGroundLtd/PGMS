@@ -18,5 +18,10 @@ namespace PGMS.Erp
             [Description("Modify"), ImplicitPermission(NotesReadPermission)]
             public const string NotesModifyPermission = "Erp:Notes:Modify";
         }
+
+        public class PartnerTypes
+        {
+
+        }
     }
 }

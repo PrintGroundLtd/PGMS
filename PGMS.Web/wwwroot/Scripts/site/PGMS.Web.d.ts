@@ -463,6 +463,65 @@ declare namespace PGMS.Common {
         Value?: string;
     }
 }
+declare namespace PGMS.Erp {
+}
+declare namespace PGMS.Erp {
+    interface PartnerTypesForm {
+        Name: Serenity.StringEditor;
+    }
+    class PartnerTypesForm extends Serenity.PrefixedContext {
+        static formKey: string;
+        private static init;
+        constructor(prefix: string);
+    }
+}
+declare namespace PGMS.Erp {
+    interface PartnerTypesRow {
+        PartnerTypeId?: number;
+        Name?: string;
+        InsertUserId?: number;
+        InsertDate?: string;
+        UpdateUserId?: number;
+        UpdateDate?: string;
+        IsActive?: number;
+        InsertUserName?: string;
+        UpdateUserName?: string;
+    }
+    namespace PartnerTypesRow {
+        const idProperty = "PartnerTypeId";
+        const isActiveProperty = "IsActive";
+        const nameProperty = "Name";
+        const localTextPrefix = "Erp.PartnerTypes";
+        const enum Fields {
+            PartnerTypeId = "PartnerTypeId",
+            Name = "Name",
+            InsertUserId = "InsertUserId",
+            InsertDate = "InsertDate",
+            UpdateUserId = "UpdateUserId",
+            UpdateDate = "UpdateDate",
+            IsActive = "IsActive",
+            InsertUserName = "InsertUserName",
+            UpdateUserName = "UpdateUserName",
+        }
+    }
+}
+declare namespace PGMS.Erp {
+    namespace PartnerTypesService {
+        const baseUrl = "Erp/PartnerTypes";
+        function Create(request: Serenity.SaveRequest<PartnerTypesRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<PartnerTypesRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<PartnerTypesRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<PartnerTypesRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        const enum Methods {
+            Create = "Erp/PartnerTypes/Create",
+            Update = "Erp/PartnerTypes/Update",
+            Delete = "Erp/PartnerTypes/Delete",
+            Retrieve = "Erp/PartnerTypes/Retrieve",
+            List = "Erp/PartnerTypes/List",
+        }
+    }
+}
 declare namespace PGMS {
     interface ExcelImportRequest extends Serenity.ServiceRequest {
         FileName?: string;
@@ -577,6 +636,31 @@ declare namespace PGMS.Membership {
         Password?: string;
     }
 }
+declare namespace PMGS.Erp {
+    interface NotesRow {
+        NoteId?: number;
+        EntityType?: string;
+        EntityId?: number;
+        Text?: string;
+        InsertUserId?: number;
+        InsertDate?: string;
+        InsertUserDisplayName?: string;
+    }
+    namespace NotesRow {
+        const idProperty = "NoteId";
+        const nameProperty = "EntityType";
+        const localTextPrefix = "Erp.Notes";
+        const enum Fields {
+            NoteId = "NoteId",
+            EntityType = "EntityType",
+            EntityId = "EntityId",
+            Text = "Text",
+            InsertUserId = "InsertUserId",
+            InsertDate = "InsertDate",
+            InsertUserDisplayName = "InsertUserDisplayName",
+        }
+    }
+}
 declare namespace PGMS {
     interface ScriptUserDefinition {
         Username?: string;
@@ -586,6 +670,11 @@ declare namespace PGMS {
             [key: string]: boolean;
         };
     }
+}
+declare namespace PGMS.LanguageList {
+    function getValue(): string[][];
+}
+declare namespace PGMS.ScriptInitialization {
 }
 declare namespace PGMS.Administration {
     class LanguageDialog extends Serenity.EntityDialog<LanguageRow, any> {
@@ -698,10 +787,6 @@ declare namespace PGMS.Administration {
         protected getDefaultSortBy(): UserRow.Fields[];
     }
 }
-declare namespace PGMS.Authorization {
-    let userDefinition: ScriptUserDefinition;
-    function hasPermission(permissionKey: string): boolean;
-}
 declare namespace PGMS.Administration {
     class PermissionCheckEditor extends Serenity.DataGrid<PermissionCheckItem, PermissionCheckEditorOptions> {
         protected getIdProperty(): string;
@@ -772,11 +857,6 @@ declare namespace PGMS.Administration {
         userID: number;
         username: string;
     }
-}
-declare namespace PGMS.LanguageList {
-    function getValue(): string[][];
-}
-declare namespace PGMS.ScriptInitialization {
 }
 declare namespace PGMS {
     class BasicProgressDialog extends Serenity.TemplatedDialog<any> {
@@ -1043,6 +1123,30 @@ declare namespace PMGS.Erp {
         onChange: () => void;
     }
 }
+declare namespace PGMS.Erp {
+    class PartnerTypesDialog extends Serenity.EntityDialog<PartnerTypesRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected form: PartnerTypesForm;
+    }
+}
+declare namespace PGMS.Erp {
+    class PartnerTypesGrid extends Serenity.EntityGrid<PartnerTypesRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof PartnerTypesDialog;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace PGMS.Authorization {
+    let userDefinition: ScriptUserDefinition;
+    function hasPermission(permissionKey: string): boolean;
+}
 declare namespace PGMS.Membership {
     class ChangePasswordPanel extends Serenity.PropertyPanel<ChangePasswordRequest, any> {
         protected getFormKey(): string;
@@ -1069,30 +1173,5 @@ declare namespace PGMS.Membership {
         protected getFormKey(): string;
         private form;
         constructor(container: JQuery);
-    }
-}
-declare namespace PMGS.Erp {
-    interface NotesRow {
-        NoteId?: number;
-        EntityType?: string;
-        EntityId?: number;
-        Text?: string;
-        InsertUserId?: number;
-        InsertDate?: string;
-        InsertUserDisplayName?: string;
-    }
-    namespace NotesRow {
-        const idProperty = "NoteId";
-        const nameProperty = "EntityType";
-        const localTextPrefix = "Erp.Notes";
-        const enum Fields {
-            NoteId = "NoteId",
-            EntityType = "EntityType",
-            EntityId = "EntityId",
-            Text = "Text",
-            InsertUserId = "InsertUserId",
-            InsertDate = "InsertDate",
-            InsertUserDisplayName = "InsertUserDisplayName",
-        }
     }
 }

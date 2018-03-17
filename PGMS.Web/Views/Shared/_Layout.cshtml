@@ -117,9 +117,14 @@ else
 
         <footer class="main-footer">
             <div class="pull-right hidden-xs">
-                @Texts.Site.Layout.FooterInfo
+                <a href="http://s2kdesign.com" target="_blank">
+                    @Texts.Site.Layout.FooterInfo
+                </a>
             </div>
-            <strong>@Texts.Site.Layout.FooterCopyright</strong> @Texts.Site.Layout.FooterRights
+            <strong>@Texts.Site.Layout.FooterCopyright @DateTime.Now.Year</strong> 
+ 
+                @Texts.Site.Layout.FooterRights
+        
         </footer>
 
         <aside class="control-sidebar control-sidebar-dark">

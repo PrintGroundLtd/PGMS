@@ -1,9 +1,23 @@
-﻿{
+{
   "RootNamespace": "PGMS",
   "ServerTypings": {
     "Assemblies": []
   },
-  "Connections": [],
+  "Connections": [
+    {
+      "Key": "Erp",
+      "Tables": [
+        {
+          "Tablename": "dbo.PartnerTypes",
+          "Identifier": "PartnerTypes",
+          "Module": "Erp",
+          "PermissionKey": "Erp:PartnerTypes:General"
+        }
+      ]
+    }
+  ],
   "BaseRowClasses": [],
-  "RemoveForeignFields": []
+  "RemoveForeignFields": [],
+  "CustomGenerate": {},
+  "CustomSettings": {}
 }

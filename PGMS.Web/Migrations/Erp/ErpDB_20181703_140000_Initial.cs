@@ -2,11 +2,11 @@
 using System;
 using FluentMigrator.Builders.Create.Table;
 
-namespace PGMS.Migrations.ErpDB
+namespace PGMS.Migrations.DefaultDB
 {
 
     [Migration(20181703140000)]
-    public class ErpDB_20181703_140000_Initial : AutoReversingMigration
+    public class DefaultDB_20181703_140000_Initial : AutoReversingMigration
     {
         public override void Up()
         {
