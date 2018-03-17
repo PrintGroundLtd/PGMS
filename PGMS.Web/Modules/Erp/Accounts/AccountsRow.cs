@@ -11,9 +11,10 @@ namespace PGMS.Erp.Entities
 
     [ConnectionKey("Default"), Module("Erp"), TableName("[dbo].[Accounts]")]
     [DisplayName("Accounts"), InstanceName("Account")]
+    [ReadPermission(PermissionKeys.Accounts.ReadPermission)]
+    [UpdatePermission(PermissionKeys.Accounts.UpdatePermission)]
+    [DeletePermission(PermissionKeys.Accounts.DeletePermission)]
     [LookupScript]
-    [ReadPermission("Erp:Accounts:General")]
-    [ModifyPermission("Erp:Accounts:General")]
     public sealed class AccountsRow : ErpLoggingRow, IIdRow, INameRow
     {
         [DisplayName("Account Id"), Identity]

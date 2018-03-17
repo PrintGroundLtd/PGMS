@@ -29,6 +29,16 @@ namespace PGMS.Erp
             public const string DeletePermission = "Erp:PartnerTypes:Delete";
         }
 
+        public class Accounts
+        {
+            [Description("View")]
+            public const string ReadPermission = "Erp:Accounts:Read";
+            [Description("Update"), ImplicitPermission(ReadPermission)]
+            public const string UpdatePermission = "Erp:Accounts:Update";
+            [Description("Delete"), ImplicitPermission(ReadPermission), ImplicitPermission(UpdatePermission)]
+            public const string DeletePermission = "Erp:Accounts:Delete";
+        }
+
         public class Suppliers
         {
             [Description("View")]

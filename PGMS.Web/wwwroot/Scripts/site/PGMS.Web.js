@@ -368,8 +368,6 @@ var PGMS;
                     var w0 = s.StringEditor;
                     var w1 = s.BooleanEditor;
                     var w2 = s.LookupEditor;
-                    var w3 = s.DateEditor;
-                    var w4 = s.IntegerEditor;
                     Q.initFormType(AccountsForm, [
                         'Name', w0,
                         'PhoneNumber', w0,
@@ -377,12 +375,7 @@ var PGMS;
                         'PartnerType', w2,
                         'Address', w0,
                         'City', w0,
-                        'Country', w0,
-                        'InsertDate', w3,
-                        'InsertUserId', w4,
-                        'UpdateDate', w3,
-                        'UpdateUserId', w4,
-                        'IsActive', w4
+                        'Country', w0
                     ]);
                 }
                 return _this;
