@@ -16,6 +16,11 @@
         export const isActiveProperty = 'IsActive';
         export const nameProperty = 'Name';
         export const localTextPrefix = 'Erp.PartnerTypes';
+        export const lookupKey = 'Erp.PartnerTypes';
+
+        export function getLookup(): Q.Lookup<PartnerTypesRow> {
+            return Q.getLookup<PartnerTypesRow>('Erp.PartnerTypes');
+        }
 
         export declare const enum Fields {
             PartnerTypeId = "PartnerTypeId",

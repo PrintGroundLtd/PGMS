@@ -9,19 +9,18 @@ namespace PGMS.Erp.Entities
     using System.ComponentModel;
     using System.IO;
 
-    [ConnectionKey("Default"), Module("Erp"), TableName("[dbo].[Suppliers]")]
-    [DisplayName("Suppliers"), InstanceName("Supplier")]
+    [ConnectionKey("Default"), Module("Erp"), TableName("[dbo].[Accounts]")]
+    [DisplayName("Accounts"), InstanceName("Account")]
     [LookupScript]
-    [ReadPermission(PermissionKeys.Suppliers.ReadPermission)]
-    [UpdatePermission(PermissionKeys.Suppliers.UpdatePermission)]
-    [DeletePermission(PermissionKeys.Suppliers.DeletePermission)]
-    public sealed class SuppliersRow : ErpLoggingRow, IIdRow, INameRow
+    [ReadPermission("Erp:Accounts:General")]
+    [ModifyPermission("Erp:Accounts:General")]
+    public sealed class AccountsRow : ErpLoggingRow, IIdRow, INameRow
     {
-        [DisplayName("Supplier Id"), Identity]
-        public Int32? SupplierId
+        [DisplayName("Account Id"), Identity]
+        public Int32? AccountId
         {
-            get { return Fields.SupplierId[this]; }
-            set { Fields.SupplierId[this] = value; }
+            get { return Fields.AccountId[this]; }
+            set { Fields.AccountId[this] = value; }
         }
 
         [DisplayName("Name"), Size(500), NotNull, QuickSearch]
@@ -36,6 +35,22 @@ namespace PGMS.Erp.Entities
         {
             get { return Fields.PhoneNumber[this]; }
             set { Fields.PhoneNumber[this] = value; }
+        }
+
+        [DisplayName("Is Vip")]
+        [BooleanEditor]
+        public Int16? IsVip
+        {
+            get { return Fields.IsVip[this]; }
+            set { Fields.IsVip[this] = value; }
+        }
+
+        [DisplayName("Partner Type"), NotNull, ForeignKey("[dbo].[PartnerTypes]", "PartnerTypeId"), LeftJoin("jPartnerType"), TextualField("PartnerTypeName")]
+        [LookupEditor(typeof(PartnerTypesRow), InplaceAdd = false, FilterField = "IsActive", FilterValue = 1)]
+        public Int32? PartnerType
+        {
+            get { return Fields.PartnerType[this]; }
+            set { Fields.PartnerType[this] = value; }
         }
 
         [DisplayName("Address"), Size(500)]
@@ -59,9 +74,17 @@ namespace PGMS.Erp.Entities
             set { Fields.Country[this] = value; }
         }
         
+        [DisplayName("Partner Type Name"), Expression("jPartnerType.[Name]")]
+        public String PartnerTypeName
+        {
+            get { return Fields.PartnerTypeName[this]; }
+            set { Fields.PartnerTypeName[this] = value; }
+        }
+        
+
         IIdField IIdRow.IdField
         {
-            get { return Fields.SupplierId; }
+            get { return Fields.AccountId; }
         }
 
         StringField INameRow.NameField
@@ -71,19 +94,23 @@ namespace PGMS.Erp.Entities
 
         public static readonly RowFields Fields = new RowFields().Init();
 
-        public SuppliersRow()
+        public AccountsRow()
             : base(Fields)
         {
         }
 
         public class RowFields : ErpLoggingRowFields
         {
-            public Int32Field SupplierId;
+            public Int32Field AccountId;
             public StringField Name;
             public StringField PhoneNumber;
+            public Int16Field IsVip;
+            public Int32Field PartnerType;
             public StringField Address;
             public StringField City;
             public StringField Country;
+
+            public StringField PartnerTypeName;
 		}
     }
 }

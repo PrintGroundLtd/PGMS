@@ -50,6 +50,11 @@ namespace MVC
 
         public static class Erp
         {
+            public static class Accounts
+            {
+                public const string AccountsIndex = "~/Modules/Erp/Accounts/AccountsIndex.cshtml";
+            }
+
             public static class PartnerTypes
             {
                 public const string PartnerTypesIndex = "~/Modules/Erp/PartnerTypes/PartnerTypesIndex.cshtml";

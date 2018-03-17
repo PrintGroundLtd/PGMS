@@ -10,10 +10,11 @@ namespace PGMS.Erp.Entities
     using System.IO;
 
     [ConnectionKey("Default"), Module("Erp"), TableName("[dbo].[PartnerTypes]")]
-    [DisplayName("Partner Types"), InstanceName("Partner Types")]
+    [DisplayName("Partner Types"), InstanceName("Partner Type")]
     [ReadPermission(PermissionKeys.PartnerTypes.ReadPermission)]
     [UpdatePermission(PermissionKeys.PartnerTypes.UpdatePermission)]
     [DeletePermission(PermissionKeys.PartnerTypes.DeletePermission)]
+    [LookupScript]
     public sealed class PartnerTypesRow : ErpLoggingRow, IIdRow, INameRow
     {
         [DisplayName("Partner Type Id"), Identity]

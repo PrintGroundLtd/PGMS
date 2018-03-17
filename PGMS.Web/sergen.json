@@ -8,6 +8,12 @@
       "Key": "Default",
       "Tables": [
         {
+          "Tablename": "dbo.Accounts",
+          "Identifier": "Accounts",
+          "Module": "Erp",
+          "PermissionKey": "Erp:Accounts:General"
+        },
+        {
           "Tablename": "dbo.Suppliers",
           "Identifier": "Suppliers",
           "Module": "Erp",

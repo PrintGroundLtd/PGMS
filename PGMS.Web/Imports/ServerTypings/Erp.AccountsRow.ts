@@ -1,11 +1,14 @@
 ﻿namespace PGMS.Erp {
-    export interface SuppliersRow {
-        SupplierId?: number;
+    export interface AccountsRow {
+        AccountId?: number;
         Name?: string;
         PhoneNumber?: string;
+        IsVip?: number;
+        PartnerType?: number;
         Address?: string;
         City?: string;
         Country?: string;
+        PartnerTypeName?: string;
         InsertUserId?: number;
         InsertDate?: string;
         UpdateUserId?: number;
@@ -15,24 +18,27 @@
         UpdateUserName?: string;
     }
 
-    export namespace SuppliersRow {
-        export const idProperty = 'SupplierId';
+    export namespace AccountsRow {
+        export const idProperty = 'AccountId';
         export const isActiveProperty = 'IsActive';
         export const nameProperty = 'Name';
-        export const localTextPrefix = 'Erp.Suppliers';
-        export const lookupKey = 'Erp.Suppliers';
+        export const localTextPrefix = 'Erp.Accounts';
+        export const lookupKey = 'Erp.Accounts';
 
-        export function getLookup(): Q.Lookup<SuppliersRow> {
-            return Q.getLookup<SuppliersRow>('Erp.Suppliers');
+        export function getLookup(): Q.Lookup<AccountsRow> {
+            return Q.getLookup<AccountsRow>('Erp.Accounts');
         }
 
         export declare const enum Fields {
-            SupplierId = "SupplierId",
+            AccountId = "AccountId",
             Name = "Name",
             PhoneNumber = "PhoneNumber",
+            IsVip = "IsVip",
+            PartnerType = "PartnerType",
             Address = "Address",
             City = "City",
             Country = "Country",
+            PartnerTypeName = "PartnerTypeName",
             InsertUserId = "InsertUserId",
             InsertDate = "InsertDate",
             UpdateUserId = "UpdateUserId",

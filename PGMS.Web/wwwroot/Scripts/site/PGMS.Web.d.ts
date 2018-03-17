@@ -466,6 +466,92 @@ declare namespace PGMS.Common {
 declare namespace PGMS.Erp {
 }
 declare namespace PGMS.Erp {
+    interface AccountsForm {
+        Name: Serenity.StringEditor;
+        PhoneNumber: Serenity.StringEditor;
+        IsVip: Serenity.BooleanEditor;
+        PartnerType: Serenity.LookupEditor;
+        Address: Serenity.StringEditor;
+        City: Serenity.StringEditor;
+        Country: Serenity.StringEditor;
+        InsertDate: Serenity.DateEditor;
+        InsertUserId: Serenity.IntegerEditor;
+        UpdateDate: Serenity.DateEditor;
+        UpdateUserId: Serenity.IntegerEditor;
+        IsActive: Serenity.IntegerEditor;
+    }
+    class AccountsForm extends Serenity.PrefixedContext {
+        static formKey: string;
+        private static init;
+        constructor(prefix: string);
+    }
+}
+declare namespace PGMS.Erp {
+    interface AccountsRow {
+        AccountId?: number;
+        Name?: string;
+        PhoneNumber?: string;
+        IsVip?: number;
+        PartnerType?: number;
+        Address?: string;
+        City?: string;
+        Country?: string;
+        PartnerTypeName?: string;
+        InsertUserId?: number;
+        InsertDate?: string;
+        UpdateUserId?: number;
+        UpdateDate?: string;
+        IsActive?: number;
+        InsertUserName?: string;
+        UpdateUserName?: string;
+    }
+    namespace AccountsRow {
+        const idProperty = "AccountId";
+        const isActiveProperty = "IsActive";
+        const nameProperty = "Name";
+        const localTextPrefix = "Erp.Accounts";
+        const lookupKey = "Erp.Accounts";
+        function getLookup(): Q.Lookup<AccountsRow>;
+        const enum Fields {
+            AccountId = "AccountId",
+            Name = "Name",
+            PhoneNumber = "PhoneNumber",
+            IsVip = "IsVip",
+            PartnerType = "PartnerType",
+            Address = "Address",
+            City = "City",
+            Country = "Country",
+            PartnerTypeName = "PartnerTypeName",
+            InsertUserId = "InsertUserId",
+            InsertDate = "InsertDate",
+            UpdateUserId = "UpdateUserId",
+            UpdateDate = "UpdateDate",
+            IsActive = "IsActive",
+            InsertUserName = "InsertUserName",
+            UpdateUserName = "UpdateUserName",
+        }
+    }
+}
+declare namespace PGMS.Erp {
+    namespace AccountsService {
+        const baseUrl = "Erp/Accounts";
+        function Create(request: Serenity.SaveRequest<AccountsRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<AccountsRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<AccountsRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<AccountsRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        const enum Methods {
+            Create = "Erp/Accounts/Create",
+            Update = "Erp/Accounts/Update",
+            Delete = "Erp/Accounts/Delete",
+            Retrieve = "Erp/Accounts/Retrieve",
+            List = "Erp/Accounts/List",
+        }
+    }
+}
+declare namespace PGMS.Erp {
+}
+declare namespace PGMS.Erp {
     interface PartnerTypesForm {
         Name: Serenity.StringEditor;
     }
@@ -492,6 +578,8 @@ declare namespace PGMS.Erp {
         const isActiveProperty = "IsActive";
         const nameProperty = "Name";
         const localTextPrefix = "Erp.PartnerTypes";
+        const lookupKey = "Erp.PartnerTypes";
+        function getLookup(): Q.Lookup<PartnerTypesRow>;
         const enum Fields {
             PartnerTypeId = "PartnerTypeId",
             Name = "Name",
@@ -559,6 +647,8 @@ declare namespace PGMS.Erp {
         const isActiveProperty = "IsActive";
         const nameProperty = "Name";
         const localTextPrefix = "Erp.Suppliers";
+        const lookupKey = "Erp.Suppliers";
+        function getLookup(): Q.Lookup<SuppliersRow>;
         const enum Fields {
             SupplierId = "SupplierId",
             Name = "Name",
@@ -1164,6 +1254,26 @@ declare namespace PGMS.Common {
     class UserPreferenceStorage implements Serenity.SettingStorage {
         getItem(key: string): string;
         setItem(key: string, data: string): void;
+    }
+}
+declare namespace PGMS.Erp {
+    class AccountsDialog extends Serenity.EntityDialog<AccountsRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected form: AccountsForm;
+    }
+}
+declare namespace PGMS.Erp {
+    class AccountsGrid extends Serenity.EntityGrid<AccountsRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof AccountsDialog;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
     }
 }
 declare namespace PMGS.Erp {

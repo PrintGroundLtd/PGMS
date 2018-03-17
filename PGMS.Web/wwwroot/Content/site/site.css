@@ -7800,3 +7800,9 @@ section.content > .s-DataGrid {
 .s-Erp-SuppliersDialog .caption {
   width: 150px;
 }
+.s-Erp-AccountsDialog > .size {
+  width: 650px;
+}
+.s-Erp-AccountsDialog .caption {
+  width: 150px;
+}

@@ -358,6 +358,84 @@ var PGMS;
 (function (PGMS) {
     var Erp;
     (function (Erp) {
+        var AccountsForm = /** @class */ (function (_super) {
+            __extends(AccountsForm, _super);
+            function AccountsForm(prefix) {
+                var _this = _super.call(this, prefix) || this;
+                if (!AccountsForm.init) {
+                    AccountsForm.init = true;
+                    var s = Serenity;
+                    var w0 = s.StringEditor;
+                    var w1 = s.BooleanEditor;
+                    var w2 = s.LookupEditor;
+                    var w3 = s.DateEditor;
+                    var w4 = s.IntegerEditor;
+                    Q.initFormType(AccountsForm, [
+                        'Name', w0,
+                        'PhoneNumber', w0,
+                        'IsVip', w1,
+                        'PartnerType', w2,
+                        'Address', w0,
+                        'City', w0,
+                        'Country', w0,
+                        'InsertDate', w3,
+                        'InsertUserId', w4,
+                        'UpdateDate', w3,
+                        'UpdateUserId', w4,
+                        'IsActive', w4
+                    ]);
+                }
+                return _this;
+            }
+            AccountsForm.formKey = 'Erp.Accounts';
+            return AccountsForm;
+        }(Serenity.PrefixedContext));
+        Erp.AccountsForm = AccountsForm;
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var AccountsRow;
+        (function (AccountsRow) {
+            AccountsRow.idProperty = 'AccountId';
+            AccountsRow.isActiveProperty = 'IsActive';
+            AccountsRow.nameProperty = 'Name';
+            AccountsRow.localTextPrefix = 'Erp.Accounts';
+            AccountsRow.lookupKey = 'Erp.Accounts';
+            function getLookup() {
+                return Q.getLookup('Erp.Accounts');
+            }
+            AccountsRow.getLookup = getLookup;
+        })(AccountsRow = Erp.AccountsRow || (Erp.AccountsRow = {}));
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var AccountsService;
+        (function (AccountsService) {
+            AccountsService.baseUrl = 'Erp/Accounts';
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                AccountsService[x] = function (r, s, o) {
+                    return Q.serviceRequest(AccountsService.baseUrl + '/' + x, r, s, o);
+                };
+            });
+        })(AccountsService = Erp.AccountsService || (Erp.AccountsService = {}));
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
         var PartnerTypesForm = /** @class */ (function (_super) {
             __extends(PartnerTypesForm, _super);
             function PartnerTypesForm(prefix) {
@@ -388,6 +466,11 @@ var PGMS;
             PartnerTypesRow.isActiveProperty = 'IsActive';
             PartnerTypesRow.nameProperty = 'Name';
             PartnerTypesRow.localTextPrefix = 'Erp.PartnerTypes';
+            PartnerTypesRow.lookupKey = 'Erp.PartnerTypes';
+            function getLookup() {
+                return Q.getLookup('Erp.PartnerTypes');
+            }
+            PartnerTypesRow.getLookup = getLookup;
         })(PartnerTypesRow = Erp.PartnerTypesRow || (Erp.PartnerTypesRow = {}));
     })(Erp = PGMS.Erp || (PGMS.Erp = {}));
 })(PGMS || (PGMS = {}));
@@ -450,6 +533,11 @@ var PGMS;
             SuppliersRow.isActiveProperty = 'IsActive';
             SuppliersRow.nameProperty = 'Name';
             SuppliersRow.localTextPrefix = 'Erp.Suppliers';
+            SuppliersRow.lookupKey = 'Erp.Suppliers';
+            function getLookup() {
+                return Q.getLookup('Erp.Suppliers');
+            }
+            SuppliersRow.getLookup = getLookup;
         })(SuppliersRow = Erp.SuppliersRow || (Erp.SuppliersRow = {}));
     })(Erp = PGMS.Erp || (PGMS.Erp = {}));
 })(PGMS || (PGMS = {}));
@@ -2777,6 +2865,52 @@ var PGMS;
         }());
         Common.UserPreferenceStorage = UserPreferenceStorage;
     })(Common = PGMS.Common || (PGMS.Common = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var AccountsDialog = /** @class */ (function (_super) {
+            __extends(AccountsDialog, _super);
+            function AccountsDialog() {
+                var _this = _super !== null && _super.apply(this, arguments) || this;
+                _this.form = new Erp.AccountsForm(_this.idPrefix);
+                return _this;
+            }
+            AccountsDialog.prototype.getFormKey = function () { return Erp.AccountsForm.formKey; };
+            AccountsDialog.prototype.getIdProperty = function () { return Erp.AccountsRow.idProperty; };
+            AccountsDialog.prototype.getLocalTextPrefix = function () { return Erp.AccountsRow.localTextPrefix; };
+            AccountsDialog.prototype.getNameProperty = function () { return Erp.AccountsRow.nameProperty; };
+            AccountsDialog.prototype.getService = function () { return Erp.AccountsService.baseUrl; };
+            AccountsDialog = __decorate([
+                Serenity.Decorators.registerClass()
+            ], AccountsDialog);
+            return AccountsDialog;
+        }(Serenity.EntityDialog));
+        Erp.AccountsDialog = AccountsDialog;
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var AccountsGrid = /** @class */ (function (_super) {
+            __extends(AccountsGrid, _super);
+            function AccountsGrid(container) {
+                return _super.call(this, container) || this;
+            }
+            AccountsGrid.prototype.getColumnsKey = function () { return 'Erp.Accounts'; };
+            AccountsGrid.prototype.getDialogType = function () { return Erp.AccountsDialog; };
+            AccountsGrid.prototype.getIdProperty = function () { return Erp.AccountsRow.idProperty; };
+            AccountsGrid.prototype.getLocalTextPrefix = function () { return Erp.AccountsRow.localTextPrefix; };
+            AccountsGrid.prototype.getService = function () { return Erp.AccountsService.baseUrl; };
+            AccountsGrid = __decorate([
+                Serenity.Decorators.registerClass()
+            ], AccountsGrid);
+            return AccountsGrid;
+        }(Serenity.EntityGrid));
+        Erp.AccountsGrid = AccountsGrid;
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
 })(PGMS || (PGMS = {}));
 var PMGS;
 (function (PMGS) {
