@@ -5,6 +5,17 @@
   },
   "Connections": [
     {
+      "Key": "Default",
+      "Tables": [
+        {
+          "Tablename": "dbo.Suppliers",
+          "Identifier": "Suppliers",
+          "Module": "Erp",
+          "PermissionKey": "Erp:Suppliers:General"
+        }
+      ]
+    },
+    {
       "Key": "Erp",
       "Tables": [
         {

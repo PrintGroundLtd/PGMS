@@ -522,6 +522,77 @@ declare namespace PGMS.Erp {
         }
     }
 }
+declare namespace PGMS.Erp {
+}
+declare namespace PGMS.Erp {
+    interface SuppliersForm {
+        Name: Serenity.StringEditor;
+        PhoneNumber: Serenity.StringEditor;
+        Address: Serenity.StringEditor;
+        City: Serenity.StringEditor;
+        Country: Serenity.StringEditor;
+    }
+    class SuppliersForm extends Serenity.PrefixedContext {
+        static formKey: string;
+        private static init;
+        constructor(prefix: string);
+    }
+}
+declare namespace PGMS.Erp {
+    interface SuppliersRow {
+        SupplierId?: number;
+        Name?: string;
+        PhoneNumber?: string;
+        Address?: string;
+        City?: string;
+        Country?: string;
+        InsertUserId?: number;
+        InsertDate?: string;
+        UpdateUserId?: number;
+        UpdateDate?: string;
+        IsActive?: number;
+        InsertUserName?: string;
+        UpdateUserName?: string;
+    }
+    namespace SuppliersRow {
+        const idProperty = "SupplierId";
+        const isActiveProperty = "IsActive";
+        const nameProperty = "Name";
+        const localTextPrefix = "Erp.Suppliers";
+        const enum Fields {
+            SupplierId = "SupplierId",
+            Name = "Name",
+            PhoneNumber = "PhoneNumber",
+            Address = "Address",
+            City = "City",
+            Country = "Country",
+            InsertUserId = "InsertUserId",
+            InsertDate = "InsertDate",
+            UpdateUserId = "UpdateUserId",
+            UpdateDate = "UpdateDate",
+            IsActive = "IsActive",
+            InsertUserName = "InsertUserName",
+            UpdateUserName = "UpdateUserName",
+        }
+    }
+}
+declare namespace PGMS.Erp {
+    namespace SuppliersService {
+        const baseUrl = "Erp/Suppliers";
+        function Create(request: Serenity.SaveRequest<SuppliersRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<SuppliersRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<SuppliersRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<SuppliersRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        const enum Methods {
+            Create = "Erp/Suppliers/Create",
+            Update = "Erp/Suppliers/Update",
+            Delete = "Erp/Suppliers/Delete",
+            Retrieve = "Erp/Suppliers/Retrieve",
+            List = "Erp/Suppliers/List",
+        }
+    }
+}
 declare namespace PGMS {
     interface ExcelImportRequest extends Serenity.ServiceRequest {
         FileName?: string;
@@ -1137,6 +1208,26 @@ declare namespace PGMS.Erp {
     class PartnerTypesGrid extends Serenity.EntityGrid<PartnerTypesRow, any> {
         protected getColumnsKey(): string;
         protected getDialogType(): typeof PartnerTypesDialog;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace PGMS.Erp {
+    class SuppliersDialog extends Serenity.EntityDialog<SuppliersRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected form: SuppliersForm;
+    }
+}
+declare namespace PGMS.Erp {
+    class SuppliersGrid extends Serenity.EntityGrid<SuppliersRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof SuppliersDialog;
         protected getIdProperty(): string;
         protected getLocalTextPrefix(): string;
         protected getService(): string;

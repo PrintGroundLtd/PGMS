@@ -54,6 +54,11 @@ namespace MVC
             {
                 public const string PartnerTypesIndex = "~/Modules/Erp/PartnerTypes/PartnerTypesIndex.cshtml";
             }
+
+            public static class Suppliers
+            {
+                public const string SuppliersIndex = "~/Modules/Erp/Suppliers/SuppliersIndex.cshtml";
+            }
         }
 
         public static class Errors

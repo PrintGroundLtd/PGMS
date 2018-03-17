@@ -7794,3 +7794,9 @@ section.content > .s-DataGrid {
 .s-Erp-PartnerTypesDialog .caption {
   width: 150px;
 }
+.s-Erp-SuppliersDialog > .size {
+  width: 650px;
+}
+.s-Erp-SuppliersDialog .caption {
+  width: 150px;
+}
