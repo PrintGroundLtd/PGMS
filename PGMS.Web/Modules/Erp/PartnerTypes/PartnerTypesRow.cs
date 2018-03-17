@@ -11,8 +11,9 @@ namespace PGMS.Erp.Entities
 
     [ConnectionKey("Default"), Module("Erp"), TableName("[dbo].[PartnerTypes]")]
     [DisplayName("Partner Types"), InstanceName("Partner Types")]
-    [ReadPermission("Erp:PartnerTypes:General")]
-    [ModifyPermission("Erp:PartnerTypes:General")]
+    [ReadPermission(PermissionKeys.PartnerTypes.ReadPermission)]
+    [UpdatePermission(PermissionKeys.PartnerTypes.UpdatePermission)]
+    [DeletePermission(PermissionKeys.PartnerTypes.DeletePermission)]
     public sealed class PartnerTypesRow : ErpLoggingRow, IIdRow, INameRow
     {
         [DisplayName("Partner Type Id"), Identity]

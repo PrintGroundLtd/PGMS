@@ -11,8 +11,9 @@ namespace PGMS.Erp.Entities
 
     [ConnectionKey("Default"), Module("Erp"), TableName("[dbo].[Suppliers]")]
     [DisplayName("Suppliers"), InstanceName("Suppliers")]
-    [ReadPermission("Erp:Suppliers:General")]
-    [ModifyPermission("Erp:Suppliers:General")]
+    [ReadPermission(PermissionKeys.Suppliers.ReadPermission)]
+    [UpdatePermission(PermissionKeys.Suppliers.UpdatePermission)]
+    [DeletePermission(PermissionKeys.Suppliers.DeletePermission)]
     public sealed class SuppliersRow : ErpLoggingRow, IIdRow, INameRow
     {
         [DisplayName("Supplier Id"), Identity]
