@@ -12,8 +12,8 @@ namespace PMGS.Erp.Entities
     using System.IO;
 
     [ConnectionKey("Erp"), TableName("[dbo].[Notes]"), DisplayName("Notes"), InstanceName("Note"), TwoLevelCached]
-    [ReadPermission(ErpPermissionKeys.NotesReadPermission)]
-    [ModifyPermission(ErpPermissionKeys.NotesModifyPermission)]
+    [ReadPermission(PermissionKeys.Notes.NotesReadPermission)]
+    [ModifyPermission(PermissionKeys.Notes.NotesModifyPermission)]
     public sealed class NotesRow : Row, IIdRow, INameRow, IInsertLogRow
     {
         [DisplayName("Note Id"), Identity, Column("NoteID")]
