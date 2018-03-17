@@ -15,6 +15,8 @@ namespace PGMS.Erp.Forms
     {
         public String Name { get; set; }
         public String PhoneNumber { get; set; }
+        public List<Int32> AccountCompanies { get; set; }
+
         public Int16 IsVip { get; set; }
         public Int32 PartnerType { get; set; }
         public String Address { get; set; }

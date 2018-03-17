@@ -7,6 +7,7 @@
         PartnerType?: number;
         Address?: string;
         City?: string;
+        AccountCompanies?: number[];
         Country?: string;
         NoteList?: NoteRow[];
         PartnerTypeName?: string;
@@ -38,6 +39,7 @@
             PartnerType = "PartnerType",
             Address = "Address",
             City = "City",
+            AccountCompanies = "AccountCompanies",
             Country = "Country",
             NoteList = "NoteList",
             PartnerTypeName = "PartnerTypeName",

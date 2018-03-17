@@ -464,11 +464,28 @@ declare namespace PGMS.Common {
     }
 }
 declare namespace PGMS.Erp {
+    interface AccountCompaniesRow {
+        AccountCompanyID?: number;
+        AccountId?: number;
+        CompanyId?: number;
+    }
+    namespace AccountCompaniesRow {
+        const idProperty = "AccountCompanyID";
+        const localTextPrefix = "Erp.AccountCompanies";
+        const enum Fields {
+            AccountCompanyID = "AccountCompanyID",
+            AccountId = "AccountId",
+            CompanyId = "CompanyId",
+        }
+    }
+}
+declare namespace PGMS.Erp {
 }
 declare namespace PGMS.Erp {
     interface AccountsForm {
         Name: Serenity.StringEditor;
         PhoneNumber: Serenity.StringEditor;
+        AccountCompanies: Serenity.LookupEditor;
         IsVip: Serenity.BooleanEditor;
         PartnerType: Serenity.LookupEditor;
         Address: Serenity.StringEditor;
@@ -491,6 +508,7 @@ declare namespace PGMS.Erp {
         PartnerType?: number;
         Address?: string;
         City?: string;
+        AccountCompanies?: number[];
         Country?: string;
         NoteList?: NoteRow[];
         PartnerTypeName?: string;
@@ -517,6 +535,7 @@ declare namespace PGMS.Erp {
             PartnerType = "PartnerType",
             Address = "Address",
             City = "City",
+            AccountCompanies = "AccountCompanies",
             Country = "Country",
             NoteList = "NoteList",
             PartnerTypeName = "PartnerTypeName",

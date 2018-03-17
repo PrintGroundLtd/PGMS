@@ -84,6 +84,16 @@ namespace PGMS.Erp.Entities
             get { return Fields.PartnerTypeName[this]; }
             set { Fields.PartnerTypeName[this] = value; }
         }
+
+        [LookupEditor(typeof(CompaniesRow), Multiple = true, InplaceAdd = true, FilterField = "IsActive", FilterValue = 1), NotMapped]
+        [LinkingSetRelation(typeof(AccountCompaniesRow), "AccountId", "CompanyId")]
+        [MinSelectLevel(SelectLevel.Details), QuickFilter(CssClass = "hidden-xs")]
+        public List<Int32> AccountCompanies
+        {
+            get { return Fields.AccountCompanies[this]; }
+            set { Fields.AccountCompanies[this] = value; }
+        }
+
         [NotesEditor, NotMapped]
         public List<NoteRow> NoteList
         {
@@ -117,6 +127,7 @@ namespace PGMS.Erp.Entities
             public Int32Field PartnerType;
             public StringField Address;
             public StringField City;
+            public ListField<Int32> AccountCompanies;
             public StringField Country;
 
             public RowListField<NoteRow> NoteList;

@@ -358,6 +358,17 @@ var PGMS;
 (function (PGMS) {
     var Erp;
     (function (Erp) {
+        var AccountCompaniesRow;
+        (function (AccountCompaniesRow) {
+            AccountCompaniesRow.idProperty = 'AccountCompanyID';
+            AccountCompaniesRow.localTextPrefix = 'Erp.AccountCompanies';
+        })(AccountCompaniesRow = Erp.AccountCompaniesRow || (Erp.AccountCompaniesRow = {}));
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
         var AccountsForm = /** @class */ (function (_super) {
             __extends(AccountsForm, _super);
             function AccountsForm(prefix) {
@@ -366,14 +377,15 @@ var PGMS;
                     AccountsForm.init = true;
                     var s = Serenity;
                     var w0 = s.StringEditor;
-                    var w1 = s.BooleanEditor;
-                    var w2 = s.LookupEditor;
+                    var w1 = s.LookupEditor;
+                    var w2 = s.BooleanEditor;
                     var w3 = Erp.NotesEditor;
                     Q.initFormType(AccountsForm, [
                         'Name', w0,
                         'PhoneNumber', w0,
-                        'IsVip', w1,
-                        'PartnerType', w2,
+                        'AccountCompanies', w1,
+                        'IsVip', w2,
+                        'PartnerType', w1,
                         'Address', w0,
                         'City', w0,
                         'Country', w0,
