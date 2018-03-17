@@ -1,20 +1,17 @@
 ﻿
-using PGMS.Erp;
-
-namespace PMGS.Erp.Entities
+namespace PGMS.Erp.Entities
 {
-    using Serenity;
     using Serenity.ComponentModel;
     using Serenity.Data;
     using Serenity.Data.Mapping;
     using System;
     using System.ComponentModel;
-    using System.IO;
 
-    [ConnectionKey("Erp"), TableName("[dbo].[Notes]"), DisplayName("Notes"), InstanceName("Note"), TwoLevelCached]
+    [ConnectionKey("Default"), Module("Erp"), TableName("Notes")]
+    [DisplayName("Notes"), InstanceName("Note")]
     [ReadPermission(PermissionKeys.Notes.NotesReadPermission)]
     [ModifyPermission(PermissionKeys.Notes.NotesModifyPermission)]
-    public sealed class NotesRow : Row, IIdRow, INameRow, IInsertLogRow
+    public sealed class NoteRow : Row, IIdRow, INameRow, IInsertLogRow
     {
         [DisplayName("Note Id"), Identity, Column("NoteID")]
         public Int64? NoteId
@@ -91,10 +88,9 @@ namespace PMGS.Erp.Entities
             }
         }
 
-
         public static readonly RowFields Fields = new RowFields().Init();
 
-        public NotesRow()
+        public NoteRow()
             : base(Fields)
         {
         }
@@ -107,14 +103,7 @@ namespace PMGS.Erp.Entities
             public StringField Text;
             public Int32Field InsertUserId;
             public DateTimeField InsertDate;
-
             public StringField InsertUserDisplayName;
-            public RowFields()
-                : base()
-            {
-                LocalTextPrefix = "Erp.Notes";
-            }
         }
-        
     }
 }

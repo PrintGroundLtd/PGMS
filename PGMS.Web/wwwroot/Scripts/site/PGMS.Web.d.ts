@@ -474,6 +474,7 @@ declare namespace PGMS.Erp {
         Address: Serenity.StringEditor;
         City: Serenity.StringEditor;
         Country: Serenity.StringEditor;
+        NoteList: NotesEditor;
     }
     class AccountsForm extends Serenity.PrefixedContext {
         static formKey: string;
@@ -491,6 +492,7 @@ declare namespace PGMS.Erp {
         Address?: string;
         City?: string;
         Country?: string;
+        NoteList?: NoteRow[];
         PartnerTypeName?: string;
         InsertUserId?: number;
         InsertDate?: string;
@@ -516,6 +518,7 @@ declare namespace PGMS.Erp {
             Address = "Address",
             City = "City",
             Country = "Country",
+            NoteList = "NoteList",
             PartnerTypeName = "PartnerTypeName",
             InsertUserId = "InsertUserId",
             InsertDate = "InsertDate",
@@ -541,6 +544,31 @@ declare namespace PGMS.Erp {
             Delete = "Erp/Accounts/Delete",
             Retrieve = "Erp/Accounts/Retrieve",
             List = "Erp/Accounts/List",
+        }
+    }
+}
+declare namespace PGMS.Erp {
+    interface NoteRow {
+        NoteId?: number;
+        EntityType?: string;
+        EntityId?: number;
+        Text?: string;
+        InsertUserId?: number;
+        InsertDate?: string;
+        InsertUserDisplayName?: string;
+    }
+    namespace NoteRow {
+        const idProperty = "NoteId";
+        const nameProperty = "EntityType";
+        const localTextPrefix = "Erp.Note";
+        const enum Fields {
+            NoteId = "NoteId",
+            EntityType = "EntityType",
+            EntityId = "EntityId",
+            Text = "Text",
+            InsertUserId = "InsertUserId",
+            InsertDate = "InsertDate",
+            InsertUserDisplayName = "InsertUserDisplayName",
         }
     }
 }
@@ -790,31 +818,6 @@ declare namespace PGMS.Membership {
         DisplayName?: string;
         Email?: string;
         Password?: string;
-    }
-}
-declare namespace PMGS.Erp {
-    interface NotesRow {
-        NoteId?: number;
-        EntityType?: string;
-        EntityId?: number;
-        Text?: string;
-        InsertUserId?: number;
-        InsertDate?: string;
-        InsertUserDisplayName?: string;
-    }
-    namespace NotesRow {
-        const idProperty = "NoteId";
-        const nameProperty = "EntityType";
-        const localTextPrefix = "Erp.Notes";
-        const enum Fields {
-            NoteId = "NoteId",
-            EntityType = "EntityType",
-            EntityId = "EntityId",
-            Text = "Text",
-            InsertUserId = "InsertUserId",
-            InsertDate = "InsertDate",
-            InsertUserDisplayName = "InsertUserDisplayName",
-        }
     }
 }
 declare namespace PGMS {
@@ -1259,6 +1262,7 @@ declare namespace PGMS.Erp {
         protected getNameProperty(): string;
         protected getService(): string;
         protected form: AccountsForm;
+        constructor();
     }
 }
 declare namespace PGMS.Erp {
@@ -1271,8 +1275,8 @@ declare namespace PGMS.Erp {
         constructor(container: JQuery);
     }
 }
-declare namespace PMGS.Erp {
-    class NotesDialog extends Serenity.TemplatedDialog<any> {
+declare namespace PGMS.Erp {
+    class NoteDialog extends Serenity.TemplatedDialog<any> {
         private textEditor;
         constructor();
         protected getTemplate(): string;
@@ -1281,7 +1285,7 @@ declare namespace PMGS.Erp {
         okClick: () => void;
     }
 }
-declare namespace PMGS.Erp {
+declare namespace PGMS.Erp {
     class NotesEditor extends Serenity.TemplatedWidget<any> implements Serenity.IGetEditValue, Serenity.ISetEditValue {
         private isDirty;
         private items;
@@ -1291,7 +1295,7 @@ declare namespace PMGS.Erp {
         protected addClick(): void;
         protected editClick(e: any): void;
         deleteClick(e: any): void;
-        value: NotesRow[];
+        value: NoteRow[];
         getEditValue(prop: Serenity.PropertyItem, target: any): void;
         setEditValue(source: any, prop: Serenity.PropertyItem): void;
         get_isDirty(): boolean;

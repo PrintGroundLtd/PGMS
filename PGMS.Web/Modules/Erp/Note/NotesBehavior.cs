@@ -1,14 +1,14 @@
-﻿using Serenity;
+﻿using PGMS.Administration.Entities;
+using PGMS.Erp.Entities;
+using PGMS.Erp.Repositories;
+using Serenity;
 using Serenity.Data;
 using Serenity.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using PGMS.Administration.Entities;
-using PMGS.Erp.Entities;
-using PMGS.Erp.Repositories;
 
-namespace PMGS.Erp
+namespace PGMS.Erp
 {
     public class NotesBehavior : BaseSaveDeleteBehavior, IImplicitBehavior, IRetrieveBehavior, IFieldBehavior
     {
@@ -23,10 +23,10 @@ namespace PMGS.Erp
             if (attr == null)
                 return false;
 
-            if (Target.ValueType != typeof(List<NotesRow>))
+            if (Target.ValueType != typeof(List<NoteRow>))
             {
                 throw new ArgumentException(String.Format("Field '{0}' in row type '{1}' has a NotesEditorAttribute " +
-                                                          "but its property type is not a List<NoteRow>!",
+                    "but its property type is not a List<NoteRow>!",
                     Target.PropertyName ?? Target.Name, row.GetType().FullName));
             }
 
@@ -46,19 +46,19 @@ namespace PMGS.Erp
                 return;
 
             var idField = (handler.Row as IIdRow).IdField;
-            var fld = NotesRow.Fields;
+            var fld = NoteRow.Fields;
 
             var listRequest = new ListRequest
             {
                 ColumnSelection = ColumnSelection.List,
                 EqualityFilter = new Dictionary<string, object>
-                    {
-                        { fld.EntityType.PropertyName, handler.Row.Table },
-                        { fld.EntityId.PropertyName, idField[handler.Row] ?? -1 }
-                    }
+                {
+                    { fld.EntityType.PropertyName, handler.Row.Table },
+                    { fld.EntityId.PropertyName, idField[handler.Row] ?? -1 }
+                }
             };
 
-            var notes = new NotesRepository().List(handler.Connection, listRequest).Entities;
+            var notes = new NoteRepository().List(handler.Connection, listRequest).Entities;
 
             // users might be in another database, in another db server, so we can't simply use a join here
             var userIdList = notes.Where(x => x.InsertUserId != null).Select(x => x.InsertUserId.Value).Distinct();
@@ -83,31 +83,31 @@ namespace PMGS.Erp
             Target.AsObject(handler.Row, notes);
         }
 
-        private void SaveNote(IUnitOfWork uow, NotesRow note, string entityType, Int64 entityId, Int64? noteId)
+        private void SaveNote(IUnitOfWork uow, NoteRow note, string entityType, Int64 entityId, Int64? noteId)
         {
             note = note.Clone();
             note.NoteId = noteId;
             note.EntityType = entityType;
             note.EntityId = entityId;
             note.InsertDate = null;
-            note.ClearAssignment(NotesRow.Fields.InsertDate);
+            note.ClearAssignment(NoteRow.Fields.InsertDate);
 
-            var saveRequest = new SaveRequest<NotesRow> { Entity = note };
+            var saveRequest = new SaveRequest<NoteRow> { Entity = note };
 
             if (noteId == null)
-                new NotesRepository().Create(uow, saveRequest);
+                new NoteRepository().Create(uow, saveRequest);
             else
-                new NotesRepository().Update(uow, saveRequest);
+                new NoteRepository().Update(uow, saveRequest);
         }
 
         private void DeleteNote(IUnitOfWork uow, Int64 noteId)
         {
-            new NotesRepository().Delete(uow, new DeleteRequest { EntityId = noteId });
+            new NoteRepository().Delete(uow, new DeleteRequest { EntityId = noteId });
         }
 
-        private void NoteListSave(IUnitOfWork uow, string entityType, Int64 entityId, List<NotesRow> oldList, List<NotesRow> newList)
+        private void NoteListSave(IUnitOfWork uow, string entityType, Int64 entityId, List<NoteRow> oldList, List<NoteRow> newList)
         {
-            var row = oldList.Count > 0 ? oldList[0] :
+            var row = oldList.Count > 0 ? oldList[0] : 
                 (newList.Count > 0) ? newList[0] : null;
 
             if (row == null)
@@ -131,11 +131,11 @@ namespace PMGS.Erp
                 return;
             }
 
-            var oldById = new Dictionary<Int64, NotesRow>(oldList.Count);
+            var oldById = new Dictionary<Int64, NoteRow>(oldList.Count);
             foreach (var item in oldList)
                 oldById[rowIdField[item].Value] = item;
 
-            var newById = new Dictionary<Int64, NotesRow>(newList.Count);
+            var newById = new Dictionary<Int64, NoteRow>(newList.Count);
             foreach (var item in newList)
             {
                 var id = rowIdField[item];
@@ -154,7 +154,7 @@ namespace PMGS.Erp
             {
                 var id = rowIdField[item];
 
-                NotesRow old;
+                NoteRow old;
                 if (id == null || !oldById.TryGetValue(id.Value, out old))
                     continue;
 
@@ -186,7 +186,7 @@ namespace PMGS.Erp
 
         public override void OnAfterSave(ISaveRequestHandler handler)
         {
-            var newList = Target.AsObject(handler.Row) as List<NotesRow>;
+            var newList = Target.AsObject(handler.Row) as List<NoteRow>;
             if (newList == null)
                 return;
 
@@ -201,18 +201,18 @@ namespace PMGS.Erp
                 return;
             }
 
-            var fld = NotesRow.Fields;
+            var fld = NoteRow.Fields;
             var listRequest = new ListRequest
             {
                 ColumnSelection = ColumnSelection.List,
                 EqualityFilter = new Dictionary<string, object>
-                    {
-                        { fld.EntityType.PropertyName, handler.Row.Table },
-                        { fld.EntityId.PropertyName, entityId }
-                    }
+                {
+                    { fld.EntityType.PropertyName, handler.Row.Table },
+                    { fld.EntityId.PropertyName, entityId }
+                }
             };
 
-            var oldList = new NotesRepository().List(handler.Connection, listRequest).Entities;
+            var oldList = new NoteRepository().List(handler.Connection, listRequest).Entities;
             NoteListSave(handler.UnitOfWork, handler.Row.Table, entityId, oldList, newList);
         }
 
@@ -223,24 +223,23 @@ namespace PMGS.Erp
                 return;
 
             var idField = (handler.Row as IIdRow).IdField;
-            var row = new NotesRow();
-            var fld = NotesRow.Fields;
+            var row = new NoteRow();
+            var fld = NoteRow.Fields;
 
             var deleteList = new List<Int64>();
             new SqlQuery()
-                .From(row)
-                .Select(fld.NoteId)
-                .Where(
-                    fld.EntityType == handler.Row.Table &
-                    fld.EntityId == idField[handler.Row].Value)
-                .ForEach(handler.Connection, () =>
-                {
-                    deleteList.Add(row.NoteId.Value);
-                });
+                    .From(row)
+                    .Select(fld.NoteId)
+                    .Where(
+                        fld.EntityType == handler.Row.Table &
+                        fld.EntityId == idField[handler.Row].Value)
+                    .ForEach(handler.Connection, () =>
+                    {
+                        deleteList.Add(row.NoteId.Value);
+                    });
 
             foreach (var id in deleteList)
                 DeleteNote(handler.UnitOfWork, id);
         }
     }
 }
-

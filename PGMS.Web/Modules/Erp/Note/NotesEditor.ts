@@ -1,11 +1,12 @@
-﻿namespace PMGS.Erp {
+﻿namespace PGMS.Erp {
+
     @Serenity.Decorators.registerEditor([Serenity.IGetEditValue, Serenity.ISetEditValue])
     @Serenity.Decorators.element("<div/>")
     export class NotesEditor extends Serenity.TemplatedWidget<any>
-    implements Serenity.IGetEditValue, Serenity.ISetEditValue {
+        implements Serenity.IGetEditValue, Serenity.ISetEditValue {
 
         private isDirty: boolean;
-        private items: NotesRow[];
+        private items: NoteRow[];
 
         constructor(div: JQuery) {
             super(div);
@@ -52,7 +53,7 @@
         }
 
         protected addClick() {
-            var dlg = new NotesDialog();
+            var dlg = new NoteDialog();
             dlg.dialogTitle = 'Add Note';
             dlg.okClick = () => {
                 var text = Q.trimToNull(dlg.text);
@@ -63,7 +64,7 @@
                 this.items = this.items || [];
                 Q.insert(this.items, 0, {
                     Text: text,
-                    InsertUserDisplayName: PGMS.Authorization.userDefinition.DisplayName,
+                    InsertUserDisplayName: Authorization.userDefinition.DisplayName,
                     InsertDate: Q.formatISODateTimeUTC(new Date())
                 });
 
@@ -79,7 +80,7 @@
             e.preventDefault();
             var index = $(e.target).data('index');
             var old = this.items[index];
-            var dlg = new NotesDialog();
+            var dlg = new NoteDialog();
             dlg.dialogTitle = 'Edit Note';
             dlg.text = old.Text;
             dlg.okClick = () => {
@@ -112,7 +113,7 @@
             return this.items;
         }
 
-        public set value(value: NotesRow[]) {
+        public set value(value: NoteRow[]) {
             this.items = value || [];
             this.set_isDirty(false);
             this.updateContent();

@@ -8,6 +8,7 @@
         Address?: string;
         City?: string;
         Country?: string;
+        NoteList?: NoteRow[];
         PartnerTypeName?: string;
         InsertUserId?: number;
         InsertDate?: string;
@@ -38,6 +39,7 @@
             Address = "Address",
             City = "City",
             Country = "Country",
+            NoteList = "NoteList",
             PartnerTypeName = "PartnerTypeName",
             InsertUserId = "InsertUserId",
             InsertDate = "InsertDate",

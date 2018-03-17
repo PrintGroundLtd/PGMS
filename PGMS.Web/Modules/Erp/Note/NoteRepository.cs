@@ -1,15 +1,13 @@
 ﻿
 
-namespace PMGS.Erp.Repositories
+namespace PGMS.Erp.Repositories
 {
-    using Serenity;
     using Serenity.Data;
     using Serenity.Services;
-    using System;
     using System.Data;
-    using MyRow = Entities.NotesRow;
+    using MyRow = Entities.NoteRow;
 
-    public class NotesRepository
+    public class NoteRepository
     {
         private static MyRow.RowFields fld { get { return MyRow.Fields; } }
 

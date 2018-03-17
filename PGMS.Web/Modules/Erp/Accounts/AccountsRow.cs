@@ -1,4 +1,7 @@
 ﻿
+using System.Collections.Generic;
+using PMGS.Erp;
+
 namespace PGMS.Erp.Entities
 {
     using Serenity;
@@ -81,7 +84,12 @@ namespace PGMS.Erp.Entities
             get { return Fields.PartnerTypeName[this]; }
             set { Fields.PartnerTypeName[this] = value; }
         }
-        
+        [NotesEditor, NotMapped]
+        public List<NoteRow> NoteList
+        {
+            get { return Fields.NoteList[this]; }
+            set { Fields.NoteList[this] = value; }
+        }
 
         IIdField IIdRow.IdField
         {
@@ -111,7 +119,8 @@ namespace PGMS.Erp.Entities
             public StringField City;
             public StringField Country;
 
+            public RowListField<NoteRow> NoteList;
             public StringField PartnerTypeName;
-		}
+        }
     }
 }

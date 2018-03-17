@@ -1,5 +1,5 @@
-﻿namespace PMGS.Erp {
-    export interface NotesRow {
+﻿namespace PGMS.Erp {
+    export interface NoteRow {
         NoteId?: number;
         EntityType?: string;
         EntityId?: number;
@@ -9,10 +9,10 @@
         InsertUserDisplayName?: string;
     }
 
-    export namespace NotesRow {
+    export namespace NoteRow {
         export const idProperty = 'NoteId';
         export const nameProperty = 'EntityType';
-        export const localTextPrefix = 'Erp.Notes';
+        export const localTextPrefix = 'Erp.Note';
 
         export declare const enum Fields {
             NoteId = "NoteId",

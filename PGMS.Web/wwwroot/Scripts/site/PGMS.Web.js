@@ -368,6 +368,7 @@ var PGMS;
                     var w0 = s.StringEditor;
                     var w1 = s.BooleanEditor;
                     var w2 = s.LookupEditor;
+                    var w3 = Erp.NotesEditor;
                     Q.initFormType(AccountsForm, [
                         'Name', w0,
                         'PhoneNumber', w0,
@@ -375,7 +376,8 @@ var PGMS;
                         'PartnerType', w2,
                         'Address', w0,
                         'City', w0,
-                        'Country', w0
+                        'Country', w0,
+                        'NoteList', w3
                     ]);
                 }
                 return _this;
@@ -423,6 +425,18 @@ var PGMS;
                 };
             });
         })(AccountsService = Erp.AccountsService || (Erp.AccountsService = {}));
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var NoteRow;
+        (function (NoteRow) {
+            NoteRow.idProperty = 'NoteId';
+            NoteRow.nameProperty = 'EntityType';
+            NoteRow.localTextPrefix = 'Erp.Note';
+        })(NoteRow = Erp.NoteRow || (Erp.NoteRow = {}));
     })(Erp = PGMS.Erp || (PGMS.Erp = {}));
 })(PGMS || (PGMS = {}));
 var PGMS;
@@ -686,18 +700,6 @@ var PGMS;
         Membership.SignUpForm = SignUpForm;
     })(Membership = PGMS.Membership || (PGMS.Membership = {}));
 })(PGMS || (PGMS = {}));
-var PMGS;
-(function (PMGS) {
-    var Erp;
-    (function (Erp) {
-        var NotesRow;
-        (function (NotesRow) {
-            NotesRow.idProperty = 'NoteId';
-            NotesRow.nameProperty = 'EntityType';
-            NotesRow.localTextPrefix = 'Erp.Notes';
-        })(NotesRow = Erp.NotesRow || (Erp.NotesRow = {}));
-    })(Erp = PMGS.Erp || (PMGS.Erp = {}));
-})(PMGS || (PMGS = {}));
 var PGMS;
 (function (PGMS) {
     var LanguageList;
@@ -2866,8 +2868,9 @@ var PGMS;
         var AccountsDialog = /** @class */ (function (_super) {
             __extends(AccountsDialog, _super);
             function AccountsDialog() {
-                var _this = _super !== null && _super.apply(this, arguments) || this;
+                var _this = _super.call(this) || this;
                 _this.form = new Erp.AccountsForm(_this.idPrefix);
+                _this.byId('NoteList').closest('.field').hide().end().appendTo(_this.byId('TabNotes'));
                 return _this;
             }
             AccountsDialog.prototype.getFormKey = function () { return Erp.AccountsForm.formKey; };
@@ -2905,23 +2908,23 @@ var PGMS;
         Erp.AccountsGrid = AccountsGrid;
     })(Erp = PGMS.Erp || (PGMS.Erp = {}));
 })(PGMS || (PGMS = {}));
-var PMGS;
-(function (PMGS) {
+var PGMS;
+(function (PGMS) {
     var Erp;
     (function (Erp) {
-        var NotesDialog = /** @class */ (function (_super) {
-            __extends(NotesDialog, _super);
-            function NotesDialog() {
+        var NoteDialog = /** @class */ (function (_super) {
+            __extends(NoteDialog, _super);
+            function NoteDialog() {
                 var _this = _super.call(this) || this;
                 _this.textEditor = new Serenity.HtmlNoteContentEditor(_this.byId('Text'));
                 return _this;
             }
-            NotesDialog.prototype.getTemplate = function () {
+            NoteDialog.prototype.getTemplate = function () {
                 return ("<form id='~_Form' class='s-Form'>" +
                     "<textarea id='~_Text' class='required'></textarea>" +
                     "</form>");
             };
-            NotesDialog.prototype.getDialogOptions = function () {
+            NoteDialog.prototype.getDialogOptions = function () {
                 var _this = this;
                 var opt = _super.prototype.getDialogOptions.call(this);
                 opt.buttons = [{
@@ -2939,7 +2942,7 @@ var PMGS;
                 ];
                 return opt;
             };
-            Object.defineProperty(NotesDialog.prototype, "text", {
+            Object.defineProperty(NoteDialog.prototype, "text", {
                 get: function () {
                     return this.textEditor.value;
                 },
@@ -2949,16 +2952,16 @@ var PMGS;
                 enumerable: true,
                 configurable: true
             });
-            NotesDialog = __decorate([
+            NoteDialog = __decorate([
                 Serenity.Decorators.registerClass()
-            ], NotesDialog);
-            return NotesDialog;
+            ], NoteDialog);
+            return NoteDialog;
         }(Serenity.TemplatedDialog));
-        Erp.NotesDialog = NotesDialog;
-    })(Erp = PMGS.Erp || (PMGS.Erp = {}));
-})(PMGS || (PMGS = {}));
-var PMGS;
-(function (PMGS) {
+        Erp.NoteDialog = NoteDialog;
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
     var Erp;
     (function (Erp) {
         var NotesEditor = /** @class */ (function (_super) {
@@ -3004,7 +3007,7 @@ var PMGS;
             };
             NotesEditor.prototype.addClick = function () {
                 var _this = this;
-                var dlg = new Erp.NotesDialog();
+                var dlg = new Erp.NoteDialog();
                 dlg.dialogTitle = 'Add Note';
                 dlg.okClick = function () {
                     var text = Q.trimToNull(dlg.text);
@@ -3029,7 +3032,7 @@ var PMGS;
                 e.preventDefault();
                 var index = $(e.target).data('index');
                 var old = this.items[index];
-                var dlg = new Erp.NotesDialog();
+                var dlg = new Erp.NoteDialog();
                 dlg.dialogTitle = 'Edit Note';
                 dlg.text = old.Text;
                 dlg.okClick = function () {
@@ -3087,8 +3090,8 @@ var PMGS;
             return NotesEditor;
         }(Serenity.TemplatedWidget));
         Erp.NotesEditor = NotesEditor;
-    })(Erp = PMGS.Erp || (PMGS.Erp = {}));
-})(PMGS || (PMGS = {}));
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
 var PGMS;
 (function (PGMS) {
     var Erp;

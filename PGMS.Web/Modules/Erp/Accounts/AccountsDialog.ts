@@ -11,5 +11,10 @@ namespace PGMS.Erp {
 
         protected form = new AccountsForm(this.idPrefix);
 
+        constructor() {
+            super();
+            this.byId('NoteList').closest('.field').hide().end().appendTo(this.byId('TabNotes'));
+
+        }
     }
 }

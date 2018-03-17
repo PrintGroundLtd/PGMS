@@ -1,8 +1,8 @@
-﻿
-namespace PMGS.Erp {
+﻿namespace PGMS.Erp {
 
     @Serenity.Decorators.registerClass()
-    export class NotesDialog extends Serenity.TemplatedDialog<any> {
+    export class NoteDialog extends Serenity.TemplatedDialog<any> {
+
         private textEditor: Serenity.HtmlContentEditor;
 
         constructor() {
@@ -15,22 +15,22 @@ namespace PMGS.Erp {
             return (
                 "<form id='~_Form' class='s-Form'>" +
                     "<textarea id='~_Text' class='required'></textarea>" +
-                    "</form>");
+                "</form>");
         }
 
         protected getDialogOptions() {
             var opt = super.getDialogOptions();
 
             opt.buttons = [{
-                    text: Q.text('Dialogs.OkButton'),
-                    click: () => {
-                        if (!this.validateForm()) {
-                            return;
-                        }
-
-                        this.okClick && this.okClick();
+                text: Q.text('Dialogs.OkButton'),
+                click: () => {
+                    if (!this.validateForm()) {
+                        return;
                     }
-                }, {
+
+                    this.okClick && this.okClick();
+                }
+            }, {
                     text: Q.text('Dialogs.CancelButton'),
                     click: () => this.dialogClose()
                 }
