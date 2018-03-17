@@ -100,7 +100,7 @@ namespace PGMS.Migrations.DefaultDB
 
             #region Account 
 
-            this.CreateTableWithId32("Account", "AccountId", s => s
+            this.CreateTableWithId32("Accounts", "AccountId", s => s
                 .WithColumn("Name").AsString(500).NotNullable()
                 .WithColumn("PhoneNumber").AsString(500).Nullable()
                 .WithColumn("IsVip").AsInt16().Nullable()
