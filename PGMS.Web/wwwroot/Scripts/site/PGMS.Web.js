@@ -3159,6 +3159,7 @@ var PGMS;
             AccountsDialog.prototype.loadEntity = function (entity) {
                 _super.prototype.loadEntity.call(this, entity);
                 Serenity.TabsExtensions.setDisabled(this.tabs, 'Attachments', this.isNewOrDeleted());
+                Serenity.TabsExtensions.setDisabled(this.tabs, 'Notes', this.isNewOrDeleted());
                 this.attachmentsGrid.accountId = entity.AccountId;
             };
             AccountsDialog.prototype.getSaveState = function () {

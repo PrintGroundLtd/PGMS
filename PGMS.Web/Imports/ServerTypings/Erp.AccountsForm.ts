@@ -2,10 +2,10 @@
     export interface AccountsForm {
         AccountId: Serenity.IntegerEditor;
         Name: Serenity.StringEditor;
+        PartnerType: Serenity.LookupEditor;
         PhoneNumber: Serenity.StringEditor;
         AccountCompanies: Serenity.LookupEditor;
         IsVip: Serenity.BooleanEditor;
-        PartnerType: Serenity.LookupEditor;
         Address: Serenity.StringEditor;
         City: Serenity.StringEditor;
         Country: Serenity.StringEditor;
@@ -32,10 +32,10 @@
                 Q.initFormType(AccountsForm, [
                     'AccountId', w0,
                     'Name', w1,
+                    'PartnerType', w2,
                     'PhoneNumber', w1,
                     'AccountCompanies', w2,
                     'IsVip', w3,
-                    'PartnerType', w2,
                     'Address', w1,
                     'City', w1,
                     'Country', w1,

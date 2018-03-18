@@ -13,15 +13,17 @@ namespace PGMS.Erp.Forms
     [BasedOnRow(typeof(Entities.CompaniesRow), CheckNames = true)]
     public class CompaniesForm
     {
+        [Category("General")]
         public String Name { get; set; }
         public String PhoneNumber { get; set; }
-        public String Address { get; set; }
-        public String City { get; set; }
-        public String Country { get; set; }
         public String Eik { get; set; }
         public String Mol { get; set; }
         public String Iban { get; set; }
         public String BankName { get; set; }
         public String BankSwift { get; set; }
+        [Category("Localization")]
+        public String Address { get; set; }
+        public String City { get; set; }
+        public String Country { get; set; }
     }
 }
