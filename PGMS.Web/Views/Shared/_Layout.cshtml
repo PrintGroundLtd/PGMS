@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using System.Reflection
+<!DOCTYPE html>
 @{
     Func<string, HtmlString> json = x => new HtmlString(Serenity.JSON.Stringify(x));
     var hideNav = (string)Context.Request.Query["hideNav"] == "1";
@@ -114,24 +115,34 @@ else
                 @RenderBody()
             </section>
         </div>
-
+        @{
+            var runtimeVersion = typeof(Startup)
+                .GetTypeInfo()
+                .Assembly
+                .GetCustomAttribute<AssemblyInformationalVersionAttribute>()
+                .InformationalVersion;
+        }
         <footer class="main-footer">
             <div class="pull-right hidden-xs">
                 <a href="http://s2kdesign.com" target="_blank">
                     @Texts.Site.Layout.FooterInfo
+                    -
+                    Version: @runtimeVersion
                 </a>
             </div>
             <strong>@Texts.Site.Layout.FooterCopyright @DateTime.Now.Year</strong> 
  
                 @Texts.Site.Layout.FooterRights
-        
+         
         </footer>
 
         <aside class="control-sidebar control-sidebar-dark">
             <div class="tab-content">
                 <div class="tab-pane active" id="control-sidebar-settings-tab">
                     <form method="post">
-                        <h3 class="control-sidebar-heading">@Texts.Site.Layout.GeneralSettings</h3>
+                        <h3 class="control-sidebar-heading">@Texts.Site.Layout.GeneralSettings
+                        
+                            </h3>
 
                         <div class="form-group">
                             <label class="control-sidebar-subheading">@Texts.Site.Layout.Language</label>
