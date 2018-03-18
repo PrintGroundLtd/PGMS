@@ -27,9 +27,9 @@ namespace PGMS.Erp.Columns
         public String BankName { get; set; }
         public String BankSwift { get; set; }
         public DateTime InsertDate { get; set; }
-        public Int32 InsertUserId { get; set; }
+        public Int32 InsertUserName { get; set; }
         public DateTime UpdateDate { get; set; }
-        public Int32 UpdateUserId { get; set; }
+        public Int32 UpdateUserName { get; set; }
         public Int16 IsActive { get; set; }
     }
 }
