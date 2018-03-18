@@ -26,7 +26,7 @@ namespace PGMS.Erp.Entities
             set { Fields.ProductId[this] = value; }
         }
 
-        [DisplayName("Name"), Size(500), NotNull, QuickSearch, LookupInclude]
+        [DisplayName("Name"), Size(500), NotNull, QuickSearch, LookupInclude, SortOrder(1)]
         public String Name
         {
             get { return Fields.Name[this]; }
@@ -62,7 +62,7 @@ namespace PGMS.Erp.Entities
             set { Fields.QuantityPerUnit[this] = value; }
         }
 
-        [DisplayName("Unit Price"), Size(19), Scale(4), LookupInclude]
+        [DisplayName("Unit Price"), Size(19), Scale(2), LookupInclude]
         public Decimal? UnitPrice
         {
             get { return Fields.UnitPrice[this]; }

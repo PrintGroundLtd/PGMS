@@ -25,9 +25,9 @@ namespace PGMS.Erp.Columns
         public Int16 UnitsOnOrder { get; set; }
         public Int16 ReorderLevel { get; set; }
         public DateTime InsertDate { get; set; }
-        public Int32 InsertUserId { get; set; }
+        public Int32 InsertUserName { get; set; }
         public DateTime UpdateDate { get; set; }
-        public Int32 UpdateUserId { get; set; }
+        public Int32 UpdateUserName { get; set; }
         public Int16 IsActive { get; set; }
     }
 }

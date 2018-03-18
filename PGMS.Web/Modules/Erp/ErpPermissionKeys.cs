@@ -22,11 +22,11 @@ namespace PGMS.Erp
         public class Products
         {
             [Description("View")]
-            public const string ReadPermission = "Erp:AccountAttachments:Read";
+            public const string ReadPermission = "Erp:Products:Read";
             [Description("Update"), ImplicitPermission(ReadPermission)]
-            public const string UpdatePermission = "Erp:AccountAttachments:Update";
+            public const string UpdatePermission = "Erp:Products:Update";
             [Description("Delete"), ImplicitPermission(ReadPermission), ImplicitPermission(UpdatePermission)]
-            public const string DeletePermission = "Erp:AccountAttachments:Delete";
+            public const string DeletePermission = "Erp:Products:Delete";
         }
         public class AccountAttachments
         {
