@@ -1,11 +1,11 @@
 {
-  "name": "serene.aspnetcore",
+  "name": "pgms_s2kdesign_platform",
   "version": "1.0.0",
   "description": "PGMS ASP.NET Core",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/volkanceylan/serene"
+    "url": "https://github.com/PrintGroundLtd/PGMS"
   },
   "dependencies": {
     "@types/jquery": "^2.0.39",
