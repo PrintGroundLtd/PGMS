@@ -24,7 +24,7 @@ namespace PGMS.Erp.Entities
             set { Fields.CompanyId[this] = value; }
         }
 
-        [DisplayName("Name"), Size(500), NotNull, QuickSearch]
+        [DisplayName("Name"), Size(500), NotNull, QuickSearch, SortOrder(1)]
         public String Name
         {
             get { return Fields.Name[this]; }
