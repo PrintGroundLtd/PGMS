@@ -26,6 +26,11 @@
         export const isActiveProperty = 'IsActive';
         export const nameProperty = 'Name';
         export const localTextPrefix = 'Erp.AccountAttachments';
+        export const lookupKey = 'Erp.AccountAttachments';
+
+        export function getLookup(): Q.Lookup<AccountAttachmentsRow> {
+            return Q.getLookup<AccountAttachmentsRow>('Erp.AccountAttachments');
+        }
 
         export declare const enum Fields {
             AccountAttachmentId = "AccountAttachmentId",

@@ -17,7 +17,7 @@ namespace PGMS.Erp.Entities
         }
 
         [DisplayName("Created by"), Expression("usrI.UserName")]
-        [ReadPermission("Administration:Tenants")]
+        [ReadPermission(Administration.PermissionKeys.Auditing)]
         public String InsertUserName
         {
             get { return loggingFields.InsertUserName[this]; }
@@ -25,6 +25,7 @@ namespace PGMS.Erp.Entities
         }
 
         [NotNull, Insertable(false), Updatable(false)]
+        [ReadPermission(Administration.PermissionKeys.Auditing)]
         [ForeignKey("Users", "UserId"), LeftJoin("usrI"), TextualField("InsertUserName")]
         public Int32? InsertUserId
         {
@@ -35,6 +36,7 @@ namespace PGMS.Erp.Entities
         [NotNull, Insertable(false), Updatable(false)]
         [DisplayFormat("HH:mm dd/MM/yyyy")]
         [Width(150)]
+        [ReadPermission(Administration.PermissionKeys.Auditing)]
         public DateTime? InsertDate
         {
             get { return loggingFields.InsertDate[this]; }
@@ -43,6 +45,7 @@ namespace PGMS.Erp.Entities
 
         [Insertable(false), Updatable(false)]
         [ForeignKey("Users", "UserId"), LeftJoin("usrU"), TextualField("UpdateUserName")]
+        [ReadPermission(Administration.PermissionKeys.Auditing)]
         public Int32? UpdateUserId
         {
             get { return loggingFields.UpdateUserId[this]; }
@@ -50,6 +53,7 @@ namespace PGMS.Erp.Entities
         }
 
         [DisplayName("Last updated by"), Expression("usrU.UserName")]
+        [ReadPermission(Administration.PermissionKeys.Auditing)]
         public String UpdateUserName
         {
             get { return loggingFields.UpdateUserName[this]; }
@@ -59,6 +63,7 @@ namespace PGMS.Erp.Entities
         [Insertable(false), Updatable(false)]
         [Width(150)]
         [DisplayFormat("HH:mm dd/MM/yyyy")]
+        [ReadPermission(Administration.PermissionKeys.Auditing)]
         public DateTime? UpdateDate
         {
             get { return loggingFields.UpdateDate[this]; }
@@ -67,6 +72,7 @@ namespace PGMS.Erp.Entities
         
         [BooleanEditor]
         [LookupInclude]
+        [ReadPermission(Administration.PermissionKeys.Auditing)]
         public Int16? IsActive
         {
             get { return loggingFields.IsActive[this]; }

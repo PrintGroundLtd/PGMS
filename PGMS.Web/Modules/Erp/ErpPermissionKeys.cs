@@ -19,6 +19,15 @@ namespace PGMS.Erp
             public const string NotesModifyPermission = "Erp:Notes:Modify";
         }
 
+        public class AccountAttachments
+        {
+            [Description("View")]
+            public const string ReadPermission = "Erp:AccountAttachments:Read";
+            [Description("Update"), ImplicitPermission(ReadPermission)]
+            public const string UpdatePermission = "Erp:AccountAttachments:Update";
+            [Description("Delete"), ImplicitPermission(ReadPermission), ImplicitPermission(UpdatePermission)]
+            public const string DeletePermission = "Erp:AccountAttachments:Delete";
+        }
         public class PartnerTypes
         {
             [Description("View")]
@@ -49,7 +58,7 @@ namespace PGMS.Erp
             public const string DeletePermission = "Erp:Suppliers:Delete";
         }
 
-        public class Companies
+        public class Companies 
         {
             [Description("View")]
             public const string ReadPermission = "Erp:Companies:Read";

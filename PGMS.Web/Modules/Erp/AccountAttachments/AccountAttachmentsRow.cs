@@ -11,8 +11,10 @@ namespace PGMS.Erp.Entities
 
     [ConnectionKey("Default"), Module("Erp"), TableName("[dbo].[AccountAttachments]")]
     [DisplayName("Account Attachments"), InstanceName("Account Attachment")]
-    [ReadPermission("Erp:AccountAttachments:General")]
-    [ModifyPermission("Erp:AccountAttachments:General")]
+    [ReadPermission(PermissionKeys.AccountAttachments.ReadPermission)]
+    [UpdatePermission(PermissionKeys.AccountAttachments.UpdatePermission)]
+    [DeletePermission(PermissionKeys.AccountAttachments.DeletePermission)]
+    [LookupScript]
     public sealed class AccountAttachmentsRow : ErpLoggingRow, IIdRow, INameRow
     {
         [DisplayName("Account Attachment Id"), Identity]

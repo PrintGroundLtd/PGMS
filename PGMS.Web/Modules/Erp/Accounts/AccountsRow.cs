@@ -34,7 +34,7 @@ namespace PGMS.Erp.Entities
             set { Fields.Name[this] = value; }
         }
 
-        [DisplayName("Phone Number"), Size(500)]
+        [DisplayName("Phone Number"), Size(500), QuickSearch()]
         public String PhoneNumber
         {
             get { return Fields.PhoneNumber[this]; }
@@ -51,34 +51,35 @@ namespace PGMS.Erp.Entities
 
         [DisplayName("Partner Type"), NotNull, ForeignKey("[dbo].[PartnerTypes]", "PartnerTypeId"), LeftJoin("jPartnerType"), TextualField("PartnerTypeName")]
         [LookupEditor(typeof(PartnerTypesRow), InplaceAdd = false, FilterField = "IsActive", FilterValue = 1)]
+        [MinSelectLevel(SelectLevel.Details), QuickFilter()]
         public Int32? PartnerType
         {
             get { return Fields.PartnerType[this]; }
             set { Fields.PartnerType[this] = value; }
         }
 
-        [DisplayName("Address"), Size(500)]
+        [DisplayName("Address"), Size(500), QuickSearch()]
         public String Address
         {
             get { return Fields.Address[this]; }
             set { Fields.Address[this] = value; }
         }
 
-        [DisplayName("City"), Size(500)]
+        [DisplayName("City"), Size(500), QuickSearch()]
         public String City
         {
             get { return Fields.City[this]; }
             set { Fields.City[this] = value; }
         }
 
-        [DisplayName("Country"), Size(500)]
+        [DisplayName("Country"), Size(500), QuickSearch()]
         public String Country
         {
             get { return Fields.Country[this]; }
             set { Fields.Country[this] = value; }
         }
         
-        [DisplayName("Partner Type Name"), Expression("jPartnerType.[Name]")]
+        [DisplayName("Partner Type Name"), Expression("jPartnerType.[Name]"), QuickSearch()]
         public String PartnerTypeName
         {
             get { return Fields.PartnerTypeName[this]; }
@@ -87,7 +88,9 @@ namespace PGMS.Erp.Entities
 
         [LookupEditor(typeof(CompaniesRow), Multiple = true, InplaceAdd = true, FilterField = "IsActive", FilterValue = 1), NotMapped]
         [LinkingSetRelation(typeof(AccountCompaniesRow), "AccountId", "CompanyId")]
-        [MinSelectLevel(SelectLevel.Details), QuickFilter(CssClass = "hidden-xs")]
+        [MinSelectLevel(SelectLevel.Details), QuickFilter()]
+       // [QuickFilter(CssClass = "hidden-xs")]
+        [DisplayName("Account Companies")]
         public List<Int32> AccountCompanies
         {
             get { return Fields.AccountCompanies[this]; }
