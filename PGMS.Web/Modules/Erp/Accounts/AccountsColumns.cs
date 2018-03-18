@@ -18,7 +18,7 @@ namespace PGMS.Erp.Columns
         [EditLink]
         public String Name { get; set; }
         public String PhoneNumber { get; set; }
-        public Int16 IsVip { get; set; }
+        public bool IsVip { get; set; }
         public String PartnerTypeName { get; set; }
         public String Address { get; set; }
         public String City { get; set; }
@@ -27,6 +27,6 @@ namespace PGMS.Erp.Columns
         public Int32 InsertUserName { get; set; }
         public DateTime UpdateDate { get; set; }
         public Int32 UpdateUserName { get; set; }
-        public Int16 IsActive { get; set; }
+        public bool IsActive { get; set; }
     }
 }

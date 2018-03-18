@@ -1326,6 +1326,7 @@ declare namespace PGMS.Erp {
         protected getLocalTextPrefix(): string;
         protected getService(): string;
         constructor(container: JQuery);
+        protected getItemCssClass(item: AccountsRow, index: number): string;
     }
 }
 declare namespace PGMS.Erp {

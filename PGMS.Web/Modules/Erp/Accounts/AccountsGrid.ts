@@ -12,5 +12,17 @@ namespace PGMS.Erp {
         constructor(container: JQuery) {
             super(container);
         }
+
+
+        protected getItemCssClass(item: AccountsRow, index: number): string {
+            let klass: string = "";
+
+            if (item.IsVip == 1) {
+                klass += " is-vip";
+            }
+
+            return Q.trimToNull(klass);
+        }
+
     }
 }

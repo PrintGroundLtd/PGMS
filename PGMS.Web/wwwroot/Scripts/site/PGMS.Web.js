@@ -3198,6 +3198,13 @@ var PGMS;
             AccountsGrid.prototype.getIdProperty = function () { return Erp.AccountsRow.idProperty; };
             AccountsGrid.prototype.getLocalTextPrefix = function () { return Erp.AccountsRow.localTextPrefix; };
             AccountsGrid.prototype.getService = function () { return Erp.AccountsService.baseUrl; };
+            AccountsGrid.prototype.getItemCssClass = function (item, index) {
+                var klass = "";
+                if (item.IsVip == 1) {
+                    klass += " is-vip";
+                }
+                return Q.trimToNull(klass);
+            };
             AccountsGrid = __decorate([
                 Serenity.Decorators.registerClass()
             ], AccountsGrid);
