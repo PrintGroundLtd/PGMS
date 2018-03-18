@@ -5,6 +5,7 @@
         PaymentTypeId: Serenity.LookupEditor;
         Width: Serenity.IntegerEditor;
         Height: Serenity.IntegerEditor;
+        DetailList: OrderDetailsEditor;
         UserId: Serenity.LookupEditor;
         OrderStatusId: Serenity.LookupEditor;
         OrderDate: Serenity.DateEditor;
@@ -28,8 +29,9 @@
                 var s = Serenity;
                 var w0 = s.LookupEditor;
                 var w1 = s.IntegerEditor;
-                var w2 = s.DateEditor;
-                var w3 = s.StringEditor;
+                var w2 = OrderDetailsEditor;
+                var w3 = s.DateEditor;
+                var w4 = s.StringEditor;
 
                 Q.initFormType(OrdersForm, [
                     'AccountId', w0,
@@ -37,14 +39,15 @@
                     'PaymentTypeId', w0,
                     'Width', w1,
                     'Height', w1,
+                    'DetailList', w2,
                     'UserId', w0,
                     'OrderStatusId', w0,
-                    'OrderDate', w2,
-                    'ShippedDate', w2,
-                    'ShipName', w3,
-                    'ShipAddress', w3,
-                    'ShipCity', w3,
-                    'ShipCountry', w3
+                    'OrderDate', w3,
+                    'ShippedDate', w3,
+                    'ShipName', w4,
+                    'ShipAddress', w4,
+                    'ShipCity', w4,
+                    'ShipCountry', w4
                 ]);
             }
         }

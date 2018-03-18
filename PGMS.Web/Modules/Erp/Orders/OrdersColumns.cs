@@ -15,8 +15,11 @@ namespace PGMS.Erp.Columns
     {
         [EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
         public Int32 OrderId { get; set; }
+        [EditLink]
         public String AccountName { get; set; }
+        [EditLink]
         public String CompanyName { get; set; }
+        [EditLink]
         public String PaymentTypeName { get; set; }
         public Int16 Width { get; set; }
         public Int16 Height { get; set; }

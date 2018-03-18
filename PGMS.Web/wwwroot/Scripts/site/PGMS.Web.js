@@ -599,6 +599,67 @@ var PGMS;
 (function (PGMS) {
     var Erp;
     (function (Erp) {
+        var OrderDetailsForm = /** @class */ (function (_super) {
+            __extends(OrderDetailsForm, _super);
+            function OrderDetailsForm(prefix) {
+                var _this = _super.call(this, prefix) || this;
+                if (!OrderDetailsForm.init) {
+                    OrderDetailsForm.init = true;
+                    var s = Serenity;
+                    var w0 = s.LookupEditor;
+                    var w1 = s.DecimalEditor;
+                    var w2 = s.IntegerEditor;
+                    Q.initFormType(OrderDetailsForm, [
+                        'ProductId', w0,
+                        'UnitPrice', w1,
+                        'Quantity', w2,
+                        'Discount', w1
+                    ]);
+                }
+                return _this;
+            }
+            OrderDetailsForm.formKey = 'Erp.OrderDetails';
+            return OrderDetailsForm;
+        }(Serenity.PrefixedContext));
+        Erp.OrderDetailsForm = OrderDetailsForm;
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var OrderDetailsRow;
+        (function (OrderDetailsRow) {
+            OrderDetailsRow.idProperty = 'OrderDetailId';
+            OrderDetailsRow.localTextPrefix = 'Erp.OrderDetails';
+        })(OrderDetailsRow = Erp.OrderDetailsRow || (Erp.OrderDetailsRow = {}));
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var OrderDetailsService;
+        (function (OrderDetailsService) {
+            OrderDetailsService.baseUrl = 'Erp/OrderDetails';
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                OrderDetailsService[x] = function (r, s, o) {
+                    return Q.serviceRequest(OrderDetailsService.baseUrl + '/' + x, r, s, o);
+                };
+            });
+        })(OrderDetailsService = Erp.OrderDetailsService || (Erp.OrderDetailsService = {}));
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
         var OrdersForm = /** @class */ (function (_super) {
             __extends(OrdersForm, _super);
             function OrdersForm(prefix) {
@@ -608,22 +669,24 @@ var PGMS;
                     var s = Serenity;
                     var w0 = s.LookupEditor;
                     var w1 = s.IntegerEditor;
-                    var w2 = s.DateEditor;
-                    var w3 = s.StringEditor;
+                    var w2 = Erp.OrderDetailsEditor;
+                    var w3 = s.DateEditor;
+                    var w4 = s.StringEditor;
                     Q.initFormType(OrdersForm, [
                         'AccountId', w0,
                         'CompanyId', w0,
                         'PaymentTypeId', w0,
                         'Width', w1,
                         'Height', w1,
+                        'DetailList', w2,
                         'UserId', w0,
                         'OrderStatusId', w0,
-                        'OrderDate', w2,
-                        'ShippedDate', w2,
-                        'ShipName', w3,
-                        'ShipAddress', w3,
-                        'ShipCity', w3,
-                        'ShipCountry', w3
+                        'OrderDate', w3,
+                        'ShippedDate', w3,
+                        'ShipName', w4,
+                        'ShipAddress', w4,
+                        'ShipCity', w4,
+                        'ShipCountry', w4
                     ]);
                 }
                 return _this;
@@ -3777,6 +3840,75 @@ var PGMS;
             return NotesEditor;
         }(Serenity.TemplatedWidget));
         Erp.NotesEditor = NotesEditor;
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var OrderDetailsDialog = /** @class */ (function (_super) {
+            __extends(OrderDetailsDialog, _super);
+            function OrderDetailsDialog() {
+                var _this = _super.call(this) || this;
+                _this.form = new Erp.OrderDetailsForm(_this.idPrefix);
+                _this.form = new Erp.OrderDetailsForm(_this.idPrefix);
+                _this.form.ProductId.changeSelect2(function (e) {
+                    var productId = Q.toId(_this.form.ProductId.value);
+                    if (productId != null) {
+                        _this.form.UnitPrice.value = Erp.ProductsRow.getLookup().itemById[productId].UnitPrice;
+                    }
+                });
+                _this.form.Discount.addValidationRule(_this.uniqueName, function (e) {
+                    var price = _this.form.UnitPrice.value;
+                    var quantity = _this.form.Quantity.value;
+                    var discount = _this.form.Discount.value;
+                    if (price != null && quantity != null && discount != null &&
+                        discount > 0 && discount >= price * quantity) {
+                        return "Discount can't be higher than total price!";
+                    }
+                });
+                return _this;
+            }
+            OrderDetailsDialog.prototype.getFormKey = function () { return Erp.OrderDetailsForm.formKey; };
+            OrderDetailsDialog.prototype.getLocalTextPrefix = function () { return Erp.OrderDetailsRow.localTextPrefix; };
+            OrderDetailsDialog = __decorate([
+                Serenity.Decorators.registerClass()
+            ], OrderDetailsDialog);
+            return OrderDetailsDialog;
+        }(PGMS.Common.GridEditorDialog));
+        Erp.OrderDetailsDialog = OrderDetailsDialog;
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+/// <reference path="../../Common/Helpers/GridEditorBase.ts" />
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var OrderDetailsEditor = /** @class */ (function (_super) {
+            __extends(OrderDetailsEditor, _super);
+            function OrderDetailsEditor(container) {
+                return _super.call(this, container) || this;
+            }
+            OrderDetailsEditor.prototype.getColumnsKey = function () { return "Erp.OrderDetails"; };
+            OrderDetailsEditor.prototype.getDialogType = function () { return Erp.OrderDetailsDialog; };
+            OrderDetailsEditor.prototype.getLocalTextPrefix = function () { return Erp.OrderDetailsRow.localTextPrefix; };
+            OrderDetailsEditor.prototype.validateEntity = function (row, id) {
+                row.ProductId = Q.toId(row.ProductId);
+                var sameProduct = Q.tryFirst(this.view.getItems(), function (x) { return x.ProductId === row.ProductId; });
+                if (sameProduct && this.id(sameProduct) !== id) {
+                    Q.alert('This product is already in order details!');
+                    return false;
+                }
+                row.ProductName = Erp.ProductsRow.getLookup().itemById[row.ProductId].Name;
+                row.LineTotal = (row.Quantity || 0) * (row.UnitPrice || 0) - (row.Discount || 0);
+                return true;
+            };
+            OrderDetailsEditor = __decorate([
+                Serenity.Decorators.registerClass()
+            ], OrderDetailsEditor);
+            return OrderDetailsEditor;
+        }(PGMS.Common.GridEditorBase));
+        Erp.OrderDetailsEditor = OrderDetailsEditor;
     })(Erp = PGMS.Erp || (PGMS.Erp = {}));
 })(PGMS || (PGMS = {}));
 var PGMS;

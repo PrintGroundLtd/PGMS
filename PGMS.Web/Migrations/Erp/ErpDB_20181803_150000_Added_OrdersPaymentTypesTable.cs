@@ -168,7 +168,7 @@ namespace PGMS.Migrations.DefaultDB
                 .WithColumn("Width").AsInt16().Nullable()
                 .WithColumn("Height").AsInt16().Nullable()
                 .WithColumn("OrderDate").AsDateTime().NotNullable()
-                .WithColumn("ShippedDate").AsDateTime().NotNullable()
+                .WithColumn("ShippedDate").AsDateTime().Nullable()
                 .WithColumn("ShipName").AsString(500).Nullable()
                 .WithColumn("ShipAddress").AsString(500).Nullable()
                 .WithColumn("ShipCity").AsString(500).Nullable()

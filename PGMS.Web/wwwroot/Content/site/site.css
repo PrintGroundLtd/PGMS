@@ -7848,6 +7848,12 @@ section.content > .s-DataGrid {
 .s-Erp-OrdersDialog .caption {
   width: 150px;
 }
+.s-Erp-OrderDetailsDialog > .size {
+  width: 650px;
+}
+.s-Erp-OrderDetailsDialog .caption {
+  width: 150px;
+}
 .s-NotesEditor {
   border: 1px solid #ccc;
   border-radius: 4px;

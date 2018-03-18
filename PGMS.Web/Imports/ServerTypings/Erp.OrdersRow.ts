@@ -23,6 +23,7 @@
         UserUsername?: string;
         UserDisplayName?: string;
         UserUserImage?: string;
+        DetailList?: OrderDetailsRow[];
         OrderStatusName?: string;
         InsertUserId?: number;
         InsertDate?: string;
@@ -63,6 +64,7 @@
             UserUsername = "UserUsername",
             UserDisplayName = "UserDisplayName",
             UserUserImage = "UserUserImage",
+            DetailList = "DetailList",
             OrderStatusName = "OrderStatusName",
             InsertUserId = "InsertUserId",
             InsertDate = "InsertDate",

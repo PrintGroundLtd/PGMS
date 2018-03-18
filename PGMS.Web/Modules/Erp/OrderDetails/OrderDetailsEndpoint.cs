@@ -6,12 +6,12 @@ namespace PGMS.Erp.Endpoints
     using Serenity.Services;
     using System.Data;
     using Microsoft.AspNetCore.Mvc;
-    using MyRepository = Repositories.OrdersRepository;
-    using MyRow = Entities.OrdersRow;
+    using MyRepository = Repositories.OrderDetailsRepository;
+    using MyRow = Entities.OrderDetailsRow;
 
-    [Route("Services/Erp/Orders/[action]")]
+    [Route("Services/Erp/OrderDetails/[action]")]
     [ConnectionKey(typeof(MyRow)), ServiceAuthorize(typeof(MyRow))]
-    public class OrdersController : ServiceEndpoint
+    public class OrderDetailsController : ServiceEndpoint
     {
         [HttpPost, AuthorizeCreate(typeof(MyRow))]
         public SaveResponse Create(IUnitOfWork uow, SaveRequest<MyRow> request)
@@ -38,7 +38,7 @@ namespace PGMS.Erp.Endpoints
         }
 
         [HttpPost]
-        public ListResponse<MyRow> List(IDbConnection connection, OrderListRequest request)
+        public ListResponse<MyRow> List(IDbConnection connection, ListRequest request)
         {
             return new MyRepository().List(connection, request);
         }

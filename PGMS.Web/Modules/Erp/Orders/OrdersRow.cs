@@ -1,4 +1,5 @@
 ﻿
+using System.Collections.Generic;
 using PGMS.Administration.Entities;
 
 namespace PGMS.Erp.Entities
@@ -69,7 +70,7 @@ namespace PGMS.Erp.Entities
             set { Fields.OrderDate[this] = value; }
         }
 
-        [DisplayName("Shipped Date"), NotNull]
+        [DisplayName("Shipped Date")]
         public DateTime? ShippedDate
         {
             get { return Fields.ShippedDate[this]; }
@@ -193,7 +194,12 @@ namespace PGMS.Erp.Entities
             get { return Fields.OrderStatusName[this]; }
             set { Fields.OrderStatusName[this] = value; }
         }
-        
+        [DisplayName("Details"), MasterDetailRelation(foreignKey: "OrderId"), NotMapped]
+        public List<OrderDetailsRow> DetailList
+        {
+            get { return Fields.DetailList[this]; }
+            set { Fields.DetailList[this] = value; }
+        }
         IIdField IIdRow.IdField
         {
             get { return Fields.OrderId; }
@@ -241,7 +247,8 @@ namespace PGMS.Erp.Entities
             public StringField UserDisplayName;
             public StringField UserUserImage;
 
+            public RowListField<OrderDetailsRow> DetailList;
             public StringField OrderStatusName;
-		}
+        }
     }
 }

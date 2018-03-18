@@ -770,12 +770,100 @@ declare namespace PGMS.Erp {
 declare namespace PGMS.Erp {
 }
 declare namespace PGMS.Erp {
+    interface OrderDetailsForm {
+        ProductId: Serenity.LookupEditor;
+        UnitPrice: Serenity.DecimalEditor;
+        Quantity: Serenity.IntegerEditor;
+        Discount: Serenity.DecimalEditor;
+    }
+    class OrderDetailsForm extends Serenity.PrefixedContext {
+        static formKey: string;
+        private static init;
+        constructor(prefix: string);
+    }
+}
+declare namespace PGMS.Erp {
+    interface OrderDetailsRow {
+        OrderDetailId?: number;
+        ProductId?: number;
+        OrderId?: number;
+        UnitPrice?: number;
+        Quantity?: number;
+        Discount?: number;
+        ProductName?: string;
+        ProductProductImage?: string;
+        ProductDiscontinued?: boolean;
+        ProductSupplierId?: number;
+        ProductQuantityPerUnit?: string;
+        ProductUnitPrice?: number;
+        ProductUnitsInStock?: number;
+        ProductUnitsOnOrder?: number;
+        OrderAccountId?: number;
+        OrderCompanyId?: number;
+        OrderPaymentTypeId?: number;
+        OrderUserId?: number;
+        OrderOrderStatusId?: number;
+        LineTotal?: number;
+    }
+    namespace OrderDetailsRow {
+        const idProperty = "OrderDetailId";
+        const localTextPrefix = "Erp.OrderDetails";
+        const enum Fields {
+            OrderDetailId = "OrderDetailId",
+            ProductId = "ProductId",
+            OrderId = "OrderId",
+            UnitPrice = "UnitPrice",
+            Quantity = "Quantity",
+            Discount = "Discount",
+            ProductName = "ProductName",
+            ProductProductImage = "ProductProductImage",
+            ProductDiscontinued = "ProductDiscontinued",
+            ProductSupplierId = "ProductSupplierId",
+            ProductQuantityPerUnit = "ProductQuantityPerUnit",
+            ProductUnitPrice = "ProductUnitPrice",
+            ProductUnitsInStock = "ProductUnitsInStock",
+            ProductUnitsOnOrder = "ProductUnitsOnOrder",
+            OrderAccountId = "OrderAccountId",
+            OrderCompanyId = "OrderCompanyId",
+            OrderPaymentTypeId = "OrderPaymentTypeId",
+            OrderUserId = "OrderUserId",
+            OrderOrderStatusId = "OrderOrderStatusId",
+            LineTotal = "LineTotal",
+        }
+    }
+}
+declare namespace PGMS.Erp {
+    namespace OrderDetailsService {
+        const baseUrl = "Erp/OrderDetails";
+        function Create(request: Serenity.SaveRequest<OrderDetailsRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<OrderDetailsRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<OrderDetailsRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<OrderDetailsRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        const enum Methods {
+            Create = "Erp/OrderDetails/Create",
+            Update = "Erp/OrderDetails/Update",
+            Delete = "Erp/OrderDetails/Delete",
+            Retrieve = "Erp/OrderDetails/Retrieve",
+            List = "Erp/OrderDetails/List",
+        }
+    }
+}
+declare namespace PGMS.Erp {
+    interface OrderListRequest extends Serenity.ListRequest {
+        ProductId?: number;
+    }
+}
+declare namespace PGMS.Erp {
+}
+declare namespace PGMS.Erp {
     interface OrdersForm {
         AccountId: Serenity.LookupEditor;
         CompanyId: Serenity.LookupEditor;
         PaymentTypeId: Serenity.LookupEditor;
         Width: Serenity.IntegerEditor;
         Height: Serenity.IntegerEditor;
+        DetailList: OrderDetailsEditor;
         UserId: Serenity.LookupEditor;
         OrderStatusId: Serenity.LookupEditor;
         OrderDate: Serenity.DateEditor;
@@ -816,6 +904,7 @@ declare namespace PGMS.Erp {
         UserUsername?: string;
         UserDisplayName?: string;
         UserUserImage?: string;
+        DetailList?: OrderDetailsRow[];
         OrderStatusName?: string;
         InsertUserId?: number;
         InsertDate?: string;
@@ -854,6 +943,7 @@ declare namespace PGMS.Erp {
             UserUsername = "UserUsername",
             UserDisplayName = "UserDisplayName",
             UserUserImage = "UserUserImage",
+            DetailList = "DetailList",
             OrderStatusName = "OrderStatusName",
             InsertUserId = "InsertUserId",
             InsertDate = "InsertDate",
@@ -872,7 +962,7 @@ declare namespace PGMS.Erp {
         function Update(request: Serenity.SaveRequest<OrdersRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<OrdersRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<OrdersRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: OrderListRequest, onSuccess?: (response: Serenity.ListResponse<OrdersRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         const enum Methods {
             Create = "Erp/Orders/Create",
             Update = "Erp/Orders/Update",
@@ -1928,6 +2018,23 @@ declare namespace PGMS.Erp {
         get_isDirty(): boolean;
         set_isDirty(value: any): void;
         onChange: () => void;
+    }
+}
+declare namespace PGMS.Erp {
+    class OrderDetailsDialog extends Common.GridEditorDialog<OrderDetailsRow> {
+        protected getFormKey(): string;
+        protected getLocalTextPrefix(): string;
+        protected form: OrderDetailsForm;
+        constructor();
+    }
+}
+declare namespace PGMS.Erp {
+    class OrderDetailsEditor extends Common.GridEditorBase<OrderDetailsRow> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof OrderDetailsDialog;
+        protected getLocalTextPrefix(): string;
+        constructor(container: JQuery);
+        validateEntity(row: any, id: any): boolean;
     }
 }
 declare namespace PGMS.Erp {

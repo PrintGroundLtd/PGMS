@@ -22,6 +22,9 @@ namespace PGMS.Erp.Forms
         public Int16 Width { get; set; }
         [HalfWidth]
         public Int16 Height { get; set; }
+        [Category("Order Details")]
+        [OrderDetailsEditor]
+        public List<Entities.OrderDetailsRow> DetailList { get; set; }
 
         public Int32 UserId { get; set; }
         public Int32 OrderStatusId { get; set; }

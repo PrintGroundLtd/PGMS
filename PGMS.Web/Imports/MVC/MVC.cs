@@ -65,6 +65,11 @@ namespace MVC
                 public const string CompaniesIndex = "~/Modules/Erp/Companies/CompaniesIndex.cshtml";
             }
 
+            public static class OrderDetails
+            {
+                public const string OrderDetailsIndex = "~/Modules/Erp/OrderDetails/OrderDetailsIndex.cshtml";
+            }
+
             public static class Orders
             {
                 public const string OrdersIndex = "~/Modules/Erp/Orders/OrdersIndex.cshtml";

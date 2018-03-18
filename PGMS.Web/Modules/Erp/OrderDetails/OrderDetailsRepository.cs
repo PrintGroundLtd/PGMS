@@ -6,9 +6,9 @@ namespace PGMS.Erp.Repositories
     using Serenity.Services;
     using System;
     using System.Data;
-    using MyRow = Entities.OrdersRow;
+    using MyRow = Entities.OrderDetailsRow;
 
-    public class OrdersRepository
+    public class OrderDetailsRepository
     {
         private static MyRow.RowFields fld { get { return MyRow.Fields; } }
 
@@ -32,7 +32,7 @@ namespace PGMS.Erp.Repositories
             return new MyRetrieveHandler().Process(connection, request);
         }
 
-        public ListResponse<MyRow> List(IDbConnection connection, OrderListRequest request)
+        public ListResponse<MyRow> List(IDbConnection connection, ListRequest request)
         {
             return new MyListHandler().Process(connection, request);
         }
@@ -40,26 +40,6 @@ namespace PGMS.Erp.Repositories
         private class MySaveHandler : SaveRequestHandler<MyRow> { }
         private class MyDeleteHandler : DeleteRequestHandler<MyRow> { }
         private class MyRetrieveHandler : RetrieveRequestHandler<MyRow> { }
-        private class MyListHandler : ListRequestHandler<MyRow, OrderListRequest>
-        {
-            protected override void ApplyFilters(SqlQuery query)
-            {
-                base.ApplyFilters(query);
-
-                if (Request.ProductId != null)
-                {
-                    var od = Entities.OrderDetailsRow.Fields.As("od");
-
-                    query.Where(Criteria.Exists(
-                        query.SubQuery()
-                            .Select("1")
-                            .From(od)
-                            .Where(
-                                od.OrderId == fld.OrderId &
-                                od.ProductId == Request.ProductId.Value)
-                            .ToString()));
-                }
-            }
-        }
+        private class MyListHandler : ListRequestHandler<MyRow> { }
     }
 }
