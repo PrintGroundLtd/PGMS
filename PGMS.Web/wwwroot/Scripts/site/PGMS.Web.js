@@ -3148,6 +3148,7 @@ var PGMS;
                 _this.byId('NoteList').closest('.field').hide().end().appendTo(_this.byId('TabNotes'));
                 _this.attachmentsGrid = new Erp.AccountAttachmentsExtendedGrid(_this.byId("AttachmentsPropertyGrid"));
                 _this.attachmentsGrid.element.flexHeightOnly(1);
+                PGMS.DialogUtils.pendingChangesConfirmation(_this.element, function () { return _this.getSaveState() != _this.loadedState; });
                 return _this;
             }
             AccountsDialog.prototype.getFormKey = function () { return Erp.AccountsForm.formKey; };
@@ -3160,7 +3161,21 @@ var PGMS;
                 Serenity.TabsExtensions.setDisabled(this.tabs, 'Attachments', this.isNewOrDeleted());
                 this.attachmentsGrid.accountId = entity.AccountId;
             };
+            AccountsDialog.prototype.getSaveState = function () {
+                try {
+                    return $.toJSON(this.getSaveEntity());
+                }
+                catch (e) {
+                    return null;
+                }
+            };
+            AccountsDialog.prototype.loadResponse = function (data) {
+                _super.prototype.loadResponse.call(this, data);
+                this.loadedState = this.getSaveState();
+            };
             AccountsDialog = __decorate([
+                Serenity.Decorators.maximizable(),
+                Serenity.Decorators.responsive(),
                 Serenity.Decorators.registerClass()
             ], AccountsDialog);
             return AccountsDialog;

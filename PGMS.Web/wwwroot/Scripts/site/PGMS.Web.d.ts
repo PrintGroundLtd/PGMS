@@ -1311,8 +1311,11 @@ declare namespace PGMS.Erp {
         protected getService(): string;
         protected form: AccountsForm;
         private attachmentsGrid;
+        private loadedState;
         constructor();
         loadEntity(entity: Erp.AccountsRow): void;
+        getSaveState(): string;
+        loadResponse(data: any): void;
     }
 }
 declare namespace PGMS.Erp {
