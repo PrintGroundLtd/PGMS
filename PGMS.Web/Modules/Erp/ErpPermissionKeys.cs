@@ -18,6 +18,16 @@ namespace PGMS.Erp
             [Description("Modify"), ImplicitPermission(NotesReadPermission)]
             public const string NotesModifyPermission = "Erp:Notes:Modify";
         }
+        public class OrderStatuses
+        {
+            [Description("View")]
+            public const string ReadPermission = "Erp:OrderStatuses:Read";
+            [Description("Update"), ImplicitPermission(ReadPermission)]
+            public const string UpdatePermission = "Erp:OrderStatuses:Update";
+            [Description("Delete"), ImplicitPermission(ReadPermission), ImplicitPermission(UpdatePermission)]
+            public const string DeletePermission = "Erp:OrderStatuses:Delete";
+        }
+
         public class PaymentTypes
         {
             [Description("View")]

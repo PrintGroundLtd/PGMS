@@ -9,19 +9,19 @@ namespace PGMS.Erp.Entities
     using System.ComponentModel;
     using System.IO;
 
-    [ConnectionKey("Default"), Module("Erp"), TableName("[dbo].[PaymentTypes]")]
-    [DisplayName("Payment Types"), InstanceName("Payment Type")]
-    [ReadPermission(PermissionKeys.PaymentTypes.ReadPermission)]
-    [UpdatePermission(PermissionKeys.PaymentTypes.UpdatePermission)]
-    [DeletePermission(PermissionKeys.PaymentTypes.DeletePermission)]
+    [ConnectionKey("Default"), Module("Erp"), TableName("[dbo].[OrderStatuses]")]
+    [DisplayName("Order Statuses"), InstanceName("Order Status")]
+    [ReadPermission(PermissionKeys.OrderStatuses.ReadPermission)]
+    [UpdatePermission(PermissionKeys.OrderStatuses.UpdatePermission)]
+    [DeletePermission(PermissionKeys.OrderStatuses.DeletePermission)]
     [LookupScript]
-    public sealed class PaymentTypesRow : ErpLoggingRow, IIdRow, INameRow
+    public sealed class OrderStatusesRow : ErpLoggingRow, IIdRow, INameRow
     {
-        [DisplayName("Payment Type Id"), Identity]
-        public Int32? PaymentTypeId
+        [DisplayName("Order Status Id"), Identity]
+        public Int32? OrderStatusId
         {
-            get { return Fields.PaymentTypeId[this]; }
-            set { Fields.PaymentTypeId[this] = value; }
+            get { return Fields.OrderStatusId[this]; }
+            set { Fields.OrderStatusId[this] = value; }
         }
 
         [DisplayName("Name"), Size(500), QuickSearch]
@@ -31,9 +31,10 @@ namespace PGMS.Erp.Entities
             set { Fields.Name[this] = value; }
         }
         
+
         IIdField IIdRow.IdField
         {
-            get { return Fields.PaymentTypeId; }
+            get { return Fields.OrderStatusId; }
         }
 
         StringField INameRow.NameField
@@ -43,14 +44,14 @@ namespace PGMS.Erp.Entities
 
         public static readonly RowFields Fields = new RowFields().Init();
 
-        public PaymentTypesRow()
+        public OrderStatusesRow()
             : base(Fields)
         {
         }
 
         public class RowFields : ErpLoggingRowFields
         {
-            public Int32Field PaymentTypeId;
+            public Int32Field OrderStatusId;
             public StringField Name;
 		}
     }

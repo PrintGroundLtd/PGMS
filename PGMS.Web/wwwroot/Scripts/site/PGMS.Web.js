@@ -599,6 +599,69 @@ var PGMS;
 (function (PGMS) {
     var Erp;
     (function (Erp) {
+        var OrderStatusesForm = /** @class */ (function (_super) {
+            __extends(OrderStatusesForm, _super);
+            function OrderStatusesForm(prefix) {
+                var _this = _super.call(this, prefix) || this;
+                if (!OrderStatusesForm.init) {
+                    OrderStatusesForm.init = true;
+                    var s = Serenity;
+                    var w0 = s.StringEditor;
+                    Q.initFormType(OrderStatusesForm, [
+                        'Name', w0
+                    ]);
+                }
+                return _this;
+            }
+            OrderStatusesForm.formKey = 'Erp.OrderStatuses';
+            return OrderStatusesForm;
+        }(Serenity.PrefixedContext));
+        Erp.OrderStatusesForm = OrderStatusesForm;
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var OrderStatusesRow;
+        (function (OrderStatusesRow) {
+            OrderStatusesRow.idProperty = 'OrderStatusId';
+            OrderStatusesRow.isActiveProperty = 'IsActive';
+            OrderStatusesRow.nameProperty = 'Name';
+            OrderStatusesRow.localTextPrefix = 'Erp.OrderStatuses';
+            OrderStatusesRow.lookupKey = 'Erp.OrderStatuses';
+            function getLookup() {
+                return Q.getLookup('Erp.OrderStatuses');
+            }
+            OrderStatusesRow.getLookup = getLookup;
+        })(OrderStatusesRow = Erp.OrderStatusesRow || (Erp.OrderStatusesRow = {}));
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var OrderStatusesService;
+        (function (OrderStatusesService) {
+            OrderStatusesService.baseUrl = 'Erp/OrderStatuses';
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                OrderStatusesService[x] = function (r, s, o) {
+                    return Q.serviceRequest(OrderStatusesService.baseUrl + '/' + x, r, s, o);
+                };
+            });
+        })(OrderStatusesService = Erp.OrderStatusesService || (Erp.OrderStatusesService = {}));
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
         var PartnerTypesForm = /** @class */ (function (_super) {
             __extends(PartnerTypesForm, _super);
             function PartnerTypesForm(prefix) {
@@ -3641,6 +3704,52 @@ var PGMS;
             return NotesEditor;
         }(Serenity.TemplatedWidget));
         Erp.NotesEditor = NotesEditor;
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var OrderStatusesDialog = /** @class */ (function (_super) {
+            __extends(OrderStatusesDialog, _super);
+            function OrderStatusesDialog() {
+                var _this = _super !== null && _super.apply(this, arguments) || this;
+                _this.form = new Erp.OrderStatusesForm(_this.idPrefix);
+                return _this;
+            }
+            OrderStatusesDialog.prototype.getFormKey = function () { return Erp.OrderStatusesForm.formKey; };
+            OrderStatusesDialog.prototype.getIdProperty = function () { return Erp.OrderStatusesRow.idProperty; };
+            OrderStatusesDialog.prototype.getLocalTextPrefix = function () { return Erp.OrderStatusesRow.localTextPrefix; };
+            OrderStatusesDialog.prototype.getNameProperty = function () { return Erp.OrderStatusesRow.nameProperty; };
+            OrderStatusesDialog.prototype.getService = function () { return Erp.OrderStatusesService.baseUrl; };
+            OrderStatusesDialog = __decorate([
+                Serenity.Decorators.registerClass()
+            ], OrderStatusesDialog);
+            return OrderStatusesDialog;
+        }(Serenity.EntityDialog));
+        Erp.OrderStatusesDialog = OrderStatusesDialog;
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var OrderStatusesGrid = /** @class */ (function (_super) {
+            __extends(OrderStatusesGrid, _super);
+            function OrderStatusesGrid(container) {
+                return _super.call(this, container) || this;
+            }
+            OrderStatusesGrid.prototype.getColumnsKey = function () { return 'Erp.OrderStatuses'; };
+            OrderStatusesGrid.prototype.getDialogType = function () { return Erp.OrderStatusesDialog; };
+            OrderStatusesGrid.prototype.getIdProperty = function () { return Erp.OrderStatusesRow.idProperty; };
+            OrderStatusesGrid.prototype.getLocalTextPrefix = function () { return Erp.OrderStatusesRow.localTextPrefix; };
+            OrderStatusesGrid.prototype.getService = function () { return Erp.OrderStatusesService.baseUrl; };
+            OrderStatusesGrid = __decorate([
+                Serenity.Decorators.registerClass()
+            ], OrderStatusesGrid);
+            return OrderStatusesGrid;
+        }(Serenity.EntityGrid));
+        Erp.OrderStatusesGrid = OrderStatusesGrid;
     })(Erp = PGMS.Erp || (PGMS.Erp = {}));
 })(PGMS || (PGMS = {}));
 var PGMS;
