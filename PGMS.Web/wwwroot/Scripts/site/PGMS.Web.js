@@ -662,6 +662,17 @@ var PGMS;
 (function (PGMS) {
     var Erp;
     (function (Erp) {
+        var SupplierRepresentativesRow;
+        (function (SupplierRepresentativesRow) {
+            SupplierRepresentativesRow.idProperty = 'RepresentativeId';
+            SupplierRepresentativesRow.localTextPrefix = 'Erp.SupplierRepresentatives';
+        })(SupplierRepresentativesRow = Erp.SupplierRepresentativesRow || (Erp.SupplierRepresentativesRow = {}));
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
         var SuppliersForm = /** @class */ (function (_super) {
             __extends(SuppliersForm, _super);
             function SuppliersForm(prefix) {
@@ -670,9 +681,11 @@ var PGMS;
                     SuppliersForm.init = true;
                     var s = Serenity;
                     var w0 = s.StringEditor;
+                    var w1 = s.LookupEditor;
                     Q.initFormType(SuppliersForm, [
                         'Name', w0,
                         'PhoneNumber', w0,
+                        'SupplierRepresentatives', w1,
                         'Address', w0,
                         'City', w0,
                         'Country', w0

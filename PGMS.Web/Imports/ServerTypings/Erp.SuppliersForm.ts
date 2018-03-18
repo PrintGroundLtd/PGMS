@@ -2,6 +2,7 @@
     export interface SuppliersForm {
         Name: Serenity.StringEditor;
         PhoneNumber: Serenity.StringEditor;
+        SupplierRepresentatives: Serenity.LookupEditor;
         Address: Serenity.StringEditor;
         City: Serenity.StringEditor;
         Country: Serenity.StringEditor;
@@ -19,10 +20,12 @@
 
                 var s = Serenity;
                 var w0 = s.StringEditor;
+                var w1 = s.LookupEditor;
 
                 Q.initFormType(SuppliersForm, [
                     'Name', w0,
                     'PhoneNumber', w0,
+                    'SupplierRepresentatives', w1,
                     'Address', w0,
                     'City', w0,
                     'Country', w0

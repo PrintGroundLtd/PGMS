@@ -33,7 +33,7 @@ namespace PGMS.Erp.Entities
             set { Fields.Name[this] = value; }
         }
 
-        [DisplayName("Phone Number"), Size(500)]
+        [DisplayName("Phone Number"), Size(500), QuickSearch]
         public String PhoneNumber
         {
             get { return Fields.PhoneNumber[this]; }
@@ -51,56 +51,56 @@ namespace PGMS.Erp.Entities
             set { Fields.CompanyAccounts[this] = value; }
         }
 
-        [DisplayName("Address"), Size(500)]
+        [DisplayName("Address"), Size(500), QuickSearch]
         public String Address
         {
             get { return Fields.Address[this]; }
             set { Fields.Address[this] = value; }
         }
 
-        [DisplayName("City"), Size(500)]
+        [DisplayName("City"), Size(500), QuickSearch]
         public String City
         {
             get { return Fields.City[this]; }
             set { Fields.City[this] = value; }
         }
 
-        [DisplayName("Country"), Size(500)]
+        [DisplayName("Country"), Size(500), QuickSearch]
         public String Country
         {
             get { return Fields.Country[this]; }
             set { Fields.Country[this] = value; }
         }
 
-        [DisplayName("Eik"), Size(500)]
+        [DisplayName("Eik"), Size(500), QuickSearch]
         public String Eik
         {
             get { return Fields.Eik[this]; }
             set { Fields.Eik[this] = value; }
         }
 
-        [DisplayName("Mol"), Size(500)]
+        [DisplayName("Mol"), Size(500), QuickSearch]
         public String Mol
         {
             get { return Fields.Mol[this]; }
             set { Fields.Mol[this] = value; }
         }
 
-        [DisplayName("Iban"), Size(500)]
+        [DisplayName("Iban"), Size(500), QuickSearch]
         public String Iban
         {
             get { return Fields.Iban[this]; }
             set { Fields.Iban[this] = value; }
         }
 
-        [DisplayName("Bank Name"), Size(500)]
+        [DisplayName("Bank Name"), Size(500), QuickSearch]
         public String BankName
         {
             get { return Fields.BankName[this]; }
             set { Fields.BankName[this] = value; }
         }
 
-        [DisplayName("Bank Swift"), Size(200)]
+        [DisplayName("Bank Swift"), Size(200), QuickSearch]
         public String BankSwift
         {
             get { return Fields.BankSwift[this]; }

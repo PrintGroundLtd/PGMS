@@ -1,4 +1,6 @@
 ﻿
+using System.Collections.Generic;
+
 namespace PGMS.Erp.Entities
 {
     using Serenity;
@@ -17,7 +19,7 @@ namespace PGMS.Erp.Entities
     [DeletePermission(PermissionKeys.Suppliers.DeletePermission)]
     public sealed class SuppliersRow : ErpLoggingRow, IIdRow, INameRow
     {
-        [DisplayName("Supplier Id"), Identity]
+        [DisplayName("Supplier Id"), Identity, QuickSearch]
         public Int32? SupplierId
         {
             get { return Fields.SupplierId[this]; }
@@ -31,34 +33,46 @@ namespace PGMS.Erp.Entities
             set { Fields.Name[this] = value; }
         }
 
-        [DisplayName("Phone Number"), Size(500)]
+        [DisplayName("Phone Number"), Size(500), QuickSearch]
         public String PhoneNumber
         {
             get { return Fields.PhoneNumber[this]; }
             set { Fields.PhoneNumber[this] = value; }
         }
 
-        [DisplayName("Address"), Size(500)]
+        [DisplayName("Address"), Size(500), QuickSearch]
         public String Address
         {
             get { return Fields.Address[this]; }
             set { Fields.Address[this] = value; }
         }
 
-        [DisplayName("City"), Size(500)]
+        [DisplayName("City"), Size(500), QuickSearch]
         public String City
         {
             get { return Fields.City[this]; }
             set { Fields.City[this] = value; }
         }
 
-        [DisplayName("Country"), Size(500)]
+        [DisplayName("Country"), Size(500), QuickSearch]
         public String Country
         {
             get { return Fields.Country[this]; }
             set { Fields.Country[this] = value; }
         }
-        
+
+
+        [LookupEditor(typeof(AccountsRow), Multiple = true, InplaceAdd = true, FilterField = "IsActive", FilterValue = 1), NotMapped]
+        [LinkingSetRelation(typeof(SupplierRepresentativesRow), "SupplierId", "AccountId")]
+        [MinSelectLevel(SelectLevel.Details), QuickFilter()]
+        // [QuickFilter(CssClass = "hidden-xs")]
+        [DisplayName("Supplier Representatives")]
+        public List<Int32> SupplierRepresentatives
+        {
+            get { return Fields.SupplierRepresentatives[this]; }
+            set { Fields.SupplierRepresentatives[this] = value; }
+        }
+
         IIdField IIdRow.IdField
         {
             get { return Fields.SupplierId; }
@@ -84,6 +98,8 @@ namespace PGMS.Erp.Entities
             public StringField Address;
             public StringField City;
             public StringField Country;
-		}
+            public ListField<Int32> SupplierRepresentatives;
+
+        }
     }
 }

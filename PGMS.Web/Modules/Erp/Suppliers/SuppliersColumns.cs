@@ -17,6 +17,11 @@ namespace PGMS.Erp.Columns
         public Int32 SupplierId { get; set; }
         [EditLink]
         public String Name { get; set; }
+        [AccountsListFormatter]
+        [Width(300)]
+        public List<Int32> SupplierRepresentatives { get; set; }
+
+
         public String PhoneNumber { get; set; }
         public String Address { get; set; }
         public String City { get; set; }

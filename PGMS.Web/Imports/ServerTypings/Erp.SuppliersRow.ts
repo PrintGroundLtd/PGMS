@@ -6,6 +6,7 @@
         Address?: string;
         City?: string;
         Country?: string;
+        SupplierRepresentatives?: number[];
         InsertUserId?: number;
         InsertDate?: string;
         UpdateUserId?: number;
@@ -33,6 +34,7 @@
             Address = "Address",
             City = "City",
             Country = "Country",
+            SupplierRepresentatives = "SupplierRepresentatives",
             InsertUserId = "InsertUserId",
             InsertDate = "InsertDate",
             UpdateUserId = "UpdateUserId",

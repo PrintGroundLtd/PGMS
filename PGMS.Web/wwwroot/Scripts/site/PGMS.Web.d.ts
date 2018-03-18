@@ -829,11 +829,28 @@ declare namespace PGMS.Erp {
     }
 }
 declare namespace PGMS.Erp {
+    interface SupplierRepresentativesRow {
+        RepresentativeId?: number;
+        AccountId?: number;
+        SupplierId?: number;
+    }
+    namespace SupplierRepresentativesRow {
+        const idProperty = "RepresentativeId";
+        const localTextPrefix = "Erp.SupplierRepresentatives";
+        const enum Fields {
+            RepresentativeId = "RepresentativeId",
+            AccountId = "AccountId",
+            SupplierId = "SupplierId",
+        }
+    }
+}
+declare namespace PGMS.Erp {
 }
 declare namespace PGMS.Erp {
     interface SuppliersForm {
         Name: Serenity.StringEditor;
         PhoneNumber: Serenity.StringEditor;
+        SupplierRepresentatives: Serenity.LookupEditor;
         Address: Serenity.StringEditor;
         City: Serenity.StringEditor;
         Country: Serenity.StringEditor;
@@ -852,6 +869,7 @@ declare namespace PGMS.Erp {
         Address?: string;
         City?: string;
         Country?: string;
+        SupplierRepresentatives?: number[];
         InsertUserId?: number;
         InsertDate?: string;
         UpdateUserId?: number;
@@ -874,6 +892,7 @@ declare namespace PGMS.Erp {
             Address = "Address",
             City = "City",
             Country = "Country",
+            SupplierRepresentatives = "SupplierRepresentatives",
             InsertUserId = "InsertUserId",
             InsertDate = "InsertDate",
             UpdateUserId = "UpdateUserId",
