@@ -16,6 +16,9 @@ namespace PGMS.Erp.Forms
         [Category("General")]
         public String Name { get; set; }
         public String PhoneNumber { get; set; }
+        [Category("Accounts related")]
+        public List<Int32> CompanyAccounts { get; set; }
+        [Category("Info")]
         public String Eik { get; set; }
         public String Mol { get; set; }
         public String Iban { get; set; }

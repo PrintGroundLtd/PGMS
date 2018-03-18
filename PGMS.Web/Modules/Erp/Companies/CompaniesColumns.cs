@@ -18,6 +18,10 @@ namespace PGMS.Erp.Columns
         [EditLink]
         public String Name { get; set; }
         public String PhoneNumber { get; set; }
+
+        [AccountsListFormatter, Width(300)]
+        public List<Int32> CompanyAccounts { get; set; }
+
         public String Address { get; set; }
         public String City { get; set; }
         public String Country { get; set; }

@@ -657,6 +657,7 @@ declare namespace PGMS.Erp {
     interface CompaniesForm {
         Name: Serenity.StringEditor;
         PhoneNumber: Serenity.StringEditor;
+        CompanyAccounts: Serenity.LookupEditor;
         Eik: Serenity.StringEditor;
         Mol: Serenity.StringEditor;
         Iban: Serenity.StringEditor;
@@ -685,6 +686,7 @@ declare namespace PGMS.Erp {
         Iban?: string;
         BankName?: string;
         BankSwift?: string;
+        CompanyAccounts?: number[];
         InsertUserId?: number;
         InsertDate?: string;
         UpdateUserId?: number;
@@ -712,6 +714,7 @@ declare namespace PGMS.Erp {
             Iban = "Iban",
             BankName = "BankName",
             BankSwift = "BankSwift",
+            CompanyAccounts = "CompanyAccounts",
             InsertUserId = "InsertUserId",
             InsertDate = "InsertDate",
             UpdateUserId = "UpdateUserId",
@@ -1510,6 +1513,11 @@ declare namespace PGMS.Erp {
         protected getService(): string;
         constructor(container: JQuery);
         protected getItemCssClass(item: AccountsRow, index: number): string;
+    }
+}
+declare namespace PGMS.Erp {
+    class AccountsListFormatter implements Slick.Formatter {
+        format(ctx: Slick.FormatterContext): string;
     }
 }
 declare namespace PGMS.Erp {

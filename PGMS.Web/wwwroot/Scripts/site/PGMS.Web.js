@@ -521,9 +521,11 @@ var PGMS;
                     CompaniesForm.init = true;
                     var s = Serenity;
                     var w0 = s.StringEditor;
+                    var w1 = s.LookupEditor;
                     Q.initFormType(CompaniesForm, [
                         'Name', w0,
                         'PhoneNumber', w0,
+                        'CompanyAccounts', w1,
                         'Eik', w0,
                         'Mol', w0,
                         'Iban', w0,
@@ -3207,6 +3209,29 @@ var PGMS;
             return AccountsGrid;
         }(Serenity.EntityGrid));
         Erp.AccountsGrid = AccountsGrid;
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var AccountsListFormatter = /** @class */ (function () {
+            function AccountsListFormatter() {
+            }
+            AccountsListFormatter.prototype.format = function (ctx) {
+                var idList = ctx.value;
+                if (!idList || !idList.length)
+                    return "";
+                var byId = Erp.AccountsRow.getLookup().itemById;
+                var z;
+                return idList.map(function (x) { return ((z = byId[x]) ? z.Name : x); }).join(", ");
+            };
+            AccountsListFormatter = __decorate([
+                Serenity.Decorators.registerFormatter()
+            ], AccountsListFormatter);
+            return AccountsListFormatter;
+        }());
+        Erp.AccountsListFormatter = AccountsListFormatter;
     })(Erp = PGMS.Erp || (PGMS.Erp = {}));
 })(PGMS || (PGMS = {}));
 var PGMS;

@@ -2,6 +2,7 @@
     export interface CompaniesForm {
         Name: Serenity.StringEditor;
         PhoneNumber: Serenity.StringEditor;
+        CompanyAccounts: Serenity.LookupEditor;
         Eik: Serenity.StringEditor;
         Mol: Serenity.StringEditor;
         Iban: Serenity.StringEditor;
@@ -24,10 +25,12 @@
 
                 var s = Serenity;
                 var w0 = s.StringEditor;
+                var w1 = s.LookupEditor;
 
                 Q.initFormType(CompaniesForm, [
                     'Name', w0,
                     'PhoneNumber', w0,
+                    'CompanyAccounts', w1,
                     'Eik', w0,
                     'Mol', w0,
                     'Iban', w0,

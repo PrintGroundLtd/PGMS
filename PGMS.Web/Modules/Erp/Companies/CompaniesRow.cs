@@ -1,4 +1,6 @@
 ﻿
+using System.Collections.Generic;
+
 namespace PGMS.Erp.Entities
 {
     using Serenity;
@@ -36,6 +38,17 @@ namespace PGMS.Erp.Entities
         {
             get { return Fields.PhoneNumber[this]; }
             set { Fields.PhoneNumber[this] = value; }
+        }
+
+        [LookupEditor(typeof(AccountsRow), Multiple = true, InplaceAdd = true, FilterField = "IsActive", FilterValue = 1), NotMapped]
+        [LinkingSetRelation(typeof(AccountCompaniesRow), "CompanyId", "AccountId")]
+        [MinSelectLevel(SelectLevel.Details), QuickFilter()]
+        // [QuickFilter(CssClass = "hidden-xs")]
+        [DisplayName("Company Accounts")]
+        public List<Int32> CompanyAccounts
+        {
+            get { return Fields.CompanyAccounts[this]; }
+            set { Fields.CompanyAccounts[this] = value; }
         }
 
         [DisplayName("Address"), Size(500)]
@@ -125,6 +138,8 @@ namespace PGMS.Erp.Entities
             public StringField Iban;
             public StringField BankName;
             public StringField BankSwift;
-		}
+            public ListField<Int32> CompanyAccounts;
+
+        }
     }
 }

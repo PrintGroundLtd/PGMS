@@ -11,6 +11,7 @@
         Iban?: string;
         BankName?: string;
         BankSwift?: string;
+        CompanyAccounts?: number[];
         InsertUserId?: number;
         InsertDate?: string;
         UpdateUserId?: number;
@@ -43,6 +44,7 @@
             Iban = "Iban",
             BankName = "BankName",
             BankSwift = "BankSwift",
+            CompanyAccounts = "CompanyAccounts",
             InsertUserId = "InsertUserId",
             InsertDate = "InsertDate",
             UpdateUserId = "UpdateUserId",
