@@ -599,6 +599,79 @@ var PGMS;
 (function (PGMS) {
     var Erp;
     (function (Erp) {
+        var OrdersForm = /** @class */ (function (_super) {
+            __extends(OrdersForm, _super);
+            function OrdersForm(prefix) {
+                var _this = _super.call(this, prefix) || this;
+                if (!OrdersForm.init) {
+                    OrdersForm.init = true;
+                    var s = Serenity;
+                    var w0 = s.LookupEditor;
+                    var w1 = s.IntegerEditor;
+                    var w2 = s.DateEditor;
+                    var w3 = s.StringEditor;
+                    Q.initFormType(OrdersForm, [
+                        'AccountId', w0,
+                        'CompanyId', w0,
+                        'PaymentTypeId', w0,
+                        'Width', w1,
+                        'Height', w1,
+                        'UserId', w0,
+                        'OrderStatusId', w0,
+                        'OrderDate', w2,
+                        'ShippedDate', w2,
+                        'ShipName', w3,
+                        'ShipAddress', w3,
+                        'ShipCity', w3,
+                        'ShipCountry', w3
+                    ]);
+                }
+                return _this;
+            }
+            OrdersForm.formKey = 'Erp.Orders';
+            return OrdersForm;
+        }(Serenity.PrefixedContext));
+        Erp.OrdersForm = OrdersForm;
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var OrdersRow;
+        (function (OrdersRow) {
+            OrdersRow.idProperty = 'OrderId';
+            OrdersRow.isActiveProperty = 'IsActive';
+            OrdersRow.nameProperty = 'ShipName';
+            OrdersRow.localTextPrefix = 'Erp.Orders';
+        })(OrdersRow = Erp.OrdersRow || (Erp.OrdersRow = {}));
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var OrdersService;
+        (function (OrdersService) {
+            OrdersService.baseUrl = 'Erp/Orders';
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                OrdersService[x] = function (r, s, o) {
+                    return Q.serviceRequest(OrdersService.baseUrl + '/' + x, r, s, o);
+                };
+            });
+        })(OrdersService = Erp.OrdersService || (Erp.OrdersService = {}));
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
         var OrderStatusesForm = /** @class */ (function (_super) {
             __extends(OrderStatusesForm, _super);
             function OrderStatusesForm(prefix) {
@@ -3704,6 +3777,52 @@ var PGMS;
             return NotesEditor;
         }(Serenity.TemplatedWidget));
         Erp.NotesEditor = NotesEditor;
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var OrdersDialog = /** @class */ (function (_super) {
+            __extends(OrdersDialog, _super);
+            function OrdersDialog() {
+                var _this = _super !== null && _super.apply(this, arguments) || this;
+                _this.form = new Erp.OrdersForm(_this.idPrefix);
+                return _this;
+            }
+            OrdersDialog.prototype.getFormKey = function () { return Erp.OrdersForm.formKey; };
+            OrdersDialog.prototype.getIdProperty = function () { return Erp.OrdersRow.idProperty; };
+            OrdersDialog.prototype.getLocalTextPrefix = function () { return Erp.OrdersRow.localTextPrefix; };
+            OrdersDialog.prototype.getNameProperty = function () { return Erp.OrdersRow.nameProperty; };
+            OrdersDialog.prototype.getService = function () { return Erp.OrdersService.baseUrl; };
+            OrdersDialog = __decorate([
+                Serenity.Decorators.registerClass()
+            ], OrdersDialog);
+            return OrdersDialog;
+        }(Serenity.EntityDialog));
+        Erp.OrdersDialog = OrdersDialog;
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var OrdersGrid = /** @class */ (function (_super) {
+            __extends(OrdersGrid, _super);
+            function OrdersGrid(container) {
+                return _super.call(this, container) || this;
+            }
+            OrdersGrid.prototype.getColumnsKey = function () { return 'Erp.Orders'; };
+            OrdersGrid.prototype.getDialogType = function () { return Erp.OrdersDialog; };
+            OrdersGrid.prototype.getIdProperty = function () { return Erp.OrdersRow.idProperty; };
+            OrdersGrid.prototype.getLocalTextPrefix = function () { return Erp.OrdersRow.localTextPrefix; };
+            OrdersGrid.prototype.getService = function () { return Erp.OrdersService.baseUrl; };
+            OrdersGrid = __decorate([
+                Serenity.Decorators.registerClass()
+            ], OrdersGrid);
+            return OrdersGrid;
+        }(Serenity.EntityGrid));
+        Erp.OrdersGrid = OrdersGrid;
     })(Erp = PGMS.Erp || (PGMS.Erp = {}));
 })(PGMS || (PGMS = {}));
 var PGMS;

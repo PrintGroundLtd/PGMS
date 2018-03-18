@@ -32,6 +32,12 @@
           "PermissionKey": "Erp:Companies:General"
         },
         {
+          "Tablename": "dbo.Orders",
+          "Identifier": "Orders",
+          "Module": "Erp",
+          "PermissionKey": "Administration:General"
+        },
+        {
           "Tablename": "dbo.OrderStatuses",
           "Identifier": "OrderStatuses",
           "Module": "Erp",

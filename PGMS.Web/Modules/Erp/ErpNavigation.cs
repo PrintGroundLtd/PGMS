@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 [assembly: NavigationLink(1100, "Accounts", typeof(MyPages.AccountsController), icon: null)]
 [assembly: NavigationLink(1150, "Companies", typeof(MyPages.CompaniesController), icon: null)]
 [assembly: NavigationLink(1200, "Products", typeof(MyPages.ProductsController), icon: null)]
+[assembly: NavigationLink(1200, "Orders", typeof(MyPages.OrdersController), icon: null)]
 
 [assembly: NavigationMenu(1250, "Attachments",  icon: null)]
 [assembly: NavigationLink(1260, "Attachments/For Accounts", typeof(MyPages.AccountAttachmentsController), icon: null)]
