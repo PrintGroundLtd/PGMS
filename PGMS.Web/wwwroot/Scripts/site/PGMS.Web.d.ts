@@ -1204,7 +1204,9 @@ declare namespace PGMS.Erp {
         protected getService(): string;
         protected form: SuppliersForm;
         private loadedState;
+        private productsGrid;
         constructor();
+        loadEntity(entity: Erp.SuppliersRow): void;
         getSaveState(): string;
         loadResponse(data: any): void;
     }
@@ -1665,5 +1667,150 @@ declare namespace PGMS.Erp {
             const AccountId: any;
             const SupplierId: any;
         }
+    }
+}
+declare namespace PGMS.Erp {
+    class ProductsForm extends Serenity.PrefixedContext {
+        static formKey: string;
+    }
+    interface ProductsForm {
+        Name: Serenity.StringEditor;
+        ProductImage: Serenity.StringEditor;
+        Discontinued: Serenity.BooleanEditor;
+        SupplierId: Serenity.IntegerEditor;
+        QuantityPerUnit: Serenity.StringEditor;
+        UnitPrice: Serenity.DecimalEditor;
+        UnitsInStock: Serenity.IntegerEditor;
+        UnitsOnOrder: Serenity.IntegerEditor;
+        ReorderLevel: Serenity.IntegerEditor;
+        InsertDate: Serenity.DateEditor;
+        InsertUserId: Serenity.IntegerEditor;
+        UpdateDate: Serenity.DateEditor;
+        UpdateUserId: Serenity.IntegerEditor;
+        IsActive: Serenity.IntegerEditor;
+    }
+}
+declare namespace PGMS.Erp {
+    interface ProductsRow {
+        ProductId?: number;
+        Name?: string;
+        ProductImage?: string;
+        Discontinued?: boolean;
+        SupplierId?: number;
+        QuantityPerUnit?: string;
+        UnitPrice?: number;
+        UnitsInStock?: number;
+        UnitsOnOrder?: number;
+        ReorderLevel?: number;
+        InsertDate?: string;
+        InsertUserId?: number;
+        UpdateDate?: string;
+        UpdateUserId?: number;
+        IsActive?: number;
+        SupplierName?: string;
+        SupplierPhoneNumber?: string;
+        SupplierAddress?: string;
+        SupplierCity?: string;
+        SupplierCountry?: string;
+        SupplierInsertDate?: string;
+        SupplierInsertUserId?: number;
+        SupplierUpdateDate?: string;
+        SupplierUpdateUserId?: number;
+        SupplierIsActive?: number;
+    }
+    namespace ProductsRow {
+        const idProperty = "ProductId";
+        const nameProperty = "Name";
+        const localTextPrefix = "Erp.Products";
+        namespace Fields {
+            const ProductId: any;
+            const Name: any;
+            const ProductImage: any;
+            const Discontinued: any;
+            const SupplierId: any;
+            const QuantityPerUnit: any;
+            const UnitPrice: any;
+            const UnitsInStock: any;
+            const UnitsOnOrder: any;
+            const ReorderLevel: any;
+            const InsertDate: any;
+            const InsertUserId: any;
+            const UpdateDate: any;
+            const UpdateUserId: any;
+            const IsActive: any;
+            const SupplierName: any;
+            const SupplierPhoneNumber: any;
+            const SupplierAddress: any;
+            const SupplierCity: any;
+            const SupplierCountry: any;
+            const SupplierInsertDate: any;
+            const SupplierInsertUserId: any;
+            const SupplierUpdateDate: any;
+            const SupplierUpdateUserId: any;
+            const SupplierIsActive: any;
+        }
+    }
+}
+declare namespace PGMS.Erp {
+    namespace ProductsService {
+        const baseUrl = "Erp/Products";
+        function Create(request: Serenity.SaveRequest<ProductsRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<ProductsRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<ProductsRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<ProductsRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        namespace Methods {
+            const Create: string;
+            const Update: string;
+            const Delete: string;
+            const Retrieve: string;
+            const List: string;
+        }
+    }
+}
+declare namespace PGMS.Erp {
+    class ProductsDialog extends Serenity.EntityDialog<ProductsRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected form: ProductsForm;
+        private loadedState;
+        constructor();
+        loadEntity(entity: Erp.AccountsRow): void;
+        getSaveState(): string;
+        loadResponse(data: any): void;
+    }
+}
+declare namespace PGMS.Erp {
+    class ProductsGrid extends Serenity.EntityGrid<ProductsRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof ProductsDialog;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace PGMS.Erp {
+}
+declare namespace PGMS.Erp {
+    class ProductSuppliersdDialog extends ProductsDialog {
+        constructor();
+        updateInterface(): void;
+    }
+}
+declare namespace PGMS.Erp {
+    class ProductSuppliersdGrid extends ProductsGrid {
+        protected getDialogType(): typeof ProductSuppliersdDialog;
+        constructor(container: JQuery);
+        protected getColumns(): Slick.Column[];
+        protected initEntityDialog(itemType: any, dialog: any): void;
+        protected addButtonClick(): void;
+        protected getInitialTitle(): any;
+        protected getGridCanLoad(): boolean;
+        private _supplierId;
+        supplierId: number;
     }
 }

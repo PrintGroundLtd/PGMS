@@ -11,15 +11,24 @@ namespace PGMS.Erp {
 
         protected form = new SuppliersForm(this.idPrefix);
         private loadedState: string;
+        private productsGrid: ProductSuppliersdGrid;
 
         constructor() {
             super();
             this.byId('NoteList').closest('.field').hide().end().appendTo(this.byId('TabNotes'));
             DialogUtils.pendingChangesConfirmation(this.element, () => this.getSaveState() != this.loadedState);
 
+            this.productsGrid = new ProductSuppliersdGrid(this.byId("ProductsPropertyGrid"));
+            this.productsGrid.element.flexHeightOnly(1);
         }
 
+        loadEntity(entity: Erp.SuppliersRow): void {
+            super.loadEntity(entity);
 
+            Serenity.TabsExtensions.setDisabled(this.tabs, 'Suppliers', this.isNewOrDeleted());
+            Serenity.TabsExtensions.setDisabled(this.tabs, 'Notes', this.isNewOrDeleted());
+            this.productsGrid.supplierId = entity.SupplierId;
+        }
 
         getSaveState() {
             try {

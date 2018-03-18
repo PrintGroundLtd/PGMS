@@ -3027,6 +3027,8 @@ var PGMS;
                 _this.form = new Erp.SuppliersForm(_this.idPrefix);
                 _this.byId('NoteList').closest('.field').hide().end().appendTo(_this.byId('TabNotes'));
                 PGMS.DialogUtils.pendingChangesConfirmation(_this.element, function () { return _this.getSaveState() != _this.loadedState; });
+                _this.productsGrid = new Erp.ProductSuppliersdGrid(_this.byId("ProductsPropertyGrid"));
+                _this.productsGrid.element.flexHeightOnly(1);
                 return _this;
             }
             SuppliersDialog.prototype.getFormKey = function () { return Erp.SuppliersForm.formKey; };
@@ -3034,6 +3036,12 @@ var PGMS;
             SuppliersDialog.prototype.getLocalTextPrefix = function () { return Erp.SuppliersRow.localTextPrefix; };
             SuppliersDialog.prototype.getNameProperty = function () { return Erp.SuppliersRow.nameProperty; };
             SuppliersDialog.prototype.getService = function () { return Erp.SuppliersService.baseUrl; };
+            SuppliersDialog.prototype.loadEntity = function (entity) {
+                _super.prototype.loadEntity.call(this, entity);
+                Serenity.TabsExtensions.setDisabled(this.tabs, 'Suppliers', this.isNewOrDeleted());
+                Serenity.TabsExtensions.setDisabled(this.tabs, 'Notes', this.isNewOrDeleted());
+                this.productsGrid.supplierId = entity.SupplierId;
+            };
             SuppliersDialog.prototype.getSaveState = function () {
                 try {
                     return $.toJSON(this.getSaveEntity());
@@ -3828,6 +3836,245 @@ var PGMS;
                 'SupplierId'
             ].forEach(function (x) { return Fields[x] = x; });
         })(SupplierRepresentativesRow = Erp.SupplierRepresentativesRow || (Erp.SupplierRepresentativesRow = {}));
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var ProductsForm = /** @class */ (function (_super) {
+            __extends(ProductsForm, _super);
+            function ProductsForm() {
+                return _super !== null && _super.apply(this, arguments) || this;
+            }
+            ProductsForm.formKey = 'Erp.Products';
+            return ProductsForm;
+        }(Serenity.PrefixedContext));
+        Erp.ProductsForm = ProductsForm;
+        [,
+            ['Name', function () { return Serenity.StringEditor; }],
+            ['ProductImage', function () { return Serenity.StringEditor; }],
+            ['Discontinued', function () { return Serenity.BooleanEditor; }],
+            ['SupplierId', function () { return Serenity.IntegerEditor; }],
+            ['QuantityPerUnit', function () { return Serenity.StringEditor; }],
+            ['UnitPrice', function () { return Serenity.DecimalEditor; }],
+            ['UnitsInStock', function () { return Serenity.IntegerEditor; }],
+            ['UnitsOnOrder', function () { return Serenity.IntegerEditor; }],
+            ['ReorderLevel', function () { return Serenity.IntegerEditor; }],
+            ['InsertDate', function () { return Serenity.DateEditor; }],
+            ['InsertUserId', function () { return Serenity.IntegerEditor; }],
+            ['UpdateDate', function () { return Serenity.DateEditor; }],
+            ['UpdateUserId', function () { return Serenity.IntegerEditor; }],
+            ['IsActive', function () { return Serenity.IntegerEditor; }]
+        ].forEach(function (x) { return Object.defineProperty(ProductsForm.prototype, x[0], {
+            get: function () {
+                return this.w(x[0], x[1]());
+            },
+            enumerable: true,
+            configurable: true
+        }); });
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var ProductsRow;
+        (function (ProductsRow) {
+            ProductsRow.idProperty = 'ProductId';
+            ProductsRow.nameProperty = 'Name';
+            ProductsRow.localTextPrefix = 'Erp.Products';
+            var Fields;
+            (function (Fields) {
+            })(Fields = ProductsRow.Fields || (ProductsRow.Fields = {}));
+            [
+                'ProductId',
+                'Name',
+                'ProductImage',
+                'Discontinued',
+                'SupplierId',
+                'QuantityPerUnit',
+                'UnitPrice',
+                'UnitsInStock',
+                'UnitsOnOrder',
+                'ReorderLevel',
+                'InsertDate',
+                'InsertUserId',
+                'UpdateDate',
+                'UpdateUserId',
+                'IsActive',
+                'SupplierName',
+                'SupplierPhoneNumber',
+                'SupplierAddress',
+                'SupplierCity',
+                'SupplierCountry',
+                'SupplierInsertDate',
+                'SupplierInsertUserId',
+                'SupplierUpdateDate',
+                'SupplierUpdateUserId',
+                'SupplierIsActive'
+            ].forEach(function (x) { return Fields[x] = x; });
+        })(ProductsRow = Erp.ProductsRow || (Erp.ProductsRow = {}));
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var ProductsService;
+        (function (ProductsService) {
+            ProductsService.baseUrl = 'Erp/Products';
+            var Methods;
+            (function (Methods) {
+            })(Methods = ProductsService.Methods || (ProductsService.Methods = {}));
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                ProductsService[x] = function (r, s, o) {
+                    return Q.serviceRequest(ProductsService.baseUrl + '/' + x, r, s, o);
+                };
+                Methods[x] = ProductsService.baseUrl + '/' + x;
+            });
+        })(ProductsService = Erp.ProductsService || (Erp.ProductsService = {}));
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var ProductsDialog = /** @class */ (function (_super) {
+            __extends(ProductsDialog, _super);
+            function ProductsDialog() {
+                var _this = _super.call(this) || this;
+                _this.form = new Erp.ProductsForm(_this.idPrefix);
+                _this.byId('NoteList').closest('.field').hide().end().appendTo(_this.byId('TabNotes'));
+                PGMS.DialogUtils.pendingChangesConfirmation(_this.element, function () { return _this.getSaveState() != _this.loadedState; });
+                return _this;
+            }
+            ProductsDialog.prototype.getFormKey = function () { return Erp.ProductsForm.formKey; };
+            ProductsDialog.prototype.getIdProperty = function () { return Erp.ProductsRow.idProperty; };
+            ProductsDialog.prototype.getLocalTextPrefix = function () { return Erp.ProductsRow.localTextPrefix; };
+            ProductsDialog.prototype.getNameProperty = function () { return Erp.ProductsRow.nameProperty; };
+            ProductsDialog.prototype.getService = function () { return Erp.ProductsService.baseUrl; };
+            ProductsDialog.prototype.loadEntity = function (entity) {
+                _super.prototype.loadEntity.call(this, entity);
+                Serenity.TabsExtensions.setDisabled(this.tabs, 'Notes', this.isNewOrDeleted());
+            };
+            ProductsDialog.prototype.getSaveState = function () {
+                try {
+                    return $.toJSON(this.getSaveEntity());
+                }
+                catch (e) {
+                    return null;
+                }
+            };
+            ProductsDialog.prototype.loadResponse = function (data) {
+                _super.prototype.loadResponse.call(this, data);
+                this.loadedState = this.getSaveState();
+            };
+            ProductsDialog = __decorate([
+                Serenity.Decorators.registerClass()
+            ], ProductsDialog);
+            return ProductsDialog;
+        }(Serenity.EntityDialog));
+        Erp.ProductsDialog = ProductsDialog;
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var ProductsGrid = /** @class */ (function (_super) {
+            __extends(ProductsGrid, _super);
+            function ProductsGrid(container) {
+                return _super.call(this, container) || this;
+            }
+            ProductsGrid.prototype.getColumnsKey = function () { return 'Erp.Products'; };
+            ProductsGrid.prototype.getDialogType = function () { return Erp.ProductsDialog; };
+            ProductsGrid.prototype.getIdProperty = function () { return Erp.ProductsRow.idProperty; };
+            ProductsGrid.prototype.getLocalTextPrefix = function () { return Erp.ProductsRow.localTextPrefix; };
+            ProductsGrid.prototype.getService = function () { return Erp.ProductsService.baseUrl; };
+            ProductsGrid = __decorate([
+                Serenity.Decorators.registerClass()
+            ], ProductsGrid);
+            return ProductsGrid;
+        }(Serenity.EntityGrid));
+        Erp.ProductsGrid = ProductsGrid;
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var ProductSuppliersdDialog = /** @class */ (function (_super) {
+            __extends(ProductSuppliersdDialog, _super);
+            function ProductSuppliersdDialog() {
+                return _super.call(this) || this;
+            }
+            ProductSuppliersdDialog.prototype.updateInterface = function () {
+                _super.prototype.updateInterface.call(this);
+                //Serenity.EditorUtils.setReadOnly(this.form.SupplierId, true); 
+            };
+            ProductSuppliersdDialog = __decorate([
+                Serenity.Decorators.registerClass()
+            ], ProductSuppliersdDialog);
+            return ProductSuppliersdDialog;
+        }(Erp.ProductsDialog));
+        Erp.ProductSuppliersdDialog = ProductSuppliersdDialog;
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+///<reference path="./../Products/ProductsGrid.ts"/>
+///<reference path="./../Products/ProductsDialog.ts"/>
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var ProductSuppliersdGrid = /** @class */ (function (_super) {
+            __extends(ProductSuppliersdGrid, _super);
+            function ProductSuppliersdGrid(container) {
+                return _super.call(this, container) || this;
+            }
+            ProductSuppliersdGrid.prototype.getDialogType = function () { return Erp.ProductSuppliersdDialog; };
+            ProductSuppliersdGrid.prototype.getColumns = function () {
+                return _super.prototype.getColumns.call(this);
+            };
+            ProductSuppliersdGrid.prototype.initEntityDialog = function (itemType, dialog) {
+                _super.prototype.initEntityDialog.call(this, itemType, dialog);
+                Serenity.SubDialogHelper.cascade(dialog, this.element.closest('.ui-dialog'));
+            };
+            ProductSuppliersdGrid.prototype.addButtonClick = function () {
+                this.editItem({ SupplierId: this.supplierId });
+            };
+            ProductSuppliersdGrid.prototype.getInitialTitle = function () {
+                return null;
+            };
+            ProductSuppliersdGrid.prototype.getGridCanLoad = function () {
+                return _super.prototype.getGridCanLoad.call(this) && !!this.supplierId;
+            };
+            Object.defineProperty(ProductSuppliersdGrid.prototype, "supplierId", {
+                get: function () {
+                    return this._supplierId;
+                },
+                set: function (value) {
+                    if (this._supplierId !== value) {
+                        this._supplierId = value;
+                        this.setEquality('SupplierId', value);
+                        this.refresh();
+                    }
+                },
+                enumerable: true,
+                configurable: true
+            });
+            ProductSuppliersdGrid = __decorate([
+                Serenity.Decorators.registerClass()
+            ], ProductSuppliersdGrid);
+            return ProductSuppliersdGrid;
+        }(Erp.ProductsGrid));
+        Erp.ProductSuppliersdGrid = ProductSuppliersdGrid;
     })(Erp = PGMS.Erp || (PGMS.Erp = {}));
 })(PGMS || (PGMS = {}));
 //# sourceMappingURL=PGMS.Web.js.map
