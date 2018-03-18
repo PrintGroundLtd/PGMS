@@ -12,4 +12,5 @@ using System.Threading.Tasks;
 
 [assembly: NavigationMenu(1250, "Attachments",  icon: null)]
 [assembly: NavigationLink(1260, "Attachments/For Accounts", typeof(MyPages.AccountAttachmentsController), icon: null)]
-[assembly: NavigationLink(1300, "Partner Types", typeof(MyPages.PartnerTypesController), icon: null)]
+[assembly: NavigationLink(1300, "Administration/Partner Types", typeof(MyPages.PartnerTypesController), icon: null)]
+[assembly: NavigationLink(1300, "Administration/Payment Types", typeof(MyPages.PaymentTypesController), icon: null)]

@@ -7830,6 +7830,12 @@ section.content > .s-DataGrid {
 .s-Erp-ProductsDialog .caption {
   width: 150px;
 }
+.s-Erp-PaymentTypesDialog > .size {
+  width: 650px;
+}
+.s-Erp-PaymentTypesDialog .caption {
+  width: 150px;
+}
 .s-NotesEditor {
   border: 1px solid #ccc;
   border-radius: 4px;

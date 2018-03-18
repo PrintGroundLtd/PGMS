@@ -32,6 +32,12 @@
           "PermissionKey": "Erp:Companies:General"
         },
         {
+          "Tablename": "dbo.PaymentTypes",
+          "Identifier": "PaymentTypes",
+          "Module": "Erp",
+          "PermissionKey": "Erp:PaymentTypes:General"
+        },
+        {
           "Tablename": "dbo.Products",
           "Identifier": "Products",
           "Module": "Erp",
