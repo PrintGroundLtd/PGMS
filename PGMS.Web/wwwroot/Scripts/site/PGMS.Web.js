@@ -3038,7 +3038,7 @@ var PGMS;
             SuppliersDialog.prototype.getService = function () { return Erp.SuppliersService.baseUrl; };
             SuppliersDialog.prototype.loadEntity = function (entity) {
                 _super.prototype.loadEntity.call(this, entity);
-                Serenity.TabsExtensions.setDisabled(this.tabs, 'Suppliers', this.isNewOrDeleted());
+                Serenity.TabsExtensions.setDisabled(this.tabs, 'Products', this.isNewOrDeleted());
                 Serenity.TabsExtensions.setDisabled(this.tabs, 'Notes', this.isNewOrDeleted());
                 this.productsGrid.supplierId = entity.SupplierId;
             };

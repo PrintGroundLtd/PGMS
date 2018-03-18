@@ -14,8 +14,9 @@ namespace PGMS.Erp.Entities
     [ConnectionKey("Default"), Module("Erp"), TableName("[dbo].[Products]")]
     [DisplayName("Products"), InstanceName("Product")]
     [LookupScript]
-    [ReadPermission("Erp:Products:General")]
-    [ModifyPermission("Erp:Products:General")]
+    [ReadPermission(PermissionKeys.Products.ReadPermission)]
+    [UpdatePermission(PermissionKeys.Products.UpdatePermission)]
+    [DeletePermission(PermissionKeys.Products.DeletePermission)]
     public sealed class ProductsRow : ErpLoggingRow, IIdRow, INameRow
     {
         [DisplayName("Product Id"), Identity, LookupInclude]

@@ -25,7 +25,7 @@ namespace PGMS.Erp {
         loadEntity(entity: Erp.SuppliersRow): void {
             super.loadEntity(entity);
 
-            Serenity.TabsExtensions.setDisabled(this.tabs, 'Suppliers', this.isNewOrDeleted());
+            Serenity.TabsExtensions.setDisabled(this.tabs, 'Products', this.isNewOrDeleted());
             Serenity.TabsExtensions.setDisabled(this.tabs, 'Notes', this.isNewOrDeleted());
             this.productsGrid.supplierId = entity.SupplierId;
         }
