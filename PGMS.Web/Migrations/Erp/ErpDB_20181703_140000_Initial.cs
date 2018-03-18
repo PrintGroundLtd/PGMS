@@ -66,37 +66,6 @@ namespace PGMS.Migrations.DefaultDB
 
             #endregion
 
-            #region Attachments
-
-            this.CreateTableWithId32("Attachments", "AttachmentId", s => s
-                .WithColumn("Name").AsString(500).NotNullable()
-                .WithColumn("Description").AsString().NotNullable()
-
-                .WithColumn("InsertDate").AsDateTime().NotNullable()
-                .WithColumn("InsertUserId").AsInt32().NotNullable()
-                .WithColumn("UpdateDate").AsDateTime().Nullable()
-                .WithColumn("UpdateUserId").AsInt32().Nullable()
-                .WithColumn("IsActive").AsInt16().NotNullable().WithDefaultValue(1));
-
-            #endregion
-
-            #region AccountAttachments
-
-            IfDatabase(Utils.AllExceptOracle)
-                .Create.Table("AccountAttachments")
-                .WithColumn("AccountAttachmentID").AsInt32().PrimaryKey().Identity().NotNullable()
-                .WithColumn("AccountId").AsInt32().NotNullable()
-                .WithColumn("AttachmentId").AsInt32().NotNullable();
-
-            IfDatabase("Oracle")
-                .Create.Table("AccountAttachments")
-                .WithColumn("AccountAttachmentID").AsInt32().PrimaryKey().NotNullable()
-                .WithColumn("AccountId").AsInt32().NotNullable()
-                .WithColumn("AttachmentId").AsInt32().NotNullable();
-
-            Utils.AddOracleIdentity(this, "AccountAttachments", "AccountAttachmentID");
-
-            #endregion
 
             #region Account 
 
@@ -118,8 +87,27 @@ namespace PGMS.Migrations.DefaultDB
 
             #endregion
 
+
+            #region AccountAttachments
+
+            this.CreateTableWithId32("AccountAttachments", "AccountAttachmentId", s => s
+                .WithColumn("Name").AsString(500).NotNullable()
+                .WithColumn("Description").AsString().NotNullable()
+                .WithColumn("FilePath").AsString(100).NotNullable()
+                .WithColumn("AccountId").AsInt32().NotNullable()
+                .ForeignKey("Accounts", "AccountId")
+
+                .WithColumn("InsertDate").AsDateTime().NotNullable()
+                .WithColumn("InsertUserId").AsInt32().NotNullable()
+                .WithColumn("UpdateDate").AsDateTime().Nullable()
+                .WithColumn("UpdateUserId").AsInt32().Nullable()
+                .WithColumn("IsActive").AsInt16().NotNullable().WithDefaultValue(1));
+
+            #endregion
+
+
             #region Companies
-            
+
             this.CreateTableWithId32("Companies", "CompanyId", s => s
                 .WithColumn("Name").AsString(500).NotNullable()
                 .WithColumn("PhoneNumber").AsString(500).Nullable()
@@ -139,22 +127,21 @@ namespace PGMS.Migrations.DefaultDB
                 .WithColumn("IsActive").AsInt16().NotNullable().WithDefaultValue(1));
 
             #endregion
-            
+
             #region CompanyAttachments
 
-            IfDatabase(Utils.AllExceptOracle)
-                .Create.Table("CompanyAttachments")
-                .WithColumn("CompanyAttachmentID").AsInt32().PrimaryKey().Identity().NotNullable()
+            this.CreateTableWithId32("CompanyAttachments", "CompanyAttachmentId", s => s
+                .WithColumn("Name").AsString(500).NotNullable()
+                .WithColumn("Description").AsString().NotNullable()
+                .WithColumn("FIlePath").AsString(100).Nullable()
                 .WithColumn("CompanyId").AsInt32().NotNullable()
-                .WithColumn("AttachmentId").AsInt32().NotNullable();
+                .ForeignKey("Companies", "CompanyId")
 
-            IfDatabase("Oracle")
-                .Create.Table("CompanyAttachments")
-                .WithColumn("CompanyAttachmentID").AsInt32().PrimaryKey().NotNullable()
-                .WithColumn("CompanyId").AsInt32().NotNullable()
-                .WithColumn("AttachmentId").AsInt32().NotNullable();
-
-            Utils.AddOracleIdentity(this, "CompanyAttachments", "CompanyAttachmentID");
+                .WithColumn("InsertDate").AsDateTime().NotNullable()
+                .WithColumn("InsertUserId").AsInt32().NotNullable()
+                .WithColumn("UpdateDate").AsDateTime().Nullable()
+                .WithColumn("UpdateUserId").AsInt32().Nullable()
+                .WithColumn("IsActive").AsInt16().NotNullable().WithDefaultValue(1));
 
             #endregion
 

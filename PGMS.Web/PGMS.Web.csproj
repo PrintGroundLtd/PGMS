@@ -84,4 +84,7 @@
   <ItemGroup>
     <DotNetCliToolReference Include="Serenity.CodeGenerator" Version="3.5.2" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Modules\Erp\SupplierRepresentatives\" />
+  </ItemGroup>
 </Project>

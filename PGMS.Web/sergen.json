@@ -8,10 +8,22 @@
       "Key": "Default",
       "Tables": [
         {
+          "Tablename": "dbo.AccountAttachments",
+          "Identifier": "AccountAttachments",
+          "Module": "Erp",
+          "PermissionKey": "Erp:AccountAttachments:General"
+        },
+        {
           "Tablename": "dbo.Accounts",
           "Identifier": "Accounts",
           "Module": "Erp",
           "PermissionKey": "Erp:Accounts:General"
+        },
+        {
+          "Tablename": "dbo.Attachments",
+          "Identifier": "Attachments",
+          "Module": "Erp",
+          "PermissionKey": "Erp.Attachments:General"
         },
         {
           "Tablename": "dbo.Companies",

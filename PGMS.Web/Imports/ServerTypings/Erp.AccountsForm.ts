@@ -1,5 +1,6 @@
 ﻿namespace PGMS.Erp {
     export interface AccountsForm {
+        AccountId: Serenity.IntegerEditor;
         Name: Serenity.StringEditor;
         PhoneNumber: Serenity.StringEditor;
         AccountCompanies: Serenity.LookupEditor;
@@ -22,21 +23,23 @@
                 AccountsForm.init = true;
 
                 var s = Serenity;
-                var w0 = s.StringEditor;
-                var w1 = s.LookupEditor;
-                var w2 = s.BooleanEditor;
-                var w3 = NotesEditor;
+                var w0 = s.IntegerEditor;
+                var w1 = s.StringEditor;
+                var w2 = s.LookupEditor;
+                var w3 = s.BooleanEditor;
+                var w4 = NotesEditor;
 
                 Q.initFormType(AccountsForm, [
-                    'Name', w0,
-                    'PhoneNumber', w0,
-                    'AccountCompanies', w1,
-                    'IsVip', w2,
-                    'PartnerType', w1,
-                    'Address', w0,
-                    'City', w0,
-                    'Country', w0,
-                    'NoteList', w3
+                    'AccountId', w0,
+                    'Name', w1,
+                    'PhoneNumber', w1,
+                    'AccountCompanies', w2,
+                    'IsVip', w3,
+                    'PartnerType', w2,
+                    'Address', w1,
+                    'City', w1,
+                    'Country', w1,
+                    'NoteList', w4
                 ]);
             }
         }

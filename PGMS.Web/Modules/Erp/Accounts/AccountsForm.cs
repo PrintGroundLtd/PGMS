@@ -13,6 +13,9 @@ namespace PGMS.Erp.Forms
     [BasedOnRow(typeof(Entities.AccountsRow), CheckNames = true)]
     public class AccountsForm
     {
+
+        [Hidden]
+        public Int32 AccountId { get; set; }
         public String Name { get; set; }
         public String PhoneNumber { get; set; }
         public List<Int32> AccountCompanies { get; set; }

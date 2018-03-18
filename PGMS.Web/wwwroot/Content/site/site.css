@@ -7812,6 +7812,18 @@ section.content > .s-DataGrid {
 .s-Erp-CompaniesDialog .caption {
   width: 150px;
 }
+.s-Erp-AttachmentsDialog > .size {
+  width: 650px;
+}
+.s-Erp-AttachmentsDialog .caption {
+  width: 150px;
+}
+.s-Erp-AccountAttachmentsDialog > .size {
+  width: 650px;
+}
+.s-Erp-AccountAttachmentsDialog .caption {
+  width: 150px;
+}
 .s-NotesEditor {
   border: 1px solid #ccc;
   border-radius: 4px;

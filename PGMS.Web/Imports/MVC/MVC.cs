@@ -50,6 +50,11 @@ namespace MVC
 
         public static class Erp
         {
+            public static class AccountAttachments
+            {
+                public const string AccountAttachmentsIndex = "~/Modules/Erp/AccountAttachments/AccountAttachmentsIndex.cshtml";
+            }
+
             public static class Accounts
             {
                 public const string AccountsIndex = "~/Modules/Erp/Accounts/AccountsIndex.cshtml";

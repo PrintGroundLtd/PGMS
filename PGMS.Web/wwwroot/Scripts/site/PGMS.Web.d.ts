@@ -463,356 +463,6 @@ declare namespace PGMS.Common {
         Value?: string;
     }
 }
-declare namespace PGMS.Erp {
-    interface AccountCompaniesRow {
-        AccountCompanyID?: number;
-        AccountId?: number;
-        CompanyId?: number;
-    }
-    namespace AccountCompaniesRow {
-        const idProperty = "AccountCompanyID";
-        const localTextPrefix = "Erp.AccountCompanies";
-        const enum Fields {
-            AccountCompanyID = "AccountCompanyID",
-            AccountId = "AccountId",
-            CompanyId = "CompanyId",
-        }
-    }
-}
-declare namespace PGMS.Erp {
-}
-declare namespace PGMS.Erp {
-    interface AccountsForm {
-        Name: Serenity.StringEditor;
-        PhoneNumber: Serenity.StringEditor;
-        AccountCompanies: Serenity.LookupEditor;
-        IsVip: Serenity.BooleanEditor;
-        PartnerType: Serenity.LookupEditor;
-        Address: Serenity.StringEditor;
-        City: Serenity.StringEditor;
-        Country: Serenity.StringEditor;
-        NoteList: NotesEditor;
-    }
-    class AccountsForm extends Serenity.PrefixedContext {
-        static formKey: string;
-        private static init;
-        constructor(prefix: string);
-    }
-}
-declare namespace PGMS.Erp {
-    interface AccountsRow {
-        AccountId?: number;
-        Name?: string;
-        PhoneNumber?: string;
-        IsVip?: number;
-        PartnerType?: number;
-        Address?: string;
-        City?: string;
-        AccountCompanies?: number[];
-        Country?: string;
-        NoteList?: NoteRow[];
-        PartnerTypeName?: string;
-        InsertUserId?: number;
-        InsertDate?: string;
-        UpdateUserId?: number;
-        UpdateDate?: string;
-        IsActive?: number;
-        InsertUserName?: string;
-        UpdateUserName?: string;
-    }
-    namespace AccountsRow {
-        const idProperty = "AccountId";
-        const isActiveProperty = "IsActive";
-        const nameProperty = "Name";
-        const localTextPrefix = "Erp.Accounts";
-        const lookupKey = "Erp.Accounts";
-        function getLookup(): Q.Lookup<AccountsRow>;
-        const enum Fields {
-            AccountId = "AccountId",
-            Name = "Name",
-            PhoneNumber = "PhoneNumber",
-            IsVip = "IsVip",
-            PartnerType = "PartnerType",
-            Address = "Address",
-            City = "City",
-            AccountCompanies = "AccountCompanies",
-            Country = "Country",
-            NoteList = "NoteList",
-            PartnerTypeName = "PartnerTypeName",
-            InsertUserId = "InsertUserId",
-            InsertDate = "InsertDate",
-            UpdateUserId = "UpdateUserId",
-            UpdateDate = "UpdateDate",
-            IsActive = "IsActive",
-            InsertUserName = "InsertUserName",
-            UpdateUserName = "UpdateUserName",
-        }
-    }
-}
-declare namespace PGMS.Erp {
-    namespace AccountsService {
-        const baseUrl = "Erp/Accounts";
-        function Create(request: Serenity.SaveRequest<AccountsRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function Update(request: Serenity.SaveRequest<AccountsRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<AccountsRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<AccountsRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        const enum Methods {
-            Create = "Erp/Accounts/Create",
-            Update = "Erp/Accounts/Update",
-            Delete = "Erp/Accounts/Delete",
-            Retrieve = "Erp/Accounts/Retrieve",
-            List = "Erp/Accounts/List",
-        }
-    }
-}
-declare namespace PGMS.Erp {
-}
-declare namespace PGMS.Erp {
-    interface CompaniesForm {
-        Name: Serenity.StringEditor;
-        PhoneNumber: Serenity.StringEditor;
-        Address: Serenity.StringEditor;
-        City: Serenity.StringEditor;
-        Country: Serenity.StringEditor;
-        Eik: Serenity.StringEditor;
-        Mol: Serenity.StringEditor;
-        Iban: Serenity.StringEditor;
-        BankName: Serenity.StringEditor;
-        BankSwift: Serenity.StringEditor;
-    }
-    class CompaniesForm extends Serenity.PrefixedContext {
-        static formKey: string;
-        private static init;
-        constructor(prefix: string);
-    }
-}
-declare namespace PGMS.Erp {
-    interface CompaniesRow {
-        CompanyId?: number;
-        Name?: string;
-        PhoneNumber?: string;
-        Address?: string;
-        City?: string;
-        Country?: string;
-        Eik?: string;
-        Mol?: string;
-        Iban?: string;
-        BankName?: string;
-        BankSwift?: string;
-        InsertUserId?: number;
-        InsertDate?: string;
-        UpdateUserId?: number;
-        UpdateDate?: string;
-        IsActive?: number;
-        InsertUserName?: string;
-        UpdateUserName?: string;
-    }
-    namespace CompaniesRow {
-        const idProperty = "CompanyId";
-        const isActiveProperty = "IsActive";
-        const nameProperty = "Name";
-        const localTextPrefix = "Erp.Companies";
-        const lookupKey = "Erp.Companies";
-        function getLookup(): Q.Lookup<CompaniesRow>;
-        const enum Fields {
-            CompanyId = "CompanyId",
-            Name = "Name",
-            PhoneNumber = "PhoneNumber",
-            Address = "Address",
-            City = "City",
-            Country = "Country",
-            Eik = "Eik",
-            Mol = "Mol",
-            Iban = "Iban",
-            BankName = "BankName",
-            BankSwift = "BankSwift",
-            InsertUserId = "InsertUserId",
-            InsertDate = "InsertDate",
-            UpdateUserId = "UpdateUserId",
-            UpdateDate = "UpdateDate",
-            IsActive = "IsActive",
-            InsertUserName = "InsertUserName",
-            UpdateUserName = "UpdateUserName",
-        }
-    }
-}
-declare namespace PGMS.Erp {
-    namespace CompaniesService {
-        const baseUrl = "Erp/Companies";
-        function Create(request: Serenity.SaveRequest<CompaniesRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function Update(request: Serenity.SaveRequest<CompaniesRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<CompaniesRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<CompaniesRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        const enum Methods {
-            Create = "Erp/Companies/Create",
-            Update = "Erp/Companies/Update",
-            Delete = "Erp/Companies/Delete",
-            Retrieve = "Erp/Companies/Retrieve",
-            List = "Erp/Companies/List",
-        }
-    }
-}
-declare namespace PGMS.Erp {
-    interface NoteRow {
-        NoteId?: number;
-        EntityType?: string;
-        EntityId?: number;
-        Text?: string;
-        InsertUserId?: number;
-        InsertDate?: string;
-        InsertUserDisplayName?: string;
-    }
-    namespace NoteRow {
-        const idProperty = "NoteId";
-        const nameProperty = "EntityType";
-        const localTextPrefix = "Erp.Note";
-        const enum Fields {
-            NoteId = "NoteId",
-            EntityType = "EntityType",
-            EntityId = "EntityId",
-            Text = "Text",
-            InsertUserId = "InsertUserId",
-            InsertDate = "InsertDate",
-            InsertUserDisplayName = "InsertUserDisplayName",
-        }
-    }
-}
-declare namespace PGMS.Erp {
-}
-declare namespace PGMS.Erp {
-    interface PartnerTypesForm {
-        Name: Serenity.StringEditor;
-    }
-    class PartnerTypesForm extends Serenity.PrefixedContext {
-        static formKey: string;
-        private static init;
-        constructor(prefix: string);
-    }
-}
-declare namespace PGMS.Erp {
-    interface PartnerTypesRow {
-        PartnerTypeId?: number;
-        Name?: string;
-        InsertUserId?: number;
-        InsertDate?: string;
-        UpdateUserId?: number;
-        UpdateDate?: string;
-        IsActive?: number;
-        InsertUserName?: string;
-        UpdateUserName?: string;
-    }
-    namespace PartnerTypesRow {
-        const idProperty = "PartnerTypeId";
-        const isActiveProperty = "IsActive";
-        const nameProperty = "Name";
-        const localTextPrefix = "Erp.PartnerTypes";
-        const lookupKey = "Erp.PartnerTypes";
-        function getLookup(): Q.Lookup<PartnerTypesRow>;
-        const enum Fields {
-            PartnerTypeId = "PartnerTypeId",
-            Name = "Name",
-            InsertUserId = "InsertUserId",
-            InsertDate = "InsertDate",
-            UpdateUserId = "UpdateUserId",
-            UpdateDate = "UpdateDate",
-            IsActive = "IsActive",
-            InsertUserName = "InsertUserName",
-            UpdateUserName = "UpdateUserName",
-        }
-    }
-}
-declare namespace PGMS.Erp {
-    namespace PartnerTypesService {
-        const baseUrl = "Erp/PartnerTypes";
-        function Create(request: Serenity.SaveRequest<PartnerTypesRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function Update(request: Serenity.SaveRequest<PartnerTypesRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<PartnerTypesRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<PartnerTypesRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        const enum Methods {
-            Create = "Erp/PartnerTypes/Create",
-            Update = "Erp/PartnerTypes/Update",
-            Delete = "Erp/PartnerTypes/Delete",
-            Retrieve = "Erp/PartnerTypes/Retrieve",
-            List = "Erp/PartnerTypes/List",
-        }
-    }
-}
-declare namespace PGMS.Erp {
-}
-declare namespace PGMS.Erp {
-    interface SuppliersForm {
-        Name: Serenity.StringEditor;
-        PhoneNumber: Serenity.StringEditor;
-        Address: Serenity.StringEditor;
-        City: Serenity.StringEditor;
-        Country: Serenity.StringEditor;
-    }
-    class SuppliersForm extends Serenity.PrefixedContext {
-        static formKey: string;
-        private static init;
-        constructor(prefix: string);
-    }
-}
-declare namespace PGMS.Erp {
-    interface SuppliersRow {
-        SupplierId?: number;
-        Name?: string;
-        PhoneNumber?: string;
-        Address?: string;
-        City?: string;
-        Country?: string;
-        InsertUserId?: number;
-        InsertDate?: string;
-        UpdateUserId?: number;
-        UpdateDate?: string;
-        IsActive?: number;
-        InsertUserName?: string;
-        UpdateUserName?: string;
-    }
-    namespace SuppliersRow {
-        const idProperty = "SupplierId";
-        const isActiveProperty = "IsActive";
-        const nameProperty = "Name";
-        const localTextPrefix = "Erp.Suppliers";
-        const lookupKey = "Erp.Suppliers";
-        function getLookup(): Q.Lookup<SuppliersRow>;
-        const enum Fields {
-            SupplierId = "SupplierId",
-            Name = "Name",
-            PhoneNumber = "PhoneNumber",
-            Address = "Address",
-            City = "City",
-            Country = "Country",
-            InsertUserId = "InsertUserId",
-            InsertDate = "InsertDate",
-            UpdateUserId = "UpdateUserId",
-            UpdateDate = "UpdateDate",
-            IsActive = "IsActive",
-            InsertUserName = "InsertUserName",
-            UpdateUserName = "UpdateUserName",
-        }
-    }
-}
-declare namespace PGMS.Erp {
-    namespace SuppliersService {
-        const baseUrl = "Erp/Suppliers";
-        function Create(request: Serenity.SaveRequest<SuppliersRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function Update(request: Serenity.SaveRequest<SuppliersRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<SuppliersRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<SuppliersRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        const enum Methods {
-            Create = "Erp/Suppliers/Create",
-            Update = "Erp/Suppliers/Update",
-            Delete = "Erp/Suppliers/Delete",
-            Retrieve = "Erp/Suppliers/Retrieve",
-            List = "Erp/Suppliers/List",
-        }
-    }
-}
 declare namespace PGMS {
     interface ExcelImportRequest extends Serenity.ServiceRequest {
         FileName?: string;
@@ -937,11 +587,6 @@ declare namespace PGMS {
         };
     }
 }
-declare namespace PGMS.LanguageList {
-    function getValue(): string[][];
-}
-declare namespace PGMS.ScriptInitialization {
-}
 declare namespace PGMS.Administration {
     class LanguageDialog extends Serenity.EntityDialog<LanguageRow, any> {
         protected getFormKey(): string;
@@ -1053,6 +698,10 @@ declare namespace PGMS.Administration {
         protected getDefaultSortBy(): UserRow.Fields[];
     }
 }
+declare namespace PGMS.Authorization {
+    let userDefinition: ScriptUserDefinition;
+    function hasPermission(permissionKey: string): boolean;
+}
 declare namespace PGMS.Administration {
     class PermissionCheckEditor extends Serenity.DataGrid<PermissionCheckItem, PermissionCheckEditorOptions> {
         protected getIdProperty(): string;
@@ -1123,6 +772,11 @@ declare namespace PGMS.Administration {
         userID: number;
         username: string;
     }
+}
+declare namespace PGMS.LanguageList {
+    function getValue(): string[][];
+}
+declare namespace PGMS.ScriptInitialization {
 }
 declare namespace PGMS {
     class BasicProgressDialog extends Serenity.TemplatedDialog<any> {
@@ -1361,6 +1015,293 @@ declare namespace PGMS.Common {
         setItem(key: string, data: string): void;
     }
 }
+declare namespace PGMS.Membership {
+    class ChangePasswordPanel extends Serenity.PropertyPanel<ChangePasswordRequest, any> {
+        protected getFormKey(): string;
+        private form;
+        constructor(container: JQuery);
+    }
+}
+declare namespace PGMS.Membership {
+    class ForgotPasswordPanel extends Serenity.PropertyPanel<ForgotPasswordRequest, any> {
+        protected getFormKey(): string;
+        private form;
+        constructor(container: JQuery);
+    }
+}
+declare namespace PGMS.Membership {
+    class ResetPasswordPanel extends Serenity.PropertyPanel<ResetPasswordRequest, any> {
+        protected getFormKey(): string;
+        private form;
+        constructor(container: JQuery);
+    }
+}
+declare namespace PGMS.Membership {
+    class SignUpPanel extends Serenity.PropertyPanel<SignUpRequest, any> {
+        protected getFormKey(): string;
+        private form;
+        constructor(container: JQuery);
+    }
+}
+declare namespace PGMS.Erp {
+    interface PartnerTypesForm {
+        Name: Serenity.StringEditor;
+    }
+    class PartnerTypesForm extends Serenity.PrefixedContext {
+        static formKey: string;
+        private static init;
+        constructor(prefix: string);
+    }
+}
+declare namespace PGMS.Erp {
+    interface PartnerTypesRow {
+        PartnerTypeId?: number;
+        Name?: string;
+        InsertUserId?: number;
+        InsertDate?: string;
+        UpdateUserId?: number;
+        UpdateDate?: string;
+        IsActive?: number;
+        InsertUserName?: string;
+        UpdateUserName?: string;
+    }
+    namespace PartnerTypesRow {
+        const idProperty = "PartnerTypeId";
+        const isActiveProperty = "IsActive";
+        const nameProperty = "Name";
+        const localTextPrefix = "Erp.PartnerTypes";
+        const lookupKey = "Erp.PartnerTypes";
+        function getLookup(): Q.Lookup<PartnerTypesRow>;
+        const enum Fields {
+            PartnerTypeId = "PartnerTypeId",
+            Name = "Name",
+            InsertUserId = "InsertUserId",
+            InsertDate = "InsertDate",
+            UpdateUserId = "UpdateUserId",
+            UpdateDate = "UpdateDate",
+            IsActive = "IsActive",
+            InsertUserName = "InsertUserName",
+            UpdateUserName = "UpdateUserName",
+        }
+    }
+}
+declare namespace PGMS.Erp {
+    namespace PartnerTypesService {
+        const baseUrl = "Erp/PartnerTypes";
+        function Create(request: Serenity.SaveRequest<PartnerTypesRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<PartnerTypesRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<PartnerTypesRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<PartnerTypesRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        const enum Methods {
+            Create = "Erp/PartnerTypes/Create",
+            Update = "Erp/PartnerTypes/Update",
+            Delete = "Erp/PartnerTypes/Delete",
+            Retrieve = "Erp/PartnerTypes/Retrieve",
+            List = "Erp/PartnerTypes/List",
+        }
+    }
+}
+declare namespace PGMS.Erp {
+    class PartnerTypesDialog extends Serenity.EntityDialog<PartnerTypesRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected form: PartnerTypesForm;
+    }
+}
+declare namespace PGMS.Erp {
+    class PartnerTypesGrid extends Serenity.EntityGrid<PartnerTypesRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof PartnerTypesDialog;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace PGMS.Erp {
+}
+declare namespace PGMS.Erp {
+    interface SuppliersForm {
+        Name: Serenity.StringEditor;
+        PhoneNumber: Serenity.StringEditor;
+        Address: Serenity.StringEditor;
+        City: Serenity.StringEditor;
+        Country: Serenity.StringEditor;
+    }
+    class SuppliersForm extends Serenity.PrefixedContext {
+        static formKey: string;
+        private static init;
+        constructor(prefix: string);
+    }
+}
+declare namespace PGMS.Erp {
+    interface SuppliersRow {
+        SupplierId?: number;
+        Name?: string;
+        PhoneNumber?: string;
+        Address?: string;
+        City?: string;
+        Country?: string;
+        InsertUserId?: number;
+        InsertDate?: string;
+        UpdateUserId?: number;
+        UpdateDate?: string;
+        IsActive?: number;
+        InsertUserName?: string;
+        UpdateUserName?: string;
+    }
+    namespace SuppliersRow {
+        const idProperty = "SupplierId";
+        const isActiveProperty = "IsActive";
+        const nameProperty = "Name";
+        const localTextPrefix = "Erp.Suppliers";
+        const lookupKey = "Erp.Suppliers";
+        function getLookup(): Q.Lookup<SuppliersRow>;
+        const enum Fields {
+            SupplierId = "SupplierId",
+            Name = "Name",
+            PhoneNumber = "PhoneNumber",
+            Address = "Address",
+            City = "City",
+            Country = "Country",
+            InsertUserId = "InsertUserId",
+            InsertDate = "InsertDate",
+            UpdateUserId = "UpdateUserId",
+            UpdateDate = "UpdateDate",
+            IsActive = "IsActive",
+            InsertUserName = "InsertUserName",
+            UpdateUserName = "UpdateUserName",
+        }
+    }
+}
+declare namespace PGMS.Erp {
+    namespace SuppliersService {
+        const baseUrl = "Erp/Suppliers";
+        function Create(request: Serenity.SaveRequest<SuppliersRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<SuppliersRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<SuppliersRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<SuppliersRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        const enum Methods {
+            Create = "Erp/Suppliers/Create",
+            Update = "Erp/Suppliers/Update",
+            Delete = "Erp/Suppliers/Delete",
+            Retrieve = "Erp/Suppliers/Retrieve",
+            List = "Erp/Suppliers/List",
+        }
+    }
+}
+declare namespace PGMS.Erp {
+    class SuppliersDialog extends Serenity.EntityDialog<SuppliersRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected form: SuppliersForm;
+    }
+}
+declare namespace PGMS.Erp {
+    class SuppliersGrid extends Serenity.EntityGrid<SuppliersRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof SuppliersDialog;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace PGMS.Erp {
+}
+declare namespace PGMS.Erp {
+    interface AccountsForm {
+        Name: Serenity.StringEditor;
+        PhoneNumber: Serenity.StringEditor;
+        AccountCompanies: Serenity.LookupEditor;
+        IsVip: Serenity.BooleanEditor;
+        PartnerType: Serenity.LookupEditor;
+        Address: Serenity.StringEditor;
+        City: Serenity.StringEditor;
+        Country: Serenity.StringEditor;
+        NoteList: NotesEditor;
+    }
+    class AccountsForm extends Serenity.PrefixedContext {
+        static formKey: string;
+        private static init;
+        constructor(prefix: string);
+    }
+}
+declare namespace PGMS.Erp {
+    interface AccountsRow {
+        AccountId?: number;
+        Name?: string;
+        PhoneNumber?: string;
+        IsVip?: number;
+        PartnerType?: number;
+        Address?: string;
+        City?: string;
+        AccountCompanies?: number[];
+        Country?: string;
+        NoteList?: NoteRow[];
+        PartnerTypeName?: string;
+        InsertUserId?: number;
+        InsertDate?: string;
+        UpdateUserId?: number;
+        UpdateDate?: string;
+        IsActive?: number;
+        InsertUserName?: string;
+        UpdateUserName?: string;
+    }
+    namespace AccountsRow {
+        const idProperty = "AccountId";
+        const isActiveProperty = "IsActive";
+        const nameProperty = "Name";
+        const localTextPrefix = "Erp.Accounts";
+        const lookupKey = "Erp.Accounts";
+        function getLookup(): Q.Lookup<AccountsRow>;
+        const enum Fields {
+            AccountId = "AccountId",
+            Name = "Name",
+            PhoneNumber = "PhoneNumber",
+            IsVip = "IsVip",
+            PartnerType = "PartnerType",
+            Address = "Address",
+            City = "City",
+            AccountCompanies = "AccountCompanies",
+            Country = "Country",
+            NoteList = "NoteList",
+            PartnerTypeName = "PartnerTypeName",
+            InsertUserId = "InsertUserId",
+            InsertDate = "InsertDate",
+            UpdateUserId = "UpdateUserId",
+            UpdateDate = "UpdateDate",
+            IsActive = "IsActive",
+            InsertUserName = "InsertUserName",
+            UpdateUserName = "UpdateUserName",
+        }
+    }
+}
+declare namespace PGMS.Erp {
+    namespace AccountsService {
+        const baseUrl = "Erp/Accounts";
+        function Create(request: Serenity.SaveRequest<AccountsRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<AccountsRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<AccountsRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<AccountsRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        const enum Methods {
+            Create = "Erp/Accounts/Create",
+            Update = "Erp/Accounts/Update",
+            Delete = "Erp/Accounts/Delete",
+            Retrieve = "Erp/Accounts/Retrieve",
+            List = "Erp/Accounts/List",
+        }
+    }
+}
 declare namespace PGMS.Erp {
     class AccountsDialog extends Serenity.EntityDialog<AccountsRow, any> {
         protected getFormKey(): string;
@@ -1369,7 +1310,9 @@ declare namespace PGMS.Erp {
         protected getNameProperty(): string;
         protected getService(): string;
         protected form: AccountsForm;
+        private attachmentsGrid;
         constructor();
+        loadEntity(entity: Erp.AccountsRow): void;
     }
 }
 declare namespace PGMS.Erp {
@@ -1383,24 +1326,6 @@ declare namespace PGMS.Erp {
     }
 }
 declare namespace PGMS.Erp {
-    class CompaniesDialog extends Serenity.EntityDialog<CompaniesRow, any> {
-        protected getFormKey(): string;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getNameProperty(): string;
-        protected getService(): string;
-        protected form: CompaniesForm;
-    }
-}
-declare namespace PGMS.Erp {
-    class CompaniesGrid extends Serenity.EntityGrid<CompaniesRow, any> {
-        protected getColumnsKey(): string;
-        protected getDialogType(): typeof CompaniesDialog;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getService(): string;
-        constructor(container: JQuery);
-    }
 }
 declare namespace PGMS.Erp {
     class NoteDialog extends Serenity.TemplatedDialog<any> {
@@ -1431,19 +1356,130 @@ declare namespace PGMS.Erp {
     }
 }
 declare namespace PGMS.Erp {
-    class PartnerTypesDialog extends Serenity.EntityDialog<PartnerTypesRow, any> {
+    interface NoteRow {
+        NoteId?: number;
+        EntityType?: string;
+        EntityId?: number;
+        Text?: string;
+        InsertUserId?: number;
+        InsertDate?: string;
+        InsertUserDisplayName?: string;
+    }
+    namespace NoteRow {
+        const idProperty = "NoteId";
+        const nameProperty = "EntityType";
+        const localTextPrefix = "Erp.Note";
+        const enum Fields {
+            NoteId = "NoteId",
+            EntityType = "EntityType",
+            EntityId = "EntityId",
+            Text = "Text",
+            InsertUserId = "InsertUserId",
+            InsertDate = "InsertDate",
+            InsertUserDisplayName = "InsertUserDisplayName",
+        }
+    }
+}
+declare namespace PGMS.Erp {
+    interface CompaniesForm {
+        Name: Serenity.StringEditor;
+        PhoneNumber: Serenity.StringEditor;
+        Address: Serenity.StringEditor;
+        City: Serenity.StringEditor;
+        Country: Serenity.StringEditor;
+        Eik: Serenity.StringEditor;
+        Mol: Serenity.StringEditor;
+        Iban: Serenity.StringEditor;
+        BankName: Serenity.StringEditor;
+        BankSwift: Serenity.StringEditor;
+    }
+    class CompaniesForm extends Serenity.PrefixedContext {
+        static formKey: string;
+        private static init;
+        constructor(prefix: string);
+    }
+}
+declare namespace PGMS.Erp {
+    interface CompaniesRow {
+        CompanyId?: number;
+        Name?: string;
+        PhoneNumber?: string;
+        Address?: string;
+        City?: string;
+        Country?: string;
+        Eik?: string;
+        Mol?: string;
+        Iban?: string;
+        BankName?: string;
+        BankSwift?: string;
+        InsertUserId?: number;
+        InsertDate?: string;
+        UpdateUserId?: number;
+        UpdateDate?: string;
+        IsActive?: number;
+        InsertUserName?: string;
+        UpdateUserName?: string;
+    }
+    namespace CompaniesRow {
+        const idProperty = "CompanyId";
+        const isActiveProperty = "IsActive";
+        const nameProperty = "Name";
+        const localTextPrefix = "Erp.Companies";
+        const lookupKey = "Erp.Companies";
+        function getLookup(): Q.Lookup<CompaniesRow>;
+        const enum Fields {
+            CompanyId = "CompanyId",
+            Name = "Name",
+            PhoneNumber = "PhoneNumber",
+            Address = "Address",
+            City = "City",
+            Country = "Country",
+            Eik = "Eik",
+            Mol = "Mol",
+            Iban = "Iban",
+            BankName = "BankName",
+            BankSwift = "BankSwift",
+            InsertUserId = "InsertUserId",
+            InsertDate = "InsertDate",
+            UpdateUserId = "UpdateUserId",
+            UpdateDate = "UpdateDate",
+            IsActive = "IsActive",
+            InsertUserName = "InsertUserName",
+            UpdateUserName = "UpdateUserName",
+        }
+    }
+}
+declare namespace PGMS.Erp {
+    namespace CompaniesService {
+        const baseUrl = "Erp/Companies";
+        function Create(request: Serenity.SaveRequest<CompaniesRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<CompaniesRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<CompaniesRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<CompaniesRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        const enum Methods {
+            Create = "Erp/Companies/Create",
+            Update = "Erp/Companies/Update",
+            Delete = "Erp/Companies/Delete",
+            Retrieve = "Erp/Companies/Retrieve",
+            List = "Erp/Companies/List",
+        }
+    }
+}
+declare namespace PGMS.Erp {
+    class CompaniesDialog extends Serenity.EntityDialog<CompaniesRow, any> {
         protected getFormKey(): string;
         protected getIdProperty(): string;
         protected getLocalTextPrefix(): string;
         protected getNameProperty(): string;
         protected getService(): string;
-        protected form: PartnerTypesForm;
+        protected form: CompaniesForm;
     }
 }
 declare namespace PGMS.Erp {
-    class PartnerTypesGrid extends Serenity.EntityGrid<PartnerTypesRow, any> {
+    class CompaniesGrid extends Serenity.EntityGrid<CompaniesRow, any> {
         protected getColumnsKey(): string;
-        protected getDialogType(): typeof PartnerTypesDialog;
+        protected getDialogType(): typeof CompaniesDialog;
         protected getIdProperty(): string;
         protected getLocalTextPrefix(): string;
         protected getService(): string;
@@ -1451,54 +1487,149 @@ declare namespace PGMS.Erp {
     }
 }
 declare namespace PGMS.Erp {
-    class SuppliersDialog extends Serenity.EntityDialog<SuppliersRow, any> {
+}
+declare namespace PGMS.Erp {
+    interface AccountCompaniesRow {
+        AccountCompanyID?: number;
+        AccountId?: number;
+        CompanyId?: number;
+    }
+    namespace AccountCompaniesRow {
+        const idProperty = "AccountCompanyID";
+        const localTextPrefix = "Erp.AccountCompanies";
+        const enum Fields {
+            AccountCompanyID = "AccountCompanyID",
+            AccountId = "AccountId",
+            CompanyId = "CompanyId",
+        }
+    }
+}
+declare namespace PGMS.Erp {
+    class AccountAttachmentsForm extends Serenity.PrefixedContext {
+        static formKey: string;
+    }
+    interface AccountAttachmentsForm {
+        Name: Serenity.StringEditor;
+        Description: Serenity.StringEditor;
+        FIlePath: Serenity.StringEditor;
+        AccountId: Serenity.IntegerEditor;
+        InsertDate: Serenity.DateEditor;
+        InsertUserId: Serenity.IntegerEditor;
+        UpdateDate: Serenity.DateEditor;
+        UpdateUserId: Serenity.IntegerEditor;
+        IsActive: Serenity.IntegerEditor;
+    }
+}
+declare namespace PGMS.Erp {
+    interface AccountAttachmentsRow {
+        AccountAttachmentId?: number;
+        Name?: string;
+        Description?: string;
+        FIlePath?: string;
+        AccountId?: number;
+        InsertDate?: string;
+        InsertUserId?: number;
+        UpdateDate?: string;
+        UpdateUserId?: number;
+        IsActive?: number;
+        AccountName?: string;
+        AccountPhoneNumber?: string;
+        AccountIsVip?: number;
+        AccountPartnerType?: number;
+        AccountAddress?: string;
+        AccountCity?: string;
+        AccountCountry?: string;
+        AccountInsertDate?: string;
+        AccountInsertUserId?: number;
+        AccountUpdateDate?: string;
+        AccountUpdateUserId?: number;
+        AccountIsActive?: number;
+    }
+    namespace AccountAttachmentsRow {
+        const idProperty = "AccountAttachmentId";
+        const nameProperty = "Name";
+        const localTextPrefix = "Erp.AccountAttachments";
+        namespace Fields {
+            const AccountAttachmentId: any;
+            const Name: any;
+            const Description: any;
+            const FIlePath: any;
+            const AccountId: any;
+            const InsertDate: any;
+            const InsertUserId: any;
+            const UpdateDate: any;
+            const UpdateUserId: any;
+            const IsActive: any;
+            const AccountName: any;
+            const AccountPhoneNumber: any;
+            const AccountIsVip: any;
+            const AccountPartnerType: any;
+            const AccountAddress: any;
+            const AccountCity: any;
+            const AccountCountry: any;
+            const AccountInsertDate: any;
+            const AccountInsertUserId: any;
+            const AccountUpdateDate: any;
+            const AccountUpdateUserId: any;
+            const AccountIsActive: any;
+        }
+    }
+}
+declare namespace PGMS.Erp {
+    namespace AccountAttachmentsService {
+        const baseUrl = "Erp/AccountAttachments";
+        function Create(request: Serenity.SaveRequest<AccountAttachmentsRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<AccountAttachmentsRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<AccountAttachmentsRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<AccountAttachmentsRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        namespace Methods {
+            const Create: string;
+            const Update: string;
+            const Delete: string;
+            const Retrieve: string;
+            const List: string;
+        }
+    }
+}
+declare namespace PGMS.Erp {
+    class AccountAttachmentsDialog extends Serenity.EntityDialog<AccountAttachmentsRow, any> {
         protected getFormKey(): string;
         protected getIdProperty(): string;
         protected getLocalTextPrefix(): string;
         protected getNameProperty(): string;
         protected getService(): string;
-        protected form: SuppliersForm;
+        protected form: AccountAttachmentsForm;
     }
 }
 declare namespace PGMS.Erp {
-    class SuppliersGrid extends Serenity.EntityGrid<SuppliersRow, any> {
+    class AccountAttachmentsGrid extends Serenity.EntityGrid<AccountAttachmentsRow, any> {
         protected getColumnsKey(): string;
-        protected getDialogType(): typeof SuppliersDialog;
+        protected getDialogType(): typeof AccountAttachmentsDialog;
         protected getIdProperty(): string;
         protected getLocalTextPrefix(): string;
         protected getService(): string;
         constructor(container: JQuery);
     }
 }
-declare namespace PGMS.Authorization {
-    let userDefinition: ScriptUserDefinition;
-    function hasPermission(permissionKey: string): boolean;
+declare namespace PGMS.Erp {
 }
-declare namespace PGMS.Membership {
-    class ChangePasswordPanel extends Serenity.PropertyPanel<ChangePasswordRequest, any> {
-        protected getFormKey(): string;
-        private form;
-        constructor(container: JQuery);
+declare namespace PGMS.Erp {
+    class AccountAttachmentsExtendedDialog extends AccountAttachmentsDialog {
+        constructor();
+        updateInterface(): void;
     }
 }
-declare namespace PGMS.Membership {
-    class ForgotPasswordPanel extends Serenity.PropertyPanel<ForgotPasswordRequest, any> {
-        protected getFormKey(): string;
-        private form;
+declare namespace PGMS.Erp {
+    class AccountAttachmentsExtendedGrid extends AccountAttachmentsGrid {
+        protected getDialogType(): typeof AccountAttachmentsExtendedDialog;
         constructor(container: JQuery);
-    }
-}
-declare namespace PGMS.Membership {
-    class ResetPasswordPanel extends Serenity.PropertyPanel<ResetPasswordRequest, any> {
-        protected getFormKey(): string;
-        private form;
-        constructor(container: JQuery);
-    }
-}
-declare namespace PGMS.Membership {
-    class SignUpPanel extends Serenity.PropertyPanel<SignUpRequest, any> {
-        protected getFormKey(): string;
-        private form;
-        constructor(container: JQuery);
+        protected getColumns(): Slick.Column[];
+        protected initEntityDialog(itemType: any, dialog: any): void;
+        protected addButtonClick(): void;
+        protected getInitialTitle(): any;
+        protected getGridCanLoad(): boolean;
+        private _accountId;
+        accountId: number;
     }
 }
