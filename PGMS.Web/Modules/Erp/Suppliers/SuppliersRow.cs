@@ -73,6 +73,13 @@ namespace PGMS.Erp.Entities
             set { Fields.SupplierRepresentatives[this] = value; }
         }
 
+        [NotesEditor, NotMapped]
+        public List<NoteRow> NoteList
+        {
+            get { return Fields.NoteList[this]; }
+            set { Fields.NoteList[this] = value; }
+        }
+
         IIdField IIdRow.IdField
         {
             get { return Fields.SupplierId; }
@@ -98,6 +105,7 @@ namespace PGMS.Erp.Entities
             public StringField Address;
             public StringField City;
             public StringField Country;
+            public RowListField<NoteRow> NoteList;
             public ListField<Int32> SupplierRepresentatives;
 
         }

@@ -22,5 +22,8 @@ namespace PGMS.Erp.Forms
         public String Address { get; set; }
         public String City { get; set; }
         public String Country { get; set; }
+
+        public List<object> NoteList { get; set; }
+
     }
 }

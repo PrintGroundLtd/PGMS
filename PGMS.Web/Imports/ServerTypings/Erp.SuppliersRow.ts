@@ -6,6 +6,7 @@
         Address?: string;
         City?: string;
         Country?: string;
+        NoteList?: NoteRow[];
         SupplierRepresentatives?: number[];
         InsertUserId?: number;
         InsertDate?: string;
@@ -34,6 +35,7 @@
             Address = "Address",
             City = "City",
             Country = "Country",
+            NoteList = "NoteList",
             SupplierRepresentatives = "SupplierRepresentatives",
             InsertUserId = "InsertUserId",
             InsertDate = "InsertDate",

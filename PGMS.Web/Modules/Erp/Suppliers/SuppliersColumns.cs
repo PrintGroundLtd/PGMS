@@ -30,6 +30,5 @@ namespace PGMS.Erp.Columns
         public Int32 InsertUserName { get; set; }
         public DateTime UpdateDate { get; set; }
         public Int32 UpdateUserName { get; set; }
-        public bool IsActive { get; set; }
     }
 }

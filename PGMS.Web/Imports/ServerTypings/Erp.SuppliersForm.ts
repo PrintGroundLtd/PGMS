@@ -6,6 +6,7 @@
         Address: Serenity.StringEditor;
         City: Serenity.StringEditor;
         Country: Serenity.StringEditor;
+        NoteList: NotesEditor;
     }
 
     export class SuppliersForm extends Serenity.PrefixedContext {
@@ -21,6 +22,7 @@
                 var s = Serenity;
                 var w0 = s.StringEditor;
                 var w1 = s.LookupEditor;
+                var w2 = NotesEditor;
 
                 Q.initFormType(SuppliersForm, [
                     'Name', w0,
@@ -28,7 +30,8 @@
                     'SupplierRepresentatives', w1,
                     'Address', w0,
                     'City', w0,
-                    'Country', w0
+                    'Country', w0,
+                    'NoteList', w2
                 ]);
             }
         }
