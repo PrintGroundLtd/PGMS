@@ -15,6 +15,8 @@ namespace PGMS.Erp.Columns
     {
         [EditLink, Width(200)]
         public String ProductName { get; set; }
+        [EditLink, Width(200)]
+        public String ProductQuantityPerUnit { get; set; }
         [Width(100)]
         public Decimal UnitPrice { get; set; }
         [Width(100)]

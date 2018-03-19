@@ -13,10 +13,10 @@ namespace PGMS.Erp.Entities
 
     [ConnectionKey("Default"), Module("Erp"), TableName("[dbo].[Products]")]
     [DisplayName("Products"), InstanceName("Product")]
-    [LookupScript]
     [ReadPermission(PermissionKeys.Products.ReadPermission)]
     [UpdatePermission(PermissionKeys.Products.UpdatePermission)]
     [DeletePermission(PermissionKeys.Products.DeletePermission)]
+    [LookupScript]
     public sealed class ProductsRow : ErpLoggingRow, IIdRow, INameRow
     {
         [DisplayName("Product Id"), Identity, LookupInclude]
@@ -56,6 +56,7 @@ namespace PGMS.Erp.Entities
         }
 
         [DisplayName("Quantity Per Unit"), Size(20)]
+        [LookupInclude]
         public String QuantityPerUnit
         {
             get { return Fields.QuantityPerUnit[this]; }

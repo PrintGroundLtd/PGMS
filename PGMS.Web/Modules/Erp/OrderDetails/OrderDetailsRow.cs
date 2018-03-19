@@ -11,8 +11,9 @@ namespace PGMS.Erp.Entities
 
     [ConnectionKey("Default"), Module("Erp"), TableName("[dbo].[OrderDetails]")]
     [DisplayName("Order Details"), InstanceName("Order Details")]
-    [ReadPermission("Administration:General")]
-    [ModifyPermission("Administration:General")]
+    [ReadPermission(PermissionKeys.Orders.ReadPermission)]
+    [UpdatePermission(PermissionKeys.Orders.UpdatePermission)]
+    [DeletePermission(PermissionKeys.Orders.DeletePermission)]
     public sealed class OrderDetailsRow : Row, IIdRow
     {
         [DisplayName("Order Detail Id"), Identity]
@@ -84,7 +85,7 @@ namespace PGMS.Erp.Entities
             set { Fields.ProductSupplierId[this] = value; }
         }
 
-        [DisplayName("Product Quantity Per Unit"), Expression("jProduct.[QuantityPerUnit]")]
+        [DisplayName("Quantity Per Unit"), Expression("jProduct.[QuantityPerUnit]"), MinSelectLevel(SelectLevel.List)]
         public String ProductQuantityPerUnit
         {
             get { return Fields.ProductQuantityPerUnit[this]; }

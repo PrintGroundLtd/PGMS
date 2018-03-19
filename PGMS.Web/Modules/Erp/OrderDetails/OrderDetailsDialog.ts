@@ -10,7 +10,7 @@ namespace PGMS.Erp {
 
         constructor() {
             super();
-
+             
             this.form = new OrderDetailsForm(this.idPrefix);
 
             this.form.ProductId.changeSelect2(e => {

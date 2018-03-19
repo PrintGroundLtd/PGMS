@@ -39,6 +39,11 @@
         export const isActiveProperty = 'IsActive';
         export const nameProperty = 'ShipName';
         export const localTextPrefix = 'Erp.Orders';
+        export const lookupKey = 'Erp.Orders';
+
+        export function getLookup(): Q.Lookup<OrdersRow> {
+            return Q.getLookup<OrdersRow>('Erp.Orders');
+        }
 
         export declare const enum Fields {
             OrderId = "OrderId",

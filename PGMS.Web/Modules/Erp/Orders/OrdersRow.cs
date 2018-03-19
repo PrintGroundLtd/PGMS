@@ -14,8 +14,10 @@ namespace PGMS.Erp.Entities
 
     [ConnectionKey("Default"), Module("Erp"), TableName("[dbo].[Orders]")]
     [DisplayName("Orders"), InstanceName("Order")]
-    [ReadPermission("Administration:General")]
-    [ModifyPermission("Administration:General")]
+    [ReadPermission(PermissionKeys.Orders.ReadPermission)]
+    [UpdatePermission(PermissionKeys.Orders.UpdatePermission)]
+    [DeletePermission(PermissionKeys.Orders.DeletePermission)]
+    [LookupScript]
     public sealed class OrdersRow : ErpLoggingRow, IIdRow, INameRow
     {
         [DisplayName("Order Id"), Identity]
