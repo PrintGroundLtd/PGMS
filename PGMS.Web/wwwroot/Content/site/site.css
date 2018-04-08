@@ -7860,6 +7860,12 @@ section.content > .s-DataGrid {
 .s-Erp-BudgetsDialog .caption {
   width: 150px;
 }
+.s-Erp-ExpensesDialog > .size {
+  width: 650px;
+}
+.s-Erp-ExpensesDialog .caption {
+  width: 150px;
+}
 .s-NotesEditor {
   border: 1px solid #ccc;
   border-radius: 4px;

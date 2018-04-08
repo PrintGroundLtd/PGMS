@@ -38,6 +38,12 @@
           "PermissionKey": "Erp:Companies:General"
         },
         {
+          "Tablename": "dbo.Expenses",
+          "Identifier": "Expenses",
+          "Module": "Erp",
+          "PermissionKey": "Expenses:General"
+        },
+        {
           "Tablename": "dbo.OrderDetails",
           "Identifier": "OrderDetails",
           "Module": "Erp",

@@ -669,6 +669,74 @@ var PGMS;
 (function (PGMS) {
     var Erp;
     (function (Erp) {
+        var ExpensesForm = /** @class */ (function (_super) {
+            __extends(ExpensesForm, _super);
+            function ExpensesForm(prefix) {
+                var _this = _super.call(this, prefix) || this;
+                if (!ExpensesForm.init) {
+                    ExpensesForm.init = true;
+                    var s = Serenity;
+                    var w0 = s.StringEditor;
+                    var w1 = s.DecimalEditor;
+                    var w2 = s.LookupEditor;
+                    Q.initFormType(ExpensesForm, [
+                        'Description', w0,
+                        'Total', w1,
+                        'BudgetId', w2,
+                        'PaymentTypeId', w2
+                    ]);
+                }
+                return _this;
+            }
+            ExpensesForm.formKey = 'Erp.Expenses';
+            return ExpensesForm;
+        }(Serenity.PrefixedContext));
+        Erp.ExpensesForm = ExpensesForm;
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var ExpensesRow;
+        (function (ExpensesRow) {
+            ExpensesRow.idProperty = 'ExpenseId';
+            ExpensesRow.isActiveProperty = 'IsActive';
+            ExpensesRow.nameProperty = 'Description';
+            ExpensesRow.localTextPrefix = 'Erp.Expenses';
+            ExpensesRow.lookupKey = 'Erp.Expenses';
+            function getLookup() {
+                return Q.getLookup('Erp.Expenses');
+            }
+            ExpensesRow.getLookup = getLookup;
+        })(ExpensesRow = Erp.ExpensesRow || (Erp.ExpensesRow = {}));
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var ExpensesService;
+        (function (ExpensesService) {
+            ExpensesService.baseUrl = 'Erp/Expenses';
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                ExpensesService[x] = function (r, s, o) {
+                    return Q.serviceRequest(ExpensesService.baseUrl + '/' + x, r, s, o);
+                };
+            });
+        })(ExpensesService = Erp.ExpensesService || (Erp.ExpensesService = {}));
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
         var NoteRow;
         (function (NoteRow) {
             NoteRow.idProperty = 'NoteId';
@@ -3789,6 +3857,52 @@ var PGMS;
             return CompaniesListFormatter;
         }());
         Erp.CompaniesListFormatter = CompaniesListFormatter;
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var ExpensesDialog = /** @class */ (function (_super) {
+            __extends(ExpensesDialog, _super);
+            function ExpensesDialog() {
+                var _this = _super !== null && _super.apply(this, arguments) || this;
+                _this.form = new Erp.ExpensesForm(_this.idPrefix);
+                return _this;
+            }
+            ExpensesDialog.prototype.getFormKey = function () { return Erp.ExpensesForm.formKey; };
+            ExpensesDialog.prototype.getIdProperty = function () { return Erp.ExpensesRow.idProperty; };
+            ExpensesDialog.prototype.getLocalTextPrefix = function () { return Erp.ExpensesRow.localTextPrefix; };
+            ExpensesDialog.prototype.getNameProperty = function () { return Erp.ExpensesRow.nameProperty; };
+            ExpensesDialog.prototype.getService = function () { return Erp.ExpensesService.baseUrl; };
+            ExpensesDialog = __decorate([
+                Serenity.Decorators.registerClass()
+            ], ExpensesDialog);
+            return ExpensesDialog;
+        }(Serenity.EntityDialog));
+        Erp.ExpensesDialog = ExpensesDialog;
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var ExpensesGrid = /** @class */ (function (_super) {
+            __extends(ExpensesGrid, _super);
+            function ExpensesGrid(container) {
+                return _super.call(this, container) || this;
+            }
+            ExpensesGrid.prototype.getColumnsKey = function () { return 'Erp.Expenses'; };
+            ExpensesGrid.prototype.getDialogType = function () { return Erp.ExpensesDialog; };
+            ExpensesGrid.prototype.getIdProperty = function () { return Erp.ExpensesRow.idProperty; };
+            ExpensesGrid.prototype.getLocalTextPrefix = function () { return Erp.ExpensesRow.localTextPrefix; };
+            ExpensesGrid.prototype.getService = function () { return Erp.ExpensesService.baseUrl; };
+            ExpensesGrid = __decorate([
+                Serenity.Decorators.registerClass()
+            ], ExpensesGrid);
+            return ExpensesGrid;
+        }(Serenity.EntityGrid));
+        Erp.ExpensesGrid = ExpensesGrid;
     })(Erp = PGMS.Erp || (PGMS.Erp = {}));
 })(PGMS || (PGMS = {}));
 var PGMS;

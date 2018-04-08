@@ -824,6 +824,86 @@ declare namespace PGMS.Erp {
     }
 }
 declare namespace PGMS.Erp {
+}
+declare namespace PGMS.Erp {
+    interface ExpensesForm {
+        Description: Serenity.StringEditor;
+        Total: Serenity.DecimalEditor;
+        BudgetId: Serenity.LookupEditor;
+        PaymentTypeId: Serenity.LookupEditor;
+    }
+    class ExpensesForm extends Serenity.PrefixedContext {
+        static formKey: string;
+        private static init;
+        constructor(prefix: string);
+    }
+}
+declare namespace PGMS.Erp {
+    interface ExpensesRow {
+        ExpenseId?: number;
+        Description?: string;
+        Total?: number;
+        BudgetId?: number;
+        PaymentTypeId?: number;
+        BudgetName?: string;
+        BudgetTotal?: number;
+        BudgetBudgetPeriod?: number;
+        BudgetPaymentTypeId?: number;
+        PaymentTypeName?: string;
+        InsertUserId?: number;
+        InsertDate?: string;
+        UpdateUserId?: number;
+        UpdateDate?: string;
+        IsActive?: number;
+        InsertUserName?: string;
+        UpdateUserName?: string;
+    }
+    namespace ExpensesRow {
+        const idProperty = "ExpenseId";
+        const isActiveProperty = "IsActive";
+        const nameProperty = "Description";
+        const localTextPrefix = "Erp.Expenses";
+        const lookupKey = "Erp.Expenses";
+        function getLookup(): Q.Lookup<ExpensesRow>;
+        const enum Fields {
+            ExpenseId = "ExpenseId",
+            Description = "Description",
+            Total = "Total",
+            BudgetId = "BudgetId",
+            PaymentTypeId = "PaymentTypeId",
+            BudgetName = "BudgetName",
+            BudgetTotal = "BudgetTotal",
+            BudgetBudgetPeriod = "BudgetBudgetPeriod",
+            BudgetPaymentTypeId = "BudgetPaymentTypeId",
+            PaymentTypeName = "PaymentTypeName",
+            InsertUserId = "InsertUserId",
+            InsertDate = "InsertDate",
+            UpdateUserId = "UpdateUserId",
+            UpdateDate = "UpdateDate",
+            IsActive = "IsActive",
+            InsertUserName = "InsertUserName",
+            UpdateUserName = "UpdateUserName",
+        }
+    }
+}
+declare namespace PGMS.Erp {
+    namespace ExpensesService {
+        const baseUrl = "Erp/Expenses";
+        function Create(request: Serenity.SaveRequest<ExpensesRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<ExpensesRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<ExpensesRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<ExpensesRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        const enum Methods {
+            Create = "Erp/Expenses/Create",
+            Update = "Erp/Expenses/Update",
+            Delete = "Erp/Expenses/Delete",
+            Retrieve = "Erp/Expenses/Retrieve",
+            List = "Erp/Expenses/List",
+        }
+    }
+}
+declare namespace PGMS.Erp {
     interface NoteRow {
         NoteId?: number;
         EntityType?: string;
@@ -2093,6 +2173,26 @@ declare namespace PGMS.Erp {
 declare namespace PGMS.Erp {
     class CompaniesListFormatter implements Slick.Formatter {
         format(ctx: Slick.FormatterContext): string;
+    }
+}
+declare namespace PGMS.Erp {
+    class ExpensesDialog extends Serenity.EntityDialog<ExpensesRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected form: ExpensesForm;
+    }
+}
+declare namespace PGMS.Erp {
+    class ExpensesGrid extends Serenity.EntityGrid<ExpensesRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof ExpensesDialog;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
     }
 }
 declare namespace PGMS.Erp {
