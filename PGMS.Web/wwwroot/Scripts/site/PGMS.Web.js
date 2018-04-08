@@ -953,6 +953,71 @@ var PGMS;
 (function (PGMS) {
     var Erp;
     (function (Erp) {
+        var PartnersForm = /** @class */ (function (_super) {
+            __extends(PartnersForm, _super);
+            function PartnersForm(prefix) {
+                var _this = _super.call(this, prefix) || this;
+                if (!PartnersForm.init) {
+                    PartnersForm.init = true;
+                    var s = Serenity;
+                    var w0 = s.StringEditor;
+                    var w1 = s.IntegerEditor;
+                    Q.initFormType(PartnersForm, [
+                        'Name', w0,
+                        'HardPercent', w1
+                    ]);
+                }
+                return _this;
+            }
+            PartnersForm.formKey = 'Erp.Partners';
+            return PartnersForm;
+        }(Serenity.PrefixedContext));
+        Erp.PartnersForm = PartnersForm;
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var PartnersRow;
+        (function (PartnersRow) {
+            PartnersRow.idProperty = 'PartnerId';
+            PartnersRow.isActiveProperty = 'IsActive';
+            PartnersRow.nameProperty = 'Name';
+            PartnersRow.localTextPrefix = 'Erp.Partners';
+            PartnersRow.lookupKey = 'Erp.Partners';
+            function getLookup() {
+                return Q.getLookup('Erp.Partners');
+            }
+            PartnersRow.getLookup = getLookup;
+        })(PartnersRow = Erp.PartnersRow || (Erp.PartnersRow = {}));
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var PartnersService;
+        (function (PartnersService) {
+            PartnersService.baseUrl = 'Erp/Partners';
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                PartnersService[x] = function (r, s, o) {
+                    return Q.serviceRequest(PartnersService.baseUrl + '/' + x, r, s, o);
+                };
+            });
+        })(PartnersService = Erp.PartnersService || (Erp.PartnersService = {}));
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
         var PartnerTypesForm = /** @class */ (function (_super) {
             __extends(PartnerTypesForm, _super);
             function PartnerTypesForm(prefix) {
@@ -4258,6 +4323,52 @@ var PGMS;
             return OrderStatusesGrid;
         }(Serenity.EntityGrid));
         Erp.OrderStatusesGrid = OrderStatusesGrid;
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var PartnersDialog = /** @class */ (function (_super) {
+            __extends(PartnersDialog, _super);
+            function PartnersDialog() {
+                var _this = _super !== null && _super.apply(this, arguments) || this;
+                _this.form = new Erp.PartnersForm(_this.idPrefix);
+                return _this;
+            }
+            PartnersDialog.prototype.getFormKey = function () { return Erp.PartnersForm.formKey; };
+            PartnersDialog.prototype.getIdProperty = function () { return Erp.PartnersRow.idProperty; };
+            PartnersDialog.prototype.getLocalTextPrefix = function () { return Erp.PartnersRow.localTextPrefix; };
+            PartnersDialog.prototype.getNameProperty = function () { return Erp.PartnersRow.nameProperty; };
+            PartnersDialog.prototype.getService = function () { return Erp.PartnersService.baseUrl; };
+            PartnersDialog = __decorate([
+                Serenity.Decorators.registerClass()
+            ], PartnersDialog);
+            return PartnersDialog;
+        }(Serenity.EntityDialog));
+        Erp.PartnersDialog = PartnersDialog;
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var PartnersGrid = /** @class */ (function (_super) {
+            __extends(PartnersGrid, _super);
+            function PartnersGrid(container) {
+                return _super.call(this, container) || this;
+            }
+            PartnersGrid.prototype.getColumnsKey = function () { return 'Erp.Partners'; };
+            PartnersGrid.prototype.getDialogType = function () { return Erp.PartnersDialog; };
+            PartnersGrid.prototype.getIdProperty = function () { return Erp.PartnersRow.idProperty; };
+            PartnersGrid.prototype.getLocalTextPrefix = function () { return Erp.PartnersRow.localTextPrefix; };
+            PartnersGrid.prototype.getService = function () { return Erp.PartnersService.baseUrl; };
+            PartnersGrid = __decorate([
+                Serenity.Decorators.registerClass()
+            ], PartnersGrid);
+            return PartnersGrid;
+        }(Serenity.EntityGrid));
+        Erp.PartnersGrid = PartnersGrid;
     })(Erp = PGMS.Erp || (PGMS.Erp = {}));
 })(PGMS || (PGMS = {}));
 var PGMS;

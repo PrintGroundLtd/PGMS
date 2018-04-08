@@ -1199,6 +1199,70 @@ declare namespace PGMS.Erp {
 declare namespace PGMS.Erp {
 }
 declare namespace PGMS.Erp {
+    interface PartnersForm {
+        Name: Serenity.StringEditor;
+        HardPercent: Serenity.IntegerEditor;
+    }
+    class PartnersForm extends Serenity.PrefixedContext {
+        static formKey: string;
+        private static init;
+        constructor(prefix: string);
+    }
+}
+declare namespace PGMS.Erp {
+    interface PartnersRow {
+        PartnerId?: number;
+        Name?: string;
+        HardPercent?: number;
+        InsertUserId?: number;
+        InsertDate?: string;
+        UpdateUserId?: number;
+        UpdateDate?: string;
+        IsActive?: number;
+        InsertUserName?: string;
+        UpdateUserName?: string;
+    }
+    namespace PartnersRow {
+        const idProperty = "PartnerId";
+        const isActiveProperty = "IsActive";
+        const nameProperty = "Name";
+        const localTextPrefix = "Erp.Partners";
+        const lookupKey = "Erp.Partners";
+        function getLookup(): Q.Lookup<PartnersRow>;
+        const enum Fields {
+            PartnerId = "PartnerId",
+            Name = "Name",
+            HardPercent = "HardPercent",
+            InsertUserId = "InsertUserId",
+            InsertDate = "InsertDate",
+            UpdateUserId = "UpdateUserId",
+            UpdateDate = "UpdateDate",
+            IsActive = "IsActive",
+            InsertUserName = "InsertUserName",
+            UpdateUserName = "UpdateUserName",
+        }
+    }
+}
+declare namespace PGMS.Erp {
+    namespace PartnersService {
+        const baseUrl = "Erp/Partners";
+        function Create(request: Serenity.SaveRequest<PartnersRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<PartnersRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<PartnersRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<PartnersRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        const enum Methods {
+            Create = "Erp/Partners/Create",
+            Update = "Erp/Partners/Update",
+            Delete = "Erp/Partners/Delete",
+            Retrieve = "Erp/Partners/Retrieve",
+            List = "Erp/Partners/List",
+        }
+    }
+}
+declare namespace PGMS.Erp {
+}
+declare namespace PGMS.Erp {
     interface PartnerTypesForm {
         Name: Serenity.StringEditor;
     }
@@ -2275,6 +2339,26 @@ declare namespace PGMS.Erp {
     class OrderStatusesGrid extends Serenity.EntityGrid<OrderStatusesRow, any> {
         protected getColumnsKey(): string;
         protected getDialogType(): typeof OrderStatusesDialog;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace PGMS.Erp {
+    class PartnersDialog extends Serenity.EntityDialog<PartnersRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected form: PartnersForm;
+    }
+}
+declare namespace PGMS.Erp {
+    class PartnersGrid extends Serenity.EntityGrid<PartnersRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof PartnersDialog;
         protected getIdProperty(): string;
         protected getLocalTextPrefix(): string;
         protected getService(): string;

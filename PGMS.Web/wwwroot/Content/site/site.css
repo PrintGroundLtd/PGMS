@@ -7866,6 +7866,12 @@ section.content > .s-DataGrid {
 .s-Erp-ExpensesDialog .caption {
   width: 150px;
 }
+.s-Erp-PartnersDialog > .size {
+  width: 650px;
+}
+.s-Erp-PartnersDialog .caption {
+  width: 150px;
+}
 .s-NotesEditor {
   border: 1px solid #ccc;
   border-radius: 4px;

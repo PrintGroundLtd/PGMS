@@ -90,6 +90,11 @@ namespace MVC
                 public const string OrderStatusesIndex = "~/Modules/Erp/OrderStatuses/OrderStatusesIndex.cshtml";
             }
 
+            public static class Partners
+            {
+                public const string PartnersIndex = "~/Modules/Erp/Partners/PartnersIndex.cshtml";
+            }
+
             public static class PartnerTypes
             {
                 public const string PartnerTypesIndex = "~/Modules/Erp/PartnerTypes/PartnerTypesIndex.cshtml";
