@@ -18,6 +18,8 @@ namespace PGMS.Erp.Columns
         [EditLink]
         public String Name { get; set; }
         public Int32 HardPercent { get; set; }
+        [FilterOnly()]
+        public Int32 PartnerType { get; set; }
         public DateTime InsertDate { get; set; }
         public Int32 InsertUserName { get; set; }
         public DateTime UpdateDate { get; set; }

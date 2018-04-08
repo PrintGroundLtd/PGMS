@@ -1202,6 +1202,7 @@ declare namespace PGMS.Erp {
     interface PartnersForm {
         Name: Serenity.StringEditor;
         HardPercent: Serenity.IntegerEditor;
+        PartnerType: Serenity.LookupEditor;
     }
     class PartnersForm extends Serenity.PrefixedContext {
         static formKey: string;
@@ -1214,6 +1215,8 @@ declare namespace PGMS.Erp {
         PartnerId?: number;
         Name?: string;
         HardPercent?: number;
+        PartnerType?: number;
+        PartnerTypeName?: string;
         InsertUserId?: number;
         InsertDate?: string;
         UpdateUserId?: number;
@@ -1233,6 +1236,8 @@ declare namespace PGMS.Erp {
             PartnerId = "PartnerId",
             Name = "Name",
             HardPercent = "HardPercent",
+            PartnerType = "PartnerType",
+            PartnerTypeName = "PartnerTypeName",
             InsertUserId = "InsertUserId",
             InsertDate = "InsertDate",
             UpdateUserId = "UpdateUserId",

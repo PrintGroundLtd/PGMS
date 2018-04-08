@@ -37,8 +37,21 @@ namespace PGMS.Erp.Entities
             get { return Fields.HardPercent[this]; }
             set { Fields.HardPercent[this] = value; }
         }
-        
 
+        [DisplayName("Partner Type"), NotNull, ForeignKey("[dbo].[PartnerTypes]", "PartnerTypeId"), LeftJoin("jPartnerType"), TextualField("PartnerTypeName")]
+        [LookupEditor(typeof(PartnerTypesRow), InplaceAdd = false, FilterField = "IsActive", FilterValue = 1)]
+        [MinSelectLevel(SelectLevel.Details), QuickFilter()]
+        public Int32? PartnerType
+        {
+            get { return Fields.PartnerType[this]; }
+            set { Fields.PartnerType[this] = value; }
+        }
+        [DisplayName("Partner Type Name"), Expression("jPartnerType.[Name]"), QuickSearch()]
+        public String PartnerTypeName
+        {
+            get { return Fields.PartnerTypeName[this]; }
+            set { Fields.PartnerTypeName[this] = value; }
+        }
         IIdField IIdRow.IdField
         {
             get { return Fields.PartnerId; }
@@ -61,6 +74,9 @@ namespace PGMS.Erp.Entities
             public Int32Field PartnerId;
             public StringField Name;
             public Int32Field HardPercent;
-		}
+            public Int32Field PartnerType;
+            public StringField PartnerTypeName;
+
+        }
     }
 }

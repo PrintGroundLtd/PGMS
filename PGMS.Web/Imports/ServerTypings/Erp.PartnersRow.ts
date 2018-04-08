@@ -3,6 +3,8 @@
         PartnerId?: number;
         Name?: string;
         HardPercent?: number;
+        PartnerType?: number;
+        PartnerTypeName?: string;
         InsertUserId?: number;
         InsertDate?: string;
         UpdateUserId?: number;
@@ -27,6 +29,8 @@
             PartnerId = "PartnerId",
             Name = "Name",
             HardPercent = "HardPercent",
+            PartnerType = "PartnerType",
+            PartnerTypeName = "PartnerTypeName",
             InsertUserId = "InsertUserId",
             InsertDate = "InsertDate",
             UpdateUserId = "UpdateUserId",

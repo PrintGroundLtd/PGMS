@@ -31,7 +31,7 @@ namespace PGMS.Erp.Entities
             set { Fields.Description[this] = value; }
         }
 
-        [DisplayName("Total"), Size(19), Scale(2)]
+        [DisplayName("Total"), Size(19), Scale(2), NotNull, DecimalEditor]
         public Decimal? Total
         {
             get { return Fields.Total[this]; }

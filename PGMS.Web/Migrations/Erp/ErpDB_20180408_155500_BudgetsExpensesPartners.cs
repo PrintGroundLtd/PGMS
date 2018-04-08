@@ -81,6 +81,8 @@ namespace PGMS.Migrations.DefaultDB
             this.CreateTableWithId32("Partners", "PartnerId", s => s
                 .WithColumn("Name").AsString(500).NotNullable()
                 .WithColumn("HardPercent").AsInt32().NotNullable()
+                .WithColumn("PartnerType").AsInt32().NotNullable()
+                .ForeignKey("PartnerTypes", "PartnerTypeId")
 
                 .WithColumn("InsertDate").AsDateTime().NotNullable()
                 .WithColumn("InsertUserId").AsInt32().NotNullable()

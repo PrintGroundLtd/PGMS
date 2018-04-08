@@ -15,5 +15,6 @@ namespace PGMS.Erp.Forms
     {
         public String Name { get; set; }
         public Int32 HardPercent { get; set; }
+        public Int32 PartnerType { get; set; }
     }
 }
