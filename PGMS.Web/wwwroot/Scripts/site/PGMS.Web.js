@@ -356,6 +356,737 @@ var PGMS;
 })(PGMS || (PGMS = {}));
 var PGMS;
 (function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var AccountAttachmentsForm = /** @class */ (function (_super) {
+            __extends(AccountAttachmentsForm, _super);
+            function AccountAttachmentsForm(prefix) {
+                var _this = _super.call(this, prefix) || this;
+                if (!AccountAttachmentsForm.init) {
+                    AccountAttachmentsForm.init = true;
+                    var s = Serenity;
+                    var w0 = s.StringEditor;
+                    var w1 = s.MultipleImageUploadEditor;
+                    var w2 = s.LookupEditor;
+                    Q.initFormType(AccountAttachmentsForm, [
+                        'Name', w0,
+                        'Description', w0,
+                        'FilePath', w1,
+                        'AccountId', w2
+                    ]);
+                }
+                return _this;
+            }
+            AccountAttachmentsForm.formKey = 'Erp.AccountAttachments';
+            return AccountAttachmentsForm;
+        }(Serenity.PrefixedContext));
+        Erp.AccountAttachmentsForm = AccountAttachmentsForm;
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var AccountAttachmentsRow;
+        (function (AccountAttachmentsRow) {
+            AccountAttachmentsRow.idProperty = 'AccountAttachmentId';
+            AccountAttachmentsRow.isActiveProperty = 'IsActive';
+            AccountAttachmentsRow.nameProperty = 'Name';
+            AccountAttachmentsRow.localTextPrefix = 'Erp.AccountAttachments';
+            AccountAttachmentsRow.lookupKey = 'Erp.AccountAttachments';
+            function getLookup() {
+                return Q.getLookup('Erp.AccountAttachments');
+            }
+            AccountAttachmentsRow.getLookup = getLookup;
+        })(AccountAttachmentsRow = Erp.AccountAttachmentsRow || (Erp.AccountAttachmentsRow = {}));
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var AccountAttachmentsService;
+        (function (AccountAttachmentsService) {
+            AccountAttachmentsService.baseUrl = 'Erp/AccountAttachments';
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                AccountAttachmentsService[x] = function (r, s, o) {
+                    return Q.serviceRequest(AccountAttachmentsService.baseUrl + '/' + x, r, s, o);
+                };
+            });
+        })(AccountAttachmentsService = Erp.AccountAttachmentsService || (Erp.AccountAttachmentsService = {}));
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var AccountCompaniesRow;
+        (function (AccountCompaniesRow) {
+            AccountCompaniesRow.idProperty = 'AccountCompanyID';
+            AccountCompaniesRow.localTextPrefix = 'Erp.AccountCompanies';
+        })(AccountCompaniesRow = Erp.AccountCompaniesRow || (Erp.AccountCompaniesRow = {}));
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var AccountsForm = /** @class */ (function (_super) {
+            __extends(AccountsForm, _super);
+            function AccountsForm(prefix) {
+                var _this = _super.call(this, prefix) || this;
+                if (!AccountsForm.init) {
+                    AccountsForm.init = true;
+                    var s = Serenity;
+                    var w0 = s.IntegerEditor;
+                    var w1 = s.StringEditor;
+                    var w2 = s.LookupEditor;
+                    var w3 = s.BooleanEditor;
+                    var w4 = Erp.NotesEditor;
+                    Q.initFormType(AccountsForm, [
+                        'AccountId', w0,
+                        'Name', w1,
+                        'PartnerType', w2,
+                        'PhoneNumber', w1,
+                        'AccountCompanies', w2,
+                        'IsVip', w3,
+                        'Address', w1,
+                        'City', w1,
+                        'Country', w1,
+                        'NoteList', w4
+                    ]);
+                }
+                return _this;
+            }
+            AccountsForm.formKey = 'Erp.Accounts';
+            return AccountsForm;
+        }(Serenity.PrefixedContext));
+        Erp.AccountsForm = AccountsForm;
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var AccountsRow;
+        (function (AccountsRow) {
+            AccountsRow.idProperty = 'AccountId';
+            AccountsRow.isActiveProperty = 'IsActive';
+            AccountsRow.nameProperty = 'Name';
+            AccountsRow.localTextPrefix = 'Erp.Accounts';
+            AccountsRow.lookupKey = 'Erp.Accounts';
+            function getLookup() {
+                return Q.getLookup('Erp.Accounts');
+            }
+            AccountsRow.getLookup = getLookup;
+        })(AccountsRow = Erp.AccountsRow || (Erp.AccountsRow = {}));
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var AccountsService;
+        (function (AccountsService) {
+            AccountsService.baseUrl = 'Erp/Accounts';
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                AccountsService[x] = function (r, s, o) {
+                    return Q.serviceRequest(AccountsService.baseUrl + '/' + x, r, s, o);
+                };
+            });
+        })(AccountsService = Erp.AccountsService || (Erp.AccountsService = {}));
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var CompaniesForm = /** @class */ (function (_super) {
+            __extends(CompaniesForm, _super);
+            function CompaniesForm(prefix) {
+                var _this = _super.call(this, prefix) || this;
+                if (!CompaniesForm.init) {
+                    CompaniesForm.init = true;
+                    var s = Serenity;
+                    var w0 = s.StringEditor;
+                    var w1 = s.LookupEditor;
+                    Q.initFormType(CompaniesForm, [
+                        'Name', w0,
+                        'PhoneNumber', w0,
+                        'CompanyAccounts', w1,
+                        'Eik', w0,
+                        'Mol', w0,
+                        'Iban', w0,
+                        'BankName', w0,
+                        'BankSwift', w0,
+                        'Address', w0,
+                        'City', w0,
+                        'Country', w0
+                    ]);
+                }
+                return _this;
+            }
+            CompaniesForm.formKey = 'Erp.Companies';
+            return CompaniesForm;
+        }(Serenity.PrefixedContext));
+        Erp.CompaniesForm = CompaniesForm;
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var CompaniesRow;
+        (function (CompaniesRow) {
+            CompaniesRow.idProperty = 'CompanyId';
+            CompaniesRow.isActiveProperty = 'IsActive';
+            CompaniesRow.nameProperty = 'Name';
+            CompaniesRow.localTextPrefix = 'Erp.Companies';
+            CompaniesRow.lookupKey = 'Erp.Companies';
+            function getLookup() {
+                return Q.getLookup('Erp.Companies');
+            }
+            CompaniesRow.getLookup = getLookup;
+        })(CompaniesRow = Erp.CompaniesRow || (Erp.CompaniesRow = {}));
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var CompaniesService;
+        (function (CompaniesService) {
+            CompaniesService.baseUrl = 'Erp/Companies';
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                CompaniesService[x] = function (r, s, o) {
+                    return Q.serviceRequest(CompaniesService.baseUrl + '/' + x, r, s, o);
+                };
+            });
+        })(CompaniesService = Erp.CompaniesService || (Erp.CompaniesService = {}));
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var NoteRow;
+        (function (NoteRow) {
+            NoteRow.idProperty = 'NoteId';
+            NoteRow.nameProperty = 'EntityType';
+            NoteRow.localTextPrefix = 'Erp.Note';
+        })(NoteRow = Erp.NoteRow || (Erp.NoteRow = {}));
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var OrderDetailsForm = /** @class */ (function (_super) {
+            __extends(OrderDetailsForm, _super);
+            function OrderDetailsForm(prefix) {
+                var _this = _super.call(this, prefix) || this;
+                if (!OrderDetailsForm.init) {
+                    OrderDetailsForm.init = true;
+                    var s = Serenity;
+                    var w0 = s.LookupEditor;
+                    var w1 = s.DecimalEditor;
+                    var w2 = s.IntegerEditor;
+                    Q.initFormType(OrderDetailsForm, [
+                        'ProductId', w0,
+                        'UnitPrice', w1,
+                        'Quantity', w2,
+                        'Discount', w1
+                    ]);
+                }
+                return _this;
+            }
+            OrderDetailsForm.formKey = 'Erp.OrderDetails';
+            return OrderDetailsForm;
+        }(Serenity.PrefixedContext));
+        Erp.OrderDetailsForm = OrderDetailsForm;
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var OrderDetailsRow;
+        (function (OrderDetailsRow) {
+            OrderDetailsRow.idProperty = 'OrderDetailId';
+            OrderDetailsRow.localTextPrefix = 'Erp.OrderDetails';
+        })(OrderDetailsRow = Erp.OrderDetailsRow || (Erp.OrderDetailsRow = {}));
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var OrderDetailsService;
+        (function (OrderDetailsService) {
+            OrderDetailsService.baseUrl = 'Erp/OrderDetails';
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                OrderDetailsService[x] = function (r, s, o) {
+                    return Q.serviceRequest(OrderDetailsService.baseUrl + '/' + x, r, s, o);
+                };
+            });
+        })(OrderDetailsService = Erp.OrderDetailsService || (Erp.OrderDetailsService = {}));
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var OrdersForm = /** @class */ (function (_super) {
+            __extends(OrdersForm, _super);
+            function OrdersForm(prefix) {
+                var _this = _super.call(this, prefix) || this;
+                if (!OrdersForm.init) {
+                    OrdersForm.init = true;
+                    var s = Serenity;
+                    var w0 = s.LookupEditor;
+                    var w1 = s.IntegerEditor;
+                    var w2 = Erp.OrderDetailsEditor;
+                    var w3 = s.DateEditor;
+                    var w4 = s.StringEditor;
+                    Q.initFormType(OrdersForm, [
+                        'AccountId', w0,
+                        'CompanyId', w0,
+                        'PaymentTypeId', w0,
+                        'Width', w1,
+                        'Height', w1,
+                        'DetailList', w2,
+                        'UserId', w0,
+                        'OrderStatusId', w0,
+                        'OrderDate', w3,
+                        'ShippedDate', w3,
+                        'ShipName', w4,
+                        'ShipAddress', w4,
+                        'ShipCity', w4,
+                        'ShipCountry', w4
+                    ]);
+                }
+                return _this;
+            }
+            OrdersForm.formKey = 'Erp.Orders';
+            return OrdersForm;
+        }(Serenity.PrefixedContext));
+        Erp.OrdersForm = OrdersForm;
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var OrdersRow;
+        (function (OrdersRow) {
+            OrdersRow.idProperty = 'OrderId';
+            OrdersRow.isActiveProperty = 'IsActive';
+            OrdersRow.nameProperty = 'ShipName';
+            OrdersRow.localTextPrefix = 'Erp.Orders';
+            OrdersRow.lookupKey = 'Erp.Orders';
+            function getLookup() {
+                return Q.getLookup('Erp.Orders');
+            }
+            OrdersRow.getLookup = getLookup;
+        })(OrdersRow = Erp.OrdersRow || (Erp.OrdersRow = {}));
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var OrdersService;
+        (function (OrdersService) {
+            OrdersService.baseUrl = 'Erp/Orders';
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                OrdersService[x] = function (r, s, o) {
+                    return Q.serviceRequest(OrdersService.baseUrl + '/' + x, r, s, o);
+                };
+            });
+        })(OrdersService = Erp.OrdersService || (Erp.OrdersService = {}));
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var OrderStatusesForm = /** @class */ (function (_super) {
+            __extends(OrderStatusesForm, _super);
+            function OrderStatusesForm(prefix) {
+                var _this = _super.call(this, prefix) || this;
+                if (!OrderStatusesForm.init) {
+                    OrderStatusesForm.init = true;
+                    var s = Serenity;
+                    var w0 = s.StringEditor;
+                    Q.initFormType(OrderStatusesForm, [
+                        'Name', w0
+                    ]);
+                }
+                return _this;
+            }
+            OrderStatusesForm.formKey = 'Erp.OrderStatuses';
+            return OrderStatusesForm;
+        }(Serenity.PrefixedContext));
+        Erp.OrderStatusesForm = OrderStatusesForm;
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var OrderStatusesRow;
+        (function (OrderStatusesRow) {
+            OrderStatusesRow.idProperty = 'OrderStatusId';
+            OrderStatusesRow.isActiveProperty = 'IsActive';
+            OrderStatusesRow.nameProperty = 'Name';
+            OrderStatusesRow.localTextPrefix = 'Erp.OrderStatuses';
+            OrderStatusesRow.lookupKey = 'Erp.OrderStatuses';
+            function getLookup() {
+                return Q.getLookup('Erp.OrderStatuses');
+            }
+            OrderStatusesRow.getLookup = getLookup;
+        })(OrderStatusesRow = Erp.OrderStatusesRow || (Erp.OrderStatusesRow = {}));
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var OrderStatusesService;
+        (function (OrderStatusesService) {
+            OrderStatusesService.baseUrl = 'Erp/OrderStatuses';
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                OrderStatusesService[x] = function (r, s, o) {
+                    return Q.serviceRequest(OrderStatusesService.baseUrl + '/' + x, r, s, o);
+                };
+            });
+        })(OrderStatusesService = Erp.OrderStatusesService || (Erp.OrderStatusesService = {}));
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var PartnerTypesForm = /** @class */ (function (_super) {
+            __extends(PartnerTypesForm, _super);
+            function PartnerTypesForm(prefix) {
+                var _this = _super.call(this, prefix) || this;
+                if (!PartnerTypesForm.init) {
+                    PartnerTypesForm.init = true;
+                    var s = Serenity;
+                    var w0 = s.StringEditor;
+                    Q.initFormType(PartnerTypesForm, [
+                        'Name', w0
+                    ]);
+                }
+                return _this;
+            }
+            PartnerTypesForm.formKey = 'Erp.PartnerTypes';
+            return PartnerTypesForm;
+        }(Serenity.PrefixedContext));
+        Erp.PartnerTypesForm = PartnerTypesForm;
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var PartnerTypesRow;
+        (function (PartnerTypesRow) {
+            PartnerTypesRow.idProperty = 'PartnerTypeId';
+            PartnerTypesRow.isActiveProperty = 'IsActive';
+            PartnerTypesRow.nameProperty = 'Name';
+            PartnerTypesRow.localTextPrefix = 'Erp.PartnerTypes';
+            PartnerTypesRow.lookupKey = 'Erp.PartnerTypes';
+            function getLookup() {
+                return Q.getLookup('Erp.PartnerTypes');
+            }
+            PartnerTypesRow.getLookup = getLookup;
+        })(PartnerTypesRow = Erp.PartnerTypesRow || (Erp.PartnerTypesRow = {}));
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var PartnerTypesService;
+        (function (PartnerTypesService) {
+            PartnerTypesService.baseUrl = 'Erp/PartnerTypes';
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                PartnerTypesService[x] = function (r, s, o) {
+                    return Q.serviceRequest(PartnerTypesService.baseUrl + '/' + x, r, s, o);
+                };
+            });
+        })(PartnerTypesService = Erp.PartnerTypesService || (Erp.PartnerTypesService = {}));
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var PaymentTypesForm = /** @class */ (function (_super) {
+            __extends(PaymentTypesForm, _super);
+            function PaymentTypesForm(prefix) {
+                var _this = _super.call(this, prefix) || this;
+                if (!PaymentTypesForm.init) {
+                    PaymentTypesForm.init = true;
+                    var s = Serenity;
+                    var w0 = s.StringEditor;
+                    Q.initFormType(PaymentTypesForm, [
+                        'Name', w0
+                    ]);
+                }
+                return _this;
+            }
+            PaymentTypesForm.formKey = 'Erp.PaymentTypes';
+            return PaymentTypesForm;
+        }(Serenity.PrefixedContext));
+        Erp.PaymentTypesForm = PaymentTypesForm;
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var PaymentTypesRow;
+        (function (PaymentTypesRow) {
+            PaymentTypesRow.idProperty = 'PaymentTypeId';
+            PaymentTypesRow.isActiveProperty = 'IsActive';
+            PaymentTypesRow.nameProperty = 'Name';
+            PaymentTypesRow.localTextPrefix = 'Erp.PaymentTypes';
+            PaymentTypesRow.lookupKey = 'Erp.PaymentTypes';
+            function getLookup() {
+                return Q.getLookup('Erp.PaymentTypes');
+            }
+            PaymentTypesRow.getLookup = getLookup;
+        })(PaymentTypesRow = Erp.PaymentTypesRow || (Erp.PaymentTypesRow = {}));
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var PaymentTypesService;
+        (function (PaymentTypesService) {
+            PaymentTypesService.baseUrl = 'Erp/PaymentTypes';
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                PaymentTypesService[x] = function (r, s, o) {
+                    return Q.serviceRequest(PaymentTypesService.baseUrl + '/' + x, r, s, o);
+                };
+            });
+        })(PaymentTypesService = Erp.PaymentTypesService || (Erp.PaymentTypesService = {}));
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var ProductsForm = /** @class */ (function (_super) {
+            __extends(ProductsForm, _super);
+            function ProductsForm(prefix) {
+                var _this = _super.call(this, prefix) || this;
+                if (!ProductsForm.init) {
+                    ProductsForm.init = true;
+                    var s = Serenity;
+                    var w0 = s.StringEditor;
+                    var w1 = s.ImageUploadEditor;
+                    var w2 = s.BooleanEditor;
+                    var w3 = s.LookupEditor;
+                    var w4 = s.DecimalEditor;
+                    var w5 = s.IntegerEditor;
+                    var w6 = Erp.NotesEditor;
+                    Q.initFormType(ProductsForm, [
+                        'Name', w0,
+                        'ProductImage', w1,
+                        'Discontinued', w2,
+                        'SupplierId', w3,
+                        'QuantityPerUnit', w0,
+                        'UnitPrice', w4,
+                        'UnitsInStock', w5,
+                        'UnitsOnOrder', w5,
+                        'ReorderLevel', w5,
+                        'NoteList', w6
+                    ]);
+                }
+                return _this;
+            }
+            ProductsForm.formKey = 'Erp.Products';
+            return ProductsForm;
+        }(Serenity.PrefixedContext));
+        Erp.ProductsForm = ProductsForm;
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var ProductsRow;
+        (function (ProductsRow) {
+            ProductsRow.idProperty = 'ProductId';
+            ProductsRow.isActiveProperty = 'IsActive';
+            ProductsRow.nameProperty = 'Name';
+            ProductsRow.localTextPrefix = 'Erp.Products';
+            ProductsRow.lookupKey = 'Erp.Products';
+            function getLookup() {
+                return Q.getLookup('Erp.Products');
+            }
+            ProductsRow.getLookup = getLookup;
+        })(ProductsRow = Erp.ProductsRow || (Erp.ProductsRow = {}));
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var ProductsService;
+        (function (ProductsService) {
+            ProductsService.baseUrl = 'Erp/Products';
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                ProductsService[x] = function (r, s, o) {
+                    return Q.serviceRequest(ProductsService.baseUrl + '/' + x, r, s, o);
+                };
+            });
+        })(ProductsService = Erp.ProductsService || (Erp.ProductsService = {}));
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var SupplierRepresentativesRow;
+        (function (SupplierRepresentativesRow) {
+            SupplierRepresentativesRow.idProperty = 'RepresentativeId';
+            SupplierRepresentativesRow.localTextPrefix = 'Erp.SupplierRepresentatives';
+        })(SupplierRepresentativesRow = Erp.SupplierRepresentativesRow || (Erp.SupplierRepresentativesRow = {}));
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var SuppliersForm = /** @class */ (function (_super) {
+            __extends(SuppliersForm, _super);
+            function SuppliersForm(prefix) {
+                var _this = _super.call(this, prefix) || this;
+                if (!SuppliersForm.init) {
+                    SuppliersForm.init = true;
+                    var s = Serenity;
+                    var w0 = s.StringEditor;
+                    var w1 = s.LookupEditor;
+                    var w2 = Erp.NotesEditor;
+                    Q.initFormType(SuppliersForm, [
+                        'Name', w0,
+                        'PhoneNumber', w0,
+                        'SupplierRepresentatives', w1,
+                        'Address', w0,
+                        'City', w0,
+                        'Country', w0,
+                        'NoteList', w2
+                    ]);
+                }
+                return _this;
+            }
+            SuppliersForm.formKey = 'Erp.Suppliers';
+            return SuppliersForm;
+        }(Serenity.PrefixedContext));
+        Erp.SuppliersForm = SuppliersForm;
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var SuppliersRow;
+        (function (SuppliersRow) {
+            SuppliersRow.idProperty = 'SupplierId';
+            SuppliersRow.isActiveProperty = 'IsActive';
+            SuppliersRow.nameProperty = 'Name';
+            SuppliersRow.localTextPrefix = 'Erp.Suppliers';
+            SuppliersRow.lookupKey = 'Erp.Suppliers';
+            function getLookup() {
+                return Q.getLookup('Erp.Suppliers');
+            }
+            SuppliersRow.getLookup = getLookup;
+        })(SuppliersRow = Erp.SuppliersRow || (Erp.SuppliersRow = {}));
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var SuppliersService;
+        (function (SuppliersService) {
+            SuppliersService.baseUrl = 'Erp/Suppliers';
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                SuppliersService[x] = function (r, s, o) {
+                    return Q.serviceRequest(SuppliersService.baseUrl + '/' + x, r, s, o);
+                };
+            });
+        })(SuppliersService = Erp.SuppliersService || (Erp.SuppliersService = {}));
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
     var Membership;
     (function (Membership) {
         var ChangePasswordForm = /** @class */ (function (_super) {
@@ -2664,498 +3395,119 @@ var PGMS;
 })(PGMS || (PGMS = {}));
 var PGMS;
 (function (PGMS) {
-    var Membership;
-    (function (Membership) {
-        var ChangePasswordPanel = /** @class */ (function (_super) {
-            __extends(ChangePasswordPanel, _super);
-            function ChangePasswordPanel(container) {
-                var _this = _super.call(this, container) || this;
-                _this.form = new Membership.ChangePasswordForm(_this.idPrefix);
-                _this.form.NewPassword.addValidationRule(_this.uniqueName, function (e) {
-                    if (_this.form.w('ConfirmPassword', Serenity.PasswordEditor).value.length < 7) {
-                        return Q.format(Q.text('Validation.MinRequiredPasswordLength'), 7);
-                    }
-                });
-                _this.form.ConfirmPassword.addValidationRule(_this.uniqueName, function (e) {
-                    if (_this.form.ConfirmPassword.value !== _this.form.NewPassword.value) {
-                        return Q.text('Validation.PasswordConfirm');
-                    }
-                });
-                _this.byId('SubmitButton').click(function (e) {
-                    e.preventDefault();
-                    if (!_this.validateForm()) {
-                        return;
-                    }
-                    var request = _this.getSaveEntity();
-                    Q.serviceCall({
-                        url: Q.resolveUrl('~/Account/ChangePassword'),
-                        request: request,
-                        onSuccess: function (response) {
-                            Q.information(Q.text('Forms.Membership.ChangePassword.Success'), function () {
-                                window.location.href = Q.resolveUrl('~/');
-                            });
-                        }
-                    });
-                });
-                return _this;
-            }
-            ChangePasswordPanel.prototype.getFormKey = function () { return Membership.ChangePasswordForm.formKey; };
-            ChangePasswordPanel = __decorate([
-                Serenity.Decorators.registerClass()
-            ], ChangePasswordPanel);
-            return ChangePasswordPanel;
-        }(Serenity.PropertyPanel));
-        Membership.ChangePasswordPanel = ChangePasswordPanel;
-    })(Membership = PGMS.Membership || (PGMS.Membership = {}));
-})(PGMS || (PGMS = {}));
-var PGMS;
-(function (PGMS) {
-    var Membership;
-    (function (Membership) {
-        var ForgotPasswordPanel = /** @class */ (function (_super) {
-            __extends(ForgotPasswordPanel, _super);
-            function ForgotPasswordPanel(container) {
-                var _this = _super.call(this, container) || this;
-                _this.form = new Membership.ForgotPasswordForm(_this.idPrefix);
-                _this.byId('SubmitButton').click(function (e) {
-                    e.preventDefault();
-                    if (!_this.validateForm()) {
-                        return;
-                    }
-                    var request = _this.getSaveEntity();
-                    Q.serviceCall({
-                        url: Q.resolveUrl('~/Account/ForgotPassword'),
-                        request: request,
-                        onSuccess: function (response) {
-                            Q.information(Q.text('Forms.Membership.ForgotPassword.Success'), function () {
-                                window.location.href = Q.resolveUrl('~/');
-                            });
-                        }
-                    });
-                });
-                return _this;
-            }
-            ForgotPasswordPanel.prototype.getFormKey = function () { return Membership.ForgotPasswordForm.formKey; };
-            ForgotPasswordPanel = __decorate([
-                Serenity.Decorators.registerClass()
-            ], ForgotPasswordPanel);
-            return ForgotPasswordPanel;
-        }(Serenity.PropertyPanel));
-        Membership.ForgotPasswordPanel = ForgotPasswordPanel;
-    })(Membership = PGMS.Membership || (PGMS.Membership = {}));
-})(PGMS || (PGMS = {}));
-var PGMS;
-(function (PGMS) {
-    var Membership;
-    (function (Membership) {
-        var ResetPasswordPanel = /** @class */ (function (_super) {
-            __extends(ResetPasswordPanel, _super);
-            function ResetPasswordPanel(container) {
-                var _this = _super.call(this, container) || this;
-                _this.form = new Membership.ResetPasswordForm(_this.idPrefix);
-                _this.form.NewPassword.addValidationRule(_this.uniqueName, function (e) {
-                    if (_this.form.ConfirmPassword.value.length < 7) {
-                        return Q.format(Q.text('Validation.MinRequiredPasswordLength'), 7);
-                    }
-                });
-                _this.form.ConfirmPassword.addValidationRule(_this.uniqueName, function (e) {
-                    if (_this.form.ConfirmPassword.value !== _this.form.NewPassword.value) {
-                        return Q.text('Validation.PasswordConfirm');
-                    }
-                });
-                _this.byId('SubmitButton').click(function (e) {
-                    e.preventDefault();
-                    if (!_this.validateForm()) {
-                        return;
-                    }
-                    var request = _this.getSaveEntity();
-                    request.Token = _this.byId('Token').val();
-                    Q.serviceCall({
-                        url: Q.resolveUrl('~/Account/ResetPassword'),
-                        request: request,
-                        onSuccess: function (response) {
-                            Q.information(Q.text('Forms.Membership.ResetPassword.Success'), function () {
-                                window.location.href = Q.resolveUrl('~/Account/Login');
-                            });
-                        }
-                    });
-                });
-                return _this;
-            }
-            ResetPasswordPanel.prototype.getFormKey = function () { return Membership.ResetPasswordForm.formKey; };
-            ResetPasswordPanel = __decorate([
-                Serenity.Decorators.registerClass()
-            ], ResetPasswordPanel);
-            return ResetPasswordPanel;
-        }(Serenity.PropertyPanel));
-        Membership.ResetPasswordPanel = ResetPasswordPanel;
-    })(Membership = PGMS.Membership || (PGMS.Membership = {}));
-})(PGMS || (PGMS = {}));
-var PGMS;
-(function (PGMS) {
-    var Membership;
-    (function (Membership) {
-        var SignUpPanel = /** @class */ (function (_super) {
-            __extends(SignUpPanel, _super);
-            function SignUpPanel(container) {
-                var _this = _super.call(this, container) || this;
-                _this.form = new Membership.SignUpForm(_this.idPrefix);
-                _this.form.ConfirmEmail.addValidationRule(_this.uniqueName, function (e) {
-                    if (_this.form.ConfirmEmail.value !== _this.form.Email.value) {
-                        return Q.text('Validation.EmailConfirm');
-                    }
-                });
-                _this.form.ConfirmPassword.addValidationRule(_this.uniqueName, function (e) {
-                    if (_this.form.ConfirmPassword.value !== _this.form.Password.value) {
-                        return Q.text('Validation.PasswordConfirm');
-                    }
-                });
-                _this.byId('SubmitButton').click(function (e) {
-                    e.preventDefault();
-                    if (!_this.validateForm()) {
-                        return;
-                    }
-                    Q.serviceCall({
-                        url: Q.resolveUrl('~/Account/SignUp'),
-                        request: {
-                            DisplayName: _this.form.DisplayName.value,
-                            Email: _this.form.Email.value,
-                            Password: _this.form.Password.value
-                        },
-                        onSuccess: function (response) {
-                            Q.information(Q.text('Forms.Membership.SignUp.Success'), function () {
-                                window.location.href = Q.resolveUrl('~/');
-                            });
-                        }
-                    });
-                });
-                return _this;
-            }
-            SignUpPanel.prototype.getFormKey = function () { return Membership.SignUpForm.formKey; };
-            SignUpPanel = __decorate([
-                Serenity.Decorators.registerClass()
-            ], SignUpPanel);
-            return SignUpPanel;
-        }(Serenity.PropertyPanel));
-        Membership.SignUpPanel = SignUpPanel;
-    })(Membership = PGMS.Membership || (PGMS.Membership = {}));
-})(PGMS || (PGMS = {}));
-var PGMS;
-(function (PGMS) {
     var Erp;
     (function (Erp) {
-        var PartnerTypesForm = /** @class */ (function (_super) {
-            __extends(PartnerTypesForm, _super);
-            function PartnerTypesForm(prefix) {
-                var _this = _super.call(this, prefix) || this;
-                if (!PartnerTypesForm.init) {
-                    PartnerTypesForm.init = true;
-                    var s = Serenity;
-                    var w0 = s.StringEditor;
-                    Q.initFormType(PartnerTypesForm, [
-                        'Name', w0
-                    ]);
-                }
-                return _this;
-            }
-            PartnerTypesForm.formKey = 'Erp.PartnerTypes';
-            return PartnerTypesForm;
-        }(Serenity.PrefixedContext));
-        Erp.PartnerTypesForm = PartnerTypesForm;
-    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
-})(PGMS || (PGMS = {}));
-var PGMS;
-(function (PGMS) {
-    var Erp;
-    (function (Erp) {
-        var PartnerTypesRow;
-        (function (PartnerTypesRow) {
-            PartnerTypesRow.idProperty = 'PartnerTypeId';
-            PartnerTypesRow.isActiveProperty = 'IsActive';
-            PartnerTypesRow.nameProperty = 'Name';
-            PartnerTypesRow.localTextPrefix = 'Erp.PartnerTypes';
-            PartnerTypesRow.lookupKey = 'Erp.PartnerTypes';
-            function getLookup() {
-                return Q.getLookup('Erp.PartnerTypes');
-            }
-            PartnerTypesRow.getLookup = getLookup;
-        })(PartnerTypesRow = Erp.PartnerTypesRow || (Erp.PartnerTypesRow = {}));
-    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
-})(PGMS || (PGMS = {}));
-var PGMS;
-(function (PGMS) {
-    var Erp;
-    (function (Erp) {
-        var PartnerTypesService;
-        (function (PartnerTypesService) {
-            PartnerTypesService.baseUrl = 'Erp/PartnerTypes';
-            [
-                'Create',
-                'Update',
-                'Delete',
-                'Retrieve',
-                'List'
-            ].forEach(function (x) {
-                PartnerTypesService[x] = function (r, s, o) {
-                    return Q.serviceRequest(PartnerTypesService.baseUrl + '/' + x, r, s, o);
-                };
-            });
-        })(PartnerTypesService = Erp.PartnerTypesService || (Erp.PartnerTypesService = {}));
-    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
-})(PGMS || (PGMS = {}));
-var PGMS;
-(function (PGMS) {
-    var Erp;
-    (function (Erp) {
-        var PartnerTypesDialog = /** @class */ (function (_super) {
-            __extends(PartnerTypesDialog, _super);
-            function PartnerTypesDialog() {
+        var AccountAttachmentsDialog = /** @class */ (function (_super) {
+            __extends(AccountAttachmentsDialog, _super);
+            function AccountAttachmentsDialog() {
                 var _this = _super !== null && _super.apply(this, arguments) || this;
-                _this.form = new Erp.PartnerTypesForm(_this.idPrefix);
+                _this.form = new Erp.AccountAttachmentsForm(_this.idPrefix);
                 return _this;
             }
-            PartnerTypesDialog.prototype.getFormKey = function () { return Erp.PartnerTypesForm.formKey; };
-            PartnerTypesDialog.prototype.getIdProperty = function () { return Erp.PartnerTypesRow.idProperty; };
-            PartnerTypesDialog.prototype.getLocalTextPrefix = function () { return Erp.PartnerTypesRow.localTextPrefix; };
-            PartnerTypesDialog.prototype.getNameProperty = function () { return Erp.PartnerTypesRow.nameProperty; };
-            PartnerTypesDialog.prototype.getService = function () { return Erp.PartnerTypesService.baseUrl; };
-            PartnerTypesDialog = __decorate([
+            AccountAttachmentsDialog.prototype.getFormKey = function () { return Erp.AccountAttachmentsForm.formKey; };
+            AccountAttachmentsDialog.prototype.getIdProperty = function () { return Erp.AccountAttachmentsRow.idProperty; };
+            AccountAttachmentsDialog.prototype.getLocalTextPrefix = function () { return Erp.AccountAttachmentsRow.localTextPrefix; };
+            AccountAttachmentsDialog.prototype.getNameProperty = function () { return Erp.AccountAttachmentsRow.nameProperty; };
+            AccountAttachmentsDialog.prototype.getService = function () { return Erp.AccountAttachmentsService.baseUrl; };
+            AccountAttachmentsDialog = __decorate([
                 Serenity.Decorators.registerClass()
-            ], PartnerTypesDialog);
-            return PartnerTypesDialog;
+            ], AccountAttachmentsDialog);
+            return AccountAttachmentsDialog;
         }(Serenity.EntityDialog));
-        Erp.PartnerTypesDialog = PartnerTypesDialog;
+        Erp.AccountAttachmentsDialog = AccountAttachmentsDialog;
     })(Erp = PGMS.Erp || (PGMS.Erp = {}));
 })(PGMS || (PGMS = {}));
 var PGMS;
 (function (PGMS) {
     var Erp;
     (function (Erp) {
-        var PartnerTypesGrid = /** @class */ (function (_super) {
-            __extends(PartnerTypesGrid, _super);
-            function PartnerTypesGrid(container) {
+        var AccountAttachmentsGrid = /** @class */ (function (_super) {
+            __extends(AccountAttachmentsGrid, _super);
+            function AccountAttachmentsGrid(container) {
                 return _super.call(this, container) || this;
             }
-            PartnerTypesGrid.prototype.getColumnsKey = function () { return 'Erp.PartnerTypes'; };
-            PartnerTypesGrid.prototype.getDialogType = function () { return Erp.PartnerTypesDialog; };
-            PartnerTypesGrid.prototype.getIdProperty = function () { return Erp.PartnerTypesRow.idProperty; };
-            PartnerTypesGrid.prototype.getLocalTextPrefix = function () { return Erp.PartnerTypesRow.localTextPrefix; };
-            PartnerTypesGrid.prototype.getService = function () { return Erp.PartnerTypesService.baseUrl; };
-            PartnerTypesGrid = __decorate([
+            AccountAttachmentsGrid.prototype.getColumnsKey = function () { return 'Erp.AccountAttachments'; };
+            AccountAttachmentsGrid.prototype.getDialogType = function () { return Erp.AccountAttachmentsDialog; };
+            AccountAttachmentsGrid.prototype.getIdProperty = function () { return Erp.AccountAttachmentsRow.idProperty; };
+            AccountAttachmentsGrid.prototype.getLocalTextPrefix = function () { return Erp.AccountAttachmentsRow.localTextPrefix; };
+            AccountAttachmentsGrid.prototype.getService = function () { return Erp.AccountAttachmentsService.baseUrl; };
+            AccountAttachmentsGrid = __decorate([
                 Serenity.Decorators.registerClass()
-            ], PartnerTypesGrid);
-            return PartnerTypesGrid;
+            ], AccountAttachmentsGrid);
+            return AccountAttachmentsGrid;
         }(Serenity.EntityGrid));
-        Erp.PartnerTypesGrid = PartnerTypesGrid;
+        Erp.AccountAttachmentsGrid = AccountAttachmentsGrid;
     })(Erp = PGMS.Erp || (PGMS.Erp = {}));
 })(PGMS || (PGMS = {}));
 var PGMS;
 (function (PGMS) {
     var Erp;
     (function (Erp) {
-        var SuppliersForm = /** @class */ (function (_super) {
-            __extends(SuppliersForm, _super);
-            function SuppliersForm(prefix) {
-                var _this = _super.call(this, prefix) || this;
-                if (!SuppliersForm.init) {
-                    SuppliersForm.init = true;
-                    var s = Serenity;
-                    var w0 = s.StringEditor;
-                    Q.initFormType(SuppliersForm, [
-                        'Name', w0,
-                        'PhoneNumber', w0,
-                        'Address', w0,
-                        'City', w0,
-                        'Country', w0
-                    ]);
-                }
-                return _this;
+        var AccountAttachmentsExtendedDialog = /** @class */ (function (_super) {
+            __extends(AccountAttachmentsExtendedDialog, _super);
+            function AccountAttachmentsExtendedDialog() {
+                return _super.call(this) || this;
             }
-            SuppliersForm.formKey = 'Erp.Suppliers';
-            return SuppliersForm;
-        }(Serenity.PrefixedContext));
-        Erp.SuppliersForm = SuppliersForm;
-    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
-})(PGMS || (PGMS = {}));
-var PGMS;
-(function (PGMS) {
-    var Erp;
-    (function (Erp) {
-        var SuppliersRow;
-        (function (SuppliersRow) {
-            SuppliersRow.idProperty = 'SupplierId';
-            SuppliersRow.isActiveProperty = 'IsActive';
-            SuppliersRow.nameProperty = 'Name';
-            SuppliersRow.localTextPrefix = 'Erp.Suppliers';
-            SuppliersRow.lookupKey = 'Erp.Suppliers';
-            function getLookup() {
-                return Q.getLookup('Erp.Suppliers');
-            }
-            SuppliersRow.getLookup = getLookup;
-        })(SuppliersRow = Erp.SuppliersRow || (Erp.SuppliersRow = {}));
-    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
-})(PGMS || (PGMS = {}));
-var PGMS;
-(function (PGMS) {
-    var Erp;
-    (function (Erp) {
-        var SuppliersService;
-        (function (SuppliersService) {
-            SuppliersService.baseUrl = 'Erp/Suppliers';
-            [
-                'Create',
-                'Update',
-                'Delete',
-                'Retrieve',
-                'List'
-            ].forEach(function (x) {
-                SuppliersService[x] = function (r, s, o) {
-                    return Q.serviceRequest(SuppliersService.baseUrl + '/' + x, r, s, o);
-                };
-            });
-        })(SuppliersService = Erp.SuppliersService || (Erp.SuppliersService = {}));
-    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
-})(PGMS || (PGMS = {}));
-var PGMS;
-(function (PGMS) {
-    var Erp;
-    (function (Erp) {
-        var SuppliersDialog = /** @class */ (function (_super) {
-            __extends(SuppliersDialog, _super);
-            function SuppliersDialog() {
-                var _this = _super.call(this) || this;
-                _this.form = new Erp.SuppliersForm(_this.idPrefix);
-                _this.byId('NoteList').closest('.field').hide().end().appendTo(_this.byId('TabNotes'));
-                PGMS.DialogUtils.pendingChangesConfirmation(_this.element, function () { return _this.getSaveState() != _this.loadedState; });
-                _this.productsGrid = new Erp.ProductSuppliersdGrid(_this.byId("ProductsPropertyGrid"));
-                _this.productsGrid.element.flexHeightOnly(1);
-                return _this;
-            }
-            SuppliersDialog.prototype.getFormKey = function () { return Erp.SuppliersForm.formKey; };
-            SuppliersDialog.prototype.getIdProperty = function () { return Erp.SuppliersRow.idProperty; };
-            SuppliersDialog.prototype.getLocalTextPrefix = function () { return Erp.SuppliersRow.localTextPrefix; };
-            SuppliersDialog.prototype.getNameProperty = function () { return Erp.SuppliersRow.nameProperty; };
-            SuppliersDialog.prototype.getService = function () { return Erp.SuppliersService.baseUrl; };
-            SuppliersDialog.prototype.loadEntity = function (entity) {
-                _super.prototype.loadEntity.call(this, entity);
-                Serenity.TabsExtensions.setDisabled(this.tabs, 'Products', this.isNewOrDeleted());
-                Serenity.TabsExtensions.setDisabled(this.tabs, 'Notes', this.isNewOrDeleted());
-                this.productsGrid.supplierId = entity.SupplierId;
+            AccountAttachmentsExtendedDialog.prototype.updateInterface = function () {
+                _super.prototype.updateInterface.call(this);
+                //Serenity.EditorUtils.setReadOnly(this.form.AccountId, true); 
             };
-            SuppliersDialog.prototype.getSaveState = function () {
-                try {
-                    return $.toJSON(this.getSaveEntity());
-                }
-                catch (e) {
-                    return null;
-                }
-            };
-            SuppliersDialog.prototype.loadResponse = function (data) {
-                _super.prototype.loadResponse.call(this, data);
-                this.loadedState = this.getSaveState();
-            };
-            SuppliersDialog = __decorate([
+            AccountAttachmentsExtendedDialog = __decorate([
                 Serenity.Decorators.registerClass()
-            ], SuppliersDialog);
-            return SuppliersDialog;
-        }(Serenity.EntityDialog));
-        Erp.SuppliersDialog = SuppliersDialog;
+            ], AccountAttachmentsExtendedDialog);
+            return AccountAttachmentsExtendedDialog;
+        }(Erp.AccountAttachmentsDialog));
+        Erp.AccountAttachmentsExtendedDialog = AccountAttachmentsExtendedDialog;
     })(Erp = PGMS.Erp || (PGMS.Erp = {}));
 })(PGMS || (PGMS = {}));
+///<reference path="./../AccountAttachments/AccountAttachmentsDialog.ts"/>
+///<reference path="./../AccountAttachments/AccountAttachmentsGrid.ts"/>
 var PGMS;
 (function (PGMS) {
     var Erp;
     (function (Erp) {
-        var SuppliersGrid = /** @class */ (function (_super) {
-            __extends(SuppliersGrid, _super);
-            function SuppliersGrid(container) {
+        var AccountAttachmentsExtendedGrid = /** @class */ (function (_super) {
+            __extends(AccountAttachmentsExtendedGrid, _super);
+            function AccountAttachmentsExtendedGrid(container) {
                 return _super.call(this, container) || this;
             }
-            SuppliersGrid.prototype.getColumnsKey = function () { return 'Erp.Suppliers'; };
-            SuppliersGrid.prototype.getDialogType = function () { return Erp.SuppliersDialog; };
-            SuppliersGrid.prototype.getIdProperty = function () { return Erp.SuppliersRow.idProperty; };
-            SuppliersGrid.prototype.getLocalTextPrefix = function () { return Erp.SuppliersRow.localTextPrefix; };
-            SuppliersGrid.prototype.getService = function () { return Erp.SuppliersService.baseUrl; };
-            SuppliersGrid = __decorate([
-                Serenity.Decorators.registerClass()
-            ], SuppliersGrid);
-            return SuppliersGrid;
-        }(Serenity.EntityGrid));
-        Erp.SuppliersGrid = SuppliersGrid;
-    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
-})(PGMS || (PGMS = {}));
-var PGMS;
-(function (PGMS) {
-    var Erp;
-    (function (Erp) {
-        var AccountsForm = /** @class */ (function (_super) {
-            __extends(AccountsForm, _super);
-            function AccountsForm(prefix) {
-                var _this = _super.call(this, prefix) || this;
-                if (!AccountsForm.init) {
-                    AccountsForm.init = true;
-                    var s = Serenity;
-                    var w0 = s.StringEditor;
-                    var w1 = s.LookupEditor;
-                    var w2 = s.BooleanEditor;
-                    var w3 = Erp.NotesEditor;
-                    Q.initFormType(AccountsForm, [
-                        'Name', w0,
-                        'PhoneNumber', w0,
-                        'AccountCompanies', w1,
-                        'IsVip', w2,
-                        'PartnerType', w1,
-                        'Address', w0,
-                        'City', w0,
-                        'Country', w0,
-                        'NoteList', w3
-                    ]);
-                }
-                return _this;
-            }
-            AccountsForm.formKey = 'Erp.Accounts';
-            return AccountsForm;
-        }(Serenity.PrefixedContext));
-        Erp.AccountsForm = AccountsForm;
-    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
-})(PGMS || (PGMS = {}));
-var PGMS;
-(function (PGMS) {
-    var Erp;
-    (function (Erp) {
-        var AccountsRow;
-        (function (AccountsRow) {
-            AccountsRow.idProperty = 'AccountId';
-            AccountsRow.isActiveProperty = 'IsActive';
-            AccountsRow.nameProperty = 'Name';
-            AccountsRow.localTextPrefix = 'Erp.Accounts';
-            AccountsRow.lookupKey = 'Erp.Accounts';
-            function getLookup() {
-                return Q.getLookup('Erp.Accounts');
-            }
-            AccountsRow.getLookup = getLookup;
-        })(AccountsRow = Erp.AccountsRow || (Erp.AccountsRow = {}));
-    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
-})(PGMS || (PGMS = {}));
-var PGMS;
-(function (PGMS) {
-    var Erp;
-    (function (Erp) {
-        var AccountsService;
-        (function (AccountsService) {
-            AccountsService.baseUrl = 'Erp/Accounts';
-            [
-                'Create',
-                'Update',
-                'Delete',
-                'Retrieve',
-                'List'
-            ].forEach(function (x) {
-                AccountsService[x] = function (r, s, o) {
-                    return Q.serviceRequest(AccountsService.baseUrl + '/' + x, r, s, o);
-                };
+            AccountAttachmentsExtendedGrid.prototype.getDialogType = function () { return Erp.AccountAttachmentsExtendedDialog; };
+            AccountAttachmentsExtendedGrid.prototype.getColumns = function () {
+                return _super.prototype.getColumns.call(this);
+            };
+            AccountAttachmentsExtendedGrid.prototype.initEntityDialog = function (itemType, dialog) {
+                _super.prototype.initEntityDialog.call(this, itemType, dialog);
+                Serenity.SubDialogHelper.cascade(dialog, this.element.closest('.ui-dialog'));
+            };
+            AccountAttachmentsExtendedGrid.prototype.addButtonClick = function () {
+                this.editItem({ AccountId: this.accountId });
+            };
+            AccountAttachmentsExtendedGrid.prototype.getInitialTitle = function () {
+                return null;
+            };
+            AccountAttachmentsExtendedGrid.prototype.getGridCanLoad = function () {
+                return _super.prototype.getGridCanLoad.call(this) && !!this.accountId;
+            };
+            Object.defineProperty(AccountAttachmentsExtendedGrid.prototype, "accountId", {
+                get: function () {
+                    return this._accountId;
+                },
+                set: function (value) {
+                    if (this._accountId !== value) {
+                        this._accountId = value;
+                        this.setEquality('AccountId', value);
+                        this.refresh();
+                    }
+                },
+                enumerable: true,
+                configurable: true
             });
-        })(AccountsService = Erp.AccountsService || (Erp.AccountsService = {}));
+            AccountAttachmentsExtendedGrid = __decorate([
+                Serenity.Decorators.registerClass()
+            ], AccountAttachmentsExtendedGrid);
+            return AccountAttachmentsExtendedGrid;
+        }(Erp.AccountAttachmentsGrid));
+        Erp.AccountAttachmentsExtendedGrid = AccountAttachmentsExtendedGrid;
     })(Erp = PGMS.Erp || (PGMS.Erp = {}));
 })(PGMS || (PGMS = {}));
 var PGMS;
@@ -3233,6 +3585,98 @@ var PGMS;
             return AccountsGrid;
         }(Serenity.EntityGrid));
         Erp.AccountsGrid = AccountsGrid;
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var AccountsListFormatter = /** @class */ (function () {
+            function AccountsListFormatter() {
+            }
+            AccountsListFormatter.prototype.format = function (ctx) {
+                var idList = ctx.value;
+                if (!idList || !idList.length)
+                    return "";
+                var byId = Erp.AccountsRow.getLookup().itemById;
+                var z;
+                return idList.map(function (x) { return ((z = byId[x]) ? z.Name : x); }).join(", ");
+            };
+            AccountsListFormatter = __decorate([
+                Serenity.Decorators.registerFormatter()
+            ], AccountsListFormatter);
+            return AccountsListFormatter;
+        }());
+        Erp.AccountsListFormatter = AccountsListFormatter;
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var CompaniesDialog = /** @class */ (function (_super) {
+            __extends(CompaniesDialog, _super);
+            function CompaniesDialog() {
+                var _this = _super !== null && _super.apply(this, arguments) || this;
+                _this.form = new Erp.CompaniesForm(_this.idPrefix);
+                return _this;
+            }
+            CompaniesDialog.prototype.getFormKey = function () { return Erp.CompaniesForm.formKey; };
+            CompaniesDialog.prototype.getIdProperty = function () { return Erp.CompaniesRow.idProperty; };
+            CompaniesDialog.prototype.getLocalTextPrefix = function () { return Erp.CompaniesRow.localTextPrefix; };
+            CompaniesDialog.prototype.getNameProperty = function () { return Erp.CompaniesRow.nameProperty; };
+            CompaniesDialog.prototype.getService = function () { return Erp.CompaniesService.baseUrl; };
+            CompaniesDialog = __decorate([
+                Serenity.Decorators.registerClass()
+            ], CompaniesDialog);
+            return CompaniesDialog;
+        }(Serenity.EntityDialog));
+        Erp.CompaniesDialog = CompaniesDialog;
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var CompaniesGrid = /** @class */ (function (_super) {
+            __extends(CompaniesGrid, _super);
+            function CompaniesGrid(container) {
+                return _super.call(this, container) || this;
+            }
+            CompaniesGrid.prototype.getColumnsKey = function () { return 'Erp.Companies'; };
+            CompaniesGrid.prototype.getDialogType = function () { return Erp.CompaniesDialog; };
+            CompaniesGrid.prototype.getIdProperty = function () { return Erp.CompaniesRow.idProperty; };
+            CompaniesGrid.prototype.getLocalTextPrefix = function () { return Erp.CompaniesRow.localTextPrefix; };
+            CompaniesGrid.prototype.getService = function () { return Erp.CompaniesService.baseUrl; };
+            CompaniesGrid = __decorate([
+                Serenity.Decorators.registerClass()
+            ], CompaniesGrid);
+            return CompaniesGrid;
+        }(Serenity.EntityGrid));
+        Erp.CompaniesGrid = CompaniesGrid;
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var CompaniesListFormatter = /** @class */ (function () {
+            function CompaniesListFormatter() {
+            }
+            CompaniesListFormatter.prototype.format = function (ctx) {
+                var idList = ctx.value;
+                if (!idList || !idList.length)
+                    return "";
+                var byId = Erp.CompaniesRow.getLookup().itemById;
+                var z;
+                return idList.map(function (x) { return ((z = byId[x]) ? z.Name : x); }).join(", ");
+            };
+            CompaniesListFormatter = __decorate([
+                Serenity.Decorators.registerFormatter()
+            ], CompaniesListFormatter);
+            return CompaniesListFormatter;
+        }());
+        Erp.CompaniesListFormatter = CompaniesListFormatter;
     })(Erp = PGMS.Erp || (PGMS.Erp = {}));
 })(PGMS || (PGMS = {}));
 var PGMS;
@@ -3423,499 +3867,263 @@ var PGMS;
 (function (PGMS) {
     var Erp;
     (function (Erp) {
-        var NoteRow;
-        (function (NoteRow) {
-            NoteRow.idProperty = 'NoteId';
-            NoteRow.nameProperty = 'EntityType';
-            NoteRow.localTextPrefix = 'Erp.Note';
-        })(NoteRow = Erp.NoteRow || (Erp.NoteRow = {}));
-    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
-})(PGMS || (PGMS = {}));
-var PGMS;
-(function (PGMS) {
-    var Erp;
-    (function (Erp) {
-        var CompaniesForm = /** @class */ (function (_super) {
-            __extends(CompaniesForm, _super);
-            function CompaniesForm(prefix) {
-                var _this = _super.call(this, prefix) || this;
-                if (!CompaniesForm.init) {
-                    CompaniesForm.init = true;
-                    var s = Serenity;
-                    var w0 = s.StringEditor;
-                    Q.initFormType(CompaniesForm, [
-                        'Name', w0,
-                        'PhoneNumber', w0,
-                        'Address', w0,
-                        'City', w0,
-                        'Country', w0,
-                        'Eik', w0,
-                        'Mol', w0,
-                        'Iban', w0,
-                        'BankName', w0,
-                        'BankSwift', w0
-                    ]);
-                }
-                return _this;
-            }
-            CompaniesForm.formKey = 'Erp.Companies';
-            return CompaniesForm;
-        }(Serenity.PrefixedContext));
-        Erp.CompaniesForm = CompaniesForm;
-    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
-})(PGMS || (PGMS = {}));
-var PGMS;
-(function (PGMS) {
-    var Erp;
-    (function (Erp) {
-        var CompaniesRow;
-        (function (CompaniesRow) {
-            CompaniesRow.idProperty = 'CompanyId';
-            CompaniesRow.isActiveProperty = 'IsActive';
-            CompaniesRow.nameProperty = 'Name';
-            CompaniesRow.localTextPrefix = 'Erp.Companies';
-            CompaniesRow.lookupKey = 'Erp.Companies';
-            function getLookup() {
-                return Q.getLookup('Erp.Companies');
-            }
-            CompaniesRow.getLookup = getLookup;
-        })(CompaniesRow = Erp.CompaniesRow || (Erp.CompaniesRow = {}));
-    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
-})(PGMS || (PGMS = {}));
-var PGMS;
-(function (PGMS) {
-    var Erp;
-    (function (Erp) {
-        var CompaniesService;
-        (function (CompaniesService) {
-            CompaniesService.baseUrl = 'Erp/Companies';
-            [
-                'Create',
-                'Update',
-                'Delete',
-                'Retrieve',
-                'List'
-            ].forEach(function (x) {
-                CompaniesService[x] = function (r, s, o) {
-                    return Q.serviceRequest(CompaniesService.baseUrl + '/' + x, r, s, o);
-                };
-            });
-        })(CompaniesService = Erp.CompaniesService || (Erp.CompaniesService = {}));
-    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
-})(PGMS || (PGMS = {}));
-var PGMS;
-(function (PGMS) {
-    var Erp;
-    (function (Erp) {
-        var CompaniesDialog = /** @class */ (function (_super) {
-            __extends(CompaniesDialog, _super);
-            function CompaniesDialog() {
-                var _this = _super !== null && _super.apply(this, arguments) || this;
-                _this.form = new Erp.CompaniesForm(_this.idPrefix);
-                return _this;
-            }
-            CompaniesDialog.prototype.getFormKey = function () { return Erp.CompaniesForm.formKey; };
-            CompaniesDialog.prototype.getIdProperty = function () { return Erp.CompaniesRow.idProperty; };
-            CompaniesDialog.prototype.getLocalTextPrefix = function () { return Erp.CompaniesRow.localTextPrefix; };
-            CompaniesDialog.prototype.getNameProperty = function () { return Erp.CompaniesRow.nameProperty; };
-            CompaniesDialog.prototype.getService = function () { return Erp.CompaniesService.baseUrl; };
-            CompaniesDialog = __decorate([
-                Serenity.Decorators.registerClass()
-            ], CompaniesDialog);
-            return CompaniesDialog;
-        }(Serenity.EntityDialog));
-        Erp.CompaniesDialog = CompaniesDialog;
-    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
-})(PGMS || (PGMS = {}));
-var PGMS;
-(function (PGMS) {
-    var Erp;
-    (function (Erp) {
-        var CompaniesGrid = /** @class */ (function (_super) {
-            __extends(CompaniesGrid, _super);
-            function CompaniesGrid(container) {
-                return _super.call(this, container) || this;
-            }
-            CompaniesGrid.prototype.getColumnsKey = function () { return 'Erp.Companies'; };
-            CompaniesGrid.prototype.getDialogType = function () { return Erp.CompaniesDialog; };
-            CompaniesGrid.prototype.getIdProperty = function () { return Erp.CompaniesRow.idProperty; };
-            CompaniesGrid.prototype.getLocalTextPrefix = function () { return Erp.CompaniesRow.localTextPrefix; };
-            CompaniesGrid.prototype.getService = function () { return Erp.CompaniesService.baseUrl; };
-            CompaniesGrid = __decorate([
-                Serenity.Decorators.registerClass()
-            ], CompaniesGrid);
-            return CompaniesGrid;
-        }(Serenity.EntityGrid));
-        Erp.CompaniesGrid = CompaniesGrid;
-    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
-})(PGMS || (PGMS = {}));
-var PGMS;
-(function (PGMS) {
-    var Erp;
-    (function (Erp) {
-        var AccountCompaniesRow;
-        (function (AccountCompaniesRow) {
-            AccountCompaniesRow.idProperty = 'AccountCompanyID';
-            AccountCompaniesRow.localTextPrefix = 'Erp.AccountCompanies';
-        })(AccountCompaniesRow = Erp.AccountCompaniesRow || (Erp.AccountCompaniesRow = {}));
-    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
-})(PGMS || (PGMS = {}));
-var PGMS;
-(function (PGMS) {
-    var Erp;
-    (function (Erp) {
-        var AccountAttachmentsForm = /** @class */ (function (_super) {
-            __extends(AccountAttachmentsForm, _super);
-            function AccountAttachmentsForm() {
-                return _super !== null && _super.apply(this, arguments) || this;
-            }
-            AccountAttachmentsForm.formKey = 'Erp.AccountAttachments';
-            return AccountAttachmentsForm;
-        }(Serenity.PrefixedContext));
-        Erp.AccountAttachmentsForm = AccountAttachmentsForm;
-        [,
-            ['Name', function () { return Serenity.StringEditor; }],
-            ['Description', function () { return Serenity.StringEditor; }],
-            ['FIlePath', function () { return Serenity.StringEditor; }],
-            ['AccountId', function () { return Serenity.IntegerEditor; }],
-            ['InsertDate', function () { return Serenity.DateEditor; }],
-            ['InsertUserId', function () { return Serenity.IntegerEditor; }],
-            ['UpdateDate', function () { return Serenity.DateEditor; }],
-            ['UpdateUserId', function () { return Serenity.IntegerEditor; }],
-            ['IsActive', function () { return Serenity.IntegerEditor; }]
-        ].forEach(function (x) { return Object.defineProperty(AccountAttachmentsForm.prototype, x[0], {
-            get: function () {
-                return this.w(x[0], x[1]());
-            },
-            enumerable: true,
-            configurable: true
-        }); });
-    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
-})(PGMS || (PGMS = {}));
-var PGMS;
-(function (PGMS) {
-    var Erp;
-    (function (Erp) {
-        var AccountAttachmentsRow;
-        (function (AccountAttachmentsRow) {
-            AccountAttachmentsRow.idProperty = 'AccountAttachmentId';
-            AccountAttachmentsRow.nameProperty = 'Name';
-            AccountAttachmentsRow.localTextPrefix = 'Erp.AccountAttachments';
-            var Fields;
-            (function (Fields) {
-            })(Fields = AccountAttachmentsRow.Fields || (AccountAttachmentsRow.Fields = {}));
-            [
-                'AccountAttachmentId',
-                'Name',
-                'Description',
-                'FIlePath',
-                'AccountId',
-                'InsertDate',
-                'InsertUserId',
-                'UpdateDate',
-                'UpdateUserId',
-                'IsActive',
-                'AccountName',
-                'AccountPhoneNumber',
-                'AccountIsVip',
-                'AccountPartnerType',
-                'AccountAddress',
-                'AccountCity',
-                'AccountCountry',
-                'AccountInsertDate',
-                'AccountInsertUserId',
-                'AccountUpdateDate',
-                'AccountUpdateUserId',
-                'AccountIsActive'
-            ].forEach(function (x) { return Fields[x] = x; });
-        })(AccountAttachmentsRow = Erp.AccountAttachmentsRow || (Erp.AccountAttachmentsRow = {}));
-    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
-})(PGMS || (PGMS = {}));
-var PGMS;
-(function (PGMS) {
-    var Erp;
-    (function (Erp) {
-        var AccountAttachmentsService;
-        (function (AccountAttachmentsService) {
-            AccountAttachmentsService.baseUrl = 'Erp/AccountAttachments';
-            var Methods;
-            (function (Methods) {
-            })(Methods = AccountAttachmentsService.Methods || (AccountAttachmentsService.Methods = {}));
-            [
-                'Create',
-                'Update',
-                'Delete',
-                'Retrieve',
-                'List'
-            ].forEach(function (x) {
-                AccountAttachmentsService[x] = function (r, s, o) {
-                    return Q.serviceRequest(AccountAttachmentsService.baseUrl + '/' + x, r, s, o);
-                };
-                Methods[x] = AccountAttachmentsService.baseUrl + '/' + x;
-            });
-        })(AccountAttachmentsService = Erp.AccountAttachmentsService || (Erp.AccountAttachmentsService = {}));
-    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
-})(PGMS || (PGMS = {}));
-var PGMS;
-(function (PGMS) {
-    var Erp;
-    (function (Erp) {
-        var AccountAttachmentsDialog = /** @class */ (function (_super) {
-            __extends(AccountAttachmentsDialog, _super);
-            function AccountAttachmentsDialog() {
-                var _this = _super !== null && _super.apply(this, arguments) || this;
-                _this.form = new Erp.AccountAttachmentsForm(_this.idPrefix);
-                return _this;
-            }
-            AccountAttachmentsDialog.prototype.getFormKey = function () { return Erp.AccountAttachmentsForm.formKey; };
-            AccountAttachmentsDialog.prototype.getIdProperty = function () { return Erp.AccountAttachmentsRow.idProperty; };
-            AccountAttachmentsDialog.prototype.getLocalTextPrefix = function () { return Erp.AccountAttachmentsRow.localTextPrefix; };
-            AccountAttachmentsDialog.prototype.getNameProperty = function () { return Erp.AccountAttachmentsRow.nameProperty; };
-            AccountAttachmentsDialog.prototype.getService = function () { return Erp.AccountAttachmentsService.baseUrl; };
-            AccountAttachmentsDialog = __decorate([
-                Serenity.Decorators.registerClass()
-            ], AccountAttachmentsDialog);
-            return AccountAttachmentsDialog;
-        }(Serenity.EntityDialog));
-        Erp.AccountAttachmentsDialog = AccountAttachmentsDialog;
-    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
-})(PGMS || (PGMS = {}));
-var PGMS;
-(function (PGMS) {
-    var Erp;
-    (function (Erp) {
-        var AccountAttachmentsGrid = /** @class */ (function (_super) {
-            __extends(AccountAttachmentsGrid, _super);
-            function AccountAttachmentsGrid(container) {
-                return _super.call(this, container) || this;
-            }
-            AccountAttachmentsGrid.prototype.getColumnsKey = function () { return 'Erp.AccountAttachments'; };
-            AccountAttachmentsGrid.prototype.getDialogType = function () { return Erp.AccountAttachmentsDialog; };
-            AccountAttachmentsGrid.prototype.getIdProperty = function () { return Erp.AccountAttachmentsRow.idProperty; };
-            AccountAttachmentsGrid.prototype.getLocalTextPrefix = function () { return Erp.AccountAttachmentsRow.localTextPrefix; };
-            AccountAttachmentsGrid.prototype.getService = function () { return Erp.AccountAttachmentsService.baseUrl; };
-            AccountAttachmentsGrid = __decorate([
-                Serenity.Decorators.registerClass()
-            ], AccountAttachmentsGrid);
-            return AccountAttachmentsGrid;
-        }(Serenity.EntityGrid));
-        Erp.AccountAttachmentsGrid = AccountAttachmentsGrid;
-    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
-})(PGMS || (PGMS = {}));
-var PGMS;
-(function (PGMS) {
-    var Erp;
-    (function (Erp) {
-        var AccountAttachmentsExtendedDialog = /** @class */ (function (_super) {
-            __extends(AccountAttachmentsExtendedDialog, _super);
-            function AccountAttachmentsExtendedDialog() {
-                return _super.call(this) || this;
-            }
-            AccountAttachmentsExtendedDialog.prototype.updateInterface = function () {
-                _super.prototype.updateInterface.call(this);
-                //Serenity.EditorUtils.setReadOnly(this.form.AccountId, true); 
-            };
-            AccountAttachmentsExtendedDialog = __decorate([
-                Serenity.Decorators.registerClass()
-            ], AccountAttachmentsExtendedDialog);
-            return AccountAttachmentsExtendedDialog;
-        }(Erp.AccountAttachmentsDialog));
-        Erp.AccountAttachmentsExtendedDialog = AccountAttachmentsExtendedDialog;
-    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
-})(PGMS || (PGMS = {}));
-///<reference path="./../AccountAttachments/AccountAttachmentsDialog.ts"/>
-///<reference path="./../AccountAttachments/AccountAttachmentsGrid.ts"/>
-var PGMS;
-(function (PGMS) {
-    var Erp;
-    (function (Erp) {
-        var AccountAttachmentsExtendedGrid = /** @class */ (function (_super) {
-            __extends(AccountAttachmentsExtendedGrid, _super);
-            function AccountAttachmentsExtendedGrid(container) {
-                return _super.call(this, container) || this;
-            }
-            AccountAttachmentsExtendedGrid.prototype.getDialogType = function () { return Erp.AccountAttachmentsExtendedDialog; };
-            AccountAttachmentsExtendedGrid.prototype.getColumns = function () {
-                return _super.prototype.getColumns.call(this);
-            };
-            AccountAttachmentsExtendedGrid.prototype.initEntityDialog = function (itemType, dialog) {
-                _super.prototype.initEntityDialog.call(this, itemType, dialog);
-                Serenity.SubDialogHelper.cascade(dialog, this.element.closest('.ui-dialog'));
-            };
-            AccountAttachmentsExtendedGrid.prototype.addButtonClick = function () {
-                this.editItem({ AccountId: this.accountId });
-            };
-            AccountAttachmentsExtendedGrid.prototype.getInitialTitle = function () {
-                return null;
-            };
-            AccountAttachmentsExtendedGrid.prototype.getGridCanLoad = function () {
-                return _super.prototype.getGridCanLoad.call(this) && !!this.accountId;
-            };
-            Object.defineProperty(AccountAttachmentsExtendedGrid.prototype, "accountId", {
-                get: function () {
-                    return this._accountId;
-                },
-                set: function (value) {
-                    if (this._accountId !== value) {
-                        this._accountId = value;
-                        this.setEquality('AccountId', value);
-                        this.refresh();
+        var OrderDetailsDialog = /** @class */ (function (_super) {
+            __extends(OrderDetailsDialog, _super);
+            function OrderDetailsDialog() {
+                var _this = _super.call(this) || this;
+                _this.form = new Erp.OrderDetailsForm(_this.idPrefix);
+                _this.form = new Erp.OrderDetailsForm(_this.idPrefix);
+                _this.form.ProductId.changeSelect2(function (e) {
+                    var productId = Q.toId(_this.form.ProductId.value);
+                    if (productId != null) {
+                        _this.form.UnitPrice.value = Erp.ProductsRow.getLookup().itemById[productId].UnitPrice;
                     }
-                },
-                enumerable: true,
-                configurable: true
-            });
-            AccountAttachmentsExtendedGrid = __decorate([
+                });
+                _this.form.Discount.addValidationRule(_this.uniqueName, function (e) {
+                    var price = _this.form.UnitPrice.value;
+                    var quantity = _this.form.Quantity.value;
+                    var discount = _this.form.Discount.value;
+                    if (price != null && quantity != null && discount != null &&
+                        discount > 0 && discount >= price * quantity) {
+                        return "Discount can't be higher than total price!";
+                    }
+                });
+                return _this;
+            }
+            OrderDetailsDialog.prototype.getFormKey = function () { return Erp.OrderDetailsForm.formKey; };
+            OrderDetailsDialog.prototype.getLocalTextPrefix = function () { return Erp.OrderDetailsRow.localTextPrefix; };
+            OrderDetailsDialog = __decorate([
                 Serenity.Decorators.registerClass()
-            ], AccountAttachmentsExtendedGrid);
-            return AccountAttachmentsExtendedGrid;
-        }(Erp.AccountAttachmentsGrid));
-        Erp.AccountAttachmentsExtendedGrid = AccountAttachmentsExtendedGrid;
+            ], OrderDetailsDialog);
+            return OrderDetailsDialog;
+        }(PGMS.Common.GridEditorDialog));
+        Erp.OrderDetailsDialog = OrderDetailsDialog;
     })(Erp = PGMS.Erp || (PGMS.Erp = {}));
 })(PGMS || (PGMS = {}));
+/// <reference path="../../Common/Helpers/GridEditorBase.ts" />
 var PGMS;
 (function (PGMS) {
     var Erp;
     (function (Erp) {
-        var CompaniesListFormatter = /** @class */ (function () {
-            function CompaniesListFormatter() {
+        var OrderDetailsEditor = /** @class */ (function (_super) {
+            __extends(OrderDetailsEditor, _super);
+            function OrderDetailsEditor(container) {
+                return _super.call(this, container) || this;
             }
-            CompaniesListFormatter.prototype.format = function (ctx) {
-                var idList = ctx.value;
-                if (!idList || !idList.length)
-                    return "";
-                var byId = Erp.CompaniesRow.getLookup().itemById;
-                var z;
-                return idList.map(function (x) { return ((z = byId[x]) ? z.Name : x); }).join(", ");
+            OrderDetailsEditor.prototype.getColumnsKey = function () { return "Erp.OrderDetails"; };
+            OrderDetailsEditor.prototype.getDialogType = function () { return Erp.OrderDetailsDialog; };
+            OrderDetailsEditor.prototype.getLocalTextPrefix = function () { return Erp.OrderDetailsRow.localTextPrefix; };
+            OrderDetailsEditor.prototype.validateEntity = function (row, id) {
+                row.ProductId = Q.toId(row.ProductId);
+                var sameProduct = Q.tryFirst(this.view.getItems(), function (x) { return x.ProductId === row.ProductId; });
+                if (sameProduct && this.id(sameProduct) !== id) {
+                    Q.alert('This product is already in order details!');
+                    return false;
+                }
+                var productLookup = Erp.ProductsRow.getLookup().itemById[row.ProductId];
+                row.ProductQuantityPerUnit = productLookup.QuantityPerUnit;
+                row.ProductName = productLookup.Name;
+                row.LineTotal = (row.Quantity || 0) * (row.UnitPrice || 0) - (row.Discount || 0);
+                return true;
             };
-            CompaniesListFormatter = __decorate([
-                Serenity.Decorators.registerFormatter()
-            ], CompaniesListFormatter);
-            return CompaniesListFormatter;
-        }());
-        Erp.CompaniesListFormatter = CompaniesListFormatter;
+            OrderDetailsEditor = __decorate([
+                Serenity.Decorators.registerClass()
+            ], OrderDetailsEditor);
+            return OrderDetailsEditor;
+        }(PGMS.Common.GridEditorBase));
+        Erp.OrderDetailsEditor = OrderDetailsEditor;
     })(Erp = PGMS.Erp || (PGMS.Erp = {}));
 })(PGMS || (PGMS = {}));
 var PGMS;
 (function (PGMS) {
     var Erp;
     (function (Erp) {
-        var AccountsListFormatter = /** @class */ (function () {
-            function AccountsListFormatter() {
+        var OrdersDialog = /** @class */ (function (_super) {
+            __extends(OrdersDialog, _super);
+            function OrdersDialog() {
+                var _this = _super !== null && _super.apply(this, arguments) || this;
+                _this.form = new Erp.OrdersForm(_this.idPrefix);
+                return _this;
             }
-            AccountsListFormatter.prototype.format = function (ctx) {
-                var idList = ctx.value;
-                if (!idList || !idList.length)
-                    return "";
-                var byId = Erp.AccountsRow.getLookup().itemById;
-                var z;
-                return idList.map(function (x) { return ((z = byId[x]) ? z.Name : x); }).join(", ");
+            OrdersDialog.prototype.getFormKey = function () { return Erp.OrdersForm.formKey; };
+            OrdersDialog.prototype.getIdProperty = function () { return Erp.OrdersRow.idProperty; };
+            OrdersDialog.prototype.getLocalTextPrefix = function () { return Erp.OrdersRow.localTextPrefix; };
+            OrdersDialog.prototype.getNameProperty = function () { return Erp.OrdersRow.nameProperty; };
+            OrdersDialog.prototype.getService = function () { return Erp.OrdersService.baseUrl; };
+            OrdersDialog = __decorate([
+                Serenity.Decorators.panel(),
+                Serenity.Decorators.registerClass()
+            ], OrdersDialog);
+            return OrdersDialog;
+        }(Serenity.EntityDialog));
+        Erp.OrdersDialog = OrdersDialog;
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var OrdersGrid = /** @class */ (function (_super) {
+            __extends(OrdersGrid, _super);
+            function OrdersGrid(container) {
+                return _super.call(this, container) || this;
+            }
+            OrdersGrid.prototype.getColumnsKey = function () { return 'Erp.Orders'; };
+            OrdersGrid.prototype.getDialogType = function () { return Erp.OrdersDialog; };
+            OrdersGrid.prototype.getIdProperty = function () { return Erp.OrdersRow.idProperty; };
+            OrdersGrid.prototype.getLocalTextPrefix = function () { return Erp.OrdersRow.localTextPrefix; };
+            OrdersGrid.prototype.getService = function () { return Erp.OrdersService.baseUrl; };
+            OrdersGrid.prototype.getItemCssClass = function (item, index) {
+                var klass = "";
+                if (item.AccountIsVip == 1) {
+                    klass += " is-vip";
+                }
+                return Q.trimToNull(klass);
             };
-            AccountsListFormatter = __decorate([
-                Serenity.Decorators.registerFormatter()
-            ], AccountsListFormatter);
-            return AccountsListFormatter;
-        }());
-        Erp.AccountsListFormatter = AccountsListFormatter;
+            OrdersGrid = __decorate([
+                Serenity.Decorators.registerClass()
+            ], OrdersGrid);
+            return OrdersGrid;
+        }(Serenity.EntityGrid));
+        Erp.OrdersGrid = OrdersGrid;
     })(Erp = PGMS.Erp || (PGMS.Erp = {}));
 })(PGMS || (PGMS = {}));
 var PGMS;
 (function (PGMS) {
     var Erp;
     (function (Erp) {
-        var SupplierRepresentativesRow;
-        (function (SupplierRepresentativesRow) {
-            SupplierRepresentativesRow.idProperty = 'RepresentativeId';
-            SupplierRepresentativesRow.localTextPrefix = 'Erp.SupplierRepresentatives';
-            var Fields;
-            (function (Fields) {
-            })(Fields = SupplierRepresentativesRow.Fields || (SupplierRepresentativesRow.Fields = {}));
-            [
-                'RepresentativeId',
-                'AccountId',
-                'SupplierId'
-            ].forEach(function (x) { return Fields[x] = x; });
-        })(SupplierRepresentativesRow = Erp.SupplierRepresentativesRow || (Erp.SupplierRepresentativesRow = {}));
-    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
-})(PGMS || (PGMS = {}));
-var PGMS;
-(function (PGMS) {
-    var Erp;
-    (function (Erp) {
-        var ProductsForm = /** @class */ (function (_super) {
-            __extends(ProductsForm, _super);
-            function ProductsForm() {
-                return _super !== null && _super.apply(this, arguments) || this;
+        var OrderStatusesDialog = /** @class */ (function (_super) {
+            __extends(OrderStatusesDialog, _super);
+            function OrderStatusesDialog() {
+                var _this = _super !== null && _super.apply(this, arguments) || this;
+                _this.form = new Erp.OrderStatusesForm(_this.idPrefix);
+                return _this;
             }
-            ProductsForm.formKey = 'Erp.Products';
-            return ProductsForm;
-        }(Serenity.PrefixedContext));
-        Erp.ProductsForm = ProductsForm;
-        [,
-            ['Name', function () { return Serenity.StringEditor; }],
-            ['ProductImage', function () { return Serenity.StringEditor; }],
-            ['Discontinued', function () { return Serenity.BooleanEditor; }],
-            ['SupplierId', function () { return Serenity.IntegerEditor; }],
-            ['QuantityPerUnit', function () { return Serenity.StringEditor; }],
-            ['UnitPrice', function () { return Serenity.DecimalEditor; }],
-            ['UnitsInStock', function () { return Serenity.IntegerEditor; }],
-            ['UnitsOnOrder', function () { return Serenity.IntegerEditor; }],
-            ['ReorderLevel', function () { return Serenity.IntegerEditor; }],
-            ['InsertDate', function () { return Serenity.DateEditor; }],
-            ['InsertUserId', function () { return Serenity.IntegerEditor; }],
-            ['UpdateDate', function () { return Serenity.DateEditor; }],
-            ['UpdateUserId', function () { return Serenity.IntegerEditor; }],
-            ['IsActive', function () { return Serenity.IntegerEditor; }]
-        ].forEach(function (x) { return Object.defineProperty(ProductsForm.prototype, x[0], {
-            get: function () {
-                return this.w(x[0], x[1]());
-            },
-            enumerable: true,
-            configurable: true
-        }); });
+            OrderStatusesDialog.prototype.getFormKey = function () { return Erp.OrderStatusesForm.formKey; };
+            OrderStatusesDialog.prototype.getIdProperty = function () { return Erp.OrderStatusesRow.idProperty; };
+            OrderStatusesDialog.prototype.getLocalTextPrefix = function () { return Erp.OrderStatusesRow.localTextPrefix; };
+            OrderStatusesDialog.prototype.getNameProperty = function () { return Erp.OrderStatusesRow.nameProperty; };
+            OrderStatusesDialog.prototype.getService = function () { return Erp.OrderStatusesService.baseUrl; };
+            OrderStatusesDialog = __decorate([
+                Serenity.Decorators.registerClass()
+            ], OrderStatusesDialog);
+            return OrderStatusesDialog;
+        }(Serenity.EntityDialog));
+        Erp.OrderStatusesDialog = OrderStatusesDialog;
     })(Erp = PGMS.Erp || (PGMS.Erp = {}));
 })(PGMS || (PGMS = {}));
 var PGMS;
 (function (PGMS) {
     var Erp;
     (function (Erp) {
-        var ProductsRow;
-        (function (ProductsRow) {
-            ProductsRow.idProperty = 'ProductId';
-            ProductsRow.isActiveProperty = 'IsActive';
-            ProductsRow.nameProperty = 'Name';
-            ProductsRow.localTextPrefix = 'Erp.Products';
-            ProductsRow.lookupKey = 'Erp.Products';
-            function getLookup() {
-                return Q.getLookup('Erp.Products');
+        var OrderStatusesGrid = /** @class */ (function (_super) {
+            __extends(OrderStatusesGrid, _super);
+            function OrderStatusesGrid(container) {
+                return _super.call(this, container) || this;
             }
-            ProductsRow.getLookup = getLookup;
-        })(ProductsRow = Erp.ProductsRow || (Erp.ProductsRow = {}));
+            OrderStatusesGrid.prototype.getColumnsKey = function () { return 'Erp.OrderStatuses'; };
+            OrderStatusesGrid.prototype.getDialogType = function () { return Erp.OrderStatusesDialog; };
+            OrderStatusesGrid.prototype.getIdProperty = function () { return Erp.OrderStatusesRow.idProperty; };
+            OrderStatusesGrid.prototype.getLocalTextPrefix = function () { return Erp.OrderStatusesRow.localTextPrefix; };
+            OrderStatusesGrid.prototype.getService = function () { return Erp.OrderStatusesService.baseUrl; };
+            OrderStatusesGrid = __decorate([
+                Serenity.Decorators.registerClass()
+            ], OrderStatusesGrid);
+            return OrderStatusesGrid;
+        }(Serenity.EntityGrid));
+        Erp.OrderStatusesGrid = OrderStatusesGrid;
     })(Erp = PGMS.Erp || (PGMS.Erp = {}));
 })(PGMS || (PGMS = {}));
 var PGMS;
 (function (PGMS) {
     var Erp;
     (function (Erp) {
-        var ProductsService;
-        (function (ProductsService) {
-            ProductsService.baseUrl = 'Erp/Products';
-            var Methods;
-            (function (Methods) {
-            })(Methods = ProductsService.Methods || (ProductsService.Methods = {}));
-            [
-                'Create',
-                'Update',
-                'Delete',
-                'Retrieve',
-                'List'
-            ].forEach(function (x) {
-                ProductsService[x] = function (r, s, o) {
-                    return Q.serviceRequest(ProductsService.baseUrl + '/' + x, r, s, o);
-                };
-                Methods[x] = ProductsService.baseUrl + '/' + x;
-            });
-        })(ProductsService = Erp.ProductsService || (Erp.ProductsService = {}));
+        var PartnerTypesDialog = /** @class */ (function (_super) {
+            __extends(PartnerTypesDialog, _super);
+            function PartnerTypesDialog() {
+                var _this = _super !== null && _super.apply(this, arguments) || this;
+                _this.form = new Erp.PartnerTypesForm(_this.idPrefix);
+                return _this;
+            }
+            PartnerTypesDialog.prototype.getFormKey = function () { return Erp.PartnerTypesForm.formKey; };
+            PartnerTypesDialog.prototype.getIdProperty = function () { return Erp.PartnerTypesRow.idProperty; };
+            PartnerTypesDialog.prototype.getLocalTextPrefix = function () { return Erp.PartnerTypesRow.localTextPrefix; };
+            PartnerTypesDialog.prototype.getNameProperty = function () { return Erp.PartnerTypesRow.nameProperty; };
+            PartnerTypesDialog.prototype.getService = function () { return Erp.PartnerTypesService.baseUrl; };
+            PartnerTypesDialog = __decorate([
+                Serenity.Decorators.registerClass()
+            ], PartnerTypesDialog);
+            return PartnerTypesDialog;
+        }(Serenity.EntityDialog));
+        Erp.PartnerTypesDialog = PartnerTypesDialog;
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var PartnerTypesGrid = /** @class */ (function (_super) {
+            __extends(PartnerTypesGrid, _super);
+            function PartnerTypesGrid(container) {
+                return _super.call(this, container) || this;
+            }
+            PartnerTypesGrid.prototype.getColumnsKey = function () { return 'Erp.PartnerTypes'; };
+            PartnerTypesGrid.prototype.getDialogType = function () { return Erp.PartnerTypesDialog; };
+            PartnerTypesGrid.prototype.getIdProperty = function () { return Erp.PartnerTypesRow.idProperty; };
+            PartnerTypesGrid.prototype.getLocalTextPrefix = function () { return Erp.PartnerTypesRow.localTextPrefix; };
+            PartnerTypesGrid.prototype.getService = function () { return Erp.PartnerTypesService.baseUrl; };
+            PartnerTypesGrid = __decorate([
+                Serenity.Decorators.registerClass()
+            ], PartnerTypesGrid);
+            return PartnerTypesGrid;
+        }(Serenity.EntityGrid));
+        Erp.PartnerTypesGrid = PartnerTypesGrid;
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var PaymentTypesDialog = /** @class */ (function (_super) {
+            __extends(PaymentTypesDialog, _super);
+            function PaymentTypesDialog() {
+                var _this = _super !== null && _super.apply(this, arguments) || this;
+                _this.form = new Erp.PaymentTypesForm(_this.idPrefix);
+                return _this;
+            }
+            PaymentTypesDialog.prototype.getFormKey = function () { return Erp.PaymentTypesForm.formKey; };
+            PaymentTypesDialog.prototype.getIdProperty = function () { return Erp.PaymentTypesRow.idProperty; };
+            PaymentTypesDialog.prototype.getLocalTextPrefix = function () { return Erp.PaymentTypesRow.localTextPrefix; };
+            PaymentTypesDialog.prototype.getNameProperty = function () { return Erp.PaymentTypesRow.nameProperty; };
+            PaymentTypesDialog.prototype.getService = function () { return Erp.PaymentTypesService.baseUrl; };
+            PaymentTypesDialog = __decorate([
+                Serenity.Decorators.registerClass()
+            ], PaymentTypesDialog);
+            return PaymentTypesDialog;
+        }(Serenity.EntityDialog));
+        Erp.PaymentTypesDialog = PaymentTypesDialog;
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var PaymentTypesGrid = /** @class */ (function (_super) {
+            __extends(PaymentTypesGrid, _super);
+            function PaymentTypesGrid(container) {
+                return _super.call(this, container) || this;
+            }
+            PaymentTypesGrid.prototype.getColumnsKey = function () { return 'Erp.PaymentTypes'; };
+            PaymentTypesGrid.prototype.getDialogType = function () { return Erp.PaymentTypesDialog; };
+            PaymentTypesGrid.prototype.getIdProperty = function () { return Erp.PaymentTypesRow.idProperty; };
+            PaymentTypesGrid.prototype.getLocalTextPrefix = function () { return Erp.PaymentTypesRow.localTextPrefix; };
+            PaymentTypesGrid.prototype.getService = function () { return Erp.PaymentTypesService.baseUrl; };
+            PaymentTypesGrid = __decorate([
+                Serenity.Decorators.registerClass()
+            ], PaymentTypesGrid);
+            return PaymentTypesGrid;
+        }(Serenity.EntityGrid));
+        Erp.PaymentTypesGrid = PaymentTypesGrid;
     })(Erp = PGMS.Erp || (PGMS.Erp = {}));
 })(PGMS || (PGMS = {}));
 var PGMS;
@@ -4057,585 +4265,246 @@ var PGMS;
 (function (PGMS) {
     var Erp;
     (function (Erp) {
-        var PaymentTypesForm = /** @class */ (function (_super) {
-            __extends(PaymentTypesForm, _super);
-            function PaymentTypesForm() {
-                return _super !== null && _super.apply(this, arguments) || this;
-            }
-            PaymentTypesForm.formKey = 'Erp.PaymentTypes';
-            return PaymentTypesForm;
-        }(Serenity.PrefixedContext));
-        Erp.PaymentTypesForm = PaymentTypesForm;
-        [,
-            ['Name', function () { return Serenity.StringEditor; }],
-            ['InsertDate', function () { return Serenity.DateEditor; }],
-            ['InsertUserId', function () { return Serenity.IntegerEditor; }],
-            ['UpdateDate', function () { return Serenity.DateEditor; }],
-            ['UpdateUserId', function () { return Serenity.IntegerEditor; }],
-            ['IsActive', function () { return Serenity.IntegerEditor; }]
-        ].forEach(function (x) { return Object.defineProperty(PaymentTypesForm.prototype, x[0], {
-            get: function () {
-                return this.w(x[0], x[1]());
-            },
-            enumerable: true,
-            configurable: true
-        }); });
-    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
-})(PGMS || (PGMS = {}));
-var PGMS;
-(function (PGMS) {
-    var Erp;
-    (function (Erp) {
-        var PaymentTypesRow;
-        (function (PaymentTypesRow) {
-            PaymentTypesRow.idProperty = 'PaymentTypeId';
-            PaymentTypesRow.nameProperty = 'Name';
-            PaymentTypesRow.localTextPrefix = 'Erp.PaymentTypes';
-            var Fields;
-            (function (Fields) {
-            })(Fields = PaymentTypesRow.Fields || (PaymentTypesRow.Fields = {}));
-            [
-                'PaymentTypeId',
-                'Name',
-                'InsertDate',
-                'InsertUserId',
-                'UpdateDate',
-                'UpdateUserId',
-                'IsActive'
-            ].forEach(function (x) { return Fields[x] = x; });
-        })(PaymentTypesRow = Erp.PaymentTypesRow || (Erp.PaymentTypesRow = {}));
-    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
-})(PGMS || (PGMS = {}));
-var PGMS;
-(function (PGMS) {
-    var Erp;
-    (function (Erp) {
-        var PaymentTypesService;
-        (function (PaymentTypesService) {
-            PaymentTypesService.baseUrl = 'Erp/PaymentTypes';
-            var Methods;
-            (function (Methods) {
-            })(Methods = PaymentTypesService.Methods || (PaymentTypesService.Methods = {}));
-            [
-                'Create',
-                'Update',
-                'Delete',
-                'Retrieve',
-                'List'
-            ].forEach(function (x) {
-                PaymentTypesService[x] = function (r, s, o) {
-                    return Q.serviceRequest(PaymentTypesService.baseUrl + '/' + x, r, s, o);
-                };
-                Methods[x] = PaymentTypesService.baseUrl + '/' + x;
-            });
-        })(PaymentTypesService = Erp.PaymentTypesService || (Erp.PaymentTypesService = {}));
-    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
-})(PGMS || (PGMS = {}));
-var PGMS;
-(function (PGMS) {
-    var Erp;
-    (function (Erp) {
-        var PaymentTypesDialog = /** @class */ (function (_super) {
-            __extends(PaymentTypesDialog, _super);
-            function PaymentTypesDialog() {
-                var _this = _super !== null && _super.apply(this, arguments) || this;
-                _this.form = new Erp.PaymentTypesForm(_this.idPrefix);
-                return _this;
-            }
-            PaymentTypesDialog.prototype.getFormKey = function () { return Erp.PaymentTypesForm.formKey; };
-            PaymentTypesDialog.prototype.getIdProperty = function () { return Erp.PaymentTypesRow.idProperty; };
-            PaymentTypesDialog.prototype.getLocalTextPrefix = function () { return Erp.PaymentTypesRow.localTextPrefix; };
-            PaymentTypesDialog.prototype.getNameProperty = function () { return Erp.PaymentTypesRow.nameProperty; };
-            PaymentTypesDialog.prototype.getService = function () { return Erp.PaymentTypesService.baseUrl; };
-            PaymentTypesDialog = __decorate([
-                Serenity.Decorators.registerClass()
-            ], PaymentTypesDialog);
-            return PaymentTypesDialog;
-        }(Serenity.EntityDialog));
-        Erp.PaymentTypesDialog = PaymentTypesDialog;
-    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
-})(PGMS || (PGMS = {}));
-var PGMS;
-(function (PGMS) {
-    var Erp;
-    (function (Erp) {
-        var PaymentTypesGrid = /** @class */ (function (_super) {
-            __extends(PaymentTypesGrid, _super);
-            function PaymentTypesGrid(container) {
-                return _super.call(this, container) || this;
-            }
-            PaymentTypesGrid.prototype.getColumnsKey = function () { return 'Erp.PaymentTypes'; };
-            PaymentTypesGrid.prototype.getDialogType = function () { return Erp.PaymentTypesDialog; };
-            PaymentTypesGrid.prototype.getIdProperty = function () { return Erp.PaymentTypesRow.idProperty; };
-            PaymentTypesGrid.prototype.getLocalTextPrefix = function () { return Erp.PaymentTypesRow.localTextPrefix; };
-            PaymentTypesGrid.prototype.getService = function () { return Erp.PaymentTypesService.baseUrl; };
-            PaymentTypesGrid = __decorate([
-                Serenity.Decorators.registerClass()
-            ], PaymentTypesGrid);
-            return PaymentTypesGrid;
-        }(Serenity.EntityGrid));
-        Erp.PaymentTypesGrid = PaymentTypesGrid;
-    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
-})(PGMS || (PGMS = {}));
-var PGMS;
-(function (PGMS) {
-    var Erp;
-    (function (Erp) {
-        var OrderStatusesForm = /** @class */ (function (_super) {
-            __extends(OrderStatusesForm, _super);
-            function OrderStatusesForm() {
-                return _super !== null && _super.apply(this, arguments) || this;
-            }
-            OrderStatusesForm.formKey = 'Erp.OrderStatuses';
-            return OrderStatusesForm;
-        }(Serenity.PrefixedContext));
-        Erp.OrderStatusesForm = OrderStatusesForm;
-        [,
-            ['Name', function () { return Serenity.StringEditor; }],
-            ['InsertDate', function () { return Serenity.DateEditor; }],
-            ['InsertUserId', function () { return Serenity.IntegerEditor; }],
-            ['UpdateDate', function () { return Serenity.DateEditor; }],
-            ['UpdateUserId', function () { return Serenity.IntegerEditor; }],
-            ['IsActive', function () { return Serenity.IntegerEditor; }]
-        ].forEach(function (x) { return Object.defineProperty(OrderStatusesForm.prototype, x[0], {
-            get: function () {
-                return this.w(x[0], x[1]());
-            },
-            enumerable: true,
-            configurable: true
-        }); });
-    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
-})(PGMS || (PGMS = {}));
-var PGMS;
-(function (PGMS) {
-    var Erp;
-    (function (Erp) {
-        var OrderStatusesRow;
-        (function (OrderStatusesRow) {
-            OrderStatusesRow.idProperty = 'OrderStatusId';
-            OrderStatusesRow.nameProperty = 'Name';
-            OrderStatusesRow.localTextPrefix = 'Erp.OrderStatuses';
-            var Fields;
-            (function (Fields) {
-            })(Fields = OrderStatusesRow.Fields || (OrderStatusesRow.Fields = {}));
-            [
-                'OrderStatusId',
-                'Name',
-                'InsertDate',
-                'InsertUserId',
-                'UpdateDate',
-                'UpdateUserId',
-                'IsActive'
-            ].forEach(function (x) { return Fields[x] = x; });
-        })(OrderStatusesRow = Erp.OrderStatusesRow || (Erp.OrderStatusesRow = {}));
-    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
-})(PGMS || (PGMS = {}));
-var PGMS;
-(function (PGMS) {
-    var Erp;
-    (function (Erp) {
-        var OrderStatusesService;
-        (function (OrderStatusesService) {
-            OrderStatusesService.baseUrl = 'Erp/OrderStatuses';
-            var Methods;
-            (function (Methods) {
-            })(Methods = OrderStatusesService.Methods || (OrderStatusesService.Methods = {}));
-            [
-                'Create',
-                'Update',
-                'Delete',
-                'Retrieve',
-                'List'
-            ].forEach(function (x) {
-                OrderStatusesService[x] = function (r, s, o) {
-                    return Q.serviceRequest(OrderStatusesService.baseUrl + '/' + x, r, s, o);
-                };
-                Methods[x] = OrderStatusesService.baseUrl + '/' + x;
-            });
-        })(OrderStatusesService = Erp.OrderStatusesService || (Erp.OrderStatusesService = {}));
-    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
-})(PGMS || (PGMS = {}));
-var PGMS;
-(function (PGMS) {
-    var Erp;
-    (function (Erp) {
-        var OrderStatusesDialog = /** @class */ (function (_super) {
-            __extends(OrderStatusesDialog, _super);
-            function OrderStatusesDialog() {
-                var _this = _super !== null && _super.apply(this, arguments) || this;
-                _this.form = new Erp.OrderStatusesForm(_this.idPrefix);
-                return _this;
-            }
-            OrderStatusesDialog.prototype.getFormKey = function () { return Erp.OrderStatusesForm.formKey; };
-            OrderStatusesDialog.prototype.getIdProperty = function () { return Erp.OrderStatusesRow.idProperty; };
-            OrderStatusesDialog.prototype.getLocalTextPrefix = function () { return Erp.OrderStatusesRow.localTextPrefix; };
-            OrderStatusesDialog.prototype.getNameProperty = function () { return Erp.OrderStatusesRow.nameProperty; };
-            OrderStatusesDialog.prototype.getService = function () { return Erp.OrderStatusesService.baseUrl; };
-            OrderStatusesDialog = __decorate([
-                Serenity.Decorators.registerClass()
-            ], OrderStatusesDialog);
-            return OrderStatusesDialog;
-        }(Serenity.EntityDialog));
-        Erp.OrderStatusesDialog = OrderStatusesDialog;
-    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
-})(PGMS || (PGMS = {}));
-var PGMS;
-(function (PGMS) {
-    var Erp;
-    (function (Erp) {
-        var OrderStatusesGrid = /** @class */ (function (_super) {
-            __extends(OrderStatusesGrid, _super);
-            function OrderStatusesGrid(container) {
-                return _super.call(this, container) || this;
-            }
-            OrderStatusesGrid.prototype.getColumnsKey = function () { return 'Erp.OrderStatuses'; };
-            OrderStatusesGrid.prototype.getDialogType = function () { return Erp.OrderStatusesDialog; };
-            OrderStatusesGrid.prototype.getIdProperty = function () { return Erp.OrderStatusesRow.idProperty; };
-            OrderStatusesGrid.prototype.getLocalTextPrefix = function () { return Erp.OrderStatusesRow.localTextPrefix; };
-            OrderStatusesGrid.prototype.getService = function () { return Erp.OrderStatusesService.baseUrl; };
-            OrderStatusesGrid = __decorate([
-                Serenity.Decorators.registerClass()
-            ], OrderStatusesGrid);
-            return OrderStatusesGrid;
-        }(Serenity.EntityGrid));
-        Erp.OrderStatusesGrid = OrderStatusesGrid;
-    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
-})(PGMS || (PGMS = {}));
-var PGMS;
-(function (PGMS) {
-    var Erp;
-    (function (Erp) {
-        var OrdersForm = /** @class */ (function (_super) {
-            __extends(OrdersForm, _super);
-            function OrdersForm() {
-                return _super !== null && _super.apply(this, arguments) || this;
-            }
-            OrdersForm.formKey = 'Erp.Orders';
-            return OrdersForm;
-        }(Serenity.PrefixedContext));
-        Erp.OrdersForm = OrdersForm;
-        [,
-            ['AccountId', function () { return Serenity.IntegerEditor; }],
-            ['CompanyId', function () { return Serenity.IntegerEditor; }],
-            ['PaymentTypeId', function () { return Serenity.IntegerEditor; }],
-            ['Width', function () { return Serenity.IntegerEditor; }],
-            ['Height', function () { return Serenity.IntegerEditor; }],
-            ['OrderDate', function () { return Serenity.DateEditor; }],
-            ['ShippedDate', function () { return Serenity.DateEditor; }],
-            ['ShipName', function () { return Serenity.StringEditor; }],
-            ['ShipAddress', function () { return Serenity.StringEditor; }],
-            ['ShipCity', function () { return Serenity.StringEditor; }],
-            ['ShipCountry', function () { return Serenity.StringEditor; }],
-            ['UserId', function () { return Serenity.IntegerEditor; }],
-            ['OrderStatusId', function () { return Serenity.IntegerEditor; }],
-            ['InsertDate', function () { return Serenity.DateEditor; }],
-            ['InsertUserId', function () { return Serenity.IntegerEditor; }],
-            ['UpdateDate', function () { return Serenity.DateEditor; }],
-            ['UpdateUserId', function () { return Serenity.IntegerEditor; }],
-            ['IsActive', function () { return Serenity.IntegerEditor; }]
-        ].forEach(function (x) { return Object.defineProperty(OrdersForm.prototype, x[0], {
-            get: function () {
-                return this.w(x[0], x[1]());
-            },
-            enumerable: true,
-            configurable: true
-        }); });
-    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
-})(PGMS || (PGMS = {}));
-var PGMS;
-(function (PGMS) {
-    var Erp;
-    (function (Erp) {
-        var OrdersRow;
-        (function (OrdersRow) {
-            OrdersRow.idProperty = 'OrderId';
-            OrdersRow.nameProperty = 'ShipName';
-            OrdersRow.localTextPrefix = 'Erp.Orders';
-            var Fields;
-            (function (Fields) {
-            })(Fields = OrdersRow.Fields || (OrdersRow.Fields = {}));
-            [
-                'OrderId',
-                'AccountId',
-                'CompanyId',
-                'PaymentTypeId',
-                'Width',
-                'Height',
-                'OrderDate',
-                'ShippedDate',
-                'ShipName',
-                'ShipAddress',
-                'ShipCity',
-                'ShipCountry',
-                'UserId',
-                'OrderStatusId',
-                'InsertDate',
-                'InsertUserId',
-                'UpdateDate',
-                'UpdateUserId',
-                'IsActive',
-                'AccountName',
-                'AccountPhoneNumber',
-                'AccountIsVip',
-                'AccountPartnerType',
-                'AccountAddress',
-                'AccountCity',
-                'AccountCountry',
-                'AccountInsertDate',
-                'AccountInsertUserId',
-                'AccountUpdateDate',
-                'AccountUpdateUserId',
-                'AccountIsActive',
-                'CompanyName',
-                'CompanyPhoneNumber',
-                'CompanyAddress',
-                'CompanyCity',
-                'CompanyCountry',
-                'CompanyEik',
-                'CompanyMol',
-                'CompanyIban',
-                'CompanyBankName',
-                'CompanyBankSwift',
-                'CompanyInsertDate',
-                'CompanyInsertUserId',
-                'CompanyUpdateDate',
-                'CompanyUpdateUserId',
-                'CompanyIsActive',
-                'PaymentTypeName',
-                'PaymentTypeInsertDate',
-                'PaymentTypeInsertUserId',
-                'PaymentTypeUpdateDate',
-                'PaymentTypeUpdateUserId',
-                'PaymentTypeIsActive',
-                'UserUsername',
-                'UserDisplayName',
-                'UserEmail',
-                'UserSource',
-                'UserPasswordHash',
-                'UserPasswordSalt',
-                'UserLastDirectoryUpdate',
-                'UserUserImage',
-                'UserInsertDate',
-                'UserInsertUserId',
-                'UserUpdateDate',
-                'UserUpdateUserId',
-                'UserIsActive',
-                'OrderStatusName',
-                'OrderStatusInsertDate',
-                'OrderStatusInsertUserId',
-                'OrderStatusUpdateDate',
-                'OrderStatusUpdateUserId',
-                'OrderStatusIsActive'
-            ].forEach(function (x) { return Fields[x] = x; });
-        })(OrdersRow = Erp.OrdersRow || (Erp.OrdersRow = {}));
-    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
-})(PGMS || (PGMS = {}));
-var PGMS;
-(function (PGMS) {
-    var Erp;
-    (function (Erp) {
-        var OrdersService;
-        (function (OrdersService) {
-            OrdersService.baseUrl = 'Erp/Orders';
-            var Methods;
-            (function (Methods) {
-            })(Methods = OrdersService.Methods || (OrdersService.Methods = {}));
-            [
-                'Create',
-                'Update',
-                'Delete',
-                'Retrieve',
-                'List'
-            ].forEach(function (x) {
-                OrdersService[x] = function (r, s, o) {
-                    return Q.serviceRequest(OrdersService.baseUrl + '/' + x, r, s, o);
-                };
-                Methods[x] = OrdersService.baseUrl + '/' + x;
-            });
-        })(OrdersService = Erp.OrdersService || (Erp.OrdersService = {}));
-    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
-})(PGMS || (PGMS = {}));
-var PGMS;
-(function (PGMS) {
-    var Erp;
-    (function (Erp) {
-        var OrdersDialog = /** @class */ (function (_super) {
-            __extends(OrdersDialog, _super);
-            function OrdersDialog() {
-                var _this = _super !== null && _super.apply(this, arguments) || this;
-                _this.form = new Erp.OrdersForm(_this.idPrefix);
-                return _this;
-            }
-            OrdersDialog.prototype.getFormKey = function () { return Erp.OrdersForm.formKey; };
-            OrdersDialog.prototype.getIdProperty = function () { return Erp.OrdersRow.idProperty; };
-            OrdersDialog.prototype.getLocalTextPrefix = function () { return Erp.OrdersRow.localTextPrefix; };
-            OrdersDialog.prototype.getNameProperty = function () { return Erp.OrdersRow.nameProperty; };
-            OrdersDialog.prototype.getService = function () { return Erp.OrdersService.baseUrl; };
-            OrdersDialog = __decorate([
-                Serenity.Decorators.panel(),
-                Serenity.Decorators.registerClass()
-            ], OrdersDialog);
-            return OrdersDialog;
-        }(Serenity.EntityDialog));
-        Erp.OrdersDialog = OrdersDialog;
-    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
-})(PGMS || (PGMS = {}));
-var PGMS;
-(function (PGMS) {
-    var Erp;
-    (function (Erp) {
-        var OrdersGrid = /** @class */ (function (_super) {
-            __extends(OrdersGrid, _super);
-            function OrdersGrid(container) {
-                return _super.call(this, container) || this;
-            }
-            OrdersGrid.prototype.getColumnsKey = function () { return 'Erp.Orders'; };
-            OrdersGrid.prototype.getDialogType = function () { return Erp.OrdersDialog; };
-            OrdersGrid.prototype.getIdProperty = function () { return Erp.OrdersRow.idProperty; };
-            OrdersGrid.prototype.getLocalTextPrefix = function () { return Erp.OrdersRow.localTextPrefix; };
-            OrdersGrid.prototype.getService = function () { return Erp.OrdersService.baseUrl; };
-            OrdersGrid = __decorate([
-                Serenity.Decorators.registerClass()
-            ], OrdersGrid);
-            return OrdersGrid;
-        }(Serenity.EntityGrid));
-        Erp.OrdersGrid = OrdersGrid;
-    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
-})(PGMS || (PGMS = {}));
-var PGMS;
-(function (PGMS) {
-    var Erp;
-    (function (Erp) {
-        var OrderDetailsForm = /** @class */ (function (_super) {
-            __extends(OrderDetailsForm, _super);
-            function OrderDetailsForm(prefix) {
-                var _this = _super.call(this, prefix) || this;
-                if (!OrderDetailsForm.init) {
-                    OrderDetailsForm.init = true;
-                    var s = Serenity;
-                    var w0 = s.LookupEditor;
-                    var w1 = s.DecimalEditor;
-                    var w2 = s.IntegerEditor;
-                    Q.initFormType(OrderDetailsForm, [
-                        'ProductId', w0,
-                        'UnitPrice', w1,
-                        'Quantity', w2,
-                        'Discount', w1
-                    ]);
-                }
-                return _this;
-            }
-            OrderDetailsForm.formKey = 'Erp.OrderDetails';
-            return OrderDetailsForm;
-        }(Serenity.PrefixedContext));
-        Erp.OrderDetailsForm = OrderDetailsForm;
-    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
-})(PGMS || (PGMS = {}));
-var PGMS;
-(function (PGMS) {
-    var Erp;
-    (function (Erp) {
-        var OrderDetailsRow;
-        (function (OrderDetailsRow) {
-            OrderDetailsRow.idProperty = 'OrderDetailId';
-            OrderDetailsRow.localTextPrefix = 'Erp.OrderDetails';
-        })(OrderDetailsRow = Erp.OrderDetailsRow || (Erp.OrderDetailsRow = {}));
-    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
-})(PGMS || (PGMS = {}));
-var PGMS;
-(function (PGMS) {
-    var Erp;
-    (function (Erp) {
-        var OrderDetailsService;
-        (function (OrderDetailsService) {
-            OrderDetailsService.baseUrl = 'Erp/OrderDetails';
-            var Methods;
-            (function (Methods) {
-            })(Methods = OrderDetailsService.Methods || (OrderDetailsService.Methods = {}));
-            [
-                'Create',
-                'Update',
-                'Delete',
-                'Retrieve',
-                'List'
-            ].forEach(function (x) {
-                OrderDetailsService[x] = function (r, s, o) {
-                    return Q.serviceRequest(OrderDetailsService.baseUrl + '/' + x, r, s, o);
-                };
-                Methods[x] = OrderDetailsService.baseUrl + '/' + x;
-            });
-        })(OrderDetailsService = Erp.OrderDetailsService || (Erp.OrderDetailsService = {}));
-    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
-})(PGMS || (PGMS = {}));
-var PGMS;
-(function (PGMS) {
-    var Erp;
-    (function (Erp) {
-        var OrderDetailsDialog = /** @class */ (function (_super) {
-            __extends(OrderDetailsDialog, _super);
-            function OrderDetailsDialog() {
+        var SuppliersDialog = /** @class */ (function (_super) {
+            __extends(SuppliersDialog, _super);
+            function SuppliersDialog() {
                 var _this = _super.call(this) || this;
-                _this.form = new Erp.OrderDetailsForm(_this.idPrefix);
-                _this.form = new Erp.OrderDetailsForm(_this.idPrefix);
-                _this.form.ProductId.changeSelect2(function (e) {
-                    var productId = Q.toId(_this.form.ProductId.value);
-                    if (productId != null) {
-                        _this.form.UnitPrice.value = Erp.ProductsRow.getLookup().itemById[productId].UnitPrice;
-                    }
-                });
-                _this.form.Discount.addValidationRule(_this.uniqueName, function (e) {
-                    var price = _this.form.UnitPrice.value;
-                    var quantity = _this.form.Quantity.value;
-                    var discount = _this.form.Discount.value;
-                    if (price != null && quantity != null && discount != null &&
-                        discount > 0 && discount >= price * quantity) {
-                        return "Discount can't be higher than total price!";
-                    }
-                });
+                _this.form = new Erp.SuppliersForm(_this.idPrefix);
+                _this.byId('NoteList').closest('.field').hide().end().appendTo(_this.byId('TabNotes'));
+                PGMS.DialogUtils.pendingChangesConfirmation(_this.element, function () { return _this.getSaveState() != _this.loadedState; });
+                _this.productsGrid = new Erp.ProductSuppliersdGrid(_this.byId("ProductsPropertyGrid"));
+                _this.productsGrid.element.flexHeightOnly(1);
                 return _this;
             }
-            OrderDetailsDialog.prototype.getFormKey = function () { return Erp.OrderDetailsForm.formKey; };
-            OrderDetailsDialog.prototype.getLocalTextPrefix = function () { return Erp.OrderDetailsRow.localTextPrefix; };
-            OrderDetailsDialog = __decorate([
+            SuppliersDialog.prototype.getFormKey = function () { return Erp.SuppliersForm.formKey; };
+            SuppliersDialog.prototype.getIdProperty = function () { return Erp.SuppliersRow.idProperty; };
+            SuppliersDialog.prototype.getLocalTextPrefix = function () { return Erp.SuppliersRow.localTextPrefix; };
+            SuppliersDialog.prototype.getNameProperty = function () { return Erp.SuppliersRow.nameProperty; };
+            SuppliersDialog.prototype.getService = function () { return Erp.SuppliersService.baseUrl; };
+            SuppliersDialog.prototype.loadEntity = function (entity) {
+                _super.prototype.loadEntity.call(this, entity);
+                Serenity.TabsExtensions.setDisabled(this.tabs, 'Products', this.isNewOrDeleted());
+                Serenity.TabsExtensions.setDisabled(this.tabs, 'Notes', this.isNewOrDeleted());
+                this.productsGrid.supplierId = entity.SupplierId;
+            };
+            SuppliersDialog.prototype.getSaveState = function () {
+                try {
+                    return $.toJSON(this.getSaveEntity());
+                }
+                catch (e) {
+                    return null;
+                }
+            };
+            SuppliersDialog.prototype.loadResponse = function (data) {
+                _super.prototype.loadResponse.call(this, data);
+                this.loadedState = this.getSaveState();
+            };
+            SuppliersDialog = __decorate([
                 Serenity.Decorators.registerClass()
-            ], OrderDetailsDialog);
-            return OrderDetailsDialog;
-        }(PGMS.Common.GridEditorDialog));
-        Erp.OrderDetailsDialog = OrderDetailsDialog;
+            ], SuppliersDialog);
+            return SuppliersDialog;
+        }(Serenity.EntityDialog));
+        Erp.SuppliersDialog = SuppliersDialog;
     })(Erp = PGMS.Erp || (PGMS.Erp = {}));
 })(PGMS || (PGMS = {}));
-/// <reference path="../../Common/Helpers/GridEditorBase.ts" />
 var PGMS;
 (function (PGMS) {
     var Erp;
     (function (Erp) {
-        var OrderDetailsEditor = /** @class */ (function (_super) {
-            __extends(OrderDetailsEditor, _super);
-            function OrderDetailsEditor(container) {
+        var SuppliersGrid = /** @class */ (function (_super) {
+            __extends(SuppliersGrid, _super);
+            function SuppliersGrid(container) {
                 return _super.call(this, container) || this;
             }
-            OrderDetailsEditor.prototype.getColumnsKey = function () { return "Erp.OrderDetails"; };
-            OrderDetailsEditor.prototype.getDialogType = function () { return Erp.OrderDetailsDialog; };
-            OrderDetailsEditor.prototype.getLocalTextPrefix = function () { return Erp.OrderDetailsRow.localTextPrefix; };
-            OrderDetailsEditor.prototype.validateEntity = function (row, id) {
-                row.ProductId = Q.toId(row.ProductId);
-                var sameProduct = Q.tryFirst(this.view.getItems(), function (x) { return x.ProductId === row.ProductId; });
-                if (sameProduct && this.id(sameProduct) !== id) {
-                    Q.alert('This product is already in order details!');
-                    return false;
-                }
-                var productLookup = Erp.ProductsRow.getLookup().itemById[row.ProductId];
-                row.ProductQuantityPerUnit = productLookup.QuantityPerUnit;
-                row.ProductName = productLookup.Name;
-                row.LineTotal = (row.Quantity || 0) * (row.UnitPrice || 0) - (row.Discount || 0);
-                return true;
-            };
-            OrderDetailsEditor = __decorate([
+            SuppliersGrid.prototype.getColumnsKey = function () { return 'Erp.Suppliers'; };
+            SuppliersGrid.prototype.getDialogType = function () { return Erp.SuppliersDialog; };
+            SuppliersGrid.prototype.getIdProperty = function () { return Erp.SuppliersRow.idProperty; };
+            SuppliersGrid.prototype.getLocalTextPrefix = function () { return Erp.SuppliersRow.localTextPrefix; };
+            SuppliersGrid.prototype.getService = function () { return Erp.SuppliersService.baseUrl; };
+            SuppliersGrid = __decorate([
                 Serenity.Decorators.registerClass()
-            ], OrderDetailsEditor);
-            return OrderDetailsEditor;
-        }(PGMS.Common.GridEditorBase));
-        Erp.OrderDetailsEditor = OrderDetailsEditor;
+            ], SuppliersGrid);
+            return SuppliersGrid;
+        }(Serenity.EntityGrid));
+        Erp.SuppliersGrid = SuppliersGrid;
     })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Membership;
+    (function (Membership) {
+        var ChangePasswordPanel = /** @class */ (function (_super) {
+            __extends(ChangePasswordPanel, _super);
+            function ChangePasswordPanel(container) {
+                var _this = _super.call(this, container) || this;
+                _this.form = new Membership.ChangePasswordForm(_this.idPrefix);
+                _this.form.NewPassword.addValidationRule(_this.uniqueName, function (e) {
+                    if (_this.form.w('ConfirmPassword', Serenity.PasswordEditor).value.length < 7) {
+                        return Q.format(Q.text('Validation.MinRequiredPasswordLength'), 7);
+                    }
+                });
+                _this.form.ConfirmPassword.addValidationRule(_this.uniqueName, function (e) {
+                    if (_this.form.ConfirmPassword.value !== _this.form.NewPassword.value) {
+                        return Q.text('Validation.PasswordConfirm');
+                    }
+                });
+                _this.byId('SubmitButton').click(function (e) {
+                    e.preventDefault();
+                    if (!_this.validateForm()) {
+                        return;
+                    }
+                    var request = _this.getSaveEntity();
+                    Q.serviceCall({
+                        url: Q.resolveUrl('~/Account/ChangePassword'),
+                        request: request,
+                        onSuccess: function (response) {
+                            Q.information(Q.text('Forms.Membership.ChangePassword.Success'), function () {
+                                window.location.href = Q.resolveUrl('~/');
+                            });
+                        }
+                    });
+                });
+                return _this;
+            }
+            ChangePasswordPanel.prototype.getFormKey = function () { return Membership.ChangePasswordForm.formKey; };
+            ChangePasswordPanel = __decorate([
+                Serenity.Decorators.registerClass()
+            ], ChangePasswordPanel);
+            return ChangePasswordPanel;
+        }(Serenity.PropertyPanel));
+        Membership.ChangePasswordPanel = ChangePasswordPanel;
+    })(Membership = PGMS.Membership || (PGMS.Membership = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Membership;
+    (function (Membership) {
+        var ForgotPasswordPanel = /** @class */ (function (_super) {
+            __extends(ForgotPasswordPanel, _super);
+            function ForgotPasswordPanel(container) {
+                var _this = _super.call(this, container) || this;
+                _this.form = new Membership.ForgotPasswordForm(_this.idPrefix);
+                _this.byId('SubmitButton').click(function (e) {
+                    e.preventDefault();
+                    if (!_this.validateForm()) {
+                        return;
+                    }
+                    var request = _this.getSaveEntity();
+                    Q.serviceCall({
+                        url: Q.resolveUrl('~/Account/ForgotPassword'),
+                        request: request,
+                        onSuccess: function (response) {
+                            Q.information(Q.text('Forms.Membership.ForgotPassword.Success'), function () {
+                                window.location.href = Q.resolveUrl('~/');
+                            });
+                        }
+                    });
+                });
+                return _this;
+            }
+            ForgotPasswordPanel.prototype.getFormKey = function () { return Membership.ForgotPasswordForm.formKey; };
+            ForgotPasswordPanel = __decorate([
+                Serenity.Decorators.registerClass()
+            ], ForgotPasswordPanel);
+            return ForgotPasswordPanel;
+        }(Serenity.PropertyPanel));
+        Membership.ForgotPasswordPanel = ForgotPasswordPanel;
+    })(Membership = PGMS.Membership || (PGMS.Membership = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Membership;
+    (function (Membership) {
+        var ResetPasswordPanel = /** @class */ (function (_super) {
+            __extends(ResetPasswordPanel, _super);
+            function ResetPasswordPanel(container) {
+                var _this = _super.call(this, container) || this;
+                _this.form = new Membership.ResetPasswordForm(_this.idPrefix);
+                _this.form.NewPassword.addValidationRule(_this.uniqueName, function (e) {
+                    if (_this.form.ConfirmPassword.value.length < 7) {
+                        return Q.format(Q.text('Validation.MinRequiredPasswordLength'), 7);
+                    }
+                });
+                _this.form.ConfirmPassword.addValidationRule(_this.uniqueName, function (e) {
+                    if (_this.form.ConfirmPassword.value !== _this.form.NewPassword.value) {
+                        return Q.text('Validation.PasswordConfirm');
+                    }
+                });
+                _this.byId('SubmitButton').click(function (e) {
+                    e.preventDefault();
+                    if (!_this.validateForm()) {
+                        return;
+                    }
+                    var request = _this.getSaveEntity();
+                    request.Token = _this.byId('Token').val();
+                    Q.serviceCall({
+                        url: Q.resolveUrl('~/Account/ResetPassword'),
+                        request: request,
+                        onSuccess: function (response) {
+                            Q.information(Q.text('Forms.Membership.ResetPassword.Success'), function () {
+                                window.location.href = Q.resolveUrl('~/Account/Login');
+                            });
+                        }
+                    });
+                });
+                return _this;
+            }
+            ResetPasswordPanel.prototype.getFormKey = function () { return Membership.ResetPasswordForm.formKey; };
+            ResetPasswordPanel = __decorate([
+                Serenity.Decorators.registerClass()
+            ], ResetPasswordPanel);
+            return ResetPasswordPanel;
+        }(Serenity.PropertyPanel));
+        Membership.ResetPasswordPanel = ResetPasswordPanel;
+    })(Membership = PGMS.Membership || (PGMS.Membership = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Membership;
+    (function (Membership) {
+        var SignUpPanel = /** @class */ (function (_super) {
+            __extends(SignUpPanel, _super);
+            function SignUpPanel(container) {
+                var _this = _super.call(this, container) || this;
+                _this.form = new Membership.SignUpForm(_this.idPrefix);
+                _this.form.ConfirmEmail.addValidationRule(_this.uniqueName, function (e) {
+                    if (_this.form.ConfirmEmail.value !== _this.form.Email.value) {
+                        return Q.text('Validation.EmailConfirm');
+                    }
+                });
+                _this.form.ConfirmPassword.addValidationRule(_this.uniqueName, function (e) {
+                    if (_this.form.ConfirmPassword.value !== _this.form.Password.value) {
+                        return Q.text('Validation.PasswordConfirm');
+                    }
+                });
+                _this.byId('SubmitButton').click(function (e) {
+                    e.preventDefault();
+                    if (!_this.validateForm()) {
+                        return;
+                    }
+                    Q.serviceCall({
+                        url: Q.resolveUrl('~/Account/SignUp'),
+                        request: {
+                            DisplayName: _this.form.DisplayName.value,
+                            Email: _this.form.Email.value,
+                            Password: _this.form.Password.value
+                        },
+                        onSuccess: function (response) {
+                            Q.information(Q.text('Forms.Membership.SignUp.Success'), function () {
+                                window.location.href = Q.resolveUrl('~/');
+                            });
+                        }
+                    });
+                });
+                return _this;
+            }
+            SignUpPanel.prototype.getFormKey = function () { return Membership.SignUpForm.formKey; };
+            SignUpPanel = __decorate([
+                Serenity.Decorators.registerClass()
+            ], SignUpPanel);
+            return SignUpPanel;
+        }(Serenity.PropertyPanel));
+        Membership.SignUpPanel = SignUpPanel;
+    })(Membership = PGMS.Membership || (PGMS.Membership = {}));
 })(PGMS || (PGMS = {}));
 //# sourceMappingURL=PGMS.Web.js.map

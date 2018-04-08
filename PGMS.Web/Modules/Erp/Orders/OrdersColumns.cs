@@ -17,6 +17,7 @@ namespace PGMS.Erp.Columns
         public Int32 OrderId { get; set; }
         [EditLink]
         public String AccountName { get; set; }
+        public bool AccountIsVip { get; set; }
         [EditLink]
         public String CompanyName { get; set; }
         [EditLink]
