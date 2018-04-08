@@ -5,8 +5,8 @@ using FluentMigrator.Builders.Create.Table;
 namespace PGMS.Migrations.DefaultDB
 {
 
-    [Migration(20181703140000)]
-    public class DefaultDB_20181703_140000_Initial : AutoReversingMigration
+    [Migration(20180317140000)]
+    public class DefaultDB_20180317_140000_Initial : AutoReversingMigration
     {
         public override void Up()
         {

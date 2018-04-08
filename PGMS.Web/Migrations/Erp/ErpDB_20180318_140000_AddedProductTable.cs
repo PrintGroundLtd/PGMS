@@ -7,8 +7,8 @@ using FluentMigrator;
 namespace PGMS.Migrations.DefaultDB
 {
 
-    [Migration(20181803140000)]
-    public class ErpDB_20181803_140000_AddedProductTable : AutoReversingMigration
+    [Migration(20180318140000)]
+    public class ErpDB_20180318_140000_AddedProductTable : AutoReversingMigration
     {
         public override void Up()
         {
