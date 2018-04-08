@@ -513,6 +513,88 @@ var PGMS;
 (function (PGMS) {
     var Erp;
     (function (Erp) {
+        var BudgetPeriod;
+        (function (BudgetPeriod) {
+            BudgetPeriod[BudgetPeriod["Week"] = 1] = "Week";
+            BudgetPeriod[BudgetPeriod["Month"] = 2] = "Month";
+            BudgetPeriod[BudgetPeriod["Year"] = 3] = "Year";
+        })(BudgetPeriod = Erp.BudgetPeriod || (Erp.BudgetPeriod = {}));
+        Serenity.Decorators.registerEnumType(BudgetPeriod, 'PGMS.Erp.BudgetPeriod', 'PGMS.Erp.Entities.BudgetPeriod');
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var BudgetsForm = /** @class */ (function (_super) {
+            __extends(BudgetsForm, _super);
+            function BudgetsForm(prefix) {
+                var _this = _super.call(this, prefix) || this;
+                if (!BudgetsForm.init) {
+                    BudgetsForm.init = true;
+                    var s = Serenity;
+                    var w0 = s.StringEditor;
+                    var w1 = s.DecimalEditor;
+                    var w2 = s.EnumEditor;
+                    var w3 = s.LookupEditor;
+                    Q.initFormType(BudgetsForm, [
+                        'Name', w0,
+                        'Total', w1,
+                        'BudgetPeriod', w2,
+                        'PaymentTypeId', w3
+                    ]);
+                }
+                return _this;
+            }
+            BudgetsForm.formKey = 'Erp.Budgets';
+            return BudgetsForm;
+        }(Serenity.PrefixedContext));
+        Erp.BudgetsForm = BudgetsForm;
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var BudgetsRow;
+        (function (BudgetsRow) {
+            BudgetsRow.idProperty = 'BudgetId';
+            BudgetsRow.isActiveProperty = 'IsActive';
+            BudgetsRow.nameProperty = 'Name';
+            BudgetsRow.localTextPrefix = 'Erp.Budgets';
+            BudgetsRow.lookupKey = 'Erp.Budgets';
+            function getLookup() {
+                return Q.getLookup('Erp.Budgets');
+            }
+            BudgetsRow.getLookup = getLookup;
+        })(BudgetsRow = Erp.BudgetsRow || (Erp.BudgetsRow = {}));
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var BudgetsService;
+        (function (BudgetsService) {
+            BudgetsService.baseUrl = 'Erp/Budgets';
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                BudgetsService[x] = function (r, s, o) {
+                    return Q.serviceRequest(BudgetsService.baseUrl + '/' + x, r, s, o);
+                };
+            });
+        })(BudgetsService = Erp.BudgetsService || (Erp.BudgetsService = {}));
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
         var CompaniesForm = /** @class */ (function (_super) {
             __extends(CompaniesForm, _super);
             function CompaniesForm(prefix) {
@@ -1218,6 +1300,38 @@ var PGMS;
 })(PGMS || (PGMS = {}));
 var PGMS;
 (function (PGMS) {
+    var LanguageList;
+    (function (LanguageList) {
+        function getValue() {
+            var result = [];
+            for (var _i = 0, _a = PGMS.Administration.LanguageRow.getLookup().items; _i < _a.length; _i++) {
+                var k = _a[_i];
+                if (k.LanguageId !== 'en') {
+                    result.push([k.Id.toString(), k.LanguageName]);
+                }
+            }
+            return result;
+        }
+        LanguageList.getValue = getValue;
+    })(LanguageList = PGMS.LanguageList || (PGMS.LanguageList = {}));
+})(PGMS || (PGMS = {}));
+/// <reference path="../Common/Helpers/LanguageList.ts" />
+var PGMS;
+(function (PGMS) {
+    var ScriptInitialization;
+    (function (ScriptInitialization) {
+        Q.Config.responsiveDialogs = true;
+        Q.Config.rootNamespaces.push('PGMS');
+        Serenity.EntityDialog.defaultLanguageList = PGMS.LanguageList.getValue;
+        if ($.fn['colorbox']) {
+            $.fn['colorbox'].settings.maxWidth = "95%";
+            $.fn['colorbox'].settings.maxHeight = "95%";
+        }
+        window.onerror = Q.ErrorHandling.runtimeErrorHandler;
+    })(ScriptInitialization = PGMS.ScriptInitialization || (PGMS.ScriptInitialization = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
     var Administration;
     (function (Administration) {
         var LanguageDialog = /** @class */ (function (_super) {
@@ -1748,22 +1862,6 @@ var PGMS;
 })(PGMS || (PGMS = {}));
 var PGMS;
 (function (PGMS) {
-    var Authorization;
-    (function (Authorization) {
-        Object.defineProperty(Authorization, 'userDefinition', {
-            get: function () {
-                return Q.getRemoteData('UserData');
-            }
-        });
-        function hasPermission(permissionKey) {
-            var ud = Authorization.userDefinition;
-            return ud.Username === 'admin' || !!ud.Permissions[permissionKey];
-        }
-        Authorization.hasPermission = hasPermission;
-    })(Authorization = PGMS.Authorization || (PGMS.Authorization = {}));
-})(PGMS || (PGMS = {}));
-var PGMS;
-(function (PGMS) {
     var Administration;
     (function (Administration) {
         var PermissionCheckEditor = /** @class */ (function (_super) {
@@ -2233,38 +2331,6 @@ var PGMS;
         }(Serenity.TemplatedDialog));
         Administration.UserRoleDialog = UserRoleDialog;
     })(Administration = PGMS.Administration || (PGMS.Administration = {}));
-})(PGMS || (PGMS = {}));
-var PGMS;
-(function (PGMS) {
-    var LanguageList;
-    (function (LanguageList) {
-        function getValue() {
-            var result = [];
-            for (var _i = 0, _a = PGMS.Administration.LanguageRow.getLookup().items; _i < _a.length; _i++) {
-                var k = _a[_i];
-                if (k.LanguageId !== 'en') {
-                    result.push([k.Id.toString(), k.LanguageName]);
-                }
-            }
-            return result;
-        }
-        LanguageList.getValue = getValue;
-    })(LanguageList = PGMS.LanguageList || (PGMS.LanguageList = {}));
-})(PGMS || (PGMS = {}));
-/// <reference path="../Common/Helpers/LanguageList.ts" />
-var PGMS;
-(function (PGMS) {
-    var ScriptInitialization;
-    (function (ScriptInitialization) {
-        Q.Config.responsiveDialogs = true;
-        Q.Config.rootNamespaces.push('PGMS');
-        Serenity.EntityDialog.defaultLanguageList = PGMS.LanguageList.getValue;
-        if ($.fn['colorbox']) {
-            $.fn['colorbox'].settings.maxWidth = "95%";
-            $.fn['colorbox'].settings.maxHeight = "95%";
-        }
-        window.onerror = Q.ErrorHandling.runtimeErrorHandler;
-    })(ScriptInitialization = PGMS.ScriptInitialization || (PGMS.ScriptInitialization = {}));
 })(PGMS || (PGMS = {}));
 var PGMS;
 (function (PGMS) {
@@ -3614,6 +3680,52 @@ var PGMS;
 (function (PGMS) {
     var Erp;
     (function (Erp) {
+        var BudgetsDialog = /** @class */ (function (_super) {
+            __extends(BudgetsDialog, _super);
+            function BudgetsDialog() {
+                var _this = _super !== null && _super.apply(this, arguments) || this;
+                _this.form = new Erp.BudgetsForm(_this.idPrefix);
+                return _this;
+            }
+            BudgetsDialog.prototype.getFormKey = function () { return Erp.BudgetsForm.formKey; };
+            BudgetsDialog.prototype.getIdProperty = function () { return Erp.BudgetsRow.idProperty; };
+            BudgetsDialog.prototype.getLocalTextPrefix = function () { return Erp.BudgetsRow.localTextPrefix; };
+            BudgetsDialog.prototype.getNameProperty = function () { return Erp.BudgetsRow.nameProperty; };
+            BudgetsDialog.prototype.getService = function () { return Erp.BudgetsService.baseUrl; };
+            BudgetsDialog = __decorate([
+                Serenity.Decorators.registerClass()
+            ], BudgetsDialog);
+            return BudgetsDialog;
+        }(Serenity.EntityDialog));
+        Erp.BudgetsDialog = BudgetsDialog;
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var BudgetsGrid = /** @class */ (function (_super) {
+            __extends(BudgetsGrid, _super);
+            function BudgetsGrid(container) {
+                return _super.call(this, container) || this;
+            }
+            BudgetsGrid.prototype.getColumnsKey = function () { return 'Erp.Budgets'; };
+            BudgetsGrid.prototype.getDialogType = function () { return Erp.BudgetsDialog; };
+            BudgetsGrid.prototype.getIdProperty = function () { return Erp.BudgetsRow.idProperty; };
+            BudgetsGrid.prototype.getLocalTextPrefix = function () { return Erp.BudgetsRow.localTextPrefix; };
+            BudgetsGrid.prototype.getService = function () { return Erp.BudgetsService.baseUrl; };
+            BudgetsGrid = __decorate([
+                Serenity.Decorators.registerClass()
+            ], BudgetsGrid);
+            return BudgetsGrid;
+        }(Serenity.EntityGrid));
+        Erp.BudgetsGrid = BudgetsGrid;
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
         var CompaniesDialog = /** @class */ (function (_super) {
             __extends(CompaniesDialog, _super);
             function CompaniesDialog() {
@@ -4328,6 +4440,22 @@ var PGMS;
         }(Serenity.EntityGrid));
         Erp.SuppliersGrid = SuppliersGrid;
     })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Authorization;
+    (function (Authorization) {
+        Object.defineProperty(Authorization, 'userDefinition', {
+            get: function () {
+                return Q.getRemoteData('UserData');
+            }
+        });
+        function hasPermission(permissionKey) {
+            var ud = Authorization.userDefinition;
+            return ud.Username === 'admin' || !!ud.Permissions[permissionKey];
+        }
+        Authorization.hasPermission = hasPermission;
+    })(Authorization = PGMS.Authorization || (PGMS.Authorization = {}));
 })(PGMS || (PGMS = {}));
 var PGMS;
 (function (PGMS) {

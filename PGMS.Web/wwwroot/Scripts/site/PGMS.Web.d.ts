@@ -652,6 +652,87 @@ declare namespace PGMS.Erp {
     }
 }
 declare namespace PGMS.Erp {
+    enum BudgetPeriod {
+        Week = 1,
+        Month = 2,
+        Year = 3,
+    }
+}
+declare namespace PGMS.Erp {
+}
+declare namespace PGMS.Erp {
+    interface BudgetsForm {
+        Name: Serenity.StringEditor;
+        Total: Serenity.DecimalEditor;
+        BudgetPeriod: Serenity.EnumEditor;
+        PaymentTypeId: Serenity.LookupEditor;
+    }
+    class BudgetsForm extends Serenity.PrefixedContext {
+        static formKey: string;
+        private static init;
+        constructor(prefix: string);
+    }
+}
+declare namespace PGMS.Erp {
+    interface BudgetsRow {
+        BudgetId?: number;
+        Name?: string;
+        Total?: number;
+        LeftAfterExpenses?: number;
+        PaymentTypeId?: number;
+        BudgetPeriod?: BudgetPeriod;
+        PaymentTypeName?: string;
+        InsertUserId?: number;
+        InsertDate?: string;
+        UpdateUserId?: number;
+        UpdateDate?: string;
+        IsActive?: number;
+        InsertUserName?: string;
+        UpdateUserName?: string;
+    }
+    namespace BudgetsRow {
+        const idProperty = "BudgetId";
+        const isActiveProperty = "IsActive";
+        const nameProperty = "Name";
+        const localTextPrefix = "Erp.Budgets";
+        const lookupKey = "Erp.Budgets";
+        function getLookup(): Q.Lookup<BudgetsRow>;
+        const enum Fields {
+            BudgetId = "BudgetId",
+            Name = "Name",
+            Total = "Total",
+            LeftAfterExpenses = "LeftAfterExpenses",
+            PaymentTypeId = "PaymentTypeId",
+            BudgetPeriod = "BudgetPeriod",
+            PaymentTypeName = "PaymentTypeName",
+            InsertUserId = "InsertUserId",
+            InsertDate = "InsertDate",
+            UpdateUserId = "UpdateUserId",
+            UpdateDate = "UpdateDate",
+            IsActive = "IsActive",
+            InsertUserName = "InsertUserName",
+            UpdateUserName = "UpdateUserName",
+        }
+    }
+}
+declare namespace PGMS.Erp {
+    namespace BudgetsService {
+        const baseUrl = "Erp/Budgets";
+        function Create(request: Serenity.SaveRequest<BudgetsRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<BudgetsRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<BudgetsRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<BudgetsRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        const enum Methods {
+            Create = "Erp/Budgets/Create",
+            Update = "Erp/Budgets/Update",
+            Delete = "Erp/Budgets/Delete",
+            Retrieve = "Erp/Budgets/Retrieve",
+            List = "Erp/Budgets/List",
+        }
+    }
+}
+declare namespace PGMS.Erp {
 }
 declare namespace PGMS.Erp {
     interface CompaniesForm {
@@ -1474,6 +1555,11 @@ declare namespace PGMS {
         };
     }
 }
+declare namespace PGMS.LanguageList {
+    function getValue(): string[][];
+}
+declare namespace PGMS.ScriptInitialization {
+}
 declare namespace PGMS.Administration {
     class LanguageDialog extends Serenity.EntityDialog<LanguageRow, any> {
         protected getFormKey(): string;
@@ -1585,10 +1671,6 @@ declare namespace PGMS.Administration {
         protected getDefaultSortBy(): UserRow.Fields[];
     }
 }
-declare namespace PGMS.Authorization {
-    let userDefinition: ScriptUserDefinition;
-    function hasPermission(permissionKey: string): boolean;
-}
 declare namespace PGMS.Administration {
     class PermissionCheckEditor extends Serenity.DataGrid<PermissionCheckItem, PermissionCheckEditorOptions> {
         protected getIdProperty(): string;
@@ -1659,11 +1741,6 @@ declare namespace PGMS.Administration {
         userID: number;
         username: string;
     }
-}
-declare namespace PGMS.LanguageList {
-    function getValue(): string[][];
-}
-declare namespace PGMS.ScriptInitialization {
 }
 declare namespace PGMS {
     class BasicProgressDialog extends Serenity.TemplatedDialog<any> {
@@ -1974,6 +2051,26 @@ declare namespace PGMS.Erp {
     }
 }
 declare namespace PGMS.Erp {
+    class BudgetsDialog extends Serenity.EntityDialog<BudgetsRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected form: BudgetsForm;
+    }
+}
+declare namespace PGMS.Erp {
+    class BudgetsGrid extends Serenity.EntityGrid<BudgetsRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof BudgetsDialog;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace PGMS.Erp {
     class CompaniesDialog extends Serenity.EntityDialog<CompaniesRow, any> {
         protected getFormKey(): string;
         protected getIdProperty(): string;
@@ -2193,6 +2290,10 @@ declare namespace PGMS.Erp {
         protected getService(): string;
         constructor(container: JQuery);
     }
+}
+declare namespace PGMS.Authorization {
+    let userDefinition: ScriptUserDefinition;
+    function hasPermission(permissionKey: string): boolean;
 }
 declare namespace PGMS.Membership {
     class ChangePasswordPanel extends Serenity.PropertyPanel<ChangePasswordRequest, any> {

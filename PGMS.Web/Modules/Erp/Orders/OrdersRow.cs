@@ -28,7 +28,7 @@ namespace PGMS.Erp.Entities
         }
 
         [DisplayName("Account"), ForeignKey("[dbo].[Accounts]", "AccountId"), LeftJoin("jAccount"), TextualField("AccountName")]
-        [LookupEditor(typeof(AccountsRow))]
+        [LookupEditor(typeof(AccountsRow), FilterField = "IsActive", FilterValue = 1)]
         public Int32? AccountId
         {
             get { return Fields.AccountId[this]; }
@@ -36,7 +36,7 @@ namespace PGMS.Erp.Entities
         }
 
         [DisplayName("Company"), ForeignKey("[dbo].[Companies]", "CompanyId"), LeftJoin("jCompany"), TextualField("CompanyName")]
-        [LookupEditor(typeof(CompaniesRow))]
+        [LookupEditor(typeof(CompaniesRow), FilterField = "IsActive", FilterValue = 1)]
         public Int32? CompanyId
         {
             get { return Fields.CompanyId[this]; }
@@ -44,7 +44,7 @@ namespace PGMS.Erp.Entities
         }
 
         [DisplayName("Payment Type"), ForeignKey("[dbo].[PaymentTypes]", "PaymentTypeId"), LeftJoin("jPaymentType"), TextualField("PaymentTypeName")]
-        [LookupEditor(typeof(PaymentTypesRow))]
+        [LookupEditor(typeof(PaymentTypesRow), FilterField = "IsActive", FilterValue = 1)]
         public Int32? PaymentTypeId
         {
             get { return Fields.PaymentTypeId[this]; }

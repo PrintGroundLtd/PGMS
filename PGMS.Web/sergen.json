@@ -26,6 +26,12 @@
           "PermissionKey": "Erp.Attachments:General"
         },
         {
+          "Tablename": "dbo.Budgets",
+          "Identifier": "Budgets",
+          "Module": "Erp",
+          "PermissionKey": "Budgets:General"
+        },
+        {
           "Tablename": "dbo.Companies",
           "Identifier": "Companies",
           "Module": "Erp",
