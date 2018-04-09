@@ -23,11 +23,11 @@ namespace PGMS.Erp.Entities
 
             public Dataset()
             {
-                data = new List<int>();
+                data = new List<decimal>();
             }
             public string label { get; set; }
 
-            public List<int> data { get; set; }
+            public List<decimal> data { get; set; }
 
             public string backgroundColor { get; set; }
 

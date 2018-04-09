@@ -5,6 +5,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using PGMS.Erp.Entities;
+using PGMS.Erp.Repositories;
+using Serenity;
 using Serenity.Data;
 using Serenity.Services;
 
@@ -19,28 +21,93 @@ namespace PGMS.Erp.Endpoints
         {
             var response = new IncomeVSExpenseResponse();
             for (int i = 0; i < 12; i++)
-            {
-
                 response.labels.Add(DateTime.Now.AddMonths(-i).ToString("MMMM"));
 
-                var firstDayOfMonth = new DateTime(DateTime.Now.AddMonths(-i).Year,
-                    DateTime.Now.AddMonths(-i).Month, 1);
+
+            // Income
+            var datasetIncome = new IncomeVSExpenseResponse.Dataset();
+            datasetIncome.label = Texts.Site.Reports.IncomeVSExpenseIncomeLabel;
+            datasetIncome.backgroundColor = "#00ff00";
+            datasetIncome.borderColor = "#00ff00";
+
+            // Expense
+            var datasetExpense = new IncomeVSExpenseResponse.Dataset();
+            datasetExpense.label = Texts.Site.Reports.IncomeVSExpenseExpenseLabel;
+            datasetExpense.backgroundColor = "#ff0000";
+            datasetExpense.borderColor = "#ff0000";
+            for (int j = 0; j < 12; j++)
+            {
+
+                var firstDayOfMonth = new DateTime(DateTime.Now.AddMonths(-j).Year,
+                    DateTime.Now.AddMonths(-j).Month, 1);
                 var lastDayOfMonth = firstDayOfMonth.AddMonths(1).AddDays(-1);
 
-                var dataset = new IncomeVSExpenseResponse.Dataset();
-                dataset.label = DateTime.Now.AddMonths(-i).ToString("MMMM");
-                dataset.backgroundColor = "#ff0000";
-                dataset.borderColor = "#00ff00";
-                //todo define data 
-                for (int j = 0; j < 12; j++)
-                {
-                    var data = new Random().Next(0, 1000);
-                    dataset.data.Add(data);
-                }
-                response.datasets.Add(dataset);
+                #region Income
 
+                var orderFields = OrdersRow.Fields;
+                var ordersRequest = new OrderListRequest();
+                ordersRequest.ColumnSelection = ColumnSelection.KeyOnly;
+                ordersRequest.Criteria = (new Criteria(orderFields.OrderDate.Name) >= firstDayOfMonth
+                                          & new Criteria(orderFields.OrderDate.Name) <= lastDayOfMonth);
+
+                var orders = new OrdersRepository().List(connection, ordersRequest).Entities;
+                if (!orders.Any())
+                {
+                    datasetIncome.data.Add(Decimal.Zero);
+                    continue;
+                }
+                var orderDetailsFields = OrderDetailsRow.Fields;
+                var orderDetailsListRequest = new ListRequest();
+                orderDetailsListRequest.ColumnSelection = ColumnSelection.Details;
+
+                orderDetailsListRequest.Criteria =
+                    (new Criteria(orderDetailsFields.OrderId.Name).In(orders.Select(o => o.OrderId)));
+
+                var orderDetails = new OrderDetailsRepository().List(connection, orderDetailsListRequest).Entities;
+
+                var totalForMonth = orderDetails.Select(od => od.LineTotal).Aggregate((a, b) => a + b);
+
+                datasetIncome.data.Add(totalForMonth ?? Decimal.Zero);
+
+                #endregion
+                
             }
 
+            for (int j = 0; j < 12; j++)
+            {
+                var firstDayOfMonth = new DateTime(DateTime.Now.AddMonths(-j).Year,
+                    DateTime.Now.AddMonths(-j).Month, 1);
+                var lastDayOfMonth = firstDayOfMonth.AddMonths(1).AddDays(-1);
+
+                #region Expense
+
+                var expensesListRequest = new ListRequest();
+                var expensesFields = ExpensesRow.Fields;
+                expensesListRequest.ColumnSelection = ColumnSelection.KeyOnly;
+                expensesListRequest.IncludeColumns = new HashSet<string>
+                {
+                    expensesFields.Total.Name,
+                    expensesFields.TransactionDate.Name
+                };
+
+                expensesListRequest.Criteria = (new Criteria(expensesFields.TransactionDate.Name) >= firstDayOfMonth
+                                                & new Criteria(expensesFields.TransactionDate.Name) <= lastDayOfMonth);
+
+                var expenses = new ExpensesRepository().List(connection, expensesListRequest).Entities;
+                if (!expenses.Any())
+                {
+                    datasetExpense.data.Add(Decimal.Zero);
+                    continue;
+                }
+
+                var totalExpenses = expenses.Select(e => e.Total).Aggregate((a, b) => a + b);
+                datasetExpense.data.Add(totalExpenses ?? Decimal.Zero);
+
+                #endregion
+            }
+
+            response.datasets.Add(datasetIncome);
+            response.datasets.Add(datasetExpense);
 
             return new RetrieveResponse<IncomeVSExpenseResponse> { Entity = response };
 

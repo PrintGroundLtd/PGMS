@@ -99,6 +99,9 @@ namespace PGMS
         {
             public static class Reports
             {
+                public static LocalText IncomeVSExpenseIncomeLabel = "Income";
+                public static LocalText IncomeVSExpenseExpenseLabel = "Expense";
+
                 public static LocalText IncomeVSExpense = "Income VS Expense";
 
             }
