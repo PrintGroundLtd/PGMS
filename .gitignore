@@ -260,3 +260,4 @@ paket-files/
 __pycache__/
 *.pyc
 PGMS.Web/App_Data/upload/
+PGMS.Web/App_Data/Mail/
