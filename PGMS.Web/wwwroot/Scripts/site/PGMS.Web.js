@@ -1298,6 +1298,78 @@ var PGMS;
 (function (PGMS) {
     var Erp;
     (function (Erp) {
+        var SentEmailsForm = /** @class */ (function (_super) {
+            __extends(SentEmailsForm, _super);
+            function SentEmailsForm(prefix) {
+                var _this = _super.call(this, prefix) || this;
+                if (!SentEmailsForm.init) {
+                    SentEmailsForm.init = true;
+                    var s = Serenity;
+                    var w0 = s.EmailEditor;
+                    var w1 = s.StringEditor;
+                    var w2 = s.MultipleImageUploadEditor;
+                    var w3 = s.HtmlContentEditor;
+                    Q.initFormType(SentEmailsForm, [
+                        'FromEmail', w0,
+                        'FromName', w1,
+                        'Subject', w1,
+                        'ToEmail', w0,
+                        'ToName', w1,
+                        'Attachments', w2,
+                        'Body', w3
+                    ]);
+                }
+                return _this;
+            }
+            SentEmailsForm.formKey = 'Erp.SentEmails';
+            return SentEmailsForm;
+        }(Serenity.PrefixedContext));
+        Erp.SentEmailsForm = SentEmailsForm;
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var SentEmailsRow;
+        (function (SentEmailsRow) {
+            SentEmailsRow.idProperty = 'SentEmailsId';
+            SentEmailsRow.isActiveProperty = 'IsActive';
+            SentEmailsRow.nameProperty = 'FromEmail';
+            SentEmailsRow.localTextPrefix = 'Erp.SentEmails';
+            SentEmailsRow.lookupKey = 'Erp.SentEmails';
+            function getLookup() {
+                return Q.getLookup('Erp.SentEmails');
+            }
+            SentEmailsRow.getLookup = getLookup;
+        })(SentEmailsRow = Erp.SentEmailsRow || (Erp.SentEmailsRow = {}));
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var SentEmailsService;
+        (function (SentEmailsService) {
+            SentEmailsService.baseUrl = 'Erp/SentEmails';
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                SentEmailsService[x] = function (r, s, o) {
+                    return Q.serviceRequest(SentEmailsService.baseUrl + '/' + x, r, s, o);
+                };
+            });
+        })(SentEmailsService = Erp.SentEmailsService || (Erp.SentEmailsService = {}));
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
         var SupplierRepresentativesRow;
         (function (SupplierRepresentativesRow) {
             SupplierRepresentativesRow.idProperty = 'RepresentativeId';
@@ -4723,6 +4795,53 @@ var PGMS;
             return ProductsGrid;
         }(Serenity.EntityGrid));
         Erp.ProductsGrid = ProductsGrid;
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var SentEmailsDialog = /** @class */ (function (_super) {
+            __extends(SentEmailsDialog, _super);
+            function SentEmailsDialog() {
+                var _this = _super !== null && _super.apply(this, arguments) || this;
+                _this.form = new Erp.SentEmailsForm(_this.idPrefix);
+                return _this;
+            }
+            SentEmailsDialog.prototype.getFormKey = function () { return Erp.SentEmailsForm.formKey; };
+            SentEmailsDialog.prototype.getIdProperty = function () { return Erp.SentEmailsRow.idProperty; };
+            SentEmailsDialog.prototype.getLocalTextPrefix = function () { return Erp.SentEmailsRow.localTextPrefix; };
+            SentEmailsDialog.prototype.getNameProperty = function () { return Erp.SentEmailsRow.nameProperty; };
+            SentEmailsDialog.prototype.getService = function () { return Erp.SentEmailsService.baseUrl; };
+            SentEmailsDialog = __decorate([
+                Serenity.Decorators.panel(),
+                Serenity.Decorators.registerClass()
+            ], SentEmailsDialog);
+            return SentEmailsDialog;
+        }(Serenity.EntityDialog));
+        Erp.SentEmailsDialog = SentEmailsDialog;
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var SentEmailsGrid = /** @class */ (function (_super) {
+            __extends(SentEmailsGrid, _super);
+            function SentEmailsGrid(container) {
+                return _super.call(this, container) || this;
+            }
+            SentEmailsGrid.prototype.getColumnsKey = function () { return 'Erp.SentEmails'; };
+            SentEmailsGrid.prototype.getDialogType = function () { return Erp.SentEmailsDialog; };
+            SentEmailsGrid.prototype.getIdProperty = function () { return Erp.SentEmailsRow.idProperty; };
+            SentEmailsGrid.prototype.getLocalTextPrefix = function () { return Erp.SentEmailsRow.localTextPrefix; };
+            SentEmailsGrid.prototype.getService = function () { return Erp.SentEmailsService.baseUrl; };
+            SentEmailsGrid = __decorate([
+                Serenity.Decorators.registerClass()
+            ], SentEmailsGrid);
+            return SentEmailsGrid;
+        }(Serenity.EntityGrid));
+        Erp.SentEmailsGrid = SentEmailsGrid;
     })(Erp = PGMS.Erp || (PGMS.Erp = {}));
 })(PGMS || (PGMS = {}));
 var PGMS;

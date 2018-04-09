@@ -86,6 +86,12 @@
           "PermissionKey": "Erp:Products:General"
         },
         {
+          "Tablename": "dbo.SentEmails",
+          "Identifier": "SentEmails",
+          "Module": "Erp",
+          "PermissionKey": "Administration:General"
+        },
+        {
           "Tablename": "dbo.SupplierRepresentatives",
           "Identifier": "SupplierRepresentatives",
           "Module": "Erp",

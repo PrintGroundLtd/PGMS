@@ -4,6 +4,13 @@ using Serenity.ComponentModel;
 using Serenity;
 using Microsoft.AspNetCore.Hosting;
 using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using Microsoft.ApplicationInsights.Extensibility.Implementation;
+using Microsoft.AspNetCore.Mvc.Routing;
+using Newtonsoft.Json;
+using Serenity.Web;
 #if COREFX
 using MailKit.Net.Smtp;
 using MimeKit;
@@ -25,14 +32,39 @@ namespace PGMS.Common
 
     public class EmailHelper
     {
-        public static void Send(string subject, string body, string address, string displayName = "")
+        protected class File
+        {
+            public string Filename { get; set; }
+        }
+        public static void Send(string subject, string body, string address, string displayName = "", string fromEmail = "", string fromName = "", string attachments = "")
         {
 #if COREFX
             var message = new MimeMessage();
+            if (!fromEmail.IsEmptyOrNull() && !fromName.IsEmptyOrNull())
+            {
+                var from = new MailboxAddress(fromName, fromEmail);
+                message.From.Add(from);
+            }
+
+
             message.To.Add(new MailboxAddress(displayName, address));
             message.Subject = subject;
             var bodyBuilder = new BodyBuilder();
             bodyBuilder.HtmlBody = body;
+
+
+            if (!attachments.IsNullOrEmpty())
+            {
+                var files = JsonConvert.DeserializeObject<List<File>>(attachments);
+                foreach (var file in files)
+                {
+                    var filePath = System.Web.VirtualPathUtility.ToAbsolute("~/upload/" + UploadHelper.ToPath(file.Filename));
+                    bodyBuilder.Attachments.Add(filePath);
+
+                }
+
+            }
+
             message.Body = bodyBuilder.ToMessageBody();
             var config = Config.Get<MailSettings>();
             if (!string.IsNullOrEmpty(config.Host))

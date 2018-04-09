@@ -1602,6 +1602,85 @@ declare namespace PGMS.Erp {
     }
 }
 declare namespace PGMS.Erp {
+}
+declare namespace PGMS.Erp {
+    interface SentEmailsForm {
+        FromEmail: Serenity.EmailEditor;
+        FromName: Serenity.StringEditor;
+        Subject: Serenity.StringEditor;
+        ToEmail: Serenity.EmailEditor;
+        ToName: Serenity.StringEditor;
+        Attachments: Serenity.MultipleImageUploadEditor;
+        Body: Serenity.HtmlContentEditor;
+    }
+    class SentEmailsForm extends Serenity.PrefixedContext {
+        static formKey: string;
+        private static init;
+        constructor(prefix: string);
+    }
+}
+declare namespace PGMS.Erp {
+    interface SentEmailsRow {
+        SentEmailsId?: number;
+        FromEmail?: string;
+        FromName?: string;
+        Subject?: string;
+        Body?: string;
+        ToEmail?: string;
+        ToName?: string;
+        Attachments?: string;
+        InsertUserId?: number;
+        InsertDate?: string;
+        UpdateUserId?: number;
+        UpdateDate?: string;
+        IsActive?: number;
+        InsertUserName?: string;
+        UpdateUserName?: string;
+    }
+    namespace SentEmailsRow {
+        const idProperty = "SentEmailsId";
+        const isActiveProperty = "IsActive";
+        const nameProperty = "FromEmail";
+        const localTextPrefix = "Erp.SentEmails";
+        const lookupKey = "Erp.SentEmails";
+        function getLookup(): Q.Lookup<SentEmailsRow>;
+        const enum Fields {
+            SentEmailsId = "SentEmailsId",
+            FromEmail = "FromEmail",
+            FromName = "FromName",
+            Subject = "Subject",
+            Body = "Body",
+            ToEmail = "ToEmail",
+            ToName = "ToName",
+            Attachments = "Attachments",
+            InsertUserId = "InsertUserId",
+            InsertDate = "InsertDate",
+            UpdateUserId = "UpdateUserId",
+            UpdateDate = "UpdateDate",
+            IsActive = "IsActive",
+            InsertUserName = "InsertUserName",
+            UpdateUserName = "UpdateUserName",
+        }
+    }
+}
+declare namespace PGMS.Erp {
+    namespace SentEmailsService {
+        const baseUrl = "Erp/SentEmails";
+        function Create(request: Serenity.SaveRequest<SentEmailsRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<SentEmailsRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<SentEmailsRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<SentEmailsRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        const enum Methods {
+            Create = "Erp/SentEmails/Create",
+            Update = "Erp/SentEmails/Update",
+            Delete = "Erp/SentEmails/Delete",
+            Retrieve = "Erp/SentEmails/Retrieve",
+            List = "Erp/SentEmails/List",
+        }
+    }
+}
+declare namespace PGMS.Erp {
     interface SupplierRepresentativesRow {
         RepresentativeId?: number;
         AccountId?: number;
@@ -2579,6 +2658,26 @@ declare namespace PGMS.Erp {
     class ProductsGrid extends Serenity.EntityGrid<ProductsRow, any> {
         protected getColumnsKey(): string;
         protected getDialogType(): typeof ProductsDialog;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace PGMS.Erp {
+    class SentEmailsDialog extends Serenity.EntityDialog<SentEmailsRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected form: SentEmailsForm;
+    }
+}
+declare namespace PGMS.Erp {
+    class SentEmailsGrid extends Serenity.EntityGrid<SentEmailsRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof SentEmailsDialog;
         protected getIdProperty(): string;
         protected getLocalTextPrefix(): string;
         protected getService(): string;
