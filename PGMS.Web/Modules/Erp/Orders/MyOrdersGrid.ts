@@ -12,20 +12,19 @@ namespace PGMS.Erp {
             super(container);
         }
 
+        // Remove quick filter for assigned to user. We only show
         protected createQuickFilters() {
             super.createQuickFilters();
 
-
             this.myLookupQuickFilter = this.findQuickFilter(Serenity.LookupEditor, PGMS.Erp.OrdersRow.Fields.UserId);
-
-                this.myLookupQuickFilter.element.parent().remove("*");
+            this.myLookupQuickFilter.element.parent().remove("*");
         }
 
         // Here you can set the onDataLoaded event to use for set new title 
         protected createView(): Slick.RemoteView<OrdersRow> {
             let view = super.createView();
             (view as any).onDataLoaded.subscribe((e, ui) => {
-                this.setTitle(Q.text("Site.Dashboard.OrdersGridTitle")  + this.totalRecord);
+                this.setTitle(Q.text("Site.Dashboard.OrdersGridTitle") + this.totalRecord);
             });
             return view;
         }

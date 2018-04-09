@@ -18,6 +18,7 @@ namespace PGMS.Erp.Columns
         [EditLink]
         public String Description { get; set; }
         public Decimal Total { get; set; }
+        public DateTime TransactionDate { get; set; }
         public String BudgetName { get; set; }
         public String PaymentTypeName { get; set; }
         public DateTime InsertDate { get; set; }

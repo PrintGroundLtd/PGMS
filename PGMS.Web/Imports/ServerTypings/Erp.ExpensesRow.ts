@@ -3,6 +3,7 @@
         ExpenseId?: number;
         Description?: string;
         Total?: number;
+        TransactionDate?: string;
         BudgetId?: number;
         PaymentTypeId?: number;
         BudgetName?: string;
@@ -34,6 +35,7 @@
             ExpenseId = "ExpenseId",
             Description = "Description",
             Total = "Total",
+            TransactionDate = "TransactionDate",
             BudgetId = "BudgetId",
             PaymentTypeId = "PaymentTypeId",
             BudgetName = "BudgetName",

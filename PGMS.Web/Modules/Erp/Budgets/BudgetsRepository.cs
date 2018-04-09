@@ -1,4 +1,7 @@
 ﻿
+using System.Linq;
+using PGMS.Erp.Entities;
+
 namespace PGMS.Erp.Repositories
 {
     using Serenity;
@@ -40,6 +43,26 @@ namespace PGMS.Erp.Repositories
         private class MySaveHandler : SaveRequestHandler<MyRow> { }
         private class MyDeleteHandler : DeleteRequestHandler<MyRow> { }
         private class MyRetrieveHandler : RetrieveRequestHandler<MyRow> { }
-        private class MyListHandler : ListRequestHandler<MyRow> { }
+
+        private class MyListHandler : ListRequestHandler<MyRow>
+        {
+            protected override void OnReturn()
+            {
+                base.OnReturn();
+                foreach (var responseEntity in Response.Entities)
+                {
+                    var expensesPerBudged = Connection.List<ExpensesRow>(fld.BudgetId == responseEntity.BudgetId.Value);
+                    if (expensesPerBudged.Any())
+                    {
+                        var totalExpenses =
+                            expensesPerBudged.Select(s => s.Total).Aggregate((a, x) => a + x);
+
+                        var left = responseEntity.Total - totalExpenses;
+
+                        responseEntity.LeftAfterExpenses = left;
+                    }
+                }
+            }
+        }
     }
 }

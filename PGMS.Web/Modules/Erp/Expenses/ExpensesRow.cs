@@ -37,6 +37,14 @@ namespace PGMS.Erp.Entities
             get { return Fields.Total[this]; }
             set { Fields.Total[this] = value; }
         }
+        
+        [DisplayName("Transaction Date"), DisplayFormat("HH:mm dd/MM/yyyy"), NotNull]
+        public DateTime? TransactionDate
+        {
+            get { return Fields.TransactionDate[this]; }
+            set { Fields.TransactionDate[this] = value; }
+        }
+
 
         [DisplayName("Budget"), NotNull, ForeignKey(typeof(BudgetsRow)), LeftJoin("jBudget"), TextualField("BudgetName")]
         [LookupEditor(typeof(BudgetsRow), FilterField = "IsActive", FilterValue = 1)]
@@ -112,6 +120,8 @@ namespace PGMS.Erp.Entities
             public Int32Field ExpenseId;
             public StringField Description;
             public DecimalField Total;
+            public DateTimeField TransactionDate;
+
             public Int32Field BudgetId;
             public Int32Field PaymentTypeId;
 

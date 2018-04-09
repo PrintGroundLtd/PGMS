@@ -67,6 +67,8 @@ namespace PGMS.Migrations.DefaultDB
             this.CreateTableWithId32("Expenses", "ExpenseId", s => s
                 .WithColumn("Description").AsString(500).NotNullable()
                 .WithColumn("Total").AsCurrency().Nullable()
+                .WithColumn("TransactionDate").AsDateTime().NotNullable()
+
                 .WithColumn("BudgetId").AsInt32().NotNullable()
                 .ForeignKey("Budgets", "BudgetId")
                 .WithColumn("PaymentTypeId").AsInt32().NotNullable()

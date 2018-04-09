@@ -15,6 +15,9 @@ namespace PGMS.Erp.Forms
     {
         public String Description { get; set; }
         public Decimal Total { get; set; }
+        [DefaultValue("now")]
+        public DateTime TransactionDate { get; set; }
+
         public Int32 BudgetId { get; set; }
         public Int32 PaymentTypeId { get; set; }
     }
