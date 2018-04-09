@@ -72,7 +72,5 @@
     "~/Scripts/daterangepicker/daterangepicker.js",
     "~/Scripts/datepicker/bootstrap-datepicker.js",
     "~/Scripts/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js",
-    "~/Scripts/adminlte/pages/dashboard.js",
-    "~/Scripts/adminlte/demo.js"
   ]
 }
