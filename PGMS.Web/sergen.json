@@ -62,6 +62,12 @@
           "PermissionKey": "OrderStatuses:General"
         },
         {
+          "Tablename": "dbo.OutsideOrders",
+          "Identifier": "OutsideOrders",
+          "Module": "Erp",
+          "PermissionKey": "Administration:General"
+        },
+        {
           "Tablename": "dbo.Partners",
           "Identifier": "Partners",
           "Module": "Erp",

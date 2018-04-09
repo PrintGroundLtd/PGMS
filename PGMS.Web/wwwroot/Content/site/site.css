@@ -7872,6 +7872,12 @@ section.content > .s-DataGrid {
 .s-Erp-PartnersDialog .caption {
   width: 150px;
 }
+.s-Erp-OutsideOrdersDialog > .size {
+  width: 650px;
+}
+.s-Erp-OutsideOrdersDialog .caption {
+  width: 150px;
+}
 .s-NotesEditor {
   border: 1px solid #ccc;
   border-radius: 4px;

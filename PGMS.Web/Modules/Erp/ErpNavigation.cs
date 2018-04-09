@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 [assembly: NavigationLink(1300, "Budgets", typeof(MyPages.BudgetsController), icon: null)]
 [assembly: NavigationLink(1320, "Expenses", typeof(MyPages.ExpensesController), icon: null)]
 [assembly: NavigationLink(1330, "Partners", typeof(MyPages.PartnersController), icon: null)]
+[assembly: NavigationLink(1340, "Outside Orders", typeof(MyPages.OutsideOrdersController), icon: null)]
 [assembly: NavigationMenu(1350, "Attachments",  icon: null)]
 [assembly: NavigationLink(1360, "Attachments/For Accounts", typeof(MyPages.AccountAttachmentsController), icon: null)]
 [assembly: NavigationLink(1400, "Administration/Partner Types", typeof(MyPages.PartnerTypesController), icon: null)]
