@@ -17,6 +17,7 @@ using System.Threading.Tasks;
 [assembly: NavigationMenu(1350, "Attachments",  icon: null)]
 [assembly: NavigationLink(1360, "Attachments/For Accounts", typeof(MyPages.AccountAttachmentsController), icon: null)]
 [assembly: NavigationLink(1380, "Sent Emails", typeof(MyPages.SentEmailsController), icon: null)]
+[assembly: NavigationLink(1380, "Reports", typeof(MyPages.ReportsController), icon: null)]
 
 [assembly: NavigationLink(1400, "Administration/Partner Types", typeof(MyPages.PartnerTypesController), icon: null)]
 [assembly: NavigationLink(1400, "Administration/Order Statuses", typeof(MyPages.OrderStatusesController), icon: null)]

@@ -97,6 +97,12 @@ namespace PGMS
 
         public static class Site
         {
+            public static class Reports
+            {
+                public static LocalText IncomeVSExpense = "Income VS Expense";
+
+            }
+
             public static class AccessDenied
             {
                 public static LocalText PageTitle = "Unauthorized Access";

@@ -11,6 +11,13 @@ namespace PGMS.Erp
     [DisplayName("Erp")]
     public class PermissionKeys
     {
+        public class Reports
+        {
+            [Description("IncomeVSExpense")]
+            public const string IncomeVSExpense = "Erp:Reports:IncomeVSExpense";
+            [Description("Page")]
+            public const string PagePermission = "Erp:Reports:Page";
+        }
         public class Notes
         {
             [Description("View")]

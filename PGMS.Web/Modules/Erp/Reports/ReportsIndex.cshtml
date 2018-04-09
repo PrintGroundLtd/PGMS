@@ -1,0 +1,23 @@
+﻿@using PGMS.Erp
+@{
+    ViewData["Title"] = LocalText.Get("Navigation.Reports");
+}
+
+@section Head {
+    <script src="~/Scripts/chartjs/dist/Chart.min.js"></script>
+}
+
+@section ContentHeader {
+    <h1>@ViewData["Title"]<small></small></h1>
+}
+    <div class="row">
+        @if (Authorization.HasPermission(PermissionKeys.Reports.IncomeVSExpense))
+    {
+        <div id="incomeVSExpense"></div>
+        <script>
+            jQuery(document).ready(function () {
+                new PGMS.Erp.IncomeVSExpense($("#incomeVSExpense"), {});
+            });
+        </script>
+}
+    </div>

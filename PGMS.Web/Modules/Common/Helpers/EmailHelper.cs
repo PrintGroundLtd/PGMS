@@ -58,11 +58,9 @@ namespace PGMS.Common
                 var files = JsonConvert.DeserializeObject<List<File>>(attachments);
                 foreach (var file in files)
                 {
-                    var filePath = System.Web.VirtualPathUtility.ToAbsolute("~/upload/" + UploadHelper.ToPath(file.Filename));
+                    var filePath = "App_Data/upload/" + UploadHelper.ToPath(file.Filename);
                     bodyBuilder.Attachments.Add(filePath);
-
                 }
-
             }
 
             message.Body = bodyBuilder.ToMessageBody();
