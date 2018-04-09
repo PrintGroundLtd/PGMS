@@ -19,7 +19,10 @@ namespace PGMS.Erp.Columns
         public String Name { get; set; }
         public Decimal Total { get; set; }
         public Decimal LeftAfterExpenses { get; set; }
-        public Int32 BudgetPeriod { get; set; }
+        //public Int32 BudgetPeriod { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
+
         public String PaymentTypeName { get; set; }
         public DateTime InsertDate { get; set; }
         public Int32 InsertUserName { get; set; }

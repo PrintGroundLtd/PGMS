@@ -1,4 +1,7 @@
 ﻿
+using PGMS.Erp.Scripts;
+using PGMS.Web.Modules.Erp.Budgets;
+
 namespace PGMS.Erp.Entities
 {
     using Serenity;
@@ -14,8 +17,8 @@ namespace PGMS.Erp.Entities
     [ReadPermission(PermissionKeys.Budgets.ReadPermission)]
     [UpdatePermission(PermissionKeys.Budgets.UpdatePermission)]
     [DeletePermission(PermissionKeys.Budgets.DeletePermission)]
-    [LookupScript]
-    public sealed class BudgetsRow : ErpLoggingRow, IIdRow, INameRow
+    [LookupScript(LookupType = typeof(BudgetsRowLookupScript<>))]
+    public sealed class BudgetsRow : ErpLoggingRow, IIdRow, INameRow, IBudgetsRow
     {
         [DisplayName("Budget Id"), Identity]
         public Int32? BudgetId
@@ -43,6 +46,21 @@ namespace PGMS.Erp.Entities
         {
             get { return Fields.LeftAfterExpenses[this]; }
             set { Fields.LeftAfterExpenses[this] = value; }
+        }
+
+        [DisplayName("Start Date"), DisplayFormat("dd/MM/yyyy"), NotNull]
+        [LookupInclude]
+        public DateTime? StartDate
+        {
+            get { return Fields.StartDate[this]; }
+            set { Fields.StartDate[this] = value; }
+        }
+        [DisplayName("End Date"), DisplayFormat("dd/MM/yyyy"), NotNull]
+        [LookupInclude]
+        public DateTime? EndDate
+        {
+            get { return Fields.EndDate[this]; }
+            set { Fields.EndDate[this] = value; }
         }
 
         [DisplayName("Payment Type"), NotNull, ForeignKey("[dbo].[PaymentTypes]", "PaymentTypeId"), LeftJoin("jPaymentType"), TextualField("PaymentTypeName")]
@@ -80,6 +98,10 @@ namespace PGMS.Erp.Entities
             get { return Fields.Name; }
         }
 
+        DateTimeField IBudgetsRow.StartDate => Fields.StartDate;
+
+        DateTimeField IBudgetsRow.EndDate => Fields.EndDate;
+
         public static readonly RowFields Fields = new RowFields().Init();
 
         public BudgetsRow()
@@ -93,6 +115,8 @@ namespace PGMS.Erp.Entities
             public StringField Name;
             public DecimalField Total;
             public DecimalField LeftAfterExpenses;
+            public DateTimeField StartDate;
+            public DateTimeField EndDate;
             public Int32Field PaymentTypeId;
             public Int32Field BudgetPeriod;
             public StringField PaymentTypeName;

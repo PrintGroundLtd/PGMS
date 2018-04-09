@@ -665,7 +665,8 @@ declare namespace PGMS.Erp {
     interface BudgetsForm {
         Name: Serenity.StringEditor;
         Total: Serenity.DecimalEditor;
-        BudgetPeriod: Serenity.EnumEditor;
+        StartDate: Serenity.DateEditor;
+        EndDate: Serenity.DateEditor;
         PaymentTypeId: Serenity.LookupEditor;
     }
     class BudgetsForm extends Serenity.PrefixedContext {
@@ -680,6 +681,8 @@ declare namespace PGMS.Erp {
         Name?: string;
         Total?: number;
         LeftAfterExpenses?: number;
+        StartDate?: string;
+        EndDate?: string;
         PaymentTypeId?: number;
         BudgetPeriod?: BudgetPeriod;
         PaymentTypeName?: string;
@@ -703,6 +706,8 @@ declare namespace PGMS.Erp {
             Name = "Name",
             Total = "Total",
             LeftAfterExpenses = "LeftAfterExpenses",
+            StartDate = "StartDate",
+            EndDate = "EndDate",
             PaymentTypeId = "PaymentTypeId",
             BudgetPeriod = "BudgetPeriod",
             PaymentTypeName = "PaymentTypeName",

@@ -17,6 +17,8 @@ namespace PGMS.Migrations.DefaultDB
                 .WithColumn("PaymentTypeId").AsInt32().NotNullable()
                 .ForeignKey("PaymentTypes", "PaymentTypeId")
                 .WithColumn("BudgetPeriod").AsInt32().Nullable()
+                .WithColumn("StartDate").AsDateTime().Nullable()
+                .WithColumn("EndDate").AsDateTime().Nullable()
 
                 .WithColumn("InsertDate").AsDateTime().NotNullable()
                 .WithColumn("InsertUserId").AsInt32().NotNullable()
@@ -29,6 +31,9 @@ namespace PGMS.Migrations.DefaultDB
                 Name = "Budged for media, inks and materials",
                 BudgetPeriod = 1,
                 PaymentTypeId = 1,
+                Total = 10000,
+                StartDate = DateTime.Now,
+                EndDate = DateTime.Now.AddMonths(1),
                 InsertDate = DateTime.Now,
                 InsertUserId = 1,
                 IsActive = 1
@@ -39,6 +44,9 @@ namespace PGMS.Migrations.DefaultDB
                 Name = "Budged for office thinks",
                 BudgetPeriod = 1,
                 PaymentTypeId = 1,
+                Total = 10000,
+                StartDate = DateTime.Now,
+                EndDate = DateTime.Now.AddMonths(1),
                 InsertDate = DateTime.Now,
                 InsertUserId = 1,
                 IsActive = 1
@@ -49,6 +57,9 @@ namespace PGMS.Migrations.DefaultDB
                 Name = "Budged for cars and machines",
                 BudgetPeriod = 1,
                 PaymentTypeId = 1,
+                Total = 10000,
+                StartDate = DateTime.Now,
+                EndDate = DateTime.Now.AddMonths(1),
                 InsertDate = DateTime.Now,
                 InsertUserId = 1,
                 IsActive = 1
@@ -59,6 +70,9 @@ namespace PGMS.Migrations.DefaultDB
                 Name = "Salaries",
                 BudgetPeriod = 1,
                 PaymentTypeId = 1,
+                Total = 10000,
+                StartDate = DateTime.Now,
+                EndDate = DateTime.Now.AddMonths(1),
                 InsertDate = DateTime.Now,
                 InsertUserId = 1,
                 IsActive = 1

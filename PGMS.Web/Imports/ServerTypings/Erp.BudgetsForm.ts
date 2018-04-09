@@ -2,7 +2,8 @@
     export interface BudgetsForm {
         Name: Serenity.StringEditor;
         Total: Serenity.DecimalEditor;
-        BudgetPeriod: Serenity.EnumEditor;
+        StartDate: Serenity.DateEditor;
+        EndDate: Serenity.DateEditor;
         PaymentTypeId: Serenity.LookupEditor;
     }
 
@@ -19,13 +20,14 @@
                 var s = Serenity;
                 var w0 = s.StringEditor;
                 var w1 = s.DecimalEditor;
-                var w2 = s.EnumEditor;
+                var w2 = s.DateEditor;
                 var w3 = s.LookupEditor;
 
                 Q.initFormType(BudgetsForm, [
                     'Name', w0,
                     'Total', w1,
-                    'BudgetPeriod', w2,
+                    'StartDate', w2,
+                    'EndDate', w2,
                     'PaymentTypeId', w3
                 ]);
             }

@@ -15,7 +15,12 @@ namespace PGMS.Erp.Forms
     {
         public String Name { get; set; }
         public Decimal Total { get; set; }
-        public Int32 BudgetPeriod { get; set; }
+        [HalfWidth]
+        public DateTime StartDate { get; set; }
+        [HalfWidth]
+        public DateTime EndDate { get; set; }
+        //public Int32 BudgetPeriod { get; set; }
         public Int32 PaymentTypeId { get; set; }
+
     }
 }

@@ -4,6 +4,8 @@
         Name?: string;
         Total?: number;
         LeftAfterExpenses?: number;
+        StartDate?: string;
+        EndDate?: string;
         PaymentTypeId?: number;
         BudgetPeriod?: BudgetPeriod;
         PaymentTypeName?: string;
@@ -32,6 +34,8 @@
             Name = "Name",
             Total = "Total",
             LeftAfterExpenses = "LeftAfterExpenses",
+            StartDate = "StartDate",
+            EndDate = "EndDate",
             PaymentTypeId = "PaymentTypeId",
             BudgetPeriod = "BudgetPeriod",
             PaymentTypeName = "PaymentTypeName",

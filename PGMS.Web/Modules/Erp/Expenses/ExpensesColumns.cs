@@ -15,6 +15,8 @@ namespace PGMS.Erp.Columns
     {
         [EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
         public Int32 ExpenseId { get; set; }
+        [FilterOnly()]
+        public Int32? BudgetId { get; set; }
         [EditLink]
         public String Description { get; set; }
         public Decimal Total { get; set; }

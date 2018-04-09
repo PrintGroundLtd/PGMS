@@ -39,6 +39,7 @@ namespace PGMS.Erp.Entities
         }
         
         [DisplayName("Transaction Date"), DisplayFormat("HH:mm dd/MM/yyyy"), NotNull]
+        [QuickFilter()]
         public DateTime? TransactionDate
         {
             get { return Fields.TransactionDate[this]; }
@@ -48,6 +49,7 @@ namespace PGMS.Erp.Entities
 
         [DisplayName("Budget"), NotNull, ForeignKey(typeof(BudgetsRow)), LeftJoin("jBudget"), TextualField("BudgetName")]
         [LookupEditor(typeof(BudgetsRow), FilterField = "IsActive", FilterValue = 1)]
+        [QuickFilter()]
         public Int32? BudgetId
         {
             get { return Fields.BudgetId[this]; }
