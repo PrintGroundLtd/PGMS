@@ -13,6 +13,15 @@ namespace PGMS.Erp.Columns
     [BasedOnRow(typeof(Entities.OrdersRow), CheckNames = true)]
     public class OrdersColumns
     {
+        [FilterOnly()]
+        public int OrderStatusId { get; set; }
+        [FilterOnly()]
+        public int UserId { get; set; }
+        [FilterOnly()]
+        public int AccountId { get; set; }
+        [FilterOnly()]
+        public int CompanyId { get; set; }
+
         [EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
         public Int32 OrderId { get; set; }
         [EditLink]

@@ -10,9 +10,12 @@ using System.Threading.Tasks;
 [assembly: NavigationLink(1150, "Companies", typeof(MyPages.CompaniesController), icon: null)]
 [assembly: NavigationLink(1200, "Products", typeof(MyPages.ProductsController), icon: null)]
 [assembly: NavigationLink(1200, "Orders", typeof(MyPages.OrdersController), icon: null)]
-
-[assembly: NavigationMenu(1250, "Attachments",  icon: null)]
-[assembly: NavigationLink(1260, "Attachments/For Accounts", typeof(MyPages.AccountAttachmentsController), icon: null)]
-[assembly: NavigationLink(1300, "Administration/Partner Types", typeof(MyPages.PartnerTypesController), icon: null)]
-[assembly: NavigationLink(1300, "Administration/Order Statuses", typeof(MyPages.OrderStatusesController), icon: null)]
-[assembly: NavigationLink(1300, "Administration/Payment Types", typeof(MyPages.PaymentTypesController), icon: null)]
+[assembly: NavigationLink(1300, "Budgets", typeof(MyPages.BudgetsController), icon: null)]
+[assembly: NavigationLink(1320, "Expenses", typeof(MyPages.ExpensesController), icon: null)]
+[assembly: NavigationLink(1330, "Partners", typeof(MyPages.PartnersController), icon: null)]
+[assembly: NavigationMenu(1350, "Attachments",  icon: null)]
+[assembly: NavigationLink(1360, "Attachments/For Accounts", typeof(MyPages.AccountAttachmentsController), icon: null)]
+[assembly: NavigationLink(1400, "Administration/Partner Types", typeof(MyPages.PartnerTypesController), icon: null)]
+[assembly: NavigationLink(1400, "Administration/Order Statuses", typeof(MyPages.OrderStatusesController), icon: null)]
+[assembly: NavigationLink(1400, "Administration/Payment Types", typeof(MyPages.PaymentTypesController), icon: null)]
+ 

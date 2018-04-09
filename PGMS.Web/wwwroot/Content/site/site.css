@@ -7854,6 +7854,24 @@ section.content > .s-DataGrid {
 .s-Erp-OrderDetailsDialog .caption {
   width: 150px;
 }
+.s-Erp-BudgetsDialog > .size {
+  width: 650px;
+}
+.s-Erp-BudgetsDialog .caption {
+  width: 150px;
+}
+.s-Erp-ExpensesDialog > .size {
+  width: 650px;
+}
+.s-Erp-ExpensesDialog .caption {
+  width: 150px;
+}
+.s-Erp-PartnersDialog > .size {
+  width: 650px;
+}
+.s-Erp-PartnersDialog .caption {
+  width: 150px;
+}
 .s-NotesEditor {
   border: 1px solid #ccc;
   border-radius: 4px;

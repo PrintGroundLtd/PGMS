@@ -201,18 +201,20 @@ var PGMS;
                 if (!UserForm.init) {
                     UserForm.init = true;
                     var s = Serenity;
-                    var w0 = s.StringEditor;
-                    var w1 = s.EmailEditor;
-                    var w2 = s.ImageUploadEditor;
-                    var w3 = s.PasswordEditor;
+                    var w0 = s.IntegerEditor;
+                    var w1 = s.StringEditor;
+                    var w2 = s.EmailEditor;
+                    var w3 = s.ImageUploadEditor;
+                    var w4 = s.PasswordEditor;
                     Q.initFormType(UserForm, [
-                        'Username', w0,
-                        'DisplayName', w0,
-                        'Email', w1,
-                        'UserImage', w2,
-                        'Password', w3,
-                        'PasswordConfirm', w3,
-                        'Source', w0
+                        'UserId', w0,
+                        'Username', w1,
+                        'DisplayName', w1,
+                        'Email', w2,
+                        'UserImage', w3,
+                        'Password', w4,
+                        'PasswordConfirm', w4,
+                        'Source', w1
                     ]);
                 }
                 return _this;
@@ -4506,5 +4508,439 @@ var PGMS;
         }(Serenity.PropertyPanel));
         Membership.SignUpPanel = SignUpPanel;
     })(Membership = PGMS.Membership || (PGMS.Membership = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var BudgetsForm = /** @class */ (function (_super) {
+            __extends(BudgetsForm, _super);
+            function BudgetsForm(prefix) {
+                var _this = _super.call(this, prefix) || this;
+                if (!BudgetsForm.init) {
+                    BudgetsForm.init = true;
+                    var s = Serenity;
+                    var w0 = s.StringEditor;
+                    var w1 = s.DecimalEditor;
+                    var w2 = s.DateEditor;
+                    var w3 = s.LookupEditor;
+                    Q.initFormType(BudgetsForm, [
+                        'Name', w0,
+                        'Total', w1,
+                        'StartDate', w2,
+                        'EndDate', w2,
+                        'PaymentTypeId', w3
+                    ]);
+                }
+                return _this;
+            }
+            BudgetsForm.formKey = 'Erp.Budgets';
+            return BudgetsForm;
+        }(Serenity.PrefixedContext));
+        Erp.BudgetsForm = BudgetsForm;
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var BudgetsRow;
+        (function (BudgetsRow) {
+            BudgetsRow.idProperty = 'BudgetId';
+            BudgetsRow.isActiveProperty = 'IsActive';
+            BudgetsRow.nameProperty = 'Name';
+            BudgetsRow.localTextPrefix = 'Erp.Budgets';
+            BudgetsRow.lookupKey = 'Erp.Budgets';
+            function getLookup() {
+                return Q.getLookup('Erp.Budgets');
+            }
+            BudgetsRow.getLookup = getLookup;
+        })(BudgetsRow = Erp.BudgetsRow || (Erp.BudgetsRow = {}));
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var BudgetsService;
+        (function (BudgetsService) {
+            BudgetsService.baseUrl = 'Erp/Budgets';
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                BudgetsService[x] = function (r, s, o) {
+                    return Q.serviceRequest(BudgetsService.baseUrl + '/' + x, r, s, o);
+                };
+            });
+        })(BudgetsService = Erp.BudgetsService || (Erp.BudgetsService = {}));
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var BudgetsDialog = /** @class */ (function (_super) {
+            __extends(BudgetsDialog, _super);
+            function BudgetsDialog() {
+                var _this = _super !== null && _super.apply(this, arguments) || this;
+                _this.form = new Erp.BudgetsForm(_this.idPrefix);
+                return _this;
+            }
+            BudgetsDialog.prototype.getFormKey = function () { return Erp.BudgetsForm.formKey; };
+            BudgetsDialog.prototype.getIdProperty = function () { return Erp.BudgetsRow.idProperty; };
+            BudgetsDialog.prototype.getLocalTextPrefix = function () { return Erp.BudgetsRow.localTextPrefix; };
+            BudgetsDialog.prototype.getNameProperty = function () { return Erp.BudgetsRow.nameProperty; };
+            BudgetsDialog.prototype.getService = function () { return Erp.BudgetsService.baseUrl; };
+            BudgetsDialog = __decorate([
+                Serenity.Decorators.registerClass()
+            ], BudgetsDialog);
+            return BudgetsDialog;
+        }(Serenity.EntityDialog));
+        Erp.BudgetsDialog = BudgetsDialog;
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var BudgetsGrid = /** @class */ (function (_super) {
+            __extends(BudgetsGrid, _super);
+            function BudgetsGrid(container) {
+                return _super.call(this, container) || this;
+            }
+            BudgetsGrid.prototype.getColumnsKey = function () { return 'Erp.Budgets'; };
+            BudgetsGrid.prototype.getDialogType = function () { return Erp.BudgetsDialog; };
+            BudgetsGrid.prototype.getIdProperty = function () { return Erp.BudgetsRow.idProperty; };
+            BudgetsGrid.prototype.getLocalTextPrefix = function () { return Erp.BudgetsRow.localTextPrefix; };
+            BudgetsGrid.prototype.getService = function () { return Erp.BudgetsService.baseUrl; };
+            BudgetsGrid = __decorate([
+                Serenity.Decorators.registerClass()
+            ], BudgetsGrid);
+            return BudgetsGrid;
+        }(Serenity.EntityGrid));
+        Erp.BudgetsGrid = BudgetsGrid;
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var BudgetPeriod;
+        (function (BudgetPeriod) {
+            BudgetPeriod[BudgetPeriod["Week"] = 1] = "Week";
+            BudgetPeriod[BudgetPeriod["Month"] = 2] = "Month";
+            BudgetPeriod[BudgetPeriod["Year"] = 3] = "Year";
+        })(BudgetPeriod = Erp.BudgetPeriod || (Erp.BudgetPeriod = {}));
+        Serenity.Decorators.registerEnumType(BudgetPeriod, 'PGMS.Erp.BudgetPeriod', 'PGMS.Erp.Entities.BudgetPeriod');
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var ExpensesForm = /** @class */ (function (_super) {
+            __extends(ExpensesForm, _super);
+            function ExpensesForm(prefix) {
+                var _this = _super.call(this, prefix) || this;
+                if (!ExpensesForm.init) {
+                    ExpensesForm.init = true;
+                    var s = Serenity;
+                    var w0 = s.StringEditor;
+                    var w1 = s.DecimalEditor;
+                    var w2 = s.DateEditor;
+                    var w3 = s.LookupEditor;
+                    Q.initFormType(ExpensesForm, [
+                        'Description', w0,
+                        'Total', w1,
+                        'TransactionDate', w2,
+                        'BudgetId', w3,
+                        'PaymentTypeId', w3
+                    ]);
+                }
+                return _this;
+            }
+            ExpensesForm.formKey = 'Erp.Expenses';
+            return ExpensesForm;
+        }(Serenity.PrefixedContext));
+        Erp.ExpensesForm = ExpensesForm;
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var ExpensesRow;
+        (function (ExpensesRow) {
+            ExpensesRow.idProperty = 'ExpenseId';
+            ExpensesRow.isActiveProperty = 'IsActive';
+            ExpensesRow.nameProperty = 'Description';
+            ExpensesRow.localTextPrefix = 'Erp.Expenses';
+            ExpensesRow.lookupKey = 'Erp.Expenses';
+            function getLookup() {
+                return Q.getLookup('Erp.Expenses');
+            }
+            ExpensesRow.getLookup = getLookup;
+        })(ExpensesRow = Erp.ExpensesRow || (Erp.ExpensesRow = {}));
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var ExpensesService;
+        (function (ExpensesService) {
+            ExpensesService.baseUrl = 'Erp/Expenses';
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                ExpensesService[x] = function (r, s, o) {
+                    return Q.serviceRequest(ExpensesService.baseUrl + '/' + x, r, s, o);
+                };
+            });
+        })(ExpensesService = Erp.ExpensesService || (Erp.ExpensesService = {}));
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var ExpensesDialog = /** @class */ (function (_super) {
+            __extends(ExpensesDialog, _super);
+            function ExpensesDialog() {
+                var _this = _super.call(this) || this;
+                _this.form = new Erp.ExpensesForm(_this.idPrefix);
+                return _this;
+            }
+            ExpensesDialog.prototype.getFormKey = function () { return Erp.ExpensesForm.formKey; };
+            ExpensesDialog.prototype.getIdProperty = function () { return Erp.ExpensesRow.idProperty; };
+            ExpensesDialog.prototype.getLocalTextPrefix = function () { return Erp.ExpensesRow.localTextPrefix; };
+            ExpensesDialog.prototype.getNameProperty = function () { return Erp.ExpensesRow.nameProperty; };
+            ExpensesDialog.prototype.getService = function () { return Erp.ExpensesService.baseUrl; };
+            ExpensesDialog.prototype.loadEntity = function (entity) {
+                var _this = this;
+                _super.prototype.loadEntity.call(this, entity);
+                if (!this.isEditMode()) {
+                    var budgetsRowItems = Erp.BudgetsRow.getLookup().items;
+                    budgetsRowItems =
+                        budgetsRowItems.filter(function (s) { return new Date(s.StartDate) <= new Date() &&
+                            new Date(s.EndDate) >= new Date(); });
+                    this.form.BudgetId.items = [];
+                    budgetsRowItems.forEach(function (s) {
+                        _this.form.BudgetId.addOption(s.BudgetId, s.Name);
+                    });
+                    //this.form.BudgetId.items.filter(s => s.StartDate <= startDate.toString() &&
+                    //    s.EndDate >= endDate.toString());
+                }
+            };
+            ExpensesDialog = __decorate([
+                Serenity.Decorators.registerClass()
+            ], ExpensesDialog);
+            return ExpensesDialog;
+        }(Serenity.EntityDialog));
+        Erp.ExpensesDialog = ExpensesDialog;
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var ExpensesGrid = /** @class */ (function (_super) {
+            __extends(ExpensesGrid, _super);
+            function ExpensesGrid(container) {
+                return _super.call(this, container) || this;
+            }
+            ExpensesGrid.prototype.getColumnsKey = function () { return 'Erp.Expenses'; };
+            ExpensesGrid.prototype.getDialogType = function () { return Erp.ExpensesDialog; };
+            ExpensesGrid.prototype.getIdProperty = function () { return Erp.ExpensesRow.idProperty; };
+            ExpensesGrid.prototype.getLocalTextPrefix = function () { return Erp.ExpensesRow.localTextPrefix; };
+            ExpensesGrid.prototype.getService = function () { return Erp.ExpensesService.baseUrl; };
+            ExpensesGrid = __decorate([
+                Serenity.Decorators.registerClass()
+            ], ExpensesGrid);
+            return ExpensesGrid;
+        }(Serenity.EntityGrid));
+        Erp.ExpensesGrid = ExpensesGrid;
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var PartnersForm = /** @class */ (function (_super) {
+            __extends(PartnersForm, _super);
+            function PartnersForm(prefix) {
+                var _this = _super.call(this, prefix) || this;
+                if (!PartnersForm.init) {
+                    PartnersForm.init = true;
+                    var s = Serenity;
+                    var w0 = s.StringEditor;
+                    var w1 = s.IntegerEditor;
+                    var w2 = s.LookupEditor;
+                    Q.initFormType(PartnersForm, [
+                        'Name', w0,
+                        'HardPercent', w1,
+                        'PartnerType', w2
+                    ]);
+                }
+                return _this;
+            }
+            PartnersForm.formKey = 'Erp.Partners';
+            return PartnersForm;
+        }(Serenity.PrefixedContext));
+        Erp.PartnersForm = PartnersForm;
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var PartnersRow;
+        (function (PartnersRow) {
+            PartnersRow.idProperty = 'PartnerId';
+            PartnersRow.isActiveProperty = 'IsActive';
+            PartnersRow.nameProperty = 'Name';
+            PartnersRow.localTextPrefix = 'Erp.Partners';
+            PartnersRow.lookupKey = 'Erp.Partners';
+            function getLookup() {
+                return Q.getLookup('Erp.Partners');
+            }
+            PartnersRow.getLookup = getLookup;
+        })(PartnersRow = Erp.PartnersRow || (Erp.PartnersRow = {}));
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var PartnersService;
+        (function (PartnersService) {
+            PartnersService.baseUrl = 'Erp/Partners';
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                PartnersService[x] = function (r, s, o) {
+                    return Q.serviceRequest(PartnersService.baseUrl + '/' + x, r, s, o);
+                };
+            });
+        })(PartnersService = Erp.PartnersService || (Erp.PartnersService = {}));
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var PartnersDialog = /** @class */ (function (_super) {
+            __extends(PartnersDialog, _super);
+            function PartnersDialog() {
+                var _this = _super !== null && _super.apply(this, arguments) || this;
+                _this.form = new Erp.PartnersForm(_this.idPrefix);
+                return _this;
+            }
+            PartnersDialog.prototype.getFormKey = function () { return Erp.PartnersForm.formKey; };
+            PartnersDialog.prototype.getIdProperty = function () { return Erp.PartnersRow.idProperty; };
+            PartnersDialog.prototype.getLocalTextPrefix = function () { return Erp.PartnersRow.localTextPrefix; };
+            PartnersDialog.prototype.getNameProperty = function () { return Erp.PartnersRow.nameProperty; };
+            PartnersDialog.prototype.getService = function () { return Erp.PartnersService.baseUrl; };
+            PartnersDialog = __decorate([
+                Serenity.Decorators.registerClass()
+            ], PartnersDialog);
+            return PartnersDialog;
+        }(Serenity.EntityDialog));
+        Erp.PartnersDialog = PartnersDialog;
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var PartnersGrid = /** @class */ (function (_super) {
+            __extends(PartnersGrid, _super);
+            function PartnersGrid(container) {
+                return _super.call(this, container) || this;
+            }
+            PartnersGrid.prototype.getColumnsKey = function () { return 'Erp.Partners'; };
+            PartnersGrid.prototype.getDialogType = function () { return Erp.PartnersDialog; };
+            PartnersGrid.prototype.getIdProperty = function () { return Erp.PartnersRow.idProperty; };
+            PartnersGrid.prototype.getLocalTextPrefix = function () { return Erp.PartnersRow.localTextPrefix; };
+            PartnersGrid.prototype.getService = function () { return Erp.PartnersService.baseUrl; };
+            PartnersGrid = __decorate([
+                Serenity.Decorators.registerClass()
+            ], PartnersGrid);
+            return PartnersGrid;
+        }(Serenity.EntityGrid));
+        Erp.PartnersGrid = PartnersGrid;
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+/// <reference path="OrdersGrid.ts"/>
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var MyOrdersGrid = /** @class */ (function (_super) {
+            __extends(MyOrdersGrid, _super);
+            function MyOrdersGrid(container) {
+                return _super.call(this, container) || this;
+            }
+            // Remove quick filter for assigned to user. We only show
+            MyOrdersGrid.prototype.createQuickFilters = function () {
+                _super.prototype.createQuickFilters.call(this);
+                this.myLookupQuickFilter = this.findQuickFilter(Serenity.LookupEditor, "UserId" /* UserId */);
+                this.myLookupQuickFilter.element.parent().remove("*");
+            };
+            // Here you can set the onDataLoaded event to use for set new title 
+            MyOrdersGrid.prototype.createView = function () {
+                var _this = this;
+                var view = _super.prototype.createView.call(this);
+                view.onDataLoaded.subscribe(function (e, ui) {
+                    _this.setTitle(Q.text("Site.Dashboard.OrdersGridTitle") + _this.totalRecord);
+                });
+                return view;
+            };
+            // Here you can get the total number of records
+            MyOrdersGrid.prototype.onViewProcessData = function (response) {
+                var lr = _super.prototype.onViewProcessData.call(this, response);
+                this.totalRecord = lr.TotalCount;
+                return lr;
+            };
+            MyOrdersGrid.prototype.onViewSubmit = function () {
+                // only continue if base class returns true (didn't cancel request)
+                if (!_super.prototype.onViewSubmit.call(this)) {
+                    return false;
+                }
+                // view object is the data source for grid (SlickRemoteView)
+                // this is an EntityGrid so its Params object is a ListRequest
+                var request = this.view.params;
+                // list request has a Criteria parameter
+                // we AND criteria here to existing one because 
+                // otherwise we might clear filter set by 
+                // an edit filter dialog if any.
+                request.Criteria = Serenity.Criteria.and(request.Criteria, [['UserId'], '=', PGMS.Authorization.userDefinition.UserId]);
+                // TypeScript doesn't support operator overloading
+                // so we had to use array syntax above to build criteria.
+                // Make sure you write
+                // [['Field'], '>', 10] (which means field A is greater than 10)
+                // not 
+                // ['A', '>', 10] (which means string 'A' is greater than 10
+                return true;
+            };
+            MyOrdersGrid = __decorate([
+                Serenity.Decorators.registerClass()
+            ], MyOrdersGrid);
+            return MyOrdersGrid;
+        }(Erp.OrdersGrid));
+        Erp.MyOrdersGrid = MyOrdersGrid;
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
 })(PGMS || (PGMS = {}));
 //# sourceMappingURL=PGMS.Web.js.map

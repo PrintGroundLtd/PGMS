@@ -60,9 +60,19 @@ namespace MVC
                 public const string AccountsIndex = "~/Modules/Erp/Accounts/AccountsIndex.cshtml";
             }
 
+            public static class Budgets
+            {
+                public const string BudgetsIndex = "~/Modules/Erp/Budgets/BudgetsIndex.cshtml";
+            }
+
             public static class Companies
             {
                 public const string CompaniesIndex = "~/Modules/Erp/Companies/CompaniesIndex.cshtml";
+            }
+
+            public static class Expenses
+            {
+                public const string ExpensesIndex = "~/Modules/Erp/Expenses/ExpensesIndex.cshtml";
             }
 
             public static class OrderDetails
@@ -78,6 +88,11 @@ namespace MVC
             public static class OrderStatuses
             {
                 public const string OrderStatusesIndex = "~/Modules/Erp/OrderStatuses/OrderStatusesIndex.cshtml";
+            }
+
+            public static class Partners
+            {
+                public const string PartnersIndex = "~/Modules/Erp/Partners/PartnersIndex.cshtml";
             }
 
             public static class PartnerTypes

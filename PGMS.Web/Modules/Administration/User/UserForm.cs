@@ -7,6 +7,8 @@
     [BasedOnRow(typeof(Entities.UserRow), CheckNames = true)]
     public class UserForm
     {
+        [Hidden]
+        public Int32 UserId { get; set; }
         public String Username { get; set; }
         public String DisplayName { get; set; }
         [EmailEditor]
