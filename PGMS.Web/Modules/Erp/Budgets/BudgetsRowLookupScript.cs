@@ -14,9 +14,10 @@ namespace PGMS.Erp.Scripts
         protected override void PrepareQuery(SqlQuery query)
         {
             base.PrepareQuery(query);
+           
             var r = new TRow();
 
-            query.Where(r.StartDate <= DateTime.Now && r.EndDate >= DateTime.Now);
+            //query.Where(r.StartDate <= DateTime.Now && r.EndDate >= DateTime.Now);
         }
     }
 }

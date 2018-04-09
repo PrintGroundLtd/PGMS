@@ -11,5 +11,29 @@ namespace PGMS.Erp {
 
         protected form = new ExpensesForm(this.idPrefix);
 
+        constructor() {
+            super();
+        }
+
+        loadEntity(entity: BudgetsRow) {
+            super.loadEntity(entity);
+            if (!this.isEditMode()) {
+
+                var budgetsRowItems = BudgetsRow.getLookup().items;
+                
+                budgetsRowItems =
+                    budgetsRowItems.filter(s => new Date(s.StartDate) <= new Date() &&
+                        new Date(s.EndDate) >= new Date());
+
+                this.form.BudgetId.items = [];
+                budgetsRowItems.forEach(s => {
+                    this.form.BudgetId.addOption(s.BudgetId, s.Name);
+                    
+                });
+                //this.form.BudgetId.items.filter(s => s.StartDate <= startDate.toString() &&
+                //    s.EndDate >= endDate.toString());
+            }
+
+        }
     }
 }
