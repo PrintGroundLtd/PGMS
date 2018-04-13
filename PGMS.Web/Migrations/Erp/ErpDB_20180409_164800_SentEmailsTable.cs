@@ -15,7 +15,7 @@ namespace PGMS.Migrations.DefaultDB
                 .WithColumn("Body").AsString(Int32.MaxValue).NotNullable()
                 .WithColumn("ToEmail").AsString(200).NotNullable()
                 .WithColumn("ToName").AsString(200).NotNullable()
-                .WithColumn("Attachments").AsString(Int32.MaxValue).NotNullable()
+                .WithColumn("Attachments").AsString(Int32.MaxValue).Nullable()
 
                 .WithColumn("InsertDate").AsDateTime().NotNullable()
                 .WithColumn("InsertUserId").AsInt32().NotNullable()
