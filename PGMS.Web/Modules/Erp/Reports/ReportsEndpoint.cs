@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -111,6 +112,82 @@ namespace PGMS.Erp.Endpoints
 
             return new RetrieveResponse<IncomeVSExpenseResponse> { Entity = response };
 
+        }
+
+          [ServiceAuthorize(PermissionKeys.Reports.OrdersPerStatus)]
+        public RetrieveResponse<OrdersPerStatusResponse> OrdersPerStatus(IDbConnection connection)
+        {
+            var response = new OrdersPerStatusResponse();
+
+            for (int i = 0; i < 12; i++)
+                response.labels.Add(DateTime.Now.AddMonths(-i).ToString("MMMM"));
+
+       
+                var orderStatuses = new OrderStatusesRepository().List(connection, new ListRequest()).Entities;
+                foreach (var orderStatus in orderStatuses)
+                {
+
+                    // Income
+                    var dataset = new OrdersPerStatusResponse.Dataset();
+                for (int j = 0; j < 12; j++)
+                    {
+                        var firstDayOfMonth = new DateTime(DateTime.Now.AddMonths(-j).Year,
+                            DateTime.Now.AddMonths(-j).Month, 1);
+                        var lastDayOfMonth = firstDayOfMonth.AddMonths(1).AddDays(-1);
+
+
+                        dataset.label = orderStatus.Name;
+                        Random r = new Random();
+                        dataset.backgroundColor = HexConverter(Color.FromArgb(r.Next(0, 256),
+                            r.Next(0, 256), r.Next(0, 256)));
+
+                        dataset.borderColor = HexConverter(Color.FromArgb(r.Next(0, 256),
+                            r.Next(0, 256), r.Next(0, 256)));
+
+                        var orderFields = OrdersRow.Fields;
+                        var ordersRequest = new OrderListRequest();
+                        ordersRequest.ColumnSelection = ColumnSelection.KeyOnly;
+                        ordersRequest.Criteria = (new Criteria(orderFields.OrderDate.Name) >= firstDayOfMonth
+                                                  & new Criteria(orderFields.OrderDate.Name) <= lastDayOfMonth
+                                                  & new Criteria(orderFields.OrderStatusId.Name) ==
+                                                  orderStatus.OrderStatusId.Value);
+
+                        var orders = new OrdersRepository().List(connection, ordersRequest).Entities;
+                        if (!orders.Any())
+                        {
+                            dataset.data.Add(Decimal.Zero);
+                            continue;
+                        }
+
+                        var orderDetailsFields = OrderDetailsRow.Fields;
+                        var orderDetailsListRequest = new ListRequest();
+                        orderDetailsListRequest.ColumnSelection = ColumnSelection.Details;
+
+                        orderDetailsListRequest.Criteria =
+                            (new Criteria(orderDetailsFields.OrderId.Name).In(orders.Select(o => o.OrderId)));
+
+                        var orderDetails = new OrderDetailsRepository().List(connection, orderDetailsListRequest)
+                            .Entities;
+
+                        var totalForMonth = orderDetails.Select(od => od.LineTotal).Aggregate((a, b) => a + b);
+
+                        dataset.data.Add(totalForMonth ?? Decimal.Zero);
+
+                        response.datasets.Add(dataset);
+                }
+
+
+                }
+
+            
+
+            return new RetrieveResponse<OrdersPerStatusResponse> { Entity = response };
+
+        }
+
+        private static String HexConverter(System.Drawing.Color c)
+        {
+            return "#" + c.R.ToString("X2") + c.G.ToString("X2") + c.B.ToString("X2");
         }
     }
 }

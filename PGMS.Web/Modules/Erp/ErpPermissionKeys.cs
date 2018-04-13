@@ -13,6 +13,8 @@ namespace PGMS.Erp
     {
         public class Reports
         {
+            [Description("OrdersPerStatus")]
+            public const string OrdersPerStatus = "Erp:Reports:OrdersPerStatus";
             [Description("IncomeVSExpense")]
             public const string IncomeVSExpense = "Erp:Reports:IncomeVSExpense";
             [Description("Page")]

@@ -2,11 +2,11 @@
 
 namespace PGMS.Erp {
 
-    export class IncomeVSExpense extends Serenity.TemplatedWidget<any> {
+    export class OrdersPerStatus extends Serenity.TemplatedWidget<any> {
         constructor(elem: JQuery, opt: {}) {
             super(elem, opt);
 
-            ReportsEndpointService.IncomeVSExpenseResponse({},
+            ReportsEndpointService.OrdersPerStatus({},
                 response => {
                     var config = {
                         type: 'line',

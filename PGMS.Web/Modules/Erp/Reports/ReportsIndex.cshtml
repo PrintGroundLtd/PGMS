@@ -20,4 +20,14 @@
             });
         </script>
 }
+        
+        @if (Authorization.HasPermission(PermissionKeys.Reports.OrdersPerStatus))
+        {
+            <div id="ordersPerStatus"></div>
+            <script>
+                jQuery(document).ready(function () {
+                    new PGMS.Erp.OrdersPerStatus($("#ordersPerStatus"), {});
+                });
+            </script>
+        }
     </div>
