@@ -2412,6 +2412,7 @@ declare namespace PGMS.Erp {
         protected getService(): string;
         protected form: AccountsForm;
         private attachmentsGrid;
+        private accountOrdersGrid;
         private loadedState;
         constructor();
         loadEntity(entity: Erp.AccountsRow): void;
@@ -2834,4 +2835,27 @@ declare namespace PGMS.Erp {
         private _budgetId;
         budgetId: number;
     }
+}
+declare namespace PGMS.Erp {
+    class AccountOrdersGrid extends OrdersGrid {
+        protected getDialogType(): typeof AccountOrdersDialog;
+        constructor(container: JQuery);
+        getColumnsKey(): string;
+        protected getColumns(): Slick.Column[];
+        protected getQuickFilters(): Serenity.QuickFilter<Serenity.Widget<any>, any>[];
+        protected initEntityDialog(itemType: any, dialog: any): void;
+        protected addButtonClick(): void;
+        protected getInitialTitle(): any;
+        protected getGridCanLoad(): boolean;
+        private _accountId;
+        accountId: number;
+    }
+}
+declare namespace PGMS.Erp {
+    class AccountOrdersDialog extends OrdersDialog {
+        constructor();
+        updateInterface(): void;
+    }
+}
+declare namespace PGMS.Erp {
 }

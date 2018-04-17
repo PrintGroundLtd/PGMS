@@ -29,7 +29,6 @@ namespace PGMS.Erp.Entities
 
         [DisplayName("Account"), ForeignKey("[dbo].[Accounts]", "AccountId"), LeftJoin("jAccount"), TextualField("AccountName")]
         [LookupEditor(typeof(AccountsRow), FilterField = "IsActive", FilterValue = 1)]
-        [QuickFilter()]
         public Int32? AccountId
         {
             get { return Fields.AccountId[this]; }
@@ -45,7 +44,7 @@ namespace PGMS.Erp.Entities
             set { Fields.CompanyId[this] = value; }
         }
 
-        [DisplayName("Payment Type"), ForeignKey("[dbo].[PaymentTypes]", "PaymentTypeId"), LeftJoin("jPaymentType"), TextualField("PaymentTypeName")]
+        [DisplayName("Payment Type"), ForeignKey("[dbo].[PaymentTypes]", "PaymentTypeId"), LeftJoin("jPaymentType"), TextualField("PaymentTypeName"), NotNull]
         [LookupEditor(typeof(PaymentTypesRow), FilterField = "IsActive", FilterValue = 1)]
         public Int32? PaymentTypeId
         {
@@ -118,7 +117,7 @@ namespace PGMS.Erp.Entities
             set { Fields.UserId[this] = value; }
         }
 
-        [DisplayName("Order Status"), ForeignKey("[dbo].[OrderStatuses]", "OrderStatusId"), LeftJoin("jOrderStatus"), TextualField("OrderStatusName")]
+        [DisplayName("Order Status"), ForeignKey("[dbo].[OrderStatuses]", "OrderStatusId"), LeftJoin("jOrderStatus"), TextualField("OrderStatusName"), NotNull]
         [LookupEditor(typeof(OrderStatusesRow))]
         [QuickFilter()]
         public Int32? OrderStatusId

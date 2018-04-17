@@ -9,25 +9,21 @@ namespace PGMS.Erp.Columns
     using System.Collections.Generic;
     using System.IO;
 
-    [ColumnsScript("Erp.Orders")]
+    [ColumnsScript("Erp.AccountOrders")]
     [BasedOnRow(typeof(Entities.OrdersRow), CheckNames = true)]
-    public class OrdersColumns
+    public class AccountOrdersColumns
     {
         [FilterOnly()]
         public int OrderStatusId { get; set; }
         [FilterOnly()]
         public int UserId { get; set; }
-        [QuickFilter()]
-
+        [Hidden]
         public int AccountId { get; set; }
         [FilterOnly()]
         public int CompanyId { get; set; }
 
         [EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
         public Int32 OrderId { get; set; }
-        [EditLink]
-        public String AccountName { get; set; }
-        public bool AccountIsVip { get; set; }
         [EditLink]
         public String CompanyName { get; set; }
         [EditLink]

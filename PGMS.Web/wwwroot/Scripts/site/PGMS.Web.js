@@ -3906,7 +3906,11 @@ var PGMS;
                 _this.form = new Erp.AccountsForm(_this.idPrefix);
                 _this.byId('NoteList').closest('.field').hide().end().appendTo(_this.byId('TabNotes'));
                 _this.attachmentsGrid = new Erp.AccountAttachmentsExtendedGrid(_this.byId("AttachmentsPropertyGrid"));
+                _this.attachmentsGrid.openDialogsAsPanel = false;
                 _this.attachmentsGrid.element.flexHeightOnly(1);
+                _this.accountOrdersGrid = new Erp.AccountOrdersGrid(_this.byId("OrdersPropertyGrid"));
+                _this.accountOrdersGrid.openDialogsAsPanel = false;
+                _this.accountOrdersGrid.element.flexHeightOnly(1);
                 PGMS.DialogUtils.pendingChangesConfirmation(_this.element, function () { return _this.getSaveState() != _this.loadedState; });
                 return _this;
             }
@@ -3917,9 +3921,11 @@ var PGMS;
             AccountsDialog.prototype.getService = function () { return Erp.AccountsService.baseUrl; };
             AccountsDialog.prototype.loadEntity = function (entity) {
                 _super.prototype.loadEntity.call(this, entity);
+                Serenity.TabsExtensions.setDisabled(this.tabs, 'Orders', this.isNewOrDeleted());
                 Serenity.TabsExtensions.setDisabled(this.tabs, 'Attachments', this.isNewOrDeleted());
                 Serenity.TabsExtensions.setDisabled(this.tabs, 'Notes', this.isNewOrDeleted());
                 this.attachmentsGrid.accountId = entity.AccountId;
+                this.accountOrdersGrid.accountId = entity.AccountId;
             };
             AccountsDialog.prototype.getSaveState = function () {
                 try {
@@ -3936,6 +3942,7 @@ var PGMS;
             AccountsDialog = __decorate([
                 Serenity.Decorators.maximizable(),
                 Serenity.Decorators.responsive(),
+                Serenity.Decorators.panel(),
                 Serenity.Decorators.registerClass()
             ], AccountsDialog);
             return AccountsDialog;
@@ -5417,6 +5424,87 @@ var PGMS;
             return BudgetExpensesGrid;
         }(Erp.ExpensesGrid));
         Erp.BudgetExpensesGrid = BudgetExpensesGrid;
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var AccountOrdersGrid = /** @class */ (function (_super) {
+            __extends(AccountOrdersGrid, _super);
+            function AccountOrdersGrid(container) {
+                return _super.call(this, container) || this;
+            }
+            AccountOrdersGrid.prototype.getDialogType = function () { return Erp.AccountOrdersDialog; };
+            AccountOrdersGrid.prototype.getColumnsKey = function () {
+                return "Erp.AccountOrders";
+            };
+            AccountOrdersGrid.prototype.getColumns = function () {
+                return _super.prototype.getColumns.call(this);
+            };
+            AccountOrdersGrid.prototype.getQuickFilters = function () {
+                // get quick filter list from base class
+                var filters = _super.prototype.getQuickFilters.call(this);
+                var filtersNew = [];
+                filtersNew.push(Q.first(filters, function (x) { return x.field == "CompanyId" /* CompanyId */; }));
+                filtersNew.push(Q.first(filters, function (x) { return x.field == "OrderStatusId" /* OrderStatusId */; }));
+                filtersNew.push(Q.first(filters, function (x) { return x.field == "UserId" /* UserId */; }));
+                return filters;
+            };
+            AccountOrdersGrid.prototype.initEntityDialog = function (itemType, dialog) {
+                _super.prototype.initEntityDialog.call(this, itemType, dialog);
+                Serenity.SubDialogHelper.cascade(dialog, this.element.closest('.ui-dialog'));
+            };
+            AccountOrdersGrid.prototype.addButtonClick = function () {
+                this.editItem({ AccountId: this.accountId });
+            };
+            AccountOrdersGrid.prototype.getInitialTitle = function () {
+                return null;
+            };
+            AccountOrdersGrid.prototype.getGridCanLoad = function () {
+                return _super.prototype.getGridCanLoad.call(this) && !!this.accountId;
+            };
+            Object.defineProperty(AccountOrdersGrid.prototype, "accountId", {
+                get: function () {
+                    return this._accountId;
+                },
+                set: function (value) {
+                    if (this._accountId !== value) {
+                        this._accountId = value;
+                        this.setEquality('AccountId', value);
+                        this.refresh();
+                    }
+                },
+                enumerable: true,
+                configurable: true
+            });
+            AccountOrdersGrid = __decorate([
+                Serenity.Decorators.registerClass()
+            ], AccountOrdersGrid);
+            return AccountOrdersGrid;
+        }(Erp.OrdersGrid));
+        Erp.AccountOrdersGrid = AccountOrdersGrid;
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var AccountOrdersDialog = /** @class */ (function (_super) {
+            __extends(AccountOrdersDialog, _super);
+            function AccountOrdersDialog() {
+                return _super.call(this) || this;
+            }
+            AccountOrdersDialog.prototype.updateInterface = function () {
+                _super.prototype.updateInterface.call(this);
+                Serenity.EditorUtils.setReadOnly(this.form.AccountId, true);
+            };
+            AccountOrdersDialog = __decorate([
+                Serenity.Decorators.registerClass()
+            ], AccountOrdersDialog);
+            return AccountOrdersDialog;
+        }(Erp.OrdersDialog));
+        Erp.AccountOrdersDialog = AccountOrdersDialog;
     })(Erp = PGMS.Erp || (PGMS.Erp = {}));
 })(PGMS || (PGMS = {}));
 //# sourceMappingURL=PGMS.Web.js.map
