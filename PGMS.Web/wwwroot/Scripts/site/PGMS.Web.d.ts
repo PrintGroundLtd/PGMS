@@ -1061,6 +1061,7 @@ declare namespace PGMS.Erp {
         ShipAddress: Serenity.StringEditor;
         ShipCity: Serenity.StringEditor;
         ShipCountry: Serenity.StringEditor;
+        NoteList: NotesEditor;
     }
     class OrdersForm extends Serenity.PrefixedContext {
         static formKey: string;
@@ -1099,6 +1100,7 @@ declare namespace PGMS.Erp {
         UserUsername?: string;
         UserDisplayName?: string;
         UserUserImage?: string;
+        NoteList?: NoteRow[];
         DetailList?: OrderDetailsRow[];
         OrderStatusName?: string;
         InsertUserId?: number;
@@ -1140,6 +1142,7 @@ declare namespace PGMS.Erp {
             UserUsername = "UserUsername",
             UserDisplayName = "UserDisplayName",
             UserUserImage = "UserUserImage",
+            NoteList = "NoteList",
             DetailList = "DetailList",
             OrderStatusName = "OrderStatusName",
             InsertUserId = "InsertUserId",
@@ -2585,6 +2588,11 @@ declare namespace PGMS.Erp {
         protected getNameProperty(): string;
         protected getService(): string;
         protected form: OrdersForm;
+        private loadedState;
+        constructor();
+        loadEntity(entity: Erp.OrdersRow): void;
+        loadResponse(data: any): void;
+        getSaveState(): string;
     }
 }
 declare namespace PGMS.Erp {

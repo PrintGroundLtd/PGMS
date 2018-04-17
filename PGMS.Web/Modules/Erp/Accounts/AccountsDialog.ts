@@ -23,7 +23,7 @@
             this.byId('NoteList').closest('.field').hide().end().appendTo(this.byId('TabNotes'));
 
             this.attachmentsGrid = new AccountAttachmentsExtendedGrid(this.byId("AttachmentsPropertyGrid"));
-            this.attachmentsGrid.openDialogsAsPanel = false;
+            this.attachmentsGrid.openDialogsAsPanel = false; 
             this.attachmentsGrid.element.flexHeightOnly(1);
 
             this.accountOrdersGrid = new AccountOrdersGrid(this.byId("OrdersPropertyGrid"));

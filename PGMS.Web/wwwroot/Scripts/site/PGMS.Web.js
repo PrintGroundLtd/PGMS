@@ -831,6 +831,7 @@ var PGMS;
                     var w2 = Erp.OrderDetailsEditor;
                     var w3 = s.DateEditor;
                     var w4 = s.StringEditor;
+                    var w5 = Erp.NotesEditor;
                     Q.initFormType(OrdersForm, [
                         'AccountId', w0,
                         'CompanyId', w0,
@@ -845,7 +846,8 @@ var PGMS;
                         'ShipName', w4,
                         'ShipAddress', w4,
                         'ShipCity', w4,
-                        'ShipCountry', w4
+                        'ShipCountry', w4,
+                        'NoteList', w5
                     ]);
                 }
                 return _this;
@@ -4561,8 +4563,10 @@ var PGMS;
         var OrdersDialog = /** @class */ (function (_super) {
             __extends(OrdersDialog, _super);
             function OrdersDialog() {
-                var _this = _super !== null && _super.apply(this, arguments) || this;
+                var _this = _super.call(this) || this;
                 _this.form = new Erp.OrdersForm(_this.idPrefix);
+                _this.byId('NoteList').closest('.field').hide().end().appendTo(_this.byId('TabNotes'));
+                PGMS.DialogUtils.pendingChangesConfirmation(_this.element, function () { return _this.getSaveState() != _this.loadedState; });
                 return _this;
             }
             OrdersDialog.prototype.getFormKey = function () { return Erp.OrdersForm.formKey; };
@@ -4570,6 +4574,22 @@ var PGMS;
             OrdersDialog.prototype.getLocalTextPrefix = function () { return Erp.OrdersRow.localTextPrefix; };
             OrdersDialog.prototype.getNameProperty = function () { return Erp.OrdersRow.nameProperty; };
             OrdersDialog.prototype.getService = function () { return Erp.OrdersService.baseUrl; };
+            OrdersDialog.prototype.loadEntity = function (entity) {
+                _super.prototype.loadEntity.call(this, entity);
+                Serenity.TabsExtensions.setDisabled(this.tabs, 'Notes', this.isNewOrDeleted());
+            };
+            OrdersDialog.prototype.loadResponse = function (data) {
+                _super.prototype.loadResponse.call(this, data);
+                this.loadedState = this.getSaveState();
+            };
+            OrdersDialog.prototype.getSaveState = function () {
+                try {
+                    return $.toJSON(this.getSaveEntity());
+                }
+                catch (e) {
+                    return null;
+                }
+            };
             OrdersDialog = __decorate([
                 Serenity.Decorators.panel(),
                 Serenity.Decorators.registerClass()

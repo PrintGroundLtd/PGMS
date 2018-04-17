@@ -14,6 +14,7 @@
         ShipAddress: Serenity.StringEditor;
         ShipCity: Serenity.StringEditor;
         ShipCountry: Serenity.StringEditor;
+        NoteList: NotesEditor;
     }
 
     export class OrdersForm extends Serenity.PrefixedContext {
@@ -32,6 +33,7 @@
                 var w2 = OrderDetailsEditor;
                 var w3 = s.DateEditor;
                 var w4 = s.StringEditor;
+                var w5 = NotesEditor;
 
                 Q.initFormType(OrdersForm, [
                     'AccountId', w0,
@@ -47,7 +49,8 @@
                     'ShipName', w4,
                     'ShipAddress', w4,
                     'ShipCity', w4,
-                    'ShipCountry', w4
+                    'ShipCountry', w4,
+                    'NoteList', w5
                 ]);
             }
         }

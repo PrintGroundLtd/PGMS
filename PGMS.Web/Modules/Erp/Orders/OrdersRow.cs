@@ -205,6 +205,15 @@ namespace PGMS.Erp.Entities
             get { return Fields.DetailList[this]; }
             set { Fields.DetailList[this] = value; }
         }
+
+        [NotesEditor, NotMapped]
+        public List<NoteRow> NoteList
+        {
+            get { return Fields.NoteList[this]; }
+            set { Fields.NoteList[this] = value; }
+        }
+
+
         IIdField IIdRow.IdField
         {
             get { return Fields.OrderId; }
@@ -251,6 +260,8 @@ namespace PGMS.Erp.Entities
             public StringField UserUsername;
             public StringField UserDisplayName;
             public StringField UserUserImage;
+
+            public RowListField<NoteRow> NoteList;
 
             public RowListField<OrderDetailsRow> DetailList;
             public StringField OrderStatusName;

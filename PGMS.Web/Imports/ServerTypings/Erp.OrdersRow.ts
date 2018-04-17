@@ -23,6 +23,7 @@
         UserUsername?: string;
         UserDisplayName?: string;
         UserUserImage?: string;
+        NoteList?: NoteRow[];
         DetailList?: OrderDetailsRow[];
         OrderStatusName?: string;
         InsertUserId?: number;
@@ -69,6 +70,7 @@
             UserUsername = "UserUsername",
             UserDisplayName = "UserDisplayName",
             UserUserImage = "UserUserImage",
+            NoteList = "NoteList",
             DetailList = "DetailList",
             OrderStatusName = "OrderStatusName",
             InsertUserId = "InsertUserId",

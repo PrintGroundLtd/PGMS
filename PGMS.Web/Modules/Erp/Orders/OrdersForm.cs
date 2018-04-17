@@ -38,5 +38,7 @@ namespace PGMS.Erp.Forms
         public String ShipAddress { get; set; }
         public String ShipCity { get; set; }
         public String ShipCountry { get; set; }
+        public List<object> NoteList { get; set; }
+
     }
 }
