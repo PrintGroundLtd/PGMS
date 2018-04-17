@@ -13,6 +13,9 @@ namespace PGMS.Erp.Forms
     [BasedOnRow(typeof(Entities.BudgetsRow), CheckNames = true)]
     public class BudgetsForm
     {
+        [Category("General")]
+        [Hidden]
+        public Int32 BudgetId { get; set; }
         public String Name { get; set; }
         public Decimal Total { get; set; }
         [HalfWidth]
@@ -21,6 +24,7 @@ namespace PGMS.Erp.Forms
         public DateTime EndDate { get; set; }
         //public Int32 BudgetPeriod { get; set; }
         public Int32 PaymentTypeId { get; set; }
+        public List<object> NoteList { get; set; }
 
     }
 }

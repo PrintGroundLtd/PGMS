@@ -9,6 +9,7 @@
         PaymentTypeId?: number;
         BudgetPeriod?: BudgetPeriod;
         PaymentTypeName?: string;
+        NoteList?: NoteRow[];
         InsertUserId?: number;
         InsertDate?: string;
         UpdateUserId?: number;
@@ -39,6 +40,7 @@
             PaymentTypeId = "PaymentTypeId",
             BudgetPeriod = "BudgetPeriod",
             PaymentTypeName = "PaymentTypeName",
+            NoteList = "NoteList",
             InsertUserId = "InsertUserId",
             InsertDate = "InsertDate",
             UpdateUserId = "UpdateUserId",

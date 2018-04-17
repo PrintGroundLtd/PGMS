@@ -663,11 +663,13 @@ declare namespace PGMS.Erp {
 }
 declare namespace PGMS.Erp {
     interface BudgetsForm {
+        BudgetId: Serenity.IntegerEditor;
         Name: Serenity.StringEditor;
         Total: Serenity.DecimalEditor;
         StartDate: Serenity.DateEditor;
         EndDate: Serenity.DateEditor;
         PaymentTypeId: Serenity.LookupEditor;
+        NoteList: NotesEditor;
     }
     class BudgetsForm extends Serenity.PrefixedContext {
         static formKey: string;
@@ -686,6 +688,7 @@ declare namespace PGMS.Erp {
         PaymentTypeId?: number;
         BudgetPeriod?: BudgetPeriod;
         PaymentTypeName?: string;
+        NoteList?: NoteRow[];
         InsertUserId?: number;
         InsertDate?: string;
         UpdateUserId?: number;
@@ -711,6 +714,7 @@ declare namespace PGMS.Erp {
             PaymentTypeId = "PaymentTypeId",
             BudgetPeriod = "BudgetPeriod",
             PaymentTypeName = "PaymentTypeName",
+            NoteList = "NoteList",
             InsertUserId = "InsertUserId",
             InsertDate = "InsertDate",
             UpdateUserId = "UpdateUserId",
@@ -1062,6 +1066,12 @@ declare namespace PGMS.Erp {
         static formKey: string;
         private static init;
         constructor(prefix: string);
+    }
+}
+declare namespace PGMS.Erp {
+    interface OrdersPerStatusResponse {
+        labels?: string[];
+        datasets?: Dataset[];
     }
 }
 declare namespace PGMS.Erp {
@@ -2433,6 +2443,12 @@ declare namespace PGMS.Erp {
         protected getNameProperty(): string;
         protected getService(): string;
         protected form: BudgetsForm;
+        private loadedState;
+        private budgetExpensesGrid;
+        constructor();
+        loadEntity(entity: Erp.BudgetsRow): void;
+        getSaveState(): string;
+        loadResponse(data: any): void;
     }
 }
 declare namespace PGMS.Erp {
@@ -2700,6 +2716,12 @@ declare namespace PGMS.Erp {
         constructor(elem: JQuery, opt: {});
     }
 }
+declare var Chart: any;
+declare namespace PGMS.Erp {
+    class OrdersPerStatus extends Serenity.TemplatedWidget<any> {
+        constructor(elem: JQuery, opt: {});
+    }
+}
 declare namespace PGMS.Erp {
     class SentEmailsDialog extends Serenity.EntityDialog<SentEmailsRow, any> {
         protected getFormKey(): string;
@@ -2793,15 +2815,23 @@ declare namespace PGMS.Membership {
         constructor(container: JQuery);
     }
 }
-declare var Chart: any;
 declare namespace PGMS.Erp {
-    class OrdersPerStatus extends Serenity.TemplatedWidget<any> {
-        constructor(elem: JQuery, opt: {});
+    class BudgetExpensesDialog extends ExpensesDialog {
+        constructor();
+        updateInterface(): void;
     }
 }
 declare namespace PGMS.Erp {
-    interface OrdersPerStatusResponse {
-        labels?: string[];
-        datasets?: Dataset[];
+    class BudgetExpensesGrid extends ExpensesGrid {
+        protected getDialogType(): typeof BudgetExpensesDialog;
+        constructor(container: JQuery);
+        protected getColumns(): Slick.Column[];
+        protected getQuickFilters(): Serenity.QuickFilter<Serenity.Widget<any>, any>[];
+        protected initEntityDialog(itemType: any, dialog: any): void;
+        protected addButtonClick(): void;
+        protected getInitialTitle(): any;
+        protected getGridCanLoad(): boolean;
+        private _budgetId;
+        budgetId: number;
     }
 }

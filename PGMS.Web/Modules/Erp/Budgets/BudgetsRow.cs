@@ -1,4 +1,5 @@
 ﻿
+using System.Collections.Generic;
 using PGMS.Erp.Scripts;
 using PGMS.Web.Modules.Erp.Budgets;
 
@@ -86,8 +87,14 @@ namespace PGMS.Erp.Entities
             get { return Fields.PaymentTypeName[this]; }
             set { Fields.PaymentTypeName[this] = value; }
         }
-        
 
+
+        [NotesEditor, NotMapped]
+        public List<NoteRow> NoteList
+        {
+            get { return Fields.NoteList[this]; }
+            set { Fields.NoteList[this] = value; }
+        }
         IIdField IIdRow.IdField
         {
             get { return Fields.BudgetId; }
@@ -120,6 +127,9 @@ namespace PGMS.Erp.Entities
             public Int32Field PaymentTypeId;
             public Int32Field BudgetPeriod;
             public StringField PaymentTypeName;
-		}
+
+            public RowListField<NoteRow> NoteList;
+
+        }
     }
 }

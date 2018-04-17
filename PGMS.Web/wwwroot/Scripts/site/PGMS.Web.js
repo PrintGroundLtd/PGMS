@@ -535,16 +535,20 @@ var PGMS;
                 if (!BudgetsForm.init) {
                     BudgetsForm.init = true;
                     var s = Serenity;
-                    var w0 = s.StringEditor;
-                    var w1 = s.DecimalEditor;
-                    var w2 = s.DateEditor;
-                    var w3 = s.LookupEditor;
+                    var w0 = s.IntegerEditor;
+                    var w1 = s.StringEditor;
+                    var w2 = s.DecimalEditor;
+                    var w3 = s.DateEditor;
+                    var w4 = s.LookupEditor;
+                    var w5 = Erp.NotesEditor;
                     Q.initFormType(BudgetsForm, [
-                        'Name', w0,
-                        'Total', w1,
-                        'StartDate', w2,
-                        'EndDate', w2,
-                        'PaymentTypeId', w3
+                        'BudgetId', w0,
+                        'Name', w1,
+                        'Total', w2,
+                        'StartDate', w3,
+                        'EndDate', w3,
+                        'PaymentTypeId', w4,
+                        'NoteList', w5
                     ]);
                 }
                 return _this;
@@ -3998,8 +4002,13 @@ var PGMS;
         var BudgetsDialog = /** @class */ (function (_super) {
             __extends(BudgetsDialog, _super);
             function BudgetsDialog() {
-                var _this = _super !== null && _super.apply(this, arguments) || this;
+                var _this = _super.call(this) || this;
                 _this.form = new Erp.BudgetsForm(_this.idPrefix);
+                _this.byId('NoteList').closest('.field').hide().end().appendTo(_this.byId('TabNotes'));
+                _this.budgetExpensesGrid = new Erp.BudgetExpensesGrid(_this.byId("BudgetExpensesPropertyGrid"));
+                _this.budgetExpensesGrid.element.flexHeightOnly(1);
+                _this.budgetExpensesGrid.openDialogsAsPanel = false;
+                PGMS.DialogUtils.pendingChangesConfirmation(_this.element, function () { return _this.getSaveState() != _this.loadedState; });
                 return _this;
             }
             BudgetsDialog.prototype.getFormKey = function () { return Erp.BudgetsForm.formKey; };
@@ -4007,7 +4016,28 @@ var PGMS;
             BudgetsDialog.prototype.getLocalTextPrefix = function () { return Erp.BudgetsRow.localTextPrefix; };
             BudgetsDialog.prototype.getNameProperty = function () { return Erp.BudgetsRow.nameProperty; };
             BudgetsDialog.prototype.getService = function () { return Erp.BudgetsService.baseUrl; };
+            BudgetsDialog.prototype.loadEntity = function (entity) {
+                _super.prototype.loadEntity.call(this, entity);
+                Serenity.TabsExtensions.setDisabled(this.tabs, 'BudgetExpenses', this.isNewOrDeleted());
+                Serenity.TabsExtensions.setDisabled(this.tabs, 'Notes', this.isNewOrDeleted());
+                this.budgetExpensesGrid.budgetId = entity.BudgetId;
+            };
+            BudgetsDialog.prototype.getSaveState = function () {
+                try {
+                    return $.toJSON(this.getSaveEntity());
+                }
+                catch (e) {
+                    return null;
+                }
+            };
+            BudgetsDialog.prototype.loadResponse = function (data) {
+                _super.prototype.loadResponse.call(this, data);
+                this.loadedState = this.getSaveState();
+            };
             BudgetsDialog = __decorate([
+                Serenity.Decorators.maximizable(),
+                Serenity.Decorators.responsive(),
+                Serenity.Decorators.panel(),
                 Serenity.Decorators.registerClass()
             ], BudgetsDialog);
             return BudgetsDialog;
@@ -4893,6 +4923,64 @@ var PGMS;
 (function (PGMS) {
     var Erp;
     (function (Erp) {
+        var OrdersPerStatus = /** @class */ (function (_super) {
+            __extends(OrdersPerStatus, _super);
+            function OrdersPerStatus(elem, opt) {
+                var _this = _super.call(this, elem, opt) || this;
+                Erp.ReportsEndpointService.OrdersPerStatus({}, function (response) {
+                    var config = {
+                        type: 'line',
+                        data: {
+                            datasets: response.Entity.datasets,
+                            labels: response.Entity.labels
+                        },
+                        options: {
+                            responsive: true,
+                            legend: {
+                                display: true
+                            },
+                            tooltips: {
+                                mode: 'index',
+                                intersect: false,
+                            },
+                            hover: {
+                                mode: 'nearest',
+                                intersect: true
+                            },
+                            scales: {
+                                xAxes: [
+                                    {
+                                        display: true,
+                                        scaleLabel: {
+                                            display: true,
+                                        }
+                                    }
+                                ],
+                                yAxes: [
+                                    {
+                                        display: true,
+                                        scaleLabel: {
+                                            display: true,
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                    };
+                    var ctx = $(_this.byId("IncomeVSExpense")).get(0).getContext("2d", {});
+                    var myPie = new Chart(ctx, config);
+                });
+                return _this;
+            }
+            return OrdersPerStatus;
+        }(Serenity.TemplatedWidget));
+        Erp.OrdersPerStatus = OrdersPerStatus;
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
         var SentEmailsDialog = /** @class */ (function (_super) {
             __extends(SentEmailsDialog, _super);
             function SentEmailsDialog() {
@@ -5257,58 +5345,78 @@ var PGMS;
 (function (PGMS) {
     var Erp;
     (function (Erp) {
-        var OrdersPerStatus = /** @class */ (function (_super) {
-            __extends(OrdersPerStatus, _super);
-            function OrdersPerStatus(elem, opt) {
-                var _this = _super.call(this, elem, opt) || this;
-                Erp.ReportsEndpointService.OrdersPerStatus({}, function (response) {
-                    var config = {
-                        type: 'line',
-                        data: {
-                            datasets: response.Entity.datasets,
-                            labels: response.Entity.labels
-                        },
-                        options: {
-                            responsive: true,
-                            legend: {
-                                display: true
-                            },
-                            tooltips: {
-                                mode: 'index',
-                                intersect: false,
-                            },
-                            hover: {
-                                mode: 'nearest',
-                                intersect: true
-                            },
-                            scales: {
-                                xAxes: [
-                                    {
-                                        display: true,
-                                        scaleLabel: {
-                                            display: true,
-                                        }
-                                    }
-                                ],
-                                yAxes: [
-                                    {
-                                        display: true,
-                                        scaleLabel: {
-                                            display: true,
-                                        }
-                                    }
-                                ]
-                            }
-                        },
-                    };
-                    var ctx = $(_this.byId("IncomeVSExpense")).get(0).getContext("2d", {});
-                    var myPie = new Chart(ctx, config);
-                });
-                return _this;
+        var BudgetExpensesDialog = /** @class */ (function (_super) {
+            __extends(BudgetExpensesDialog, _super);
+            function BudgetExpensesDialog() {
+                return _super.call(this) || this;
             }
-            return OrdersPerStatus;
-        }(Serenity.TemplatedWidget));
-        Erp.OrdersPerStatus = OrdersPerStatus;
+            BudgetExpensesDialog.prototype.updateInterface = function () {
+                _super.prototype.updateInterface.call(this);
+                Serenity.EditorUtils.setReadOnly(this.form.BudgetId, true);
+            };
+            BudgetExpensesDialog = __decorate([
+                Serenity.Decorators.registerClass()
+            ], BudgetExpensesDialog);
+            return BudgetExpensesDialog;
+        }(Erp.ExpensesDialog));
+        Erp.BudgetExpensesDialog = BudgetExpensesDialog;
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+/// <reference path="../Expenses/ExpensesDialog.ts"/>
+/// <reference path="../Expenses/ExpensesDialog.ts"/>
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var BudgetExpensesGrid = /** @class */ (function (_super) {
+            __extends(BudgetExpensesGrid, _super);
+            function BudgetExpensesGrid(container) {
+                return _super.call(this, container) || this;
+            }
+            BudgetExpensesGrid.prototype.getDialogType = function () { return Erp.BudgetExpensesDialog; };
+            BudgetExpensesGrid.prototype.getColumns = function () {
+                return _super.prototype.getColumns.call(this).filter(function (x) { return x.field !== "BudgetName" /* BudgetName */; });
+            };
+            BudgetExpensesGrid.prototype.getQuickFilters = function () {
+                // get quick filter list from base class
+                var filters = _super.prototype.getQuickFilters.call(this);
+                var filtersNew = [];
+                filtersNew.push(Q.first(filters, function (x) { return x.field == "TransactionDate" /* TransactionDate */; }));
+                return filtersNew;
+            };
+            BudgetExpensesGrid.prototype.initEntityDialog = function (itemType, dialog) {
+                _super.prototype.initEntityDialog.call(this, itemType, dialog);
+                Serenity.SubDialogHelper.cascade(dialog, this.element.closest('.ui-dialog'));
+            };
+            BudgetExpensesGrid.prototype.addButtonClick = function () {
+                this.editItem({ BudgetId: this.budgetId });
+            };
+            BudgetExpensesGrid.prototype.getInitialTitle = function () {
+                return null;
+            };
+            BudgetExpensesGrid.prototype.getGridCanLoad = function () {
+                return _super.prototype.getGridCanLoad.call(this) && !!this.budgetId;
+            };
+            Object.defineProperty(BudgetExpensesGrid.prototype, "budgetId", {
+                get: function () {
+                    return this._budgetId;
+                },
+                set: function (value) {
+                    if (this._budgetId !== value) {
+                        this._budgetId = value;
+                        this.setEquality('BudgetId', value);
+                        this.refresh();
+                    }
+                },
+                enumerable: true,
+                configurable: true
+            });
+            BudgetExpensesGrid = __decorate([
+                Serenity.Decorators.registerClass()
+            ], BudgetExpensesGrid);
+            return BudgetExpensesGrid;
+        }(Erp.ExpensesGrid));
+        Erp.BudgetExpensesGrid = BudgetExpensesGrid;
     })(Erp = PGMS.Erp || (PGMS.Erp = {}));
 })(PGMS || (PGMS = {}));
 //# sourceMappingURL=PGMS.Web.js.map
