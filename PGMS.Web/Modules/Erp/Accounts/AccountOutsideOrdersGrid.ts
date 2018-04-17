@@ -3,28 +3,28 @@ namespace PGMS.Erp {
     import fld = OrdersRow.Fields;
 
     @Serenity.Decorators.registerClass()
-    export class AccountOrdersGrid extends OrdersGrid {
-        protected getDialogType() { return AccountOrdersDialog; }
+    export class AccountOutsideOrdersGrid extends OutsideOrdersGrid {
+        protected getDialogType() { return AccountOutsideOrdersDialog; }
 
         constructor(container: JQuery) {
             super(container);
         }
 
         getColumnsKey(): string {
-            return "Erp.AccountOrders";
+            return "Erp.AccountOutsideOrders";
         }
 
         protected getColumns(): Slick.Column[] {
             return super.getColumns();
-        }
-
+        } 
+        
         protected initEntityDialog(itemType, dialog) {
             super.initEntityDialog(itemType, dialog);
             Serenity.SubDialogHelper.cascade(dialog, this.element.closest('.ui-dialog'));
         }
 
         protected addButtonClick() {
-            this.editItem({ AccountId: this.accountId });
+            this.editItem({ AccountRepresentsId: this.accountRepresentsId });
         }
         
         protected getInitialTitle() {
@@ -32,19 +32,19 @@ namespace PGMS.Erp {
         }
 
         protected getGridCanLoad() {
-            return super.getGridCanLoad() && !!this.accountId;
+            return super.getGridCanLoad() && !!this.accountRepresentsId;
         }
 
-        private _accountId: number;
+        private _accountRepresentsId: number;
 
-        get accountId() {
-            return this._accountId;
+        get accountRepresentsId() {
+            return this._accountRepresentsId;
         }
 
-        set accountId(value: number) {
-            if (this._accountId !== value) {
-                this._accountId = value;
-                this.setEquality('AccountId', value);
+        set accountRepresentsId(value: number) {
+            if (this._accountRepresentsId !== value) {
+                this._accountRepresentsId = value;
+                this.setEquality('AccountRepresentsId', value);
                 this.refresh();
             }
         }

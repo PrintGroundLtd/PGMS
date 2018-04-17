@@ -9,17 +9,17 @@ namespace PGMS.Erp.Columns
     using System.Collections.Generic;
     using System.IO;
 
-    [ColumnsScript("Erp.OutsideOrders")]
+    [ColumnsScript("Erp.AccountOutsideOrders")]
     [BasedOnRow(typeof(Entities.OutsideOrdersRow), CheckNames = true)]
-    public class OutsideOrdersColumns
+    public class AccountOutsideOrdersColumns
     {
         [EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
         public Int32 OutsideOrderId { get; set; }
-        [QuickFilter(), FilterOnly]
-        public Int32 AccountRepresentsId { get; set; }
-        [QuickFilter(), FilterOnly()]
-        public Int32 CompanyRepresentsId { get; set; }
 
+        [Hidden]
+        public Int32 AccountRepresentsId { get; set; }
+        [Hidden]
+        public Int32 CompanyRepresentsId { get; set; }
         [EditLink]
         public String Name { get; set; }
         public Decimal PriceTheyOffer { get; set; }

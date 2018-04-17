@@ -1235,10 +1235,10 @@ declare namespace PGMS.Erp {
 declare namespace PGMS.Erp {
     interface OutsideOrdersForm {
         Name: Serenity.StringEditor;
-        PriceTheyOffer: Serenity.DecimalEditor;
-        PriceWeSell: Serenity.DecimalEditor;
         AccountRepresentsId: Serenity.LookupEditor;
         CompanyRepresentsId: Serenity.LookupEditor;
+        PriceTheyOffer: Serenity.DecimalEditor;
+        PriceWeSell: Serenity.DecimalEditor;
     }
     class OutsideOrdersForm extends Serenity.PrefixedContext {
         static formKey: string;
@@ -2413,6 +2413,7 @@ declare namespace PGMS.Erp {
         protected form: AccountsForm;
         private attachmentsGrid;
         private accountOrdersGrid;
+        private accountOutsideOrdersGrid;
         private loadedState;
         constructor();
         loadEntity(entity: Erp.AccountsRow): void;
@@ -2842,7 +2843,6 @@ declare namespace PGMS.Erp {
         constructor(container: JQuery);
         getColumnsKey(): string;
         protected getColumns(): Slick.Column[];
-        protected getQuickFilters(): Serenity.QuickFilter<Serenity.Widget<any>, any>[];
         protected initEntityDialog(itemType: any, dialog: any): void;
         protected addButtonClick(): void;
         protected getInitialTitle(): any;
@@ -2853,6 +2853,28 @@ declare namespace PGMS.Erp {
 }
 declare namespace PGMS.Erp {
     class AccountOrdersDialog extends OrdersDialog {
+        constructor();
+        updateInterface(): void;
+    }
+}
+declare namespace PGMS.Erp {
+}
+declare namespace PGMS.Erp {
+    class AccountOutsideOrdersGrid extends OutsideOrdersGrid {
+        protected getDialogType(): typeof AccountOutsideOrdersDialog;
+        constructor(container: JQuery);
+        getColumnsKey(): string;
+        protected getColumns(): Slick.Column[];
+        protected initEntityDialog(itemType: any, dialog: any): void;
+        protected addButtonClick(): void;
+        protected getInitialTitle(): any;
+        protected getGridCanLoad(): boolean;
+        private _accountRepresentsId;
+        accountRepresentsId: number;
+    }
+}
+declare namespace PGMS.Erp {
+    class AccountOutsideOrdersDialog extends OutsideOrdersDialog {
         constructor();
         updateInterface(): void;
     }

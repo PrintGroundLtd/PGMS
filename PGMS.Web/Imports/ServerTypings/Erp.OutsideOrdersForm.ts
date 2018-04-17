@@ -1,10 +1,10 @@
 ﻿namespace PGMS.Erp {
     export interface OutsideOrdersForm {
         Name: Serenity.StringEditor;
-        PriceTheyOffer: Serenity.DecimalEditor;
-        PriceWeSell: Serenity.DecimalEditor;
         AccountRepresentsId: Serenity.LookupEditor;
         CompanyRepresentsId: Serenity.LookupEditor;
+        PriceTheyOffer: Serenity.DecimalEditor;
+        PriceWeSell: Serenity.DecimalEditor;
     }
 
     export class OutsideOrdersForm extends Serenity.PrefixedContext {
@@ -19,15 +19,15 @@
 
                 var s = Serenity;
                 var w0 = s.StringEditor;
-                var w1 = s.DecimalEditor;
-                var w2 = s.LookupEditor;
+                var w1 = s.LookupEditor;
+                var w2 = s.DecimalEditor;
 
                 Q.initFormType(OutsideOrdersForm, [
                     'Name', w0,
-                    'PriceTheyOffer', w1,
-                    'PriceWeSell', w1,
-                    'AccountRepresentsId', w2,
-                    'CompanyRepresentsId', w2
+                    'AccountRepresentsId', w1,
+                    'CompanyRepresentsId', w1,
+                    'PriceTheyOffer', w2,
+                    'PriceWeSell', w2
                 ]);
             }
         }

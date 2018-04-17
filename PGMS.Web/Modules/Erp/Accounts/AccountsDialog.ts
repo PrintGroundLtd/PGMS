@@ -14,6 +14,7 @@
 
         private attachmentsGrid: AccountAttachmentsExtendedGrid;
         private accountOrdersGrid: AccountOrdersGrid;
+        private accountOutsideOrdersGrid: AccountOutsideOrdersGrid;
 
         private loadedState: string;
 
@@ -28,6 +29,11 @@
             this.accountOrdersGrid = new AccountOrdersGrid(this.byId("OrdersPropertyGrid"));
             this.accountOrdersGrid.openDialogsAsPanel = false;
             this.accountOrdersGrid.element.flexHeightOnly(1);
+
+            this.accountOutsideOrdersGrid = new AccountOutsideOrdersGrid(this.byId("OutsideOrdersPropertyGrid"));
+            this.accountOutsideOrdersGrid.openDialogsAsPanel = false;
+            this.accountOutsideOrdersGrid.element.flexHeightOnly(1);
+
             DialogUtils.pendingChangesConfirmation(this.element, () => this.getSaveState() != this.loadedState);
 
         }
@@ -36,10 +42,12 @@
             super.loadEntity(entity);
 
             Serenity.TabsExtensions.setDisabled(this.tabs, 'Orders', this.isNewOrDeleted());
+            Serenity.TabsExtensions.setDisabled(this.tabs, 'OutsideOrders', this.isNewOrDeleted());
             Serenity.TabsExtensions.setDisabled(this.tabs, 'Attachments', this.isNewOrDeleted());
             Serenity.TabsExtensions.setDisabled(this.tabs, 'Notes', this.isNewOrDeleted());
             this.attachmentsGrid.accountId = entity.AccountId;
             this.accountOrdersGrid.accountId = entity.AccountId;
+            this.accountOutsideOrdersGrid.accountRepresentsId = entity.AccountId;
         }
 
 

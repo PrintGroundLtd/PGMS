@@ -970,14 +970,14 @@ var PGMS;
                     OutsideOrdersForm.init = true;
                     var s = Serenity;
                     var w0 = s.StringEditor;
-                    var w1 = s.DecimalEditor;
-                    var w2 = s.LookupEditor;
+                    var w1 = s.LookupEditor;
+                    var w2 = s.DecimalEditor;
                     Q.initFormType(OutsideOrdersForm, [
                         'Name', w0,
-                        'PriceTheyOffer', w1,
-                        'PriceWeSell', w1,
-                        'AccountRepresentsId', w2,
-                        'CompanyRepresentsId', w2
+                        'AccountRepresentsId', w1,
+                        'CompanyRepresentsId', w1,
+                        'PriceTheyOffer', w2,
+                        'PriceWeSell', w2
                     ]);
                 }
                 return _this;
@@ -3911,6 +3911,9 @@ var PGMS;
                 _this.accountOrdersGrid = new Erp.AccountOrdersGrid(_this.byId("OrdersPropertyGrid"));
                 _this.accountOrdersGrid.openDialogsAsPanel = false;
                 _this.accountOrdersGrid.element.flexHeightOnly(1);
+                _this.accountOutsideOrdersGrid = new Erp.AccountOutsideOrdersGrid(_this.byId("OutsideOrdersPropertyGrid"));
+                _this.accountOutsideOrdersGrid.openDialogsAsPanel = false;
+                _this.accountOutsideOrdersGrid.element.flexHeightOnly(1);
                 PGMS.DialogUtils.pendingChangesConfirmation(_this.element, function () { return _this.getSaveState() != _this.loadedState; });
                 return _this;
             }
@@ -3922,10 +3925,12 @@ var PGMS;
             AccountsDialog.prototype.loadEntity = function (entity) {
                 _super.prototype.loadEntity.call(this, entity);
                 Serenity.TabsExtensions.setDisabled(this.tabs, 'Orders', this.isNewOrDeleted());
+                Serenity.TabsExtensions.setDisabled(this.tabs, 'OutsideOrders', this.isNewOrDeleted());
                 Serenity.TabsExtensions.setDisabled(this.tabs, 'Attachments', this.isNewOrDeleted());
                 Serenity.TabsExtensions.setDisabled(this.tabs, 'Notes', this.isNewOrDeleted());
                 this.attachmentsGrid.accountId = entity.AccountId;
                 this.accountOrdersGrid.accountId = entity.AccountId;
+                this.accountOutsideOrdersGrid.accountRepresentsId = entity.AccountId;
             };
             AccountsDialog.prototype.getSaveState = function () {
                 try {
@@ -4637,6 +4642,7 @@ var PGMS;
             OutsideOrdersDialog.prototype.getNameProperty = function () { return Erp.OutsideOrdersRow.nameProperty; };
             OutsideOrdersDialog.prototype.getService = function () { return Erp.OutsideOrdersService.baseUrl; };
             OutsideOrdersDialog = __decorate([
+                Serenity.Decorators.panel(),
                 Serenity.Decorators.registerClass()
             ], OutsideOrdersDialog);
             return OutsideOrdersDialog;
@@ -5442,15 +5448,6 @@ var PGMS;
             AccountOrdersGrid.prototype.getColumns = function () {
                 return _super.prototype.getColumns.call(this);
             };
-            AccountOrdersGrid.prototype.getQuickFilters = function () {
-                // get quick filter list from base class
-                var filters = _super.prototype.getQuickFilters.call(this);
-                var filtersNew = [];
-                filtersNew.push(Q.first(filters, function (x) { return x.field == "CompanyId" /* CompanyId */; }));
-                filtersNew.push(Q.first(filters, function (x) { return x.field == "OrderStatusId" /* OrderStatusId */; }));
-                filtersNew.push(Q.first(filters, function (x) { return x.field == "UserId" /* UserId */; }));
-                return filters;
-            };
             AccountOrdersGrid.prototype.initEntityDialog = function (itemType, dialog) {
                 _super.prototype.initEntityDialog.call(this, itemType, dialog);
                 Serenity.SubDialogHelper.cascade(dialog, this.element.closest('.ui-dialog'));
@@ -5505,6 +5502,78 @@ var PGMS;
             return AccountOrdersDialog;
         }(Erp.OrdersDialog));
         Erp.AccountOrdersDialog = AccountOrdersDialog;
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var AccountOutsideOrdersGrid = /** @class */ (function (_super) {
+            __extends(AccountOutsideOrdersGrid, _super);
+            function AccountOutsideOrdersGrid(container) {
+                return _super.call(this, container) || this;
+            }
+            AccountOutsideOrdersGrid.prototype.getDialogType = function () { return Erp.AccountOutsideOrdersDialog; };
+            AccountOutsideOrdersGrid.prototype.getColumnsKey = function () {
+                return "Erp.AccountOutsideOrders";
+            };
+            AccountOutsideOrdersGrid.prototype.getColumns = function () {
+                return _super.prototype.getColumns.call(this);
+            };
+            AccountOutsideOrdersGrid.prototype.initEntityDialog = function (itemType, dialog) {
+                _super.prototype.initEntityDialog.call(this, itemType, dialog);
+                Serenity.SubDialogHelper.cascade(dialog, this.element.closest('.ui-dialog'));
+            };
+            AccountOutsideOrdersGrid.prototype.addButtonClick = function () {
+                this.editItem({ AccountRepresentsId: this.accountRepresentsId });
+            };
+            AccountOutsideOrdersGrid.prototype.getInitialTitle = function () {
+                return null;
+            };
+            AccountOutsideOrdersGrid.prototype.getGridCanLoad = function () {
+                return _super.prototype.getGridCanLoad.call(this) && !!this.accountRepresentsId;
+            };
+            Object.defineProperty(AccountOutsideOrdersGrid.prototype, "accountRepresentsId", {
+                get: function () {
+                    return this._accountRepresentsId;
+                },
+                set: function (value) {
+                    if (this._accountRepresentsId !== value) {
+                        this._accountRepresentsId = value;
+                        this.setEquality('AccountRepresentsId', value);
+                        this.refresh();
+                    }
+                },
+                enumerable: true,
+                configurable: true
+            });
+            AccountOutsideOrdersGrid = __decorate([
+                Serenity.Decorators.registerClass()
+            ], AccountOutsideOrdersGrid);
+            return AccountOutsideOrdersGrid;
+        }(Erp.OutsideOrdersGrid));
+        Erp.AccountOutsideOrdersGrid = AccountOutsideOrdersGrid;
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var AccountOutsideOrdersDialog = /** @class */ (function (_super) {
+            __extends(AccountOutsideOrdersDialog, _super);
+            function AccountOutsideOrdersDialog() {
+                return _super.call(this) || this;
+            }
+            AccountOutsideOrdersDialog.prototype.updateInterface = function () {
+                _super.prototype.updateInterface.call(this);
+                Serenity.EditorUtils.setReadOnly(this.form.AccountRepresentsId, true);
+            };
+            AccountOutsideOrdersDialog = __decorate([
+                Serenity.Decorators.registerClass()
+            ], AccountOutsideOrdersDialog);
+            return AccountOutsideOrdersDialog;
+        }(Erp.OutsideOrdersDialog));
+        Erp.AccountOutsideOrdersDialog = AccountOutsideOrdersDialog;
     })(Erp = PGMS.Erp || (PGMS.Erp = {}));
 })(PGMS || (PGMS = {}));
 //# sourceMappingURL=PGMS.Web.js.map

@@ -1,6 +1,6 @@
 ﻿
 namespace PGMS.Erp {
-
+    @Serenity.Decorators.panel()
     @Serenity.Decorators.registerClass()
     export class OutsideOrdersDialog extends Serenity.EntityDialog<OutsideOrdersRow, any> {
         protected getFormKey() { return OutsideOrdersForm.formKey; }

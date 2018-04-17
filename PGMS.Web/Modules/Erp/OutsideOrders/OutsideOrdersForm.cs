@@ -13,10 +13,12 @@ namespace PGMS.Erp.Forms
     [BasedOnRow(typeof(Entities.OutsideOrdersRow), CheckNames = true)]
     public class OutsideOrdersForm
     {
+        [Category("General")]
         public String Name { get; set; }
-        public Decimal PriceTheyOffer { get; set; }
-        public Decimal PriceWeSell { get; set; }
         public Int32 AccountRepresentsId { get; set; }
         public Int32 CompanyRepresentsId { get; set; }
+        [Category("Prices")]
+        public Decimal PriceTheyOffer { get; set; }
+        public Decimal PriceWeSell { get; set; }
     }
 }
