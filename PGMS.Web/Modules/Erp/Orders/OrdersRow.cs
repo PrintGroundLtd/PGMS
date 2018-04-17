@@ -28,7 +28,7 @@ namespace PGMS.Erp.Entities
         }
 
         [DisplayName("Account"), ForeignKey("[dbo].[Accounts]", "AccountId"), LeftJoin("jAccount"), TextualField("AccountName")]
-        [LookupEditor(typeof(AccountsRow), FilterField = "IsActive", FilterValue = 1)]
+        [LookupEditor(typeof(AccountsRow), FilterField = "IsActive", FilterValue = 1, InplaceAdd = true, InplaceAddPermission = PermissionKeys.Accounts.UpdatePermission)]
         public Int32? AccountId
         {
             get { return Fields.AccountId[this]; }
@@ -36,7 +36,7 @@ namespace PGMS.Erp.Entities
         }
 
         [DisplayName("Company"), ForeignKey("[dbo].[Companies]", "CompanyId"), LeftJoin("jCompany"), TextualField("CompanyName")]
-        [LookupEditor(typeof(CompaniesRow), FilterField = "IsActive", FilterValue = 1)]
+        [LookupEditor(typeof(CompaniesRow), FilterField = "IsActive", FilterValue = 1, InplaceAdd = true, InplaceAddPermission = PermissionKeys.Companies.UpdatePermission)]
         [QuickFilter()]
         public Int32? CompanyId
         {
@@ -45,7 +45,7 @@ namespace PGMS.Erp.Entities
         }
 
         [DisplayName("Payment Type"), ForeignKey("[dbo].[PaymentTypes]", "PaymentTypeId"), LeftJoin("jPaymentType"), TextualField("PaymentTypeName"), NotNull]
-        [LookupEditor(typeof(PaymentTypesRow), FilterField = "IsActive", FilterValue = 1)]
+        [LookupEditor(typeof(PaymentTypesRow), FilterField = "IsActive", FilterValue = 1, InplaceAdd = true, InplaceAddPermission = PermissionKeys.PaymentTypes.UpdatePermission)]
         public Int32? PaymentTypeId
         {
             get { return Fields.PaymentTypeId[this]; }

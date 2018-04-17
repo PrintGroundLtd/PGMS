@@ -24,7 +24,7 @@ namespace PGMS.Erp.Entities
         }
 
         [DisplayName("Product"), PrimaryKey, ForeignKey("[dbo].[Products]", "ProductId"), LeftJoin("jProduct"), TextualField("ProductName")]
-        [LookupEditor(typeof(ProductsRow))]
+        [LookupEditor(typeof(ProductsRow), InplaceAdd = true, InplaceAddPermission = PermissionKeys.Products.UpdatePermission)]
         public Int32? ProductId
         {
             get { return Fields.ProductId[this]; }
