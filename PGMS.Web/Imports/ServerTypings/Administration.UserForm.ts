@@ -1,5 +1,6 @@
 ﻿namespace PGMS.Administration {
     export interface UserForm {
+        UserId: Serenity.IntegerEditor;
         Username: Serenity.StringEditor;
         DisplayName: Serenity.StringEditor;
         Email: Serenity.EmailEditor;
@@ -20,19 +21,21 @@
                 UserForm.init = true;
 
                 var s = Serenity;
-                var w0 = s.StringEditor;
-                var w1 = s.EmailEditor;
-                var w2 = s.ImageUploadEditor;
-                var w3 = s.PasswordEditor;
+                var w0 = s.IntegerEditor;
+                var w1 = s.StringEditor;
+                var w2 = s.EmailEditor;
+                var w3 = s.ImageUploadEditor;
+                var w4 = s.PasswordEditor;
 
                 Q.initFormType(UserForm, [
-                    'Username', w0,
-                    'DisplayName', w0,
-                    'Email', w1,
-                    'UserImage', w2,
-                    'Password', w3,
-                    'PasswordConfirm', w3,
-                    'Source', w0
+                    'UserId', w0,
+                    'Username', w1,
+                    'DisplayName', w1,
+                    'Email', w2,
+                    'UserImage', w3,
+                    'Password', w4,
+                    'PasswordConfirm', w4,
+                    'Source', w1
                 ]);
             }
         }

@@ -73,6 +73,7 @@ namespace PGMS.Administration.Endpoints
                 return result;
             }
 
+            result.UserId = user.UserId;
             result.Username = user.Username;
             result.DisplayName = user.DisplayName;
             result.IsAdmin = user.Username == "admin";

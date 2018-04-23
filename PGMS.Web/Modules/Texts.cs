@@ -97,25 +97,37 @@ namespace PGMS
 
         public static class Site
         {
+            public static class Reports
+            {
+                public static LocalText ReportsTitle = "Income"; 
+                public static LocalText OrdersPerStatus = "Orders Per Status";
+
+                public static LocalText IncomeVSExpenseIncomeLabel = "Income";
+                public static LocalText IncomeVSExpenseExpenseLabel = "Expense";
+
+                public static LocalText IncomeVSExpense = "Income VS Expense";
+
+            }
+
             public static class AccessDenied
             {
                 public static LocalText PageTitle = "Unauthorized Access";
                 public static LocalText LackPermissions = "You don't have required permissions to access this page!";
                 public static LocalText NotLoggedIn = "You need to be logged in to access this page!";
                 public static LocalText ClickToChangeUser = "click here to login with another user...";
-                public static LocalText ClickToLogin = "clik here to return to login page...";
+                public static LocalText ClickToLogin = "click here to return to login page...";
             }
 
             public static class Dashboard
             {
-                public static LocalText ContentDescription =
-                    "a sample with random data (from free <em><a href = \"https://almsaeedstudio.com/\" target= \"_blank\">" +
-                    "AdminLTE theme</a></em>)";
+                public static LocalText OrdersGridTitle = "Total orders assigned to you: ";
+
+                public static LocalText ContentDescription = "- Print Ground Management System";
             }
 
             public static class BasicProgressDialog
             {
-                public static LocalText CancelTitle = "Operation cancelled. Waiting for in progress calls to complete...";
+                public static LocalText CancelTitle = "Operation canceled. Waiting for in progress calls to complete...";
                 public static LocalText PleaseWait = "Please wait...";
             }
 
@@ -160,8 +172,8 @@ namespace PGMS
 
             public static class Layout
             {
-                public static LocalText FooterCopyright = "Copyright (c) 2015.";
-                public static LocalText FooterInfo = "Serenity Platform";
+                public static LocalText FooterCopyright = "Copyright (c)";
+                public static LocalText FooterInfo = "S2KDesign Platform";
                 public static LocalText FooterRights = "All rights reserved.";
                 public static LocalText GeneralSettings = "General Settings";
                 public static LocalText Language = "Language";

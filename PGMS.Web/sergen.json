@@ -1,9 +1,124 @@
-﻿{
+{
   "RootNamespace": "PGMS",
   "ServerTypings": {
     "Assemblies": []
   },
-  "Connections": [],
+  "Connections": [
+    {
+      "Key": "Default",
+      "Tables": [
+        {
+          "Tablename": "dbo.AccountAttachments",
+          "Identifier": "AccountAttachments",
+          "Module": "Erp",
+          "PermissionKey": "Erp:AccountAttachments:General"
+        },
+        {
+          "Tablename": "dbo.Accounts",
+          "Identifier": "Accounts",
+          "Module": "Erp",
+          "PermissionKey": "Erp:Accounts:General"
+        },
+        {
+          "Tablename": "dbo.Attachments",
+          "Identifier": "Attachments",
+          "Module": "Erp",
+          "PermissionKey": "Erp.Attachments:General"
+        },
+        {
+          "Tablename": "dbo.Budgets",
+          "Identifier": "Budgets",
+          "Module": "Erp",
+          "PermissionKey": "Budgets:General"
+        },
+        {
+          "Tablename": "dbo.Companies",
+          "Identifier": "Companies",
+          "Module": "Erp",
+          "PermissionKey": "Erp:Companies:General"
+        },
+        {
+          "Tablename": "dbo.Expenses",
+          "Identifier": "Expenses",
+          "Module": "Erp",
+          "PermissionKey": "Expenses:General"
+        },
+        {
+          "Tablename": "dbo.OrderDetails",
+          "Identifier": "OrderDetails",
+          "Module": "Erp",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.Orders",
+          "Identifier": "Orders",
+          "Module": "Erp",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.OrderStatuses",
+          "Identifier": "OrderStatuses",
+          "Module": "Erp",
+          "PermissionKey": "OrderStatuses:General"
+        },
+        {
+          "Tablename": "dbo.OutsideOrders",
+          "Identifier": "OutsideOrders",
+          "Module": "Erp",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.Partners",
+          "Identifier": "Partners",
+          "Module": "Erp",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.PaymentTypes",
+          "Identifier": "PaymentTypes",
+          "Module": "Erp",
+          "PermissionKey": "Erp:PaymentTypes:General"
+        },
+        {
+          "Tablename": "dbo.Products",
+          "Identifier": "Products",
+          "Module": "Erp",
+          "PermissionKey": "Erp:Products:General"
+        },
+        {
+          "Tablename": "dbo.SentEmails",
+          "Identifier": "SentEmails",
+          "Module": "Erp",
+          "PermissionKey": "Administration:General"
+        },
+        {
+          "Tablename": "dbo.SupplierRepresentatives",
+          "Identifier": "SupplierRepresentatives",
+          "Module": "Erp",
+          "PermissionKey": "Erp:SupplierRepresentatives:General"
+        },
+        {
+          "Tablename": "dbo.Suppliers",
+          "Identifier": "Suppliers",
+          "Module": "Erp",
+          "PermissionKey": "Erp:Suppliers:General"
+        }
+      ]
+    },
+    {
+      "Key": "Erp",
+      "Tables": [
+        {
+          "Tablename": "dbo.PartnerTypes",
+          "Identifier": "PartnerTypes",
+          "Module": "Erp",
+          "PermissionKey": "Erp:PartnerTypes:General"
+        }
+      ]
+    }
+  ],
   "BaseRowClasses": [],
-  "RemoveForeignFields": []
+  "RemoveForeignFields": [],
+  "CustomGenerate": {},
+  "CustomSettings": {}
 }

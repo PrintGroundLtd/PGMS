@@ -45,6 +45,90 @@ namespace MVC
             {
                 public const string ReportPage = "~/Modules/Common/Reporting/ReportPage.cshtml";
             }
+
+        }
+
+        public static class Erp
+        {
+            public static class AccountAttachments
+            {
+                public const string AccountAttachmentsIndex = "~/Modules/Erp/AccountAttachments/AccountAttachmentsIndex.cshtml";
+            }
+
+            public static class Accounts
+            {
+                public const string AccountsIndex = "~/Modules/Erp/Accounts/AccountsIndex.cshtml";
+            }
+
+            public static class Budgets
+            {
+                public const string BudgetsIndex = "~/Modules/Erp/Budgets/BudgetsIndex.cshtml";
+            }
+
+            public static class Companies
+            {
+                public const string CompaniesIndex = "~/Modules/Erp/Companies/CompaniesIndex.cshtml";
+            }
+
+            public static class Expenses
+            {
+                public const string ExpensesIndex = "~/Modules/Erp/Expenses/ExpensesIndex.cshtml";
+            }
+
+            public static class OrderDetails
+            {
+                public const string OrderDetailsIndex = "~/Modules/Erp/OrderDetails/OrderDetailsIndex.cshtml";
+            }
+
+            public static class Orders
+            {
+                public const string OrdersIndex = "~/Modules/Erp/Orders/OrdersIndex.cshtml";
+            }
+
+            public static class OrderStatuses
+            {
+                public const string OrderStatusesIndex = "~/Modules/Erp/OrderStatuses/OrderStatusesIndex.cshtml";
+            }
+
+            public static class OutsideOrders
+            {
+                public const string OutsideOrdersIndex = "~/Modules/Erp/OutsideOrders/OutsideOrdersIndex.cshtml";
+            }
+
+            public static class Partners
+            {
+                public const string PartnersIndex = "~/Modules/Erp/Partners/PartnersIndex.cshtml";
+            }
+
+            public static class PartnerTypes
+            {
+                public const string PartnerTypesIndex = "~/Modules/Erp/PartnerTypes/PartnerTypesIndex.cshtml";
+            }
+
+            public static class PaymentTypes
+            {
+                public const string PaymentTypesIndex = "~/Modules/Erp/PaymentTypes/PaymentTypesIndex.cshtml";
+            }
+
+            public static class Products
+            {
+                public const string ProductsIndex = "~/Modules/Erp/Products/ProductsIndex.cshtml";
+            }
+
+            public static class Reports
+            {
+                public const string ReportsIndex = "~/Modules/Erp/Reports/ReportsIndex.cshtml";
+            }
+
+            public static class SentEmails
+            {
+                public const string SentEmailsIndex = "~/Modules/Erp/SentEmails/SentEmailsIndex.cshtml";
+            }
+
+            public static class Suppliers
+            {
+                public const string SuppliersIndex = "~/Modules/Erp/Suppliers/SuppliersIndex.cshtml";
+            }
         }
 
         public static class Errors
