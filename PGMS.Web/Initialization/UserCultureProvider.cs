@@ -34,7 +34,7 @@ namespace PGMS.AppServices
                 }
             }
 
-            return Task.FromResult(new ProviderCultureResult(culture ?? "en-US", culture ?? "en-US"));
+            return Task.FromResult(new ProviderCultureResult(culture ?? "bg-BG", culture ?? "bg-BG"));
         }
 
         private static List<CultureInfo> supportedCultures;
