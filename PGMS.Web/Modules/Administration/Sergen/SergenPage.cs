@@ -6,7 +6,7 @@ namespace PGMS.Administration.Pages
     using Microsoft.AspNetCore.Http;
     using System.Net;
 
-    [PageAuthorize(PermissionKeys.Security)]
+    [PageAuthorize(PermissionKeys.Sergen)]
     public class SergenController : Controller
     {
         [Route("Administration/Sergen")]

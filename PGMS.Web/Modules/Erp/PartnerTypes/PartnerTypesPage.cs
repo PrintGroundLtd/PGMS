@@ -5,13 +5,13 @@ namespace PGMS.Erp.Pages
     using Serenity.Web;
     using Microsoft.AspNetCore.Mvc;
 
-    [PageAuthorize(typeof(Entities.PartnerTypesRow))]
+    [PageAuthorize(PermissionKeys.PartnerTypes.PagePermission)]
     public class PartnerTypesController : Controller
     {
         [Route("Erp/PartnerTypes")]
         public ActionResult Index()
         {
-            return View("~/Modules/Erp/PartnerTypes/PartnerTypesIndex.cshtml");
+            return View(MVC.Views.Erp.PartnerTypes.PartnerTypesIndex);
         }
     }
 }

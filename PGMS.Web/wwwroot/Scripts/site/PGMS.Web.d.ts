@@ -364,7 +364,7 @@ declare namespace PGMS.Administration {
         const isActiveProperty = "IsActive";
         const nameProperty = "Username";
         const localTextPrefix = "Administration.User";
-        const lookupKey = "Administration.User";
+        const lookupKey = "Administration:User:Read";
         function getLookup(): Q.Lookup<UserRow>;
         const enum Fields {
             UserId = "UserId",
@@ -1943,6 +1943,11 @@ declare namespace PGMS {
         };
     }
 }
+declare namespace PGMS.LanguageList {
+    function getValue(): string[][];
+}
+declare namespace PGMS.ScriptInitialization {
+}
 declare namespace PGMS.Administration {
     class LanguageDialog extends Serenity.EntityDialog<LanguageRow, any> {
         protected getFormKey(): string;
@@ -2054,10 +2059,6 @@ declare namespace PGMS.Administration {
         protected getDefaultSortBy(): UserRow.Fields[];
     }
 }
-declare namespace PGMS.Authorization {
-    let userDefinition: ScriptUserDefinition;
-    function hasPermission(permissionKey: string): boolean;
-}
 declare namespace PGMS.Administration {
     class PermissionCheckEditor extends Serenity.DataGrid<PermissionCheckItem, PermissionCheckEditorOptions> {
         protected getIdProperty(): string;
@@ -2128,11 +2129,6 @@ declare namespace PGMS.Administration {
         userID: number;
         username: string;
     }
-}
-declare namespace PGMS.LanguageList {
-    function getValue(): string[][];
-}
-declare namespace PGMS.ScriptInitialization {
 }
 declare namespace PGMS {
     class BasicProgressDialog extends Serenity.TemplatedDialog<any> {
@@ -2784,18 +2780,6 @@ declare namespace PGMS.Erp {
         constructor(container: JQuery);
     }
 }
-declare var Chart: any;
-declare namespace PGMS.Erp {
-    class IncomeVSExpense extends Serenity.TemplatedWidget<any> {
-        constructor(elem: JQuery, opt: {});
-    }
-}
-declare var Chart: any;
-declare namespace PGMS.Erp {
-    class OrdersPerStatus extends Serenity.TemplatedWidget<any> {
-        constructor(elem: JQuery, opt: {});
-    }
-}
 declare namespace PGMS.Erp {
     class SentEmailsDialog extends Serenity.EntityDialog<SentEmailsRow, any> {
         protected getFormKey(): string;
@@ -2859,6 +2843,22 @@ declare namespace PGMS.Erp {
         protected getLocalTextPrefix(): string;
         protected getService(): string;
         constructor(container: JQuery);
+    }
+}
+declare namespace PGMS.Authorization {
+    let userDefinition: ScriptUserDefinition;
+    function hasPermission(permissionKey: string): boolean;
+}
+declare var Chart: any;
+declare namespace PGMS.Erp {
+    class IncomeVSExpense extends Serenity.TemplatedWidget<any> {
+        constructor(elem: JQuery, opt: {});
+    }
+}
+declare var Chart: any;
+declare namespace PGMS.Erp {
+    class OrdersPerStatus extends Serenity.TemplatedWidget<any> {
+        constructor(elem: JQuery, opt: {});
     }
 }
 declare namespace PGMS.Membership {

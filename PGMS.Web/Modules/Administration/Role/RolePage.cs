@@ -3,7 +3,7 @@
     using Serenity.Web;
     using Microsoft.AspNetCore.Mvc;
 
-    [PageAuthorize(typeof(Entities.RoleRow))]
+    [PageAuthorize(PermissionKeys.Role.PagePermission)]
     public class RoleController : Controller
     {
         [Route("Administration/Role")]

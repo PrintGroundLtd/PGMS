@@ -9,8 +9,9 @@ namespace PGMS.Administration.Entities
 
     [ConnectionKey("Default"), Module("Administration"), TableName("Roles")]
     [DisplayName("Roles"), InstanceName("Role")]
-    [ReadPermission(PermissionKeys.Security)]
-    [ModifyPermission(PermissionKeys.Security)]
+    [ReadPermission(PermissionKeys.Role.ReadPermission)]
+    [UpdatePermission(PermissionKeys.Role.UpdatePermission)]
+    [DeletePermission(PermissionKeys.Role.DeletePermission)]
     [LookupScript]
     public sealed class RoleRow : Row, IIdRow, INameRow
     {

@@ -9,9 +9,10 @@ namespace PGMS.Administration.Entities
 
     [ConnectionKey("Default"), Module("Administration"), TableName("Users")]
     [DisplayName("Users"), InstanceName("User")]
-    [ReadPermission(PermissionKeys.Security)]
-    [ModifyPermission(PermissionKeys.Security)]
-    [LookupScript(Permission = PermissionKeys.Security)]
+    [ReadPermission(PermissionKeys.User.ReadPermission)]
+    [UpdatePermission(PermissionKeys.User.UpdatePermission)]
+    [DeletePermission(PermissionKeys.User.DeletePermission)]
+    [LookupScript(PermissionKeys.User.ReadPermission)]
     public sealed class UserRow : LoggingRow, IIdRow, INameRow, IIsActiveRow
     {
         [DisplayName("User Id"), Identity]

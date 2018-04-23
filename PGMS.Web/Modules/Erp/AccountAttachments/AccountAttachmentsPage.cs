@@ -5,13 +5,13 @@ namespace PGMS.Erp.Pages
     using Serenity.Web;
     using Microsoft.AspNetCore.Mvc;
 
-    [PageAuthorize(typeof(Entities.AccountAttachmentsRow))]
+    [PageAuthorize(PermissionKeys.AccountAttachments.PagePermission)]
     public class AccountAttachmentsController : Controller
     {
         [Route("Erp/AccountAttachments")]
         public ActionResult Index()
         {
-            return View("~/Modules/Erp/AccountAttachments/AccountAttachmentsIndex.cshtml");
+            return View(MVC.Views.Erp.AccountAttachments.AccountAttachmentsIndex);
         }
     }
 }

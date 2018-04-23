@@ -5,13 +5,13 @@ namespace PGMS.Erp.Pages
     using Serenity.Web;
     using Microsoft.AspNetCore.Mvc;
 
-    [PageAuthorize(typeof(Entities.ExpensesRow))]
+    [PageAuthorize(PermissionKeys.Expenses.PagePermission)]
     public class ExpensesController : Controller
     {
         [Route("Erp/Expenses")]
         public ActionResult Index()
         {
-            return View("~/Modules/Erp/Expenses/ExpensesIndex.cshtml");
+            return View(MVC.Views.Erp.Expenses.ExpensesIndex);
         }
     }
 }

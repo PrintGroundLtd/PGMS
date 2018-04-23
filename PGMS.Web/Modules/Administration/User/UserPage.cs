@@ -4,7 +4,7 @@ namespace PGMS.Administration.Pages
     using Serenity.Web;
     using Microsoft.AspNetCore.Mvc;
 
-    [PageAuthorize(typeof(Entities.UserRow))]
+    [PageAuthorize(PermissionKeys.User.PagePermission)]
     public class UserController : Controller
     {
         [Route("Administration/User")]

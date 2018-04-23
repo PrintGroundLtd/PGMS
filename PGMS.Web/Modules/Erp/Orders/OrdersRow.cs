@@ -109,7 +109,7 @@ namespace PGMS.Erp.Entities
         }
 
         [DisplayName("Assignet to User"), ForeignKey("[dbo].[Users]", "UserId"), LeftJoin("jUser"), TextualField("UserUsername")]
-        [LookupEditor(typeof(UserRow))]
+        [LookupEditor(typeof(UserRow), FilterField = "IsActive", FilterValue = 1)]
         [QuickFilter()]
         public Int32? UserId
         {
@@ -118,7 +118,7 @@ namespace PGMS.Erp.Entities
         }
 
         [DisplayName("Order Status"), ForeignKey("[dbo].[OrderStatuses]", "OrderStatusId"), LeftJoin("jOrderStatus"), TextualField("OrderStatusName"), NotNull]
-        [LookupEditor(typeof(OrderStatusesRow))]
+        [LookupEditor(typeof(OrderStatusesRow), FilterField = "IsActive", FilterValue = 1)]
         [QuickFilter()]
         public Int32? OrderStatusId
         {

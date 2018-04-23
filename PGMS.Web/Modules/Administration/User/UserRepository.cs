@@ -109,7 +109,7 @@ namespace PGMS.Administration.Repositories
             {
                 base.GetEditableFields(editable);
 
-                if (!Authorization.HasPermission(Administration.PermissionKeys.Security))
+                if (!Authorization.HasPermission(Administration.PermissionKeys.User.DeletePermission))
                 {
                     editable.Remove(fld.Source);
                     editable.Remove(fld.IsActive);
