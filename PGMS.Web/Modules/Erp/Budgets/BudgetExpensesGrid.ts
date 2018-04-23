@@ -1,5 +1,5 @@
-﻿/// <reference path="../Expenses/ExpensesDialog.ts"/>
-/// <reference path="../Expenses/ExpensesDialog.ts"/>
+﻿/// <reference path="../Expenses/ExpensesGrid.ts"/>
+
 namespace PGMS.Erp {
     import fld = ExpensesRow.Fields;
 

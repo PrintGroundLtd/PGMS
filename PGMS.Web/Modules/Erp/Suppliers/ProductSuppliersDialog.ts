@@ -1,4 +1,5 @@
-﻿
+﻿/// <reference path="../Products/ProductsDialog.ts"/>
+
 namespace PGMS.Erp {
 
     @Serenity.Decorators.registerClass()

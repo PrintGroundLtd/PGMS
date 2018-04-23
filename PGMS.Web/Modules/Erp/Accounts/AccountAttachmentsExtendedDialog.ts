@@ -1,4 +1,5 @@
-﻿
+﻿/// <reference path="../AccountAttachments/AccountAttachmentsDialog.ts"/>
+
 namespace PGMS.Erp {
 
     @Serenity.Decorators.registerClass()

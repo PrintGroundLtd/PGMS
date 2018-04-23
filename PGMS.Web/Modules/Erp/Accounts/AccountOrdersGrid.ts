@@ -1,4 +1,5 @@
-﻿
+﻿﻿/// <reference path="../Orders/OrdersGrid.ts"/>
+
 namespace PGMS.Erp {
     import fld = OrdersRow.Fields;
 

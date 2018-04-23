@@ -567,6 +567,10 @@ declare namespace PGMS.Erp {
 declare namespace PGMS.Erp {
 }
 declare namespace PGMS.Erp {
+}
+declare namespace PGMS.Erp {
+}
+declare namespace PGMS.Erp {
     interface AccountsForm {
         AccountId: Serenity.IntegerEditor;
         Name: Serenity.StringEditor;
@@ -2407,6 +2411,92 @@ declare namespace PGMS.Erp {
     }
 }
 declare namespace PGMS.Erp {
+    class OrdersDialog extends Serenity.EntityDialog<OrdersRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected form: OrdersForm;
+        private loadedState;
+        constructor();
+        loadEntity(entity: Erp.OrdersRow): void;
+        loadResponse(data: any): void;
+        getSaveState(): string;
+    }
+}
+declare namespace PGMS.Erp {
+    class AccountOrdersDialog extends OrdersDialog {
+        constructor();
+        updateInterface(): void;
+    }
+}
+declare namespace PGMS.Erp {
+    class OrdersGrid extends Serenity.EntityGrid<OrdersRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof OrdersDialog;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+        protected getItemCssClass(item: OrdersRow, index: number): string;
+    }
+}
+declare namespace PGMS.Erp {
+    class AccountOrdersGrid extends OrdersGrid {
+        protected getDialogType(): typeof AccountOrdersDialog;
+        constructor(container: JQuery);
+        getColumnsKey(): string;
+        protected getColumns(): Slick.Column[];
+        protected initEntityDialog(itemType: any, dialog: any): void;
+        protected addButtonClick(): void;
+        protected getInitialTitle(): any;
+        protected getGridCanLoad(): boolean;
+        private _accountId;
+        accountId: number;
+    }
+}
+declare namespace PGMS.Erp {
+    class OutsideOrdersDialog extends Serenity.EntityDialog<OutsideOrdersRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected form: OutsideOrdersForm;
+    }
+}
+declare namespace PGMS.Erp {
+    class AccountOutsideOrdersDialog extends OutsideOrdersDialog {
+        constructor();
+        updateInterface(): void;
+    }
+}
+declare namespace PGMS.Erp {
+    class OutsideOrdersGrid extends Serenity.EntityGrid<OutsideOrdersRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof OutsideOrdersDialog;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace PGMS.Erp {
+    class AccountOutsideOrdersGrid extends OutsideOrdersGrid {
+        protected getDialogType(): typeof AccountOutsideOrdersDialog;
+        constructor(container: JQuery);
+        getColumnsKey(): string;
+        protected getColumns(): Slick.Column[];
+        protected initEntityDialog(itemType: any, dialog: any): void;
+        protected addButtonClick(): void;
+        protected getInitialTitle(): any;
+        protected getGridCanLoad(): boolean;
+        private _accountRepresentsId;
+        accountRepresentsId: number;
+    }
+}
+declare namespace PGMS.Erp {
     class AccountsDialog extends Serenity.EntityDialog<AccountsRow, any> {
         protected getFormKey(): string;
         protected getIdProperty(): string;
@@ -2438,6 +2528,48 @@ declare namespace PGMS.Erp {
 declare namespace PGMS.Erp {
     class AccountsListFormatter implements Slick.Formatter {
         format(ctx: Slick.FormatterContext): string;
+    }
+}
+declare namespace PGMS.Erp {
+    class ExpensesDialog extends Serenity.EntityDialog<ExpensesRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected form: ExpensesForm;
+        constructor();
+        loadEntity(entity: BudgetsRow): void;
+    }
+}
+declare namespace PGMS.Erp {
+    class BudgetExpensesDialog extends ExpensesDialog {
+        constructor();
+        updateInterface(): void;
+    }
+}
+declare namespace PGMS.Erp {
+    class ExpensesGrid extends Serenity.EntityGrid<ExpensesRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof ExpensesDialog;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace PGMS.Erp {
+    class BudgetExpensesGrid extends ExpensesGrid {
+        protected getDialogType(): typeof BudgetExpensesDialog;
+        constructor(container: JQuery);
+        protected getColumns(): Slick.Column[];
+        protected getQuickFilters(): Serenity.QuickFilter<Serenity.Widget<any>, any>[];
+        protected initEntityDialog(itemType: any, dialog: any): void;
+        protected addButtonClick(): void;
+        protected getInitialTitle(): any;
+        protected getGridCanLoad(): boolean;
+        private _budgetId;
+        budgetId: number;
     }
 }
 declare namespace PGMS.Erp {
@@ -2492,28 +2624,6 @@ declare namespace PGMS.Erp {
     }
 }
 declare namespace PGMS.Erp {
-    class ExpensesDialog extends Serenity.EntityDialog<ExpensesRow, any> {
-        protected getFormKey(): string;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getNameProperty(): string;
-        protected getService(): string;
-        protected form: ExpensesForm;
-        constructor();
-        loadEntity(entity: BudgetsRow): void;
-    }
-}
-declare namespace PGMS.Erp {
-    class ExpensesGrid extends Serenity.EntityGrid<ExpensesRow, any> {
-        protected getColumnsKey(): string;
-        protected getDialogType(): typeof ExpensesDialog;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getService(): string;
-        constructor(container: JQuery);
-    }
-}
-declare namespace PGMS.Erp {
     class NoteDialog extends Serenity.TemplatedDialog<any> {
         private textEditor;
         constructor();
@@ -2559,17 +2669,6 @@ declare namespace PGMS.Erp {
     }
 }
 declare namespace PGMS.Erp {
-    class OrdersGrid extends Serenity.EntityGrid<OrdersRow, any> {
-        protected getColumnsKey(): string;
-        protected getDialogType(): typeof OrdersDialog;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getService(): string;
-        constructor(container: JQuery);
-        protected getItemCssClass(item: OrdersRow, index: number): string;
-    }
-}
-declare namespace PGMS.Erp {
     class MyOrdersGrid extends Erp.OrdersGrid {
         protected totalRecord: number;
         protected myLookupQuickFilter: Serenity.LookupEditor;
@@ -2578,21 +2677,6 @@ declare namespace PGMS.Erp {
         protected createView(): Slick.RemoteView<OrdersRow>;
         protected onViewProcessData(response: Serenity.ListResponse<OrdersRow>): Serenity.ListResponse<OrdersRow>;
         protected onViewSubmit(): boolean;
-    }
-}
-declare namespace PGMS.Erp {
-    class OrdersDialog extends Serenity.EntityDialog<OrdersRow, any> {
-        protected getFormKey(): string;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getNameProperty(): string;
-        protected getService(): string;
-        protected form: OrdersForm;
-        private loadedState;
-        constructor();
-        loadEntity(entity: Erp.OrdersRow): void;
-        loadResponse(data: any): void;
-        getSaveState(): string;
     }
 }
 declare namespace PGMS.Erp {
@@ -2609,26 +2693,6 @@ declare namespace PGMS.Erp {
     class OrderStatusesGrid extends Serenity.EntityGrid<OrderStatusesRow, any> {
         protected getColumnsKey(): string;
         protected getDialogType(): typeof OrderStatusesDialog;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getService(): string;
-        constructor(container: JQuery);
-    }
-}
-declare namespace PGMS.Erp {
-    class OutsideOrdersDialog extends Serenity.EntityDialog<OutsideOrdersRow, any> {
-        protected getFormKey(): string;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getNameProperty(): string;
-        protected getService(): string;
-        protected form: OutsideOrdersForm;
-    }
-}
-declare namespace PGMS.Erp {
-    class OutsideOrdersGrid extends Serenity.EntityGrid<OutsideOrdersRow, any> {
-        protected getColumnsKey(): string;
-        protected getDialogType(): typeof OutsideOrdersDialog;
         protected getIdProperty(): string;
         protected getLocalTextPrefix(): string;
         protected getService(): string;
@@ -2824,68 +2888,4 @@ declare namespace PGMS.Membership {
         private form;
         constructor(container: JQuery);
     }
-}
-declare namespace PGMS.Erp {
-    class BudgetExpensesDialog extends ExpensesDialog {
-        constructor();
-        updateInterface(): void;
-    }
-}
-declare namespace PGMS.Erp {
-    class BudgetExpensesGrid extends ExpensesGrid {
-        protected getDialogType(): typeof BudgetExpensesDialog;
-        constructor(container: JQuery);
-        protected getColumns(): Slick.Column[];
-        protected getQuickFilters(): Serenity.QuickFilter<Serenity.Widget<any>, any>[];
-        protected initEntityDialog(itemType: any, dialog: any): void;
-        protected addButtonClick(): void;
-        protected getInitialTitle(): any;
-        protected getGridCanLoad(): boolean;
-        private _budgetId;
-        budgetId: number;
-    }
-}
-declare namespace PGMS.Erp {
-    class AccountOrdersGrid extends OrdersGrid {
-        protected getDialogType(): typeof AccountOrdersDialog;
-        constructor(container: JQuery);
-        getColumnsKey(): string;
-        protected getColumns(): Slick.Column[];
-        protected initEntityDialog(itemType: any, dialog: any): void;
-        protected addButtonClick(): void;
-        protected getInitialTitle(): any;
-        protected getGridCanLoad(): boolean;
-        private _accountId;
-        accountId: number;
-    }
-}
-declare namespace PGMS.Erp {
-    class AccountOrdersDialog extends OrdersDialog {
-        constructor();
-        updateInterface(): void;
-    }
-}
-declare namespace PGMS.Erp {
-}
-declare namespace PGMS.Erp {
-    class AccountOutsideOrdersGrid extends OutsideOrdersGrid {
-        protected getDialogType(): typeof AccountOutsideOrdersDialog;
-        constructor(container: JQuery);
-        getColumnsKey(): string;
-        protected getColumns(): Slick.Column[];
-        protected initEntityDialog(itemType: any, dialog: any): void;
-        protected addButtonClick(): void;
-        protected getInitialTitle(): any;
-        protected getGridCanLoad(): boolean;
-        private _accountRepresentsId;
-        accountRepresentsId: number;
-    }
-}
-declare namespace PGMS.Erp {
-    class AccountOutsideOrdersDialog extends OutsideOrdersDialog {
-        constructor();
-        updateInterface(): void;
-    }
-}
-declare namespace PGMS.Erp {
 }
