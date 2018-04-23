@@ -12,6 +12,9 @@ namespace PGMS.Erp {
             super(container);
         }
 
+        
+
+
         // Remove quick filter for assigned to user. We only show
         protected createQuickFilters() {
             super.createQuickFilters();

@@ -25,12 +25,15 @@ namespace PGMS.Erp.Columns
         [EditLink, DisplayName("Db.Shared.RecordId")]
         public Int32 OrderId { get; set; }
         [EditLink]
+        [AccountFormatter(IsVipProperty = "AccountIsVip")]
         public String AccountName { get; set; }
         public bool AccountIsVip { get; set; }
         [EditLink]
         public String CompanyName { get; set; }
         [OrderStatusesFormatter(BackgroundProperty = "OrderStatusBackgroundColor", BorderProperty = "OrderStatusBorderColor")]
         public String OrderStatusName { get; set; }
+
+        public decimal Total { get; set; }
         [EditLink]
         public String PaymentTypeName { get; set; } 
         public Int16 Width { get; set; }

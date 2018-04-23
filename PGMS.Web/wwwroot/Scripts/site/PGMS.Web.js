@@ -3980,13 +3980,91 @@ var PGMS;
             OrdersGrid.prototype.getIdProperty = function () { return Erp.OrdersRow.idProperty; };
             OrdersGrid.prototype.getLocalTextPrefix = function () { return Erp.OrdersRow.localTextPrefix; };
             OrdersGrid.prototype.getService = function () { return Erp.OrdersService.baseUrl; };
-            OrdersGrid.prototype.getItemCssClass = function (item, index) {
-                var klass = "";
-                //   klass += item.OrderStatusBackgroundColor.replace(/#/g,'');
-                //if (item.AccountIsVip == 1) { 
-                //    klass += item.OrderStatusBackgroundColor;
-                //}
-                return Q.trimToNull(klass);
+            OrdersGrid.prototype.createSlickGrid = function () {
+                var grid = _super.prototype.createSlickGrid.call(this);
+                // need to register this plugin for grouping or you'll have errors
+                grid.registerPlugin(new Slick.Data.GroupItemMetadataProvider());
+                this.view.setSummaryOptions({
+                    aggregators: [
+                        new Slick.Aggregators.Sum('Total')
+                    ]
+                });
+                return grid;
+            };
+            OrdersGrid.prototype.getSlickOptions = function () {
+                var opt = _super.prototype.getSlickOptions.call(this);
+                opt.showFooterRow = true;
+                return opt;
+            };
+            OrdersGrid.prototype.getButtons = function () {
+                var _this = this;
+                var buttons = _super.prototype.getButtons.call(this);
+                var text = Q.text("Site.GroupByButton");
+                buttons.push({
+                    title: text + Q.text("Db.Erp.Accounts.EntitySingular"),
+                    cssClass: 'expand-all-button',
+                    onClick: function () { return _this.view.setGrouping([
+                        {
+                            getter: 'AccountName'
+                        }
+                    ]); }
+                });
+                buttons.push({
+                    title: text + Q.text("Db.Erp.Companies.EntitySingular"),
+                    cssClass: 'expand-all-button',
+                    onClick: function () { return _this.view.setGrouping([
+                        {
+                            getter: 'CompanyName'
+                        }
+                    ]); }
+                });
+                buttons.push({
+                    title: text + Q.text("Db.Erp.OrderStatuses.EntitySingular"),
+                    cssClass: 'expand-all-button',
+                    onClick: function () { return _this.view.setGrouping([
+                        {
+                            getter: 'OrderStatusName'
+                        }
+                    ]); }
+                });
+                buttons.push({
+                    title: Q.text("Site.NoGroupingButton"),
+                    cssClass: 'collapse-all-button',
+                    onClick: function () { return _this.view.setGrouping([]); }
+                });
+                return buttons;
+                //return [{
+                //    title: 'Group By Account Name',
+                //        cssClass: 'expand-all-button',
+                //        onClick: () => this.view.setGrouping(
+                //            [{
+                //                getter: 'AccountName'
+                //            }])
+                //}, {
+                //        title: 'Group By Company Name',
+                //        cssClass: 'expand-all-button',
+                //        onClick: () => this.view.setGrouping(
+                //            [{
+                //                getter: 'CompanyName'
+                //            }])
+                //    },
+                //    //{
+                //    //    title: 'Group By Category and Supplier',
+                //    //    cssClass: 'expand-all-button',
+                //    //    onClick: () => this.view.setGrouping(
+                //    //        [{
+                //    //            formatter: x => 'Category: ' + x.value + ' (' + x.count + ' items)',
+                //    //            getter: 'CategoryName'
+                //    //        }, {
+                //    //            formatter: x => 'Supplier: ' + x.value + ' (' + x.count + ' items)',
+                //    //            getter: 'SupplierCompanyName'
+                //    //        }])
+                //    //},
+                //    {
+                //        title: 'No Grouping',
+                //        cssClass: 'collapse-all-button',
+                //        onClick: () => this.view.setGrouping([])
+                //    }];
             };
             OrdersGrid = __decorate([
                 Serenity.Decorators.registerClass()
@@ -4357,6 +4435,42 @@ var PGMS;
             ExpensesGrid.prototype.getIdProperty = function () { return Erp.ExpensesRow.idProperty; };
             ExpensesGrid.prototype.getLocalTextPrefix = function () { return Erp.ExpensesRow.localTextPrefix; };
             ExpensesGrid.prototype.getService = function () { return Erp.ExpensesService.baseUrl; };
+            ExpensesGrid.prototype.createSlickGrid = function () {
+                var grid = _super.prototype.createSlickGrid.call(this);
+                // need to register this plugin for grouping or you'll have errors
+                grid.registerPlugin(new Slick.Data.GroupItemMetadataProvider());
+                this.view.setSummaryOptions({
+                    aggregators: [
+                        new Slick.Aggregators.Sum('Total')
+                    ]
+                });
+                return grid;
+            };
+            ExpensesGrid.prototype.getSlickOptions = function () {
+                var opt = _super.prototype.getSlickOptions.call(this);
+                opt.showFooterRow = true;
+                return opt;
+            };
+            ExpensesGrid.prototype.getButtons = function () {
+                var _this = this;
+                var buttons = _super.prototype.getButtons.call(this);
+                var text = Q.text("Site.GroupByButton");
+                buttons.push({
+                    title: text + Q.text("Db.Erp.Budgets.EntitySingular"),
+                    cssClass: 'expand-all-button',
+                    onClick: function () { return _this.view.setGrouping([
+                        {
+                            getter: 'BudgetName'
+                        }
+                    ]); }
+                });
+                buttons.push({
+                    title: Q.text("Site.NoGroupingButton"),
+                    cssClass: 'collapse-all-button',
+                    onClick: function () { return _this.view.setGrouping([]); }
+                });
+                return buttons;
+            };
             ExpensesGrid = __decorate([
                 Serenity.Decorators.registerClass()
             ], ExpensesGrid);
@@ -5664,12 +5778,12 @@ var PGMS;
             function OrderStatusesFormatter() {
             }
             OrderStatusesFormatter.prototype.format = function (ctx) {
+                var text = Q.htmlEncode(ctx.value);
                 if (!this.backgroundProperty || !this.borderProperty) {
                     return text;
                 }
                 var backgroundColor = ctx.item[this.backgroundProperty];
                 var borderColor = ctx.item[this.borderProperty];
-                var text = Q.htmlEncode(ctx.value);
                 //return "<span style='background-color: " + color +";'>" + text + '</span>';
                 return "<div style='height:100%; background-color: " + backgroundColor + "; border-color: " + borderColor + ";' >" + text + '</div>';
             };
@@ -5692,6 +5806,40 @@ var PGMS;
             return OrderStatusesFormatter;
         }());
         Erp.OrderStatusesFormatter = OrderStatusesFormatter;
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var AccountFormatter = /** @class */ (function () {
+            function AccountFormatter() {
+            }
+            AccountFormatter.prototype.format = function (ctx) {
+                var text = Q.htmlEncode(ctx.value);
+                if (!this.isVipProperty) {
+                    return text;
+                }
+                var _isVipProperty = ctx.item[this.isVipProperty];
+                if (_isVipProperty == 1)
+                    return "<div style='height:100%; background-color: #FF8630;' >" + text + '</div>';
+                else
+                    return text;
+            };
+            AccountFormatter.prototype.initializeColumn = function (column) {
+                column.referencedFields = column.referencedFields || [];
+                if (this.isVipProperty)
+                    column.referencedFields.push(this.isVipProperty);
+            };
+            __decorate([
+                Serenity.Decorators.option()
+            ], AccountFormatter.prototype, "isVipProperty", void 0);
+            AccountFormatter = __decorate([
+                Serenity.Decorators.registerFormatter([Serenity.ISlickFormatter, Serenity.IInitializeColumn])
+            ], AccountFormatter);
+            return AccountFormatter;
+        }());
+        Erp.AccountFormatter = AccountFormatter;
     })(Erp = PGMS.Erp || (PGMS.Erp = {}));
 })(PGMS || (PGMS = {}));
 //# sourceMappingURL=PGMS.Web.js.map

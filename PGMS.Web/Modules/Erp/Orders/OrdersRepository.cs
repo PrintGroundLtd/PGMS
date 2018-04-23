@@ -1,4 +1,7 @@
 ﻿
+using System.Linq;
+using PGMS.Erp.Entities;
+
 namespace PGMS.Erp.Repositories
 {
     using Serenity;
@@ -42,6 +45,29 @@ namespace PGMS.Erp.Repositories
         private class MyRetrieveHandler : RetrieveRequestHandler<MyRow> { }
         private class MyListHandler : ListRequestHandler<MyRow, OrderListRequest>
         {
+            protected override void OnReturn()
+            {
+                base.OnReturn();
+                 
+                foreach (var responseEntity in Response.Entities)
+                {
+                    var orderDetailsFields = OrderDetailsRow.Fields;
+                    var orderDetailsListRequest = new ListRequest();
+                    orderDetailsListRequest.ColumnSelection = ColumnSelection.Details;
+
+                    orderDetailsListRequest.Criteria =
+                        (new Criteria(orderDetailsFields.OrderId.Name) == responseEntity.OrderId.Value);
+
+                    var orderDetails = new OrderDetailsRepository().List(Connection, orderDetailsListRequest)
+                        .Entities;
+
+                    responseEntity.Total = Decimal.Zero;
+                    if (orderDetails.Any())
+                        responseEntity.Total = orderDetails.Select(od => od.LineTotal).Aggregate((a, b) => a + b) ?? Decimal.Zero;
+                }
+                
+            }
+
             protected override void ApplyFilters(SqlQuery query)
             {
                 base.ApplyFilters(query);

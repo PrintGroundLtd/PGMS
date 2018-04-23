@@ -1095,6 +1095,7 @@ declare namespace PGMS.Erp {
         ShipCountry?: string;
         UserId?: number;
         OrderStatusId?: number;
+        Total?: number;
         AccountName?: string;
         AccountPhoneNumber?: string;
         AccountIsVip?: number;
@@ -1139,6 +1140,7 @@ declare namespace PGMS.Erp {
             ShipCountry = "ShipCountry",
             UserId = "UserId",
             OrderStatusId = "OrderStatusId",
+            Total = "Total",
             AccountName = "AccountName",
             AccountPhoneNumber = "AccountPhoneNumber",
             AccountIsVip = "AccountIsVip",
@@ -2449,7 +2451,9 @@ declare namespace PGMS.Erp {
         protected getLocalTextPrefix(): string;
         protected getService(): string;
         constructor(container: JQuery);
-        protected getItemCssClass(item: OrdersRow, index: number): string;
+        protected createSlickGrid(): Slick.Grid;
+        protected getSlickOptions(): Slick.GridOptions;
+        protected getButtons(): Serenity.ToolButton[];
     }
 }
 declare namespace PGMS.Erp {
@@ -2566,6 +2570,9 @@ declare namespace PGMS.Erp {
         protected getLocalTextPrefix(): string;
         protected getService(): string;
         constructor(container: JQuery);
+        protected createSlickGrid(): Slick.Grid;
+        protected getSlickOptions(): Slick.GridOptions;
+        protected getButtons(): Serenity.ToolButton[];
     }
 }
 declare namespace PGMS.Erp {
@@ -2913,6 +2920,13 @@ declare namespace PGMS.Erp {
         format(ctx: Slick.FormatterContext): string;
         backgroundProperty: string;
         borderProperty: string;
+        initializeColumn(column: Slick.Column): void;
+    }
+}
+declare namespace PGMS.Erp {
+    class AccountFormatter implements Slick.Formatter {
+        format(ctx: Slick.FormatterContext): string;
+        isVipProperty: string;
         initializeColumn(column: Slick.Column): void;
     }
 }

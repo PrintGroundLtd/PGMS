@@ -14,6 +14,7 @@
         ShipCountry?: string;
         UserId?: number;
         OrderStatusId?: number;
+        Total?: number;
         AccountName?: string;
         AccountPhoneNumber?: string;
         AccountIsVip?: number;
@@ -63,6 +64,7 @@
             ShipCountry = "ShipCountry",
             UserId = "UserId",
             OrderStatusId = "OrderStatusId",
+            Total = "Total",
             AccountName = "AccountName",
             AccountPhoneNumber = "AccountPhoneNumber",
             AccountIsVip = "AccountIsVip",

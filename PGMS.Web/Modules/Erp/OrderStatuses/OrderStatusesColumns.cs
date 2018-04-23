@@ -11,11 +11,11 @@ namespace PGMS.Erp.Columns
 
     [ColumnsScript("Erp.OrderStatuses")]
     [BasedOnRow(typeof(Entities.OrderStatusesRow), CheckNames = true)]
-    public class OrderStatusesColumns
+    public class OrderStatusesColumns 
     {
         [EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
         public Int32 OrderStatusId { get; set; }
-        [EditLink]
+        [EditLink] 
         [OrderStatusesFormatter(BackgroundProperty = "BackgroundColor", BorderProperty = "BorderColor")]
         public String Name { get; set; }
         public DateTime InsertDate { get; set; }

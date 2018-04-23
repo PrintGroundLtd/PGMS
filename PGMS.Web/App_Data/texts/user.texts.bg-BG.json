@@ -256,5 +256,7 @@
   "Navigation.Reports": "Статистики",
   "Navigation.Sent Emails": "Изпратени Имейли",
   "Navigation.Suppliers": "Доставчици",
-  "Navigation.Theme Samples/Calendar": "Календар"
+  "Navigation.Theme Samples/Calendar": "Календар",
+  "Site.GroupByButton": "Групирай по ",
+  "Site.NoGroupingButton": "Не групирай"
 }

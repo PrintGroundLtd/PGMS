@@ -66,7 +66,7 @@ namespace PGMS.Erp.Entities
             set { Fields.Height[this] = value; }
         }
 
-        [DisplayName("Order Date"), NotNull]
+        [DisplayName("Order Date"), NotNull, SortOrder(1, true), QuickFilter() ]
         public DateTime? OrderDate
         {
             get { return Fields.OrderDate[this]; }
@@ -222,6 +222,15 @@ namespace PGMS.Erp.Entities
             set { Fields.DetailList[this] = value; }
         }
 
+
+        [DisplayName("Total"), NotMapped]
+        [AlignRight, DisplayFormat("#,##0.00")]
+        public Decimal? Total
+        {
+            get { return Fields.Total[this]; }
+            set { Fields.Total[this] = value; }
+        }
+
         [NotesEditor, NotMapped]
         public List<NoteRow> NoteList
         {
@@ -263,6 +272,7 @@ namespace PGMS.Erp.Entities
             public StringField ShipCountry;
             public Int32Field UserId;
             public Int32Field OrderStatusId;
+            public DecimalField Total;
 
             public StringField AccountName;
             public StringField AccountPhoneNumber;
