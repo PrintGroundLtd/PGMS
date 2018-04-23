@@ -13,6 +13,9 @@ namespace PGMS.Erp.Forms
     [BasedOnRow(typeof(Entities.OrderStatusesRow), CheckNames = true)]
     public class OrderStatusesForm
     {
+        [Category("General")]
         public String Name { get; set; }
+        public String BackgroundColor { get; set; }
+        public String BorderColor { get; set; }
     }
 }

@@ -1,4 +1,6 @@
 ﻿
+using PGMS.Common;
+
 namespace PGMS.Erp.Entities
 {
     using Serenity;
@@ -30,7 +32,22 @@ namespace PGMS.Erp.Entities
             get { return Fields.Name[this]; }
             set { Fields.Name[this] = value; }
         }
-        
+
+        [DisplayName("Border Color"), Size(200), NotNull]
+        [ColorPickerEditor]
+        public String BorderColor
+        {
+            get { return Fields.BorderColor[this]; }
+            set { Fields.BorderColor[this] = value; }
+        }
+
+        [DisplayName("Background Color"), Size(200), NotNull]
+        [ColorPickerEditor]
+        public String BackgroundColor
+        {
+            get { return Fields.BackgroundColor[this]; }
+            set { Fields.BackgroundColor[this] = value; }
+        }
 
         IIdField IIdRow.IdField
         {
@@ -53,6 +70,8 @@ namespace PGMS.Erp.Entities
         {
             public Int32Field OrderStatusId;
             public StringField Name;
-		}
+            public StringField BorderColor;
+            public StringField BackgroundColor;
+        }
     }
 }

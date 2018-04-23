@@ -38,6 +38,7 @@
     "~/Scripts/vue.js",
     "~/Scripts/adminlte/app.js",
     "~/Scripts/site/PGMS.Web.js",
+    "~/Scripts/colorpicker/bootstrap-colorpicker.min.js",
     "dynamic://ColumnsBundle",
     "dynamic://FormBundle",
     "dynamic://TemplateBundle"

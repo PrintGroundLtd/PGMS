@@ -199,6 +199,22 @@ namespace PGMS.Erp.Entities
             get { return Fields.OrderStatusName[this]; }
             set { Fields.OrderStatusName[this] = value; }
         }
+        
+        [DisplayName("Order Status Border Color"), Expression("jOrderStatus.[BorderColor]")]
+        public String OrderStatusBorderColor
+        {
+            get { return Fields.OrderStatusBorderColor[this]; }
+            set { Fields.OrderStatusBorderColor[this] = value; }
+        }
+
+
+        [DisplayName("Order Status Background Color"), Expression("jOrderStatus.[BackgroundColor]")]
+        public String OrderStatusBackgroundColor
+        {
+            get { return Fields.OrderStatusBackgroundColor[this]; }
+            set { Fields.OrderStatusBackgroundColor[this] = value; }
+        }
+
         [DisplayName("Details"), MasterDetailRelation(foreignKey: "OrderId"), NotMapped]
         public List<OrderDetailsRow> DetailList
         {
@@ -265,6 +281,8 @@ namespace PGMS.Erp.Entities
 
             public RowListField<OrderDetailsRow> DetailList;
             public StringField OrderStatusName;
+            public StringField OrderStatusBorderColor;
+            public StringField OrderStatusBackgroundColor;
         }
     }
 }

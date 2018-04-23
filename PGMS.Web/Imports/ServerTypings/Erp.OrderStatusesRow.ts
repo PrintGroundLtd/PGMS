@@ -2,6 +2,8 @@
     export interface OrderStatusesRow {
         OrderStatusId?: number;
         Name?: string;
+        BorderColor?: string;
+        BackgroundColor?: string;
         InsertUserId?: number;
         InsertDate?: string;
         UpdateUserId?: number;
@@ -25,6 +27,8 @@
         export declare const enum Fields {
             OrderStatusId = "OrderStatusId",
             Name = "Name",
+            BorderColor = "BorderColor",
+            BackgroundColor = "BackgroundColor",
             InsertUserId = "InsertUserId",
             InsertDate = "InsertDate",
             UpdateUserId = "UpdateUserId",

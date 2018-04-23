@@ -909,8 +909,11 @@ var PGMS;
                     OrderStatusesForm.init = true;
                     var s = Serenity;
                     var w0 = s.StringEditor;
+                    var w1 = PGMS.Common.ColorPickerEditor;
                     Q.initFormType(OrderStatusesForm, [
-                        'Name', w0
+                        'Name', w0,
+                        'BackgroundColor', w1,
+                        'BorderColor', w1
                     ]);
                 }
                 return _this;
@@ -1605,38 +1608,6 @@ var PGMS;
 })(PGMS || (PGMS = {}));
 var PGMS;
 (function (PGMS) {
-    var LanguageList;
-    (function (LanguageList) {
-        function getValue() {
-            var result = [];
-            for (var _i = 0, _a = PGMS.Administration.LanguageRow.getLookup().items; _i < _a.length; _i++) {
-                var k = _a[_i];
-                if (k.LanguageId !== 'en') {
-                    result.push([k.Id.toString(), k.LanguageName]);
-                }
-            }
-            return result;
-        }
-        LanguageList.getValue = getValue;
-    })(LanguageList = PGMS.LanguageList || (PGMS.LanguageList = {}));
-})(PGMS || (PGMS = {}));
-/// <reference path="../Common/Helpers/LanguageList.ts" />
-var PGMS;
-(function (PGMS) {
-    var ScriptInitialization;
-    (function (ScriptInitialization) {
-        Q.Config.responsiveDialogs = true;
-        Q.Config.rootNamespaces.push('PGMS');
-        Serenity.EntityDialog.defaultLanguageList = PGMS.LanguageList.getValue;
-        if ($.fn['colorbox']) {
-            $.fn['colorbox'].settings.maxWidth = "95%";
-            $.fn['colorbox'].settings.maxHeight = "95%";
-        }
-        window.onerror = Q.ErrorHandling.runtimeErrorHandler;
-    })(ScriptInitialization = PGMS.ScriptInitialization || (PGMS.ScriptInitialization = {}));
-})(PGMS || (PGMS = {}));
-var PGMS;
-(function (PGMS) {
     var Administration;
     (function (Administration) {
         var LanguageDialog = /** @class */ (function (_super) {
@@ -2167,6 +2138,22 @@ var PGMS;
 })(PGMS || (PGMS = {}));
 var PGMS;
 (function (PGMS) {
+    var Authorization;
+    (function (Authorization) {
+        Object.defineProperty(Authorization, 'userDefinition', {
+            get: function () {
+                return Q.getRemoteData('UserData');
+            }
+        });
+        function hasPermission(permissionKey) {
+            var ud = Authorization.userDefinition;
+            return ud.Username === 'admin' || !!ud.Permissions[permissionKey];
+        }
+        Authorization.hasPermission = hasPermission;
+    })(Authorization = PGMS.Authorization || (PGMS.Authorization = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
     var Administration;
     (function (Administration) {
         var PermissionCheckEditor = /** @class */ (function (_super) {
@@ -2636,6 +2623,38 @@ var PGMS;
         }(Serenity.TemplatedDialog));
         Administration.UserRoleDialog = UserRoleDialog;
     })(Administration = PGMS.Administration || (PGMS.Administration = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var LanguageList;
+    (function (LanguageList) {
+        function getValue() {
+            var result = [];
+            for (var _i = 0, _a = PGMS.Administration.LanguageRow.getLookup().items; _i < _a.length; _i++) {
+                var k = _a[_i];
+                if (k.LanguageId !== 'en') {
+                    result.push([k.Id.toString(), k.LanguageName]);
+                }
+            }
+            return result;
+        }
+        LanguageList.getValue = getValue;
+    })(LanguageList = PGMS.LanguageList || (PGMS.LanguageList = {}));
+})(PGMS || (PGMS = {}));
+/// <reference path="../Common/Helpers/LanguageList.ts" />
+var PGMS;
+(function (PGMS) {
+    var ScriptInitialization;
+    (function (ScriptInitialization) {
+        Q.Config.responsiveDialogs = true;
+        Q.Config.rootNamespaces.push('PGMS');
+        Serenity.EntityDialog.defaultLanguageList = PGMS.LanguageList.getValue;
+        if ($.fn['colorbox']) {
+            $.fn['colorbox'].settings.maxWidth = "95%";
+            $.fn['colorbox'].settings.maxHeight = "95%";
+        }
+        window.onerror = Q.ErrorHandling.runtimeErrorHandler;
+    })(ScriptInitialization = PGMS.ScriptInitialization || (PGMS.ScriptInitialization = {}));
 })(PGMS || (PGMS = {}));
 var PGMS;
 (function (PGMS) {
@@ -3963,9 +3982,10 @@ var PGMS;
             OrdersGrid.prototype.getService = function () { return Erp.OrdersService.baseUrl; };
             OrdersGrid.prototype.getItemCssClass = function (item, index) {
                 var klass = "";
-                if (item.AccountIsVip == 1) {
-                    klass += " is-vip";
-                }
+                //   klass += item.OrderStatusBackgroundColor.replace(/#/g,'');
+                //if (item.AccountIsVip == 1) { 
+                //    klass += item.OrderStatusBackgroundColor;
+                //}
                 return Q.trimToNull(klass);
             };
             OrdersGrid = __decorate([
@@ -5109,6 +5129,122 @@ var PGMS;
 (function (PGMS) {
     var Erp;
     (function (Erp) {
+        var IncomeVSExpense = /** @class */ (function (_super) {
+            __extends(IncomeVSExpense, _super);
+            function IncomeVSExpense(elem, opt) {
+                var _this = _super.call(this, elem, opt) || this;
+                Erp.ReportsEndpointService.IncomeVSExpenseResponse({}, function (response) {
+                    var config = {
+                        type: 'line',
+                        data: {
+                            datasets: response.Entity.datasets,
+                            labels: response.Entity.labels
+                        },
+                        options: {
+                            responsive: true,
+                            legend: {
+                                display: true
+                            },
+                            tooltips: {
+                                mode: 'index',
+                                intersect: false,
+                            },
+                            hover: {
+                                mode: 'nearest',
+                                intersect: true
+                            },
+                            scales: {
+                                xAxes: [
+                                    {
+                                        display: true,
+                                        scaleLabel: {
+                                            display: true,
+                                        }
+                                    }
+                                ],
+                                yAxes: [
+                                    {
+                                        display: true,
+                                        scaleLabel: {
+                                            display: true,
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                    };
+                    var ctx = $(_this.byId("IncomeVSExpense")).get(0).getContext("2d", {});
+                    var myPie = new Chart(ctx, config);
+                });
+                return _this;
+            }
+            return IncomeVSExpense;
+        }(Serenity.TemplatedWidget));
+        Erp.IncomeVSExpense = IncomeVSExpense;
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var OrdersPerStatus = /** @class */ (function (_super) {
+            __extends(OrdersPerStatus, _super);
+            function OrdersPerStatus(elem, opt) {
+                var _this = _super.call(this, elem, opt) || this;
+                Erp.ReportsEndpointService.OrdersPerStatus({}, function (response) {
+                    var config = {
+                        type: 'line',
+                        data: {
+                            datasets: response.Entity.datasets,
+                            labels: response.Entity.labels
+                        },
+                        options: {
+                            responsive: true,
+                            legend: {
+                                display: true
+                            },
+                            tooltips: {
+                                mode: 'index',
+                                intersect: false,
+                            },
+                            hover: {
+                                mode: 'nearest',
+                                intersect: true
+                            },
+                            scales: {
+                                xAxes: [
+                                    {
+                                        display: true,
+                                        scaleLabel: {
+                                            display: true,
+                                        }
+                                    }
+                                ],
+                                yAxes: [
+                                    {
+                                        display: true,
+                                        scaleLabel: {
+                                            display: true,
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                    };
+                    var ctx = $(_this.byId("IncomeVSExpense")).get(0).getContext("2d", {});
+                    var myPie = new Chart(ctx, config);
+                });
+                return _this;
+            }
+            return OrdersPerStatus;
+        }(Serenity.TemplatedWidget));
+        Erp.OrdersPerStatus = OrdersPerStatus;
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
         var SentEmailsDialog = /** @class */ (function (_super) {
             __extends(SentEmailsDialog, _super);
             function SentEmailsDialog() {
@@ -5294,138 +5430,6 @@ var PGMS;
 })(PGMS || (PGMS = {}));
 var PGMS;
 (function (PGMS) {
-    var Authorization;
-    (function (Authorization) {
-        Object.defineProperty(Authorization, 'userDefinition', {
-            get: function () {
-                return Q.getRemoteData('UserData');
-            }
-        });
-        function hasPermission(permissionKey) {
-            var ud = Authorization.userDefinition;
-            return ud.Username === 'admin' || !!ud.Permissions[permissionKey];
-        }
-        Authorization.hasPermission = hasPermission;
-    })(Authorization = PGMS.Authorization || (PGMS.Authorization = {}));
-})(PGMS || (PGMS = {}));
-var PGMS;
-(function (PGMS) {
-    var Erp;
-    (function (Erp) {
-        var IncomeVSExpense = /** @class */ (function (_super) {
-            __extends(IncomeVSExpense, _super);
-            function IncomeVSExpense(elem, opt) {
-                var _this = _super.call(this, elem, opt) || this;
-                Erp.ReportsEndpointService.IncomeVSExpenseResponse({}, function (response) {
-                    var config = {
-                        type: 'line',
-                        data: {
-                            datasets: response.Entity.datasets,
-                            labels: response.Entity.labels
-                        },
-                        options: {
-                            responsive: true,
-                            legend: {
-                                display: true
-                            },
-                            tooltips: {
-                                mode: 'index',
-                                intersect: false,
-                            },
-                            hover: {
-                                mode: 'nearest',
-                                intersect: true
-                            },
-                            scales: {
-                                xAxes: [
-                                    {
-                                        display: true,
-                                        scaleLabel: {
-                                            display: true,
-                                        }
-                                    }
-                                ],
-                                yAxes: [
-                                    {
-                                        display: true,
-                                        scaleLabel: {
-                                            display: true,
-                                        }
-                                    }
-                                ]
-                            }
-                        },
-                    };
-                    var ctx = $(_this.byId("IncomeVSExpense")).get(0).getContext("2d", {});
-                    var myPie = new Chart(ctx, config);
-                });
-                return _this;
-            }
-            return IncomeVSExpense;
-        }(Serenity.TemplatedWidget));
-        Erp.IncomeVSExpense = IncomeVSExpense;
-    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
-})(PGMS || (PGMS = {}));
-var PGMS;
-(function (PGMS) {
-    var Erp;
-    (function (Erp) {
-        var OrdersPerStatus = /** @class */ (function (_super) {
-            __extends(OrdersPerStatus, _super);
-            function OrdersPerStatus(elem, opt) {
-                var _this = _super.call(this, elem, opt) || this;
-                Erp.ReportsEndpointService.OrdersPerStatus({}, function (response) {
-                    var config = {
-                        type: 'line',
-                        data: {
-                            datasets: response.Entity.datasets,
-                            labels: response.Entity.labels
-                        },
-                        options: {
-                            responsive: true,
-                            legend: {
-                                display: true
-                            },
-                            tooltips: {
-                                mode: 'index',
-                                intersect: false,
-                            },
-                            hover: {
-                                mode: 'nearest',
-                                intersect: true
-                            },
-                            scales: {
-                                xAxes: [
-                                    {
-                                        display: true,
-                                        scaleLabel: {
-                                            display: true,
-                                        }
-                                    }
-                                ],
-                                yAxes: [
-                                    {
-                                        display: true,
-                                        scaleLabel: {
-                                            display: true,
-                                        }
-                                    }
-                                ]
-                            }
-                        },
-                    };
-                    var ctx = $(_this.byId("IncomeVSExpense")).get(0).getContext("2d", {});
-                    var myPie = new Chart(ctx, config);
-                });
-                return _this;
-            }
-            return OrdersPerStatus;
-        }(Serenity.TemplatedWidget));
-        Erp.OrdersPerStatus = OrdersPerStatus;
-    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
-})(PGMS || (PGMS = {}));
-var PGMS;
-(function (PGMS) {
     var Membership;
     (function (Membership) {
         var ChangePasswordPanel = /** @class */ (function (_super) {
@@ -5601,5 +5605,93 @@ var PGMS;
         }(Serenity.PropertyPanel));
         Membership.SignUpPanel = SignUpPanel;
     })(Membership = PGMS.Membership || (PGMS.Membership = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Common;
+    (function (Common) {
+        var ColorPickerEditor = /** @class */ (function (_super) {
+            __extends(ColorPickerEditor, _super);
+            function ColorPickerEditor(container) {
+                var _this = _super.call(this, container) || this;
+                _this.updateElementContent();
+                return _this;
+            }
+            ColorPickerEditor.prototype.updateElementContent = function () {
+                var divID = this.element.attr('id');
+                var inputID = 'clpkr' + this.uniqueName;
+                this.element.append('<input type="text" class="editor flexify" id="' + inputID + '" /><span class="inplace-button input-group-addon" style="padding-top: 5px; padding-left: 3px; border-radius: 4px"><i></i></span>');
+                this.element.append("<script>" +
+                    "$('#" + divID + "').colorpicker({" +
+                    "autoInputFallback: false" +
+                    "});" +
+                    "</script>");
+            };
+            Object.defineProperty(ColorPickerEditor.prototype, "value", {
+                get: function () {
+                    return $('#clpkr' + this.uniqueName).val();
+                },
+                set: function (value) {
+                    if (value != undefined) {
+                        var pick = this.element.data('colorpicker');
+                        pick.color.setColor(value);
+                        $('#clpkr' + this.uniqueName).val(pick.update());
+                    }
+                },
+                enumerable: true,
+                configurable: true
+            });
+            ColorPickerEditor.prototype.getEditValue = function (property, target) {
+                target[property.name] = this.value;
+            };
+            ColorPickerEditor.prototype.setEditValue = function (source, property) {
+                this.value = source[property.name];
+            };
+            ColorPickerEditor = __decorate([
+                Serenity.Decorators.element("<div style='display: flex' />"),
+                Serenity.Decorators.registerEditor([Serenity.IGetEditValue, Serenity.ISetEditValue])
+            ], ColorPickerEditor);
+            return ColorPickerEditor;
+        }(Serenity.Widget));
+        Common.ColorPickerEditor = ColorPickerEditor;
+    })(Common = PGMS.Common || (PGMS.Common = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var OrderStatusesFormatter = /** @class */ (function () {
+            function OrderStatusesFormatter() {
+            }
+            OrderStatusesFormatter.prototype.format = function (ctx) {
+                if (!this.backgroundProperty || !this.borderProperty) {
+                    return text;
+                }
+                var backgroundColor = ctx.item[this.backgroundProperty];
+                var borderColor = ctx.item[this.borderProperty];
+                var text = Q.htmlEncode(ctx.value);
+                //return "<span style='background-color: " + color +";'>" + text + '</span>';
+                return "<div style='height:100%; background-color: " + backgroundColor + "; border-color: " + borderColor + ";' >" + text + '</div>';
+            };
+            OrderStatusesFormatter.prototype.initializeColumn = function (column) {
+                column.referencedFields = column.referencedFields || [];
+                if (this.backgroundProperty)
+                    column.referencedFields.push(this.backgroundProperty);
+                if (this.borderProperty)
+                    column.referencedFields.push(this.borderProperty);
+            };
+            __decorate([
+                Serenity.Decorators.option()
+            ], OrderStatusesFormatter.prototype, "backgroundProperty", void 0);
+            __decorate([
+                Serenity.Decorators.option()
+            ], OrderStatusesFormatter.prototype, "borderProperty", void 0);
+            OrderStatusesFormatter = __decorate([
+                Serenity.Decorators.registerFormatter([Serenity.ISlickFormatter, Serenity.IInitializeColumn])
+            ], OrderStatusesFormatter);
+            return OrderStatusesFormatter;
+        }());
+        Erp.OrderStatusesFormatter = OrderStatusesFormatter;
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
 })(PGMS || (PGMS = {}));
 //# sourceMappingURL=PGMS.Web.js.map

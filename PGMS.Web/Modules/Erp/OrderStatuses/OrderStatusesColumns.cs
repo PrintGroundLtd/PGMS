@@ -16,6 +16,7 @@ namespace PGMS.Erp.Columns
         [EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
         public Int32 OrderStatusId { get; set; }
         [EditLink]
+        [OrderStatusesFormatter(BackgroundProperty = "BackgroundColor", BorderProperty = "BorderColor")]
         public String Name { get; set; }
         public DateTime InsertDate { get; set; }
         public Int32 InsertUserName { get; set; }

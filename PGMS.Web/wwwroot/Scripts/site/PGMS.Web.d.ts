@@ -1107,6 +1107,8 @@ declare namespace PGMS.Erp {
         NoteList?: NoteRow[];
         DetailList?: OrderDetailsRow[];
         OrderStatusName?: string;
+        OrderStatusBorderColor?: string;
+        OrderStatusBackgroundColor?: string;
         InsertUserId?: number;
         InsertDate?: string;
         UpdateUserId?: number;
@@ -1149,6 +1151,8 @@ declare namespace PGMS.Erp {
             NoteList = "NoteList",
             DetailList = "DetailList",
             OrderStatusName = "OrderStatusName",
+            OrderStatusBorderColor = "OrderStatusBorderColor",
+            OrderStatusBackgroundColor = "OrderStatusBackgroundColor",
             InsertUserId = "InsertUserId",
             InsertDate = "InsertDate",
             UpdateUserId = "UpdateUserId",
@@ -1181,6 +1185,8 @@ declare namespace PGMS.Erp {
 declare namespace PGMS.Erp {
     interface OrderStatusesForm {
         Name: Serenity.StringEditor;
+        BackgroundColor: Common.ColorPickerEditor;
+        BorderColor: Common.ColorPickerEditor;
     }
     class OrderStatusesForm extends Serenity.PrefixedContext {
         static formKey: string;
@@ -1192,6 +1198,8 @@ declare namespace PGMS.Erp {
     interface OrderStatusesRow {
         OrderStatusId?: number;
         Name?: string;
+        BorderColor?: string;
+        BackgroundColor?: string;
         InsertUserId?: number;
         InsertDate?: string;
         UpdateUserId?: number;
@@ -1210,6 +1218,8 @@ declare namespace PGMS.Erp {
         const enum Fields {
             OrderStatusId = "OrderStatusId",
             Name = "Name",
+            BorderColor = "BorderColor",
+            BackgroundColor = "BackgroundColor",
             InsertUserId = "InsertUserId",
             InsertDate = "InsertDate",
             UpdateUserId = "UpdateUserId",
@@ -1943,11 +1953,6 @@ declare namespace PGMS {
         };
     }
 }
-declare namespace PGMS.LanguageList {
-    function getValue(): string[][];
-}
-declare namespace PGMS.ScriptInitialization {
-}
 declare namespace PGMS.Administration {
     class LanguageDialog extends Serenity.EntityDialog<LanguageRow, any> {
         protected getFormKey(): string;
@@ -2059,6 +2064,10 @@ declare namespace PGMS.Administration {
         protected getDefaultSortBy(): UserRow.Fields[];
     }
 }
+declare namespace PGMS.Authorization {
+    let userDefinition: ScriptUserDefinition;
+    function hasPermission(permissionKey: string): boolean;
+}
 declare namespace PGMS.Administration {
     class PermissionCheckEditor extends Serenity.DataGrid<PermissionCheckItem, PermissionCheckEditorOptions> {
         protected getIdProperty(): string;
@@ -2129,6 +2138,11 @@ declare namespace PGMS.Administration {
         userID: number;
         username: string;
     }
+}
+declare namespace PGMS.LanguageList {
+    function getValue(): string[][];
+}
+declare namespace PGMS.ScriptInitialization {
 }
 declare namespace PGMS {
     class BasicProgressDialog extends Serenity.TemplatedDialog<any> {
@@ -2780,6 +2794,18 @@ declare namespace PGMS.Erp {
         constructor(container: JQuery);
     }
 }
+declare var Chart: any;
+declare namespace PGMS.Erp {
+    class IncomeVSExpense extends Serenity.TemplatedWidget<any> {
+        constructor(elem: JQuery, opt: {});
+    }
+}
+declare var Chart: any;
+declare namespace PGMS.Erp {
+    class OrdersPerStatus extends Serenity.TemplatedWidget<any> {
+        constructor(elem: JQuery, opt: {});
+    }
+}
 declare namespace PGMS.Erp {
     class SentEmailsDialog extends Serenity.EntityDialog<SentEmailsRow, any> {
         protected getFormKey(): string;
@@ -2845,22 +2871,6 @@ declare namespace PGMS.Erp {
         constructor(container: JQuery);
     }
 }
-declare namespace PGMS.Authorization {
-    let userDefinition: ScriptUserDefinition;
-    function hasPermission(permissionKey: string): boolean;
-}
-declare var Chart: any;
-declare namespace PGMS.Erp {
-    class IncomeVSExpense extends Serenity.TemplatedWidget<any> {
-        constructor(elem: JQuery, opt: {});
-    }
-}
-declare var Chart: any;
-declare namespace PGMS.Erp {
-    class OrdersPerStatus extends Serenity.TemplatedWidget<any> {
-        constructor(elem: JQuery, opt: {});
-    }
-}
 declare namespace PGMS.Membership {
     class ChangePasswordPanel extends Serenity.PropertyPanel<ChangePasswordRequest, any> {
         protected getFormKey(): string;
@@ -2887,5 +2897,22 @@ declare namespace PGMS.Membership {
         protected getFormKey(): string;
         private form;
         constructor(container: JQuery);
+    }
+}
+declare namespace PGMS.Common {
+    class ColorPickerEditor extends Serenity.Widget<any> implements Serenity.IGetEditValue, Serenity.ISetEditValue {
+        constructor(container: JQuery);
+        private updateElementContent();
+        value: string;
+        getEditValue(property: any, target: any): void;
+        setEditValue(source: any, property: any): void;
+    }
+}
+declare namespace PGMS.Erp {
+    class OrderStatusesFormatter implements Slick.Formatter {
+        format(ctx: Slick.FormatterContext): string;
+        backgroundProperty: string;
+        borderProperty: string;
+        initializeColumn(column: Slick.Column): void;
     }
 }
