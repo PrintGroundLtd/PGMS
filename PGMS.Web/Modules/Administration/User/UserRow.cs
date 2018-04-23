@@ -80,6 +80,7 @@ namespace PGMS.Administration.Entities
         }
 
         [NotNull, Insertable(false), Updatable(true)]
+        [LookupInclude]
         public Int16? IsActive
         {
             get { return Fields.IsActive[this]; }
