@@ -1,4 +1,5 @@
 ﻿/// <reference path="../Common/Helpers/LanguageList.ts" />
+/// <reference path="../Common/UserPreference/UserPreferenceStorage.ts" />
 
 namespace PGMS.ScriptInitialization {
     Q.Config.responsiveDialogs = true;
@@ -11,4 +12,6 @@ namespace PGMS.ScriptInitialization {
     }
 
     window.onerror = Q.ErrorHandling.runtimeErrorHandler;
+
+    Serenity.DataGrid.defaultPersistanceStorage = new Common.UserPreferenceStorage();
 }
