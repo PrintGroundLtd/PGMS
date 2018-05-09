@@ -7,10 +7,13 @@ namespace PGMS.Erp {
         protected getLocalTextPrefix() { return OrderDetailsRow.localTextPrefix; }
 
         protected form = new OrderDetailsForm(this.idPrefix);
+        private loadedState: string;
 
         constructor() {
             super();
-             
+            this.byId('NoteList').closest('.field').hide().end().appendTo(this.byId('TabNotes'));
+            DialogUtils.pendingChangesConfirmation(this.element, () => this.getSaveState() != this.loadedState);
+
             this.form = new OrderDetailsForm(this.idPrefix);
 
             this.form.ProductId.changeSelect2(e => {
@@ -19,7 +22,7 @@ namespace PGMS.Erp {
                     this.form.UnitPrice.value = ProductsRow.getLookup().itemById[productId].UnitPrice;
                 }
             });
-
+             
             this.form.Discount.addValidationRule(this.uniqueName, e => {
                 var price = this.form.UnitPrice.value;
                 var quantity = this.form.Quantity.value;
@@ -29,6 +32,27 @@ namespace PGMS.Erp {
                     return "Discount can't be higher than total price!";
                 }
             });
+
+        }
+
+        loadEntity(entity: Erp.OrdersRow): void {
+            super.loadEntity(entity);
+            Serenity.TabsExtensions.setDisabled(this.tabs, 'Notes', this.isNewOrDeleted());
+
+        }
+
+        loadResponse(data) {
+            super.loadResponse(data);
+            this.loadedState = this.getSaveState();
+        }
+
+        getSaveState() {
+            try {
+                return $.toJSON(this.getSaveEntity());
+            }
+            catch (e) {
+                return null;
+            }
         }
     }
 }

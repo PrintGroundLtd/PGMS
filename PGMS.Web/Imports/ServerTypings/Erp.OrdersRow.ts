@@ -7,6 +7,7 @@
         Width?: number;
         Height?: number;
         OrderDate?: string;
+        DeadLine?: string;
         ShippedDate?: string;
         ShipName?: string;
         ShipAddress?: string;
@@ -57,6 +58,7 @@
             Width = "Width",
             Height = "Height",
             OrderDate = "OrderDate",
+            DeadLine = "DeadLine",
             ShippedDate = "ShippedDate",
             ShipName = "ShipName",
             ShipAddress = "ShipAddress",

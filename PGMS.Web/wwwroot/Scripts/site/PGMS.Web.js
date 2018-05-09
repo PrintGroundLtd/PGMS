@@ -767,12 +767,18 @@ var PGMS;
                     var s = Serenity;
                     var w0 = s.LookupEditor;
                     var w1 = s.DecimalEditor;
-                    var w2 = s.IntegerEditor;
+                    var w2 = s.HtmlNoteContentEditor;
+                    var w3 = s.IntegerEditor;
+                    var w4 = Erp.NotesEditor;
                     Q.initFormType(OrderDetailsForm, [
                         'ProductId', w0,
+                        'Width', w1,
+                        'Height', w1,
+                        'Description', w2,
                         'UnitPrice', w1,
-                        'Quantity', w2,
-                        'Discount', w1
+                        'Quantity', w3,
+                        'Discount', w1,
+                        'NoteList', w4
                     ]);
                 }
                 return _this;
@@ -827,22 +833,20 @@ var PGMS;
                     OrdersForm.init = true;
                     var s = Serenity;
                     var w0 = s.LookupEditor;
-                    var w1 = s.IntegerEditor;
-                    var w2 = Erp.OrderDetailsEditor;
-                    var w3 = s.DateEditor;
+                    var w1 = Erp.OrderDetailsEditor;
+                    var w2 = s.DateEditor;
+                    var w3 = s.DateTimeEditor;
                     var w4 = s.StringEditor;
                     var w5 = Erp.NotesEditor;
                     Q.initFormType(OrdersForm, [
                         'AccountId', w0,
-                        'CompanyId', w0,
                         'PaymentTypeId', w0,
-                        'Width', w1,
-                        'Height', w1,
-                        'DetailList', w2,
+                        'DetailList', w1,
                         'UserId', w0,
                         'OrderStatusId', w0,
-                        'OrderDate', w3,
-                        'ShippedDate', w3,
+                        'OrderDate', w2,
+                        'DeadLine', w3,
+                        'ShippedDate', w2,
                         'ShipName', w4,
                         'ShipAddress', w4,
                         'ShipCity', w4,
@@ -1608,6 +1612,69 @@ var PGMS;
 })(PGMS || (PGMS = {}));
 var PGMS;
 (function (PGMS) {
+    var LanguageList;
+    (function (LanguageList) {
+        function getValue() {
+            var result = [];
+            for (var _i = 0, _a = PGMS.Administration.LanguageRow.getLookup().items; _i < _a.length; _i++) {
+                var k = _a[_i];
+                if (k.LanguageId !== 'en') {
+                    result.push([k.Id.toString(), k.LanguageName]);
+                }
+            }
+            return result;
+        }
+        LanguageList.getValue = getValue;
+    })(LanguageList = PGMS.LanguageList || (PGMS.LanguageList = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Common;
+    (function (Common) {
+        var UserPreferenceStorage = /** @class */ (function () {
+            function UserPreferenceStorage() {
+            }
+            UserPreferenceStorage.prototype.getItem = function (key) {
+                var value;
+                Common.UserPreferenceService.Retrieve({
+                    PreferenceType: "UserPreferenceStorage",
+                    Name: key
+                }, function (response) { return value = response.Value; }, {
+                    async: false
+                });
+                return value;
+            };
+            UserPreferenceStorage.prototype.setItem = function (key, data) {
+                Common.UserPreferenceService.Update({
+                    PreferenceType: "UserPreferenceStorage",
+                    Name: key,
+                    Value: data
+                });
+            };
+            return UserPreferenceStorage;
+        }());
+        Common.UserPreferenceStorage = UserPreferenceStorage;
+    })(Common = PGMS.Common || (PGMS.Common = {}));
+})(PGMS || (PGMS = {}));
+/// <reference path="../Common/Helpers/LanguageList.ts" />
+/// <reference path="../Common/UserPreference/UserPreferenceStorage.ts" />
+var PGMS;
+(function (PGMS) {
+    var ScriptInitialization;
+    (function (ScriptInitialization) {
+        Q.Config.responsiveDialogs = true;
+        Q.Config.rootNamespaces.push('PGMS');
+        Serenity.EntityDialog.defaultLanguageList = PGMS.LanguageList.getValue;
+        if ($.fn['colorbox']) {
+            $.fn['colorbox'].settings.maxWidth = "95%";
+            $.fn['colorbox'].settings.maxHeight = "95%";
+        }
+        window.onerror = Q.ErrorHandling.runtimeErrorHandler;
+        Serenity.DataGrid.defaultPersistanceStorage = new PGMS.Common.UserPreferenceStorage();
+    })(ScriptInitialization = PGMS.ScriptInitialization || (PGMS.ScriptInitialization = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
     var Administration;
     (function (Administration) {
         var LanguageDialog = /** @class */ (function (_super) {
@@ -2138,22 +2205,6 @@ var PGMS;
 })(PGMS || (PGMS = {}));
 var PGMS;
 (function (PGMS) {
-    var Authorization;
-    (function (Authorization) {
-        Object.defineProperty(Authorization, 'userDefinition', {
-            get: function () {
-                return Q.getRemoteData('UserData');
-            }
-        });
-        function hasPermission(permissionKey) {
-            var ud = Authorization.userDefinition;
-            return ud.Username === 'admin' || !!ud.Permissions[permissionKey];
-        }
-        Authorization.hasPermission = hasPermission;
-    })(Authorization = PGMS.Authorization || (PGMS.Authorization = {}));
-})(PGMS || (PGMS = {}));
-var PGMS;
-(function (PGMS) {
     var Administration;
     (function (Administration) {
         var PermissionCheckEditor = /** @class */ (function (_super) {
@@ -2626,38 +2677,6 @@ var PGMS;
 })(PGMS || (PGMS = {}));
 var PGMS;
 (function (PGMS) {
-    var LanguageList;
-    (function (LanguageList) {
-        function getValue() {
-            var result = [];
-            for (var _i = 0, _a = PGMS.Administration.LanguageRow.getLookup().items; _i < _a.length; _i++) {
-                var k = _a[_i];
-                if (k.LanguageId !== 'en') {
-                    result.push([k.Id.toString(), k.LanguageName]);
-                }
-            }
-            return result;
-        }
-        LanguageList.getValue = getValue;
-    })(LanguageList = PGMS.LanguageList || (PGMS.LanguageList = {}));
-})(PGMS || (PGMS = {}));
-/// <reference path="../Common/Helpers/LanguageList.ts" />
-var PGMS;
-(function (PGMS) {
-    var ScriptInitialization;
-    (function (ScriptInitialization) {
-        Q.Config.responsiveDialogs = true;
-        Q.Config.rootNamespaces.push('PGMS');
-        Serenity.EntityDialog.defaultLanguageList = PGMS.LanguageList.getValue;
-        if ($.fn['colorbox']) {
-            $.fn['colorbox'].settings.maxWidth = "95%";
-            $.fn['colorbox'].settings.maxHeight = "95%";
-        }
-        window.onerror = Q.ErrorHandling.runtimeErrorHandler;
-    })(ScriptInitialization = PGMS.ScriptInitialization || (PGMS.ScriptInitialization = {}));
-})(PGMS || (PGMS = {}));
-var PGMS;
-(function (PGMS) {
     var BasicProgressDialog = /** @class */ (function (_super) {
         __extends(BasicProgressDialog, _super);
         function BasicProgressDialog() {
@@ -2890,6 +2909,56 @@ var PGMS;
             return BulkServiceAction;
         }());
         Common.BulkServiceAction = BulkServiceAction;
+    })(Common = PGMS.Common || (PGMS.Common = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Common;
+    (function (Common) {
+        var ColorPickerEditor = /** @class */ (function (_super) {
+            __extends(ColorPickerEditor, _super);
+            function ColorPickerEditor(container) {
+                var _this = _super.call(this, container) || this;
+                _this.updateElementContent();
+                return _this;
+            }
+            ColorPickerEditor.prototype.updateElementContent = function () {
+                var divID = this.element.attr('id');
+                var inputID = 'clpkr' + this.uniqueName;
+                this.element.append('<input type="text" class="editor flexify" id="' + inputID + '" /><span class="inplace-button input-group-addon" style="padding-top: 5px; padding-left: 3px; border-radius: 4px"><i></i></span>');
+                this.element.append("<script>" +
+                    "$('#" + divID + "').colorpicker({" +
+                    "autoInputFallback: false" +
+                    "});" +
+                    "</script>");
+            };
+            Object.defineProperty(ColorPickerEditor.prototype, "value", {
+                get: function () {
+                    return $('#clpkr' + this.uniqueName).val();
+                },
+                set: function (value) {
+                    if (value != undefined) {
+                        var pick = this.element.data('colorpicker');
+                        pick.color.setColor(value);
+                        $('#clpkr' + this.uniqueName).val(pick.update());
+                    }
+                },
+                enumerable: true,
+                configurable: true
+            });
+            ColorPickerEditor.prototype.getEditValue = function (property, target) {
+                target[property.name] = this.value;
+            };
+            ColorPickerEditor.prototype.setEditValue = function (source, property) {
+                this.value = source[property.name];
+            };
+            ColorPickerEditor = __decorate([
+                Serenity.Decorators.element("<div style='display: flex' />"),
+                Serenity.Decorators.registerEditor([Serenity.IGetEditValue, Serenity.ISetEditValue])
+            ], ColorPickerEditor);
+            return ColorPickerEditor;
+        }(Serenity.Widget));
+        Common.ColorPickerEditor = ColorPickerEditor;
     })(Common = PGMS.Common || (PGMS.Common = {}));
 })(PGMS || (PGMS = {}));
 var PGMS;
@@ -3756,35 +3825,6 @@ var PGMS;
 })(PGMS || (PGMS = {}));
 var PGMS;
 (function (PGMS) {
-    var Common;
-    (function (Common) {
-        var UserPreferenceStorage = /** @class */ (function () {
-            function UserPreferenceStorage() {
-            }
-            UserPreferenceStorage.prototype.getItem = function (key) {
-                var value;
-                Common.UserPreferenceService.Retrieve({
-                    PreferenceType: "UserPreferenceStorage",
-                    Name: key
-                }, function (response) { return value = response.Value; }, {
-                    async: false
-                });
-                return value;
-            };
-            UserPreferenceStorage.prototype.setItem = function (key, data) {
-                Common.UserPreferenceService.Update({
-                    PreferenceType: "UserPreferenceStorage",
-                    Name: key,
-                    Value: data
-                });
-            };
-            return UserPreferenceStorage;
-        }());
-        Common.UserPreferenceStorage = UserPreferenceStorage;
-    })(Common = PGMS.Common || (PGMS.Common = {}));
-})(PGMS || (PGMS = {}));
-var PGMS;
-(function (PGMS) {
     var Erp;
     (function (Erp) {
         var AccountAttachmentsDialog = /** @class */ (function (_super) {
@@ -4305,6 +4345,40 @@ var PGMS;
             return AccountsDialog;
         }(Serenity.EntityDialog));
         Erp.AccountsDialog = AccountsDialog;
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var AccountFormatter = /** @class */ (function () {
+            function AccountFormatter() {
+            }
+            AccountFormatter.prototype.format = function (ctx) {
+                var text = Q.htmlEncode(ctx.value);
+                if (!this.isVipProperty) {
+                    return text;
+                }
+                var _isVipProperty = ctx.item[this.isVipProperty];
+                if (_isVipProperty == 1)
+                    return "<div style='height:100%; background-color: #FF8630;' >" + text + '</div>';
+                else
+                    return text;
+            };
+            AccountFormatter.prototype.initializeColumn = function (column) {
+                column.referencedFields = column.referencedFields || [];
+                if (this.isVipProperty)
+                    column.referencedFields.push(this.isVipProperty);
+            };
+            __decorate([
+                Serenity.Decorators.option()
+            ], AccountFormatter.prototype, "isVipProperty", void 0);
+            AccountFormatter = __decorate([
+                Serenity.Decorators.registerFormatter([Serenity.ISlickFormatter, Serenity.IInitializeColumn])
+            ], AccountFormatter);
+            return AccountFormatter;
+        }());
+        Erp.AccountFormatter = AccountFormatter;
     })(Erp = PGMS.Erp || (PGMS.Erp = {}));
 })(PGMS || (PGMS = {}));
 var PGMS;
@@ -4869,6 +4943,8 @@ var PGMS;
             function OrderDetailsDialog() {
                 var _this = _super.call(this) || this;
                 _this.form = new Erp.OrderDetailsForm(_this.idPrefix);
+                _this.byId('NoteList').closest('.field').hide().end().appendTo(_this.byId('TabNotes'));
+                PGMS.DialogUtils.pendingChangesConfirmation(_this.element, function () { return _this.getSaveState() != _this.loadedState; });
                 _this.form = new Erp.OrderDetailsForm(_this.idPrefix);
                 _this.form.ProductId.changeSelect2(function (e) {
                     var productId = Q.toId(_this.form.ProductId.value);
@@ -4889,6 +4965,22 @@ var PGMS;
             }
             OrderDetailsDialog.prototype.getFormKey = function () { return Erp.OrderDetailsForm.formKey; };
             OrderDetailsDialog.prototype.getLocalTextPrefix = function () { return Erp.OrderDetailsRow.localTextPrefix; };
+            OrderDetailsDialog.prototype.loadEntity = function (entity) {
+                _super.prototype.loadEntity.call(this, entity);
+                Serenity.TabsExtensions.setDisabled(this.tabs, 'Notes', this.isNewOrDeleted());
+            };
+            OrderDetailsDialog.prototype.loadResponse = function (data) {
+                _super.prototype.loadResponse.call(this, data);
+                this.loadedState = this.getSaveState();
+            };
+            OrderDetailsDialog.prototype.getSaveState = function () {
+                try {
+                    return $.toJSON(this.getSaveEntity());
+                }
+                catch (e) {
+                    return null;
+                }
+            };
             OrderDetailsDialog = __decorate([
                 Serenity.Decorators.registerClass()
             ], OrderDetailsDialog);
@@ -5013,6 +5105,44 @@ var PGMS;
             return OrderStatusesDialog;
         }(Serenity.EntityDialog));
         Erp.OrderStatusesDialog = OrderStatusesDialog;
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var OrderStatusesFormatter = /** @class */ (function () {
+            function OrderStatusesFormatter() {
+            }
+            OrderStatusesFormatter.prototype.format = function (ctx) {
+                var text = Q.htmlEncode(ctx.value);
+                if (!this.backgroundProperty || !this.borderProperty) {
+                    return text;
+                }
+                var backgroundColor = ctx.item[this.backgroundProperty];
+                var borderColor = ctx.item[this.borderProperty];
+                //return "<span style='background-color: " + color +";'>" + text + '</span>';
+                return "<div style='height:100%; background-color: " + backgroundColor + "; border-color: " + borderColor + ";' >" + text + '</div>';
+            };
+            OrderStatusesFormatter.prototype.initializeColumn = function (column) {
+                column.referencedFields = column.referencedFields || [];
+                if (this.backgroundProperty)
+                    column.referencedFields.push(this.backgroundProperty);
+                if (this.borderProperty)
+                    column.referencedFields.push(this.borderProperty);
+            };
+            __decorate([
+                Serenity.Decorators.option()
+            ], OrderStatusesFormatter.prototype, "backgroundProperty", void 0);
+            __decorate([
+                Serenity.Decorators.option()
+            ], OrderStatusesFormatter.prototype, "borderProperty", void 0);
+            OrderStatusesFormatter = __decorate([
+                Serenity.Decorators.registerFormatter([Serenity.ISlickFormatter, Serenity.IInitializeColumn])
+            ], OrderStatusesFormatter);
+            return OrderStatusesFormatter;
+        }());
+        Erp.OrderStatusesFormatter = OrderStatusesFormatter;
     })(Erp = PGMS.Erp || (PGMS.Erp = {}));
 })(PGMS || (PGMS = {}));
 var PGMS;
@@ -5243,122 +5373,6 @@ var PGMS;
 (function (PGMS) {
     var Erp;
     (function (Erp) {
-        var IncomeVSExpense = /** @class */ (function (_super) {
-            __extends(IncomeVSExpense, _super);
-            function IncomeVSExpense(elem, opt) {
-                var _this = _super.call(this, elem, opt) || this;
-                Erp.ReportsEndpointService.IncomeVSExpenseResponse({}, function (response) {
-                    var config = {
-                        type: 'line',
-                        data: {
-                            datasets: response.Entity.datasets,
-                            labels: response.Entity.labels
-                        },
-                        options: {
-                            responsive: true,
-                            legend: {
-                                display: true
-                            },
-                            tooltips: {
-                                mode: 'index',
-                                intersect: false,
-                            },
-                            hover: {
-                                mode: 'nearest',
-                                intersect: true
-                            },
-                            scales: {
-                                xAxes: [
-                                    {
-                                        display: true,
-                                        scaleLabel: {
-                                            display: true,
-                                        }
-                                    }
-                                ],
-                                yAxes: [
-                                    {
-                                        display: true,
-                                        scaleLabel: {
-                                            display: true,
-                                        }
-                                    }
-                                ]
-                            }
-                        },
-                    };
-                    var ctx = $(_this.byId("IncomeVSExpense")).get(0).getContext("2d", {});
-                    var myPie = new Chart(ctx, config);
-                });
-                return _this;
-            }
-            return IncomeVSExpense;
-        }(Serenity.TemplatedWidget));
-        Erp.IncomeVSExpense = IncomeVSExpense;
-    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
-})(PGMS || (PGMS = {}));
-var PGMS;
-(function (PGMS) {
-    var Erp;
-    (function (Erp) {
-        var OrdersPerStatus = /** @class */ (function (_super) {
-            __extends(OrdersPerStatus, _super);
-            function OrdersPerStatus(elem, opt) {
-                var _this = _super.call(this, elem, opt) || this;
-                Erp.ReportsEndpointService.OrdersPerStatus({}, function (response) {
-                    var config = {
-                        type: 'line',
-                        data: {
-                            datasets: response.Entity.datasets,
-                            labels: response.Entity.labels
-                        },
-                        options: {
-                            responsive: true,
-                            legend: {
-                                display: true
-                            },
-                            tooltips: {
-                                mode: 'index',
-                                intersect: false,
-                            },
-                            hover: {
-                                mode: 'nearest',
-                                intersect: true
-                            },
-                            scales: {
-                                xAxes: [
-                                    {
-                                        display: true,
-                                        scaleLabel: {
-                                            display: true,
-                                        }
-                                    }
-                                ],
-                                yAxes: [
-                                    {
-                                        display: true,
-                                        scaleLabel: {
-                                            display: true,
-                                        }
-                                    }
-                                ]
-                            }
-                        },
-                    };
-                    var ctx = $(_this.byId("IncomeVSExpense")).get(0).getContext("2d", {});
-                    var myPie = new Chart(ctx, config);
-                });
-                return _this;
-            }
-            return OrdersPerStatus;
-        }(Serenity.TemplatedWidget));
-        Erp.OrdersPerStatus = OrdersPerStatus;
-    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
-})(PGMS || (PGMS = {}));
-var PGMS;
-(function (PGMS) {
-    var Erp;
-    (function (Erp) {
         var SentEmailsDialog = /** @class */ (function (_super) {
             __extends(SentEmailsDialog, _super);
             function SentEmailsDialog() {
@@ -5544,6 +5558,138 @@ var PGMS;
 })(PGMS || (PGMS = {}));
 var PGMS;
 (function (PGMS) {
+    var Authorization;
+    (function (Authorization) {
+        Object.defineProperty(Authorization, 'userDefinition', {
+            get: function () {
+                return Q.getRemoteData('UserData');
+            }
+        });
+        function hasPermission(permissionKey) {
+            var ud = Authorization.userDefinition;
+            return ud.Username === 'admin' || !!ud.Permissions[permissionKey];
+        }
+        Authorization.hasPermission = hasPermission;
+    })(Authorization = PGMS.Authorization || (PGMS.Authorization = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var IncomeVSExpense = /** @class */ (function (_super) {
+            __extends(IncomeVSExpense, _super);
+            function IncomeVSExpense(elem, opt) {
+                var _this = _super.call(this, elem, opt) || this;
+                Erp.ReportsEndpointService.IncomeVSExpenseResponse({}, function (response) {
+                    var config = {
+                        type: 'line',
+                        data: {
+                            datasets: response.Entity.datasets,
+                            labels: response.Entity.labels
+                        },
+                        options: {
+                            responsive: true,
+                            legend: {
+                                display: true
+                            },
+                            tooltips: {
+                                mode: 'index',
+                                intersect: false,
+                            },
+                            hover: {
+                                mode: 'nearest',
+                                intersect: true
+                            },
+                            scales: {
+                                xAxes: [
+                                    {
+                                        display: true,
+                                        scaleLabel: {
+                                            display: true,
+                                        }
+                                    }
+                                ],
+                                yAxes: [
+                                    {
+                                        display: true,
+                                        scaleLabel: {
+                                            display: true,
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                    };
+                    var ctx = $(_this.byId("IncomeVSExpense")).get(0).getContext("2d", {});
+                    var myPie = new Chart(ctx, config);
+                });
+                return _this;
+            }
+            return IncomeVSExpense;
+        }(Serenity.TemplatedWidget));
+        Erp.IncomeVSExpense = IncomeVSExpense;
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var OrdersPerStatus = /** @class */ (function (_super) {
+            __extends(OrdersPerStatus, _super);
+            function OrdersPerStatus(elem, opt) {
+                var _this = _super.call(this, elem, opt) || this;
+                Erp.ReportsEndpointService.OrdersPerStatus({}, function (response) {
+                    var config = {
+                        type: 'line',
+                        data: {
+                            datasets: response.Entity.datasets,
+                            labels: response.Entity.labels
+                        },
+                        options: {
+                            responsive: true,
+                            legend: {
+                                display: true
+                            },
+                            tooltips: {
+                                mode: 'index',
+                                intersect: false,
+                            },
+                            hover: {
+                                mode: 'nearest',
+                                intersect: true
+                            },
+                            scales: {
+                                xAxes: [
+                                    {
+                                        display: true,
+                                        scaleLabel: {
+                                            display: true,
+                                        }
+                                    }
+                                ],
+                                yAxes: [
+                                    {
+                                        display: true,
+                                        scaleLabel: {
+                                            display: true,
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                    };
+                    var ctx = $(_this.byId("IncomeVSExpense")).get(0).getContext("2d", {});
+                    var myPie = new Chart(ctx, config);
+                });
+                return _this;
+            }
+            return OrdersPerStatus;
+        }(Serenity.TemplatedWidget));
+        Erp.OrdersPerStatus = OrdersPerStatus;
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
     var Membership;
     (function (Membership) {
         var ChangePasswordPanel = /** @class */ (function (_super) {
@@ -5719,127 +5865,5 @@ var PGMS;
         }(Serenity.PropertyPanel));
         Membership.SignUpPanel = SignUpPanel;
     })(Membership = PGMS.Membership || (PGMS.Membership = {}));
-})(PGMS || (PGMS = {}));
-var PGMS;
-(function (PGMS) {
-    var Common;
-    (function (Common) {
-        var ColorPickerEditor = /** @class */ (function (_super) {
-            __extends(ColorPickerEditor, _super);
-            function ColorPickerEditor(container) {
-                var _this = _super.call(this, container) || this;
-                _this.updateElementContent();
-                return _this;
-            }
-            ColorPickerEditor.prototype.updateElementContent = function () {
-                var divID = this.element.attr('id');
-                var inputID = 'clpkr' + this.uniqueName;
-                this.element.append('<input type="text" class="editor flexify" id="' + inputID + '" /><span class="inplace-button input-group-addon" style="padding-top: 5px; padding-left: 3px; border-radius: 4px"><i></i></span>');
-                this.element.append("<script>" +
-                    "$('#" + divID + "').colorpicker({" +
-                    "autoInputFallback: false" +
-                    "});" +
-                    "</script>");
-            };
-            Object.defineProperty(ColorPickerEditor.prototype, "value", {
-                get: function () {
-                    return $('#clpkr' + this.uniqueName).val();
-                },
-                set: function (value) {
-                    if (value != undefined) {
-                        var pick = this.element.data('colorpicker');
-                        pick.color.setColor(value);
-                        $('#clpkr' + this.uniqueName).val(pick.update());
-                    }
-                },
-                enumerable: true,
-                configurable: true
-            });
-            ColorPickerEditor.prototype.getEditValue = function (property, target) {
-                target[property.name] = this.value;
-            };
-            ColorPickerEditor.prototype.setEditValue = function (source, property) {
-                this.value = source[property.name];
-            };
-            ColorPickerEditor = __decorate([
-                Serenity.Decorators.element("<div style='display: flex' />"),
-                Serenity.Decorators.registerEditor([Serenity.IGetEditValue, Serenity.ISetEditValue])
-            ], ColorPickerEditor);
-            return ColorPickerEditor;
-        }(Serenity.Widget));
-        Common.ColorPickerEditor = ColorPickerEditor;
-    })(Common = PGMS.Common || (PGMS.Common = {}));
-})(PGMS || (PGMS = {}));
-var PGMS;
-(function (PGMS) {
-    var Erp;
-    (function (Erp) {
-        var OrderStatusesFormatter = /** @class */ (function () {
-            function OrderStatusesFormatter() {
-            }
-            OrderStatusesFormatter.prototype.format = function (ctx) {
-                var text = Q.htmlEncode(ctx.value);
-                if (!this.backgroundProperty || !this.borderProperty) {
-                    return text;
-                }
-                var backgroundColor = ctx.item[this.backgroundProperty];
-                var borderColor = ctx.item[this.borderProperty];
-                //return "<span style='background-color: " + color +";'>" + text + '</span>';
-                return "<div style='height:100%; background-color: " + backgroundColor + "; border-color: " + borderColor + ";' >" + text + '</div>';
-            };
-            OrderStatusesFormatter.prototype.initializeColumn = function (column) {
-                column.referencedFields = column.referencedFields || [];
-                if (this.backgroundProperty)
-                    column.referencedFields.push(this.backgroundProperty);
-                if (this.borderProperty)
-                    column.referencedFields.push(this.borderProperty);
-            };
-            __decorate([
-                Serenity.Decorators.option()
-            ], OrderStatusesFormatter.prototype, "backgroundProperty", void 0);
-            __decorate([
-                Serenity.Decorators.option()
-            ], OrderStatusesFormatter.prototype, "borderProperty", void 0);
-            OrderStatusesFormatter = __decorate([
-                Serenity.Decorators.registerFormatter([Serenity.ISlickFormatter, Serenity.IInitializeColumn])
-            ], OrderStatusesFormatter);
-            return OrderStatusesFormatter;
-        }());
-        Erp.OrderStatusesFormatter = OrderStatusesFormatter;
-    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
-})(PGMS || (PGMS = {}));
-var PGMS;
-(function (PGMS) {
-    var Erp;
-    (function (Erp) {
-        var AccountFormatter = /** @class */ (function () {
-            function AccountFormatter() {
-            }
-            AccountFormatter.prototype.format = function (ctx) {
-                var text = Q.htmlEncode(ctx.value);
-                if (!this.isVipProperty) {
-                    return text;
-                }
-                var _isVipProperty = ctx.item[this.isVipProperty];
-                if (_isVipProperty == 1)
-                    return "<div style='height:100%; background-color: #FF8630;' >" + text + '</div>';
-                else
-                    return text;
-            };
-            AccountFormatter.prototype.initializeColumn = function (column) {
-                column.referencedFields = column.referencedFields || [];
-                if (this.isVipProperty)
-                    column.referencedFields.push(this.isVipProperty);
-            };
-            __decorate([
-                Serenity.Decorators.option()
-            ], AccountFormatter.prototype, "isVipProperty", void 0);
-            AccountFormatter = __decorate([
-                Serenity.Decorators.registerFormatter([Serenity.ISlickFormatter, Serenity.IInitializeColumn])
-            ], AccountFormatter);
-            return AccountFormatter;
-        }());
-        Erp.AccountFormatter = AccountFormatter;
-    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
 })(PGMS || (PGMS = {}));
 //# sourceMappingURL=PGMS.Web.js.map

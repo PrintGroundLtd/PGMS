@@ -39,6 +39,7 @@ namespace PGMS.Erp.Columns
         public Int16 Width { get; set; }
         public Int16 Height { get; set; }
         public DateTime OrderDate { get; set; }
+        public DateTime DeadLine { get; set; }
         public DateTime ShippedDate { get; set; }
         [EditLink]
         public String ShipName { get; set; }

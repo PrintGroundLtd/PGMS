@@ -6,6 +6,9 @@
         UnitPrice?: number;
         Quantity?: number;
         Discount?: number;
+        Description?: string;
+        Width?: number;
+        Height?: number;
         ProductName?: string;
         ProductProductImage?: string;
         ProductDiscontinued?: boolean;
@@ -19,6 +22,7 @@
         OrderPaymentTypeId?: number;
         OrderUserId?: number;
         OrderOrderStatusId?: number;
+        NoteList?: NoteRow[];
         LineTotal?: number;
     }
 
@@ -33,6 +37,9 @@
             UnitPrice = "UnitPrice",
             Quantity = "Quantity",
             Discount = "Discount",
+            Description = "Description",
+            Width = "Width",
+            Height = "Height",
             ProductName = "ProductName",
             ProductProductImage = "ProductProductImage",
             ProductDiscontinued = "ProductDiscontinued",
@@ -46,6 +53,7 @@
             OrderPaymentTypeId = "OrderPaymentTypeId",
             OrderUserId = "OrderUserId",
             OrderOrderStatusId = "OrderOrderStatusId",
+            NoteList = "NoteList",
             LineTotal = "LineTotal"
         }
     }

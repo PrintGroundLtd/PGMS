@@ -73,6 +73,15 @@ namespace PGMS.Erp.Entities
             set { Fields.OrderDate[this] = value; }
         }
 
+        [DisplayFormat("HH:mm dd/MM/yyyy"), DisplayName("Dead Line")]
+        [Width(150)]
+        [DateTimeEditor]
+        public DateTime? DeadLine
+        {
+            get { return Fields.DeadLine[this]; }
+            set { Fields.DeadLine[this] = value; }
+        }
+
         [DisplayName("Shipped Date")]
         public DateTime? ShippedDate
         {
@@ -265,6 +274,7 @@ namespace PGMS.Erp.Entities
             public Int16Field Width;
             public Int16Field Height;
             public DateTimeField OrderDate;
+            public DateTimeField DeadLine;
             public DateTimeField ShippedDate;
             public StringField ShipName;
             public StringField ShipAddress;
