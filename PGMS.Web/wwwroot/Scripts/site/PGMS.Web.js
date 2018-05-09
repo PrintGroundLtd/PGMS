@@ -448,20 +448,22 @@ var PGMS;
                     var s = Serenity;
                     var w0 = s.IntegerEditor;
                     var w1 = s.StringEditor;
-                    var w2 = s.LookupEditor;
-                    var w3 = s.BooleanEditor;
-                    var w4 = Erp.NotesEditor;
+                    var w2 = s.EmailEditor;
+                    var w3 = s.LookupEditor;
+                    var w4 = s.BooleanEditor;
+                    var w5 = Erp.NotesEditor;
                     Q.initFormType(AccountsForm, [
                         'AccountId', w0,
                         'Name', w1,
-                        'PartnerType', w2,
+                        'Email', w2,
+                        'PartnerType', w3,
                         'PhoneNumber', w1,
-                        'AccountCompanies', w2,
-                        'IsVip', w3,
+                        'AccountCompanies', w3,
+                        'IsVip', w4,
                         'Address', w1,
                         'City', w1,
                         'Country', w1,
-                        'NoteList', w4
+                        'NoteList', w5
                     ]);
                 }
                 return _this;
@@ -978,15 +980,19 @@ var PGMS;
                 if (!OutsideOrdersForm.init) {
                     OutsideOrdersForm.init = true;
                     var s = Serenity;
-                    var w0 = s.StringEditor;
-                    var w1 = s.LookupEditor;
-                    var w2 = s.DecimalEditor;
+                    var w0 = s.DecimalEditor;
+                    var w1 = s.HtmlNoteContentEditor;
+                    var w2 = s.StringEditor;
+                    var w3 = s.LookupEditor;
+                    var w4 = Erp.NotesEditor;
                     Q.initFormType(OutsideOrdersForm, [
-                        'Name', w0,
-                        'AccountRepresentsId', w1,
-                        'CompanyRepresentsId', w1,
-                        'PriceTheyOffer', w2,
-                        'PriceWeSell', w2
+                        'PriceTheyOffer', w0,
+                        'PriceWeSell', w0,
+                        'Description', w1,
+                        'Name', w2,
+                        'AccountRepresentsId', w3,
+                        'CompanyRepresentsId', w3,
+                        'NoteList', w4
                     ]);
                 }
                 return _this;
@@ -4173,8 +4179,10 @@ var PGMS;
         var OutsideOrdersDialog = /** @class */ (function (_super) {
             __extends(OutsideOrdersDialog, _super);
             function OutsideOrdersDialog() {
-                var _this = _super !== null && _super.apply(this, arguments) || this;
+                var _this = _super.call(this) || this;
                 _this.form = new Erp.OutsideOrdersForm(_this.idPrefix);
+                _this.byId('NoteList').closest('.field').hide().end().appendTo(_this.byId('TabNotes'));
+                PGMS.DialogUtils.pendingChangesConfirmation(_this.element, function () { return _this.getSaveState() != _this.loadedState; });
                 return _this;
             }
             OutsideOrdersDialog.prototype.getFormKey = function () { return Erp.OutsideOrdersForm.formKey; };
@@ -4182,6 +4190,22 @@ var PGMS;
             OutsideOrdersDialog.prototype.getLocalTextPrefix = function () { return Erp.OutsideOrdersRow.localTextPrefix; };
             OutsideOrdersDialog.prototype.getNameProperty = function () { return Erp.OutsideOrdersRow.nameProperty; };
             OutsideOrdersDialog.prototype.getService = function () { return Erp.OutsideOrdersService.baseUrl; };
+            OutsideOrdersDialog.prototype.loadEntity = function (entity) {
+                _super.prototype.loadEntity.call(this, entity);
+                Serenity.TabsExtensions.setDisabled(this.tabs, 'Notes', this.isNewOrDeleted());
+            };
+            OutsideOrdersDialog.prototype.loadResponse = function (data) {
+                _super.prototype.loadResponse.call(this, data);
+                this.loadedState = this.getSaveState();
+            };
+            OutsideOrdersDialog.prototype.getSaveState = function () {
+                try {
+                    return $.toJSON(this.getSaveEntity());
+                }
+                catch (e) {
+                    return null;
+                }
+            };
             OutsideOrdersDialog = __decorate([
                 Serenity.Decorators.panel(),
                 Serenity.Decorators.registerClass()

@@ -34,6 +34,14 @@ namespace PGMS.Erp.Entities
             set { Fields.Name[this] = value; }
         }
 
+        [DisplayName("Email"), Size(500), QuickSearch]
+        [EmailEditor]
+        public String Email
+        {
+            get { return Fields.Email[this]; }
+            set { Fields.Email[this] = value; }
+        }
+
         [DisplayName("Phone Number"), Size(500), QuickSearch()]
         public String PhoneNumber
         {
@@ -124,6 +132,7 @@ namespace PGMS.Erp.Entities
         public class RowFields : ErpLoggingRowFields
         {
             public Int32Field AccountId;
+            public StringField Email;
             public StringField Name;
             public StringField PhoneNumber;
             public Int16Field IsVip;

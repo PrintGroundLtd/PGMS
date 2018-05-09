@@ -1,4 +1,6 @@
 ﻿
+using System.Collections.Generic;
+
 namespace PGMS.Erp.Entities
 {
     using Serenity;
@@ -182,7 +184,20 @@ namespace PGMS.Erp.Entities
             get { return Fields.CompanyRepresentsBankSwift[this]; }
             set { Fields.CompanyRepresentsBankSwift[this] = value; }
         }
-        
+        [DisplayName("Description")]
+        [HtmlNoteContentEditor]
+        public string Description
+        {
+            get { return Fields.Description[this]; }
+            set { Fields.Description[this] = value; }
+        }
+        [NotesEditor, NotMapped]
+        public List<NoteRow> NoteList
+        {
+            get { return Fields.NoteList[this]; }
+            set { Fields.NoteList[this] = value; }
+        }
+
         IIdField IIdRow.IdField
         {
             get { return Fields.OutsideOrderId; }
@@ -208,6 +223,7 @@ namespace PGMS.Erp.Entities
             public DecimalField PriceWeSell;
             public Int32Field AccountRepresentsId;
             public Int32Field CompanyRepresentsId;
+            public StringField Description;
 
             public StringField AccountRepresentsName;
             public StringField AccountRepresentsPhoneNumber;
@@ -227,6 +243,9 @@ namespace PGMS.Erp.Entities
             public StringField CompanyRepresentsIban;
             public StringField CompanyRepresentsBankName;
             public StringField CompanyRepresentsBankSwift;
-		}
+
+            public RowListField<NoteRow> NoteList;
+
+        }
     }
 }

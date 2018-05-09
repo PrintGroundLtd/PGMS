@@ -574,6 +574,7 @@ declare namespace PGMS.Erp {
     interface AccountsForm {
         AccountId: Serenity.IntegerEditor;
         Name: Serenity.StringEditor;
+        Email: Serenity.EmailEditor;
         PartnerType: Serenity.LookupEditor;
         PhoneNumber: Serenity.StringEditor;
         AccountCompanies: Serenity.LookupEditor;
@@ -592,6 +593,7 @@ declare namespace PGMS.Erp {
 declare namespace PGMS.Erp {
     interface AccountsRow {
         AccountId?: number;
+        Email?: string;
         Name?: string;
         PhoneNumber?: string;
         IsVip?: number;
@@ -619,6 +621,7 @@ declare namespace PGMS.Erp {
         function getLookup(): Q.Lookup<AccountsRow>;
         const enum Fields {
             AccountId = "AccountId",
+            Email = "Email",
             Name = "Name",
             PhoneNumber = "PhoneNumber",
             IsVip = "IsVip",
@@ -1265,11 +1268,13 @@ declare namespace PGMS.Erp {
 }
 declare namespace PGMS.Erp {
     interface OutsideOrdersForm {
+        PriceTheyOffer: Serenity.DecimalEditor;
+        PriceWeSell: Serenity.DecimalEditor;
+        Description: Serenity.HtmlNoteContentEditor;
         Name: Serenity.StringEditor;
         AccountRepresentsId: Serenity.LookupEditor;
         CompanyRepresentsId: Serenity.LookupEditor;
-        PriceTheyOffer: Serenity.DecimalEditor;
-        PriceWeSell: Serenity.DecimalEditor;
+        NoteList: NotesEditor;
     }
     class OutsideOrdersForm extends Serenity.PrefixedContext {
         static formKey: string;
@@ -1285,6 +1290,7 @@ declare namespace PGMS.Erp {
         PriceWeSell?: number;
         AccountRepresentsId?: number;
         CompanyRepresentsId?: number;
+        Description?: string;
         AccountRepresentsName?: string;
         AccountRepresentsPhoneNumber?: string;
         AccountRepresentsIsVip?: number;
@@ -1302,6 +1308,7 @@ declare namespace PGMS.Erp {
         CompanyRepresentsIban?: string;
         CompanyRepresentsBankName?: string;
         CompanyRepresentsBankSwift?: string;
+        NoteList?: NoteRow[];
         InsertUserId?: number;
         InsertDate?: string;
         UpdateUserId?: number;
@@ -1324,6 +1331,7 @@ declare namespace PGMS.Erp {
             PriceWeSell = "PriceWeSell",
             AccountRepresentsId = "AccountRepresentsId",
             CompanyRepresentsId = "CompanyRepresentsId",
+            Description = "Description",
             AccountRepresentsName = "AccountRepresentsName",
             AccountRepresentsPhoneNumber = "AccountRepresentsPhoneNumber",
             AccountRepresentsIsVip = "AccountRepresentsIsVip",
@@ -1341,6 +1349,7 @@ declare namespace PGMS.Erp {
             CompanyRepresentsIban = "CompanyRepresentsIban",
             CompanyRepresentsBankName = "CompanyRepresentsBankName",
             CompanyRepresentsBankSwift = "CompanyRepresentsBankSwift",
+            NoteList = "NoteList",
             InsertUserId = "InsertUserId",
             InsertDate = "InsertDate",
             UpdateUserId = "UpdateUserId",
@@ -2495,6 +2504,11 @@ declare namespace PGMS.Erp {
         protected getNameProperty(): string;
         protected getService(): string;
         protected form: OutsideOrdersForm;
+        private loadedState;
+        constructor();
+        loadEntity(entity: Erp.OrdersRow): void;
+        loadResponse(data: any): void;
+        getSaveState(): string;
     }
 }
 declare namespace PGMS.Erp {
