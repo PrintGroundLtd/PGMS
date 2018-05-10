@@ -1,6 +1,6 @@
 ﻿namespace PGMS.Erp {
     export interface ExpensesForm {
-        Description: Serenity.StringEditor;
+        Description: Serenity.TextAreaEditor;
         Total: Serenity.DecimalEditor;
         TransactionDate: Serenity.DateTimeEditor;
         BudgetId: Serenity.LookupEditor;
@@ -19,7 +19,7 @@
                 ExpensesForm.init = true;
 
                 var s = Serenity;
-                var w0 = s.StringEditor;
+                var w0 = s.TextAreaEditor;
                 var w1 = s.DecimalEditor;
                 var w2 = s.DateTimeEditor;
                 var w3 = s.LookupEditor;

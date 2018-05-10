@@ -27,6 +27,7 @@ namespace PGMS.Erp.Entities
         }
 
         [DisplayName("Description"), Size(500), NotNull, QuickSearch]
+        [TextAreaEditor]
         public String Description
         {
             get { return Fields.Description[this]; }
