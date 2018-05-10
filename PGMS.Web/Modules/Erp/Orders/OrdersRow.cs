@@ -73,7 +73,7 @@ namespace PGMS.Erp.Entities
             set { Fields.OrderDate[this] = value; }
         }
 
-        [DisplayFormat("HH:mm dd/MM/yyyy"), DisplayName("Dead Line")]
+        [DisplayFormat("HH:mm dd/MM/yyyy"), DisplayName("Dead Line"), QuickFilter()]
         [Width(150)]
         [DateTimeEditor]
         public DateTime? DeadLine
