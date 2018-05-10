@@ -1,4 +1,6 @@
 ﻿
+using PGMS.Administration.Entities;
+
 namespace PGMS.Erp.Entities
 {
     using Serenity;
@@ -99,7 +101,30 @@ namespace PGMS.Erp.Entities
             get { return Fields.PaymentTypeName[this]; }
             set { Fields.PaymentTypeName[this] = value; }
         }
-        
+
+
+        [DisplayName("For User"), ForeignKey("[dbo].[Users]", "UserId"), LeftJoin("jUser"), TextualField("UserDisplayName")]
+        [LookupEditor(typeof(UserRow), FilterField = "IsActive", FilterValue = 1)]
+        [QuickFilter()]
+        public Int32? UserId
+        {
+            get { return Fields.UserId[this]; }
+            set { Fields.UserId[this] = value; }
+        }
+
+        [DisplayName("For User"), Expression("jUser.[Username]")]
+        public String UserUsername
+        {
+            get { return Fields.UserUsername[this]; }
+            set { Fields.UserUsername[this] = value; }
+        }
+
+        [DisplayName("User Display Name"), Expression("jUser.[DisplayName]")]
+        public String UserDisplayName
+        {
+            get { return Fields.UserDisplayName[this]; }
+            set { Fields.UserDisplayName[this] = value; }
+        }
         IIdField IIdRow.IdField
         {
             get { return Fields.ExpenseId; }
@@ -133,6 +158,10 @@ namespace PGMS.Erp.Entities
             public Int32Field BudgetPaymentTypeId;
 
             public StringField PaymentTypeName;
-		}
+
+            public Int32Field UserId;
+            public StringField UserUsername;
+            public StringField UserDisplayName;
+        }
     }
 }

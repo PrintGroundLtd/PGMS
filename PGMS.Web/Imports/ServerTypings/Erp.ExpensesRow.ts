@@ -11,6 +11,9 @@
         BudgetBudgetPeriod?: number;
         BudgetPaymentTypeId?: number;
         PaymentTypeName?: string;
+        UserId?: number;
+        UserUsername?: string;
+        UserDisplayName?: string;
         InsertUserId?: number;
         InsertDate?: string;
         UpdateUserId?: number;
@@ -43,6 +46,9 @@
             BudgetBudgetPeriod = "BudgetBudgetPeriod",
             BudgetPaymentTypeId = "BudgetPaymentTypeId",
             PaymentTypeName = "PaymentTypeName",
+            UserId = "UserId",
+            UserUsername = "UserUsername",
+            UserDisplayName = "UserDisplayName",
             InsertUserId = "InsertUserId",
             InsertDate = "InsertDate",
             UpdateUserId = "UpdateUserId",

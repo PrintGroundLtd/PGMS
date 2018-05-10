@@ -5,13 +5,13 @@ namespace PGMS.Erp.Pages
     using Serenity.Web;
     using Microsoft.AspNetCore.Mvc;
 
-    [PageAuthorize(typeof(Entities.SentEmailsRow))]
+    [PageAuthorize(PermissionKeys.SentEmails.PagePermission)]
     public class SentEmailsController : Controller
     {
         [Route("Erp/SentEmails")]
         public ActionResult Index()
         {
-            return View("~/Modules/Erp/SentEmails/SentEmailsIndex.cshtml");
+            return View(MVC.Views.Erp.SentEmails.SentEmailsIndex);
         }
     }
 }

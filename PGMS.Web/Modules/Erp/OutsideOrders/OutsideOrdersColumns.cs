@@ -13,6 +13,8 @@ namespace PGMS.Erp.Columns
     [BasedOnRow(typeof(Entities.OutsideOrdersRow), CheckNames = true)]
     public class OutsideOrdersColumns
     {
+        [FilterOnly()]
+        public int OrderStatusId { get; set; }
         [EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
         public Int32 OutsideOrderId { get; set; }
         [QuickFilter(), FilterOnly]
@@ -26,6 +28,10 @@ namespace PGMS.Erp.Columns
         public Decimal PriceWeSell { get; set; }
         public String AccountRepresentsName { get; set; }
         public String CompanyRepresentsName { get; set; }
+
+        [OrderStatusesFormatter(BackgroundProperty = "OrderStatusBackgroundColor", BorderProperty = "OrderStatusBorderColor")]
+        public String OrderStatusName { get; set; }
+
         public DateTime InsertDate { get; set; }
         public Int32 InsertUserName { get; set; }
         public DateTime UpdateDate { get; set; }

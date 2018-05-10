@@ -5,13 +5,13 @@ namespace PGMS.Erp.Pages
     using Serenity.Web;
     using Microsoft.AspNetCore.Mvc;
 
-    [PageAuthorize(typeof(Entities.PaymentTypesRow))]
+    [PageAuthorize(PermissionKeys.PaymentTypes.PagePermission)]
     public class PaymentTypesController : Controller
     {
         [Route("Erp/PaymentTypes")]
         public ActionResult Index()
         {
-            return View("~/Modules/Erp/PaymentTypes/PaymentTypesIndex.cshtml");
+            return View(MVC.Views.Erp.PaymentTypes.PaymentTypesIndex);
         }
     }
 }

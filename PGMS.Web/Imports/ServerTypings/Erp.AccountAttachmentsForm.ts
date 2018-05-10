@@ -1,7 +1,7 @@
 ﻿namespace PGMS.Erp {
     export interface AccountAttachmentsForm {
         Name: Serenity.StringEditor;
-        Description: Serenity.StringEditor;
+        Description: Serenity.HtmlNoteContentEditor;
         FilePath: Serenity.MultipleImageUploadEditor;
         AccountId: Serenity.LookupEditor;
     }
@@ -18,14 +18,15 @@
 
                 var s = Serenity;
                 var w0 = s.StringEditor;
-                var w1 = s.MultipleImageUploadEditor;
-                var w2 = s.LookupEditor;
+                var w1 = s.HtmlNoteContentEditor;
+                var w2 = s.MultipleImageUploadEditor;
+                var w3 = s.LookupEditor;
 
                 Q.initFormType(AccountAttachmentsForm, [
                     'Name', w0,
-                    'Description', w0,
-                    'FilePath', w1,
-                    'AccountId', w2
+                    'Description', w1,
+                    'FilePath', w2,
+                    'AccountId', w3
                 ]);
             }
         }

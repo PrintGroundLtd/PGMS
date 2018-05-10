@@ -7,13 +7,16 @@
         Width?: number;
         Height?: number;
         OrderDate?: string;
+        DeadLine?: string;
         ShippedDate?: string;
+        OrderName?: string;
         ShipName?: string;
         ShipAddress?: string;
         ShipCity?: string;
         ShipCountry?: string;
         UserId?: number;
         OrderStatusId?: number;
+        Total?: number;
         AccountName?: string;
         AccountPhoneNumber?: string;
         AccountIsVip?: number;
@@ -26,6 +29,8 @@
         NoteList?: NoteRow[];
         DetailList?: OrderDetailsRow[];
         OrderStatusName?: string;
+        OrderStatusBorderColor?: string;
+        OrderStatusBackgroundColor?: string;
         InsertUserId?: number;
         InsertDate?: string;
         UpdateUserId?: number;
@@ -38,7 +43,7 @@
     export namespace OrdersRow {
         export const idProperty = 'OrderId';
         export const isActiveProperty = 'IsActive';
-        export const nameProperty = 'ShipName';
+        export const nameProperty = 'OrderName';
         export const localTextPrefix = 'Erp.Orders';
         export const lookupKey = 'Erp.Orders';
 
@@ -54,13 +59,16 @@
             Width = "Width",
             Height = "Height",
             OrderDate = "OrderDate",
+            DeadLine = "DeadLine",
             ShippedDate = "ShippedDate",
+            OrderName = "OrderName",
             ShipName = "ShipName",
             ShipAddress = "ShipAddress",
             ShipCity = "ShipCity",
             ShipCountry = "ShipCountry",
             UserId = "UserId",
             OrderStatusId = "OrderStatusId",
+            Total = "Total",
             AccountName = "AccountName",
             AccountPhoneNumber = "AccountPhoneNumber",
             AccountIsVip = "AccountIsVip",
@@ -73,6 +81,8 @@
             NoteList = "NoteList",
             DetailList = "DetailList",
             OrderStatusName = "OrderStatusName",
+            OrderStatusBorderColor = "OrderStatusBorderColor",
+            OrderStatusBackgroundColor = "OrderStatusBackgroundColor",
             InsertUserId = "InsertUserId",
             InsertDate = "InsertDate",
             UpdateUserId = "UpdateUserId",

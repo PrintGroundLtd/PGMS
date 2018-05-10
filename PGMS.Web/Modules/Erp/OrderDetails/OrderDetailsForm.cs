@@ -14,8 +14,15 @@ namespace PGMS.Erp.Forms
     public class OrderDetailsForm
     {
         public Int32 ProductId { get; set; }
+        [HalfWidth]
+        public Decimal Width { get; set; }
+        [HalfWidth]
+        public Decimal Height { get; set; }
+        public String Description { get; set; }
         public Decimal UnitPrice { get; set; }
         public Int32 Quantity { get; set; }
         public Double Discount { get; set; }
+        public List<object> NoteList { get; set; }
+
     }
 }

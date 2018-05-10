@@ -5,13 +5,13 @@ namespace PGMS.Erp.Pages
     using Serenity.Web;
     using Microsoft.AspNetCore.Mvc;
 
-    [PageAuthorize(typeof(Entities.OrdersRow))]
+    [PageAuthorize(PermissionKeys.Orders.PagePermission)]
     public class OrdersController : Controller
     {
         [Route("Erp/Orders")]
         public ActionResult Index()
         {
-            return View("~/Modules/Erp/Orders/OrdersIndex.cshtml");
+            return View(MVC.Views.Erp.Orders.OrdersIndex);
         }
     }
 }

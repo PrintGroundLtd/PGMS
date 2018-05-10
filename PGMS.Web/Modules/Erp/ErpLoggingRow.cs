@@ -34,7 +34,7 @@ namespace PGMS.Erp.Entities
         }
 
         [NotNull, Insertable(false), Updatable(false)]
-        [DisplayFormat("HH:mm dd/MM/yyyy")]
+        [DisplayFormat("HH:mm dd/MM/yyyy"), DisplayName("Insert Date")]
         [Width(150)]
         [ReadPermission(Administration.PermissionKeys.Auditing)]
         public DateTime? InsertDate
@@ -62,7 +62,7 @@ namespace PGMS.Erp.Entities
 
         [Insertable(false), Updatable(false)]
         [Width(150)]
-        [DisplayFormat("HH:mm dd/MM/yyyy")]
+        [DisplayFormat("HH:mm dd/MM/yyyy"), DisplayName("Update Date")]
         [ReadPermission(Administration.PermissionKeys.Auditing)]
         public DateTime? UpdateDate
         {
@@ -72,6 +72,7 @@ namespace PGMS.Erp.Entities
         
         [BooleanEditor]
         [LookupInclude]
+        [DisplayName("Is Active")]
         [ReadPermission(Administration.PermissionKeys.Auditing)]
         public Int16? IsActive
         {

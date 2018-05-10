@@ -32,6 +32,7 @@ namespace PGMS.Erp.Entities
         }
 
         [DisplayName("Description"), Size(255), NotNull]
+        [HtmlNoteContentEditor]
         public String Description
         {
             get { return Fields.Description[this]; }

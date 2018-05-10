@@ -2,6 +2,7 @@
     export interface AccountsForm {
         AccountId: Serenity.IntegerEditor;
         Name: Serenity.StringEditor;
+        Email: Serenity.EmailEditor;
         PartnerType: Serenity.LookupEditor;
         PhoneNumber: Serenity.StringEditor;
         AccountCompanies: Serenity.LookupEditor;
@@ -25,21 +26,23 @@
                 var s = Serenity;
                 var w0 = s.IntegerEditor;
                 var w1 = s.StringEditor;
-                var w2 = s.LookupEditor;
-                var w3 = s.BooleanEditor;
-                var w4 = NotesEditor;
+                var w2 = s.EmailEditor;
+                var w3 = s.LookupEditor;
+                var w4 = s.BooleanEditor;
+                var w5 = NotesEditor;
 
                 Q.initFormType(AccountsForm, [
                     'AccountId', w0,
                     'Name', w1,
-                    'PartnerType', w2,
+                    'Email', w2,
+                    'PartnerType', w3,
                     'PhoneNumber', w1,
-                    'AccountCompanies', w2,
-                    'IsVip', w3,
+                    'AccountCompanies', w3,
+                    'IsVip', w4,
                     'Address', w1,
                     'City', w1,
                     'Country', w1,
-                    'NoteList', w4
+                    'NoteList', w5
                 ]);
             }
         }

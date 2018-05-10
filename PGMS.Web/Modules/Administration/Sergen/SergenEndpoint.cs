@@ -10,7 +10,7 @@ namespace PGMS.Administration.Endpoints
     using System.Linq;
 
     [Route("Services/Administration/Sergen/[action]")]
-    [ServiceAuthorize(PermissionKeys.Security)]
+    [ServiceAuthorize(PermissionKeys.Sergen)]
     public class SergenController : ServiceEndpoint
     {
         private IHostingEnvironment hostingEnvironment;

@@ -1,4 +1,6 @@
 ﻿
+using System.Collections.Generic;
+
 namespace PGMS.Erp.Entities
 {
     using Serenity;
@@ -23,8 +25,8 @@ namespace PGMS.Erp.Entities
             set { Fields.OrderDetailId[this] = value; }
         }
 
-        [DisplayName("Product"), PrimaryKey, ForeignKey("[dbo].[Products]", "ProductId"), LeftJoin("jProduct"), TextualField("ProductName")]
-        [LookupEditor(typeof(ProductsRow), InplaceAdd = true, InplaceAddPermission = PermissionKeys.Products.UpdatePermission)]
+        [DisplayName("Product"), PrimaryKey, ForeignKey("[dbo].[Products]", "ProductId"), LeftJoin("jProduct"), TextualField("ProductName"), NotNull]
+        [LookupEditor(typeof(ProductsRow), FilterField = "IsActive", FilterValue = 1, InplaceAdd = true, InplaceAddPermission = PermissionKeys.Products.UpdatePermission)]
         public Int32? ProductId
         {
             get { return Fields.ProductId[this]; }
@@ -62,6 +64,28 @@ namespace PGMS.Erp.Entities
         {
             get { return Fields.ProductName[this]; }
             set { Fields.ProductName[this] = value; }
+        }
+        [DisplayName("Description")]
+        [HtmlNoteContentEditor]
+        public string Description
+        {
+            get { return Fields.Description[this]; }
+            set { Fields.Description[this] = value; }
+        }
+        [DisplayName("Width")]
+        [DecimalEditor(Decimals = 2)]
+        public Decimal? Width
+        {
+            get { return Fields.Width[this]; }
+            set { Fields.Width[this] = value; }
+        }
+
+        [DisplayName("Height")]
+        [DecimalEditor(Decimals = 2)]
+        public Decimal? Height
+        {
+            get { return Fields.Height[this]; }
+            set { Fields.Height[this] = value; }
         }
 
         [DisplayName("Product Product Image"), Expression("jProduct.[ProductImage]")]
@@ -157,6 +181,12 @@ namespace PGMS.Erp.Entities
             set { Fields.LineTotal[this] = value; }
         }
 
+        [NotesEditor, NotMapped]
+        public List<NoteRow> NoteList
+        {
+            get { return Fields.NoteList[this]; }
+            set { Fields.NoteList[this] = value; }
+        }
         IIdField IIdRow.IdField
         {
             get { return Fields.OrderDetailId; }
@@ -177,6 +207,9 @@ namespace PGMS.Erp.Entities
             public DecimalField UnitPrice;
             public Int16Field Quantity;
             public Int16Field Discount;
+            public StringField Description;
+            public DecimalField Width;
+            public DecimalField Height;
 
             public StringField ProductName;
             public StringField ProductProductImage;
@@ -192,6 +225,7 @@ namespace PGMS.Erp.Entities
             public Int32Field OrderPaymentTypeId;
             public Int32Field OrderUserId;
             public Int32Field OrderOrderStatusId;
+            public RowListField<NoteRow> NoteList;
 
             public DecimalField LineTotal;
 

@@ -132,12 +132,9 @@ namespace PGMS.Erp.Endpoints
             {
                 var dataset = new OrdersPerStatusResponse.Dataset();
 
-                Random r = new Random();
-                dataset.backgroundColor = HexConverter(Color.FromArgb(r.Next(0, 256),
-                    r.Next(0, 256), r.Next(0, 256)));
+                dataset.backgroundColor = orderStatus.BackgroundColor;
 
-                dataset.borderColor = HexConverter(Color.FromArgb(r.Next(0, 256),
-                    r.Next(0, 256), r.Next(0, 256)));
+                dataset.borderColor = orderStatus.BorderColor;
 
                 dataset.label = orderStatus.Name;
                 for (int j = 0; j < 12; j++)

@@ -17,6 +17,7 @@ namespace PGMS.Erp.Columns
         public Int32 AccountId { get; set; }
         [EditLink]
         public String Name { get; set; }
+        public String Email { get; set; }
         [CompaniesListFormatter, Width(300)]
         public List<Int32> AccountCompanies { get; set; }
         [FilterOnly()]

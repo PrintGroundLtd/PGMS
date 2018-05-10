@@ -1,6 +1,7 @@
 ﻿namespace PGMS.Erp {
     export interface AccountsRow {
         AccountId?: number;
+        Email?: string;
         Name?: string;
         PhoneNumber?: string;
         IsVip?: number;
@@ -33,6 +34,7 @@
 
         export declare const enum Fields {
             AccountId = "AccountId",
+            Email = "Email",
             Name = "Name",
             PhoneNumber = "PhoneNumber",
             IsVip = "IsVip",

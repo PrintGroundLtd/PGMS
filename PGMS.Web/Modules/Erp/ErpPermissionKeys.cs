@@ -29,6 +29,8 @@ namespace PGMS.Erp
         }
         public class SentEmails
         {
+            [Description("Page")]
+            public const string PagePermission = "Erp:SentEmails:Page";
             [Description("View")]
             public const string ReadPermission = "Erp:SentEmails:Read";
             [Description("Update"), ImplicitPermission(ReadPermission)]
@@ -39,6 +41,8 @@ namespace PGMS.Erp
 
         public class OutsideOrders
         {
+            [Description("Page")]
+            public const string PagePermission = "Erp:OutsideOrders:Page";
             [Description("View")]
             public const string ReadPermission = "Erp:OutsideOrders:Read";
             [Description("Update"), ImplicitPermission(ReadPermission)]
@@ -49,6 +53,8 @@ namespace PGMS.Erp
 
         public class Partners
         {
+            [Description("Page")]
+            public const string PagePermission = "Erp:Partners:Page";
             [Description("View")]
             public const string ReadPermission = "Erp:Partners:Read";
             [Description("Update"), ImplicitPermission(ReadPermission)]
@@ -59,6 +65,8 @@ namespace PGMS.Erp
 
         public class Expenses
         {
+            [Description("Page")]
+            public const string PagePermission = "Erp:Expenses:Page";
             [Description("View")]
             public const string ReadPermission = "Erp:Expenses:Read";
             [Description("Update"), ImplicitPermission(ReadPermission)]
@@ -68,6 +76,8 @@ namespace PGMS.Erp
         }
         public class Budgets
         {
+            [Description("Page")]
+            public const string PagePermission = "Erp:Budgets:Page";
             [Description("View")]
             public const string ReadPermission = "Erp:Budgets:Read";
             [Description("Update"), ImplicitPermission(ReadPermission)]
@@ -77,6 +87,8 @@ namespace PGMS.Erp
         }
         public class Orders
         {
+            [Description("Page")]
+            public const string PagePermission = "Erp:Orders:Page";
             [Description("View")]
             public const string ReadPermission = "Erp:Orders:Read";
             [Description("Update"), ImplicitPermission(ReadPermission)]
@@ -87,6 +99,8 @@ namespace PGMS.Erp
 
         public class OrderStatuses
         {
+            [Description("Page")]
+            public const string PagePermission = "Erp:OrderStatuses:Page";
             [Description("View")]
             public const string ReadPermission = "Erp:OrderStatuses:Read";
             [Description("Update"), ImplicitPermission(ReadPermission)]
@@ -97,6 +111,8 @@ namespace PGMS.Erp
 
         public class PaymentTypes
         {
+            [Description("Page")]
+            public const string PagePermission = "Erp:PaymentTypes:Page";
             [Description("View")]
             public const string ReadPermission = "Erp:PaymentTypes:Read";
             [Description("Update"), ImplicitPermission(ReadPermission)]
@@ -106,6 +122,8 @@ namespace PGMS.Erp
         }
         public class Products
         {
+            [Description("Page")]
+            public const string PagePermission = "Erp:Products:Page";
             [Description("View")]
             public const string ReadPermission = "Erp:Products:Read";
             [Description("Update"), ImplicitPermission(ReadPermission)]
@@ -115,6 +133,8 @@ namespace PGMS.Erp
         }
         public class AccountAttachments
         {
+            [Description("Page")]
+            public const string PagePermission = "Erp:AccountAttachments:Page";
             [Description("View")]
             public const string ReadPermission = "Erp:AccountAttachments:Read";
             [Description("Update"), ImplicitPermission(ReadPermission)]
@@ -122,8 +142,35 @@ namespace PGMS.Erp
             [Description("Delete"), ImplicitPermission(ReadPermission), ImplicitPermission(UpdatePermission)]
             public const string DeletePermission = "Erp:AccountAttachments:Delete";
         }
+
+        public class OutsideOrderAttachments
+        {
+            [Description("Page")]
+            public const string PagePermission = "Erp:OutsideOrderAttachments:Page";
+            [Description("View")]
+            public const string ReadPermission = "Erp:OutsideOrderAttachments:Read";
+            [Description("Update"), ImplicitPermission(ReadPermission)]
+            public const string UpdatePermission = "Erp:OutsideOrderAttachments:Update";
+            [Description("Delete"), ImplicitPermission(ReadPermission), ImplicitPermission(UpdatePermission)]
+            public const string DeletePermission = "Erp:OutsideOrderAttachments:Delete";
+        }
+
+        public class OrderAttachments
+        {
+            [Description("Page")]
+            public const string PagePermission = "Erp:OrderAttachments:Page";
+            [Description("View")]
+            public const string ReadPermission = "Erp:OrderAttachments:Read";
+            [Description("Update"), ImplicitPermission(ReadPermission)]
+            public const string UpdatePermission = "Erp:OrderAttachments:Update";
+            [Description("Delete"), ImplicitPermission(ReadPermission), ImplicitPermission(UpdatePermission)]
+            public const string DeletePermission = "Erp:OrderAttachments:Delete";
+        }
+
         public class PartnerTypes
         {
+            [Description("Page")]
+            public const string PagePermission = "Erp:PartnerTypes:Page";
             [Description("View")]
             public const string ReadPermission = "Erp:PartnerTypes:Read";
             [Description("Update"), ImplicitPermission(ReadPermission)]
@@ -134,6 +181,8 @@ namespace PGMS.Erp
 
         public class Accounts
         {
+            [Description("Page")]
+            public const string PagePermission = "Erp:Accounts:Page";
             [Description("View")]
             public const string ReadPermission = "Erp:Accounts:Read";
             [Description("Update"), ImplicitPermission(ReadPermission)]
@@ -144,6 +193,8 @@ namespace PGMS.Erp
 
         public class Suppliers
         {
+            [Description("Page")]
+            public const string PagePermission = "Erp:Suppliers:Page";
             [Description("View")]
             public const string ReadPermission = "Erp:Suppliers:Read";
             [Description("Update"), ImplicitPermission(ReadPermission)]
@@ -154,6 +205,8 @@ namespace PGMS.Erp
 
         public class Companies 
         {
+            [Description("Page")]
+            public const string PagePermission = "Erp:Companies:Page";
             [Description("View")]
             public const string ReadPermission = "Erp:Companies:Read";
             [Description("Update"), ImplicitPermission(ReadPermission)]

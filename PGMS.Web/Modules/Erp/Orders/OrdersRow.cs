@@ -66,11 +66,20 @@ namespace PGMS.Erp.Entities
             set { Fields.Height[this] = value; }
         }
 
-        [DisplayName("Order Date"), NotNull]
+        [DisplayName("Order Date"), NotNull, SortOrder(1, true), QuickFilter() ]
         public DateTime? OrderDate
         {
             get { return Fields.OrderDate[this]; }
             set { Fields.OrderDate[this] = value; }
+        }
+
+        [DisplayFormat("HH:mm dd/MM/yyyy"), DisplayName("Dead Line")]
+        [Width(150)]
+        [DateTimeEditor]
+        public DateTime? DeadLine
+        {
+            get { return Fields.DeadLine[this]; }
+            set { Fields.DeadLine[this] = value; }
         }
 
         [DisplayName("Shipped Date")]
@@ -108,8 +117,8 @@ namespace PGMS.Erp.Entities
             set { Fields.ShipCountry[this] = value; }
         }
 
-        [DisplayName("Assignet to User"), ForeignKey("[dbo].[Users]", "UserId"), LeftJoin("jUser"), TextualField("UserUsername")]
-        [LookupEditor(typeof(UserRow))]
+        [DisplayName("Assignet to User"), ForeignKey("[dbo].[Users]", "UserId"), LeftJoin("jUser"), TextualField("UserDisplayName")]
+        [LookupEditor(typeof(UserRow), FilterField = "IsActive", FilterValue = 1)]
         [QuickFilter()]
         public Int32? UserId
         {
@@ -118,7 +127,7 @@ namespace PGMS.Erp.Entities
         }
 
         [DisplayName("Order Status"), ForeignKey("[dbo].[OrderStatuses]", "OrderStatusId"), LeftJoin("jOrderStatus"), TextualField("OrderStatusName"), NotNull]
-        [LookupEditor(typeof(OrderStatusesRow))]
+        [LookupEditor(typeof(OrderStatusesRow), FilterField = "IsActive", FilterValue = 1)]
         [QuickFilter()]
         public Int32? OrderStatusId
         {
@@ -199,11 +208,36 @@ namespace PGMS.Erp.Entities
             get { return Fields.OrderStatusName[this]; }
             set { Fields.OrderStatusName[this] = value; }
         }
+        
+        [DisplayName("Order Status Border Color"), Expression("jOrderStatus.[BorderColor]")]
+        public String OrderStatusBorderColor
+        {
+            get { return Fields.OrderStatusBorderColor[this]; }
+            set { Fields.OrderStatusBorderColor[this] = value; }
+        }
+
+
+        [DisplayName("Order Status Background Color"), Expression("jOrderStatus.[BackgroundColor]")]
+        public String OrderStatusBackgroundColor
+        {
+            get { return Fields.OrderStatusBackgroundColor[this]; }
+            set { Fields.OrderStatusBackgroundColor[this] = value; }
+        }
+
         [DisplayName("Details"), MasterDetailRelation(foreignKey: "OrderId"), NotMapped]
         public List<OrderDetailsRow> DetailList
         {
             get { return Fields.DetailList[this]; }
             set { Fields.DetailList[this] = value; }
+        }
+
+
+        [DisplayName("Total"), NotMapped]
+        [AlignRight, DisplayFormat("#,##0.00")]
+        public Decimal? Total
+        {
+            get { return Fields.Total[this]; }
+            set { Fields.Total[this] = value; }
         }
 
         [NotesEditor, NotMapped]
@@ -213,6 +247,12 @@ namespace PGMS.Erp.Entities
             set { Fields.NoteList[this] = value; }
         }
 
+        [DisplayName("Order Name"), Expression("CONCAT('#', T0.[OrderId])")]
+        public String OrderName
+        {
+            get { return Fields.OrderName[this]; }
+            set { Fields.OrderName[this] = value; }
+        }
 
         IIdField IIdRow.IdField
         {
@@ -221,7 +261,7 @@ namespace PGMS.Erp.Entities
 
         StringField INameRow.NameField
         {
-            get { return Fields.ShipName; }
+            get { return  Fields.OrderName; }
         }
 
         public static readonly RowFields Fields = new RowFields().Init();
@@ -240,13 +280,16 @@ namespace PGMS.Erp.Entities
             public Int16Field Width;
             public Int16Field Height;
             public DateTimeField OrderDate;
+            public DateTimeField DeadLine;
             public DateTimeField ShippedDate;
+            public StringField OrderName;
             public StringField ShipName;
             public StringField ShipAddress;
             public StringField ShipCity;
             public StringField ShipCountry;
             public Int32Field UserId;
             public Int32Field OrderStatusId;
+            public DecimalField Total;
 
             public StringField AccountName;
             public StringField AccountPhoneNumber;
@@ -265,6 +308,8 @@ namespace PGMS.Erp.Entities
 
             public RowListField<OrderDetailsRow> DetailList;
             public StringField OrderStatusName;
+            public StringField OrderStatusBorderColor;
+            public StringField OrderStatusBackgroundColor;
         }
     }
 }

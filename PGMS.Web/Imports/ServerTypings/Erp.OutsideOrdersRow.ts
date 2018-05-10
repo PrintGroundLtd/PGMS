@@ -6,6 +6,7 @@
         PriceWeSell?: number;
         AccountRepresentsId?: number;
         CompanyRepresentsId?: number;
+        Description?: string;
         AccountRepresentsName?: string;
         AccountRepresentsPhoneNumber?: string;
         AccountRepresentsIsVip?: number;
@@ -23,6 +24,11 @@
         CompanyRepresentsIban?: string;
         CompanyRepresentsBankName?: string;
         CompanyRepresentsBankSwift?: string;
+        OrderStatusId?: number;
+        OrderStatusName?: string;
+        OrderStatusBorderColor?: string;
+        OrderStatusBackgroundColor?: string;
+        NoteList?: NoteRow[];
         InsertUserId?: number;
         InsertDate?: string;
         UpdateUserId?: number;
@@ -50,6 +56,7 @@
             PriceWeSell = "PriceWeSell",
             AccountRepresentsId = "AccountRepresentsId",
             CompanyRepresentsId = "CompanyRepresentsId",
+            Description = "Description",
             AccountRepresentsName = "AccountRepresentsName",
             AccountRepresentsPhoneNumber = "AccountRepresentsPhoneNumber",
             AccountRepresentsIsVip = "AccountRepresentsIsVip",
@@ -67,6 +74,11 @@
             CompanyRepresentsIban = "CompanyRepresentsIban",
             CompanyRepresentsBankName = "CompanyRepresentsBankName",
             CompanyRepresentsBankSwift = "CompanyRepresentsBankSwift",
+            OrderStatusId = "OrderStatusId",
+            OrderStatusName = "OrderStatusName",
+            OrderStatusBorderColor = "OrderStatusBorderColor",
+            OrderStatusBackgroundColor = "OrderStatusBackgroundColor",
+            NoteList = "NoteList",
             InsertUserId = "InsertUserId",
             InsertDate = "InsertDate",
             UpdateUserId = "UpdateUserId",
