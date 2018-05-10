@@ -62,6 +62,12 @@
           "PermissionKey": "OrderStatuses:General"
         },
         {
+          "Tablename": "dbo.OutsideOrderAttachments",
+          "Identifier": "OutsideOrderAttachments",
+          "Module": "Erp",
+          "PermissionKey": "Administration:General"
+        },
+        {
           "Tablename": "dbo.OutsideOrders",
           "Identifier": "OutsideOrders",
           "Module": "Erp",

@@ -48,7 +48,16 @@ namespace PGMS.Erp {
                         }
                     ])
             });
-
+            buttons.push({
+                title: text + Q.text("Db.Administration.User.EntitySingular"),
+                cssClass: 'expand-all-button',
+                onClick: () => this.view.setGrouping(
+                    [
+                        {
+                            getter: 'UserUsername'
+                        }
+                    ])
+            });
             buttons.push({
                 title: Q.text("Site.NoGroupingButton"),
                 cssClass: 'collapse-all-button',

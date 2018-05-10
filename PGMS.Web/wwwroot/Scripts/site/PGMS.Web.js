@@ -368,13 +368,14 @@ var PGMS;
                     AccountAttachmentsForm.init = true;
                     var s = Serenity;
                     var w0 = s.StringEditor;
-                    var w1 = s.MultipleImageUploadEditor;
-                    var w2 = s.LookupEditor;
+                    var w1 = s.HtmlNoteContentEditor;
+                    var w2 = s.MultipleImageUploadEditor;
+                    var w3 = s.LookupEditor;
                     Q.initFormType(AccountAttachmentsForm, [
                         'Name', w0,
-                        'Description', w0,
-                        'FilePath', w1,
-                        'AccountId', w2
+                        'Description', w1,
+                        'FilePath', w2,
+                        'AccountId', w3
                     ]);
                 }
                 return _this;
@@ -1620,69 +1621,6 @@ var PGMS;
 })(PGMS || (PGMS = {}));
 var PGMS;
 (function (PGMS) {
-    var LanguageList;
-    (function (LanguageList) {
-        function getValue() {
-            var result = [];
-            for (var _i = 0, _a = PGMS.Administration.LanguageRow.getLookup().items; _i < _a.length; _i++) {
-                var k = _a[_i];
-                if (k.LanguageId !== 'en') {
-                    result.push([k.Id.toString(), k.LanguageName]);
-                }
-            }
-            return result;
-        }
-        LanguageList.getValue = getValue;
-    })(LanguageList = PGMS.LanguageList || (PGMS.LanguageList = {}));
-})(PGMS || (PGMS = {}));
-var PGMS;
-(function (PGMS) {
-    var Common;
-    (function (Common) {
-        var UserPreferenceStorage = /** @class */ (function () {
-            function UserPreferenceStorage() {
-            }
-            UserPreferenceStorage.prototype.getItem = function (key) {
-                var value;
-                Common.UserPreferenceService.Retrieve({
-                    PreferenceType: "UserPreferenceStorage",
-                    Name: key
-                }, function (response) { return value = response.Value; }, {
-                    async: false
-                });
-                return value;
-            };
-            UserPreferenceStorage.prototype.setItem = function (key, data) {
-                Common.UserPreferenceService.Update({
-                    PreferenceType: "UserPreferenceStorage",
-                    Name: key,
-                    Value: data
-                });
-            };
-            return UserPreferenceStorage;
-        }());
-        Common.UserPreferenceStorage = UserPreferenceStorage;
-    })(Common = PGMS.Common || (PGMS.Common = {}));
-})(PGMS || (PGMS = {}));
-/// <reference path="../Common/Helpers/LanguageList.ts" />
-/// <reference path="../Common/UserPreference/UserPreferenceStorage.ts" />
-var PGMS;
-(function (PGMS) {
-    var ScriptInitialization;
-    (function (ScriptInitialization) {
-        Q.Config.responsiveDialogs = true;
-        Q.Config.rootNamespaces.push('PGMS');
-        Serenity.EntityDialog.defaultLanguageList = PGMS.LanguageList.getValue;
-        if ($.fn['colorbox']) {
-            $.fn['colorbox'].settings.maxWidth = "95%";
-            $.fn['colorbox'].settings.maxHeight = "95%";
-        }
-        window.onerror = Q.ErrorHandling.runtimeErrorHandler;
-        Serenity.DataGrid.defaultPersistanceStorage = new PGMS.Common.UserPreferenceStorage();
-    })(ScriptInitialization = PGMS.ScriptInitialization || (PGMS.ScriptInitialization = {}));
-})(PGMS || (PGMS = {}));
-var PGMS;
-(function (PGMS) {
     var Administration;
     (function (Administration) {
         var LanguageDialog = /** @class */ (function (_super) {
@@ -2213,6 +2151,22 @@ var PGMS;
 })(PGMS || (PGMS = {}));
 var PGMS;
 (function (PGMS) {
+    var Authorization;
+    (function (Authorization) {
+        Object.defineProperty(Authorization, 'userDefinition', {
+            get: function () {
+                return Q.getRemoteData('UserData');
+            }
+        });
+        function hasPermission(permissionKey) {
+            var ud = Authorization.userDefinition;
+            return ud.Username === 'admin' || !!ud.Permissions[permissionKey];
+        }
+        Authorization.hasPermission = hasPermission;
+    })(Authorization = PGMS.Authorization || (PGMS.Authorization = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
     var Administration;
     (function (Administration) {
         var PermissionCheckEditor = /** @class */ (function (_super) {
@@ -2682,6 +2636,69 @@ var PGMS;
         }(Serenity.TemplatedDialog));
         Administration.UserRoleDialog = UserRoleDialog;
     })(Administration = PGMS.Administration || (PGMS.Administration = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var LanguageList;
+    (function (LanguageList) {
+        function getValue() {
+            var result = [];
+            for (var _i = 0, _a = PGMS.Administration.LanguageRow.getLookup().items; _i < _a.length; _i++) {
+                var k = _a[_i];
+                if (k.LanguageId !== 'en') {
+                    result.push([k.Id.toString(), k.LanguageName]);
+                }
+            }
+            return result;
+        }
+        LanguageList.getValue = getValue;
+    })(LanguageList = PGMS.LanguageList || (PGMS.LanguageList = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Common;
+    (function (Common) {
+        var UserPreferenceStorage = /** @class */ (function () {
+            function UserPreferenceStorage() {
+            }
+            UserPreferenceStorage.prototype.getItem = function (key) {
+                var value;
+                Common.UserPreferenceService.Retrieve({
+                    PreferenceType: "UserPreferenceStorage",
+                    Name: key
+                }, function (response) { return value = response.Value; }, {
+                    async: false
+                });
+                return value;
+            };
+            UserPreferenceStorage.prototype.setItem = function (key, data) {
+                Common.UserPreferenceService.Update({
+                    PreferenceType: "UserPreferenceStorage",
+                    Name: key,
+                    Value: data
+                });
+            };
+            return UserPreferenceStorage;
+        }());
+        Common.UserPreferenceStorage = UserPreferenceStorage;
+    })(Common = PGMS.Common || (PGMS.Common = {}));
+})(PGMS || (PGMS = {}));
+/// <reference path="../Common/Helpers/LanguageList.ts" />
+/// <reference path="../Common/UserPreference/UserPreferenceStorage.ts" />
+var PGMS;
+(function (PGMS) {
+    var ScriptInitialization;
+    (function (ScriptInitialization) {
+        Q.Config.responsiveDialogs = true;
+        Q.Config.rootNamespaces.push('PGMS');
+        Serenity.EntityDialog.defaultLanguageList = PGMS.LanguageList.getValue;
+        if ($.fn['colorbox']) {
+            $.fn['colorbox'].settings.maxWidth = "95%";
+            $.fn['colorbox'].settings.maxHeight = "95%";
+        }
+        window.onerror = Q.ErrorHandling.runtimeErrorHandler;
+        Serenity.DataGrid.defaultPersistanceStorage = new PGMS.Common.UserPreferenceStorage();
+    })(ScriptInitialization = PGMS.ScriptInitialization || (PGMS.ScriptInitialization = {}));
 })(PGMS || (PGMS = {}));
 var PGMS;
 (function (PGMS) {
@@ -4185,6 +4202,9 @@ var PGMS;
                 _this.form = new Erp.OutsideOrdersForm(_this.idPrefix);
                 _this.byId('NoteList').closest('.field').hide().end().appendTo(_this.byId('TabNotes'));
                 PGMS.DialogUtils.pendingChangesConfirmation(_this.element, function () { return _this.getSaveState() != _this.loadedState; });
+                _this.attachmentsGrid = new Erp.OutsideOrderAttachmentsExtendedGrid(_this.byId("AttachmentsPropertyGrid"));
+                _this.attachmentsGrid.openDialogsAsPanel = false;
+                _this.attachmentsGrid.element.flexHeightOnly(1);
                 return _this;
             }
             OutsideOrdersDialog.prototype.getFormKey = function () { return Erp.OutsideOrdersForm.formKey; };
@@ -4195,6 +4215,8 @@ var PGMS;
             OutsideOrdersDialog.prototype.loadEntity = function (entity) {
                 _super.prototype.loadEntity.call(this, entity);
                 Serenity.TabsExtensions.setDisabled(this.tabs, 'Notes', this.isNewOrDeleted());
+                Serenity.TabsExtensions.setDisabled(this.tabs, 'Attachments', this.isNewOrDeleted());
+                this.attachmentsGrid.outsideOrderId = entity.OutsideOrderId;
             };
             OutsideOrdersDialog.prototype.loadResponse = function (data) {
                 _super.prototype.loadResponse.call(this, data);
@@ -4561,6 +4583,15 @@ var PGMS;
                     onClick: function () { return _this.view.setGrouping([
                         {
                             getter: 'BudgetName'
+                        }
+                    ]); }
+                });
+                buttons.push({
+                    title: text + Q.text("Db.Administration.User.EntitySingular"),
+                    cssClass: 'expand-all-button',
+                    onClick: function () { return _this.view.setGrouping([
+                        {
+                            getter: 'UserUsername'
                         }
                     ]); }
                 });
@@ -5399,6 +5430,122 @@ var PGMS;
 (function (PGMS) {
     var Erp;
     (function (Erp) {
+        var IncomeVSExpense = /** @class */ (function (_super) {
+            __extends(IncomeVSExpense, _super);
+            function IncomeVSExpense(elem, opt) {
+                var _this = _super.call(this, elem, opt) || this;
+                Erp.ReportsEndpointService.IncomeVSExpenseResponse({}, function (response) {
+                    var config = {
+                        type: 'line',
+                        data: {
+                            datasets: response.Entity.datasets,
+                            labels: response.Entity.labels
+                        },
+                        options: {
+                            responsive: true,
+                            legend: {
+                                display: true
+                            },
+                            tooltips: {
+                                mode: 'index',
+                                intersect: false,
+                            },
+                            hover: {
+                                mode: 'nearest',
+                                intersect: true
+                            },
+                            scales: {
+                                xAxes: [
+                                    {
+                                        display: true,
+                                        scaleLabel: {
+                                            display: true,
+                                        }
+                                    }
+                                ],
+                                yAxes: [
+                                    {
+                                        display: true,
+                                        scaleLabel: {
+                                            display: true,
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                    };
+                    var ctx = $(_this.byId("IncomeVSExpense")).get(0).getContext("2d", {});
+                    var myPie = new Chart(ctx, config);
+                });
+                return _this;
+            }
+            return IncomeVSExpense;
+        }(Serenity.TemplatedWidget));
+        Erp.IncomeVSExpense = IncomeVSExpense;
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var OrdersPerStatus = /** @class */ (function (_super) {
+            __extends(OrdersPerStatus, _super);
+            function OrdersPerStatus(elem, opt) {
+                var _this = _super.call(this, elem, opt) || this;
+                Erp.ReportsEndpointService.OrdersPerStatus({}, function (response) {
+                    var config = {
+                        type: 'line',
+                        data: {
+                            datasets: response.Entity.datasets,
+                            labels: response.Entity.labels
+                        },
+                        options: {
+                            responsive: true,
+                            legend: {
+                                display: true
+                            },
+                            tooltips: {
+                                mode: 'index',
+                                intersect: false,
+                            },
+                            hover: {
+                                mode: 'nearest',
+                                intersect: true
+                            },
+                            scales: {
+                                xAxes: [
+                                    {
+                                        display: true,
+                                        scaleLabel: {
+                                            display: true,
+                                        }
+                                    }
+                                ],
+                                yAxes: [
+                                    {
+                                        display: true,
+                                        scaleLabel: {
+                                            display: true,
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                    };
+                    var ctx = $(_this.byId("IncomeVSExpense")).get(0).getContext("2d", {});
+                    var myPie = new Chart(ctx, config);
+                });
+                return _this;
+            }
+            return OrdersPerStatus;
+        }(Serenity.TemplatedWidget));
+        Erp.OrdersPerStatus = OrdersPerStatus;
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
         var SentEmailsDialog = /** @class */ (function (_super) {
             __extends(SentEmailsDialog, _super);
             function SentEmailsDialog() {
@@ -5584,138 +5731,6 @@ var PGMS;
 })(PGMS || (PGMS = {}));
 var PGMS;
 (function (PGMS) {
-    var Authorization;
-    (function (Authorization) {
-        Object.defineProperty(Authorization, 'userDefinition', {
-            get: function () {
-                return Q.getRemoteData('UserData');
-            }
-        });
-        function hasPermission(permissionKey) {
-            var ud = Authorization.userDefinition;
-            return ud.Username === 'admin' || !!ud.Permissions[permissionKey];
-        }
-        Authorization.hasPermission = hasPermission;
-    })(Authorization = PGMS.Authorization || (PGMS.Authorization = {}));
-})(PGMS || (PGMS = {}));
-var PGMS;
-(function (PGMS) {
-    var Erp;
-    (function (Erp) {
-        var IncomeVSExpense = /** @class */ (function (_super) {
-            __extends(IncomeVSExpense, _super);
-            function IncomeVSExpense(elem, opt) {
-                var _this = _super.call(this, elem, opt) || this;
-                Erp.ReportsEndpointService.IncomeVSExpenseResponse({}, function (response) {
-                    var config = {
-                        type: 'line',
-                        data: {
-                            datasets: response.Entity.datasets,
-                            labels: response.Entity.labels
-                        },
-                        options: {
-                            responsive: true,
-                            legend: {
-                                display: true
-                            },
-                            tooltips: {
-                                mode: 'index',
-                                intersect: false,
-                            },
-                            hover: {
-                                mode: 'nearest',
-                                intersect: true
-                            },
-                            scales: {
-                                xAxes: [
-                                    {
-                                        display: true,
-                                        scaleLabel: {
-                                            display: true,
-                                        }
-                                    }
-                                ],
-                                yAxes: [
-                                    {
-                                        display: true,
-                                        scaleLabel: {
-                                            display: true,
-                                        }
-                                    }
-                                ]
-                            }
-                        },
-                    };
-                    var ctx = $(_this.byId("IncomeVSExpense")).get(0).getContext("2d", {});
-                    var myPie = new Chart(ctx, config);
-                });
-                return _this;
-            }
-            return IncomeVSExpense;
-        }(Serenity.TemplatedWidget));
-        Erp.IncomeVSExpense = IncomeVSExpense;
-    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
-})(PGMS || (PGMS = {}));
-var PGMS;
-(function (PGMS) {
-    var Erp;
-    (function (Erp) {
-        var OrdersPerStatus = /** @class */ (function (_super) {
-            __extends(OrdersPerStatus, _super);
-            function OrdersPerStatus(elem, opt) {
-                var _this = _super.call(this, elem, opt) || this;
-                Erp.ReportsEndpointService.OrdersPerStatus({}, function (response) {
-                    var config = {
-                        type: 'line',
-                        data: {
-                            datasets: response.Entity.datasets,
-                            labels: response.Entity.labels
-                        },
-                        options: {
-                            responsive: true,
-                            legend: {
-                                display: true
-                            },
-                            tooltips: {
-                                mode: 'index',
-                                intersect: false,
-                            },
-                            hover: {
-                                mode: 'nearest',
-                                intersect: true
-                            },
-                            scales: {
-                                xAxes: [
-                                    {
-                                        display: true,
-                                        scaleLabel: {
-                                            display: true,
-                                        }
-                                    }
-                                ],
-                                yAxes: [
-                                    {
-                                        display: true,
-                                        scaleLabel: {
-                                            display: true,
-                                        }
-                                    }
-                                ]
-                            }
-                        },
-                    };
-                    var ctx = $(_this.byId("IncomeVSExpense")).get(0).getContext("2d", {});
-                    var myPie = new Chart(ctx, config);
-                });
-                return _this;
-            }
-            return OrdersPerStatus;
-        }(Serenity.TemplatedWidget));
-        Erp.OrdersPerStatus = OrdersPerStatus;
-    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
-})(PGMS || (PGMS = {}));
-var PGMS;
-(function (PGMS) {
     var Membership;
     (function (Membership) {
         var ChangePasswordPanel = /** @class */ (function (_super) {
@@ -5891,5 +5906,192 @@ var PGMS;
         }(Serenity.PropertyPanel));
         Membership.SignUpPanel = SignUpPanel;
     })(Membership = PGMS.Membership || (PGMS.Membership = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var OutsideOrderAttachmentsForm = /** @class */ (function (_super) {
+            __extends(OutsideOrderAttachmentsForm, _super);
+            function OutsideOrderAttachmentsForm(prefix) {
+                var _this = _super.call(this, prefix) || this;
+                if (!OutsideOrderAttachmentsForm.init) {
+                    OutsideOrderAttachmentsForm.init = true;
+                    var s = Serenity;
+                    var w0 = s.StringEditor;
+                    var w1 = s.HtmlNoteContentEditor;
+                    var w2 = s.MultipleImageUploadEditor;
+                    var w3 = s.LookupEditor;
+                    Q.initFormType(OutsideOrderAttachmentsForm, [
+                        'Name', w0,
+                        'Description', w1,
+                        'FilePath', w2,
+                        'OutsideOrderId', w3
+                    ]);
+                }
+                return _this;
+            }
+            OutsideOrderAttachmentsForm.formKey = 'Erp.OutsideOrderAttachments';
+            return OutsideOrderAttachmentsForm;
+        }(Serenity.PrefixedContext));
+        Erp.OutsideOrderAttachmentsForm = OutsideOrderAttachmentsForm;
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var OutsideOrderAttachmentsRow;
+        (function (OutsideOrderAttachmentsRow) {
+            OutsideOrderAttachmentsRow.idProperty = 'OutsideOrderAttachmentId';
+            OutsideOrderAttachmentsRow.isActiveProperty = 'IsActive';
+            OutsideOrderAttachmentsRow.nameProperty = 'Name';
+            OutsideOrderAttachmentsRow.localTextPrefix = 'Erp.OutsideOrderAttachments';
+            OutsideOrderAttachmentsRow.lookupKey = 'Erp.OutsideOrderAttachments';
+            function getLookup() {
+                return Q.getLookup('Erp.OutsideOrderAttachments');
+            }
+            OutsideOrderAttachmentsRow.getLookup = getLookup;
+        })(OutsideOrderAttachmentsRow = Erp.OutsideOrderAttachmentsRow || (Erp.OutsideOrderAttachmentsRow = {}));
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var OutsideOrderAttachmentsService;
+        (function (OutsideOrderAttachmentsService) {
+            OutsideOrderAttachmentsService.baseUrl = 'Erp/OutsideOrderAttachments';
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                OutsideOrderAttachmentsService[x] = function (r, s, o) {
+                    return Q.serviceRequest(OutsideOrderAttachmentsService.baseUrl + '/' + x, r, s, o);
+                };
+            });
+        })(OutsideOrderAttachmentsService = Erp.OutsideOrderAttachmentsService || (Erp.OutsideOrderAttachmentsService = {}));
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var OutsideOrderAttachmentsDialog = /** @class */ (function (_super) {
+            __extends(OutsideOrderAttachmentsDialog, _super);
+            function OutsideOrderAttachmentsDialog() {
+                var _this = _super !== null && _super.apply(this, arguments) || this;
+                _this.form = new Erp.OutsideOrderAttachmentsForm(_this.idPrefix);
+                return _this;
+            }
+            OutsideOrderAttachmentsDialog.prototype.getFormKey = function () { return Erp.OutsideOrderAttachmentsForm.formKey; };
+            OutsideOrderAttachmentsDialog.prototype.getIdProperty = function () { return Erp.OutsideOrderAttachmentsRow.idProperty; };
+            OutsideOrderAttachmentsDialog.prototype.getLocalTextPrefix = function () { return Erp.OutsideOrderAttachmentsRow.localTextPrefix; };
+            OutsideOrderAttachmentsDialog.prototype.getNameProperty = function () { return Erp.OutsideOrderAttachmentsRow.nameProperty; };
+            OutsideOrderAttachmentsDialog.prototype.getService = function () { return Erp.OutsideOrderAttachmentsService.baseUrl; };
+            OutsideOrderAttachmentsDialog = __decorate([
+                Serenity.Decorators.registerClass()
+            ], OutsideOrderAttachmentsDialog);
+            return OutsideOrderAttachmentsDialog;
+        }(Serenity.EntityDialog));
+        Erp.OutsideOrderAttachmentsDialog = OutsideOrderAttachmentsDialog;
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var OutsideOrderAttachmentsGrid = /** @class */ (function (_super) {
+            __extends(OutsideOrderAttachmentsGrid, _super);
+            function OutsideOrderAttachmentsGrid(container) {
+                return _super.call(this, container) || this;
+            }
+            OutsideOrderAttachmentsGrid.prototype.getColumnsKey = function () { return 'Erp.OutsideOrderAttachments'; };
+            OutsideOrderAttachmentsGrid.prototype.getDialogType = function () { return Erp.OutsideOrderAttachmentsDialog; };
+            OutsideOrderAttachmentsGrid.prototype.getIdProperty = function () { return Erp.OutsideOrderAttachmentsRow.idProperty; };
+            OutsideOrderAttachmentsGrid.prototype.getLocalTextPrefix = function () { return Erp.OutsideOrderAttachmentsRow.localTextPrefix; };
+            OutsideOrderAttachmentsGrid.prototype.getService = function () { return Erp.OutsideOrderAttachmentsService.baseUrl; };
+            OutsideOrderAttachmentsGrid = __decorate([
+                Serenity.Decorators.registerClass()
+            ], OutsideOrderAttachmentsGrid);
+            return OutsideOrderAttachmentsGrid;
+        }(Serenity.EntityGrid));
+        Erp.OutsideOrderAttachmentsGrid = OutsideOrderAttachmentsGrid;
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+/// <reference path="../OutsideOrderAttachments/OutsideOrderAttachmentsDialog.ts"/>
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var OutsideOrderAttachmentsExtendedDialog = /** @class */ (function (_super) {
+            __extends(OutsideOrderAttachmentsExtendedDialog, _super);
+            function OutsideOrderAttachmentsExtendedDialog() {
+                return _super.call(this) || this;
+            }
+            OutsideOrderAttachmentsExtendedDialog.prototype.updateInterface = function () {
+                _super.prototype.updateInterface.call(this);
+                //Serenity.EditorUtils.setReadOnly(this.form.OutsideOrderId, true);
+            };
+            OutsideOrderAttachmentsExtendedDialog = __decorate([
+                Serenity.Decorators.registerClass()
+            ], OutsideOrderAttachmentsExtendedDialog);
+            return OutsideOrderAttachmentsExtendedDialog;
+        }(Erp.OutsideOrderAttachmentsDialog));
+        Erp.OutsideOrderAttachmentsExtendedDialog = OutsideOrderAttachmentsExtendedDialog;
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+///<reference path="./../OutsideOrderAttachments/OutsideOrderAttachmentsDialog.ts"/>
+///<reference path="./../OutsideOrderAttachments/OutsideOrderAttachmentsGrid.ts"/>
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var OutsideOrderAttachmentsExtendedGrid = /** @class */ (function (_super) {
+            __extends(OutsideOrderAttachmentsExtendedGrid, _super);
+            function OutsideOrderAttachmentsExtendedGrid(container) {
+                return _super.call(this, container) || this;
+            }
+            OutsideOrderAttachmentsExtendedGrid.prototype.getDialogType = function () { return Erp.OutsideOrderAttachmentsExtendedDialog; };
+            OutsideOrderAttachmentsExtendedGrid.prototype.getColumns = function () {
+                return _super.prototype.getColumns.call(this);
+            };
+            OutsideOrderAttachmentsExtendedGrid.prototype.initEntityDialog = function (itemType, dialog) {
+                _super.prototype.initEntityDialog.call(this, itemType, dialog);
+                Serenity.SubDialogHelper.cascade(dialog, this.element.closest('.ui-dialog'));
+            };
+            OutsideOrderAttachmentsExtendedGrid.prototype.addButtonClick = function () {
+                this.editItem({ OutsideOrderId: this.outsideOrderId });
+            };
+            OutsideOrderAttachmentsExtendedGrid.prototype.getInitialTitle = function () {
+                return null;
+            };
+            OutsideOrderAttachmentsExtendedGrid.prototype.getGridCanLoad = function () {
+                return _super.prototype.getGridCanLoad.call(this) && !!this.outsideOrderId;
+            };
+            Object.defineProperty(OutsideOrderAttachmentsExtendedGrid.prototype, "outsideOrderId", {
+                get: function () {
+                    return this._outsideOrderId;
+                },
+                set: function (value) {
+                    if (this._outsideOrderId !== value) {
+                        this._outsideOrderId = value;
+                        this.setEquality('OutsideOrderId', value);
+                        this.refresh();
+                    }
+                },
+                enumerable: true,
+                configurable: true
+            });
+            OutsideOrderAttachmentsExtendedGrid = __decorate([
+                Serenity.Decorators.registerClass()
+            ], OutsideOrderAttachmentsExtendedGrid);
+            return OutsideOrderAttachmentsExtendedGrid;
+        }(Erp.OutsideOrderAttachmentsGrid));
+        Erp.OutsideOrderAttachmentsExtendedGrid = OutsideOrderAttachmentsExtendedGrid;
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
 })(PGMS || (PGMS = {}));
 //# sourceMappingURL=PGMS.Web.js.map

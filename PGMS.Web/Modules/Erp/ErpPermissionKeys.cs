@@ -142,6 +142,20 @@ namespace PGMS.Erp
             [Description("Delete"), ImplicitPermission(ReadPermission), ImplicitPermission(UpdatePermission)]
             public const string DeletePermission = "Erp:AccountAttachments:Delete";
         }
+
+        public class OutsideOrderAttachments
+        {
+            [Description("Page")]
+            public const string PagePermission = "Erp:OutsideOrderAttachments:Page";
+            [Description("View")]
+            public const string ReadPermission = "Erp:OutsideOrderAttachments:Read";
+            [Description("Update"), ImplicitPermission(ReadPermission)]
+            public const string UpdatePermission = "Erp:OutsideOrderAttachments:Update";
+            [Description("Delete"), ImplicitPermission(ReadPermission), ImplicitPermission(UpdatePermission)]
+            public const string DeletePermission = "Erp:OutsideOrderAttachments:Delete";
+        }
+
+
         public class PartnerTypes
         {
             [Description("Page")]
