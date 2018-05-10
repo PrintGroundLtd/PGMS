@@ -12,5 +12,70 @@ namespace PGMS.Erp {
         constructor(container: JQuery) {
             super(container);
         }
+
+        protected createSlickGrid() {
+            var grid = super.createSlickGrid();
+
+            // need to register this plugin for grouping or you'll have errors
+            grid.registerPlugin(new Slick.Data.GroupItemMetadataProvider());
+
+            this.view.setSummaryOptions({
+                aggregators: [
+                    new Slick.Aggregators.Sum('PriceTheyOffer'),
+                    new Slick.Aggregators.Sum('PriceWeSell')
+                ]
+            });
+
+            return grid;
+        }
+        protected getSlickOptions() {
+            var opt = super.getSlickOptions();
+            opt.showFooterRow = true;
+            return opt;
+        }
+
+        protected getButtons() {
+
+            var buttons = super.getButtons();
+            var text = Q.text("Site.GroupByButton");
+            buttons.push({
+                title: text + Q.text("Db.Erp.Accounts.EntitySingular"),
+                cssClass: 'expand-all-button',
+                onClick: () => this.view.setGrouping(
+                    [
+                        {
+                            getter: 'AccountRepresentsName'
+                        }
+                    ])
+            });
+            buttons.push({
+                title: text + Q.text("Db.Erp.Companies.EntitySingular"),
+                cssClass: 'expand-all-button',
+                onClick: () => this.view.setGrouping(
+                    [
+                        {
+                            getter: 'CompanyRepresentsName'
+                        }
+                    ])
+            });
+            buttons.push({
+                title: text + Q.text("Db.Erp.OrderStatuses.EntitySingular"),
+                cssClass: 'expand-all-button',
+                onClick: () => this.view.setGrouping(
+                    [
+                        {
+                            getter: 'OrderStatusName'
+                        }
+                    ])
+            });
+            buttons.push({
+                title: Q.text("Site.NoGroupingButton"),
+                cssClass: 'collapse-all-button',
+                onClick: () => this.view.setGrouping([])
+            });
+
+
+            return buttons;
+        }
     }
 }

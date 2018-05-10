@@ -2546,6 +2546,9 @@ declare namespace PGMS.Erp {
         protected getLocalTextPrefix(): string;
         protected getService(): string;
         constructor(container: JQuery);
+        protected createSlickGrid(): Slick.Grid;
+        protected getSlickOptions(): Slick.GridOptions;
+        protected getButtons(): Serenity.ToolButton[];
     }
 }
 declare namespace PGMS.Erp {

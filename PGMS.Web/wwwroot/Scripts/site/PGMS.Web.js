@@ -4275,6 +4275,61 @@ var PGMS;
             OutsideOrdersGrid.prototype.getIdProperty = function () { return Erp.OutsideOrdersRow.idProperty; };
             OutsideOrdersGrid.prototype.getLocalTextPrefix = function () { return Erp.OutsideOrdersRow.localTextPrefix; };
             OutsideOrdersGrid.prototype.getService = function () { return Erp.OutsideOrdersService.baseUrl; };
+            OutsideOrdersGrid.prototype.createSlickGrid = function () {
+                var grid = _super.prototype.createSlickGrid.call(this);
+                // need to register this plugin for grouping or you'll have errors
+                grid.registerPlugin(new Slick.Data.GroupItemMetadataProvider());
+                this.view.setSummaryOptions({
+                    aggregators: [
+                        new Slick.Aggregators.Sum('PriceTheyOffer'),
+                        new Slick.Aggregators.Sum('PriceWeSell')
+                    ]
+                });
+                return grid;
+            };
+            OutsideOrdersGrid.prototype.getSlickOptions = function () {
+                var opt = _super.prototype.getSlickOptions.call(this);
+                opt.showFooterRow = true;
+                return opt;
+            };
+            OutsideOrdersGrid.prototype.getButtons = function () {
+                var _this = this;
+                var buttons = _super.prototype.getButtons.call(this);
+                var text = Q.text("Site.GroupByButton");
+                buttons.push({
+                    title: text + Q.text("Db.Erp.Accounts.EntitySingular"),
+                    cssClass: 'expand-all-button',
+                    onClick: function () { return _this.view.setGrouping([
+                        {
+                            getter: 'AccountRepresentsName'
+                        }
+                    ]); }
+                });
+                buttons.push({
+                    title: text + Q.text("Db.Erp.Companies.EntitySingular"),
+                    cssClass: 'expand-all-button',
+                    onClick: function () { return _this.view.setGrouping([
+                        {
+                            getter: 'CompanyRepresentsName'
+                        }
+                    ]); }
+                });
+                buttons.push({
+                    title: text + Q.text("Db.Erp.OrderStatuses.EntitySingular"),
+                    cssClass: 'expand-all-button',
+                    onClick: function () { return _this.view.setGrouping([
+                        {
+                            getter: 'OrderStatusName'
+                        }
+                    ]); }
+                });
+                buttons.push({
+                    title: Q.text("Site.NoGroupingButton"),
+                    cssClass: 'collapse-all-button',
+                    onClick: function () { return _this.view.setGrouping([]); }
+                });
+                return buttons;
+            };
             OutsideOrdersGrid = __decorate([
                 Serenity.Decorators.registerClass()
             ], OutsideOrdersGrid);
