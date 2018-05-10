@@ -42,6 +42,7 @@ namespace PGMS.Erp.Entities
         
         [DisplayName("Transaction Date"), DisplayFormat("HH:mm dd/MM/yyyy"), NotNull]
         [QuickFilter()]
+        [DateTimeEditor]
         public DateTime? TransactionDate
         {
             get { return Fields.TransactionDate[this]; }

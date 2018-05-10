@@ -688,7 +688,7 @@ var PGMS;
                     var s = Serenity;
                     var w0 = s.StringEditor;
                     var w1 = s.DecimalEditor;
-                    var w2 = s.DateEditor;
+                    var w2 = s.DateTimeEditor;
                     var w3 = s.LookupEditor;
                     Q.initFormType(ExpensesForm, [
                         'Description', w0,
@@ -756,6 +756,75 @@ var PGMS;
             NoteRow.nameProperty = 'EntityType';
             NoteRow.localTextPrefix = 'Erp.Note';
         })(NoteRow = Erp.NoteRow || (Erp.NoteRow = {}));
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var OrderAttachmentsForm = /** @class */ (function (_super) {
+            __extends(OrderAttachmentsForm, _super);
+            function OrderAttachmentsForm(prefix) {
+                var _this = _super.call(this, prefix) || this;
+                if (!OrderAttachmentsForm.init) {
+                    OrderAttachmentsForm.init = true;
+                    var s = Serenity;
+                    var w0 = s.StringEditor;
+                    var w1 = s.HtmlNoteContentEditor;
+                    var w2 = s.MultipleImageUploadEditor;
+                    var w3 = s.LookupEditor;
+                    Q.initFormType(OrderAttachmentsForm, [
+                        'Name', w0,
+                        'Description', w1,
+                        'FilePath', w2,
+                        'OrderId', w3
+                    ]);
+                }
+                return _this;
+            }
+            OrderAttachmentsForm.formKey = 'Erp.OrderAttachments';
+            return OrderAttachmentsForm;
+        }(Serenity.PrefixedContext));
+        Erp.OrderAttachmentsForm = OrderAttachmentsForm;
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var OrderAttachmentsRow;
+        (function (OrderAttachmentsRow) {
+            OrderAttachmentsRow.idProperty = 'OrderAttachmentId';
+            OrderAttachmentsRow.isActiveProperty = 'IsActive';
+            OrderAttachmentsRow.nameProperty = 'Name';
+            OrderAttachmentsRow.localTextPrefix = 'Erp.OrderAttachments';
+            OrderAttachmentsRow.lookupKey = 'Erp.OrderAttachments';
+            function getLookup() {
+                return Q.getLookup('Erp.OrderAttachments');
+            }
+            OrderAttachmentsRow.getLookup = getLookup;
+        })(OrderAttachmentsRow = Erp.OrderAttachmentsRow || (Erp.OrderAttachmentsRow = {}));
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var OrderAttachmentsService;
+        (function (OrderAttachmentsService) {
+            OrderAttachmentsService.baseUrl = 'Erp/OrderAttachments';
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                OrderAttachmentsService[x] = function (r, s, o) {
+                    return Q.serviceRequest(OrderAttachmentsService.baseUrl + '/' + x, r, s, o);
+                };
+            });
+        })(OrderAttachmentsService = Erp.OrderAttachmentsService || (Erp.OrderAttachmentsService = {}));
     })(Erp = PGMS.Erp || (PGMS.Erp = {}));
 })(PGMS || (PGMS = {}));
 var PGMS;
@@ -969,6 +1038,75 @@ var PGMS;
                 };
             });
         })(OrderStatusesService = Erp.OrderStatusesService || (Erp.OrderStatusesService = {}));
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var OutsideOrderAttachmentsForm = /** @class */ (function (_super) {
+            __extends(OutsideOrderAttachmentsForm, _super);
+            function OutsideOrderAttachmentsForm(prefix) {
+                var _this = _super.call(this, prefix) || this;
+                if (!OutsideOrderAttachmentsForm.init) {
+                    OutsideOrderAttachmentsForm.init = true;
+                    var s = Serenity;
+                    var w0 = s.StringEditor;
+                    var w1 = s.HtmlNoteContentEditor;
+                    var w2 = s.MultipleImageUploadEditor;
+                    var w3 = s.LookupEditor;
+                    Q.initFormType(OutsideOrderAttachmentsForm, [
+                        'Name', w0,
+                        'Description', w1,
+                        'FilePath', w2,
+                        'OutsideOrderId', w3
+                    ]);
+                }
+                return _this;
+            }
+            OutsideOrderAttachmentsForm.formKey = 'Erp.OutsideOrderAttachments';
+            return OutsideOrderAttachmentsForm;
+        }(Serenity.PrefixedContext));
+        Erp.OutsideOrderAttachmentsForm = OutsideOrderAttachmentsForm;
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var OutsideOrderAttachmentsRow;
+        (function (OutsideOrderAttachmentsRow) {
+            OutsideOrderAttachmentsRow.idProperty = 'OutsideOrderAttachmentId';
+            OutsideOrderAttachmentsRow.isActiveProperty = 'IsActive';
+            OutsideOrderAttachmentsRow.nameProperty = 'Name';
+            OutsideOrderAttachmentsRow.localTextPrefix = 'Erp.OutsideOrderAttachments';
+            OutsideOrderAttachmentsRow.lookupKey = 'Erp.OutsideOrderAttachments';
+            function getLookup() {
+                return Q.getLookup('Erp.OutsideOrderAttachments');
+            }
+            OutsideOrderAttachmentsRow.getLookup = getLookup;
+        })(OutsideOrderAttachmentsRow = Erp.OutsideOrderAttachmentsRow || (Erp.OutsideOrderAttachmentsRow = {}));
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var OutsideOrderAttachmentsService;
+        (function (OutsideOrderAttachmentsService) {
+            OutsideOrderAttachmentsService.baseUrl = 'Erp/OutsideOrderAttachments';
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                OutsideOrderAttachmentsService[x] = function (r, s, o) {
+                    return Q.serviceRequest(OutsideOrderAttachmentsService.baseUrl + '/' + x, r, s, o);
+                };
+            });
+        })(OutsideOrderAttachmentsService = Erp.OutsideOrderAttachmentsService || (Erp.OutsideOrderAttachmentsService = {}));
     })(Erp = PGMS.Erp || (PGMS.Erp = {}));
 })(PGMS || (PGMS = {}));
 var PGMS;
@@ -1621,6 +1759,69 @@ var PGMS;
 })(PGMS || (PGMS = {}));
 var PGMS;
 (function (PGMS) {
+    var LanguageList;
+    (function (LanguageList) {
+        function getValue() {
+            var result = [];
+            for (var _i = 0, _a = PGMS.Administration.LanguageRow.getLookup().items; _i < _a.length; _i++) {
+                var k = _a[_i];
+                if (k.LanguageId !== 'en') {
+                    result.push([k.Id.toString(), k.LanguageName]);
+                }
+            }
+            return result;
+        }
+        LanguageList.getValue = getValue;
+    })(LanguageList = PGMS.LanguageList || (PGMS.LanguageList = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Common;
+    (function (Common) {
+        var UserPreferenceStorage = /** @class */ (function () {
+            function UserPreferenceStorage() {
+            }
+            UserPreferenceStorage.prototype.getItem = function (key) {
+                var value;
+                Common.UserPreferenceService.Retrieve({
+                    PreferenceType: "UserPreferenceStorage",
+                    Name: key
+                }, function (response) { return value = response.Value; }, {
+                    async: false
+                });
+                return value;
+            };
+            UserPreferenceStorage.prototype.setItem = function (key, data) {
+                Common.UserPreferenceService.Update({
+                    PreferenceType: "UserPreferenceStorage",
+                    Name: key,
+                    Value: data
+                });
+            };
+            return UserPreferenceStorage;
+        }());
+        Common.UserPreferenceStorage = UserPreferenceStorage;
+    })(Common = PGMS.Common || (PGMS.Common = {}));
+})(PGMS || (PGMS = {}));
+/// <reference path="../Common/Helpers/LanguageList.ts" />
+/// <reference path="../Common/UserPreference/UserPreferenceStorage.ts" />
+var PGMS;
+(function (PGMS) {
+    var ScriptInitialization;
+    (function (ScriptInitialization) {
+        Q.Config.responsiveDialogs = true;
+        Q.Config.rootNamespaces.push('PGMS');
+        Serenity.EntityDialog.defaultLanguageList = PGMS.LanguageList.getValue;
+        if ($.fn['colorbox']) {
+            $.fn['colorbox'].settings.maxWidth = "95%";
+            $.fn['colorbox'].settings.maxHeight = "95%";
+        }
+        window.onerror = Q.ErrorHandling.runtimeErrorHandler;
+        Serenity.DataGrid.defaultPersistanceStorage = new PGMS.Common.UserPreferenceStorage();
+    })(ScriptInitialization = PGMS.ScriptInitialization || (PGMS.ScriptInitialization = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
     var Administration;
     (function (Administration) {
         var LanguageDialog = /** @class */ (function (_super) {
@@ -2151,22 +2352,6 @@ var PGMS;
 })(PGMS || (PGMS = {}));
 var PGMS;
 (function (PGMS) {
-    var Authorization;
-    (function (Authorization) {
-        Object.defineProperty(Authorization, 'userDefinition', {
-            get: function () {
-                return Q.getRemoteData('UserData');
-            }
-        });
-        function hasPermission(permissionKey) {
-            var ud = Authorization.userDefinition;
-            return ud.Username === 'admin' || !!ud.Permissions[permissionKey];
-        }
-        Authorization.hasPermission = hasPermission;
-    })(Authorization = PGMS.Authorization || (PGMS.Authorization = {}));
-})(PGMS || (PGMS = {}));
-var PGMS;
-(function (PGMS) {
     var Administration;
     (function (Administration) {
         var PermissionCheckEditor = /** @class */ (function (_super) {
@@ -2636,69 +2821,6 @@ var PGMS;
         }(Serenity.TemplatedDialog));
         Administration.UserRoleDialog = UserRoleDialog;
     })(Administration = PGMS.Administration || (PGMS.Administration = {}));
-})(PGMS || (PGMS = {}));
-var PGMS;
-(function (PGMS) {
-    var LanguageList;
-    (function (LanguageList) {
-        function getValue() {
-            var result = [];
-            for (var _i = 0, _a = PGMS.Administration.LanguageRow.getLookup().items; _i < _a.length; _i++) {
-                var k = _a[_i];
-                if (k.LanguageId !== 'en') {
-                    result.push([k.Id.toString(), k.LanguageName]);
-                }
-            }
-            return result;
-        }
-        LanguageList.getValue = getValue;
-    })(LanguageList = PGMS.LanguageList || (PGMS.LanguageList = {}));
-})(PGMS || (PGMS = {}));
-var PGMS;
-(function (PGMS) {
-    var Common;
-    (function (Common) {
-        var UserPreferenceStorage = /** @class */ (function () {
-            function UserPreferenceStorage() {
-            }
-            UserPreferenceStorage.prototype.getItem = function (key) {
-                var value;
-                Common.UserPreferenceService.Retrieve({
-                    PreferenceType: "UserPreferenceStorage",
-                    Name: key
-                }, function (response) { return value = response.Value; }, {
-                    async: false
-                });
-                return value;
-            };
-            UserPreferenceStorage.prototype.setItem = function (key, data) {
-                Common.UserPreferenceService.Update({
-                    PreferenceType: "UserPreferenceStorage",
-                    Name: key,
-                    Value: data
-                });
-            };
-            return UserPreferenceStorage;
-        }());
-        Common.UserPreferenceStorage = UserPreferenceStorage;
-    })(Common = PGMS.Common || (PGMS.Common = {}));
-})(PGMS || (PGMS = {}));
-/// <reference path="../Common/Helpers/LanguageList.ts" />
-/// <reference path="../Common/UserPreference/UserPreferenceStorage.ts" />
-var PGMS;
-(function (PGMS) {
-    var ScriptInitialization;
-    (function (ScriptInitialization) {
-        Q.Config.responsiveDialogs = true;
-        Q.Config.rootNamespaces.push('PGMS');
-        Serenity.EntityDialog.defaultLanguageList = PGMS.LanguageList.getValue;
-        if ($.fn['colorbox']) {
-            $.fn['colorbox'].settings.maxWidth = "95%";
-            $.fn['colorbox'].settings.maxHeight = "95%";
-        }
-        window.onerror = Q.ErrorHandling.runtimeErrorHandler;
-        Serenity.DataGrid.defaultPersistanceStorage = new PGMS.Common.UserPreferenceStorage();
-    })(ScriptInitialization = PGMS.ScriptInitialization || (PGMS.ScriptInitialization = {}));
 })(PGMS || (PGMS = {}));
 var PGMS;
 (function (PGMS) {
@@ -5055,6 +5177,52 @@ var PGMS;
 (function (PGMS) {
     var Erp;
     (function (Erp) {
+        var OrderAttachmentsDialog = /** @class */ (function (_super) {
+            __extends(OrderAttachmentsDialog, _super);
+            function OrderAttachmentsDialog() {
+                var _this = _super !== null && _super.apply(this, arguments) || this;
+                _this.form = new Erp.OrderAttachmentsForm(_this.idPrefix);
+                return _this;
+            }
+            OrderAttachmentsDialog.prototype.getFormKey = function () { return Erp.OrderAttachmentsForm.formKey; };
+            OrderAttachmentsDialog.prototype.getIdProperty = function () { return Erp.OrderAttachmentsRow.idProperty; };
+            OrderAttachmentsDialog.prototype.getLocalTextPrefix = function () { return Erp.OrderAttachmentsRow.localTextPrefix; };
+            OrderAttachmentsDialog.prototype.getNameProperty = function () { return Erp.OrderAttachmentsRow.nameProperty; };
+            OrderAttachmentsDialog.prototype.getService = function () { return Erp.OrderAttachmentsService.baseUrl; };
+            OrderAttachmentsDialog = __decorate([
+                Serenity.Decorators.registerClass()
+            ], OrderAttachmentsDialog);
+            return OrderAttachmentsDialog;
+        }(Serenity.EntityDialog));
+        Erp.OrderAttachmentsDialog = OrderAttachmentsDialog;
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var OrderAttachmentsGrid = /** @class */ (function (_super) {
+            __extends(OrderAttachmentsGrid, _super);
+            function OrderAttachmentsGrid(container) {
+                return _super.call(this, container) || this;
+            }
+            OrderAttachmentsGrid.prototype.getColumnsKey = function () { return 'Erp.OrderAttachments'; };
+            OrderAttachmentsGrid.prototype.getDialogType = function () { return Erp.OrderAttachmentsDialog; };
+            OrderAttachmentsGrid.prototype.getIdProperty = function () { return Erp.OrderAttachmentsRow.idProperty; };
+            OrderAttachmentsGrid.prototype.getLocalTextPrefix = function () { return Erp.OrderAttachmentsRow.localTextPrefix; };
+            OrderAttachmentsGrid.prototype.getService = function () { return Erp.OrderAttachmentsService.baseUrl; };
+            OrderAttachmentsGrid = __decorate([
+                Serenity.Decorators.registerClass()
+            ], OrderAttachmentsGrid);
+            return OrderAttachmentsGrid;
+        }(Serenity.EntityGrid));
+        Erp.OrderAttachmentsGrid = OrderAttachmentsGrid;
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
         var OrderDetailsDialog = /** @class */ (function (_super) {
             __extends(OrderDetailsDialog, _super);
             function OrderDetailsDialog() {
@@ -5140,6 +5308,27 @@ var PGMS;
         Erp.OrderDetailsEditor = OrderDetailsEditor;
     })(Erp = PGMS.Erp || (PGMS.Erp = {}));
 })(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var DeadlineFormatter = /** @class */ (function () {
+            function DeadlineFormatter() {
+            }
+            DeadlineFormatter.prototype.format = function (ctx) {
+                if (ctx.value && Q.parseDate(ctx.value) < new Date())
+                    return "<div style='height:100%; background-color: #ff574f;' >" + Q.formatDate(ctx.value, "HH:mm dd/MM/yyyy") + '</div>';
+                else
+                    return Q.formatDate(ctx.value, "HH:mm dd/MM/yyyy");
+            };
+            DeadlineFormatter = __decorate([
+                Serenity.Decorators.registerFormatter([Serenity.ISlickFormatter])
+            ], DeadlineFormatter);
+            return DeadlineFormatter;
+        }());
+        Erp.DeadlineFormatter = DeadlineFormatter;
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
 /// <reference path="OrdersGrid.ts"/>
 var PGMS;
 (function (PGMS) {
@@ -5198,6 +5387,78 @@ var PGMS;
             return MyOrdersGrid;
         }(Erp.OrdersGrid));
         Erp.MyOrdersGrid = MyOrdersGrid;
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+/// <reference path="../OrderAttachments/OrderAttachmentsDialog.ts"/>
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var OrderAttachmentsExtendedDialog = /** @class */ (function (_super) {
+            __extends(OrderAttachmentsExtendedDialog, _super);
+            function OrderAttachmentsExtendedDialog() {
+                return _super.call(this) || this;
+            }
+            OrderAttachmentsExtendedDialog.prototype.updateInterface = function () {
+                _super.prototype.updateInterface.call(this);
+                //Serenity.EditorUtils.setReadOnly(this.form.OutsideOrderId, true);
+            };
+            OrderAttachmentsExtendedDialog = __decorate([
+                Serenity.Decorators.registerClass()
+            ], OrderAttachmentsExtendedDialog);
+            return OrderAttachmentsExtendedDialog;
+        }(Erp.OrderAttachmentsDialog));
+        Erp.OrderAttachmentsExtendedDialog = OrderAttachmentsExtendedDialog;
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+///<reference path="./../OrderAttachments/OrderAttachmentsDialog.ts"/>
+///<reference path="./../OrderAttachments/OrderAttachmentsGrid.ts"/>
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var OrderAttachmentsExtendedGrid = /** @class */ (function (_super) {
+            __extends(OrderAttachmentsExtendedGrid, _super);
+            function OrderAttachmentsExtendedGrid(container) {
+                return _super.call(this, container) || this;
+            }
+            OrderAttachmentsExtendedGrid.prototype.getDialogType = function () { return Erp.OrderAttachmentsExtendedDialog; };
+            OrderAttachmentsExtendedGrid.prototype.getColumns = function () {
+                return _super.prototype.getColumns.call(this);
+            };
+            OrderAttachmentsExtendedGrid.prototype.initEntityDialog = function (itemType, dialog) {
+                _super.prototype.initEntityDialog.call(this, itemType, dialog);
+                Serenity.SubDialogHelper.cascade(dialog, this.element.closest('.ui-dialog'));
+            };
+            OrderAttachmentsExtendedGrid.prototype.addButtonClick = function () {
+                this.editItem({ OrderId: this.orderId });
+            };
+            OrderAttachmentsExtendedGrid.prototype.getInitialTitle = function () {
+                return null;
+            };
+            OrderAttachmentsExtendedGrid.prototype.getGridCanLoad = function () {
+                return _super.prototype.getGridCanLoad.call(this) && !!this.orderId;
+            };
+            Object.defineProperty(OrderAttachmentsExtendedGrid.prototype, "orderId", {
+                get: function () {
+                    return this._orderId;
+                },
+                set: function (value) {
+                    if (this._orderId !== value) {
+                        this._orderId = value;
+                        this.setEquality('OrderId', value);
+                        this.refresh();
+                    }
+                },
+                enumerable: true,
+                configurable: true
+            });
+            OrderAttachmentsExtendedGrid = __decorate([
+                Serenity.Decorators.registerClass()
+            ], OrderAttachmentsExtendedGrid);
+            return OrderAttachmentsExtendedGrid;
+        }(Erp.OrderAttachmentsGrid));
+        Erp.OrderAttachmentsExtendedGrid = OrderAttachmentsExtendedGrid;
     })(Erp = PGMS.Erp || (PGMS.Erp = {}));
 })(PGMS || (PGMS = {}));
 var PGMS;
@@ -5282,6 +5543,124 @@ var PGMS;
             return OrderStatusesGrid;
         }(Serenity.EntityGrid));
         Erp.OrderStatusesGrid = OrderStatusesGrid;
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var OutsideOrderAttachmentsDialog = /** @class */ (function (_super) {
+            __extends(OutsideOrderAttachmentsDialog, _super);
+            function OutsideOrderAttachmentsDialog() {
+                var _this = _super !== null && _super.apply(this, arguments) || this;
+                _this.form = new Erp.OutsideOrderAttachmentsForm(_this.idPrefix);
+                return _this;
+            }
+            OutsideOrderAttachmentsDialog.prototype.getFormKey = function () { return Erp.OutsideOrderAttachmentsForm.formKey; };
+            OutsideOrderAttachmentsDialog.prototype.getIdProperty = function () { return Erp.OutsideOrderAttachmentsRow.idProperty; };
+            OutsideOrderAttachmentsDialog.prototype.getLocalTextPrefix = function () { return Erp.OutsideOrderAttachmentsRow.localTextPrefix; };
+            OutsideOrderAttachmentsDialog.prototype.getNameProperty = function () { return Erp.OutsideOrderAttachmentsRow.nameProperty; };
+            OutsideOrderAttachmentsDialog.prototype.getService = function () { return Erp.OutsideOrderAttachmentsService.baseUrl; };
+            OutsideOrderAttachmentsDialog = __decorate([
+                Serenity.Decorators.registerClass()
+            ], OutsideOrderAttachmentsDialog);
+            return OutsideOrderAttachmentsDialog;
+        }(Serenity.EntityDialog));
+        Erp.OutsideOrderAttachmentsDialog = OutsideOrderAttachmentsDialog;
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var OutsideOrderAttachmentsGrid = /** @class */ (function (_super) {
+            __extends(OutsideOrderAttachmentsGrid, _super);
+            function OutsideOrderAttachmentsGrid(container) {
+                return _super.call(this, container) || this;
+            }
+            OutsideOrderAttachmentsGrid.prototype.getColumnsKey = function () { return 'Erp.OutsideOrderAttachments'; };
+            OutsideOrderAttachmentsGrid.prototype.getDialogType = function () { return Erp.OutsideOrderAttachmentsDialog; };
+            OutsideOrderAttachmentsGrid.prototype.getIdProperty = function () { return Erp.OutsideOrderAttachmentsRow.idProperty; };
+            OutsideOrderAttachmentsGrid.prototype.getLocalTextPrefix = function () { return Erp.OutsideOrderAttachmentsRow.localTextPrefix; };
+            OutsideOrderAttachmentsGrid.prototype.getService = function () { return Erp.OutsideOrderAttachmentsService.baseUrl; };
+            OutsideOrderAttachmentsGrid = __decorate([
+                Serenity.Decorators.registerClass()
+            ], OutsideOrderAttachmentsGrid);
+            return OutsideOrderAttachmentsGrid;
+        }(Serenity.EntityGrid));
+        Erp.OutsideOrderAttachmentsGrid = OutsideOrderAttachmentsGrid;
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+/// <reference path="../OutsideOrderAttachments/OutsideOrderAttachmentsDialog.ts"/>
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var OutsideOrderAttachmentsExtendedDialog = /** @class */ (function (_super) {
+            __extends(OutsideOrderAttachmentsExtendedDialog, _super);
+            function OutsideOrderAttachmentsExtendedDialog() {
+                return _super.call(this) || this;
+            }
+            OutsideOrderAttachmentsExtendedDialog.prototype.updateInterface = function () {
+                _super.prototype.updateInterface.call(this);
+                //Serenity.EditorUtils.setReadOnly(this.form.OutsideOrderId, true);
+            };
+            OutsideOrderAttachmentsExtendedDialog = __decorate([
+                Serenity.Decorators.registerClass()
+            ], OutsideOrderAttachmentsExtendedDialog);
+            return OutsideOrderAttachmentsExtendedDialog;
+        }(Erp.OutsideOrderAttachmentsDialog));
+        Erp.OutsideOrderAttachmentsExtendedDialog = OutsideOrderAttachmentsExtendedDialog;
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+///<reference path="./../OutsideOrderAttachments/OutsideOrderAttachmentsDialog.ts"/>
+///<reference path="./../OutsideOrderAttachments/OutsideOrderAttachmentsGrid.ts"/>
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var OutsideOrderAttachmentsExtendedGrid = /** @class */ (function (_super) {
+            __extends(OutsideOrderAttachmentsExtendedGrid, _super);
+            function OutsideOrderAttachmentsExtendedGrid(container) {
+                return _super.call(this, container) || this;
+            }
+            OutsideOrderAttachmentsExtendedGrid.prototype.getDialogType = function () { return Erp.OutsideOrderAttachmentsExtendedDialog; };
+            OutsideOrderAttachmentsExtendedGrid.prototype.getColumns = function () {
+                return _super.prototype.getColumns.call(this);
+            };
+            OutsideOrderAttachmentsExtendedGrid.prototype.initEntityDialog = function (itemType, dialog) {
+                _super.prototype.initEntityDialog.call(this, itemType, dialog);
+                Serenity.SubDialogHelper.cascade(dialog, this.element.closest('.ui-dialog'));
+            };
+            OutsideOrderAttachmentsExtendedGrid.prototype.addButtonClick = function () {
+                this.editItem({ OutsideOrderId: this.outsideOrderId });
+            };
+            OutsideOrderAttachmentsExtendedGrid.prototype.getInitialTitle = function () {
+                return null;
+            };
+            OutsideOrderAttachmentsExtendedGrid.prototype.getGridCanLoad = function () {
+                return _super.prototype.getGridCanLoad.call(this) && !!this.outsideOrderId;
+            };
+            Object.defineProperty(OutsideOrderAttachmentsExtendedGrid.prototype, "outsideOrderId", {
+                get: function () {
+                    return this._outsideOrderId;
+                },
+                set: function (value) {
+                    if (this._outsideOrderId !== value) {
+                        this._outsideOrderId = value;
+                        this.setEquality('OutsideOrderId', value);
+                        this.refresh();
+                    }
+                },
+                enumerable: true,
+                configurable: true
+            });
+            OutsideOrderAttachmentsExtendedGrid = __decorate([
+                Serenity.Decorators.registerClass()
+            ], OutsideOrderAttachmentsExtendedGrid);
+            return OutsideOrderAttachmentsExtendedGrid;
+        }(Erp.OutsideOrderAttachmentsGrid));
+        Erp.OutsideOrderAttachmentsExtendedGrid = OutsideOrderAttachmentsExtendedGrid;
     })(Erp = PGMS.Erp || (PGMS.Erp = {}));
 })(PGMS || (PGMS = {}));
 var PGMS;
@@ -5490,122 +5869,6 @@ var PGMS;
 (function (PGMS) {
     var Erp;
     (function (Erp) {
-        var IncomeVSExpense = /** @class */ (function (_super) {
-            __extends(IncomeVSExpense, _super);
-            function IncomeVSExpense(elem, opt) {
-                var _this = _super.call(this, elem, opt) || this;
-                Erp.ReportsEndpointService.IncomeVSExpenseResponse({}, function (response) {
-                    var config = {
-                        type: 'line',
-                        data: {
-                            datasets: response.Entity.datasets,
-                            labels: response.Entity.labels
-                        },
-                        options: {
-                            responsive: true,
-                            legend: {
-                                display: true
-                            },
-                            tooltips: {
-                                mode: 'index',
-                                intersect: false,
-                            },
-                            hover: {
-                                mode: 'nearest',
-                                intersect: true
-                            },
-                            scales: {
-                                xAxes: [
-                                    {
-                                        display: true,
-                                        scaleLabel: {
-                                            display: true,
-                                        }
-                                    }
-                                ],
-                                yAxes: [
-                                    {
-                                        display: true,
-                                        scaleLabel: {
-                                            display: true,
-                                        }
-                                    }
-                                ]
-                            }
-                        },
-                    };
-                    var ctx = $(_this.byId("IncomeVSExpense")).get(0).getContext("2d", {});
-                    var myPie = new Chart(ctx, config);
-                });
-                return _this;
-            }
-            return IncomeVSExpense;
-        }(Serenity.TemplatedWidget));
-        Erp.IncomeVSExpense = IncomeVSExpense;
-    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
-})(PGMS || (PGMS = {}));
-var PGMS;
-(function (PGMS) {
-    var Erp;
-    (function (Erp) {
-        var OrdersPerStatus = /** @class */ (function (_super) {
-            __extends(OrdersPerStatus, _super);
-            function OrdersPerStatus(elem, opt) {
-                var _this = _super.call(this, elem, opt) || this;
-                Erp.ReportsEndpointService.OrdersPerStatus({}, function (response) {
-                    var config = {
-                        type: 'line',
-                        data: {
-                            datasets: response.Entity.datasets,
-                            labels: response.Entity.labels
-                        },
-                        options: {
-                            responsive: true,
-                            legend: {
-                                display: true
-                            },
-                            tooltips: {
-                                mode: 'index',
-                                intersect: false,
-                            },
-                            hover: {
-                                mode: 'nearest',
-                                intersect: true
-                            },
-                            scales: {
-                                xAxes: [
-                                    {
-                                        display: true,
-                                        scaleLabel: {
-                                            display: true,
-                                        }
-                                    }
-                                ],
-                                yAxes: [
-                                    {
-                                        display: true,
-                                        scaleLabel: {
-                                            display: true,
-                                        }
-                                    }
-                                ]
-                            }
-                        },
-                    };
-                    var ctx = $(_this.byId("IncomeVSExpense")).get(0).getContext("2d", {});
-                    var myPie = new Chart(ctx, config);
-                });
-                return _this;
-            }
-            return OrdersPerStatus;
-        }(Serenity.TemplatedWidget));
-        Erp.OrdersPerStatus = OrdersPerStatus;
-    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
-})(PGMS || (PGMS = {}));
-var PGMS;
-(function (PGMS) {
-    var Erp;
-    (function (Erp) {
         var SentEmailsDialog = /** @class */ (function (_super) {
             __extends(SentEmailsDialog, _super);
             function SentEmailsDialog() {
@@ -5791,6 +6054,138 @@ var PGMS;
 })(PGMS || (PGMS = {}));
 var PGMS;
 (function (PGMS) {
+    var Authorization;
+    (function (Authorization) {
+        Object.defineProperty(Authorization, 'userDefinition', {
+            get: function () {
+                return Q.getRemoteData('UserData');
+            }
+        });
+        function hasPermission(permissionKey) {
+            var ud = Authorization.userDefinition;
+            return ud.Username === 'admin' || !!ud.Permissions[permissionKey];
+        }
+        Authorization.hasPermission = hasPermission;
+    })(Authorization = PGMS.Authorization || (PGMS.Authorization = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var IncomeVSExpense = /** @class */ (function (_super) {
+            __extends(IncomeVSExpense, _super);
+            function IncomeVSExpense(elem, opt) {
+                var _this = _super.call(this, elem, opt) || this;
+                Erp.ReportsEndpointService.IncomeVSExpenseResponse({}, function (response) {
+                    var config = {
+                        type: 'line',
+                        data: {
+                            datasets: response.Entity.datasets,
+                            labels: response.Entity.labels
+                        },
+                        options: {
+                            responsive: true,
+                            legend: {
+                                display: true
+                            },
+                            tooltips: {
+                                mode: 'index',
+                                intersect: false,
+                            },
+                            hover: {
+                                mode: 'nearest',
+                                intersect: true
+                            },
+                            scales: {
+                                xAxes: [
+                                    {
+                                        display: true,
+                                        scaleLabel: {
+                                            display: true,
+                                        }
+                                    }
+                                ],
+                                yAxes: [
+                                    {
+                                        display: true,
+                                        scaleLabel: {
+                                            display: true,
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                    };
+                    var ctx = $(_this.byId("IncomeVSExpense")).get(0).getContext("2d", {});
+                    var myPie = new Chart(ctx, config);
+                });
+                return _this;
+            }
+            return IncomeVSExpense;
+        }(Serenity.TemplatedWidget));
+        Erp.IncomeVSExpense = IncomeVSExpense;
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var OrdersPerStatus = /** @class */ (function (_super) {
+            __extends(OrdersPerStatus, _super);
+            function OrdersPerStatus(elem, opt) {
+                var _this = _super.call(this, elem, opt) || this;
+                Erp.ReportsEndpointService.OrdersPerStatus({}, function (response) {
+                    var config = {
+                        type: 'line',
+                        data: {
+                            datasets: response.Entity.datasets,
+                            labels: response.Entity.labels
+                        },
+                        options: {
+                            responsive: true,
+                            legend: {
+                                display: true
+                            },
+                            tooltips: {
+                                mode: 'index',
+                                intersect: false,
+                            },
+                            hover: {
+                                mode: 'nearest',
+                                intersect: true
+                            },
+                            scales: {
+                                xAxes: [
+                                    {
+                                        display: true,
+                                        scaleLabel: {
+                                            display: true,
+                                        }
+                                    }
+                                ],
+                                yAxes: [
+                                    {
+                                        display: true,
+                                        scaleLabel: {
+                                            display: true,
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                    };
+                    var ctx = $(_this.byId("IncomeVSExpense")).get(0).getContext("2d", {});
+                    var myPie = new Chart(ctx, config);
+                });
+                return _this;
+            }
+            return OrdersPerStatus;
+        }(Serenity.TemplatedWidget));
+        Erp.OrdersPerStatus = OrdersPerStatus;
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
     var Membership;
     (function (Membership) {
         var ChangePasswordPanel = /** @class */ (function (_super) {
@@ -5966,400 +6361,5 @@ var PGMS;
         }(Serenity.PropertyPanel));
         Membership.SignUpPanel = SignUpPanel;
     })(Membership = PGMS.Membership || (PGMS.Membership = {}));
-})(PGMS || (PGMS = {}));
-var PGMS;
-(function (PGMS) {
-    var Erp;
-    (function (Erp) {
-        var OutsideOrderAttachmentsForm = /** @class */ (function (_super) {
-            __extends(OutsideOrderAttachmentsForm, _super);
-            function OutsideOrderAttachmentsForm(prefix) {
-                var _this = _super.call(this, prefix) || this;
-                if (!OutsideOrderAttachmentsForm.init) {
-                    OutsideOrderAttachmentsForm.init = true;
-                    var s = Serenity;
-                    var w0 = s.StringEditor;
-                    var w1 = s.HtmlNoteContentEditor;
-                    var w2 = s.MultipleImageUploadEditor;
-                    var w3 = s.LookupEditor;
-                    Q.initFormType(OutsideOrderAttachmentsForm, [
-                        'Name', w0,
-                        'Description', w1,
-                        'FilePath', w2,
-                        'OutsideOrderId', w3
-                    ]);
-                }
-                return _this;
-            }
-            OutsideOrderAttachmentsForm.formKey = 'Erp.OutsideOrderAttachments';
-            return OutsideOrderAttachmentsForm;
-        }(Serenity.PrefixedContext));
-        Erp.OutsideOrderAttachmentsForm = OutsideOrderAttachmentsForm;
-    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
-})(PGMS || (PGMS = {}));
-var PGMS;
-(function (PGMS) {
-    var Erp;
-    (function (Erp) {
-        var OutsideOrderAttachmentsRow;
-        (function (OutsideOrderAttachmentsRow) {
-            OutsideOrderAttachmentsRow.idProperty = 'OutsideOrderAttachmentId';
-            OutsideOrderAttachmentsRow.isActiveProperty = 'IsActive';
-            OutsideOrderAttachmentsRow.nameProperty = 'Name';
-            OutsideOrderAttachmentsRow.localTextPrefix = 'Erp.OutsideOrderAttachments';
-            OutsideOrderAttachmentsRow.lookupKey = 'Erp.OutsideOrderAttachments';
-            function getLookup() {
-                return Q.getLookup('Erp.OutsideOrderAttachments');
-            }
-            OutsideOrderAttachmentsRow.getLookup = getLookup;
-        })(OutsideOrderAttachmentsRow = Erp.OutsideOrderAttachmentsRow || (Erp.OutsideOrderAttachmentsRow = {}));
-    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
-})(PGMS || (PGMS = {}));
-var PGMS;
-(function (PGMS) {
-    var Erp;
-    (function (Erp) {
-        var OutsideOrderAttachmentsService;
-        (function (OutsideOrderAttachmentsService) {
-            OutsideOrderAttachmentsService.baseUrl = 'Erp/OutsideOrderAttachments';
-            [
-                'Create',
-                'Update',
-                'Delete',
-                'Retrieve',
-                'List'
-            ].forEach(function (x) {
-                OutsideOrderAttachmentsService[x] = function (r, s, o) {
-                    return Q.serviceRequest(OutsideOrderAttachmentsService.baseUrl + '/' + x, r, s, o);
-                };
-            });
-        })(OutsideOrderAttachmentsService = Erp.OutsideOrderAttachmentsService || (Erp.OutsideOrderAttachmentsService = {}));
-    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
-})(PGMS || (PGMS = {}));
-var PGMS;
-(function (PGMS) {
-    var Erp;
-    (function (Erp) {
-        var OutsideOrderAttachmentsDialog = /** @class */ (function (_super) {
-            __extends(OutsideOrderAttachmentsDialog, _super);
-            function OutsideOrderAttachmentsDialog() {
-                var _this = _super !== null && _super.apply(this, arguments) || this;
-                _this.form = new Erp.OutsideOrderAttachmentsForm(_this.idPrefix);
-                return _this;
-            }
-            OutsideOrderAttachmentsDialog.prototype.getFormKey = function () { return Erp.OutsideOrderAttachmentsForm.formKey; };
-            OutsideOrderAttachmentsDialog.prototype.getIdProperty = function () { return Erp.OutsideOrderAttachmentsRow.idProperty; };
-            OutsideOrderAttachmentsDialog.prototype.getLocalTextPrefix = function () { return Erp.OutsideOrderAttachmentsRow.localTextPrefix; };
-            OutsideOrderAttachmentsDialog.prototype.getNameProperty = function () { return Erp.OutsideOrderAttachmentsRow.nameProperty; };
-            OutsideOrderAttachmentsDialog.prototype.getService = function () { return Erp.OutsideOrderAttachmentsService.baseUrl; };
-            OutsideOrderAttachmentsDialog = __decorate([
-                Serenity.Decorators.registerClass()
-            ], OutsideOrderAttachmentsDialog);
-            return OutsideOrderAttachmentsDialog;
-        }(Serenity.EntityDialog));
-        Erp.OutsideOrderAttachmentsDialog = OutsideOrderAttachmentsDialog;
-    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
-})(PGMS || (PGMS = {}));
-var PGMS;
-(function (PGMS) {
-    var Erp;
-    (function (Erp) {
-        var OutsideOrderAttachmentsGrid = /** @class */ (function (_super) {
-            __extends(OutsideOrderAttachmentsGrid, _super);
-            function OutsideOrderAttachmentsGrid(container) {
-                return _super.call(this, container) || this;
-            }
-            OutsideOrderAttachmentsGrid.prototype.getColumnsKey = function () { return 'Erp.OutsideOrderAttachments'; };
-            OutsideOrderAttachmentsGrid.prototype.getDialogType = function () { return Erp.OutsideOrderAttachmentsDialog; };
-            OutsideOrderAttachmentsGrid.prototype.getIdProperty = function () { return Erp.OutsideOrderAttachmentsRow.idProperty; };
-            OutsideOrderAttachmentsGrid.prototype.getLocalTextPrefix = function () { return Erp.OutsideOrderAttachmentsRow.localTextPrefix; };
-            OutsideOrderAttachmentsGrid.prototype.getService = function () { return Erp.OutsideOrderAttachmentsService.baseUrl; };
-            OutsideOrderAttachmentsGrid = __decorate([
-                Serenity.Decorators.registerClass()
-            ], OutsideOrderAttachmentsGrid);
-            return OutsideOrderAttachmentsGrid;
-        }(Serenity.EntityGrid));
-        Erp.OutsideOrderAttachmentsGrid = OutsideOrderAttachmentsGrid;
-    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
-})(PGMS || (PGMS = {}));
-/// <reference path="../OutsideOrderAttachments/OutsideOrderAttachmentsDialog.ts"/>
-var PGMS;
-(function (PGMS) {
-    var Erp;
-    (function (Erp) {
-        var OutsideOrderAttachmentsExtendedDialog = /** @class */ (function (_super) {
-            __extends(OutsideOrderAttachmentsExtendedDialog, _super);
-            function OutsideOrderAttachmentsExtendedDialog() {
-                return _super.call(this) || this;
-            }
-            OutsideOrderAttachmentsExtendedDialog.prototype.updateInterface = function () {
-                _super.prototype.updateInterface.call(this);
-                //Serenity.EditorUtils.setReadOnly(this.form.OutsideOrderId, true);
-            };
-            OutsideOrderAttachmentsExtendedDialog = __decorate([
-                Serenity.Decorators.registerClass()
-            ], OutsideOrderAttachmentsExtendedDialog);
-            return OutsideOrderAttachmentsExtendedDialog;
-        }(Erp.OutsideOrderAttachmentsDialog));
-        Erp.OutsideOrderAttachmentsExtendedDialog = OutsideOrderAttachmentsExtendedDialog;
-    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
-})(PGMS || (PGMS = {}));
-///<reference path="./../OutsideOrderAttachments/OutsideOrderAttachmentsDialog.ts"/>
-///<reference path="./../OutsideOrderAttachments/OutsideOrderAttachmentsGrid.ts"/>
-var PGMS;
-(function (PGMS) {
-    var Erp;
-    (function (Erp) {
-        var OutsideOrderAttachmentsExtendedGrid = /** @class */ (function (_super) {
-            __extends(OutsideOrderAttachmentsExtendedGrid, _super);
-            function OutsideOrderAttachmentsExtendedGrid(container) {
-                return _super.call(this, container) || this;
-            }
-            OutsideOrderAttachmentsExtendedGrid.prototype.getDialogType = function () { return Erp.OutsideOrderAttachmentsExtendedDialog; };
-            OutsideOrderAttachmentsExtendedGrid.prototype.getColumns = function () {
-                return _super.prototype.getColumns.call(this);
-            };
-            OutsideOrderAttachmentsExtendedGrid.prototype.initEntityDialog = function (itemType, dialog) {
-                _super.prototype.initEntityDialog.call(this, itemType, dialog);
-                Serenity.SubDialogHelper.cascade(dialog, this.element.closest('.ui-dialog'));
-            };
-            OutsideOrderAttachmentsExtendedGrid.prototype.addButtonClick = function () {
-                this.editItem({ OutsideOrderId: this.outsideOrderId });
-            };
-            OutsideOrderAttachmentsExtendedGrid.prototype.getInitialTitle = function () {
-                return null;
-            };
-            OutsideOrderAttachmentsExtendedGrid.prototype.getGridCanLoad = function () {
-                return _super.prototype.getGridCanLoad.call(this) && !!this.outsideOrderId;
-            };
-            Object.defineProperty(OutsideOrderAttachmentsExtendedGrid.prototype, "outsideOrderId", {
-                get: function () {
-                    return this._outsideOrderId;
-                },
-                set: function (value) {
-                    if (this._outsideOrderId !== value) {
-                        this._outsideOrderId = value;
-                        this.setEquality('OutsideOrderId', value);
-                        this.refresh();
-                    }
-                },
-                enumerable: true,
-                configurable: true
-            });
-            OutsideOrderAttachmentsExtendedGrid = __decorate([
-                Serenity.Decorators.registerClass()
-            ], OutsideOrderAttachmentsExtendedGrid);
-            return OutsideOrderAttachmentsExtendedGrid;
-        }(Erp.OutsideOrderAttachmentsGrid));
-        Erp.OutsideOrderAttachmentsExtendedGrid = OutsideOrderAttachmentsExtendedGrid;
-    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
-})(PGMS || (PGMS = {}));
-var PGMS;
-(function (PGMS) {
-    var Erp;
-    (function (Erp) {
-        var OrderAttachmentsForm = /** @class */ (function (_super) {
-            __extends(OrderAttachmentsForm, _super);
-            function OrderAttachmentsForm(prefix) {
-                var _this = _super.call(this, prefix) || this;
-                if (!OrderAttachmentsForm.init) {
-                    OrderAttachmentsForm.init = true;
-                    var s = Serenity;
-                    var w0 = s.StringEditor;
-                    var w1 = s.HtmlNoteContentEditor;
-                    var w2 = s.MultipleImageUploadEditor;
-                    var w3 = s.LookupEditor;
-                    Q.initFormType(OrderAttachmentsForm, [
-                        'Name', w0,
-                        'Description', w1,
-                        'FilePath', w2,
-                        'OrderId', w3
-                    ]);
-                }
-                return _this;
-            }
-            OrderAttachmentsForm.formKey = 'Erp.OrderAttachments';
-            return OrderAttachmentsForm;
-        }(Serenity.PrefixedContext));
-        Erp.OrderAttachmentsForm = OrderAttachmentsForm;
-    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
-})(PGMS || (PGMS = {}));
-var PGMS;
-(function (PGMS) {
-    var Erp;
-    (function (Erp) {
-        var OrderAttachmentsRow;
-        (function (OrderAttachmentsRow) {
-            OrderAttachmentsRow.idProperty = 'OrderAttachmentId';
-            OrderAttachmentsRow.isActiveProperty = 'IsActive';
-            OrderAttachmentsRow.nameProperty = 'Name';
-            OrderAttachmentsRow.localTextPrefix = 'Erp.OrderAttachments';
-            OrderAttachmentsRow.lookupKey = 'Erp.OrderAttachments';
-            function getLookup() {
-                return Q.getLookup('Erp.OrderAttachments');
-            }
-            OrderAttachmentsRow.getLookup = getLookup;
-        })(OrderAttachmentsRow = Erp.OrderAttachmentsRow || (Erp.OrderAttachmentsRow = {}));
-    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
-})(PGMS || (PGMS = {}));
-var PGMS;
-(function (PGMS) {
-    var Erp;
-    (function (Erp) {
-        var OrderAttachmentsService;
-        (function (OrderAttachmentsService) {
-            OrderAttachmentsService.baseUrl = 'Erp/OrderAttachments';
-            [
-                'Create',
-                'Update',
-                'Delete',
-                'Retrieve',
-                'List'
-            ].forEach(function (x) {
-                OrderAttachmentsService[x] = function (r, s, o) {
-                    return Q.serviceRequest(OrderAttachmentsService.baseUrl + '/' + x, r, s, o);
-                };
-            });
-        })(OrderAttachmentsService = Erp.OrderAttachmentsService || (Erp.OrderAttachmentsService = {}));
-    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
-})(PGMS || (PGMS = {}));
-var PGMS;
-(function (PGMS) {
-    var Erp;
-    (function (Erp) {
-        var OrderAttachmentsDialog = /** @class */ (function (_super) {
-            __extends(OrderAttachmentsDialog, _super);
-            function OrderAttachmentsDialog() {
-                var _this = _super !== null && _super.apply(this, arguments) || this;
-                _this.form = new Erp.OrderAttachmentsForm(_this.idPrefix);
-                return _this;
-            }
-            OrderAttachmentsDialog.prototype.getFormKey = function () { return Erp.OrderAttachmentsForm.formKey; };
-            OrderAttachmentsDialog.prototype.getIdProperty = function () { return Erp.OrderAttachmentsRow.idProperty; };
-            OrderAttachmentsDialog.prototype.getLocalTextPrefix = function () { return Erp.OrderAttachmentsRow.localTextPrefix; };
-            OrderAttachmentsDialog.prototype.getNameProperty = function () { return Erp.OrderAttachmentsRow.nameProperty; };
-            OrderAttachmentsDialog.prototype.getService = function () { return Erp.OrderAttachmentsService.baseUrl; };
-            OrderAttachmentsDialog = __decorate([
-                Serenity.Decorators.registerClass()
-            ], OrderAttachmentsDialog);
-            return OrderAttachmentsDialog;
-        }(Serenity.EntityDialog));
-        Erp.OrderAttachmentsDialog = OrderAttachmentsDialog;
-    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
-})(PGMS || (PGMS = {}));
-var PGMS;
-(function (PGMS) {
-    var Erp;
-    (function (Erp) {
-        var OrderAttachmentsGrid = /** @class */ (function (_super) {
-            __extends(OrderAttachmentsGrid, _super);
-            function OrderAttachmentsGrid(container) {
-                return _super.call(this, container) || this;
-            }
-            OrderAttachmentsGrid.prototype.getColumnsKey = function () { return 'Erp.OrderAttachments'; };
-            OrderAttachmentsGrid.prototype.getDialogType = function () { return Erp.OrderAttachmentsDialog; };
-            OrderAttachmentsGrid.prototype.getIdProperty = function () { return Erp.OrderAttachmentsRow.idProperty; };
-            OrderAttachmentsGrid.prototype.getLocalTextPrefix = function () { return Erp.OrderAttachmentsRow.localTextPrefix; };
-            OrderAttachmentsGrid.prototype.getService = function () { return Erp.OrderAttachmentsService.baseUrl; };
-            OrderAttachmentsGrid = __decorate([
-                Serenity.Decorators.registerClass()
-            ], OrderAttachmentsGrid);
-            return OrderAttachmentsGrid;
-        }(Serenity.EntityGrid));
-        Erp.OrderAttachmentsGrid = OrderAttachmentsGrid;
-    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
-})(PGMS || (PGMS = {}));
-/// <reference path="../OrderAttachments/OrderAttachmentsDialog.ts"/>
-var PGMS;
-(function (PGMS) {
-    var Erp;
-    (function (Erp) {
-        var OrderAttachmentsExtendedDialog = /** @class */ (function (_super) {
-            __extends(OrderAttachmentsExtendedDialog, _super);
-            function OrderAttachmentsExtendedDialog() {
-                return _super.call(this) || this;
-            }
-            OrderAttachmentsExtendedDialog.prototype.updateInterface = function () {
-                _super.prototype.updateInterface.call(this);
-                //Serenity.EditorUtils.setReadOnly(this.form.OutsideOrderId, true);
-            };
-            OrderAttachmentsExtendedDialog = __decorate([
-                Serenity.Decorators.registerClass()
-            ], OrderAttachmentsExtendedDialog);
-            return OrderAttachmentsExtendedDialog;
-        }(Erp.OrderAttachmentsDialog));
-        Erp.OrderAttachmentsExtendedDialog = OrderAttachmentsExtendedDialog;
-    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
-})(PGMS || (PGMS = {}));
-///<reference path="./../OrderAttachments/OrderAttachmentsDialog.ts"/>
-///<reference path="./../OrderAttachments/OrderAttachmentsGrid.ts"/>
-var PGMS;
-(function (PGMS) {
-    var Erp;
-    (function (Erp) {
-        var OrderAttachmentsExtendedGrid = /** @class */ (function (_super) {
-            __extends(OrderAttachmentsExtendedGrid, _super);
-            function OrderAttachmentsExtendedGrid(container) {
-                return _super.call(this, container) || this;
-            }
-            OrderAttachmentsExtendedGrid.prototype.getDialogType = function () { return Erp.OrderAttachmentsExtendedDialog; };
-            OrderAttachmentsExtendedGrid.prototype.getColumns = function () {
-                return _super.prototype.getColumns.call(this);
-            };
-            OrderAttachmentsExtendedGrid.prototype.initEntityDialog = function (itemType, dialog) {
-                _super.prototype.initEntityDialog.call(this, itemType, dialog);
-                Serenity.SubDialogHelper.cascade(dialog, this.element.closest('.ui-dialog'));
-            };
-            OrderAttachmentsExtendedGrid.prototype.addButtonClick = function () {
-                this.editItem({ OrderId: this.orderId });
-            };
-            OrderAttachmentsExtendedGrid.prototype.getInitialTitle = function () {
-                return null;
-            };
-            OrderAttachmentsExtendedGrid.prototype.getGridCanLoad = function () {
-                return _super.prototype.getGridCanLoad.call(this) && !!this.orderId;
-            };
-            Object.defineProperty(OrderAttachmentsExtendedGrid.prototype, "orderId", {
-                get: function () {
-                    return this._orderId;
-                },
-                set: function (value) {
-                    if (this._orderId !== value) {
-                        this._orderId = value;
-                        this.setEquality('OrderId', value);
-                        this.refresh();
-                    }
-                },
-                enumerable: true,
-                configurable: true
-            });
-            OrderAttachmentsExtendedGrid = __decorate([
-                Serenity.Decorators.registerClass()
-            ], OrderAttachmentsExtendedGrid);
-            return OrderAttachmentsExtendedGrid;
-        }(Erp.OrderAttachmentsGrid));
-        Erp.OrderAttachmentsExtendedGrid = OrderAttachmentsExtendedGrid;
-    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
-})(PGMS || (PGMS = {}));
-var PGMS;
-(function (PGMS) {
-    var Erp;
-    (function (Erp) {
-        var DeadlineFormatter = /** @class */ (function () {
-            function DeadlineFormatter() {
-            }
-            DeadlineFormatter.prototype.format = function (ctx) {
-                if (ctx.value && Q.parseDate(ctx.value) < new Date())
-                    return "<div style='height:100%; background-color: #ff574f;' >" + Q.formatDate(ctx.value, "HH:mm dd/MM/yyyy") + '</div>';
-                else
-                    return Q.formatDate(ctx.value, "HH:mm dd/MM/yyyy");
-            };
-            DeadlineFormatter = __decorate([
-                Serenity.Decorators.registerFormatter([Serenity.ISlickFormatter])
-            ], DeadlineFormatter);
-            return DeadlineFormatter;
-        }());
-        Erp.DeadlineFormatter = DeadlineFormatter;
-    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
 })(PGMS || (PGMS = {}));
 //# sourceMappingURL=PGMS.Web.js.map
