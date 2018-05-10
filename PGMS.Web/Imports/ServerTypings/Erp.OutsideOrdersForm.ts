@@ -6,6 +6,7 @@
         Name: Serenity.StringEditor;
         AccountRepresentsId: Serenity.LookupEditor;
         CompanyRepresentsId: Serenity.LookupEditor;
+        OrderStatusId: Serenity.LookupEditor;
         NoteList: NotesEditor;
     }
 
@@ -33,6 +34,7 @@
                     'Name', w2,
                     'AccountRepresentsId', w3,
                     'CompanyRepresentsId', w3,
+                    'OrderStatusId', w3,
                     'NoteList', w4
                 ]);
             }

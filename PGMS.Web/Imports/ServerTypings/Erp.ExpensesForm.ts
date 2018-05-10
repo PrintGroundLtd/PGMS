@@ -5,6 +5,7 @@
         TransactionDate: Serenity.DateEditor;
         BudgetId: Serenity.LookupEditor;
         PaymentTypeId: Serenity.LookupEditor;
+        UserId: Serenity.LookupEditor;
     }
 
     export class ExpensesForm extends Serenity.PrefixedContext {
@@ -28,7 +29,8 @@
                     'Total', w1,
                     'TransactionDate', w2,
                     'BudgetId', w3,
-                    'PaymentTypeId', w3
+                    'PaymentTypeId', w3,
+                    'UserId', w3
                 ]);
             }
         }

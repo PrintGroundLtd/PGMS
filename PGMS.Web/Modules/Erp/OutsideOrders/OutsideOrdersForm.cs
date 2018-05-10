@@ -23,6 +23,7 @@ namespace PGMS.Erp.Forms
         public String Name { get; set; }
         public Int32 AccountRepresentsId { get; set; }
         public Int32 CompanyRepresentsId { get; set; }
+        public Int32 OrderStatusId { get; set; }
 
         public List<object> NoteList { get; set; }
 

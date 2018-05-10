@@ -117,7 +117,7 @@ namespace PGMS.Erp.Entities
             set { Fields.ShipCountry[this] = value; }
         }
 
-        [DisplayName("Assignet to User"), ForeignKey("[dbo].[Users]", "UserId"), LeftJoin("jUser"), TextualField("UserUsername")]
+        [DisplayName("Assignet to User"), ForeignKey("[dbo].[Users]", "UserId"), LeftJoin("jUser"), TextualField("UserDisplayName")]
         [LookupEditor(typeof(UserRow), FilterField = "IsActive", FilterValue = 1)]
         [QuickFilter()]
         public Int32? UserId

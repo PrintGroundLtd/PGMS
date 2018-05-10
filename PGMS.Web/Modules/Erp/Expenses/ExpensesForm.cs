@@ -20,5 +20,7 @@ namespace PGMS.Erp.Forms
 
         public Int32 BudgetId { get; set; }
         public Int32 PaymentTypeId { get; set; }
+        public Int32 UserId { get; set; }
+
     }
 }

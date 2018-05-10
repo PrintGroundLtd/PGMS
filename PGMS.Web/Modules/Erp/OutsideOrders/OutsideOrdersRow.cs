@@ -191,6 +191,39 @@ namespace PGMS.Erp.Entities
             get { return Fields.Description[this]; }
             set { Fields.Description[this] = value; }
         }
+
+
+        [DisplayName("Order Status"), ForeignKey("[dbo].[OrderStatuses]", "OrderStatusId"), LeftJoin("jOrderStatus"), TextualField("OrderStatusName"), NotNull]
+        [LookupEditor(typeof(OrderStatusesRow), FilterField = "IsActive", FilterValue = 1)]
+        [QuickFilter()]
+        public Int32? OrderStatusId
+        {
+            get { return Fields.OrderStatusId[this]; }
+            set { Fields.OrderStatusId[this] = value; }
+        }
+
+        [DisplayName("Order Status Name"), Expression("jOrderStatus.[Name]")]
+        public String OrderStatusName
+        {
+            get { return Fields.OrderStatusName[this]; }
+            set { Fields.OrderStatusName[this] = value; }
+        }
+
+        [DisplayName("Order Status Border Color"), Expression("jOrderStatus.[BorderColor]")]
+        public String OrderStatusBorderColor
+        {
+            get { return Fields.OrderStatusBorderColor[this]; }
+            set { Fields.OrderStatusBorderColor[this] = value; }
+        }
+
+
+        [DisplayName("Order Status Background Color"), Expression("jOrderStatus.[BackgroundColor]")]
+        public String OrderStatusBackgroundColor
+        {
+            get { return Fields.OrderStatusBackgroundColor[this]; }
+            set { Fields.OrderStatusBackgroundColor[this] = value; }
+        }
+
         [NotesEditor, NotMapped]
         public List<NoteRow> NoteList
         {
@@ -243,6 +276,11 @@ namespace PGMS.Erp.Entities
             public StringField CompanyRepresentsIban;
             public StringField CompanyRepresentsBankName;
             public StringField CompanyRepresentsBankSwift;
+
+            public Int32Field OrderStatusId;
+            public StringField OrderStatusName;
+            public StringField OrderStatusBorderColor;
+            public StringField OrderStatusBackgroundColor;
 
             public RowListField<NoteRow> NoteList;
 

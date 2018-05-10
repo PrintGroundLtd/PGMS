@@ -24,6 +24,10 @@
         CompanyRepresentsIban?: string;
         CompanyRepresentsBankName?: string;
         CompanyRepresentsBankSwift?: string;
+        OrderStatusId?: number;
+        OrderStatusName?: string;
+        OrderStatusBorderColor?: string;
+        OrderStatusBackgroundColor?: string;
         NoteList?: NoteRow[];
         InsertUserId?: number;
         InsertDate?: string;
@@ -70,6 +74,10 @@
             CompanyRepresentsIban = "CompanyRepresentsIban",
             CompanyRepresentsBankName = "CompanyRepresentsBankName",
             CompanyRepresentsBankSwift = "CompanyRepresentsBankSwift",
+            OrderStatusId = "OrderStatusId",
+            OrderStatusName = "OrderStatusName",
+            OrderStatusBorderColor = "OrderStatusBorderColor",
+            OrderStatusBackgroundColor = "OrderStatusBackgroundColor",
             NoteList = "NoteList",
             InsertUserId = "InsertUserId",
             InsertDate = "InsertDate",

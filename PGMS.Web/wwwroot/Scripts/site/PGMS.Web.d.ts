@@ -858,6 +858,7 @@ declare namespace PGMS.Erp {
         TransactionDate: Serenity.DateEditor;
         BudgetId: Serenity.LookupEditor;
         PaymentTypeId: Serenity.LookupEditor;
+        UserId: Serenity.LookupEditor;
     }
     class ExpensesForm extends Serenity.PrefixedContext {
         static formKey: string;
@@ -878,6 +879,9 @@ declare namespace PGMS.Erp {
         BudgetBudgetPeriod?: number;
         BudgetPaymentTypeId?: number;
         PaymentTypeName?: string;
+        UserId?: number;
+        UserUsername?: string;
+        UserDisplayName?: string;
         InsertUserId?: number;
         InsertDate?: string;
         UpdateUserId?: number;
@@ -905,6 +909,9 @@ declare namespace PGMS.Erp {
             BudgetBudgetPeriod = "BudgetBudgetPeriod",
             BudgetPaymentTypeId = "BudgetPaymentTypeId",
             PaymentTypeName = "PaymentTypeName",
+            UserId = "UserId",
+            UserUsername = "UserUsername",
+            UserDisplayName = "UserDisplayName",
             InsertUserId = "InsertUserId",
             InsertDate = "InsertDate",
             UpdateUserId = "UpdateUserId",
@@ -1274,6 +1281,7 @@ declare namespace PGMS.Erp {
         Name: Serenity.StringEditor;
         AccountRepresentsId: Serenity.LookupEditor;
         CompanyRepresentsId: Serenity.LookupEditor;
+        OrderStatusId: Serenity.LookupEditor;
         NoteList: NotesEditor;
     }
     class OutsideOrdersForm extends Serenity.PrefixedContext {
@@ -1308,6 +1316,10 @@ declare namespace PGMS.Erp {
         CompanyRepresentsIban?: string;
         CompanyRepresentsBankName?: string;
         CompanyRepresentsBankSwift?: string;
+        OrderStatusId?: number;
+        OrderStatusName?: string;
+        OrderStatusBorderColor?: string;
+        OrderStatusBackgroundColor?: string;
         NoteList?: NoteRow[];
         InsertUserId?: number;
         InsertDate?: string;
@@ -1349,6 +1361,10 @@ declare namespace PGMS.Erp {
             CompanyRepresentsIban = "CompanyRepresentsIban",
             CompanyRepresentsBankName = "CompanyRepresentsBankName",
             CompanyRepresentsBankSwift = "CompanyRepresentsBankSwift",
+            OrderStatusId = "OrderStatusId",
+            OrderStatusName = "OrderStatusName",
+            OrderStatusBorderColor = "OrderStatusBorderColor",
+            OrderStatusBackgroundColor = "OrderStatusBackgroundColor",
             NoteList = "NoteList",
             InsertUserId = "InsertUserId",
             InsertDate = "InsertDate",

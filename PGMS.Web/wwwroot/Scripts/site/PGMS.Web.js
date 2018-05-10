@@ -694,7 +694,8 @@ var PGMS;
                         'Total', w1,
                         'TransactionDate', w2,
                         'BudgetId', w3,
-                        'PaymentTypeId', w3
+                        'PaymentTypeId', w3,
+                        'UserId', w3
                     ]);
                 }
                 return _this;
@@ -992,6 +993,7 @@ var PGMS;
                         'Name', w2,
                         'AccountRepresentsId', w3,
                         'CompanyRepresentsId', w3,
+                        'OrderStatusId', w3,
                         'NoteList', w4
                     ]);
                 }
