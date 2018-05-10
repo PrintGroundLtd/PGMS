@@ -32,6 +32,7 @@ namespace PGMS.Erp.Columns
         [OrderStatusesFormatter(BackgroundProperty = "OrderStatusBackgroundColor", BorderProperty = "OrderStatusBorderColor")]
         public String OrderStatusName { get; set; }
 
+        [QuickFilter()]
         public DateTime InsertDate { get; set; }
         public Int32 InsertUserName { get; set; }
         public DateTime UpdateDate { get; set; }
