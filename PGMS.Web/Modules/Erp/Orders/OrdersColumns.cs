@@ -22,7 +22,7 @@ namespace PGMS.Erp.Columns
         [FilterOnly()]
         public int CompanyId { get; set; }
 
-        [EditLink, DisplayName("Db.Shared.RecordId")]
+        [EditLink, DisplayName("Db.Shared.RecordId"), Width(100)]
         public Int32 OrderName { get; set; }
         [EditLink]
         [AccountFormatter(IsVipProperty = "AccountIsVip")]
@@ -39,6 +39,7 @@ namespace PGMS.Erp.Columns
         public Int16 Width { get; set; }
         public Int16 Height { get; set; }
         public DateTime OrderDate { get; set; }
+        [DeadlineFormatter]
         public DateTime DeadLine { get; set; }
         public DateTime ShippedDate { get; set; }
         [EditLink]
