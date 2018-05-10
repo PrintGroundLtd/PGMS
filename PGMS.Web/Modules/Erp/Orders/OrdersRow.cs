@@ -247,6 +247,12 @@ namespace PGMS.Erp.Entities
             set { Fields.NoteList[this] = value; }
         }
 
+        [DisplayName("Order Name"), Expression("CONCAT('#', T0.[OrderId])")]
+        public String OrderName
+        {
+            get { return Fields.OrderName[this]; }
+            set { Fields.OrderName[this] = value; }
+        }
 
         IIdField IIdRow.IdField
         {
@@ -255,7 +261,7 @@ namespace PGMS.Erp.Entities
 
         StringField INameRow.NameField
         {
-            get { return Fields.ShipName; }
+            get { return  Fields.OrderName; }
         }
 
         public static readonly RowFields Fields = new RowFields().Init();
@@ -276,6 +282,7 @@ namespace PGMS.Erp.Entities
             public DateTimeField OrderDate;
             public DateTimeField DeadLine;
             public DateTimeField ShippedDate;
+            public StringField OrderName;
             public StringField ShipName;
             public StringField ShipAddress;
             public StringField ShipCity;

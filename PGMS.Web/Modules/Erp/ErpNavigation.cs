@@ -16,7 +16,8 @@ using System.Threading.Tasks;
 [assembly: NavigationLink(1200, "Partners", typeof(MyPages.PartnersController), icon: "fa-sitemap")]
 [assembly: NavigationMenu(1200, "Attachments",  icon: "fa-file")]
 [assembly: NavigationLink(1200, "Attachments/For Accounts", typeof(MyPages.AccountAttachmentsController), icon: null)]
-[assembly: NavigationLink(1200, "Attachments/Outside Order Attachments", typeof(MyPages.OutsideOrderAttachmentsController), icon: null)]
+[assembly: NavigationLink(1200, "Attachments/For Orders", typeof(MyPages.OrderAttachmentsController), icon: null)]
+[assembly: NavigationLink(1200, "Attachments/For Outside Orders", typeof(MyPages.OutsideOrderAttachmentsController), icon: null)]
 [assembly: NavigationLink(1200, "Sent Emails", typeof(MyPages.SentEmailsController), icon: "fa-envelope-o")]
 [assembly: NavigationLink(1200, "Reports", typeof(MyPages.ReportsController), icon: "fa-files-o")]
 

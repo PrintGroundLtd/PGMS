@@ -157,7 +157,7 @@ namespace PGMS.Erp.Entities
         {
         }
 
-        public class RowFields : ErpLoggingRow.ErpLoggingRowFields
+        public class RowFields : ErpLoggingRowFields
         {
             public Int32Field OutsideOrderAttachmentId;
             public StringField Name;

@@ -155,6 +155,17 @@ namespace PGMS.Erp
             public const string DeletePermission = "Erp:OutsideOrderAttachments:Delete";
         }
 
+        public class OrderAttachments
+        {
+            [Description("Page")]
+            public const string PagePermission = "Erp:OrderAttachments:Page";
+            [Description("View")]
+            public const string ReadPermission = "Erp:OrderAttachments:Read";
+            [Description("Update"), ImplicitPermission(ReadPermission)]
+            public const string UpdatePermission = "Erp:OrderAttachments:Update";
+            [Description("Delete"), ImplicitPermission(ReadPermission), ImplicitPermission(UpdatePermission)]
+            public const string DeletePermission = "Erp:OrderAttachments:Delete";
+        }
 
         public class PartnerTypes
         {

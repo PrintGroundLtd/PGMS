@@ -23,7 +23,7 @@ namespace PGMS.Erp.Columns
         public int CompanyId { get; set; }
 
         [EditLink, DisplayName("Db.Shared.RecordId")]
-        public Int32 OrderId { get; set; }
+        public Int32 OrderName { get; set; }
         [EditLink]
         [AccountFormatter(IsVipProperty = "AccountIsVip")]
         public String AccountName { get; set; }

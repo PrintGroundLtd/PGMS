@@ -44,6 +44,12 @@
           "PermissionKey": "Expenses:General"
         },
         {
+          "Tablename": "dbo.OrderAttachments",
+          "Identifier": "OrderAttachments",
+          "Module": "Erp",
+          "PermissionKey": "Administration:General"
+        },
+        {
           "Tablename": "dbo.OrderDetails",
           "Identifier": "OrderDetails",
           "Module": "Erp",

@@ -9,6 +9,7 @@
         OrderDate?: string;
         DeadLine?: string;
         ShippedDate?: string;
+        OrderName?: string;
         ShipName?: string;
         ShipAddress?: string;
         ShipCity?: string;
@@ -42,7 +43,7 @@
     export namespace OrdersRow {
         export const idProperty = 'OrderId';
         export const isActiveProperty = 'IsActive';
-        export const nameProperty = 'ShipName';
+        export const nameProperty = 'OrderName';
         export const localTextPrefix = 'Erp.Orders';
         export const lookupKey = 'Erp.Orders';
 
@@ -60,6 +61,7 @@
             OrderDate = "OrderDate",
             DeadLine = "DeadLine",
             ShippedDate = "ShippedDate",
+            OrderName = "OrderName",
             ShipName = "ShipName",
             ShipAddress = "ShipAddress",
             ShipCity = "ShipCity",
