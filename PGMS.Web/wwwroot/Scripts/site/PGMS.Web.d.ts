@@ -973,114 +973,6 @@ declare namespace PGMS.Erp {
 declare namespace PGMS.Erp {
 }
 declare namespace PGMS.Erp {
-    interface OrderAttachmentsForm {
-        Name: Serenity.StringEditor;
-        Description: Serenity.HtmlNoteContentEditor;
-        FilePath: Serenity.MultipleImageUploadEditor;
-        OrderId: Serenity.LookupEditor;
-    }
-    class OrderAttachmentsForm extends Serenity.PrefixedContext {
-        static formKey: string;
-        private static init;
-        constructor(prefix: string);
-    }
-}
-declare namespace PGMS.Erp {
-    interface OrderAttachmentsRow {
-        OrderAttachmentId?: number;
-        Name?: string;
-        Description?: string;
-        FilePath?: string;
-        OrderId?: number;
-        OrderAccountId?: number;
-        OrderCompanyId?: number;
-        OrderPaymentTypeId?: number;
-        OrderWidth?: number;
-        OrderHeight?: number;
-        OrderOrderDate?: string;
-        OrderShippedDate?: string;
-        OrderShipName?: string;
-        OrderShipAddress?: string;
-        OrderShipCity?: string;
-        OrderShipCountry?: string;
-        OrderUserId?: number;
-        OrderOrderStatusId?: number;
-        OrderInsertDate?: string;
-        OrderInsertUserId?: number;
-        OrderUpdateDate?: string;
-        OrderUpdateUserId?: number;
-        OrderIsActive?: number;
-        OrderDeadLine?: string;
-        InsertUserId?: number;
-        InsertDate?: string;
-        UpdateUserId?: number;
-        UpdateDate?: string;
-        IsActive?: number;
-        InsertUserName?: string;
-        UpdateUserName?: string;
-    }
-    namespace OrderAttachmentsRow {
-        const idProperty = "OrderAttachmentId";
-        const isActiveProperty = "IsActive";
-        const nameProperty = "Name";
-        const localTextPrefix = "Erp.OrderAttachments";
-        const lookupKey = "Erp.OrderAttachments";
-        function getLookup(): Q.Lookup<OrderAttachmentsRow>;
-        const enum Fields {
-            OrderAttachmentId = "OrderAttachmentId",
-            Name = "Name",
-            Description = "Description",
-            FilePath = "FilePath",
-            OrderId = "OrderId",
-            OrderAccountId = "OrderAccountId",
-            OrderCompanyId = "OrderCompanyId",
-            OrderPaymentTypeId = "OrderPaymentTypeId",
-            OrderWidth = "OrderWidth",
-            OrderHeight = "OrderHeight",
-            OrderOrderDate = "OrderOrderDate",
-            OrderShippedDate = "OrderShippedDate",
-            OrderShipName = "OrderShipName",
-            OrderShipAddress = "OrderShipAddress",
-            OrderShipCity = "OrderShipCity",
-            OrderShipCountry = "OrderShipCountry",
-            OrderUserId = "OrderUserId",
-            OrderOrderStatusId = "OrderOrderStatusId",
-            OrderInsertDate = "OrderInsertDate",
-            OrderInsertUserId = "OrderInsertUserId",
-            OrderUpdateDate = "OrderUpdateDate",
-            OrderUpdateUserId = "OrderUpdateUserId",
-            OrderIsActive = "OrderIsActive",
-            OrderDeadLine = "OrderDeadLine",
-            InsertUserId = "InsertUserId",
-            InsertDate = "InsertDate",
-            UpdateUserId = "UpdateUserId",
-            UpdateDate = "UpdateDate",
-            IsActive = "IsActive",
-            InsertUserName = "InsertUserName",
-            UpdateUserName = "UpdateUserName",
-        }
-    }
-}
-declare namespace PGMS.Erp {
-    namespace OrderAttachmentsService {
-        const baseUrl = "Erp/OrderAttachments";
-        function Create(request: Serenity.SaveRequest<OrderAttachmentsRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function Update(request: Serenity.SaveRequest<OrderAttachmentsRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<OrderAttachmentsRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<OrderAttachmentsRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        const enum Methods {
-            Create = "Erp/OrderAttachments/Create",
-            Update = "Erp/OrderAttachments/Update",
-            Delete = "Erp/OrderAttachments/Delete",
-            Retrieve = "Erp/OrderAttachments/Retrieve",
-            List = "Erp/OrderAttachments/List",
-        }
-    }
-}
-declare namespace PGMS.Erp {
-}
-declare namespace PGMS.Erp {
     interface OrderDetailsForm {
         ProductId: Serenity.LookupEditor;
         Width: Serenity.DecimalEditor;
@@ -1378,100 +1270,6 @@ declare namespace PGMS.Erp {
             Delete = "Erp/OrderStatuses/Delete",
             Retrieve = "Erp/OrderStatuses/Retrieve",
             List = "Erp/OrderStatuses/List",
-        }
-    }
-}
-declare namespace PGMS.Erp {
-}
-declare namespace PGMS.Erp {
-    interface OutsideOrderAttachmentsForm {
-        Name: Serenity.StringEditor;
-        Description: Serenity.HtmlNoteContentEditor;
-        FilePath: Serenity.MultipleImageUploadEditor;
-        OutsideOrderId: Serenity.LookupEditor;
-    }
-    class OutsideOrderAttachmentsForm extends Serenity.PrefixedContext {
-        static formKey: string;
-        private static init;
-        constructor(prefix: string);
-    }
-}
-declare namespace PGMS.Erp {
-    interface OutsideOrderAttachmentsRow {
-        OutsideOrderAttachmentId?: number;
-        Name?: string;
-        Description?: string;
-        FilePath?: string;
-        OutsideOrderId?: number;
-        OutsideOrderName?: string;
-        OutsideOrderPriceTheyOffer?: number;
-        OutsideOrderPriceWeSell?: number;
-        OutsideOrderAccountRepresentsId?: number;
-        OutsideOrderCompanyRepresentsId?: number;
-        OutsideOrderInsertDate?: string;
-        OutsideOrderInsertUserId?: number;
-        OutsideOrderUpdateDate?: string;
-        OutsideOrderUpdateUserId?: number;
-        OutsideOrderIsActive?: number;
-        OutsideOrderDescription?: string;
-        OutsideOrderOrderStatusId?: number;
-        InsertUserId?: number;
-        InsertDate?: string;
-        UpdateUserId?: number;
-        UpdateDate?: string;
-        IsActive?: number;
-        InsertUserName?: string;
-        UpdateUserName?: string;
-    }
-    namespace OutsideOrderAttachmentsRow {
-        const idProperty = "OutsideOrderAttachmentId";
-        const isActiveProperty = "IsActive";
-        const nameProperty = "Name";
-        const localTextPrefix = "Erp.OutsideOrderAttachments";
-        const lookupKey = "Erp.OutsideOrderAttachments";
-        function getLookup(): Q.Lookup<OutsideOrderAttachmentsRow>;
-        const enum Fields {
-            OutsideOrderAttachmentId = "OutsideOrderAttachmentId",
-            Name = "Name",
-            Description = "Description",
-            FilePath = "FilePath",
-            OutsideOrderId = "OutsideOrderId",
-            OutsideOrderName = "OutsideOrderName",
-            OutsideOrderPriceTheyOffer = "OutsideOrderPriceTheyOffer",
-            OutsideOrderPriceWeSell = "OutsideOrderPriceWeSell",
-            OutsideOrderAccountRepresentsId = "OutsideOrderAccountRepresentsId",
-            OutsideOrderCompanyRepresentsId = "OutsideOrderCompanyRepresentsId",
-            OutsideOrderInsertDate = "OutsideOrderInsertDate",
-            OutsideOrderInsertUserId = "OutsideOrderInsertUserId",
-            OutsideOrderUpdateDate = "OutsideOrderUpdateDate",
-            OutsideOrderUpdateUserId = "OutsideOrderUpdateUserId",
-            OutsideOrderIsActive = "OutsideOrderIsActive",
-            OutsideOrderDescription = "OutsideOrderDescription",
-            OutsideOrderOrderStatusId = "OutsideOrderOrderStatusId",
-            InsertUserId = "InsertUserId",
-            InsertDate = "InsertDate",
-            UpdateUserId = "UpdateUserId",
-            UpdateDate = "UpdateDate",
-            IsActive = "IsActive",
-            InsertUserName = "InsertUserName",
-            UpdateUserName = "UpdateUserName",
-        }
-    }
-}
-declare namespace PGMS.Erp {
-    namespace OutsideOrderAttachmentsService {
-        const baseUrl = "Erp/OutsideOrderAttachments";
-        function Create(request: Serenity.SaveRequest<OutsideOrderAttachmentsRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function Update(request: Serenity.SaveRequest<OutsideOrderAttachmentsRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<OutsideOrderAttachmentsRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<OutsideOrderAttachmentsRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        const enum Methods {
-            Create = "Erp/OutsideOrderAttachments/Create",
-            Update = "Erp/OutsideOrderAttachments/Update",
-            Delete = "Erp/OutsideOrderAttachments/Delete",
-            Retrieve = "Erp/OutsideOrderAttachments/Retrieve",
-            List = "Erp/OutsideOrderAttachments/List",
         }
     }
 }
@@ -2196,17 +1994,6 @@ declare namespace PGMS {
         };
     }
 }
-declare namespace PGMS.LanguageList {
-    function getValue(): string[][];
-}
-declare namespace PGMS.Common {
-    class UserPreferenceStorage implements Serenity.SettingStorage {
-        getItem(key: string): string;
-        setItem(key: string, data: string): void;
-    }
-}
-declare namespace PGMS.ScriptInitialization {
-}
 declare namespace PGMS.Administration {
     class LanguageDialog extends Serenity.EntityDialog<LanguageRow, any> {
         protected getFormKey(): string;
@@ -2318,6 +2105,10 @@ declare namespace PGMS.Administration {
         protected getDefaultSortBy(): UserRow.Fields[];
     }
 }
+declare namespace PGMS.Authorization {
+    let userDefinition: ScriptUserDefinition;
+    function hasPermission(permissionKey: string): boolean;
+}
 declare namespace PGMS.Administration {
     class PermissionCheckEditor extends Serenity.DataGrid<PermissionCheckItem, PermissionCheckEditorOptions> {
         protected getIdProperty(): string;
@@ -2388,6 +2179,17 @@ declare namespace PGMS.Administration {
         userID: number;
         username: string;
     }
+}
+declare namespace PGMS.LanguageList {
+    function getValue(): string[][];
+}
+declare namespace PGMS.Common {
+    class UserPreferenceStorage implements Serenity.SettingStorage {
+        getItem(key: string): string;
+        setItem(key: string, data: string): void;
+    }
+}
+declare namespace PGMS.ScriptInitialization {
 }
 declare namespace PGMS {
     class BasicProgressDialog extends Serenity.TemplatedDialog<any> {
@@ -2932,26 +2734,6 @@ declare namespace PGMS.Erp {
     }
 }
 declare namespace PGMS.Erp {
-    class OrderAttachmentsDialog extends Serenity.EntityDialog<OrderAttachmentsRow, any> {
-        protected getFormKey(): string;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getNameProperty(): string;
-        protected getService(): string;
-        protected form: OrderAttachmentsForm;
-    }
-}
-declare namespace PGMS.Erp {
-    class OrderAttachmentsGrid extends Serenity.EntityGrid<OrderAttachmentsRow, any> {
-        protected getColumnsKey(): string;
-        protected getDialogType(): typeof OrderAttachmentsDialog;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getService(): string;
-        constructor(container: JQuery);
-    }
-}
-declare namespace PGMS.Erp {
     class OrderDetailsDialog extends Common.GridEditorDialog<OrderDetailsRow> {
         protected getFormKey(): string;
         protected getLocalTextPrefix(): string;
@@ -2973,11 +2755,6 @@ declare namespace PGMS.Erp {
     }
 }
 declare namespace PGMS.Erp {
-    class DeadlineFormatter implements Slick.Formatter {
-        format(ctx: Slick.FormatterContext): string;
-    }
-}
-declare namespace PGMS.Erp {
     class MyOrdersGrid extends Erp.OrdersGrid {
         protected totalRecord: number;
         protected myLookupQuickFilter: Serenity.LookupEditor;
@@ -2986,25 +2763,6 @@ declare namespace PGMS.Erp {
         protected createView(): Slick.RemoteView<OrdersRow>;
         protected onViewProcessData(response: Serenity.ListResponse<OrdersRow>): Serenity.ListResponse<OrdersRow>;
         protected onViewSubmit(): boolean;
-    }
-}
-declare namespace PGMS.Erp {
-    class OrderAttachmentsExtendedDialog extends OrderAttachmentsDialog {
-        constructor();
-        updateInterface(): void;
-    }
-}
-declare namespace PGMS.Erp {
-    class OrderAttachmentsExtendedGrid extends OrderAttachmentsGrid {
-        protected getDialogType(): typeof OrderAttachmentsExtendedDialog;
-        constructor(container: JQuery);
-        protected getColumns(): Slick.Column[];
-        protected initEntityDialog(itemType: any, dialog: any): void;
-        protected addButtonClick(): void;
-        protected getInitialTitle(): any;
-        protected getGridCanLoad(): boolean;
-        private _orderId;
-        orderId: number;
     }
 }
 declare namespace PGMS.Erp {
@@ -3033,45 +2791,6 @@ declare namespace PGMS.Erp {
         protected getLocalTextPrefix(): string;
         protected getService(): string;
         constructor(container: JQuery);
-    }
-}
-declare namespace PGMS.Erp {
-    class OutsideOrderAttachmentsDialog extends Serenity.EntityDialog<OutsideOrderAttachmentsRow, any> {
-        protected getFormKey(): string;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getNameProperty(): string;
-        protected getService(): string;
-        protected form: OutsideOrderAttachmentsForm;
-    }
-}
-declare namespace PGMS.Erp {
-    class OutsideOrderAttachmentsGrid extends Serenity.EntityGrid<OutsideOrderAttachmentsRow, any> {
-        protected getColumnsKey(): string;
-        protected getDialogType(): typeof OutsideOrderAttachmentsDialog;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getService(): string;
-        constructor(container: JQuery);
-    }
-}
-declare namespace PGMS.Erp {
-    class OutsideOrderAttachmentsExtendedDialog extends OutsideOrderAttachmentsDialog {
-        constructor();
-        updateInterface(): void;
-    }
-}
-declare namespace PGMS.Erp {
-    class OutsideOrderAttachmentsExtendedGrid extends OutsideOrderAttachmentsGrid {
-        protected getDialogType(): typeof OutsideOrderAttachmentsExtendedDialog;
-        constructor(container: JQuery);
-        protected getColumns(): Slick.Column[];
-        protected initEntityDialog(itemType: any, dialog: any): void;
-        protected addButtonClick(): void;
-        protected getInitialTitle(): any;
-        protected getGridCanLoad(): boolean;
-        private _outsideOrderId;
-        outsideOrderId: number;
     }
 }
 declare namespace PGMS.Erp {
@@ -3159,6 +2878,18 @@ declare namespace PGMS.Erp {
         constructor(container: JQuery);
     }
 }
+declare var Chart: any;
+declare namespace PGMS.Erp {
+    class IncomeVSExpense extends Serenity.TemplatedWidget<any> {
+        constructor(elem: JQuery, opt: {});
+    }
+}
+declare var Chart: any;
+declare namespace PGMS.Erp {
+    class OrdersPerStatus extends Serenity.TemplatedWidget<any> {
+        constructor(elem: JQuery, opt: {});
+    }
+}
 declare namespace PGMS.Erp {
     class SentEmailsDialog extends Serenity.EntityDialog<SentEmailsRow, any> {
         protected getFormKey(): string;
@@ -3224,22 +2955,6 @@ declare namespace PGMS.Erp {
         constructor(container: JQuery);
     }
 }
-declare namespace PGMS.Authorization {
-    let userDefinition: ScriptUserDefinition;
-    function hasPermission(permissionKey: string): boolean;
-}
-declare var Chart: any;
-declare namespace PGMS.Erp {
-    class IncomeVSExpense extends Serenity.TemplatedWidget<any> {
-        constructor(elem: JQuery, opt: {});
-    }
-}
-declare var Chart: any;
-declare namespace PGMS.Erp {
-    class OrdersPerStatus extends Serenity.TemplatedWidget<any> {
-        constructor(elem: JQuery, opt: {});
-    }
-}
 declare namespace PGMS.Membership {
     class ChangePasswordPanel extends Serenity.PropertyPanel<ChangePasswordRequest, any> {
         protected getFormKey(): string;
@@ -3266,5 +2981,290 @@ declare namespace PGMS.Membership {
         protected getFormKey(): string;
         private form;
         constructor(container: JQuery);
+    }
+}
+declare namespace PGMS.Erp {
+    interface OutsideOrderAttachmentsForm {
+        Name: Serenity.StringEditor;
+        Description: Serenity.HtmlNoteContentEditor;
+        FilePath: Serenity.MultipleImageUploadEditor;
+        OutsideOrderId: Serenity.LookupEditor;
+    }
+    class OutsideOrderAttachmentsForm extends Serenity.PrefixedContext {
+        static formKey: string;
+        private static init;
+        constructor(prefix: string);
+    }
+}
+declare namespace PGMS.Erp {
+    interface OutsideOrderAttachmentsRow {
+        OutsideOrderAttachmentId?: number;
+        Name?: string;
+        Description?: string;
+        FilePath?: string;
+        OutsideOrderId?: number;
+        OutsideOrderName?: string;
+        OutsideOrderPriceTheyOffer?: number;
+        OutsideOrderPriceWeSell?: number;
+        OutsideOrderAccountRepresentsId?: number;
+        OutsideOrderCompanyRepresentsId?: number;
+        OutsideOrderInsertDate?: string;
+        OutsideOrderInsertUserId?: number;
+        OutsideOrderUpdateDate?: string;
+        OutsideOrderUpdateUserId?: number;
+        OutsideOrderIsActive?: number;
+        OutsideOrderDescription?: string;
+        OutsideOrderOrderStatusId?: number;
+        InsertUserId?: number;
+        InsertDate?: string;
+        UpdateUserId?: number;
+        UpdateDate?: string;
+        IsActive?: number;
+        InsertUserName?: string;
+        UpdateUserName?: string;
+    }
+    namespace OutsideOrderAttachmentsRow {
+        const idProperty = "OutsideOrderAttachmentId";
+        const isActiveProperty = "IsActive";
+        const nameProperty = "Name";
+        const localTextPrefix = "Erp.OutsideOrderAttachments";
+        const lookupKey = "Erp.OutsideOrderAttachments";
+        function getLookup(): Q.Lookup<OutsideOrderAttachmentsRow>;
+        const enum Fields {
+            OutsideOrderAttachmentId = "OutsideOrderAttachmentId",
+            Name = "Name",
+            Description = "Description",
+            FilePath = "FilePath",
+            OutsideOrderId = "OutsideOrderId",
+            OutsideOrderName = "OutsideOrderName",
+            OutsideOrderPriceTheyOffer = "OutsideOrderPriceTheyOffer",
+            OutsideOrderPriceWeSell = "OutsideOrderPriceWeSell",
+            OutsideOrderAccountRepresentsId = "OutsideOrderAccountRepresentsId",
+            OutsideOrderCompanyRepresentsId = "OutsideOrderCompanyRepresentsId",
+            OutsideOrderInsertDate = "OutsideOrderInsertDate",
+            OutsideOrderInsertUserId = "OutsideOrderInsertUserId",
+            OutsideOrderUpdateDate = "OutsideOrderUpdateDate",
+            OutsideOrderUpdateUserId = "OutsideOrderUpdateUserId",
+            OutsideOrderIsActive = "OutsideOrderIsActive",
+            OutsideOrderDescription = "OutsideOrderDescription",
+            OutsideOrderOrderStatusId = "OutsideOrderOrderStatusId",
+            InsertUserId = "InsertUserId",
+            InsertDate = "InsertDate",
+            UpdateUserId = "UpdateUserId",
+            UpdateDate = "UpdateDate",
+            IsActive = "IsActive",
+            InsertUserName = "InsertUserName",
+            UpdateUserName = "UpdateUserName",
+        }
+    }
+}
+declare namespace PGMS.Erp {
+    namespace OutsideOrderAttachmentsService {
+        const baseUrl = "Erp/OutsideOrderAttachments";
+        function Create(request: Serenity.SaveRequest<OutsideOrderAttachmentsRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<OutsideOrderAttachmentsRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<OutsideOrderAttachmentsRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<OutsideOrderAttachmentsRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        const enum Methods {
+            Create = "Erp/OutsideOrderAttachments/Create",
+            Update = "Erp/OutsideOrderAttachments/Update",
+            Delete = "Erp/OutsideOrderAttachments/Delete",
+            Retrieve = "Erp/OutsideOrderAttachments/Retrieve",
+            List = "Erp/OutsideOrderAttachments/List",
+        }
+    }
+}
+declare namespace PGMS.Erp {
+    class OutsideOrderAttachmentsDialog extends Serenity.EntityDialog<OutsideOrderAttachmentsRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected form: OutsideOrderAttachmentsForm;
+    }
+}
+declare namespace PGMS.Erp {
+    class OutsideOrderAttachmentsGrid extends Serenity.EntityGrid<OutsideOrderAttachmentsRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof OutsideOrderAttachmentsDialog;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace PGMS.Erp {
+}
+declare namespace PGMS.Erp {
+    class OutsideOrderAttachmentsExtendedDialog extends OutsideOrderAttachmentsDialog {
+        constructor();
+        updateInterface(): void;
+    }
+}
+declare namespace PGMS.Erp {
+    class OutsideOrderAttachmentsExtendedGrid extends OutsideOrderAttachmentsGrid {
+        protected getDialogType(): typeof OutsideOrderAttachmentsExtendedDialog;
+        constructor(container: JQuery);
+        protected getColumns(): Slick.Column[];
+        protected initEntityDialog(itemType: any, dialog: any): void;
+        protected addButtonClick(): void;
+        protected getInitialTitle(): any;
+        protected getGridCanLoad(): boolean;
+        private _outsideOrderId;
+        outsideOrderId: number;
+    }
+}
+declare namespace PGMS.Erp {
+    interface OrderAttachmentsForm {
+        Name: Serenity.StringEditor;
+        Description: Serenity.HtmlNoteContentEditor;
+        FilePath: Serenity.MultipleImageUploadEditor;
+        OrderId: Serenity.LookupEditor;
+    }
+    class OrderAttachmentsForm extends Serenity.PrefixedContext {
+        static formKey: string;
+        private static init;
+        constructor(prefix: string);
+    }
+}
+declare namespace PGMS.Erp {
+    interface OrderAttachmentsRow {
+        OrderAttachmentId?: number;
+        Name?: string;
+        Description?: string;
+        FilePath?: string;
+        OrderId?: number;
+        OrderAccountId?: number;
+        OrderCompanyId?: number;
+        OrderPaymentTypeId?: number;
+        OrderWidth?: number;
+        OrderHeight?: number;
+        OrderOrderDate?: string;
+        OrderShippedDate?: string;
+        OrderShipName?: string;
+        OrderShipAddress?: string;
+        OrderShipCity?: string;
+        OrderShipCountry?: string;
+        OrderUserId?: number;
+        OrderOrderStatusId?: number;
+        OrderInsertDate?: string;
+        OrderInsertUserId?: number;
+        OrderUpdateDate?: string;
+        OrderUpdateUserId?: number;
+        OrderIsActive?: number;
+        OrderDeadLine?: string;
+        InsertUserId?: number;
+        InsertDate?: string;
+        UpdateUserId?: number;
+        UpdateDate?: string;
+        IsActive?: number;
+        InsertUserName?: string;
+        UpdateUserName?: string;
+    }
+    namespace OrderAttachmentsRow {
+        const idProperty = "OrderAttachmentId";
+        const isActiveProperty = "IsActive";
+        const nameProperty = "Name";
+        const localTextPrefix = "Erp.OrderAttachments";
+        const lookupKey = "Erp.OrderAttachments";
+        function getLookup(): Q.Lookup<OrderAttachmentsRow>;
+        const enum Fields {
+            OrderAttachmentId = "OrderAttachmentId",
+            Name = "Name",
+            Description = "Description",
+            FilePath = "FilePath",
+            OrderId = "OrderId",
+            OrderAccountId = "OrderAccountId",
+            OrderCompanyId = "OrderCompanyId",
+            OrderPaymentTypeId = "OrderPaymentTypeId",
+            OrderWidth = "OrderWidth",
+            OrderHeight = "OrderHeight",
+            OrderOrderDate = "OrderOrderDate",
+            OrderShippedDate = "OrderShippedDate",
+            OrderShipName = "OrderShipName",
+            OrderShipAddress = "OrderShipAddress",
+            OrderShipCity = "OrderShipCity",
+            OrderShipCountry = "OrderShipCountry",
+            OrderUserId = "OrderUserId",
+            OrderOrderStatusId = "OrderOrderStatusId",
+            OrderInsertDate = "OrderInsertDate",
+            OrderInsertUserId = "OrderInsertUserId",
+            OrderUpdateDate = "OrderUpdateDate",
+            OrderUpdateUserId = "OrderUpdateUserId",
+            OrderIsActive = "OrderIsActive",
+            OrderDeadLine = "OrderDeadLine",
+            InsertUserId = "InsertUserId",
+            InsertDate = "InsertDate",
+            UpdateUserId = "UpdateUserId",
+            UpdateDate = "UpdateDate",
+            IsActive = "IsActive",
+            InsertUserName = "InsertUserName",
+            UpdateUserName = "UpdateUserName",
+        }
+    }
+}
+declare namespace PGMS.Erp {
+    namespace OrderAttachmentsService {
+        const baseUrl = "Erp/OrderAttachments";
+        function Create(request: Serenity.SaveRequest<OrderAttachmentsRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<OrderAttachmentsRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<OrderAttachmentsRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<OrderAttachmentsRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        const enum Methods {
+            Create = "Erp/OrderAttachments/Create",
+            Update = "Erp/OrderAttachments/Update",
+            Delete = "Erp/OrderAttachments/Delete",
+            Retrieve = "Erp/OrderAttachments/Retrieve",
+            List = "Erp/OrderAttachments/List",
+        }
+    }
+}
+declare namespace PGMS.Erp {
+    class OrderAttachmentsDialog extends Serenity.EntityDialog<OrderAttachmentsRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected form: OrderAttachmentsForm;
+    }
+}
+declare namespace PGMS.Erp {
+    class OrderAttachmentsGrid extends Serenity.EntityGrid<OrderAttachmentsRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof OrderAttachmentsDialog;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace PGMS.Erp {
+}
+declare namespace PGMS.Erp {
+    class OrderAttachmentsExtendedDialog extends OrderAttachmentsDialog {
+        constructor();
+        updateInterface(): void;
+    }
+}
+declare namespace PGMS.Erp {
+    class OrderAttachmentsExtendedGrid extends OrderAttachmentsGrid {
+        protected getDialogType(): typeof OrderAttachmentsExtendedDialog;
+        constructor(container: JQuery);
+        protected getColumns(): Slick.Column[];
+        protected initEntityDialog(itemType: any, dialog: any): void;
+        protected addButtonClick(): void;
+        protected getInitialTitle(): any;
+        protected getGridCanLoad(): boolean;
+        private _orderId;
+        orderId: number;
+    }
+}
+declare namespace PGMS.Erp {
+    class DeadlineFormatter implements Slick.Formatter {
+        format(ctx: Slick.FormatterContext): string;
     }
 }

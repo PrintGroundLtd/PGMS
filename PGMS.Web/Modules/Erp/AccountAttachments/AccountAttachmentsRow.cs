@@ -31,7 +31,7 @@ namespace PGMS.Erp.Entities
             set { Fields.Name[this] = value; }
         }
 
-        [DisplayName("Description"), Size(255), NotNull]
+        [DisplayName("Description")]
         [HtmlNoteContentEditor]
         public String Description
         {
@@ -39,7 +39,7 @@ namespace PGMS.Erp.Entities
             set { Fields.Description[this] = value; }
         }
 
-        [DisplayName("File Path"), Size(100), NotNull]
+        [DisplayName("File Path"), NotNull]
         [MultipleFileUploadEditor]
         public String FilePath
         {
