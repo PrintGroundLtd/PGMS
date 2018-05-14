@@ -2,6 +2,7 @@
 namespace PGMS.Erp {
 
     @Serenity.Decorators.registerClass()
+    @Serenity.Decorators.maximizable()
     export class OrderDetailsDialog extends Common.GridEditorDialog<OrderDetailsRow> {
         protected getFormKey() { return OrderDetailsForm.formKey; }
         protected getLocalTextPrefix() { return OrderDetailsRow.localTextPrefix; }
@@ -22,7 +23,26 @@ namespace PGMS.Erp {
                     this.form.UnitPrice.value = ProductsRow.getLookup().itemById[productId].UnitPrice;
                 }
             });
-             
+
+            this.form.Width.change(e => {
+                var height = this.form.Height.value;
+                var width = this.form.Width.value;
+                if (height != null && width != null) {
+                    this.form.Quadrature.value = height * width;
+                } else {
+                    this.form.Quadrature.value = 0;
+                }
+            });
+
+            this.form.Height.change(e => {
+                var height = this.form.Height.value;
+                var width = this.form.Width.value;
+                if (height != null && width != null) {
+                    this.form.Quadrature.value = height * width;
+                } else {
+                    this.form.Quadrature.value = 0;
+                }
+            });
             this.form.Discount.addValidationRule(this.uniqueName, e => {
                 var price = this.form.UnitPrice.value;
                 var quantity = this.form.Quantity.value;

@@ -26,8 +26,15 @@ namespace PGMS.Erp.Entities
             set { Fields.ExpenseId[this] = value; }
         }
 
-        [DisplayName("Description"), Size(500), NotNull, QuickSearch]
-        [TextAreaEditor]
+        [DisplayName("Name"), Size(200), NotNull, QuickSearch]
+        public String Name
+        {
+            get { return Fields.Name[this]; }
+            set { Fields.Name[this] = value; }
+        }
+
+        [DisplayName("Description")]
+        [HtmlNoteContentEditor]
         public String Description
         {
             get { return Fields.Description[this]; }
@@ -134,7 +141,7 @@ namespace PGMS.Erp.Entities
 
         StringField INameRow.NameField
         {
-            get { return Fields.Description; }
+            get { return Fields.Name; }
         }
 
         public static readonly RowFields Fields = new RowFields().Init();
@@ -147,6 +154,7 @@ namespace PGMS.Erp.Entities
         public class RowFields : ErpLoggingRowFields
         {
             public Int32Field ExpenseId;
+            public StringField Name;
             public StringField Description;
             public DecimalField Total;
             public DateTimeField TransactionDate;

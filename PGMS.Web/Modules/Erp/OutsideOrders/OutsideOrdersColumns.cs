@@ -26,6 +26,8 @@ namespace PGMS.Erp.Columns
         public String Name { get; set; }
         public Decimal PriceTheyOffer { get; set; }
         public Decimal PriceWeSell { get; set; }
+        [EditLink(IdField = "AccountRepresentsId", ItemType = "Erp.Accounts")]
+        [Hint("Open Account")]
         public String AccountRepresentsName { get; set; }
         public String CompanyRepresentsName { get; set; }
 

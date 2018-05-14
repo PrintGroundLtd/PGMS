@@ -20,6 +20,8 @@ namespace PGMS.Erp.Columns
         public Boolean Discontinued { get; set; }
         public String SupplierName { get; set; }
         public String QuantityPerUnit { get; set; }
+        public Decimal UnitPriceWithDDS { get; set; }
+        public Decimal UnitPricePartner { get; set; }
         public Decimal UnitPrice { get; set; }
         public Int16 UnitsInStock { get; set; }
         public Int16 UnitsOnOrder { get; set; }

@@ -20,7 +20,7 @@ namespace PGMS.Erp.Columns
         [FilterOnly()]
         public Int32 BudgetId { get; set; }
         [EditLink]
-        public String Description { get; set; }
+        public String Name { get; set; }
         public Decimal Total { get; set; }
         public DateTime TransactionDate { get; set; }
         public String BudgetName { get; set; }

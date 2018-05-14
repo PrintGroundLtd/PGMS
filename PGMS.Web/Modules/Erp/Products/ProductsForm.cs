@@ -15,10 +15,13 @@ namespace PGMS.Erp.Forms
     {
         [Category("General")]
         public String Name { get; set; }
+        public String Description { get; set; }
         public String ProductImage { get; set; }
         public Boolean Discontinued { get; set; }
         public Int32 SupplierId { get; set; }
         [Category("Pricing")]
+        public Decimal UnitPriceWithDDS { get; set; }
+        public Decimal UnitPricePartner { get; set; }
         public String QuantityPerUnit { get; set; }
         public Decimal UnitPrice { get; set; }
         [Category("Status")]

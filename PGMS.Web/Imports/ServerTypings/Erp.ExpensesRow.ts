@@ -1,6 +1,7 @@
 ﻿namespace PGMS.Erp {
     export interface ExpensesRow {
         ExpenseId?: number;
+        Name?: string;
         Description?: string;
         Total?: number;
         TransactionDate?: string;
@@ -26,7 +27,7 @@
     export namespace ExpensesRow {
         export const idProperty = 'ExpenseId';
         export const isActiveProperty = 'IsActive';
-        export const nameProperty = 'Description';
+        export const nameProperty = 'Name';
         export const localTextPrefix = 'Erp.Expenses';
         export const lookupKey = 'Erp.Expenses';
 
@@ -36,6 +37,7 @@
 
         export declare const enum Fields {
             ExpenseId = "ExpenseId",
+            Name = "Name",
             Description = "Description",
             Total = "Total",
             TransactionDate = "TransactionDate",

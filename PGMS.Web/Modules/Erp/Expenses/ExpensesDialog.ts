@@ -1,6 +1,7 @@
 ﻿
 namespace PGMS.Erp {
 
+    @Serenity.Decorators.maximizable()
     @Serenity.Decorators.registerClass()
     export class ExpensesDialog extends Serenity.EntityDialog<ExpensesRow, any> {
         protected getFormKey() { return ExpensesForm.formKey; }

@@ -36,8 +36,6 @@ namespace PGMS.Erp.Columns
         public decimal Total { get; set; }
         [EditLink]
         public String PaymentTypeName { get; set; } 
-        public Int16 Width { get; set; }
-        public Int16 Height { get; set; }
         public DateTime OrderDate { get; set; }
         [DeadlineFormatter]
         public DateTime DeadLine { get; set; }

@@ -50,7 +50,7 @@ namespace PGMS.Erp.Entities
         }
 
         [DisplayName("Account Represents"), ForeignKey(typeof(AccountsRow)), LeftJoin("jAccountRepresents"), TextualField("AccountRepresentsName")]
-        [LookupEditor(typeof(AccountsRow), FilterField = "IsActive", FilterValue = 1)]
+        [LookupEditor(typeof(AccountsRow), FilterField = "IsActive", FilterValue = 1, InplaceAdd = true)]
         public Int32? AccountRepresentsId
         {
             get { return Fields.AccountRepresentsId[this]; }

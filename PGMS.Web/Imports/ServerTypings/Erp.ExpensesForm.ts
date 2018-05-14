@@ -1,6 +1,7 @@
 ﻿namespace PGMS.Erp {
     export interface ExpensesForm {
-        Description: Serenity.TextAreaEditor;
+        Name: Serenity.StringEditor;
+        Description: Serenity.HtmlNoteContentEditor;
         Total: Serenity.DecimalEditor;
         TransactionDate: Serenity.DateTimeEditor;
         BudgetId: Serenity.LookupEditor;
@@ -19,18 +20,20 @@
                 ExpensesForm.init = true;
 
                 var s = Serenity;
-                var w0 = s.TextAreaEditor;
-                var w1 = s.DecimalEditor;
-                var w2 = s.DateTimeEditor;
-                var w3 = s.LookupEditor;
+                var w0 = s.StringEditor;
+                var w1 = s.HtmlNoteContentEditor;
+                var w2 = s.DecimalEditor;
+                var w3 = s.DateTimeEditor;
+                var w4 = s.LookupEditor;
 
                 Q.initFormType(ExpensesForm, [
-                    'Description', w0,
-                    'Total', w1,
-                    'TransactionDate', w2,
-                    'BudgetId', w3,
-                    'PaymentTypeId', w3,
-                    'UserId', w3
+                    'Name', w0,
+                    'Description', w1,
+                    'Total', w2,
+                    'TransactionDate', w3,
+                    'BudgetId', w4,
+                    'PaymentTypeId', w4,
+                    'UserId', w4
                 ]);
             }
         }

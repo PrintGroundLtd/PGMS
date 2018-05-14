@@ -853,7 +853,8 @@ declare namespace PGMS.Erp {
 }
 declare namespace PGMS.Erp {
     interface ExpensesForm {
-        Description: Serenity.TextAreaEditor;
+        Name: Serenity.StringEditor;
+        Description: Serenity.HtmlNoteContentEditor;
         Total: Serenity.DecimalEditor;
         TransactionDate: Serenity.DateTimeEditor;
         BudgetId: Serenity.LookupEditor;
@@ -869,6 +870,7 @@ declare namespace PGMS.Erp {
 declare namespace PGMS.Erp {
     interface ExpensesRow {
         ExpenseId?: number;
+        Name?: string;
         Description?: string;
         Total?: number;
         TransactionDate?: string;
@@ -893,12 +895,13 @@ declare namespace PGMS.Erp {
     namespace ExpensesRow {
         const idProperty = "ExpenseId";
         const isActiveProperty = "IsActive";
-        const nameProperty = "Description";
+        const nameProperty = "Name";
         const localTextPrefix = "Erp.Expenses";
         const lookupKey = "Erp.Expenses";
         function getLookup(): Q.Lookup<ExpensesRow>;
         const enum Fields {
             ExpenseId = "ExpenseId",
+            Name = "Name",
             Description = "Description",
             Total = "Total",
             TransactionDate = "TransactionDate",
@@ -1083,12 +1086,14 @@ declare namespace PGMS.Erp {
 declare namespace PGMS.Erp {
     interface OrderDetailsForm {
         ProductId: Serenity.LookupEditor;
+        Description: Serenity.HtmlNoteContentEditor;
         Width: Serenity.DecimalEditor;
         Height: Serenity.DecimalEditor;
-        Description: Serenity.HtmlNoteContentEditor;
-        UnitPrice: Serenity.DecimalEditor;
+        Quadrature: Serenity.DecimalEditor;
         Quantity: Serenity.IntegerEditor;
+        UnitPrice: Serenity.DecimalEditor;
         Discount: Serenity.DecimalEditor;
+        AdditionalCosts: Serenity.DecimalEditor;
         NoteList: NotesEditor;
     }
     class OrderDetailsForm extends Serenity.PrefixedContext {
@@ -1105,9 +1110,11 @@ declare namespace PGMS.Erp {
         UnitPrice?: number;
         Quantity?: number;
         Discount?: number;
+        AdditionalCosts?: number;
         Description?: string;
         Width?: number;
         Height?: number;
+        Quadrature?: number;
         ProductName?: string;
         ProductProductImage?: string;
         ProductDiscontinued?: boolean;
@@ -1134,9 +1141,11 @@ declare namespace PGMS.Erp {
             UnitPrice = "UnitPrice",
             Quantity = "Quantity",
             Discount = "Discount",
+            AdditionalCosts = "AdditionalCosts",
             Description = "Description",
             Width = "Width",
             Height = "Height",
+            Quadrature = "Quadrature",
             ProductName = "ProductName",
             ProductProductImage = "ProductProductImage",
             ProductDiscontinued = "ProductDiscontinued",
@@ -1793,9 +1802,12 @@ declare namespace PGMS.Erp {
 declare namespace PGMS.Erp {
     interface ProductsForm {
         Name: Serenity.StringEditor;
+        Description: Serenity.HtmlNoteContentEditor;
         ProductImage: Serenity.ImageUploadEditor;
         Discontinued: Serenity.BooleanEditor;
         SupplierId: Serenity.LookupEditor;
+        UnitPriceWithDDS: Serenity.DecimalEditor;
+        UnitPricePartner: Serenity.DecimalEditor;
         QuantityPerUnit: Serenity.StringEditor;
         UnitPrice: Serenity.DecimalEditor;
         UnitsInStock: Serenity.IntegerEditor;
@@ -1813,11 +1825,14 @@ declare namespace PGMS.Erp {
     interface ProductsRow {
         ProductId?: number;
         Name?: string;
+        Description?: string;
         ProductImage?: string;
         Discontinued?: boolean;
         SupplierId?: number;
         QuantityPerUnit?: string;
         UnitPrice?: number;
+        UnitPriceWithDDS?: number;
+        UnitPricePartner?: number;
         UnitsInStock?: number;
         UnitsOnOrder?: number;
         ReorderLevel?: number;
@@ -1845,11 +1860,14 @@ declare namespace PGMS.Erp {
         const enum Fields {
             ProductId = "ProductId",
             Name = "Name",
+            Description = "Description",
             ProductImage = "ProductImage",
             Discontinued = "Discontinued",
             SupplierId = "SupplierId",
             QuantityPerUnit = "QuantityPerUnit",
             UnitPrice = "UnitPrice",
+            UnitPriceWithDDS = "UnitPriceWithDDS",
+            UnitPricePartner = "UnitPricePartner",
             UnitsInStock = "UnitsInStock",
             UnitsOnOrder = "UnitsOnOrder",
             ReorderLevel = "ReorderLevel",

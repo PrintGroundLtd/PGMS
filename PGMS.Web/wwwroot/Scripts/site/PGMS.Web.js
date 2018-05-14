@@ -686,17 +686,19 @@ var PGMS;
                 if (!ExpensesForm.init) {
                     ExpensesForm.init = true;
                     var s = Serenity;
-                    var w0 = s.TextAreaEditor;
-                    var w1 = s.DecimalEditor;
-                    var w2 = s.DateTimeEditor;
-                    var w3 = s.LookupEditor;
+                    var w0 = s.StringEditor;
+                    var w1 = s.HtmlNoteContentEditor;
+                    var w2 = s.DecimalEditor;
+                    var w3 = s.DateTimeEditor;
+                    var w4 = s.LookupEditor;
                     Q.initFormType(ExpensesForm, [
-                        'Description', w0,
-                        'Total', w1,
-                        'TransactionDate', w2,
-                        'BudgetId', w3,
-                        'PaymentTypeId', w3,
-                        'UserId', w3
+                        'Name', w0,
+                        'Description', w1,
+                        'Total', w2,
+                        'TransactionDate', w3,
+                        'BudgetId', w4,
+                        'PaymentTypeId', w4,
+                        'UserId', w4
                     ]);
                 }
                 return _this;
@@ -715,7 +717,7 @@ var PGMS;
         (function (ExpensesRow) {
             ExpensesRow.idProperty = 'ExpenseId';
             ExpensesRow.isActiveProperty = 'IsActive';
-            ExpensesRow.nameProperty = 'Description';
+            ExpensesRow.nameProperty = 'Name';
             ExpensesRow.localTextPrefix = 'Erp.Expenses';
             ExpensesRow.lookupKey = 'Erp.Expenses';
             function getLookup() {
@@ -839,18 +841,20 @@ var PGMS;
                     OrderDetailsForm.init = true;
                     var s = Serenity;
                     var w0 = s.LookupEditor;
-                    var w1 = s.DecimalEditor;
-                    var w2 = s.HtmlNoteContentEditor;
+                    var w1 = s.HtmlNoteContentEditor;
+                    var w2 = s.DecimalEditor;
                     var w3 = s.IntegerEditor;
                     var w4 = Erp.NotesEditor;
                     Q.initFormType(OrderDetailsForm, [
                         'ProductId', w0,
-                        'Width', w1,
-                        'Height', w1,
-                        'Description', w2,
-                        'UnitPrice', w1,
+                        'Description', w1,
+                        'Width', w2,
+                        'Height', w2,
+                        'Quadrature', w2,
                         'Quantity', w3,
-                        'Discount', w1,
+                        'UnitPrice', w2,
+                        'Discount', w2,
+                        'AdditionalCosts', w2,
                         'NoteList', w4
                     ]);
                 }
@@ -1388,23 +1392,27 @@ var PGMS;
                     ProductsForm.init = true;
                     var s = Serenity;
                     var w0 = s.StringEditor;
-                    var w1 = s.ImageUploadEditor;
-                    var w2 = s.BooleanEditor;
-                    var w3 = s.LookupEditor;
-                    var w4 = s.DecimalEditor;
-                    var w5 = s.IntegerEditor;
-                    var w6 = Erp.NotesEditor;
+                    var w1 = s.HtmlNoteContentEditor;
+                    var w2 = s.ImageUploadEditor;
+                    var w3 = s.BooleanEditor;
+                    var w4 = s.LookupEditor;
+                    var w5 = s.DecimalEditor;
+                    var w6 = s.IntegerEditor;
+                    var w7 = Erp.NotesEditor;
                     Q.initFormType(ProductsForm, [
                         'Name', w0,
-                        'ProductImage', w1,
-                        'Discontinued', w2,
-                        'SupplierId', w3,
+                        'Description', w1,
+                        'ProductImage', w2,
+                        'Discontinued', w3,
+                        'SupplierId', w4,
+                        'UnitPriceWithDDS', w5,
+                        'UnitPricePartner', w5,
                         'QuantityPerUnit', w0,
-                        'UnitPrice', w4,
-                        'UnitsInStock', w5,
-                        'UnitsOnOrder', w5,
-                        'ReorderLevel', w5,
-                        'NoteList', w6
+                        'UnitPrice', w5,
+                        'UnitsInStock', w6,
+                        'UnitsOnOrder', w6,
+                        'ReorderLevel', w6,
+                        'NoteList', w7
                     ]);
                 }
                 return _this;
@@ -4129,6 +4137,7 @@ var PGMS;
             };
             OrdersDialog = __decorate([
                 Serenity.Decorators.panel(),
+                Serenity.Decorators.maximizable(),
                 Serenity.Decorators.registerClass()
             ], OrdersDialog);
             return OrdersDialog;
@@ -4151,6 +4160,7 @@ var PGMS;
                 Serenity.EditorUtils.setReadOnly(this.form.AccountId, true);
             };
             AccountOrdersDialog = __decorate([
+                Serenity.Decorators.maximizable(),
                 Serenity.Decorators.registerClass()
             ], AccountOrdersDialog);
             return AccountOrdersDialog;
@@ -4359,6 +4369,7 @@ var PGMS;
             };
             OutsideOrdersDialog = __decorate([
                 Serenity.Decorators.panel(),
+                Serenity.Decorators.maximizable(),
                 Serenity.Decorators.registerClass()
             ], OutsideOrdersDialog);
             return OutsideOrdersDialog;
@@ -4696,6 +4707,7 @@ var PGMS;
                 }
             };
             ExpensesDialog = __decorate([
+                Serenity.Decorators.maximizable(),
                 Serenity.Decorators.registerClass()
             ], ExpensesDialog);
             return ExpensesDialog;
@@ -5237,6 +5249,26 @@ var PGMS;
                         _this.form.UnitPrice.value = Erp.ProductsRow.getLookup().itemById[productId].UnitPrice;
                     }
                 });
+                _this.form.Width.change(function (e) {
+                    var height = _this.form.Height.value;
+                    var width = _this.form.Width.value;
+                    if (height != null && width != null) {
+                        _this.form.Quadrature.value = height * width;
+                    }
+                    else {
+                        _this.form.Quadrature.value = 0;
+                    }
+                });
+                _this.form.Height.change(function (e) {
+                    var height = _this.form.Height.value;
+                    var width = _this.form.Width.value;
+                    if (height != null && width != null) {
+                        _this.form.Quadrature.value = height * width;
+                    }
+                    else {
+                        _this.form.Quadrature.value = 0;
+                    }
+                });
                 _this.form.Discount.addValidationRule(_this.uniqueName, function (e) {
                     var price = _this.form.UnitPrice.value;
                     var quantity = _this.form.Quantity.value;
@@ -5267,7 +5299,8 @@ var PGMS;
                 }
             };
             OrderDetailsDialog = __decorate([
-                Serenity.Decorators.registerClass()
+                Serenity.Decorators.registerClass(),
+                Serenity.Decorators.maximizable()
             ], OrderDetailsDialog);
             return OrderDetailsDialog;
         }(PGMS.Common.GridEditorDialog));
@@ -5297,7 +5330,9 @@ var PGMS;
                 var productLookup = Erp.ProductsRow.getLookup().itemById[row.ProductId];
                 row.ProductQuantityPerUnit = productLookup.QuantityPerUnit;
                 row.ProductName = productLookup.Name;
-                row.LineTotal = (row.Quantity || 0) * (row.UnitPrice || 0) - (row.Discount || 0);
+                row.LineTotal = (row.Quantity || 0) * (row.UnitPrice || 0) - (row.Discount || 0) + (row.AdditionalCosts || 0);
+                if (row.Quadrature > 0)
+                    row.LineTotal = row.LineTotal * row.Quadrature;
                 return true;
             };
             OrderDetailsEditor = __decorate([
@@ -5680,6 +5715,7 @@ var PGMS;
             PartnersDialog.prototype.getNameProperty = function () { return Erp.PartnersRow.nameProperty; };
             PartnersDialog.prototype.getService = function () { return Erp.PartnersService.baseUrl; };
             PartnersDialog = __decorate([
+                Serenity.Decorators.maximizable(),
                 Serenity.Decorators.registerClass()
             ], PartnersDialog);
             return PartnersDialog;
@@ -5836,6 +5872,8 @@ var PGMS;
                 this.loadedState = this.getSaveState();
             };
             ProductsDialog = __decorate([
+                Serenity.Decorators.panel(),
+                Serenity.Decorators.maximizable(),
                 Serenity.Decorators.registerClass()
             ], ProductsDialog);
             return ProductsDialog;

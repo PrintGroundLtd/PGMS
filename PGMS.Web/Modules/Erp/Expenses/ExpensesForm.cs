@@ -13,6 +13,7 @@ namespace PGMS.Erp.Forms
     [BasedOnRow(typeof(Entities.ExpensesRow), CheckNames = true)]
     public class ExpensesForm
     {
+        public String Name { get; set; }
         public String Description { get; set; }
         public Decimal Total { get; set; }
         [DefaultValue("now")]
