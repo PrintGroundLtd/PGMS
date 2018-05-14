@@ -24,6 +24,8 @@ namespace PGMS.Erp.Columns
         public Decimal Total { get; set; }
         public DateTime TransactionDate { get; set; }
         public String BudgetName { get; set; }
+        [TransactionTypeFormatter]
+        public Int16 TransactionType { get; set; }
         public String PaymentTypeName { get; set; }
 
         public String UserUsername { get; set; }

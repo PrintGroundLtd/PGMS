@@ -19,7 +19,7 @@ namespace PGMS.Erp.Forms
         public String ProductImage { get; set; }
         public Boolean Discontinued { get; set; }
         public Int32 SupplierId { get; set; }
-        [Category("Pricing")]
+        [Category("Pricing")] 
         public Decimal UnitPriceWithDDS { get; set; }
         public Decimal UnitPricePartner { get; set; }
         public String QuantityPerUnit { get; set; }

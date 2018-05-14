@@ -1,4 +1,6 @@
 ﻿
+using PGMS.Erp.Entities;
+
 namespace PGMS.Erp.Forms
 {
     using Serenity;
@@ -16,12 +18,13 @@ namespace PGMS.Erp.Forms
         public String Name { get; set; }
         public String Description { get; set; }
         public Decimal Total { get; set; }
-        [DefaultValue("now")]
-        public DateTime TransactionDate { get; set; }
-
+        public Int16 TransactionType { get; set; }
         public Int32 BudgetId { get; set; }
+        [DefaultValue(1)]
         public Int32 PaymentTypeId { get; set; }
         public Int32 UserId { get; set; }
+        [DefaultValue("now")]
+        public DateTime TransactionDate { get; set; }
 
     }
 }

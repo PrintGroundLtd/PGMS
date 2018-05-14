@@ -1,4 +1,8 @@
 ﻿
+using System;
+using Serenity.Reporting;
+using Serenity.Web;
+
 namespace PGMS.Erp.Endpoints
 {
     using Serenity;
@@ -41,6 +45,16 @@ namespace PGMS.Erp.Endpoints
         public ListResponse<MyRow> List(IDbConnection connection, ListRequest request)
         {
             return new MyRepository().List(connection, request);
+        }
+
+
+        public FileContentResult ListExcel(IDbConnection connection, ListRequest request)
+        {
+            var data = List(connection, request).Entities;
+            var report = new DynamicDataReport(data, request.IncludeColumns, typeof(Columns.ProductsColumns));
+            var bytes = new ReportRepository().Render(report);
+            var reportName = "Products_";
+            return ExcelContentResult.Create(bytes, reportName + DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".xlsx");
         }
     }
 }

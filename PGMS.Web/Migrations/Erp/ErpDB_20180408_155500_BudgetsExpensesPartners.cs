@@ -13,7 +13,7 @@ namespace PGMS.Migrations.DefaultDB
         {
             this.CreateTableWithId32("Budgets", "BudgetId", s => s
                 .WithColumn("Name").AsString(500).NotNullable()
-                .WithColumn("Total").AsCurrency().Nullable()
+                //.WithColumn("Total").AsCurrency().Nullable()
                 .WithColumn("PaymentTypeId").AsInt32().NotNullable()
                 .ForeignKey("PaymentTypes", "PaymentTypeId")
                 .WithColumn("BudgetPeriod").AsInt32().Nullable()

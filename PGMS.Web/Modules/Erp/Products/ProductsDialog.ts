@@ -22,7 +22,7 @@ namespace PGMS.Erp {
             DialogUtils.pendingChangesConfirmation(this.element, () => this.getSaveState() != this.loadedState);
 
         }
-        loadEntity(entity: Erp.AccountsRow): void {
+        loadEntity(entity: Erp.ProductsRow): void {
             super.loadEntity(entity);
             
             Serenity.TabsExtensions.setDisabled(this.tabs, 'Notes', this.isNewOrDeleted());

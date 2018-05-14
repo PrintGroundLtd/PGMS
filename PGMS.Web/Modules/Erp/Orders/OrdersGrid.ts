@@ -38,9 +38,20 @@ namespace PGMS.Erp {
 
             var buttons = super.getButtons();
             var text = Q.text("Site.GroupByButton");
+
+            buttons.push(PGMS.Common.ExcelExportHelper.createToolButton({
+                grid: this,
+                onViewSubmit: () => this.onViewSubmit(),
+                service: OrdersService.baseUrl + '/ListExcel',
+                separator: true,
+                hint: Q.tryGetText("Site.ExportToExcelHintButton"),
+                title: Q.tryGetText("Site.ExportToExcelButton") 
+            }));
+
             buttons.push({
                 title: text +  Q.text("Db.Erp.Accounts.EntitySingular"),
                 cssClass: 'expand-all-button',
+                separator: true,
                 onClick: () => this.view.setGrouping(
                     [
                         {

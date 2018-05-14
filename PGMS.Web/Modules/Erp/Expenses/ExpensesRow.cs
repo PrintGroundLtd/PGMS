@@ -41,6 +41,14 @@ namespace PGMS.Erp.Entities
             set { Fields.Description[this] = value; }
         }
 
+        [DisplayName("Transaction Type"), NotNull]
+        public TransactionType? TransactionType
+        {
+            get { return (TransactionType?)Fields.TransactionType[this]; }
+            set { Fields.TransactionType[this] = (Int16?)value; }
+        }
+
+
         [DisplayName("Total"), Size(19), Scale(2), NotNull, DecimalEditor]
         public Decimal? Total
         {
@@ -159,6 +167,7 @@ namespace PGMS.Erp.Entities
             public DecimalField Total;
             public DateTimeField TransactionDate;
 
+            public Int16Field TransactionType;
             public Int32Field BudgetId;
             public Int32Field PaymentTypeId;
 

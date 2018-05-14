@@ -14,6 +14,23 @@ namespace PGMS.Erp {
         }
 
 
+
+        protected getButtons() {
+
+            var buttons = super.getButtons();
+            var text = Q.text("Site.GroupByButton");
+
+
+            buttons.push(PGMS.Common.ExcelExportHelper.createToolButton({
+                grid: this,
+                onViewSubmit: () => this.onViewSubmit(),
+                service: AccountsService.baseUrl + '/ListExcel',
+                separator: true,
+                hint: Q.tryGetText("Site.ExportToExcelHintButton"),
+                title: Q.tryGetText("Site.ExportToExcelButton")
+            }));
+            return buttons;
+        }
         protected getItemCssClass(item: AccountsRow, index: number): string {
             let klass: string = "";
 

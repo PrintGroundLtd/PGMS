@@ -19,7 +19,7 @@ namespace PGMS.Migrations.DefaultDB
 
             Alter.Table("Expenses")
                 .AddColumn("Name").AsString(200).NotNullable().WithDefaultValue("Add Name")
-                .AddColumn("ExpenseType").AsInt16().NotNullable().WithDefaultValue(0);
+                .AddColumn("TransactionType").AsInt16().NotNullable().WithDefaultValue(1);
 
         }
     }

@@ -29,6 +29,12 @@ namespace PGMS.Erp {
             super.loadEntity(entity);
             Serenity.TabsExtensions.setDisabled(this.tabs, 'Notes', this.isNewOrDeleted());
             Serenity.TabsExtensions.setDisabled(this.tabs, 'Attachments', this.isNewOrDeleted());
+
+            if (this.isNew()) {
+                var date = new Date();
+                date.setDate(date.getDate() + 2);
+                this.form.DeadLine.value =date.toISOString();
+            }
             this.attachmentsGrid.orderId = entity.OrderId;
 
         }
