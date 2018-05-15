@@ -19,8 +19,8 @@ namespace PGMS.Erp.Columns
         [AccountFormatter(IsVipProperty = "IsVip")]
         public String Name { get; set; }
         public String Email { get; set; }
-        [CompaniesListFormatter, Width(300)]
-        public List<Int32> AccountCompanies { get; set; }
+        //[CompaniesListFormatter, Width(300)]
+        //public List<Int32> AccountCompanies { get; set; }
         [FilterOnly()]
         public Int32 PartnerType { get; set; }
 

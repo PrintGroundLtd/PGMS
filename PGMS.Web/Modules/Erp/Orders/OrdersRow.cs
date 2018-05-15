@@ -135,18 +135,25 @@ namespace PGMS.Erp.Entities
             set { Fields.OrderStatusId[this] = value; }
         }
         
-        [DisplayName("Account Name"), Expression("jAccount.[Name]")]
+        [DisplayName("Account Name"), Expression("jAccount.[Name]"), QuickSearch()]
         public String AccountName
         {
             get { return Fields.AccountName[this]; }
             set { Fields.AccountName[this] = value; }
         }
 
-        [DisplayName("Account Phone Number"), Expression("jAccount.[PhoneNumber]")]
+        [DisplayName("Account Phone Number"), Expression("jAccount.[PhoneNumber]"), QuickSearch()]
         public String AccountPhoneNumber
         {
             get { return Fields.AccountPhoneNumber[this]; }
             set { Fields.AccountPhoneNumber[this] = value; }
+        }
+
+        [DisplayName("Account Email"), Expression("jAccount.[Email]"), QuickSearch()]
+        public String AccountEmail
+        {
+            get { return Fields.AccountEmail[this]; }
+            set { Fields.AccountEmail[this] = value; }
         }
 
         [DisplayName("Account Is Vip"), Expression("jAccount.[IsVip]")]
@@ -293,6 +300,7 @@ namespace PGMS.Erp.Entities
 
             public StringField AccountName;
             public StringField AccountPhoneNumber;
+            public StringField AccountEmail;
             public Int16Field AccountIsVip;
             public Int32Field AccountPartnerType;
 

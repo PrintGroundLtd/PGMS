@@ -19,6 +19,7 @@
         Total?: number;
         AccountName?: string;
         AccountPhoneNumber?: string;
+        AccountEmail?: string;
         AccountIsVip?: number;
         AccountPartnerType?: number;
         CompanyName?: string;
@@ -71,6 +72,7 @@
             Total = "Total",
             AccountName = "AccountName",
             AccountPhoneNumber = "AccountPhoneNumber",
+            AccountEmail = "AccountEmail",
             AccountIsVip = "AccountIsVip",
             AccountPartnerType = "AccountPartnerType",
             CompanyName = "CompanyName",

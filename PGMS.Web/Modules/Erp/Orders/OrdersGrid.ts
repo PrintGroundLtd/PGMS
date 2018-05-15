@@ -61,16 +61,16 @@ namespace PGMS.Erp {
                     ])
             });
 
-            buttons.push({
-                title: text + Q.text("Db.Erp.Companies.EntitySingular"),
-                cssClass: 'expand-all-button',
-                onClick: () => this.view.setGrouping(
-                    [
-                        {
-                            getter: 'CompanyName'
-                        }
-                    ])
-            });
+            //buttons.push({
+            //    title: text + Q.text("Db.Erp.Companies.EntitySingular"),
+            //    cssClass: 'expand-all-button',
+            //    onClick: () => this.view.setGrouping(
+            //        [
+            //            {
+            //                getter: 'CompanyName'
+            //            }
+            //        ])
+            //});
 
             buttons.push({
                 title: text + Q.text("Db.Erp.OrderStatuses.EntitySingular"),

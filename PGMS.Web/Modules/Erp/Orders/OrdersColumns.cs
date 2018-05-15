@@ -19,17 +19,21 @@ namespace PGMS.Erp.Columns
         public int UserId { get; set; }
         [QuickFilter(), FilterOnly()]
         public int AccountId { get; set; }
-        [FilterOnly()]
-        public int CompanyId { get; set; }
+        //[FilterOnly()]
+        //public int CompanyId { get; set; }
 
         [EditLink, DisplayName("Db.Shared.RecordId"), Width(100)]
         public Int32 OrderName { get; set; }
         [EditLink]
         [AccountFormatter(IsVipProperty = "AccountIsVip")]
         public String AccountName { get; set; }
-        public bool AccountIsVip { get; set; }
         [EditLink]
-        public String CompanyName { get; set; }
+        public String AccountPhoneNumber { get; set; }
+        [EditLink]
+        public String AccountEmail { get; set; }
+        public bool AccountIsVip { get; set; }
+        //[EditLink]
+        //public String CompanyName { get; set; }
         [OrderStatusesFormatter(BackgroundProperty = "OrderStatusBackgroundColor", BorderProperty = "OrderStatusBorderColor")]
         public String OrderStatusName { get; set; }
 

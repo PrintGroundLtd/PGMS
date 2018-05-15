@@ -5,7 +5,6 @@
         Email: Serenity.EmailEditor;
         PartnerType: Serenity.LookupEditor;
         PhoneNumber: Serenity.StringEditor;
-        AccountCompanies: Serenity.LookupEditor;
         IsVip: Serenity.BooleanEditor;
         Address: Serenity.StringEditor;
         City: Serenity.StringEditor;
@@ -37,7 +36,6 @@
                     'Email', w2,
                     'PartnerType', w3,
                     'PhoneNumber', w1,
-                    'AccountCompanies', w3,
                     'IsVip', w4,
                     'Address', w1,
                     'City', w1,

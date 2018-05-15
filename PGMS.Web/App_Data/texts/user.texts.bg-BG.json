@@ -225,7 +225,7 @@
   "Db.Erp.OutsideOrders.EntitySingular": "Външна Поръчка",
   "Db.Erp.OutsideOrders.InsertDate": "Дата на създаване",
   "Db.Erp.OutsideOrders.InsertUserName": "Създадено от",
-  "Db.Erp.OutsideOrders.Name": "Име",
+  "Db.Erp.OutsideOrders.Name": "Име на продукт или услуга",
   "Db.Erp.OutsideOrders.OrderStatusId": "Статус на поръчка",
   "Db.Erp.OutsideOrders.OrderStatusName": "Статус на поръчка",
   "Db.Erp.OutsideOrders.OutsideOrderId": "ИД",
