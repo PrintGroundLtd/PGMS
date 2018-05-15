@@ -29,6 +29,7 @@ namespace PGMS.Erp.Forms
         public Decimal UnitPrice { get; set; }
 
         public Double Discount { get; set; }
+        [DefaultValue(0)]
         public Double AdditionalCosts { get; set; }
         public List<object> NoteList { get; set; }
 
