@@ -44,6 +44,13 @@ namespace PGMS.Erp {
             super.loadResponse(data);
             this.loadedState = this.getSaveState();
         }
+        onSaveSuccess(response) {
+            super.onSaveSuccess(response);
+            if ($('.s-OrderDetailsDialog input[name="UnitPrice"]').length > 0) {
 
+                console.log(Q.formatNumber(this.form.UnitPrice.value, "#.##"));
+                $('.s-OrderDetailsDialog input[name="UnitPrice"]').val(Q.formatNumber(this.form.UnitPrice.value, "#.##"));
+            }
+        }
     }
 }

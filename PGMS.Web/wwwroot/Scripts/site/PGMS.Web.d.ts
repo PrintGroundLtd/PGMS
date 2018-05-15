@@ -2896,6 +2896,7 @@ declare namespace PGMS.Erp {
         loadEntity(entity: Erp.ProductsRow): void;
         getSaveState(): string;
         loadResponse(data: any): void;
+        onSaveSuccess(response: any): void;
     }
 }
 declare namespace PGMS.Erp {

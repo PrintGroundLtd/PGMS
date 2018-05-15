@@ -5598,6 +5598,13 @@ var PGMS;
                 _super.prototype.loadResponse.call(this, data);
                 this.loadedState = this.getSaveState();
             };
+            ProductsDialog.prototype.onSaveSuccess = function (response) {
+                _super.prototype.onSaveSuccess.call(this, response);
+                if ($('.s-OrderDetailsDialog input[name="UnitPrice"]').length > 0) {
+                    console.log(Q.formatNumber(this.form.UnitPrice.value, "#.##"));
+                    $('.s-OrderDetailsDialog input[name="UnitPrice"]').val(Q.formatNumber(this.form.UnitPrice.value, "#.##"));
+                }
+            };
             ProductsDialog = __decorate([
                 Serenity.Decorators.panel(),
                 Serenity.Decorators.maximizable(),
