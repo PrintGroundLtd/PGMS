@@ -28,7 +28,7 @@ namespace PGMS.Erp.Columns
         public Int16 TransactionType { get; set; }
         public String PaymentTypeName { get; set; }
 
-        public String UserUsername { get; set; }
+        public String UserDisplayName { get; set; }
 
         public DateTime InsertDate { get; set; }
         public Int32 InsertUserName { get; set; }
