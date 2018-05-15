@@ -33,6 +33,11 @@ namespace PGMS.Erp {
 
             this.attachmentsGrid.outsideOrderId = entity.OutsideOrderId;
 
+            if (this.isNew()) {
+                var date = new Date();
+                date.setDate(date.getDate() + 2);
+                this.form.DeadLine.value = date.toISOString();
+            }
         }
 
         loadResponse(data) {

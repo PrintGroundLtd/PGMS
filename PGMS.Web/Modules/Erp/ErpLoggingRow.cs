@@ -16,7 +16,7 @@ namespace PGMS.Erp.Entities
             loggingFields = (ErpLoggingRowFields)fields;
         }
 
-        [DisplayName("Created by"), Expression("usrI.UserName")]
+        [DisplayName("Created by"), Expression("usrI.DisplayName")]
         [ReadPermission(Administration.PermissionKeys.Auditing)]
         public String InsertUserName
         {
@@ -52,7 +52,7 @@ namespace PGMS.Erp.Entities
             set { loggingFields.UpdateUserId[this] = value; }
         }
 
-        [DisplayName("Last updated by"), Expression("usrU.UserName")]
+        [DisplayName("Last updated by"), Expression("usrU.DisplayName")]
         [ReadPermission(Administration.PermissionKeys.Auditing)]
         public String UpdateUserName
         {

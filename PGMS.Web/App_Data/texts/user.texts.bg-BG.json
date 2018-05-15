@@ -148,6 +148,7 @@
   "Db.Erp.OrderDetails.Quantity": "Количество",
   "Db.Erp.OrderDetails.UnitPrice": "Цена за брой",
   "Db.Erp.OrderDetails.Width": "Ширина",
+  "Db.Erp.Orders.AccountEmail": "Акаунт Имейл",
   "Db.Erp.Orders.AccountId": "Акаунт",
   "Db.Erp.Orders.AccountIsVip": "Акаунта е ВИП",
   "Db.Erp.Orders.AccountName": "Акаунт Име",
@@ -204,11 +205,14 @@
   "Db.Erp.OutsideOrders.AccountRepresentsAddress": "Адрес на Акаунт",
   "Db.Erp.OutsideOrders.AccountRepresentsCity": "Град на Акаунт",
   "Db.Erp.OutsideOrders.AccountRepresentsCountry": "Държава на Акаунт",
+  "Db.Erp.OutsideOrders.AccountRepresentsEmail": "Акаунт Имейл",
   "Db.Erp.OutsideOrders.AccountRepresentsId": "Акаунт",
   "Db.Erp.OutsideOrders.AccountRepresentsIsVip": "Акаунта е ВИП",
   "Db.Erp.OutsideOrders.AccountRepresentsName": "Акаунт Име",
   "Db.Erp.OutsideOrders.AccountRepresentsPartnerType": "Акаунт Партньор Тип",
   "Db.Erp.OutsideOrders.AccountRepresentsPhoneNumber": "Акаунт Телефонен Номер",
+  "Db.Erp.OutsideOrders.AssignUserDisplayName": "Назначена към потребител",
+  "Db.Erp.OutsideOrders.AssignUserId": "Назначена към потребител",
   "Db.Erp.OutsideOrders.CompanyRepresentsAddress": "Компания Адрес",
   "Db.Erp.OutsideOrders.CompanyRepresentsBankName": "Компания Име на Банка",
   "Db.Erp.OutsideOrders.CompanyRepresentsBankSwift": "Компания СЛИФТ",
@@ -220,6 +224,7 @@
   "Db.Erp.OutsideOrders.CompanyRepresentsMol": "Компания МОЛ",
   "Db.Erp.OutsideOrders.CompanyRepresentsName": "Компания Име",
   "Db.Erp.OutsideOrders.CompanyRepresentsPhoneNumber": "Компания Телефонен номер",
+  "Db.Erp.OutsideOrders.DeadLine": "Крайна Дата",
   "Db.Erp.OutsideOrders.Description": "Описание",
   "Db.Erp.OutsideOrders.EntityPlural": "Външни Поръчки",
   "Db.Erp.OutsideOrders.EntitySingular": "Външна Поръчка",
@@ -373,5 +378,6 @@
   "Navigation.Theme Samples/Calendar": "Календар",
   "Site.Dashboard.OrdersGridTitle": "Общо поръчки назначени към теб: ",
   "Site.GroupByButton": "Групирай по ",
-  "Site.NoGroupingButton": "Не групирай"
+  "Site.NoGroupingButton": "Не групирай",
+  "Site.Reports.OrdersPerStatus": "Поръчки по статус"
 }

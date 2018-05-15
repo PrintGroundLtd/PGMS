@@ -24,6 +24,8 @@ namespace PGMS.Erp.Forms
         public Int32 AccountRepresentsId { get; set; }
         public Int32 CompanyRepresentsId { get; set; }
         public Int32 OrderStatusId { get; set; }
+        public Int32 AssignUserId { get; set; }
+        public DateTime DeadLine { get; set; }
 
         public List<object> NoteList { get; set; }
 

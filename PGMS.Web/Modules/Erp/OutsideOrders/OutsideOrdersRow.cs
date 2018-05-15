@@ -1,5 +1,6 @@
 ﻿
 using System.Collections.Generic;
+using PGMS.Administration.Entities;
 
 namespace PGMS.Erp.Entities
 {
@@ -65,14 +66,19 @@ namespace PGMS.Erp.Entities
             set { Fields.CompanyRepresentsId[this] = value; }
         }
         
-        [DisplayName("Account Represents Name"), Expression("jAccountRepresents.[Name]")]
+        [DisplayName("Account Represents Name"), Expression("jAccountRepresents.[Name]"), QuickSearch()]
         public String AccountRepresentsName
         {
             get { return Fields.AccountRepresentsName[this]; }
             set { Fields.AccountRepresentsName[this] = value; }
         }
-
-        [DisplayName("Account Represents Phone Number"), Expression("jAccountRepresents.[PhoneNumber]")]
+        [DisplayName("Account Represents Email"), Expression("jAccountRepresents.[Email]"), QuickSearch()]
+        public String AccountRepresentsEmail
+        {
+            get { return Fields.AccountRepresentsEmail[this]; }
+            set { Fields.AccountRepresentsEmail[this] = value; }
+        }
+        [DisplayName("Account Represents Phone Number"), Expression("jAccountRepresents.[PhoneNumber]"), QuickSearch()]
         public String AccountRepresentsPhoneNumber
         {
             get { return Fields.AccountRepresentsPhoneNumber[this]; }
@@ -115,14 +121,14 @@ namespace PGMS.Erp.Entities
         }
         
 
-        [DisplayName("Company Represents Name"), Expression("jCompanyRepresents.[Name]")]
+        [DisplayName("Company Represents Name"), Expression("jCompanyRepresents.[Name]"), QuickSearch()]
         public String CompanyRepresentsName
         {
             get { return Fields.CompanyRepresentsName[this]; }
             set { Fields.CompanyRepresentsName[this] = value; }
         }
 
-        [DisplayName("Company Represents Phone Number"), Expression("jCompanyRepresents.[PhoneNumber]")]
+        [DisplayName("Company Represents Phone Number"), Expression("jCompanyRepresents.[PhoneNumber]"), QuickSearch()]
         public String CompanyRepresentsPhoneNumber
         {
             get { return Fields.CompanyRepresentsPhoneNumber[this]; }
@@ -224,6 +230,32 @@ namespace PGMS.Erp.Entities
             set { Fields.OrderStatusBackgroundColor[this] = value; }
         }
 
+        [DisplayName("Assign to User"), ForeignKey("[dbo].[Users]", "UserId"), LeftJoin("jAssUser"), TextualField("AssignUserDisplayName")]
+        [LookupEditor(typeof(UserRow), FilterField = "IsActive", FilterValue = 1)]
+        [QuickFilter()]
+        public Int32? AssignUserId
+        {
+            get { return Fields.AssignUserId[this]; }
+            set { Fields.AssignUserId[this] = value; }
+        }
+
+
+        [DisplayFormat("HH:mm dd/MM/yyyy"), DisplayName("Dead Line"), QuickFilter()]
+        [Width(150)]
+        [DateTimeEditor]
+        public DateTime? DeadLine
+        {
+            get { return Fields.DeadLine[this]; }
+            set { Fields.DeadLine[this] = value; }
+        }
+
+        [DisplayName("User Display Name"), Expression("jAssUser.[DisplayName]"), QuickSearch()]
+        public String AssignUserDisplayName
+        {
+            get { return Fields.AssignUserDisplayName[this]; }
+            set { Fields.AssignUserDisplayName[this] = value; }
+        }
+
         [NotesEditor, NotMapped]
         public List<NoteRow> NoteList
         {
@@ -256,9 +288,11 @@ namespace PGMS.Erp.Entities
             public DecimalField PriceWeSell;
             public Int32Field AccountRepresentsId;
             public Int32Field CompanyRepresentsId;
+            public DateTimeField DeadLine;
             public StringField Description;
 
             public StringField AccountRepresentsName;
+            public StringField AccountRepresentsEmail;
             public StringField AccountRepresentsPhoneNumber;
             public Int16Field AccountRepresentsIsVip;
             public Int32Field AccountRepresentsPartnerType;
@@ -281,6 +315,9 @@ namespace PGMS.Erp.Entities
             public StringField OrderStatusName;
             public StringField OrderStatusBorderColor;
             public StringField OrderStatusBackgroundColor;
+
+            public Int32Field AssignUserId;
+            public StringField AssignUserDisplayName;
 
             public RowListField<NoteRow> NoteList;
 

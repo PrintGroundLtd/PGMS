@@ -26,13 +26,21 @@ namespace PGMS.Erp.Columns
         public String Name { get; set; }
         public Decimal PriceTheyOffer { get; set; }
         public Decimal PriceWeSell { get; set; }
+
+        [DeadlineFormatter]
+        public DateTime DeadLine { get; set; }
+
         [EditLink(IdField = "AccountRepresentsId", ItemType = "Erp.Accounts")]
+        [AccountFormatter(IsVipProperty = "AccountRepresentsIsVip")]
         [Hint("Open Account")]
         public String AccountRepresentsName { get; set; }
+        public String AccountRepresentsPhoneNumber { get; set; }
+        public String AccountRepresentsEmail { get; set; }
         public String CompanyRepresentsName { get; set; }
 
         [OrderStatusesFormatter(BackgroundProperty = "OrderStatusBackgroundColor", BorderProperty = "OrderStatusBorderColor")]
         public String OrderStatusName { get; set; }
+        public String AssignUserDisplayName { get; set; }
 
         [QuickFilter()]
         public DateTime InsertDate { get; set; }
