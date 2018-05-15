@@ -8,6 +8,7 @@ namespace PGMS.Erp {
         protected getIdProperty() { return AccountsRow.idProperty; }
         protected getLocalTextPrefix() { return AccountsRow.localTextPrefix; }
         protected getService() { return AccountsService.baseUrl; }
+        protected getIsActiveProperty() { return AccountsRow.isActiveProperty; }
 
         constructor(container: JQuery) {
             super(container);
@@ -31,15 +32,15 @@ namespace PGMS.Erp {
             }));
             return buttons;
         }
-        protected getItemCssClass(item: AccountsRow, index: number): string {
-            let klass: string = "";
+        //protected getItemCssClass(item: AccountsRow, index: number): string {
+        //    let klass: string = "";
 
-            if (item.IsVip == 1) {
-                klass += " is-vip";
-            }
+        //    if (item.IsVip == 1) {
+        //        klass += " is-vip";
+        //    }
 
-            return Q.trimToNull(klass);
-        }
+        //    return Q.trimToNull(klass);
+        //}
 
     }
 }

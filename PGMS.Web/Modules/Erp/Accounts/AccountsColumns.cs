@@ -16,6 +16,7 @@ namespace PGMS.Erp.Columns
         [EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
         public Int32 AccountId { get; set; }
         [EditLink]
+        [AccountFormatter(IsVipProperty = "IsVip")]
         public String Name { get; set; }
         public String Email { get; set; }
         [CompaniesListFormatter, Width(300)]

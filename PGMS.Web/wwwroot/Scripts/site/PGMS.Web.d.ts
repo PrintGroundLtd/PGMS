@@ -2519,6 +2519,7 @@ declare namespace PGMS.Erp {
         protected getIdProperty(): string;
         protected getLocalTextPrefix(): string;
         protected getService(): string;
+        protected getIsActiveProperty(): string;
         constructor(container: JQuery);
         protected createSlickGrid(): Slick.Grid;
         protected getSlickOptions(): Slick.GridOptions;
@@ -2568,6 +2569,7 @@ declare namespace PGMS.Erp {
         protected getIdProperty(): string;
         protected getLocalTextPrefix(): string;
         protected getService(): string;
+        protected getIsActiveProperty(): string;
         constructor(container: JQuery);
         protected createSlickGrid(): Slick.Grid;
         protected getSlickOptions(): Slick.GridOptions;
@@ -2620,9 +2622,9 @@ declare namespace PGMS.Erp {
         protected getIdProperty(): string;
         protected getLocalTextPrefix(): string;
         protected getService(): string;
+        protected getIsActiveProperty(): string;
         constructor(container: JQuery);
         protected getButtons(): Serenity.ToolButton[];
-        protected getItemCssClass(item: AccountsRow, index: number): string;
     }
 }
 declare namespace PGMS.Erp {
@@ -2655,6 +2657,7 @@ declare namespace PGMS.Erp {
         protected getIdProperty(): string;
         protected getLocalTextPrefix(): string;
         protected getService(): string;
+        protected getIsActiveProperty(): string;
         constructor(container: JQuery);
         protected createSlickGrid(): Slick.Grid;
         protected getSlickOptions(): Slick.GridOptions;
@@ -2698,6 +2701,7 @@ declare namespace PGMS.Erp {
         protected getIdProperty(): string;
         protected getLocalTextPrefix(): string;
         protected getService(): string;
+        protected getIsActiveProperty(): string;
         constructor(container: JQuery);
         protected getButtons(): Serenity.ToolButton[];
     }
@@ -2719,6 +2723,7 @@ declare namespace PGMS.Erp {
         protected getIdProperty(): string;
         protected getLocalTextPrefix(): string;
         protected getService(): string;
+        protected getIsActiveProperty(): string;
         constructor(container: JQuery);
         protected getButtons(): Serenity.ToolButton[];
     }
@@ -2833,6 +2838,7 @@ declare namespace PGMS.Erp {
         protected getIdProperty(): string;
         protected getLocalTextPrefix(): string;
         protected getService(): string;
+        protected getIsActiveProperty(): string;
         constructor(container: JQuery);
         protected getButtons(): Serenity.ToolButton[];
     }
@@ -2899,6 +2905,7 @@ declare namespace PGMS.Erp {
         protected getIdProperty(): string;
         protected getLocalTextPrefix(): string;
         protected getService(): string;
+        protected getIsActiveProperty(): string;
         constructor(container: JQuery);
         protected getButtons(): Serenity.ToolButton[];
     }
@@ -2932,6 +2939,7 @@ declare namespace PGMS.Erp {
         protected getIdProperty(): string;
         protected getLocalTextPrefix(): string;
         protected getService(): string;
+        protected getIsActiveProperty(): string;
         constructor(container: JQuery);
     }
 }
@@ -2977,6 +2985,7 @@ declare namespace PGMS.Erp {
         protected getIdProperty(): string;
         protected getLocalTextPrefix(): string;
         protected getService(): string;
+        protected getIsActiveProperty(): string;
         constructor(container: JQuery);
         protected getButtons(): Serenity.ToolButton[];
     }

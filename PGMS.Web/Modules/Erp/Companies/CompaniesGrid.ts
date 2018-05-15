@@ -8,6 +8,7 @@ namespace PGMS.Erp {
         protected getIdProperty() { return CompaniesRow.idProperty; }
         protected getLocalTextPrefix() { return CompaniesRow.localTextPrefix; }
         protected getService() { return CompaniesService.baseUrl; }
+        protected getIsActiveProperty() { return CompaniesRow.isActiveProperty; }
 
         constructor(container: JQuery) {
             super(container);

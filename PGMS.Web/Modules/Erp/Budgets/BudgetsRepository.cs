@@ -57,7 +57,8 @@ namespace PGMS.Erp.Repositories
                         .From(expensesFld)
                         .Select(expensesFld.Total, expensesFld.TransactionType)
                         .Where(~(
-                            new Criteria(expensesFld.BudgetId) == responseEntity.BudgetId.Value
+                            new Criteria(expensesFld.BudgetId) == responseEntity.BudgetId.Value &&
+                            new Criteria(expensesFld.IsActive) ==1 
                             ));
 
                     //switch (responseEntity.BudgetPeriod)

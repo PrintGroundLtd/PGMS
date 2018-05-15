@@ -4065,6 +4065,7 @@ var PGMS;
             OrdersGrid.prototype.getIdProperty = function () { return Erp.OrdersRow.idProperty; };
             OrdersGrid.prototype.getLocalTextPrefix = function () { return Erp.OrdersRow.localTextPrefix; };
             OrdersGrid.prototype.getService = function () { return Erp.OrdersService.baseUrl; };
+            OrdersGrid.prototype.getIsActiveProperty = function () { return Erp.OrdersRow.isActiveProperty; };
             OrdersGrid.prototype.createSlickGrid = function () {
                 var grid = _super.prototype.createSlickGrid.call(this);
                 // need to register this plugin for grouping or you'll have errors
@@ -4305,6 +4306,7 @@ var PGMS;
             OutsideOrdersGrid.prototype.getIdProperty = function () { return Erp.OutsideOrdersRow.idProperty; };
             OutsideOrdersGrid.prototype.getLocalTextPrefix = function () { return Erp.OutsideOrdersRow.localTextPrefix; };
             OutsideOrdersGrid.prototype.getService = function () { return Erp.OutsideOrdersService.baseUrl; };
+            OutsideOrdersGrid.prototype.getIsActiveProperty = function () { return Erp.OutsideOrdersRow.isActiveProperty; };
             OutsideOrdersGrid.prototype.createSlickGrid = function () {
                 var grid = _super.prototype.createSlickGrid.call(this);
                 // need to register this plugin for grouping or you'll have errors
@@ -4537,6 +4539,7 @@ var PGMS;
             AccountsGrid.prototype.getIdProperty = function () { return Erp.AccountsRow.idProperty; };
             AccountsGrid.prototype.getLocalTextPrefix = function () { return Erp.AccountsRow.localTextPrefix; };
             AccountsGrid.prototype.getService = function () { return Erp.AccountsService.baseUrl; };
+            AccountsGrid.prototype.getIsActiveProperty = function () { return Erp.AccountsRow.isActiveProperty; };
             AccountsGrid.prototype.getButtons = function () {
                 var _this = this;
                 var buttons = _super.prototype.getButtons.call(this);
@@ -4550,13 +4553,6 @@ var PGMS;
                     title: Q.tryGetText("Site.ExportToExcelButton")
                 }));
                 return buttons;
-            };
-            AccountsGrid.prototype.getItemCssClass = function (item, index) {
-                var klass = "";
-                if (item.IsVip == 1) {
-                    klass += " is-vip";
-                }
-                return Q.trimToNull(klass);
             };
             AccountsGrid = __decorate([
                 Serenity.Decorators.registerClass()
@@ -4666,6 +4662,7 @@ var PGMS;
             ExpensesGrid.prototype.getIdProperty = function () { return Erp.ExpensesRow.idProperty; };
             ExpensesGrid.prototype.getLocalTextPrefix = function () { return Erp.ExpensesRow.localTextPrefix; };
             ExpensesGrid.prototype.getService = function () { return Erp.ExpensesService.baseUrl; };
+            ExpensesGrid.prototype.getIsActiveProperty = function () { return Erp.ExpensesRow.isActiveProperty; };
             ExpensesGrid.prototype.createSlickGrid = function () {
                 var grid = _super.prototype.createSlickGrid.call(this);
                 // need to register this plugin for grouping or you'll have errors
@@ -4866,6 +4863,7 @@ var PGMS;
             BudgetsGrid.prototype.getIdProperty = function () { return Erp.BudgetsRow.idProperty; };
             BudgetsGrid.prototype.getLocalTextPrefix = function () { return Erp.BudgetsRow.localTextPrefix; };
             BudgetsGrid.prototype.getService = function () { return Erp.BudgetsService.baseUrl; };
+            BudgetsGrid.prototype.getIsActiveProperty = function () { return Erp.BudgetsRow.isActiveProperty; };
             BudgetsGrid.prototype.getButtons = function () {
                 var _this = this;
                 var buttons = _super.prototype.getButtons.call(this);
@@ -4926,6 +4924,7 @@ var PGMS;
             CompaniesGrid.prototype.getIdProperty = function () { return Erp.CompaniesRow.idProperty; };
             CompaniesGrid.prototype.getLocalTextPrefix = function () { return Erp.CompaniesRow.localTextPrefix; };
             CompaniesGrid.prototype.getService = function () { return Erp.CompaniesService.baseUrl; };
+            CompaniesGrid.prototype.getIsActiveProperty = function () { return Erp.CompaniesRow.isActiveProperty; };
             CompaniesGrid.prototype.getButtons = function () {
                 var _this = this;
                 var buttons = _super.prototype.getButtons.call(this);
@@ -5450,6 +5449,7 @@ var PGMS;
             PartnersGrid.prototype.getIdProperty = function () { return Erp.PartnersRow.idProperty; };
             PartnersGrid.prototype.getLocalTextPrefix = function () { return Erp.PartnersRow.localTextPrefix; };
             PartnersGrid.prototype.getService = function () { return Erp.PartnersService.baseUrl; };
+            PartnersGrid.prototype.getIsActiveProperty = function () { return Erp.PartnersRow.isActiveProperty; };
             PartnersGrid.prototype.getButtons = function () {
                 var _this = this;
                 var buttons = _super.prototype.getButtons.call(this);
@@ -5622,6 +5622,7 @@ var PGMS;
             ProductsGrid.prototype.getIdProperty = function () { return Erp.ProductsRow.idProperty; };
             ProductsGrid.prototype.getLocalTextPrefix = function () { return Erp.ProductsRow.localTextPrefix; };
             ProductsGrid.prototype.getService = function () { return Erp.ProductsService.baseUrl; };
+            ProductsGrid.prototype.getIsActiveProperty = function () { return Erp.ProductsRow.isActiveProperty; };
             ProductsGrid.prototype.getButtons = function () {
                 var _this = this;
                 var buttons = _super.prototype.getButtons.call(this);
@@ -5799,6 +5800,7 @@ var PGMS;
             SentEmailsGrid.prototype.getIdProperty = function () { return Erp.SentEmailsRow.idProperty; };
             SentEmailsGrid.prototype.getLocalTextPrefix = function () { return Erp.SentEmailsRow.localTextPrefix; };
             SentEmailsGrid.prototype.getService = function () { return Erp.SentEmailsService.baseUrl; };
+            SentEmailsGrid.prototype.getIsActiveProperty = function () { return Erp.SentEmailsRow.isActiveProperty; };
             SentEmailsGrid = __decorate([
                 Serenity.Decorators.registerClass()
             ], SentEmailsGrid);
@@ -5939,6 +5941,7 @@ var PGMS;
             SuppliersGrid.prototype.getIdProperty = function () { return Erp.SuppliersRow.idProperty; };
             SuppliersGrid.prototype.getLocalTextPrefix = function () { return Erp.SuppliersRow.localTextPrefix; };
             SuppliersGrid.prototype.getService = function () { return Erp.SuppliersService.baseUrl; };
+            SuppliersGrid.prototype.getIsActiveProperty = function () { return Erp.SuppliersRow.isActiveProperty; };
             SuppliersGrid.prototype.getButtons = function () {
                 var _this = this;
                 var buttons = _super.prototype.getButtons.call(this);
