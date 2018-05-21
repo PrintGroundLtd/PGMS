@@ -2,6 +2,7 @@
 
 namespace PGMS.Erp {
 
+    @Serenity.Decorators.maximizable()
     @Serenity.Decorators.registerClass()
     export class AccountOrdersDialog extends OrdersDialog {
 

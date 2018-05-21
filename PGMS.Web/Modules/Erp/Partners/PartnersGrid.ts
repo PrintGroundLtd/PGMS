@@ -8,9 +8,28 @@ namespace PGMS.Erp {
         protected getIdProperty() { return PartnersRow.idProperty; }
         protected getLocalTextPrefix() { return PartnersRow.localTextPrefix; }
         protected getService() { return PartnersService.baseUrl; }
+        protected getIsActiveProperty() { return PartnersRow.isActiveProperty; }
 
         constructor(container: JQuery) {
             super(container);
+        }
+
+
+        protected getButtons() {
+
+            var buttons = super.getButtons();
+            var text = Q.text("Site.GroupByButton");
+
+
+            buttons.push(PGMS.Common.ExcelExportHelper.createToolButton({
+                grid: this,
+                onViewSubmit: () => this.onViewSubmit(),
+                service: PartnersService.baseUrl + '/ListExcel',
+                separator: true,
+                hint: Q.tryGetText("Site.ExportToExcelHintButton"),
+                title: Q.tryGetText("Site.ExportToExcelButton")
+            }));
+            return buttons;
         }
     }
 }

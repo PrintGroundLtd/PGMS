@@ -34,6 +34,7 @@ namespace PGMS.Erp.Entities
         }
 
         [DisplayName("Border Color"), Size(200), NotNull]
+        [LookupInclude]
         [ColorPickerEditor]
         public String BorderColor
         {
@@ -43,6 +44,7 @@ namespace PGMS.Erp.Entities
 
         [DisplayName("Background Color"), Size(200), NotNull]
         [ColorPickerEditor]
+        [LookupInclude]
         public String BackgroundColor
         {
             get { return Fields.BackgroundColor[this]; }

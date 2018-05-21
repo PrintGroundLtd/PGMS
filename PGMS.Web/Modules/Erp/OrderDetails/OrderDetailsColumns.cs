@@ -15,16 +15,22 @@ namespace PGMS.Erp.Columns
     {
         [EditLink, Width(200)]
         public String ProductName { get; set; }
-        public Decimal Width { get; set; }
-        public Decimal Height { get; set; }
         [EditLink, Width(200)]
         public String ProductQuantityPerUnit { get; set; }
         [Width(100)]
         public Decimal UnitPrice { get; set; }
+
+        public Decimal Width { get; set; }
+        public Decimal Height { get; set; }
+        [Width(100)]
+        public Decimal Quadrature { get; set; }
         [Width(100)]
         public Int16 Quantity { get; set; }
         [Width(100)]
         public Double Discount { get; set; }
+        [Width(100)]
+        public Double AdditionalCosts { get; set; }
+
         [Width(100)]
         public Decimal LineTotal { get; set; }
     }

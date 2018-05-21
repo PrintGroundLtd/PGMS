@@ -13,7 +13,7 @@ namespace PGMS.Migrations.DefaultDB
         {
             this.CreateTableWithId32("Budgets", "BudgetId", s => s
                 .WithColumn("Name").AsString(500).NotNullable()
-                .WithColumn("Total").AsCurrency().Nullable()
+                //.WithColumn("Total").AsCurrency().Nullable()
                 .WithColumn("PaymentTypeId").AsInt32().NotNullable()
                 .ForeignKey("PaymentTypes", "PaymentTypeId")
                 .WithColumn("BudgetPeriod").AsInt32().Nullable()
@@ -79,7 +79,8 @@ namespace PGMS.Migrations.DefaultDB
             });
 
             this.CreateTableWithId32("Expenses", "ExpenseId", s => s
-                .WithColumn("Description").AsString(500).NotNullable()
+                .WithColumn("Name").AsString(200).NotNullable()
+                .WithColumn("Description").AsString(Int32.MaxValue).Nullable()
                 .WithColumn("Total").AsCurrency().Nullable()
                 .WithColumn("TransactionDate").AsDateTime().NotNullable()
 

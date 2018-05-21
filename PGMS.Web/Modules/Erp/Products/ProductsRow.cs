@@ -33,6 +33,14 @@ namespace PGMS.Erp.Entities
             set { Fields.Name[this] = value; }
         }
 
+        [DisplayName("Description")]
+        [HtmlNoteContentEditor]
+        public string Description
+        {
+            get { return Fields.Description[this]; }
+            set { Fields.Description[this] = value; }
+        }
+
         [DisplayName("Product Image"), Size(100)]
         [ImageUploadEditor(FilenameFormat = "ProductImage/~", CopyToHistory = true)]
         public String ProductImage
@@ -61,6 +69,19 @@ namespace PGMS.Erp.Entities
         {
             get { return Fields.QuantityPerUnit[this]; }
             set { Fields.QuantityPerUnit[this] = value; }
+        }
+        [DisplayName("Unit Price With DDS"), Size(19), Scale(2), LookupInclude]
+        public Decimal? UnitPriceWithDDS
+        {
+            get { return Fields.UnitPriceWithDDS[this]; }
+            set { Fields.UnitPriceWithDDS[this] = value; }
+        }
+
+        [DisplayName("Unit Price for Partner"), Size(19), Scale(2), LookupInclude]
+        public Decimal? UnitPricePartner
+        {
+            get { return Fields.UnitPricePartner[this]; }
+            set { Fields.UnitPricePartner[this] = value; }
         }
 
         [DisplayName("Unit Price"), Size(19), Scale(2), LookupInclude]
@@ -152,11 +173,14 @@ namespace PGMS.Erp.Entities
         {
             public Int32Field ProductId;
             public StringField Name;
+            public StringField Description;
             public StringField ProductImage;
             public BooleanField Discontinued;
             public Int32Field SupplierId;
             public StringField QuantityPerUnit;
             public DecimalField UnitPrice;
+            public DecimalField UnitPriceWithDDS;
+            public DecimalField UnitPricePartner;
             public Int16Field UnitsInStock;
             public Int16Field UnitsOnOrder;
             public Int16Field ReorderLevel;

@@ -1,6 +1,7 @@
 ﻿
 namespace PGMS.Erp {
     @Serenity.Decorators.panel()
+    @Serenity.Decorators.maximizable()
     @Serenity.Decorators.registerClass()
     export class OutsideOrdersDialog extends Serenity.EntityDialog<OutsideOrdersRow, any> {
         protected getFormKey() { return OutsideOrdersForm.formKey; }
@@ -32,6 +33,11 @@ namespace PGMS.Erp {
 
             this.attachmentsGrid.outsideOrderId = entity.OutsideOrderId;
 
+            if (this.isNew()) {
+                var date = new Date();
+                date.setDate(date.getDate() + 2);
+                this.form.DeadLine.value = date.toISOString();
+            }
         }
 
         loadResponse(data) {

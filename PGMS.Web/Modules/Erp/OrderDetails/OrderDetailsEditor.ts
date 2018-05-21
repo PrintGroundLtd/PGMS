@@ -24,7 +24,9 @@ namespace PGMS.Erp {
      
             row.ProductQuantityPerUnit = productLookup.QuantityPerUnit;
             row.ProductName = productLookup.Name;
-            row.LineTotal = (row.Quantity || 0) * (row.UnitPrice || 0) - (row.Discount || 0);
+            row.LineTotal = (row.Quantity || 0) * (row.UnitPrice || 0) - (row.Discount || 0) + (row.AdditionalCosts || 0);
+            if (row.Quadrature > 0)
+                row.LineTotal = row.LineTotal * row.Quadrature;
             return true;
         }
     }

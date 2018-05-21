@@ -21,6 +21,10 @@ namespace PGMS.Erp {
 
             this.myLookupQuickFilter = this.findQuickFilter(Serenity.LookupEditor, PGMS.Erp.OrdersRow.Fields.UserId);
             this.myLookupQuickFilter.element.parent().remove("*");
+
+            //removed Group by Companie
+            //this.myLookupQuickFilter = this.findQuickFilter(Serenity.LookupEditor, PGMS.Erp.OrdersRow.Fields.CompanyId);
+            //this.myLookupQuickFilter.element.parent().remove("*");
         }
 
         // Here you can set the onDataLoaded event to use for set new title 
@@ -38,6 +42,14 @@ namespace PGMS.Erp {
             this.totalRecord = lr.TotalCount;
             return lr;
         }
+
+        //protected getButtons() {
+
+        //    var buttons = super.getButtons();
+        //    //removed Group by Companie
+        //    buttons.splice(5, 1);
+        //    return buttons;
+        //}
 
         protected onViewSubmit() {
             // only continue if base class returns true (didn't cancel request)

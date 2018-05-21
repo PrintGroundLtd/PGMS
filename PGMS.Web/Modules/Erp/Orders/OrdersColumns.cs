@@ -19,25 +19,36 @@ namespace PGMS.Erp.Columns
         public int UserId { get; set; }
         [QuickFilter(), FilterOnly()]
         public int AccountId { get; set; }
-        [FilterOnly()]
-        public int CompanyId { get; set; }
+        //[FilterOnly()]
+        //public int CompanyId { get; set; }
 
         [EditLink, DisplayName("Db.Shared.RecordId"), Width(100)]
         public Int32 OrderName { get; set; }
         [EditLink]
         [AccountFormatter(IsVipProperty = "AccountIsVip")]
         public String AccountName { get; set; }
-        public bool AccountIsVip { get; set; }
         [EditLink]
-        public String CompanyName { get; set; }
+        public String AccountPhoneNumber { get; set; }
+        [EditLink]
+        public String AccountEmail { get; set; }
+        public bool AccountIsVip { get; set; }
+        //[EditLink]
+        //public String CompanyName { get; set; }
         [OrderStatusesFormatter(BackgroundProperty = "OrderStatusBackgroundColor", BorderProperty = "OrderStatusBorderColor")]
         public String OrderStatusName { get; set; }
 
         public decimal Total { get; set; }
+        
+        public Boolean CuttingManual { get; set; }
+        public Boolean CuttingMachine { get; set; }
+        public Boolean Printing { get; set; }
+        public Boolean Laminating { get; set; }
+        public Boolean TransportFolio { get; set; }
+        public Boolean Cleaning { get; set; }
+        public Boolean Cashing { get; set; }
+
         [EditLink]
         public String PaymentTypeName { get; set; } 
-        public Int16 Width { get; set; }
-        public Int16 Height { get; set; }
         public DateTime OrderDate { get; set; }
         [DeadlineFormatter]
         public DateTime DeadLine { get; set; }
@@ -50,9 +61,10 @@ namespace PGMS.Erp.Columns
         public String UserUsername { get; set; }
         public DateTime InsertDate { get; set; }
         public Int32 InsertUserName { get; set; }
+        
         public DateTime UpdateDate { get; set; }
         public Int32 UpdateUserName { get; set; }
-        public Int16 IsActive { get; set; }
+        public bool IsActive { get; set; }
         
 
     }

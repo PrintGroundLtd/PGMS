@@ -6,9 +6,11 @@
         UnitPrice?: number;
         Quantity?: number;
         Discount?: number;
+        AdditionalCosts?: number;
         Description?: string;
         Width?: number;
         Height?: number;
+        Quadrature?: number;
         ProductName?: string;
         ProductProductImage?: string;
         ProductDiscontinued?: boolean;
@@ -37,9 +39,11 @@
             UnitPrice = "UnitPrice",
             Quantity = "Quantity",
             Discount = "Discount",
+            AdditionalCosts = "AdditionalCosts",
             Description = "Description",
             Width = "Width",
             Height = "Height",
+            Quadrature = "Quadrature",
             ProductName = "ProductName",
             ProductProductImage = "ProductProductImage",
             ProductDiscontinued = "ProductDiscontinued",

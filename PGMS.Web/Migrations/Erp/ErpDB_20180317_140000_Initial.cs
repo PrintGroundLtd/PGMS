@@ -92,8 +92,8 @@ namespace PGMS.Migrations.DefaultDB
 
             this.CreateTableWithId32("AccountAttachments", "AccountAttachmentId", s => s
                 .WithColumn("Name").AsString(500).NotNullable()
-                .WithColumn("Description").AsString().NotNullable()
-                .WithColumn("FilePath").AsString(100).NotNullable()
+                .WithColumn("Description").AsString(Int32.MaxValue).NotNullable()
+                .WithColumn("FilePath").AsString(Int32.MaxValue).NotNullable()
                 .WithColumn("AccountId").AsInt32().NotNullable()
                 .ForeignKey("Accounts", "AccountId")
 
@@ -132,8 +132,8 @@ namespace PGMS.Migrations.DefaultDB
 
             this.CreateTableWithId32("CompanyAttachments", "CompanyAttachmentId", s => s
                 .WithColumn("Name").AsString(500).NotNullable()
-                .WithColumn("Description").AsString().NotNullable()
-                .WithColumn("FIlePath").AsString(100).Nullable()
+                .WithColumn("Description").AsString(Int32.MaxValue).NotNullable()
+                .WithColumn("FIlePath").AsString(Int32.MaxValue).Nullable()
                 .WithColumn("CompanyId").AsInt32().NotNullable()
                 .ForeignKey("Companies", "CompanyId")
 

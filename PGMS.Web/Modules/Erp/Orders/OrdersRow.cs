@@ -73,7 +73,7 @@ namespace PGMS.Erp.Entities
             set { Fields.OrderDate[this] = value; }
         }
 
-        [DisplayFormat("HH:mm dd/MM/yyyy"), DisplayName("Dead Line")]
+        [DisplayFormat("HH:mm dd/MM/yyyy"), DisplayName("Dead Line"), QuickFilter()]
         [Width(150)]
         [DateTimeEditor]
         public DateTime? DeadLine
@@ -135,18 +135,25 @@ namespace PGMS.Erp.Entities
             set { Fields.OrderStatusId[this] = value; }
         }
         
-        [DisplayName("Account Name"), Expression("jAccount.[Name]")]
+        [DisplayName("Account Name"), Expression("jAccount.[Name]"), QuickSearch()]
         public String AccountName
         {
             get { return Fields.AccountName[this]; }
             set { Fields.AccountName[this] = value; }
         }
 
-        [DisplayName("Account Phone Number"), Expression("jAccount.[PhoneNumber]")]
+        [DisplayName("Account Phone Number"), Expression("jAccount.[PhoneNumber]"), QuickSearch()]
         public String AccountPhoneNumber
         {
             get { return Fields.AccountPhoneNumber[this]; }
             set { Fields.AccountPhoneNumber[this] = value; }
+        }
+
+        [DisplayName("Account Email"), Expression("jAccount.[Email]"), QuickSearch()]
+        public String AccountEmail
+        {
+            get { return Fields.AccountEmail[this]; }
+            set { Fields.AccountEmail[this] = value; }
         }
 
         [DisplayName("Account Is Vip"), Expression("jAccount.[IsVip]")]
@@ -254,6 +261,55 @@ namespace PGMS.Erp.Entities
             set { Fields.OrderName[this] = value; }
         }
 
+        [DisplayName("Cutting Manual")]
+        public Boolean? CuttingManual
+        {
+            get { return Fields.CuttingManual[this]; }
+            set { Fields.CuttingManual[this] = value; }
+        }
+
+        [DisplayName("Cutting Machine")]
+        public Boolean? CuttingMachine
+        {
+            get { return Fields.CuttingMachine[this]; }
+            set { Fields.CuttingMachine[this] = value; }
+        }
+
+        [DisplayName("Printing")]
+        public Boolean? Printing
+        {
+            get { return Fields.Printing[this]; }
+            set { Fields.Printing[this] = value; }
+        }
+
+        [DisplayName("Laminating")]
+        public Boolean? Laminating
+        {
+            get { return Fields.Laminating[this]; }
+            set { Fields.Laminating[this] = value; }
+        }
+
+        [DisplayName("Transport Folio")]
+        public Boolean? TransportFolio
+        {
+            get { return Fields.TransportFolio[this]; }
+            set { Fields.TransportFolio[this] = value; }
+        }
+
+        [DisplayName("Cleaning")]
+        public Boolean? Cleaning
+        {
+            get { return Fields.Cleaning[this]; }
+            set { Fields.Cleaning[this] = value; }
+        }
+
+        [DisplayName("Cashing")]
+        public Boolean? Cashing
+        {
+            get { return Fields.Cashing[this]; }
+            set { Fields.Cashing[this] = value; }
+        }
+
         IIdField IIdRow.IdField
         {
             get { return Fields.OrderId; }
@@ -291,8 +347,18 @@ namespace PGMS.Erp.Entities
             public Int32Field OrderStatusId;
             public DecimalField Total;
 
+            public BooleanField CuttingManual;
+            public BooleanField CuttingMachine;
+            public BooleanField Printing;
+            public BooleanField Laminating;
+            public BooleanField TransportFolio;
+            public BooleanField Cleaning;
+            public BooleanField Cashing;
+
+
             public StringField AccountName;
             public StringField AccountPhoneNumber;
+            public StringField AccountEmail;
             public Int16Field AccountIsVip;
             public Int32Field AccountPartnerType;
 

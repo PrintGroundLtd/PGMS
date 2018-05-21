@@ -6,8 +6,10 @@
         PriceWeSell?: number;
         AccountRepresentsId?: number;
         CompanyRepresentsId?: number;
+        DeadLine?: string;
         Description?: string;
         AccountRepresentsName?: string;
+        AccountRepresentsEmail?: string;
         AccountRepresentsPhoneNumber?: string;
         AccountRepresentsIsVip?: number;
         AccountRepresentsPartnerType?: number;
@@ -28,6 +30,8 @@
         OrderStatusName?: string;
         OrderStatusBorderColor?: string;
         OrderStatusBackgroundColor?: string;
+        AssignUserId?: number;
+        AssignUserDisplayName?: string;
         NoteList?: NoteRow[];
         InsertUserId?: number;
         InsertDate?: string;
@@ -56,8 +60,10 @@
             PriceWeSell = "PriceWeSell",
             AccountRepresentsId = "AccountRepresentsId",
             CompanyRepresentsId = "CompanyRepresentsId",
+            DeadLine = "DeadLine",
             Description = "Description",
             AccountRepresentsName = "AccountRepresentsName",
+            AccountRepresentsEmail = "AccountRepresentsEmail",
             AccountRepresentsPhoneNumber = "AccountRepresentsPhoneNumber",
             AccountRepresentsIsVip = "AccountRepresentsIsVip",
             AccountRepresentsPartnerType = "AccountRepresentsPartnerType",
@@ -78,6 +84,8 @@
             OrderStatusName = "OrderStatusName",
             OrderStatusBorderColor = "OrderStatusBorderColor",
             OrderStatusBackgroundColor = "OrderStatusBackgroundColor",
+            AssignUserId = "AssignUserId",
+            AssignUserDisplayName = "AssignUserDisplayName",
             NoteList = "NoteList",
             InsertUserId = "InsertUserId",
             InsertDate = "InsertDate",

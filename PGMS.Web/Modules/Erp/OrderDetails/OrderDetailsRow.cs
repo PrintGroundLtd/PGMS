@@ -59,6 +59,13 @@ namespace PGMS.Erp.Entities
             set { Fields.Discount[this] = value; }
         }
 
+        [DisplayName("Additional Costs"), NotNull, DefaultValue(0), AlignRight, DisplayFormat("#,##0.00")]
+        public Int16? AdditionalCosts
+        {
+            get { return Fields.AdditionalCosts[this]; }
+            set { Fields.AdditionalCosts[this] = value; }
+        }
+
         [DisplayName("Product Name"), Expression("jProduct.[Name]"), MinSelectLevel(SelectLevel.List)]
         public String ProductName
         {
@@ -86,6 +93,13 @@ namespace PGMS.Erp.Entities
         {
             get { return Fields.Height[this]; }
             set { Fields.Height[this] = value; }
+        }
+
+        [DisplayName("Quadrature"), ReadOnly(true), Expression("t0.[Width] *  t0.[Height]"), MinSelectLevel(SelectLevel.List)]
+        public Decimal? Quadrature
+        {
+            get { return Fields.Quadrature[this]; }
+            set { Fields.Quadrature[this] = value; }
         }
 
         [DisplayName("Product Product Image"), Expression("jProduct.[ProductImage]")]
@@ -173,7 +187,13 @@ namespace PGMS.Erp.Entities
         }
         
 
-        [DisplayName("Line Total"), Expression("(t0.[UnitPrice] * t0.[Quantity] - t0.[Discount])")]
+        [DisplayName("Line Total"), Expression(@"
+CASE WHEN (T0.[Width] *  T0.[Height] > 0) THEN 
+(t0.[UnitPrice] * t0.[Quantity] - t0.[Discount] + t0.[AdditionalCosts])  * (T0.[Width] *  T0.[Height] )
+ELSE
+(t0.[UnitPrice] * t0.[Quantity] - t0.[Discount] + t0.[AdditionalCosts]) 
+END
+")]
         [AlignRight, DisplayFormat("#,##0.00"), MinSelectLevel(SelectLevel.List)]
         public Decimal? LineTotal
         {
@@ -207,9 +227,11 @@ namespace PGMS.Erp.Entities
             public DecimalField UnitPrice;
             public Int16Field Quantity;
             public Int16Field Discount;
+            public Int16Field AdditionalCosts;
             public StringField Description;
             public DecimalField Width;
             public DecimalField Height;
+            public DecimalField Quadrature;
 
             public StringField ProductName;
             public StringField ProductProductImage;

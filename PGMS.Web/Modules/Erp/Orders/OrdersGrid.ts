@@ -8,6 +8,7 @@ namespace PGMS.Erp {
         protected getIdProperty() { return OrdersRow.idProperty; }
         protected getLocalTextPrefix() { return OrdersRow.localTextPrefix; }
         protected getService() { return OrdersService.baseUrl; }
+        protected getIsActiveProperty() { return OrdersRow.isActiveProperty; }
 
         constructor(container: JQuery) {
             super(container);
@@ -38,9 +39,20 @@ namespace PGMS.Erp {
 
             var buttons = super.getButtons();
             var text = Q.text("Site.GroupByButton");
+
+            buttons.push(PGMS.Common.ExcelExportHelper.createToolButton({
+                grid: this,
+                onViewSubmit: () => this.onViewSubmit(),
+                service: OrdersService.baseUrl + '/ListExcel',
+                separator: true,
+                hint: Q.tryGetText("Site.ExportToExcelHintButton"),
+                title: Q.tryGetText("Site.ExportToExcelButton") 
+            }));
+
             buttons.push({
                 title: text +  Q.text("Db.Erp.Accounts.EntitySingular"),
                 cssClass: 'expand-all-button',
+                separator: true,
                 onClick: () => this.view.setGrouping(
                     [
                         {
@@ -49,16 +61,16 @@ namespace PGMS.Erp {
                     ])
             });
 
-            buttons.push({
-                title: text + Q.text("Db.Erp.Companies.EntitySingular"),
-                cssClass: 'expand-all-button',
-                onClick: () => this.view.setGrouping(
-                    [
-                        {
-                            getter: 'CompanyName'
-                        }
-                    ])
-            });
+            //buttons.push({
+            //    title: text + Q.text("Db.Erp.Companies.EntitySingular"),
+            //    cssClass: 'expand-all-button',
+            //    onClick: () => this.view.setGrouping(
+            //        [
+            //            {
+            //                getter: 'CompanyName'
+            //            }
+            //        ])
+            //});
 
             buttons.push({
                 title: text + Q.text("Db.Erp.OrderStatuses.EntitySingular"),

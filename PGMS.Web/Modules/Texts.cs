@@ -97,8 +97,11 @@ namespace PGMS
 
         public static class Site
         {
-                public static LocalText GroupByButton = "Group By "; 
-                public static LocalText NoGroupingButton = "No Grouping";
+                public static LocalText ExportToExcelButton = "Export to Excel"; 
+                public static LocalText ExportToExcelHintButton = "Export current table to Excel";
+
+            public static LocalText GroupByButton = "Group By ";
+            public static LocalText NoGroupingButton = "No Grouping";
 
             public static class Reports
             {

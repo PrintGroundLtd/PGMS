@@ -26,12 +26,28 @@ namespace PGMS.Erp.Entities
             set { Fields.ExpenseId[this] = value; }
         }
 
-        [DisplayName("Description"), Size(500), NotNull, QuickSearch]
+        [DisplayName("Name"), Size(200), NotNull, QuickSearch]
+        public String Name
+        {
+            get { return Fields.Name[this]; }
+            set { Fields.Name[this] = value; }
+        }
+
+        [DisplayName("Description")]
+        [HtmlNoteContentEditor]
         public String Description
         {
             get { return Fields.Description[this]; }
             set { Fields.Description[this] = value; }
         }
+
+        [DisplayName("Transaction Type"), NotNull]
+        public TransactionType? TransactionType
+        {
+            get { return (TransactionType?)Fields.TransactionType[this]; }
+            set { Fields.TransactionType[this] = (Int16?)value; }
+        }
+
 
         [DisplayName("Total"), Size(19), Scale(2), NotNull, DecimalEditor]
         public Decimal? Total
@@ -42,6 +58,7 @@ namespace PGMS.Erp.Entities
         
         [DisplayName("Transaction Date"), DisplayFormat("HH:mm dd/MM/yyyy"), NotNull]
         [QuickFilter()]
+        [DateTimeEditor]
         public DateTime? TransactionDate
         {
             get { return Fields.TransactionDate[this]; }
@@ -132,7 +149,7 @@ namespace PGMS.Erp.Entities
 
         StringField INameRow.NameField
         {
-            get { return Fields.Description; }
+            get { return Fields.Name; }
         }
 
         public static readonly RowFields Fields = new RowFields().Init();
@@ -145,10 +162,12 @@ namespace PGMS.Erp.Entities
         public class RowFields : ErpLoggingRowFields
         {
             public Int32Field ExpenseId;
+            public StringField Name;
             public StringField Description;
             public DecimalField Total;
             public DateTimeField TransactionDate;
 
+            public Int16Field TransactionType;
             public Int32Field BudgetId;
             public Int32Field PaymentTypeId;
 

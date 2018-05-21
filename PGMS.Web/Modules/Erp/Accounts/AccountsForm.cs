@@ -20,7 +20,7 @@ namespace PGMS.Erp.Forms
         public String Email { get; set; }
         public Int32 PartnerType { get; set; }
         public String PhoneNumber { get; set; }
-        public List<Int32> AccountCompanies { get; set; }
+        //public List<Int32> AccountCompanies { get; set; }
 
         public Int16 IsVip { get; set; }
         [Category("Localization")]

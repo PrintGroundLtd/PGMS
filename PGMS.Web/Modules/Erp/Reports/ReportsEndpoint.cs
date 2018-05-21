@@ -45,32 +45,58 @@ namespace PGMS.Erp.Endpoints
 
                 #region Income
 
-                var orderFields = OrdersRow.Fields;
-                var ordersRequest = new OrderListRequest();
-                ordersRequest.ColumnSelection = ColumnSelection.KeyOnly;
-                ordersRequest.Criteria = (new Criteria(orderFields.OrderDate.Name) >= firstDayOfMonth
-                                          & new Criteria(orderFields.OrderDate.Name) <= lastDayOfMonth
-                                              & new Criteria(orderFields.IsActive.Name) == 1
-                                          );
+                //var orderFields = OrdersRow.Fields;
+                //var ordersRequest = new OrderListRequest();
+                //ordersRequest.ColumnSelection = ColumnSelection.KeyOnly;
+                //ordersRequest.Criteria = (new Criteria(orderFields.OrderDate.Name) >= firstDayOfMonth
+                //                          & new Criteria(orderFields.OrderDate.Name) <= lastDayOfMonth
+                //                              & new Criteria(orderFields.IsActive.Name) == 1
+                //                          );
 
-                var orders = new OrdersRepository().List(connection, ordersRequest).Entities;
-                if (!orders.Any())
+                //var orders = new OrdersRepository().List(connection, ordersRequest).Entities;
+                //if (!orders.Any())
+                //{
+                //    datasetIncome.data.Add(Decimal.Zero);
+                //    continue;
+                //}
+                //var orderDetailsFields = OrderDetailsRow.Fields;
+                //var orderDetailsListRequest = new ListRequest();
+                //orderDetailsListRequest.ColumnSelection = ColumnSelection.Details;
+
+                //orderDetailsListRequest.Criteria =
+                //    (new Criteria(orderDetailsFields.OrderId.Name).In(orders.Select(o => o.OrderId)));
+
+                //var orderDetails = new OrderDetailsRepository().List(connection, orderDetailsListRequest).Entities;
+
+                //var totalForMonth = orderDetails.Select(od => od.LineTotal).Aggregate((a, b) => a + b);
+
+                //datasetIncome.data.Add(totalForMonth ?? Decimal.Zero);
+
+
+                var expensesListRequest = new ListRequest();
+                var expensesFields = ExpensesRow.Fields;
+                expensesListRequest.ColumnSelection = ColumnSelection.KeyOnly;
+                expensesListRequest.IncludeColumns = new HashSet<string>
+                {
+                    expensesFields.Total.Name,
+                    expensesFields.TransactionDate.Name
+                };
+
+                expensesListRequest.Criteria = (new Criteria(expensesFields.TransactionDate.Name) >= firstDayOfMonth
+                                                & new Criteria(expensesFields.TransactionDate.Name) <= lastDayOfMonth
+                                                & new Criteria(expensesFields.IsActive.Name) == 1
+                                                & new Criteria(expensesFields.TransactionType.Name) == TransactionType.Income
+                    );
+
+                var expenses = new ExpensesRepository().List(connection, expensesListRequest).Entities;
+                if (!expenses.Any())
                 {
                     datasetIncome.data.Add(Decimal.Zero);
                     continue;
                 }
-                var orderDetailsFields = OrderDetailsRow.Fields;
-                var orderDetailsListRequest = new ListRequest();
-                orderDetailsListRequest.ColumnSelection = ColumnSelection.Details;
 
-                orderDetailsListRequest.Criteria =
-                    (new Criteria(orderDetailsFields.OrderId.Name).In(orders.Select(o => o.OrderId)));
-
-                var orderDetails = new OrderDetailsRepository().List(connection, orderDetailsListRequest).Entities;
-
-                var totalForMonth = orderDetails.Select(od => od.LineTotal).Aggregate((a, b) => a + b);
-
-                datasetIncome.data.Add(totalForMonth ?? Decimal.Zero);
+                var totalExpenses = expenses.Select(e => e.Total).Aggregate((a, b) => a + b);
+                datasetIncome.data.Add(totalExpenses ?? Decimal.Zero);
 
                 #endregion
 
@@ -96,6 +122,7 @@ namespace PGMS.Erp.Endpoints
                 expensesListRequest.Criteria = (new Criteria(expensesFields.TransactionDate.Name) >= firstDayOfMonth
                                                 & new Criteria(expensesFields.TransactionDate.Name) <= lastDayOfMonth
                                               & new Criteria(expensesFields.IsActive.Name) == 1
+                                                & new Criteria(expensesFields.TransactionType.Name) == TransactionType.Expense
                                                 );
 
                 var expenses = new ExpensesRepository().List(connection, expensesListRequest).Entities;
@@ -134,7 +161,7 @@ namespace PGMS.Erp.Endpoints
 
                 dataset.backgroundColor = orderStatus.BackgroundColor;
 
-                dataset.borderColor = orderStatus.BorderColor;
+                dataset.borderColor = orderStatus.BackgroundColor;
 
                 dataset.label = orderStatus.Name;
                 for (int j = 0; j < 12; j++)

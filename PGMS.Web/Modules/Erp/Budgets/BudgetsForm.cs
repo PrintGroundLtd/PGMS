@@ -17,7 +17,7 @@ namespace PGMS.Erp.Forms
         [Hidden]
         public Int32 BudgetId { get; set; }
         public String Name { get; set; }
-        public Decimal Total { get; set; }
+       // public Decimal Total { get; set; }
         [HalfWidth]
         public DateTime StartDate { get; set; }
         [HalfWidth]

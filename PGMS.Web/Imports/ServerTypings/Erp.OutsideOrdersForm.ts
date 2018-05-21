@@ -7,6 +7,8 @@
         AccountRepresentsId: Serenity.LookupEditor;
         CompanyRepresentsId: Serenity.LookupEditor;
         OrderStatusId: Serenity.LookupEditor;
+        AssignUserId: Serenity.LookupEditor;
+        DeadLine: Serenity.DateTimeEditor;
         NoteList: NotesEditor;
     }
 
@@ -25,7 +27,8 @@
                 var w1 = s.HtmlNoteContentEditor;
                 var w2 = s.StringEditor;
                 var w3 = s.LookupEditor;
-                var w4 = NotesEditor;
+                var w4 = s.DateTimeEditor;
+                var w5 = NotesEditor;
 
                 Q.initFormType(OutsideOrdersForm, [
                     'PriceTheyOffer', w0,
@@ -35,7 +38,9 @@
                     'AccountRepresentsId', w3,
                     'CompanyRepresentsId', w3,
                     'OrderStatusId', w3,
-                    'NoteList', w4
+                    'AssignUserId', w3,
+                    'DeadLine', w4,
+                    'NoteList', w5
                 ]);
             }
         }

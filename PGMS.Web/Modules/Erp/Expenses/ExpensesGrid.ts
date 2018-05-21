@@ -8,6 +8,7 @@ namespace PGMS.Erp {
         protected getIdProperty() { return ExpensesRow.idProperty; }
         protected getLocalTextPrefix() { return ExpensesRow.localTextPrefix; }
         protected getService() { return ExpensesService.baseUrl; }
+        protected getIsActiveProperty() { return ExpensesRow.isActiveProperty; }
 
         constructor(container: JQuery) {
             super(container);
@@ -38,8 +39,20 @@ namespace PGMS.Erp {
 
             var buttons = super.getButtons();
             var text = Q.text("Site.GroupByButton");
+
+            buttons.push(PGMS.Common.ExcelExportHelper.createToolButton({
+                grid: this,
+                onViewSubmit: () => this.onViewSubmit(),
+                service: ExpensesService.baseUrl + '/ListExcel',
+                separator: true,
+                hint: Q.tryGetText("Site.ExportToExcelHintButton"),
+                title: Q.tryGetText("Site.ExportToExcelButton") 
+            }));
+
+
             buttons.push({
                 title: text + Q.text("Db.Erp.Budgets.EntitySingular"),
+                separator: true,
                 cssClass: 'expand-all-button',
                 onClick: () => this.view.setGrouping(
                     [
@@ -58,6 +71,28 @@ namespace PGMS.Erp {
                         }
                     ])
             });
+            buttons.push({
+                title: text + Q.text("Db.Erp.Expenses.TransactionType"),
+                cssClass: 'expand-all-button',
+                onClick: () => this.view.setGrouping(
+                    [
+                        {
+                            getter: 'TransactionType'
+                        }
+                    ])
+            });
+
+            buttons.push({
+                title: text + Q.text("Db.Erp.PaymentTypes.EntitySingular"),
+                cssClass: 'expand-all-button',
+                onClick: () => this.view.setGrouping(
+                    [
+                        {
+                            getter: 'PaymentTypeName'
+                        }
+                    ])
+            });
+
             buttons.push({
                 title: Q.text("Site.NoGroupingButton"),
                 cssClass: 'collapse-all-button',

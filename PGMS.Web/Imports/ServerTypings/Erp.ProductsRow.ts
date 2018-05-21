@@ -2,11 +2,14 @@
     export interface ProductsRow {
         ProductId?: number;
         Name?: string;
+        Description?: string;
         ProductImage?: string;
         Discontinued?: boolean;
         SupplierId?: number;
         QuantityPerUnit?: string;
         UnitPrice?: number;
+        UnitPriceWithDDS?: number;
+        UnitPricePartner?: number;
         UnitsInStock?: number;
         UnitsOnOrder?: number;
         ReorderLevel?: number;
@@ -39,11 +42,14 @@
         export declare const enum Fields {
             ProductId = "ProductId",
             Name = "Name",
+            Description = "Description",
             ProductImage = "ProductImage",
             Discontinued = "Discontinued",
             SupplierId = "SupplierId",
             QuantityPerUnit = "QuantityPerUnit",
             UnitPrice = "UnitPrice",
+            UnitPriceWithDDS = "UnitPriceWithDDS",
+            UnitPricePartner = "UnitPricePartner",
             UnitsInStock = "UnitsInStock",
             UnitsOnOrder = "UnitsOnOrder",
             ReorderLevel = "ReorderLevel",

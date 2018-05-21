@@ -17,8 +17,16 @@
         UserId?: number;
         OrderStatusId?: number;
         Total?: number;
+        CuttingManual?: boolean;
+        CuttingMachine?: boolean;
+        Printing?: boolean;
+        Laminating?: boolean;
+        TransportFolio?: boolean;
+        Cleaning?: boolean;
+        Cashing?: boolean;
         AccountName?: string;
         AccountPhoneNumber?: string;
+        AccountEmail?: string;
         AccountIsVip?: number;
         AccountPartnerType?: number;
         CompanyName?: string;
@@ -69,8 +77,16 @@
             UserId = "UserId",
             OrderStatusId = "OrderStatusId",
             Total = "Total",
+            CuttingManual = "CuttingManual",
+            CuttingMachine = "CuttingMachine",
+            Printing = "Printing",
+            Laminating = "Laminating",
+            TransportFolio = "TransportFolio",
+            Cleaning = "Cleaning",
+            Cashing = "Cashing",
             AccountName = "AccountName",
             AccountPhoneNumber = "AccountPhoneNumber",
+            AccountEmail = "AccountEmail",
             AccountIsVip = "AccountIsVip",
             AccountPartnerType = "AccountPartnerType",
             CompanyName = "CompanyName",

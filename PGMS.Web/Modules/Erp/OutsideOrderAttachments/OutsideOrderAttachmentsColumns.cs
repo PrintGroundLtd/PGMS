@@ -17,7 +17,6 @@ namespace PGMS.Erp.Columns
         public Int32 OutsideOrderAttachmentId { get; set; }
         [EditLink]
         public String Name { get; set; }
-        public String Description { get; set; }
         public String OutsideOrderName { get; set; }
         public DateTime InsertDate { get; set; }
         public Int32 InsertUserName { get; set; }

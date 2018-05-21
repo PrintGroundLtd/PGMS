@@ -55,9 +55,10 @@ namespace PGMS.Erp.Repositories
                     var expensesFld = ExpensesRow.Fields;
                     var expensesQuery = new SqlQuery()
                         .From(expensesFld)
-                        .Select(expensesFld.Total)
+                        .Select(expensesFld.Total, expensesFld.TransactionType)
                         .Where(~(
-                            new Criteria(expensesFld.BudgetId) == responseEntity.BudgetId.Value
+                            new Criteria(expensesFld.BudgetId) == responseEntity.BudgetId.Value &&
+                            new Criteria(expensesFld.IsActive) ==1 
                             ));
 
                     //switch (responseEntity.BudgetPeriod)
@@ -83,12 +84,28 @@ namespace PGMS.Erp.Repositories
                     //}
 
                     var expensesPerBudged = Connection.Query<ExpensesRow>(expensesQuery).ToList();
+                    responseEntity.Total = Decimal.Zero;
+                    responseEntity.LeftAfterExpenses = Decimal.Zero;
                     if (expensesPerBudged.Any())
                     {
-                        var totalExpenses =
-                            expensesPerBudged.Select(s => s.Total).Aggregate((a, x) => a + x);
+                        if (expensesPerBudged.Any(e => e.TransactionType.Value == TransactionType.Income))
+                        {
+                            var totalIncome =
+                                expensesPerBudged
+                                    .Where(e => e.TransactionType.Value == TransactionType.Income)
+                                    .Select(s => s.Total).Aggregate((a, x) => a + x);
+                            responseEntity.Total = totalIncome;
+                        }
 
-                        responseEntity.LeftAfterExpenses = responseEntity.Total - totalExpenses;
+                        if (expensesPerBudged.Any(e => e.TransactionType.Value == TransactionType.Expense))
+                        {
+                            var totalExpenses =
+                                expensesPerBudged
+                                    .Where(e => e.TransactionType.Value == TransactionType.Expense)
+                                    .Select(s => s.Total).Aggregate((a, x) => a + x);
+
+                            responseEntity.LeftAfterExpenses = responseEntity.Total - totalExpenses;
+                        }
                     }
                 }
             }

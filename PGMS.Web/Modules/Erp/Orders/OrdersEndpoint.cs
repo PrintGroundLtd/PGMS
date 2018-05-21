@@ -1,4 +1,8 @@
 ﻿
+using System;
+using Serenity.Reporting;
+using Serenity.Web;
+
 namespace PGMS.Erp.Endpoints
 {
     using Serenity;
@@ -24,7 +28,7 @@ namespace PGMS.Erp.Endpoints
         {
             return new MyRepository().Update(uow, request);
         }
- 
+
         [HttpPost, AuthorizeDelete(typeof(MyRow))]
         public DeleteResponse Delete(IUnitOfWork uow, DeleteRequest request)
         {
@@ -42,5 +46,16 @@ namespace PGMS.Erp.Endpoints
         {
             return new MyRepository().List(connection, request);
         }
+
+
+        public FileContentResult ListExcel(IDbConnection connection, OrderListRequest request)
+        {
+            var data = List(connection, request).Entities;
+            var report = new DynamicDataReport(data, request.IncludeColumns, typeof(Columns.OrdersColumns));
+            var bytes = new ReportRepository().Render(report);
+            var reportName = "Orders_";
+            return ExcelContentResult.Create(bytes, reportName + DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".xlsx");
+        }
+
     }
 }
