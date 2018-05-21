@@ -58,7 +58,7 @@ namespace PGMS.Erp.Columns
         public String ShipAddress { get; set; }
         public String ShipCity { get; set; }
         public String ShipCountry { get; set; }
-        public String UserUsername { get; set; }
+        public String UserDisplayName { get; set; }
         public DateTime InsertDate { get; set; }
         public Int32 InsertUserName { get; set; }
         
