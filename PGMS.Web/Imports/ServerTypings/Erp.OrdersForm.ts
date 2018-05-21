@@ -3,6 +3,13 @@
         AccountId: Serenity.LookupEditor;
         PaymentTypeId: Serenity.LookupEditor;
         DetailList: OrderDetailsEditor;
+        CuttingManual: Serenity.BooleanEditor;
+        CuttingMachine: Serenity.BooleanEditor;
+        Printing: Serenity.BooleanEditor;
+        Laminating: Serenity.BooleanEditor;
+        TransportFolio: Serenity.BooleanEditor;
+        Cleaning: Serenity.BooleanEditor;
+        Cashing: Serenity.BooleanEditor;
         UserId: Serenity.LookupEditor;
         OrderStatusId: Serenity.LookupEditor;
         OrderDate: Serenity.DateEditor;
@@ -28,25 +35,33 @@
                 var s = Serenity;
                 var w0 = s.LookupEditor;
                 var w1 = OrderDetailsEditor;
-                var w2 = s.DateEditor;
-                var w3 = s.DateTimeEditor;
-                var w4 = s.StringEditor;
-                var w5 = NotesEditor;
+                var w2 = s.BooleanEditor;
+                var w3 = s.DateEditor;
+                var w4 = s.DateTimeEditor;
+                var w5 = s.StringEditor;
+                var w6 = NotesEditor;
 
                 Q.initFormType(OrdersForm, [
                     'AccountId', w0,
                     'PaymentTypeId', w0,
                     'DetailList', w1,
+                    'CuttingManual', w2,
+                    'CuttingMachine', w2,
+                    'Printing', w2,
+                    'Laminating', w2,
+                    'TransportFolio', w2,
+                    'Cleaning', w2,
+                    'Cashing', w2,
                     'UserId', w0,
                     'OrderStatusId', w0,
-                    'OrderDate', w2,
-                    'DeadLine', w3,
-                    'ShippedDate', w2,
-                    'ShipName', w4,
-                    'ShipAddress', w4,
-                    'ShipCity', w4,
-                    'ShipCountry', w4,
-                    'NoteList', w5
+                    'OrderDate', w3,
+                    'DeadLine', w4,
+                    'ShippedDate', w3,
+                    'ShipName', w5,
+                    'ShipAddress', w5,
+                    'ShipCity', w5,
+                    'ShipCountry', w5,
+                    'NoteList', w6
                 ]);
             }
         }

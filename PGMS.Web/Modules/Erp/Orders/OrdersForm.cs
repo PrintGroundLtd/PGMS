@@ -18,11 +18,26 @@ namespace PGMS.Erp.Forms
         public Int32 AccountId { get; set; }
         //public Int32 CompanyId { get; set; }
         [DefaultValue(1)]
-        public Int32 PaymentTypeId { get; set; }
+        public Int32 PaymentTypeId { get; set; } 
       
         [Category("Order Details")]
         [OrderDetailsEditor]
         public List<Entities.OrderDetailsRow> DetailList { get; set; }
+
+        [OneThirdWidth]
+        public Boolean CuttingManual { get; set; }
+        [OneThirdWidth]
+        public Boolean CuttingMachine { get; set; }
+        [OneThirdWidth]
+        public Boolean Printing { get; set; }
+        [OneThirdWidth]
+        public Boolean Laminating { get; set; }
+        [OneThirdWidth]
+        public Boolean TransportFolio { get; set; }
+        [OneThirdWidth]
+        public Boolean Cleaning { get; set; }
+        [OneThirdWidth]
+        public Boolean Cashing { get; set; }
 
         public Int32 UserId { get; set; }
         public Int32 OrderStatusId { get; set; }

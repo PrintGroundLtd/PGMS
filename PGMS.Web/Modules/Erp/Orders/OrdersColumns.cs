@@ -38,6 +38,15 @@ namespace PGMS.Erp.Columns
         public String OrderStatusName { get; set; }
 
         public decimal Total { get; set; }
+        
+        public Boolean CuttingManual { get; set; }
+        public Boolean CuttingMachine { get; set; }
+        public Boolean Printing { get; set; }
+        public Boolean Laminating { get; set; }
+        public Boolean TransportFolio { get; set; }
+        public Boolean Cleaning { get; set; }
+        public Boolean Cashing { get; set; }
+
         [EditLink]
         public String PaymentTypeName { get; set; } 
         public DateTime OrderDate { get; set; }
@@ -52,6 +61,7 @@ namespace PGMS.Erp.Columns
         public String UserUsername { get; set; }
         public DateTime InsertDate { get; set; }
         public Int32 InsertUserName { get; set; }
+        
         public DateTime UpdateDate { get; set; }
         public Int32 UpdateUserName { get; set; }
         public bool IsActive { get; set; }

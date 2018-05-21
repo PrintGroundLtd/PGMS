@@ -261,6 +261,55 @@ namespace PGMS.Erp.Entities
             set { Fields.OrderName[this] = value; }
         }
 
+        [DisplayName("Cutting Manual")]
+        public Boolean? CuttingManual
+        {
+            get { return Fields.CuttingManual[this]; }
+            set { Fields.CuttingManual[this] = value; }
+        }
+
+        [DisplayName("Cutting Machine")]
+        public Boolean? CuttingMachine
+        {
+            get { return Fields.CuttingMachine[this]; }
+            set { Fields.CuttingMachine[this] = value; }
+        }
+
+        [DisplayName("Printing")]
+        public Boolean? Printing
+        {
+            get { return Fields.Printing[this]; }
+            set { Fields.Printing[this] = value; }
+        }
+
+        [DisplayName("Laminating")]
+        public Boolean? Laminating
+        {
+            get { return Fields.Laminating[this]; }
+            set { Fields.Laminating[this] = value; }
+        }
+
+        [DisplayName("Transport Folio")]
+        public Boolean? TransportFolio
+        {
+            get { return Fields.TransportFolio[this]; }
+            set { Fields.TransportFolio[this] = value; }
+        }
+
+        [DisplayName("Cleaning")]
+        public Boolean? Cleaning
+        {
+            get { return Fields.Cleaning[this]; }
+            set { Fields.Cleaning[this] = value; }
+        }
+
+        [DisplayName("Cashing")]
+        public Boolean? Cashing
+        {
+            get { return Fields.Cashing[this]; }
+            set { Fields.Cashing[this] = value; }
+        }
+
         IIdField IIdRow.IdField
         {
             get { return Fields.OrderId; }
@@ -297,6 +346,15 @@ namespace PGMS.Erp.Entities
             public Int32Field UserId;
             public Int32Field OrderStatusId;
             public DecimalField Total;
+
+            public BooleanField CuttingManual;
+            public BooleanField CuttingMachine;
+            public BooleanField Printing;
+            public BooleanField Laminating;
+            public BooleanField TransportFolio;
+            public BooleanField Cleaning;
+            public BooleanField Cashing;
+
 
             public StringField AccountName;
             public StringField AccountPhoneNumber;
