@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Core: General Layout Style
  * -------------------------
  */
@@ -7950,4 +7950,7 @@ section.content > .s-DataGrid {
 }
 .is-vip {
   background-color: #ff8630 !important;
+}
+.order-status-id .select2-container {
+  min-width: 200px;
 }

@@ -386,5 +386,6 @@
   "Site.Dashboard.OrdersGridTitle": "Общо поръчки назначени към теб: ",
   "Site.GroupByButton": "Групирай по ",
   "Site.NoGroupingButton": "Не групирай",
+  "Site.OrderStatusNotEqualTo": "Статус на Поръчка Различен От",
   "Site.Reports.OrdersPerStatus": "Поръчки по статус"
 }
