@@ -3035,7 +3035,7 @@ declare namespace PGMS.Erp {
         protected form: OrderDetailsForm;
         private loadedState;
         constructor();
-        loadEntity(entity: Erp.OrdersRow): void;
+        loadEntity(entity: Erp.OrderDetailsRow): void;
         loadResponse(data: any): void;
         getSaveState(): string;
     }

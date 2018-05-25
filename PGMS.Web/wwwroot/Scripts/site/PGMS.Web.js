@@ -4490,15 +4490,17 @@ var PGMS;
             OutsideOrdersGrid.prototype.getQuickFilters = function () {
                 // get quick filter list from base class, e.g. columns
                 var filters = _super.prototype.getQuickFilters.call(this);
-                var filter = Q.first(filters, function (x) { return x.field == "OrderStatusId" /* OrderStatusId */; });
-                filter.title = Q.tryGetText("Site.OrderStatusNotEqualTo");
-                filter.cssClass = "order-status-id";
-                filter.handler = function (h) {
-                    // if filter is active, e.g. editor has some value
-                    if (h.active) {
-                        h.request.Criteria = Serenity.Criteria.and(h.request.Criteria, [["OrderStatusId" /* OrderStatusId */], '!=', h.value]);
-                    }
-                };
+                var filter = Q.tryFirst(filters, function (x) { return x.field == "OrderStatusId" /* OrderStatusId */; });
+                if (filter != null) {
+                    filter.title = Q.tryGetText("Site.OrderStatusNotEqualTo");
+                    filter.cssClass = "order-status-id";
+                    filter.handler = function (h) {
+                        // if filter is active, e.g. editor has some value
+                        if (h.active) {
+                            h.request.Criteria = Serenity.Criteria.and(h.request.Criteria, [["OrderStatusId" /* OrderStatusId */], '!=', h.value]);
+                        }
+                    };
+                }
                 return filters;
             };
             OutsideOrdersGrid.prototype.createSlickGrid = function () {
@@ -5426,7 +5428,7 @@ var PGMS;
                 _this.form = new Erp.OrderDetailsForm(_this.idPrefix);
                 _this.byId('NoteList').closest('.field').hide().end().appendTo(_this.byId('TabNotes'));
                 PGMS.DialogUtils.pendingChangesConfirmation(_this.element, function () { return _this.getSaveState() != _this.loadedState; });
-                _this.form = new Erp.OrderDetailsForm(_this.idPrefix);
+                // this.form = new OrderDetailsForm(this.idPrefix);
                 _this.form.ProductId.changeSelect2(function (e) {
                     var productId = Q.toId(_this.form.ProductId.value);
                     if (productId != null) {
@@ -5468,6 +5470,7 @@ var PGMS;
             OrderDetailsDialog.prototype.getLocalTextPrefix = function () { return Erp.OrderDetailsRow.localTextPrefix; };
             OrderDetailsDialog.prototype.loadEntity = function (entity) {
                 _super.prototype.loadEntity.call(this, entity);
+                console.log(entity);
                 Serenity.TabsExtensions.setDisabled(this.tabs, 'Notes', this.isNewOrDeleted());
             };
             OrderDetailsDialog.prototype.loadResponse = function (data) {
@@ -5506,11 +5509,11 @@ var PGMS;
             OrderDetailsEditor.prototype.getLocalTextPrefix = function () { return Erp.OrderDetailsRow.localTextPrefix; };
             OrderDetailsEditor.prototype.validateEntity = function (row, id) {
                 row.ProductId = Q.toId(row.ProductId);
-                var sameProduct = Q.tryFirst(this.view.getItems(), function (x) { return x.ProductId === row.ProductId; });
-                if (sameProduct && this.id(sameProduct) !== id) {
-                    Q.alert('This product is already in order details!');
-                    return false;
-                }
+                //var sameProduct = Q.tryFirst(this.view.getItems(), x => x.ProductId === row.ProductId);
+                //if (sameProduct && this.id(sameProduct) !== id) {
+                //    Q.alert('This product is already in order details!');
+                //    return false;
+                //}
                 var productLookup = Erp.ProductsRow.getLookup().itemById[row.ProductId];
                 row.ProductQuantityPerUnit = productLookup.QuantityPerUnit;
                 row.ProductName = productLookup.Name;

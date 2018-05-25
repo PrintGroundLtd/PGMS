@@ -15,11 +15,11 @@ namespace PGMS.Erp {
         validateEntity(row, id) {
             row.ProductId = Q.toId(row.ProductId);
              
-            var sameProduct = Q.tryFirst(this.view.getItems(), x => x.ProductId === row.ProductId);
-            if (sameProduct && this.id(sameProduct) !== id) {
-                Q.alert('This product is already in order details!');
-                return false;
-            }
+            //var sameProduct = Q.tryFirst(this.view.getItems(), x => x.ProductId === row.ProductId);
+            //if (sameProduct && this.id(sameProduct) !== id) {
+            //    Q.alert('This product is already in order details!');
+            //    return false;
+            //}
             var productLookup = ProductsRow.getLookup().itemById[row.ProductId];
      
             row.ProductQuantityPerUnit = productLookup.QuantityPerUnit;
