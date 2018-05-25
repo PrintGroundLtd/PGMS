@@ -39,6 +39,7 @@ namespace PGMS.Erp.Columns
         public String CompanyRepresentsName { get; set; }
 
         [OrderStatusesFormatter(BackgroundProperty = "OrderStatusBackgroundColor", BorderProperty = "OrderStatusBorderColor")]
+        [QuickFilter()]
         public String OrderStatusName { get; set; }
         public String AssignUserDisplayName { get; set; }
 

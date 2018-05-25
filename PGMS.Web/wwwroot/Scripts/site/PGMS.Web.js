@@ -4230,16 +4230,14 @@ var PGMS;
                 // get quick filter list from base class, e.g. columns
                 var filters = _super.prototype.getQuickFilters.call(this);
                 var filter = Q.first(filters, function (x) { return x.field == "OrderStatusId" /* OrderStatusId */; });
-                var orderFilter = Q.deepClone(filter);
-                orderFilter.title = Q.tryGetText("Site.OrderStatusNotEqualTo");
-                orderFilter.cssClass = "order-status-id";
-                orderFilter.handler = function (h) {
+                filter.title = Q.tryGetText("Site.OrderStatusNotEqualTo");
+                filter.cssClass = "order-status-id";
+                filter.handler = function (h) {
                     // if filter is active, e.g. editor has some value
                     if (h.active) {
                         h.request.Criteria = Serenity.Criteria.and(h.request.Criteria, [["OrderStatusId" /* OrderStatusId */], '!=', h.value]);
                     }
                 };
-                filters.push(orderFilter);
                 return filters;
             };
             OrdersGrid.prototype.createSlickGrid = function () {
@@ -4493,16 +4491,14 @@ var PGMS;
                 // get quick filter list from base class, e.g. columns
                 var filters = _super.prototype.getQuickFilters.call(this);
                 var filter = Q.first(filters, function (x) { return x.field == "OrderStatusId" /* OrderStatusId */; });
-                var orderFilter = Q.deepClone(filter);
-                orderFilter.title = Q.tryGetText("Site.OrderStatusNotEqualTo");
-                orderFilter.cssClass = "order-status-id";
-                orderFilter.handler = function (h) {
+                filter.title = Q.tryGetText("Site.OrderStatusNotEqualTo");
+                filter.cssClass = "order-status-id";
+                filter.handler = function (h) {
                     // if filter is active, e.g. editor has some value
                     if (h.active) {
                         h.request.Criteria = Serenity.Criteria.and(h.request.Criteria, [["OrderStatusId" /* OrderStatusId */], '!=', h.value]);
                     }
                 };
-                filters.push(orderFilter);
                 return filters;
             };
             OutsideOrdersGrid.prototype.createSlickGrid = function () {

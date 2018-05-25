@@ -35,6 +35,7 @@ namespace PGMS.Erp.Columns
         //[EditLink]
         //public String CompanyName { get; set; }
         [OrderStatusesFormatter(BackgroundProperty = "OrderStatusBackgroundColor", BorderProperty = "OrderStatusBorderColor")]
+        [QuickFilter()]
         public String OrderStatusName { get; set; }
 
         public decimal Total { get; set; }

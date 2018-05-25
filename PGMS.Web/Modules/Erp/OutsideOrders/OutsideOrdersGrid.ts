@@ -20,18 +20,15 @@ namespace PGMS.Erp {
             let filters = super.getQuickFilters();
 
             let filter = Q.first(filters, x => x.field == fld.OrderStatusId);
-            var orderFilter = Q.deepClone<Serenity.QuickFilter<Serenity.Widget<any>, any>>(filter);
-            
-            orderFilter.title = Q.tryGetText("Site.OrderStatusNotEqualTo");
-            orderFilter.cssClass = "order-status-id";
-            orderFilter.handler = h => { 
+            filter.title = Q.tryGetText("Site.OrderStatusNotEqualTo");
+            filter.cssClass = "order-status-id";
+            filter.handler = h => {
                 // if filter is active, e.g. editor has some value
                 if (h.active) {
                     h.request.Criteria = Serenity.Criteria.and(h.request.Criteria,
                         [[fld.OrderStatusId], '!=', h.value]);
                 }
             };
-            filters.push(orderFilter);
             return filters;
         }
         protected createSlickGrid() {
