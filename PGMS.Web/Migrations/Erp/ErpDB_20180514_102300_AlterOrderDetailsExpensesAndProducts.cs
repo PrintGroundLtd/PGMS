@@ -18,7 +18,6 @@ namespace PGMS.Migrations.DefaultDB
                 .AddColumn("UnitPricePartner").AsCurrency().Nullable();
 
             Alter.Table("Expenses")
-                .AddColumn("Name").AsString(200).NotNullable().WithDefaultValue("Add Name")
                 .AddColumn("TransactionType").AsInt16().NotNullable().WithDefaultValue(1);
 
         }
