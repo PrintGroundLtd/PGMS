@@ -852,13 +852,15 @@ declare namespace PGMS.Erp {
 declare namespace PGMS.Erp {
     interface ExpensesForm {
         Name: Serenity.StringEditor;
-        Description: Serenity.HtmlNoteContentEditor;
         Total: Serenity.DecimalEditor;
         TransactionType: Serenity.EnumEditor;
-        BudgetId: Serenity.LookupEditor;
         PaymentTypeId: Serenity.LookupEditor;
-        UserId: Serenity.LookupEditor;
         TransactionDate: Serenity.DateTimeEditor;
+        BudgetId: Serenity.LookupEditor;
+        Description: Serenity.HtmlNoteContentEditor;
+        OrderId: Serenity.LookupEditor;
+        OutsideOrderId: Serenity.LookupEditor;
+        UserId: Serenity.LookupEditor;
     }
     class ExpensesForm extends Serenity.PrefixedContext {
         static formKey: string;
@@ -884,6 +886,10 @@ declare namespace PGMS.Erp {
         UserId?: number;
         UserUsername?: string;
         UserDisplayName?: string;
+        OrderId?: number;
+        OrderName?: string;
+        OutsideOrderId?: number;
+        OutsideOrderName?: string;
         InsertUserId?: number;
         InsertDate?: string;
         UpdateUserId?: number;
@@ -916,6 +922,10 @@ declare namespace PGMS.Erp {
             UserId = "UserId",
             UserUsername = "UserUsername",
             UserDisplayName = "UserDisplayName",
+            OrderId = "OrderId",
+            OrderName = "OrderName",
+            OutsideOrderId = "OutsideOrderId",
+            OutsideOrderName = "OutsideOrderName",
             InsertUserId = "InsertUserId",
             InsertDate = "InsertDate",
             UpdateUserId = "UpdateUserId",
@@ -2791,6 +2801,7 @@ declare namespace PGMS.Erp {
         protected form: OutsideOrdersForm;
         private loadedState;
         private attachmentsGrid;
+        private expensesGrid;
         constructor();
         loadEntity(entity: Erp.OutsideOrdersRow): void;
         loadResponse(data: any): void;
@@ -3347,5 +3358,24 @@ declare namespace PGMS.Membership {
         protected getFormKey(): string;
         private form;
         constructor(container: JQuery);
+    }
+}
+declare namespace PGMS.Erp {
+    class OutsideOrderExpensesDialog extends ExpensesDialog {
+        constructor();
+        updateInterface(): void;
+    }
+}
+declare namespace PGMS.Erp {
+    class OutsideOrderExpensesGrid extends ExpensesGrid {
+        protected getDialogType(): typeof OutsideOrderExpensesDialog;
+        constructor(container: JQuery);
+        protected getColumns(): Slick.Column[];
+        protected initEntityDialog(itemType: any, dialog: any): void;
+        protected addButtonClick(): void;
+        protected getInitialTitle(): any;
+        protected getGridCanLoad(): boolean;
+        private _outsideOrderId;
+        outsideOrderId: number;
     }
 }

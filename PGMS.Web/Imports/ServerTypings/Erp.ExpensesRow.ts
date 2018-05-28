@@ -16,6 +16,10 @@
         UserId?: number;
         UserUsername?: string;
         UserDisplayName?: string;
+        OrderId?: number;
+        OrderName?: string;
+        OutsideOrderId?: number;
+        OutsideOrderName?: string;
         InsertUserId?: number;
         InsertDate?: string;
         UpdateUserId?: number;
@@ -53,6 +57,10 @@
             UserId = "UserId",
             UserUsername = "UserUsername",
             UserDisplayName = "UserDisplayName",
+            OrderId = "OrderId",
+            OrderName = "OrderName",
+            OutsideOrderId = "OutsideOrderId",
+            OutsideOrderName = "OutsideOrderName",
             InsertUserId = "InsertUserId",
             InsertDate = "InsertDate",
             UpdateUserId = "UpdateUserId",

@@ -27,7 +27,8 @@ namespace PGMS.Erp.Columns
         [TransactionTypeFormatter]
         public Int16 TransactionType { get; set; }
         public String PaymentTypeName { get; set; }
-
+        public Int32 OrderName { get; set; }
+        public Int32 OutsideOrderName { get; set; }
         public String UserDisplayName { get; set; }
 
         public DateTime InsertDate { get; set; }
