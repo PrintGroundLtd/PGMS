@@ -90,7 +90,7 @@ namespace PGMS.Erp.Entities
             set { Fields.OrderId[this] = value; }
         }
 
-        [DisplayName("Order Name"), Expression("CONCAT('#', jOrder.[OrderId])")]
+        [DisplayName("Order Name"), Expression("CASE WHEN jOrder.[OrderId]  IS NOT NULL THEN CONCAT('#', jOrder.[OrderId])   ELSE null  END")]
         public String OrderName
         {
             get { return Fields.OrderName[this]; }

@@ -2750,6 +2750,7 @@ declare namespace PGMS.Erp {
         protected form: OrdersForm;
         private loadedState;
         private attachmentsGrid;
+        private expensesGrid;
         constructor();
         loadEntity(entity: Erp.OrdersRow): void;
         loadResponse(data: any): void;
@@ -3377,5 +3378,24 @@ declare namespace PGMS.Erp {
         protected getGridCanLoad(): boolean;
         private _outsideOrderId;
         outsideOrderId: number;
+    }
+}
+declare namespace PGMS.Erp {
+    class OrderExpensesDialog extends ExpensesDialog {
+        constructor();
+        updateInterface(): void;
+    }
+}
+declare namespace PGMS.Erp {
+    class OrderExpensesGrid extends ExpensesGrid {
+        protected getDialogType(): typeof OrderExpensesDialog;
+        constructor(container: JQuery);
+        protected getColumns(): Slick.Column[];
+        protected initEntityDialog(itemType: any, dialog: any): void;
+        protected addButtonClick(): void;
+        protected getInitialTitle(): any;
+        protected getGridCanLoad(): boolean;
+        private _orderId;
+        orderId: number;
     }
 }
