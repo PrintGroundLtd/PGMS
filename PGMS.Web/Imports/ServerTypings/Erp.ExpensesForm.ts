@@ -1,13 +1,16 @@
 ﻿namespace PGMS.Erp {
     export interface ExpensesForm {
         Name: Serenity.StringEditor;
-        Description: Serenity.HtmlNoteContentEditor;
         Total: Serenity.DecimalEditor;
         TransactionType: Serenity.EnumEditor;
-        BudgetId: Serenity.LookupEditor;
         PaymentTypeId: Serenity.LookupEditor;
-        UserId: Serenity.LookupEditor;
         TransactionDate: Serenity.DateTimeEditor;
+        BudgetId: Serenity.LookupEditor;
+        Description: Serenity.HtmlNoteContentEditor;
+        OrderId: Serenity.LookupEditor;
+        OutsideOrderId: Serenity.LookupEditor;
+        UserId: Serenity.LookupEditor;
+        NoteList: NotesEditor;
     }
 
     export class ExpensesForm extends Serenity.PrefixedContext {
@@ -22,21 +25,25 @@
 
                 var s = Serenity;
                 var w0 = s.StringEditor;
-                var w1 = s.HtmlNoteContentEditor;
-                var w2 = s.DecimalEditor;
-                var w3 = s.EnumEditor;
-                var w4 = s.LookupEditor;
-                var w5 = s.DateTimeEditor;
+                var w1 = s.DecimalEditor;
+                var w2 = s.EnumEditor;
+                var w3 = s.LookupEditor;
+                var w4 = s.DateTimeEditor;
+                var w5 = s.HtmlNoteContentEditor;
+                var w6 = NotesEditor;
 
                 Q.initFormType(ExpensesForm, [
                     'Name', w0,
-                    'Description', w1,
-                    'Total', w2,
-                    'TransactionType', w3,
-                    'BudgetId', w4,
-                    'PaymentTypeId', w4,
-                    'UserId', w4,
-                    'TransactionDate', w5
+                    'Total', w1,
+                    'TransactionType', w2,
+                    'PaymentTypeId', w3,
+                    'TransactionDate', w4,
+                    'BudgetId', w3,
+                    'Description', w5,
+                    'OrderId', w3,
+                    'OutsideOrderId', w3,
+                    'UserId', w3,
+                    'NoteList', w6
                 ]);
             }
         }

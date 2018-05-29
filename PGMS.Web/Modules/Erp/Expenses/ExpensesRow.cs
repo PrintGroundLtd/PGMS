@@ -1,4 +1,5 @@
 ﻿
+using System.Collections.Generic;
 using PGMS.Administration.Entities;
 
 namespace PGMS.Erp.Entities
@@ -65,6 +66,37 @@ namespace PGMS.Erp.Entities
             set { Fields.TransactionDate[this] = value; }
         }
 
+        [DisplayName("For Outside Order"), ForeignKey(typeof(OutsideOrdersRow)), LeftJoin("jOutsideOrder"), TextualField("OutsideOrderName")]
+        [LookupEditor(typeof(OutsideOrdersRow), FilterField = "IsActive", FilterValue = 1)]
+        [QuickFilter()]
+        public Int32? OutsideOrderId
+        {
+            get { return Fields.OutsideOrderId[this]; }
+            set { Fields.OutsideOrderId[this] = value; }
+        }
+
+        [DisplayName("Outside Order Name"), Expression("jOutsideOrder.[Name]")]
+        public String OutsideOrderName
+        {
+            get { return Fields.OutsideOrderName[this]; }
+            set { Fields.OutsideOrderName[this] = value; }
+        }
+
+        [DisplayName("For Order"), ForeignKey(typeof(OrdersRow)), LeftJoin("jOrder"), TextualField("OrderName")]
+        [LookupEditor(typeof(OrdersRow), FilterField = "IsActive", FilterValue = 1)]
+        [QuickFilter()]
+        public Int32? OrderId
+        {
+            get { return Fields.OrderId[this]; }
+            set { Fields.OrderId[this] = value; }
+        }
+
+        [DisplayName("Order Name"), Expression("CASE WHEN jOrder.[OrderId]  IS NOT NULL THEN CONCAT('#', jOrder.[OrderId])   ELSE null  END")]
+        public String OrderName
+        {
+            get { return Fields.OrderName[this]; }
+            set { Fields.OrderName[this] = value; }
+        }
 
         [DisplayName("Budget"), NotNull, ForeignKey(typeof(BudgetsRow)), LeftJoin("jBudget"), TextualField("BudgetName")]
         [LookupEditor(typeof(BudgetsRow), FilterField = "IsActive", FilterValue = 1)]
@@ -142,6 +174,14 @@ namespace PGMS.Erp.Entities
             get { return Fields.UserDisplayName[this]; }
             set { Fields.UserDisplayName[this] = value; }
         }
+
+        [NotesEditor, NotMapped]
+        public List<NoteRow> NoteList
+        {
+            get { return Fields.NoteList[this]; }
+            set { Fields.NoteList[this] = value; }
+        }
+
         IIdField IIdRow.IdField
         {
             get { return Fields.ExpenseId; }
@@ -166,6 +206,7 @@ namespace PGMS.Erp.Entities
             public StringField Description;
             public DecimalField Total;
             public DateTimeField TransactionDate;
+            public RowListField<NoteRow> NoteList;
 
             public Int16Field TransactionType;
             public Int32Field BudgetId;
@@ -181,6 +222,13 @@ namespace PGMS.Erp.Entities
             public Int32Field UserId;
             public StringField UserUsername;
             public StringField UserDisplayName;
+
+            public Int32Field OrderId;
+            public StringField OrderName;
+
+            public Int32Field OutsideOrderId;
+            public StringField OutsideOrderName;
+
         }
     }
 }

@@ -20,7 +20,7 @@ namespace PGMS.Erp.Entities
     [LookupScript]
     public sealed class OrdersRow : ErpLoggingRow, IIdRow, INameRow
     {
-        [DisplayName("Order Id"), Identity]
+        [DisplayName("Order Id"), Identity, QuickSearch()]
         public Int32? OrderId
         {
             get { return Fields.OrderId[this]; }
@@ -262,6 +262,7 @@ namespace PGMS.Erp.Entities
         }
 
         [DisplayName("Cutting Manual")]
+        [BooleanEditor]
         public Boolean? CuttingManual
         {
             get { return Fields.CuttingManual[this]; }
@@ -269,6 +270,7 @@ namespace PGMS.Erp.Entities
         }
 
         [DisplayName("Cutting Machine")]
+        [BooleanEditor]
         public Boolean? CuttingMachine
         {
             get { return Fields.CuttingMachine[this]; }
@@ -276,6 +278,7 @@ namespace PGMS.Erp.Entities
         }
 
         [DisplayName("Printing")]
+        [BooleanEditor]
         public Boolean? Printing
         {
             get { return Fields.Printing[this]; }
@@ -283,6 +286,7 @@ namespace PGMS.Erp.Entities
         }
 
         [DisplayName("Laminating")]
+        [BooleanEditor]
         public Boolean? Laminating
         {
             get { return Fields.Laminating[this]; }
@@ -290,6 +294,7 @@ namespace PGMS.Erp.Entities
         }
 
         [DisplayName("Transport Folio")]
+        [BooleanEditor]
         public Boolean? TransportFolio
         {
             get { return Fields.TransportFolio[this]; }
@@ -297,6 +302,7 @@ namespace PGMS.Erp.Entities
         }
 
         [DisplayName("Cleaning")]
+        [BooleanEditor]
         public Boolean? Cleaning
         {
             get { return Fields.Cleaning[this]; }
@@ -304,6 +310,7 @@ namespace PGMS.Erp.Entities
         }
 
         [DisplayName("Cashing")]
+        [BooleanEditor]
         public Boolean? Cashing
         {
             get { return Fields.Cashing[this]; }

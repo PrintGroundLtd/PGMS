@@ -14,6 +14,7 @@ namespace PGMS.Erp {
         private loadedState: string;
 
         private attachmentsGrid: OutsideOrderAttachmentsExtendedGrid;
+        private expensesGrid: OutsideOrderExpensesGrid;
 
         constructor() {
             super();
@@ -23,15 +24,21 @@ namespace PGMS.Erp {
             this.attachmentsGrid = new OutsideOrderAttachmentsExtendedGrid(this.byId("AttachmentsPropertyGrid"));
             this.attachmentsGrid.openDialogsAsPanel = false;
             this.attachmentsGrid.element.flexHeightOnly(1);
+
+            this.expensesGrid = new OutsideOrderExpensesGrid(this.byId("ExpensesPropertyGrid"));
+            this.expensesGrid.element.flexHeightOnly(1);
+            this.expensesGrid.openDialogsAsPanel = false;
         }
 
 
         loadEntity(entity: Erp.OutsideOrdersRow): void {
             super.loadEntity(entity);
+            Serenity.TabsExtensions.setDisabled(this.tabs, 'Expenses', this.isNewOrDeleted());
             Serenity.TabsExtensions.setDisabled(this.tabs, 'Notes', this.isNewOrDeleted());
             Serenity.TabsExtensions.setDisabled(this.tabs, 'Attachments', this.isNewOrDeleted());
 
             this.attachmentsGrid.outsideOrderId = entity.OutsideOrderId;
+            this.expensesGrid.outsideOrderId = entity.OutsideOrderId;
 
             if (this.isNew()) {
                 var date = new Date();

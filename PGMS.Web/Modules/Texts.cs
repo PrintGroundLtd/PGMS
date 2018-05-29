@@ -100,6 +100,8 @@ namespace PGMS
                 public static LocalText ExportToExcelButton = "Export to Excel"; 
                 public static LocalText ExportToExcelHintButton = "Export current table to Excel";
 
+            public static LocalText OrderStatusNotEqualTo = "Order Status Not Equal To";
+
             public static LocalText GroupByButton = "Group By ";
             public static LocalText NoGroupingButton = "No Grouping";
 

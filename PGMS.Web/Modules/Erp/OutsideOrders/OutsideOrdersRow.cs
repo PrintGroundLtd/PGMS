@@ -20,7 +20,7 @@ namespace PGMS.Erp.Entities
     [LookupScript]
     public sealed class OutsideOrdersRow : ErpLoggingRow, IIdRow, INameRow
     {
-        [DisplayName("Outside Order Id"), Identity]
+        [DisplayName("Outside Order Id"), Identity, QuickSearch()]
         public Int32? OutsideOrderId
         {
             get { return Fields.OutsideOrderId[this]; }

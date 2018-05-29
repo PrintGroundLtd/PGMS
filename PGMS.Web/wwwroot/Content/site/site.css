@@ -7896,6 +7896,12 @@ section.content > .s-DataGrid {
 .s-Erp-OrderAttachmentsDialog .caption {
   width: 150px;
 }
+.s-Erp-ExpensesAttachmentsDialog > .size {
+  width: 650px;
+}
+.s-Erp-ExpensesAttachmentsDialog .caption {
+  width: 150px;
+}
 .s-NotesEditor {
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -7950,4 +7956,7 @@ section.content > .s-DataGrid {
 }
 .is-vip {
   background-color: #ff8630 !important;
+}
+.order-status-id .select2-container {
+  min-width: 200px;
 }

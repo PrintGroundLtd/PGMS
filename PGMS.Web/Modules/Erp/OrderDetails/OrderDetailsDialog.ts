@@ -15,7 +15,7 @@ namespace PGMS.Erp {
             this.byId('NoteList').closest('.field').hide().end().appendTo(this.byId('TabNotes'));
             DialogUtils.pendingChangesConfirmation(this.element, () => this.getSaveState() != this.loadedState);
 
-            this.form = new OrderDetailsForm(this.idPrefix);
+           // this.form = new OrderDetailsForm(this.idPrefix);
 
             this.form.ProductId.changeSelect2(e => {
                 var productId = Q.toId(this.form.ProductId.value);
@@ -55,8 +55,9 @@ namespace PGMS.Erp {
 
         }
 
-        loadEntity(entity: Erp.OrdersRow): void {
+        loadEntity(entity: Erp.OrderDetailsRow): void {
             super.loadEntity(entity);
+            console.log(entity);
             Serenity.TabsExtensions.setDisabled(this.tabs, 'Notes', this.isNewOrDeleted());
 
         }

@@ -5,6 +5,7 @@
         Description?: string;
         Total?: number;
         TransactionDate?: string;
+        NoteList?: NoteRow[];
         TransactionType?: TransactionType;
         BudgetId?: number;
         PaymentTypeId?: number;
@@ -16,6 +17,10 @@
         UserId?: number;
         UserUsername?: string;
         UserDisplayName?: string;
+        OrderId?: number;
+        OrderName?: string;
+        OutsideOrderId?: number;
+        OutsideOrderName?: string;
         InsertUserId?: number;
         InsertDate?: string;
         UpdateUserId?: number;
@@ -42,6 +47,7 @@
             Description = "Description",
             Total = "Total",
             TransactionDate = "TransactionDate",
+            NoteList = "NoteList",
             TransactionType = "TransactionType",
             BudgetId = "BudgetId",
             PaymentTypeId = "PaymentTypeId",
@@ -53,6 +59,10 @@
             UserId = "UserId",
             UserUsername = "UserUsername",
             UserDisplayName = "UserDisplayName",
+            OrderId = "OrderId",
+            OrderName = "OrderName",
+            OutsideOrderId = "OutsideOrderId",
+            OutsideOrderName = "OutsideOrderName",
             InsertUserId = "InsertUserId",
             InsertDate = "InsertDate",
             UpdateUserId = "UpdateUserId",

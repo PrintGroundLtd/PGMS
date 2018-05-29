@@ -17,8 +17,10 @@ namespace PGMS.Erp.Forms
         [Hidden]
         public Int32 AccountId { get; set; }
         public String Name { get; set; }
-        public String Email { get; set; }
         public Int32 PartnerType { get; set; }
+        [Placeholder("example@gmail.com, second@gmail.com")]
+        public String Email { get; set; }
+        [Placeholder("08888888, 03255555")]
         public String PhoneNumber { get; set; }
         //public List<Int32> AccountCompanies { get; set; }
 

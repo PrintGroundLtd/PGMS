@@ -1,5 +1,6 @@
 ﻿
 namespace PGMS.Erp {
+    import fld = PGMS.Erp.OrdersRow.Fields;
 
     @Serenity.Decorators.registerClass()
     export class OrdersGrid extends Serenity.EntityGrid<OrdersRow, any> {
@@ -14,6 +15,23 @@ namespace PGMS.Erp {
             super(container);
         }
 
+        protected getQuickFilters(): Serenity.QuickFilter<Serenity.Widget<any>, any>[] {
+
+            // get quick filter list from base class, e.g. columns
+            let filters = super.getQuickFilters();
+
+            let filter = Q.first(filters, x => x.field == fld.OrderStatusId);
+            filter.title = Q.tryGetText("Site.OrderStatusNotEqualTo");
+            filter.cssClass = "order-status-id";
+            filter.handler = h => {
+                // if filter is active, e.g. editor has some value
+                if (h.active) {
+                    h.request.Criteria = Serenity.Criteria.and(h.request.Criteria,
+                        [[fld.OrderStatusId], '!=', h.value]);
+                }
+            }; 
+            return filters;
+        }
 
         protected createSlickGrid() {
             var grid = super.createSlickGrid();

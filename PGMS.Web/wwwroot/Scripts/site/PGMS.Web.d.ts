@@ -574,8 +574,8 @@ declare namespace PGMS.Erp {
     interface AccountsForm {
         AccountId: Serenity.IntegerEditor;
         Name: Serenity.StringEditor;
-        Email: Serenity.EmailEditor;
         PartnerType: Serenity.LookupEditor;
+        Email: Serenity.StringEditor;
         PhoneNumber: Serenity.StringEditor;
         IsVip: Serenity.BooleanEditor;
         Address: Serenity.StringEditor;
@@ -850,15 +850,118 @@ declare namespace PGMS.Erp {
 declare namespace PGMS.Erp {
 }
 declare namespace PGMS.Erp {
-    interface ExpensesForm {
+    interface ExpensesAttachmentsForm {
         Name: Serenity.StringEditor;
         Description: Serenity.HtmlNoteContentEditor;
+        FilePath: Serenity.MultipleImageUploadEditor;
+        ExpenseId: Serenity.LookupEditor;
+    }
+    class ExpensesAttachmentsForm extends Serenity.PrefixedContext {
+        static formKey: string;
+        private static init;
+        constructor(prefix: string);
+    }
+}
+declare namespace PGMS.Erp {
+    interface ExpensesAttachmentsRow {
+        ExpenseAttachmentId?: number;
+        Name?: string;
+        Description?: string;
+        FilePath?: string;
+        ExpenseId?: number;
+        ExpenseDescription?: string;
+        ExpenseTotal?: number;
+        ExpenseTransactionDate?: string;
+        ExpenseBudgetId?: number;
+        ExpensePaymentTypeId?: number;
+        ExpenseInsertDate?: string;
+        ExpenseInsertUserId?: number;
+        ExpenseUpdateDate?: string;
+        ExpenseUpdateUserId?: number;
+        ExpenseIsActive?: number;
+        ExpenseUserId?: number;
+        ExpenseName?: string;
+        ExpenseTransactionType?: number;
+        ExpenseOrderId?: number;
+        ExpenseOutsideOrderId?: number;
+        InsertUserId?: number;
+        InsertDate?: string;
+        UpdateUserId?: number;
+        UpdateDate?: string;
+        IsActive?: number;
+        InsertUserName?: string;
+        UpdateUserName?: string;
+    }
+    namespace ExpensesAttachmentsRow {
+        const idProperty = "ExpenseAttachmentId";
+        const isActiveProperty = "IsActive";
+        const nameProperty = "Name";
+        const localTextPrefix = "Erp.ExpensesAttachments";
+        const lookupKey = "Erp.ExpensesAttachments";
+        function getLookup(): Q.Lookup<ExpensesAttachmentsRow>;
+        const enum Fields {
+            ExpenseAttachmentId = "ExpenseAttachmentId",
+            Name = "Name",
+            Description = "Description",
+            FilePath = "FilePath",
+            ExpenseId = "ExpenseId",
+            ExpenseDescription = "ExpenseDescription",
+            ExpenseTotal = "ExpenseTotal",
+            ExpenseTransactionDate = "ExpenseTransactionDate",
+            ExpenseBudgetId = "ExpenseBudgetId",
+            ExpensePaymentTypeId = "ExpensePaymentTypeId",
+            ExpenseInsertDate = "ExpenseInsertDate",
+            ExpenseInsertUserId = "ExpenseInsertUserId",
+            ExpenseUpdateDate = "ExpenseUpdateDate",
+            ExpenseUpdateUserId = "ExpenseUpdateUserId",
+            ExpenseIsActive = "ExpenseIsActive",
+            ExpenseUserId = "ExpenseUserId",
+            ExpenseName = "ExpenseName",
+            ExpenseTransactionType = "ExpenseTransactionType",
+            ExpenseOrderId = "ExpenseOrderId",
+            ExpenseOutsideOrderId = "ExpenseOutsideOrderId",
+            InsertUserId = "InsertUserId",
+            InsertDate = "InsertDate",
+            UpdateUserId = "UpdateUserId",
+            UpdateDate = "UpdateDate",
+            IsActive = "IsActive",
+            InsertUserName = "InsertUserName",
+            UpdateUserName = "UpdateUserName",
+        }
+    }
+}
+declare namespace PGMS.Erp {
+    namespace ExpensesAttachmentsService {
+        const baseUrl = "Erp/ExpensesAttachments";
+        function Create(request: Serenity.SaveRequest<ExpensesAttachmentsRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<ExpensesAttachmentsRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<ExpensesAttachmentsRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<ExpensesAttachmentsRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        const enum Methods {
+            Create = "Erp/ExpensesAttachments/Create",
+            Update = "Erp/ExpensesAttachments/Update",
+            Delete = "Erp/ExpensesAttachments/Delete",
+            Retrieve = "Erp/ExpensesAttachments/Retrieve",
+            List = "Erp/ExpensesAttachments/List",
+        }
+    }
+}
+declare namespace PGMS.Erp {
+}
+declare namespace PGMS.Erp {
+    interface ExpensesForm {
+        Name: Serenity.StringEditor;
         Total: Serenity.DecimalEditor;
         TransactionType: Serenity.EnumEditor;
-        BudgetId: Serenity.LookupEditor;
         PaymentTypeId: Serenity.LookupEditor;
-        UserId: Serenity.LookupEditor;
         TransactionDate: Serenity.DateTimeEditor;
+        BudgetId: Serenity.LookupEditor;
+        Description: Serenity.HtmlNoteContentEditor;
+        OrderId: Serenity.LookupEditor;
+        OutsideOrderId: Serenity.LookupEditor;
+        UserId: Serenity.LookupEditor;
+        NoteList: NotesEditor;
     }
     class ExpensesForm extends Serenity.PrefixedContext {
         static formKey: string;
@@ -873,6 +976,7 @@ declare namespace PGMS.Erp {
         Description?: string;
         Total?: number;
         TransactionDate?: string;
+        NoteList?: NoteRow[];
         TransactionType?: TransactionType;
         BudgetId?: number;
         PaymentTypeId?: number;
@@ -884,6 +988,10 @@ declare namespace PGMS.Erp {
         UserId?: number;
         UserUsername?: string;
         UserDisplayName?: string;
+        OrderId?: number;
+        OrderName?: string;
+        OutsideOrderId?: number;
+        OutsideOrderName?: string;
         InsertUserId?: number;
         InsertDate?: string;
         UpdateUserId?: number;
@@ -905,6 +1013,7 @@ declare namespace PGMS.Erp {
             Description = "Description",
             Total = "Total",
             TransactionDate = "TransactionDate",
+            NoteList = "NoteList",
             TransactionType = "TransactionType",
             BudgetId = "BudgetId",
             PaymentTypeId = "PaymentTypeId",
@@ -916,6 +1025,10 @@ declare namespace PGMS.Erp {
             UserId = "UserId",
             UserUsername = "UserUsername",
             UserDisplayName = "UserDisplayName",
+            OrderId = "OrderId",
+            OrderName = "OrderName",
+            OutsideOrderId = "OutsideOrderId",
+            OutsideOrderName = "OutsideOrderName",
             InsertUserId = "InsertUserId",
             InsertDate = "InsertDate",
             UpdateUserId = "UpdateUserId",
@@ -2498,6 +2611,11 @@ declare namespace PGMS.Common {
         set_errorCount(value: number): void;
     }
 }
+declare namespace PGMS.Erp {
+    class CheckboxColoredFormatter implements Slick.Formatter {
+        format(ctx: Slick.FormatterContext): "<div style='height:100%;' ><span class='check-box no-float readonly'></span></div> " | "<div style='height:100%; background-color: #3C8DBC;' ><span class='check-box no-float readonly checked'></span> </div>";
+    }
+}
 declare namespace PGMS.Common {
     class ColorPickerEditor extends Serenity.Widget<any> implements Serenity.IGetEditValue, Serenity.ISetEditValue {
         constructor(container: JQuery);
@@ -2736,6 +2854,7 @@ declare namespace PGMS.Erp {
         protected form: OrdersForm;
         private loadedState;
         private attachmentsGrid;
+        private expensesGrid;
         constructor();
         loadEntity(entity: Erp.OrdersRow): void;
         loadResponse(data: any): void;
@@ -2757,6 +2876,7 @@ declare namespace PGMS.Erp {
         protected getService(): string;
         protected getIsActiveProperty(): string;
         constructor(container: JQuery);
+        protected getQuickFilters(): Serenity.QuickFilter<Serenity.Widget<any>, any>[];
         protected createSlickGrid(): Slick.Grid;
         protected getSlickOptions(): Slick.GridOptions;
         protected getButtons(): Serenity.ToolButton[];
@@ -2786,6 +2906,7 @@ declare namespace PGMS.Erp {
         protected form: OutsideOrdersForm;
         private loadedState;
         private attachmentsGrid;
+        private expensesGrid;
         constructor();
         loadEntity(entity: Erp.OutsideOrdersRow): void;
         loadResponse(data: any): void;
@@ -2807,6 +2928,7 @@ declare namespace PGMS.Erp {
         protected getService(): string;
         protected getIsActiveProperty(): string;
         constructor(container: JQuery);
+        protected getQuickFilters(): Serenity.QuickFilter<Serenity.Widget<any>, any>[];
         protected createSlickGrid(): Slick.Grid;
         protected getSlickOptions(): Slick.GridOptions;
         protected getButtons(): Serenity.ToolButton[];
@@ -2875,9 +2997,13 @@ declare namespace PGMS.Erp {
         protected getLocalTextPrefix(): string;
         protected getNameProperty(): string;
         protected getService(): string;
+        private loadedState;
         protected form: ExpensesForm;
+        private attachmentsGrid;
         constructor();
-        loadEntity(entity: BudgetsRow): void;
+        loadEntity(entity: ExpensesRow): void;
+        loadResponse(data: any): void;
+        getSaveState(): string;
     }
 }
 declare namespace PGMS.Erp {
@@ -2970,6 +3096,45 @@ declare namespace PGMS.Erp {
     }
 }
 declare namespace PGMS.Erp {
+    class ExpensesAttachmentsDialog extends Serenity.EntityDialog<ExpensesAttachmentsRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected form: ExpensesAttachmentsForm;
+    }
+}
+declare namespace PGMS.Erp {
+    class ExpensesAttachmentsExtendedDialog extends ExpensesAttachmentsDialog {
+        constructor();
+        updateInterface(): void;
+    }
+}
+declare namespace PGMS.Erp {
+    class ExpensesAttachmentsGrid extends Serenity.EntityGrid<ExpensesAttachmentsRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof ExpensesAttachmentsDialog;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace PGMS.Erp {
+    class ExpensesAttachmentsExtendedGrid extends ExpensesAttachmentsGrid {
+        protected getDialogType(): typeof ExpensesAttachmentsExtendedDialog;
+        constructor(container: JQuery);
+        protected getColumns(): Slick.Column[];
+        protected initEntityDialog(itemType: any, dialog: any): void;
+        protected addButtonClick(): void;
+        protected getInitialTitle(): any;
+        protected getGridCanLoad(): boolean;
+        private _expenseId;
+        expenseId: number;
+    }
+}
+declare namespace PGMS.Erp {
     class TransactionTypeFormatter implements Slick.Formatter {
         format(ctx: Slick.FormatterContext): string;
     }
@@ -3029,7 +3194,7 @@ declare namespace PGMS.Erp {
         protected form: OrderDetailsForm;
         private loadedState;
         constructor();
-        loadEntity(entity: Erp.OrdersRow): void;
+        loadEntity(entity: Erp.OrderDetailsRow): void;
         loadResponse(data: any): void;
         getSaveState(): string;
     }
@@ -3068,6 +3233,25 @@ declare namespace PGMS.Erp {
 declare namespace PGMS.Erp {
     class OrderAttachmentsExtendedGrid extends OrderAttachmentsGrid {
         protected getDialogType(): typeof OrderAttachmentsExtendedDialog;
+        constructor(container: JQuery);
+        protected getColumns(): Slick.Column[];
+        protected initEntityDialog(itemType: any, dialog: any): void;
+        protected addButtonClick(): void;
+        protected getInitialTitle(): any;
+        protected getGridCanLoad(): boolean;
+        private _orderId;
+        orderId: number;
+    }
+}
+declare namespace PGMS.Erp {
+    class OrderExpensesDialog extends ExpensesDialog {
+        constructor();
+        updateInterface(): void;
+    }
+}
+declare namespace PGMS.Erp {
+    class OrderExpensesGrid extends ExpensesGrid {
+        protected getDialogType(): typeof OrderExpensesDialog;
         constructor(container: JQuery);
         protected getColumns(): Slick.Column[];
         protected initEntityDialog(itemType: any, dialog: any): void;
@@ -3135,6 +3319,25 @@ declare namespace PGMS.Erp {
 declare namespace PGMS.Erp {
     class OutsideOrderAttachmentsExtendedGrid extends OutsideOrderAttachmentsGrid {
         protected getDialogType(): typeof OutsideOrderAttachmentsExtendedDialog;
+        constructor(container: JQuery);
+        protected getColumns(): Slick.Column[];
+        protected initEntityDialog(itemType: any, dialog: any): void;
+        protected addButtonClick(): void;
+        protected getInitialTitle(): any;
+        protected getGridCanLoad(): boolean;
+        private _outsideOrderId;
+        outsideOrderId: number;
+    }
+}
+declare namespace PGMS.Erp {
+    class OutsideOrderExpensesDialog extends ExpensesDialog {
+        constructor();
+        updateInterface(): void;
+    }
+}
+declare namespace PGMS.Erp {
+    class OutsideOrderExpensesGrid extends ExpensesGrid {
+        protected getDialogType(): typeof OutsideOrderExpensesDialog;
         constructor(container: JQuery);
         protected getColumns(): Slick.Column[];
         protected initEntityDialog(itemType: any, dialog: any): void;

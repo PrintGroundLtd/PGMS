@@ -35,16 +35,23 @@ namespace PGMS.Erp.Columns
         //[EditLink]
         //public String CompanyName { get; set; }
         [OrderStatusesFormatter(BackgroundProperty = "OrderStatusBackgroundColor", BorderProperty = "OrderStatusBorderColor")]
+        [QuickFilter()]
         public String OrderStatusName { get; set; }
 
         public decimal Total { get; set; }
-        
+        [CheckboxColoredFormatter]
         public Boolean CuttingManual { get; set; }
+        [CheckboxColoredFormatter]
         public Boolean CuttingMachine { get; set; }
+        [CheckboxColoredFormatter]
         public Boolean Printing { get; set; }
+        [CheckboxColoredFormatter]
         public Boolean Laminating { get; set; }
+        [CheckboxColoredFormatter]
         public Boolean TransportFolio { get; set; }
+        [CheckboxColoredFormatter]
         public Boolean Cleaning { get; set; }
+        [CheckboxColoredFormatter]
         public Boolean Cashing { get; set; }
 
         [EditLink]
