@@ -80,7 +80,7 @@ namespace PGMS.Erp.Entities
             set { Fields.Description[this] = value; }
         }
         [DisplayName("Width")]
-        [DecimalEditor(Decimals = 2)]
+        [DecimalEditor(Decimals = 2),  AlignRight]
         public Decimal? Width
         {
             get { return Fields.Width[this]; }
@@ -88,7 +88,7 @@ namespace PGMS.Erp.Entities
         }
 
         [DisplayName("Height")]
-        [DecimalEditor(Decimals = 2)]
+        [DecimalEditor(Decimals = 2),  AlignRight]
         public Decimal? Height
         {
             get { return Fields.Height[this]; }
@@ -96,6 +96,7 @@ namespace PGMS.Erp.Entities
         }
 
         [DisplayName("Quadrature"), ReadOnly(true), Expression("t0.[Width] *  t0.[Height]"), MinSelectLevel(SelectLevel.List)]
+        [DecimalEditor(Decimals = 3), DisplayFormat("#,###0.000"), AlignRight]
         public Decimal? Quadrature
         {
             get { return Fields.Quadrature[this]; }
@@ -189,7 +190,7 @@ namespace PGMS.Erp.Entities
 
         [DisplayName("Line Total"), Expression(@"
 CASE WHEN (T0.[Width] *  T0.[Height] > 0) THEN 
-(t0.[UnitPrice] * t0.[Quantity] - t0.[Discount] + t0.[AdditionalCosts])  * (T0.[Width] *  T0.[Height] )
+(t0.[UnitPrice] * t0.[Quantity] ) * (T0.[Width] *  T0.[Height] ) - t0.[Discount] + t0.[AdditionalCosts]
 ELSE
 (t0.[UnitPrice] * t0.[Quantity] - t0.[Discount] + t0.[AdditionalCosts]) 
 END
