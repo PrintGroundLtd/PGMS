@@ -3162,6 +3162,28 @@ var PGMS;
 })(PGMS || (PGMS = {}));
 var PGMS;
 (function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var CheckboxColoredFormatter = /** @class */ (function () {
+            function CheckboxColoredFormatter() {
+            }
+            CheckboxColoredFormatter.prototype.format = function (ctx) {
+                console.log(ctx);
+                if (ctx.value === false)
+                    return "<div style='height:100%;' ><span class='check-box no-float readonly'></span></div> ";
+                else
+                    return "<div style='height:100%; background-color: #3C8DBC;' ><span class='check-box no-float readonly checked'></span> </div>";
+            };
+            CheckboxColoredFormatter = __decorate([
+                Serenity.Decorators.registerFormatter([Serenity.ISlickFormatter])
+            ], CheckboxColoredFormatter);
+            return CheckboxColoredFormatter;
+        }());
+        Erp.CheckboxColoredFormatter = CheckboxColoredFormatter;
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
     var Common;
     (function (Common) {
         var ColorPickerEditor = /** @class */ (function (_super) {
@@ -4881,7 +4903,8 @@ var PGMS;
                             new Date(s.EndDate) >= new Date(); });
                     this.form.BudgetId.items = [];
                     budgetsRowItems.forEach(function (s) {
-                        _this.form.BudgetId.addOption(s.BudgetId + "", s.Name);
+                        // this.form.BudgetId.addOption();
+                        Q.addOption(_this.form.BudgetId.element, s.BudgetId + "", s.Name);
                     });
                     //this.form.BudgetId.items.filter(s => s.StartDate <= startDate.toString() &&
                     //    s.EndDate >= endDate.toString());

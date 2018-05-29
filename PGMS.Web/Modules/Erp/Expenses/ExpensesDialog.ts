@@ -43,8 +43,8 @@ namespace PGMS.Erp {
 
                 this.form.BudgetId.items = [];
                 budgetsRowItems.forEach(s => {
-                    this.form.BudgetId.addOption(s.BudgetId + "", s.Name);
-                    
+                   // this.form.BudgetId.addOption();
+                    Q.addOption(this.form.BudgetId.element, s.BudgetId + "", s.Name );
                 });
                 //this.form.BudgetId.items.filter(s => s.StartDate <= startDate.toString() &&
                 //    s.EndDate >= endDate.toString());

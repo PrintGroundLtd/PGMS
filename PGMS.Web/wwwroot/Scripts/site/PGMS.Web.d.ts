@@ -2611,6 +2611,11 @@ declare namespace PGMS.Common {
         set_errorCount(value: number): void;
     }
 }
+declare namespace PGMS.Erp {
+    class CheckboxColoredFormatter implements Slick.Formatter {
+        format(ctx: Slick.FormatterContext): "<div style='height:100%;' ><span class='check-box no-float readonly'></span></div> " | "<div style='height:100%; background-color: #3C8DBC;' ><span class='check-box no-float readonly checked'></span> </div>";
+    }
+}
 declare namespace PGMS.Common {
     class ColorPickerEditor extends Serenity.Widget<any> implements Serenity.IGetEditValue, Serenity.ISetEditValue {
         constructor(container: JQuery);
