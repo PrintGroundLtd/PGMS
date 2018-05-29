@@ -35,7 +35,6 @@ namespace PGMS.Erp.Entities
         }
 
         [DisplayName("Email"), Size(500), QuickSearch]
-        [EmailEditor]
         public String Email
         {
             get { return Fields.Email[this]; }

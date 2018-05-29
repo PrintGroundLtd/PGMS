@@ -10,6 +10,7 @@
         OrderId: Serenity.LookupEditor;
         OutsideOrderId: Serenity.LookupEditor;
         UserId: Serenity.LookupEditor;
+        NoteList: NotesEditor;
     }
 
     export class ExpensesForm extends Serenity.PrefixedContext {
@@ -29,6 +30,7 @@
                 var w3 = s.LookupEditor;
                 var w4 = s.DateTimeEditor;
                 var w5 = s.HtmlNoteContentEditor;
+                var w6 = NotesEditor;
 
                 Q.initFormType(ExpensesForm, [
                     'Name', w0,
@@ -40,7 +42,8 @@
                     'Description', w5,
                     'OrderId', w3,
                     'OutsideOrderId', w3,
-                    'UserId', w3
+                    'UserId', w3,
+                    'NoteList', w6
                 ]);
             }
         }

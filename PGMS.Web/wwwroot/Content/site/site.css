@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Core: General Layout Style
  * -------------------------
  */
@@ -7894,6 +7894,12 @@ section.content > .s-DataGrid {
   width: 650px;
 }
 .s-Erp-OrderAttachmentsDialog .caption {
+  width: 150px;
+}
+.s-Erp-ExpensesAttachmentsDialog > .size {
+  width: 650px;
+}
+.s-Erp-ExpensesAttachmentsDialog .caption {
   width: 150px;
 }
 .s-NotesEditor {

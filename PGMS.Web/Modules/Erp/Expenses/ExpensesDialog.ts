@@ -9,15 +9,30 @@ namespace PGMS.Erp {
         protected getLocalTextPrefix() { return ExpensesRow.localTextPrefix; }
         protected getNameProperty() { return ExpensesRow.nameProperty; }
         protected getService() { return ExpensesService.baseUrl; }
+        private loadedState: string;
 
         protected form = new ExpensesForm(this.idPrefix);
+        private attachmentsGrid: ExpensesAttachmentsExtendedGrid;
 
         constructor() {
             super();
+            this.byId('NoteList').closest('.field').hide().end().appendTo(this.byId('TabNotes'));
+
+            DialogUtils.pendingChangesConfirmation(this.element, () => this.getSaveState() != this.loadedState);
+
+            this.attachmentsGrid = new ExpensesAttachmentsExtendedGrid(this.byId("AttachmentsPropertyGrid"));
+            this.attachmentsGrid.openDialogsAsPanel = false;
+            this.attachmentsGrid.element.flexHeightOnly(1);
         }
 
-        loadEntity(entity: BudgetsRow) {
+        loadEntity(entity: ExpensesRow) {
             super.loadEntity(entity);
+
+            Serenity.TabsExtensions.setDisabled(this.tabs, 'Notes', this.isNewOrDeleted());
+            Serenity.TabsExtensions.setDisabled(this.tabs, 'Attachments', this.isNewOrDeleted());
+            this.attachmentsGrid.expenseId = entity.ExpenseId;
+
+
             if (!this.isEditMode()) {
 
                 var budgetsRowItems = BudgetsRow.getLookup().items;
@@ -28,13 +43,28 @@ namespace PGMS.Erp {
 
                 this.form.BudgetId.items = [];
                 budgetsRowItems.forEach(s => {
-                    this.form.BudgetId.addOption(s.BudgetId, s.Name);
+                    this.form.BudgetId.addOption(s.BudgetId + "", s.Name);
                     
                 });
                 //this.form.BudgetId.items.filter(s => s.StartDate <= startDate.toString() &&
                 //    s.EndDate >= endDate.toString());
             }
 
+        }
+
+
+        loadResponse(data) {
+            super.loadResponse(data);
+            this.loadedState = this.getSaveState();
+        }
+
+        getSaveState() {
+            try {
+                return $.toJSON(this.getSaveEntity());
+            }
+            catch (e) {
+                return null;
+            }
         }
     }
 }

@@ -5,6 +5,7 @@
         Description?: string;
         Total?: number;
         TransactionDate?: string;
+        NoteList?: NoteRow[];
         TransactionType?: TransactionType;
         BudgetId?: number;
         PaymentTypeId?: number;
@@ -46,6 +47,7 @@
             Description = "Description",
             Total = "Total",
             TransactionDate = "TransactionDate",
+            NoteList = "NoteList",
             TransactionType = "TransactionType",
             BudgetId = "BudgetId",
             PaymentTypeId = "PaymentTypeId",

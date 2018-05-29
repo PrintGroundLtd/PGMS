@@ -75,6 +75,11 @@ namespace MVC
                 public const string ExpensesIndex = "~/Modules/Erp/Expenses/ExpensesIndex.cshtml";
             }
 
+            public static class ExpensesAttachments
+            {
+                public const string ExpensesAttachmentsIndex = "~/Modules/Erp/ExpensesAttachments/ExpensesAttachmentsIndex.cshtml";
+            }
+
             public static class OrderAttachments
             {
                 public const string OrderAttachmentsIndex = "~/Modules/Erp/OrderAttachments/OrderAttachmentsIndex.cshtml";

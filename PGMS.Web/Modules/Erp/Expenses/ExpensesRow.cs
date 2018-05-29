@@ -1,4 +1,5 @@
 ﻿
+using System.Collections.Generic;
 using PGMS.Administration.Entities;
 
 namespace PGMS.Erp.Entities
@@ -173,6 +174,14 @@ namespace PGMS.Erp.Entities
             get { return Fields.UserDisplayName[this]; }
             set { Fields.UserDisplayName[this] = value; }
         }
+
+        [NotesEditor, NotMapped]
+        public List<NoteRow> NoteList
+        {
+            get { return Fields.NoteList[this]; }
+            set { Fields.NoteList[this] = value; }
+        }
+
         IIdField IIdRow.IdField
         {
             get { return Fields.ExpenseId; }
@@ -197,6 +206,7 @@ namespace PGMS.Erp.Entities
             public StringField Description;
             public DecimalField Total;
             public DateTimeField TransactionDate;
+            public RowListField<NoteRow> NoteList;
 
             public Int16Field TransactionType;
             public Int32Field BudgetId;
