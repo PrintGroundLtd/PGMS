@@ -20,7 +20,6 @@ namespace PGMS.Erp {
             super();
             this.byId('NoteList').closest('.field').hide().end().appendTo(this.byId('TabNotes'));
 
-            DialogUtils.pendingChangesConfirmation(this.element, () => this.getSaveState() != this.loadedState);
 
             this.attachmentsGrid = new OrderAttachmentsExtendedGrid(this.byId("AttachmentsPropertyGrid"));
             this.attachmentsGrid.openDialogsAsPanel = false;
@@ -29,6 +28,9 @@ namespace PGMS.Erp {
             this.expensesGrid = new OrderExpensesGrid(this.byId("ExpensesPropertyGrid"));
             this.expensesGrid.element.flexHeightOnly(1);
             this.expensesGrid.openDialogsAsPanel = false;
+
+            DialogUtils.pendingChangesConfirmation(this.element, () => this.getSaveState() != this.loadedState);
+
         }
         loadEntity(entity: Erp.OrdersRow): void {
             super.loadEntity(entity);
