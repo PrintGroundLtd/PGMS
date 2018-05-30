@@ -18,8 +18,8 @@ namespace PGMS.Erp.Entities
     [ReadPermission(PermissionKeys.Budgets.ReadPermission)]
     [UpdatePermission(PermissionKeys.Budgets.UpdatePermission)]
     [DeletePermission(PermissionKeys.Budgets.DeletePermission)]
-    [LookupScript(LookupType = typeof(BudgetsRowLookupScript<>))]
-    public sealed class BudgetsRow : ErpLoggingRow, IIdRow, INameRow, IBudgetsRow
+    [LookupScript]
+    public sealed class BudgetsRow : ErpLoggingRow, IIdRow, INameRow
     {
         [DisplayName("Budget Id"), Identity]
         public Int32? BudgetId
@@ -105,9 +105,9 @@ namespace PGMS.Erp.Entities
             get { return Fields.Name; }
         }
 
-        DateTimeField IBudgetsRow.StartDate => Fields.StartDate;
+        //DateTimeField IBudgetsRow.StartDate => Fields.StartDate;
 
-        DateTimeField IBudgetsRow.EndDate => Fields.EndDate;
+        //DateTimeField IBudgetsRow.EndDate => Fields.EndDate;
 
         public static readonly RowFields Fields = new RowFields().Init();
 
