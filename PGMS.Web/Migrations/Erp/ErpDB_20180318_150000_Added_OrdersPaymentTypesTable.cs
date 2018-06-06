@@ -191,8 +191,8 @@ namespace PGMS.Migrations.DefaultDB
                 .WithColumn("OrderId").AsInt32().Nullable()
                 .ForeignKey("Orders", "OrderId")
             .WithColumn("UnitPrice").AsCurrency().NotNullable()
-            .WithColumn("Quantity").AsInt16().NotNullable()
-            .WithColumn("Discount").AsInt16().Nullable()
+            .WithColumn("Quantity").AsDecimal(18, 6).NotNullable()
+            .WithColumn("Discount").AsDecimal(18, 6).Nullable()
 
             );
 

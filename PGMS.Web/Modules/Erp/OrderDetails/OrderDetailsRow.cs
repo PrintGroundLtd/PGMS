@@ -47,20 +47,20 @@ namespace PGMS.Erp.Entities
         }
 
         [DisplayName("Quantity"), NotNull, DefaultValue(1), AlignRight]
-        public Int16? Quantity
+        public Decimal? Quantity
         {
             get { return Fields.Quantity[this]; }
             set { Fields.Quantity[this] = value; }
         }
         [DisplayName("Discount"), NotNull, DefaultValue(0), AlignRight, DisplayFormat("#,##0.00")]
-        public Int16? Discount
+        public Decimal? Discount
         {
             get { return Fields.Discount[this]; }
             set { Fields.Discount[this] = value; }
         }
 
         [DisplayName("Additional Costs"), NotNull, DefaultValue(0), AlignRight, DisplayFormat("#,##0.00")]
-        public Int16? AdditionalCosts
+        public Decimal? AdditionalCosts
         {
             get { return Fields.AdditionalCosts[this]; }
             set { Fields.AdditionalCosts[this] = value; }
@@ -80,7 +80,7 @@ namespace PGMS.Erp.Entities
             set { Fields.Description[this] = value; }
         }
         [DisplayName("Width")]
-        [DecimalEditor(Decimals = 2),  AlignRight]
+        [DecimalEditor(Decimals =6),  AlignRight]
         public Decimal? Width
         {
             get { return Fields.Width[this]; }
@@ -88,7 +88,7 @@ namespace PGMS.Erp.Entities
         }
 
         [DisplayName("Height")]
-        [DecimalEditor(Decimals = 2),  AlignRight]
+        [DecimalEditor(Decimals = 6),  AlignRight]
         public Decimal? Height
         {
             get { return Fields.Height[this]; }
@@ -96,7 +96,7 @@ namespace PGMS.Erp.Entities
         }
 
         [DisplayName("Quadrature"), ReadOnly(true), Expression("t0.[Width] *  t0.[Height]"), MinSelectLevel(SelectLevel.List)]
-        [DecimalEditor(Decimals = 3), DisplayFormat("#,###0.000"), AlignRight]
+        [DecimalEditor(Decimals = 6), DisplayFormat("#,####0.0000"), AlignRight]
         public Decimal? Quadrature
         {
             get { return Fields.Quadrature[this]; }
@@ -226,9 +226,9 @@ END
             public Int32Field ProductId;
             public Int32Field OrderId;
             public DecimalField UnitPrice;
-            public Int16Field Quantity;
-            public Int16Field Discount;
-            public Int16Field AdditionalCosts;
+            public DecimalField Quantity;
+            public DecimalField Discount;
+            public DecimalField AdditionalCosts;
             public StringField Description;
             public DecimalField Width;
             public DecimalField Height;

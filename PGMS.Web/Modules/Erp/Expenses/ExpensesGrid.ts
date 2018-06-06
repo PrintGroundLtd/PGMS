@@ -62,6 +62,16 @@ namespace PGMS.Erp {
                     ])
             });
             buttons.push({
+                title: text + Q.text("Db.Erp.Expenses.AccountName"),
+                cssClass: 'expand-all-button',
+                onClick: () => this.view.setGrouping(
+                    [
+                        {
+                            getter: 'AccountName'
+                        }
+                    ])
+            });
+            buttons.push({
                 title: text + Q.text("Db.Administration.User.EntitySingular"),
                 cssClass: 'expand-all-button',
                 onClick: () => this.view.setGrouping(

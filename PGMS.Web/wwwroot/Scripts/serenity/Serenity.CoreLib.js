@@ -314,6 +314,64 @@ var Q;
         return s;
     }
     Q.zeroPad = zeroPad;
+    /**
+     * Returns a function, that, as long as it continues to be invoked, will not
+     * be triggered. The function will be called after it stops being called for
+     * N milliseconds. If `immediate` is passed, trigger the function on the
+     * leading edge, instead of the trailing. The function also has a property 'clear'
+     * that is a function which will clear the timer to prevent previously scheduled executions.
+     *
+     * @source underscore.js
+     */
+    function debounce(func, wait, immediate) {
+        var timeout, args, context, timestamp, result;
+        if (null == wait)
+            wait = 100;
+        function later() {
+            var last = Date.now() - timestamp;
+            if (last < wait && last >= 0) {
+                timeout = setTimeout(later, wait - last);
+            }
+            else {
+                timeout = null;
+                if (!immediate) {
+                    result = func.apply(context, args);
+                    context = args = null;
+                }
+            }
+        }
+        ;
+        var debounced = function () {
+            context = this;
+            args = arguments;
+            timestamp = Date.now();
+            var callNow = immediate && !timeout;
+            if (!timeout)
+                timeout = setTimeout(later, wait);
+            if (callNow) {
+                result = func.apply(context, args);
+                context = args = null;
+            }
+            return result;
+        };
+        debounced.clear = function () {
+            if (timeout) {
+                clearTimeout(timeout);
+                timeout = null;
+            }
+        };
+        debounced.flush = function () {
+            if (timeout) {
+                result = func.apply(context, args);
+                context = args = null;
+                clearTimeout(timeout);
+                timeout = null;
+            }
+        };
+        return debounced;
+    }
+    Q.debounce = debounce;
+    ;
     // derived from https://github.com/mistic100/jQuery.extendext/blob/master/jQuery.extendext.js
     function deepClone(arg1) {
         var args = [];
@@ -6693,10 +6751,12 @@ var Serenity;
             }
             $('<script/>').attr('type', 'text/javascript')
                 .attr('id', 'CKEditorScript')
-                .attr('src', Q.resolveUrl('~/Scripts/CKEditor/ckeditor.js'))
+                .attr('src', Q.resolveUrl('~/Scripts/CKEditor/ckeditor.js?v=' +
+                HtmlContentEditor_1.CKEditorVer))
                 .appendTo(window.document.head);
         };
         ;
+        HtmlContentEditor.CKEditorVer = "4.7.1";
         HtmlContentEditor = HtmlContentEditor_1 = __decorate([
             Editor('HtmlContent', [Serenity.IStringValue, Serenity.IReadOnly]),
             Element('<textarea/>')
@@ -7246,7 +7306,8 @@ var Serenity;
             // ignore
         };
         Recaptcha = __decorate([
-            Serenity.Decorators.registerEditor('Serenity.Recaptcha', [Serenity.IStringValue])
+            Serenity.Decorators.registerEditor('Serenity.Recaptcha', [Serenity.IStringValue]),
+            Serenity.Decorators.element("<div/>")
         ], Recaptcha);
         return Recaptcha;
     }(Serenity.Widget));
@@ -15308,6 +15369,7 @@ var Slick;
                         item.title = gi.formatter ? gi.formatter(item) : item.value;
                     }
                 }
+                // if this is a totals row, make sure it's calculated
                 else if (item && item.__groupTotals && !item.initialized) {
                     calculateTotals(item);
                 }

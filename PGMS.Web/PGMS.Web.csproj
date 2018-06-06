@@ -5,6 +5,7 @@
     <AssemblyName>PGMS.Web</AssemblyName>
     <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
     <DotNetSergen>dotnet sergen</DotNetSergen>
+    <Version>1.0.0.2</Version>
     <DotNetSergen Condition=" '$(TargetFramework)' == 'net461' AND Exists('..\..\Serenity\Serenity.CodeGenerator\bin\$(Configuration)\$(TargetFramework)\dotnet-sergen.exe')">..\..\Serenity\Serenity.CodeGenerator\bin\$(Configuration)\$(TargetFramework)\dotnet-sergen.exe</DotNetSergen>
     <DotNetSergen Condition=" '$(TargetFramework)' == 'netcoreapp2.0' AND Exists('..\..\Serenity\Serenity.CodeGenerator\bin\$(Configuration)\$(TargetFramework)\dotnet-sergen.dll')">dotnet ..\..\Serenity\Serenity.CodeGenerator\bin\$(Configuration)\$(TargetFramework)\dotnet-sergen.dll</DotNetSergen>
     <TypeScriptToolsVersion>2.7</TypeScriptToolsVersion>
@@ -27,7 +28,7 @@
     <PackageReference Include="EPPlus.Core" Version="1.5.4" />
     <PackageReference Include="FastMember" Version="1.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.5" />
-    <PackageReference Include="Serenity.Web" Version="3.6.0" />
+    <PackageReference Include="Serenity.Web" Version="3.7.1" />
   </ItemGroup>
   <ItemGroup Condition=" '$(TargetFramework)' == 'net461' ">
     <PackageReference Include="EPPlus" Version="4.1.0" />
@@ -82,7 +83,7 @@
     <Exec Command="&quot;$(TscToolPath.Replace('build\\..\tools\', 'tools\'))\tsc&quot; -p ./tsconfig.json" ContinueOnError="true" />
   </Target>
   <ItemGroup>
-    <DotNetCliToolReference Include="Serenity.CodeGenerator" Version="3.6.0" />
+    <DotNetCliToolReference Include="Serenity.CodeGenerator" Version="3.7.1" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Modules\Erp\SupplierRepresentatives\" />
