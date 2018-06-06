@@ -10,7 +10,7 @@ namespace PGMS.Migrations.DefaultDB
         public override void Up()
         {
             Alter.Table("OrderDetails")
-                .AddColumn("AdditionalCosts").AsCurrency().Nullable();
+                .AddColumn("AdditionalCosts").AsDecimal(18, 6).Nullable();
 
             Alter.Table("Products")
                 .AddColumn("Description").AsString(Int32.MaxValue).Nullable()
