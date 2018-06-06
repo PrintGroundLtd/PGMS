@@ -80,7 +80,7 @@ namespace PGMS.Erp.Entities
             set { Fields.Description[this] = value; }
         }
         [DisplayName("Width")]
-        [DecimalEditor(Decimals = 2),  AlignRight]
+        [DecimalEditor(Decimals =6),  AlignRight]
         public Decimal? Width
         {
             get { return Fields.Width[this]; }
@@ -88,7 +88,7 @@ namespace PGMS.Erp.Entities
         }
 
         [DisplayName("Height")]
-        [DecimalEditor(Decimals = 2),  AlignRight]
+        [DecimalEditor(Decimals = 6),  AlignRight]
         public Decimal? Height
         {
             get { return Fields.Height[this]; }
@@ -96,7 +96,7 @@ namespace PGMS.Erp.Entities
         }
 
         [DisplayName("Quadrature"), ReadOnly(true), Expression("t0.[Width] *  t0.[Height]"), MinSelectLevel(SelectLevel.List)]
-        [DecimalEditor(Decimals = 3), DisplayFormat("#,###0.000"), AlignRight]
+        [DecimalEditor(Decimals = 6), DisplayFormat("#,####0.0000"), AlignRight]
         public Decimal? Quadrature
         {
             get { return Fields.Quadrature[this]; }
