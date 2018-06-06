@@ -69,12 +69,12 @@ namespace PGMS
                 public static class SignUp
                 {
                     public static LocalText ActivateEmailSubject = "Activate Your PGMS Account";
-                    public static LocalText ActivationCompleteMessage = "Your account is now activated. " + 
+                    public static LocalText ActivationCompleteMessage = "Your account is now activated. " +
                         "Use the e-mail and password you used while signing up to login.";
                     public static LocalText FormInfo = "Enter your details to create a free account.";
                     public static LocalText FormTitle = "Sign up for PGMS";
                     public static LocalText SubmitButton = "Sign Up";
-                    public static LocalText Success = "An e-mail with instructions to active your account is " + 
+                    public static LocalText Success = "An e-mail with instructions to active your account is " +
                         "sent to your e-mail address. Please check your e-mails.";
 
                     public static LocalText DisplayName = "Full Name";
@@ -97,8 +97,15 @@ namespace PGMS
 
         public static class Site
         {
-                public static LocalText ExportToExcelButton = "Export to Excel"; 
-                public static LocalText ExportToExcelHintButton = "Export current table to Excel";
+            public static class Expenses
+            {
+                public static LocalText ExpenseNameOutsideOrder = "Expense -Outside Order ({0})";
+                public static LocalText ExpenseNameOrder = "Expense - Order ({0})";
+
+            }
+
+            public static LocalText ExportToExcelButton = "Export to Excel";
+            public static LocalText ExportToExcelHintButton = "Export current table to Excel";
 
             public static LocalText OrderStatusNotEqualTo = "Order Status Not Equal To";
 
@@ -107,7 +114,7 @@ namespace PGMS
 
             public static class Reports
             {
-                public static LocalText ReportsTitle = "Income"; 
+                public static LocalText ReportsTitle = "Income";
                 public static LocalText OrdersPerStatus = "Orders Per Status";
 
                 public static LocalText IncomeVSExpenseIncomeLabel = "Income";

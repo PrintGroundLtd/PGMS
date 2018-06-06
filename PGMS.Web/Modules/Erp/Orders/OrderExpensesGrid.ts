@@ -21,7 +21,10 @@ namespace PGMS.Erp {
         }
 
         protected addButtonClick() {
-            this.editItem({ OrderId: this.orderId, AccountId: this.accountId });
+
+            var name = Q.format(Q.tryGetText("Site.Expenses.ExpenseNameOrder"),
+                "#" + this.orderId);
+            this.editItem({ OrderId: this.orderId, AccountId: this.accountId, Name: name  });
         }
 
         protected getInitialTitle() {

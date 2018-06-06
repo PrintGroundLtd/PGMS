@@ -17,9 +17,10 @@ namespace PGMS.Erp {
             Serenity.EditorUtils.setReadOnly(this.form.OrderId, true);
             Serenity.EditorUtils.setReadOnly(this.form.AccountId, true);
             //Serenity.EditorUtils.setReadOnly(this.form.TransactionType, true);
-            if (this.isNew())
+            if (this.isNew()) {
                 this.form.TransactionType.value = "2";
-
+                 
+            }
         }
 
     }

@@ -6088,7 +6088,8 @@ var PGMS;
                 Serenity.SubDialogHelper.cascade(dialog, this.element.closest('.ui-dialog'));
             };
             OrderExpensesGrid.prototype.addButtonClick = function () {
-                this.editItem({ OrderId: this.orderId, AccountId: this.accountId });
+                var name = Q.format(Q.tryGetText("Site.Expenses.ExpenseNameOrder"), "#" + this.orderId);
+                this.editItem({ OrderId: this.orderId, AccountId: this.accountId, Name: name });
             };
             OrderExpensesGrid.prototype.getInitialTitle = function () {
                 return null;
@@ -6267,8 +6268,9 @@ var PGMS;
                 Serenity.EditorUtils.setReadOnly(this.form.OrderId, true);
                 Serenity.EditorUtils.setReadOnly(this.form.AccountId, true);
                 //Serenity.EditorUtils.setReadOnly(this.form.TransactionType, true);
-                if (this.isNew())
+                if (this.isNew()) {
                     this.form.TransactionType.value = "2";
+                }
             };
             OutsideOrderExpensesDialog = __decorate([
                 Serenity.Decorators.registerClass()
@@ -6297,7 +6299,8 @@ var PGMS;
                 Serenity.SubDialogHelper.cascade(dialog, this.element.closest('.ui-dialog'));
             };
             OutsideOrderExpensesGrid.prototype.addButtonClick = function () {
-                this.editItem({ OutsideOrderId: this.outsideOrderId, AccountId: this.accountId });
+                var name = Q.format(Q.tryGetText("Site.Expenses.ExpenseNameOutsideOrder"), this.outsideOrderId.toString());
+                this.editItem({ OutsideOrderId: this.outsideOrderId, AccountId: this.accountId, Name: name });
             };
             OutsideOrderExpensesGrid.prototype.getInitialTitle = function () {
                 return null;
