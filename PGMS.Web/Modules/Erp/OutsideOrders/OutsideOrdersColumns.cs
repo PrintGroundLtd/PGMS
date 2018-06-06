@@ -21,6 +21,8 @@ namespace PGMS.Erp.Columns
         public Int32 AccountRepresentsId { get; set; }
         [QuickFilter(), FilterOnly()]
         public Int32 CompanyRepresentsId { get; set; }
+        [QuickFilter(), FilterOnly()]
+        public Int32 AssignUserId { get; set; }
 
         [EditLink]
         public String Name { get; set; }

@@ -405,6 +405,7 @@
   "Navigation.Suppliers": "Доставчици",
   "Navigation.Theme Samples/Calendar": "Календар",
   "Site.Dashboard.OrdersGridTitle": "Общо поръчки назначени към теб: ",
+  "Site.Dashboard.OutsideOrdersGridTitle": "Общо външни поръчки назначени към теб: ",
   "Site.Expenses.ExpenseNameOrder": "Плащане към Поръчка ({0})",
   "Site.Expenses.ExpenseNameOutsideOrder": "Плащане към Външна Поръчка ({0})",
   "Site.GroupByButton": "Групирай по ",

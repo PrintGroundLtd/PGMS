@@ -7083,4 +7083,73 @@ var PGMS;
         Membership.SignUpPanel = SignUpPanel;
     })(Membership = PGMS.Membership || (PGMS.Membership = {}));
 })(PGMS || (PGMS = {}));
+/// <reference path="OutsideOrdersGrid.ts"/>
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var MyOutsideOrdersGrid = /** @class */ (function (_super) {
+            __extends(MyOutsideOrdersGrid, _super);
+            function MyOutsideOrdersGrid(container) {
+                return _super.call(this, container) || this;
+            }
+            // Remove quick filter for assigned to user. We only show
+            MyOutsideOrdersGrid.prototype.createQuickFilters = function () {
+                _super.prototype.createQuickFilters.call(this);
+                this.myLookupQuickFilter = this.findQuickFilter(Serenity.LookupEditor, "AssignUserId" /* AssignUserId */);
+                this.myLookupQuickFilter.element.parent().remove("*");
+                //removed Group by Companie
+                //this.myLookupQuickFilter = this.findQuickFilter(Serenity.LookupEditor, PGMS.Erp.OrdersRow.Fields.CompanyId);
+                //this.myLookupQuickFilter.element.parent().remove("*");
+            };
+            // Here you can set the onDataLoaded event to use for set new title 
+            MyOutsideOrdersGrid.prototype.createView = function () {
+                var _this = this;
+                var view = _super.prototype.createView.call(this);
+                view.onDataLoaded.subscribe(function (e, ui) {
+                    _this.setTitle(Q.text("Site.Dashboard.OutsideOrdersGridTitle") + _this.totalRecord);
+                });
+                return view;
+            };
+            // Here you can get the total number of records
+            MyOutsideOrdersGrid.prototype.onViewProcessData = function (response) {
+                var lr = _super.prototype.onViewProcessData.call(this, response);
+                this.totalRecord = lr.TotalCount;
+                return lr;
+            };
+            //protected getButtons() {
+            //    var buttons = super.getButtons();
+            //    //removed Group by Companie
+            //    buttons.splice(5, 1);
+            //    return buttons;
+            //}
+            MyOutsideOrdersGrid.prototype.onViewSubmit = function () {
+                // only continue if base class returns true (didn't cancel request)
+                if (!_super.prototype.onViewSubmit.call(this)) {
+                    return false;
+                }
+                // view object is the data source for grid (SlickRemoteView)
+                // this is an EntityGrid so its Params object is a ListRequest
+                var request = this.view.params;
+                // list request has a Criteria parameter
+                // we AND criteria here to existing one because 
+                // otherwise we might clear filter set by 
+                // an edit filter dialog if any.
+                request.Criteria = Serenity.Criteria.and(request.Criteria, [['AssignUserId'], '=', PGMS.Authorization.userDefinition.UserId]);
+                // TypeScript doesn't support operator overloading
+                // so we had to use array syntax above to build criteria.
+                // Make sure you write
+                // [['Field'], '>', 10] (which means field A is greater than 10)
+                // not 
+                // ['A', '>', 10] (which means string 'A' is greater than 10
+                return true;
+            };
+            MyOutsideOrdersGrid = __decorate([
+                Serenity.Decorators.registerClass()
+            ], MyOutsideOrdersGrid);
+            return MyOutsideOrdersGrid;
+        }(Erp.OutsideOrdersGrid));
+        Erp.MyOutsideOrdersGrid = MyOutsideOrdersGrid;
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
 //# sourceMappingURL=PGMS.Web.js.map

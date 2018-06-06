@@ -5,21 +5,27 @@
 }
 
 @*@section Head {
-    @Html.StyleBundle("Pages/Dashboard")
-    @Html.ScriptBundle("Pages/Dashboard")
-}*@
+        @Html.StyleBundle("Pages/Dashboard")
+        @Html.ScriptBundle("Pages/Dashboard")
+    }*@
 
 @section ContentHeader {
     <h1>@LocalText.Get("Navigation.Dashboard")<small>@Html.Raw(Texts.Site.Dashboard.ContentDescription)</small></h1>
 }
 
+
 <div id="MyOrdersGrid"></div>
+<div id="MyOutsideOrdersGrid"></div>
 
 
 <script type="text/javascript">
     jQuery(function () {
         new PGMS.Erp.MyOrdersGrid($('#MyOrdersGrid'), {}).init();
 
-        Q.initFullHeightGridPage($('#MyOrdersGrid'));
+       // Q.initFullHeightGridPage($('#MyOrdersGrid'));
+
+        new PGMS.Erp.MyOutsideOrdersGrid($('#MyOutsideOrdersGrid'), {}).init();
+
+       // Q.initFullHeightGridPage($('#MyOutsideOrdersGrid'));
     });
 </script>

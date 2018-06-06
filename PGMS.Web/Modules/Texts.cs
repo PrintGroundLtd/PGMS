@@ -123,7 +123,7 @@ namespace PGMS
                 public static LocalText IncomeVSExpense = "Income VS Expense";
 
             }
-
+             
             public static class AccessDenied
             {
                 public static LocalText PageTitle = "Unauthorized Access";
@@ -136,6 +136,7 @@ namespace PGMS
             public static class Dashboard
             {
                 public static LocalText OrdersGridTitle = "Total orders assigned to you: ";
+                public static LocalText OutsideOrdersGridTitle = "Total outside orders assigned to you: ";
 
                 public static LocalText ContentDescription = "- Print Ground Management System";
             }

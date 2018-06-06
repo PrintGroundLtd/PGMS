@@ -3568,3 +3568,14 @@ declare namespace PGMS.Membership {
         constructor(container: JQuery);
     }
 }
+declare namespace PGMS.Erp {
+    class MyOutsideOrdersGrid extends Erp.OutsideOrdersGrid {
+        protected totalRecord: number;
+        protected myLookupQuickFilter: Serenity.LookupEditor;
+        constructor(container: JQuery);
+        protected createQuickFilters(): void;
+        protected createView(): Slick.RemoteView<OutsideOrdersRow>;
+        protected onViewProcessData(response: Serenity.ListResponse<OutsideOrdersRow>): Serenity.ListResponse<OutsideOrdersRow>;
+        protected onViewSubmit(): boolean;
+    }
+}
