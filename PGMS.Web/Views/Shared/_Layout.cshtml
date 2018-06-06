@@ -1,5 +1,5 @@
 ﻿@using System.Reflection
-@using Microsoft.DotNet.PlatformAbstractions
+@using System.Runtime.InteropServices
 <!DOCTYPE html>
 @{
     Func<string, HtmlString> json = x => new HtmlString(Serenity.JSON.Stringify(x));
@@ -117,7 +117,7 @@ else
             </section>
         </div>
         @{
-            var runtimeVersion = typeof(RuntimeEnvironment).GetTypeInfo().Assembly.GetCustomAttribute<AssemblyFileVersionAttribute>().Version;
+            var runtimeVersion = typeof(Startup).Assembly.GetName().Version.ToString();
         }
         <footer class="main-footer">
             <div class="pull-right hidden-xs">

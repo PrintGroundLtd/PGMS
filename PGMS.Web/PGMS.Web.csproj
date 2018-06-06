@@ -5,6 +5,7 @@
     <AssemblyName>PGMS.Web</AssemblyName>
     <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
     <DotNetSergen>dotnet sergen</DotNetSergen>
+    <Version>1.0.0.2</Version>
     <DotNetSergen Condition=" '$(TargetFramework)' == 'net461' AND Exists('..\..\Serenity\Serenity.CodeGenerator\bin\$(Configuration)\$(TargetFramework)\dotnet-sergen.exe')">..\..\Serenity\Serenity.CodeGenerator\bin\$(Configuration)\$(TargetFramework)\dotnet-sergen.exe</DotNetSergen>
     <DotNetSergen Condition=" '$(TargetFramework)' == 'netcoreapp2.0' AND Exists('..\..\Serenity\Serenity.CodeGenerator\bin\$(Configuration)\$(TargetFramework)\dotnet-sergen.dll')">dotnet ..\..\Serenity\Serenity.CodeGenerator\bin\$(Configuration)\$(TargetFramework)\dotnet-sergen.dll</DotNetSergen>
     <TypeScriptToolsVersion>2.7</TypeScriptToolsVersion>
