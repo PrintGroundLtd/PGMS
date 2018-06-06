@@ -56,7 +56,14 @@ namespace PGMS.Erp.Entities
             get { return Fields.Total[this]; }
             set { Fields.Total[this] = value; }
         }
-        
+
+        [DisplayName("With Vat")]
+        [BooleanEditor]
+        public Boolean? WithVat
+        {
+            get { return Fields.WithVat[this]; }
+            set { Fields.WithVat[this] = value; }
+        }
         [DisplayName("Transaction Date"), DisplayFormat("HH:mm dd/MM/yyyy"), NotNull]
         [QuickFilter()]
         [DateTimeEditor]
@@ -175,6 +182,43 @@ namespace PGMS.Erp.Entities
             set { Fields.UserDisplayName[this] = value; }
         }
 
+        [DisplayName("Account"), ForeignKey("[dbo].[Accounts]", "AccountId"), LeftJoin("jAccount"), TextualField("AccountName")]
+        [LookupEditor(typeof(AccountsRow), FilterField = "IsActive", FilterValue = 1)]
+        public Int32? AccountId
+        {
+            get { return Fields.AccountId[this]; }
+            set { Fields.AccountId[this] = value; }
+        }
+
+        [DisplayName("Account Name"), Expression("jAccount.[Name]"), QuickSearch()]
+        public String AccountName
+        {
+            get { return Fields.AccountName[this]; }
+            set { Fields.AccountName[this] = value; }
+        }
+
+        [DisplayName("Account Phone Number"), Expression("jAccount.[PhoneNumber]"), QuickSearch()]
+        public String AccountPhoneNumber
+        {
+            get { return Fields.AccountPhoneNumber[this]; }
+            set { Fields.AccountPhoneNumber[this] = value; }
+        }
+
+        [DisplayName("Account Email"), Expression("jAccount.[Email]"), QuickSearch()]
+        public String AccountEmail
+        {
+            get { return Fields.AccountEmail[this]; }
+            set { Fields.AccountEmail[this] = value; }
+        }
+
+
+        [DisplayName("Account Is Vip"), Expression("jAccount.[IsVip]")]
+        public Int16? AccountIsVip
+        {
+            get { return Fields.AccountIsVip[this]; }
+            set { Fields.AccountIsVip[this] = value; }
+        }
+
         [NotesEditor, NotMapped]
         public List<NoteRow> NoteList
         {
@@ -207,7 +251,7 @@ namespace PGMS.Erp.Entities
             public DecimalField Total;
             public DateTimeField TransactionDate;
             public RowListField<NoteRow> NoteList;
-
+            public BooleanField WithVat;
             public Int16Field TransactionType;
             public Int32Field BudgetId;
             public Int32Field PaymentTypeId;
@@ -229,6 +273,11 @@ namespace PGMS.Erp.Entities
             public Int32Field OutsideOrderId;
             public StringField OutsideOrderName;
 
+            public Int32Field AccountId;
+            public StringField AccountName;
+            public StringField AccountPhoneNumber;
+            public StringField AccountEmail;
+            public Int16Field AccountIsVip;
         }
     }
 }

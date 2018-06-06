@@ -20,7 +20,7 @@ namespace PGMS.Erp {
         }
 
         protected addButtonClick() {
-            this.editItem({ OutsideOrderId: this.outsideOrderId });
+            this.editItem({ OutsideOrderId: this.outsideOrderId, AccountId: this.accountId  });
         }
 
         protected getInitialTitle() {
@@ -30,7 +30,18 @@ namespace PGMS.Erp {
         protected getGridCanLoad() {
             return super.getGridCanLoad() && !!this.outsideOrderId;
         }
+        private _accountId: number;
+        get accountId() {
+            return this._accountId;
+        }
 
+        set accountId(value: number) {
+            if (this._accountId !== value) {
+                this._accountId = value;
+                this.setEquality('AccountId', value);
+                this.refresh();
+            }
+        }
         private _outsideOrderId: number;
 
         get outsideOrderId() {

@@ -6,6 +6,7 @@
         Total?: number;
         TransactionDate?: string;
         NoteList?: NoteRow[];
+        WithVat?: boolean;
         TransactionType?: TransactionType;
         BudgetId?: number;
         PaymentTypeId?: number;
@@ -21,6 +22,11 @@
         OrderName?: string;
         OutsideOrderId?: number;
         OutsideOrderName?: string;
+        AccountId?: number;
+        AccountName?: string;
+        AccountPhoneNumber?: string;
+        AccountEmail?: string;
+        AccountIsVip?: number;
         InsertUserId?: number;
         InsertDate?: string;
         UpdateUserId?: number;
@@ -48,6 +54,7 @@
             Total = "Total",
             TransactionDate = "TransactionDate",
             NoteList = "NoteList",
+            WithVat = "WithVat",
             TransactionType = "TransactionType",
             BudgetId = "BudgetId",
             PaymentTypeId = "PaymentTypeId",
@@ -63,6 +70,11 @@
             OrderName = "OrderName",
             OutsideOrderId = "OutsideOrderId",
             OutsideOrderName = "OutsideOrderName",
+            AccountId = "AccountId",
+            AccountName = "AccountName",
+            AccountPhoneNumber = "AccountPhoneNumber",
+            AccountEmail = "AccountEmail",
+            AccountIsVip = "AccountIsVip",
             InsertUserId = "InsertUserId",
             InsertDate = "InsertDate",
             UpdateUserId = "UpdateUserId",

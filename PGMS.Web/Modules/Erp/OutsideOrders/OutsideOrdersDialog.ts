@@ -39,6 +39,7 @@ namespace PGMS.Erp {
 
             this.attachmentsGrid.outsideOrderId = entity.OutsideOrderId;
             this.expensesGrid.outsideOrderId = entity.OutsideOrderId;
+            this.expensesGrid.accountId = entity.AccountRepresentsId;
 
             if (this.isNew()) {
                 var date = new Date();

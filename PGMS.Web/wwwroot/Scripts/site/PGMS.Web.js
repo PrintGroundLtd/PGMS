@@ -754,22 +754,25 @@ var PGMS;
                     var w0 = s.StringEditor;
                     var w1 = s.DecimalEditor;
                     var w2 = s.EnumEditor;
-                    var w3 = s.LookupEditor;
-                    var w4 = s.DateTimeEditor;
-                    var w5 = s.HtmlNoteContentEditor;
-                    var w6 = Erp.NotesEditor;
+                    var w3 = s.BooleanEditor;
+                    var w4 = s.LookupEditor;
+                    var w5 = s.DateTimeEditor;
+                    var w6 = s.HtmlNoteContentEditor;
+                    var w7 = Erp.NotesEditor;
                     Q.initFormType(ExpensesForm, [
                         'Name', w0,
                         'Total', w1,
                         'TransactionType', w2,
-                        'PaymentTypeId', w3,
-                        'TransactionDate', w4,
-                        'BudgetId', w3,
-                        'Description', w5,
-                        'OrderId', w3,
-                        'OutsideOrderId', w3,
-                        'UserId', w3,
-                        'NoteList', w6
+                        'WithVat', w3,
+                        'PaymentTypeId', w4,
+                        'TransactionDate', w5,
+                        'BudgetId', w4,
+                        'Description', w6,
+                        'AccountId', w4,
+                        'OrderId', w4,
+                        'OutsideOrderId', w4,
+                        'UserId', w4,
+                        'NoteList', w7
                     ]);
                 }
                 return _this;
@@ -4264,6 +4267,7 @@ var PGMS;
                 }
                 this.attachmentsGrid.orderId = entity.OrderId;
                 this.expensesGrid.orderId = entity.OrderId;
+                this.expensesGrid.accountId = entity.AccountId;
             };
             OrdersDialog.prototype.loadResponse = function (data) {
                 _super.prototype.loadResponse.call(this, data);
@@ -4526,6 +4530,7 @@ var PGMS;
                 Serenity.TabsExtensions.setDisabled(this.tabs, 'Attachments', this.isNewOrDeleted());
                 this.attachmentsGrid.outsideOrderId = entity.OutsideOrderId;
                 this.expensesGrid.outsideOrderId = entity.OutsideOrderId;
+                this.expensesGrid.accountId = entity.AccountRepresentsId;
                 if (this.isNew()) {
                     var date = new Date();
                     date.setDate(date.getDate() + 2);
@@ -5026,6 +5031,15 @@ var PGMS;
                     onClick: function () { return _this.view.setGrouping([
                         {
                             getter: 'BudgetName'
+                        }
+                    ]); }
+                });
+                buttons.push({
+                    title: text + Q.text("Db.Erp.Expenses.AccountName"),
+                    cssClass: 'expand-all-button',
+                    onClick: function () { return _this.view.setGrouping([
+                        {
+                            getter: 'AccountName'
                         }
                     ]); }
                 });
@@ -6042,6 +6056,7 @@ var PGMS;
                 Serenity.EditorUtils.setReadOnly(this.form.OutsideOrderId, true);
                 Serenity.EditorUtils.setReadOnly(this.form.UserId, true);
                 Serenity.EditorUtils.setReadOnly(this.form.OrderId, true);
+                Serenity.EditorUtils.setReadOnly(this.form.AccountId, true);
                 //Serenity.EditorUtils.setReadOnly(this.form.TransactionType, true);
                 if (this.isNew())
                     this.form.TransactionType.value = "2";
@@ -6073,7 +6088,7 @@ var PGMS;
                 Serenity.SubDialogHelper.cascade(dialog, this.element.closest('.ui-dialog'));
             };
             OrderExpensesGrid.prototype.addButtonClick = function () {
-                this.editItem({ OrderId: this.orderId });
+                this.editItem({ OrderId: this.orderId, AccountId: this.accountId });
             };
             OrderExpensesGrid.prototype.getInitialTitle = function () {
                 return null;
@@ -6081,6 +6096,20 @@ var PGMS;
             OrderExpensesGrid.prototype.getGridCanLoad = function () {
                 return _super.prototype.getGridCanLoad.call(this) && !!this.orderId;
             };
+            Object.defineProperty(OrderExpensesGrid.prototype, "accountId", {
+                get: function () {
+                    return this._accountId;
+                },
+                set: function (value) {
+                    if (this._accountId !== value) {
+                        this._accountId = value;
+                        this.setEquality('AccountId', value);
+                        this.refresh();
+                    }
+                },
+                enumerable: true,
+                configurable: true
+            });
             Object.defineProperty(OrderExpensesGrid.prototype, "orderId", {
                 get: function () {
                     return this._orderId;
@@ -6236,6 +6265,7 @@ var PGMS;
                 Serenity.EditorUtils.setReadOnly(this.form.OutsideOrderId, true);
                 Serenity.EditorUtils.setReadOnly(this.form.UserId, true);
                 Serenity.EditorUtils.setReadOnly(this.form.OrderId, true);
+                Serenity.EditorUtils.setReadOnly(this.form.AccountId, true);
                 //Serenity.EditorUtils.setReadOnly(this.form.TransactionType, true);
                 if (this.isNew())
                     this.form.TransactionType.value = "2";
@@ -6267,7 +6297,7 @@ var PGMS;
                 Serenity.SubDialogHelper.cascade(dialog, this.element.closest('.ui-dialog'));
             };
             OutsideOrderExpensesGrid.prototype.addButtonClick = function () {
-                this.editItem({ OutsideOrderId: this.outsideOrderId });
+                this.editItem({ OutsideOrderId: this.outsideOrderId, AccountId: this.accountId });
             };
             OutsideOrderExpensesGrid.prototype.getInitialTitle = function () {
                 return null;
@@ -6275,6 +6305,20 @@ var PGMS;
             OutsideOrderExpensesGrid.prototype.getGridCanLoad = function () {
                 return _super.prototype.getGridCanLoad.call(this) && !!this.outsideOrderId;
             };
+            Object.defineProperty(OutsideOrderExpensesGrid.prototype, "accountId", {
+                get: function () {
+                    return this._accountId;
+                },
+                set: function (value) {
+                    if (this._accountId !== value) {
+                        this._accountId = value;
+                        this.setEquality('AccountId', value);
+                        this.refresh();
+                    }
+                },
+                enumerable: true,
+                configurable: true
+            });
             Object.defineProperty(OutsideOrderExpensesGrid.prototype, "outsideOrderId", {
                 get: function () {
                     return this._outsideOrderId;

@@ -45,7 +45,7 @@ namespace PGMS.Erp {
             }
             this.attachmentsGrid.orderId = entity.OrderId;
             this.expensesGrid.orderId = entity.OrderId;
-
+            this.expensesGrid.accountId = entity.AccountId;
         }
 
         loadResponse(data) {

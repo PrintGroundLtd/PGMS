@@ -19,9 +19,20 @@ namespace PGMS.Erp.Columns
         public Int32 ExpenseId { get; set; }
         [FilterOnly()]
         public Int32 BudgetId { get; set; }
+        [QuickFilter(), FilterOnly()]
+        public int AccountId { get; set; }
+        [EditLink]
+        [AccountFormatter(IsVipProperty = "AccountIsVip")]
+        public String AccountName { get; set; }
+        [EditLink]
+        public String AccountPhoneNumber { get; set; }
+        [EditLink]
+        public String AccountEmail { get; set; }
         [EditLink]
         public String Name { get; set; }
         public Decimal Total { get; set; }
+        [CheckboxColoredFormatter]
+        public Boolean WithVat { get; set; }
         public DateTime TransactionDate { get; set; }
         public String BudgetName { get; set; }
         [TransactionTypeFormatter]

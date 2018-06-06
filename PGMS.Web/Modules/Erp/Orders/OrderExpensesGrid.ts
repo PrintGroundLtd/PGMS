@@ -21,7 +21,7 @@ namespace PGMS.Erp {
         }
 
         protected addButtonClick() {
-            this.editItem({ OrderId: this.orderId });
+            this.editItem({ OrderId: this.orderId, AccountId: this.accountId });
         }
 
         protected getInitialTitle() {
@@ -31,7 +31,18 @@ namespace PGMS.Erp {
         protected getGridCanLoad() {
             return super.getGridCanLoad() && !!this.orderId;
         }
+        private _accountId: number;
+        get accountId() {
+            return this._accountId;
+        }
 
+        set accountId(value: number) {
+            if (this._accountId !== value) {
+                this._accountId = value;
+                this.setEquality('AccountId', value);
+                this.refresh();
+            }
+        }
         private _orderId: number;
 
         get orderId() {

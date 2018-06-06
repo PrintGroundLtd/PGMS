@@ -954,10 +954,12 @@ declare namespace PGMS.Erp {
         Name: Serenity.StringEditor;
         Total: Serenity.DecimalEditor;
         TransactionType: Serenity.EnumEditor;
+        WithVat: Serenity.BooleanEditor;
         PaymentTypeId: Serenity.LookupEditor;
         TransactionDate: Serenity.DateTimeEditor;
         BudgetId: Serenity.LookupEditor;
         Description: Serenity.HtmlNoteContentEditor;
+        AccountId: Serenity.LookupEditor;
         OrderId: Serenity.LookupEditor;
         OutsideOrderId: Serenity.LookupEditor;
         UserId: Serenity.LookupEditor;
@@ -977,6 +979,7 @@ declare namespace PGMS.Erp {
         Total?: number;
         TransactionDate?: string;
         NoteList?: NoteRow[];
+        WithVat?: boolean;
         TransactionType?: TransactionType;
         BudgetId?: number;
         PaymentTypeId?: number;
@@ -992,6 +995,11 @@ declare namespace PGMS.Erp {
         OrderName?: string;
         OutsideOrderId?: number;
         OutsideOrderName?: string;
+        AccountId?: number;
+        AccountName?: string;
+        AccountPhoneNumber?: string;
+        AccountEmail?: string;
+        AccountIsVip?: number;
         InsertUserId?: number;
         InsertDate?: string;
         UpdateUserId?: number;
@@ -1014,6 +1022,7 @@ declare namespace PGMS.Erp {
             Total = "Total",
             TransactionDate = "TransactionDate",
             NoteList = "NoteList",
+            WithVat = "WithVat",
             TransactionType = "TransactionType",
             BudgetId = "BudgetId",
             PaymentTypeId = "PaymentTypeId",
@@ -1029,6 +1038,11 @@ declare namespace PGMS.Erp {
             OrderName = "OrderName",
             OutsideOrderId = "OutsideOrderId",
             OutsideOrderName = "OutsideOrderName",
+            AccountId = "AccountId",
+            AccountName = "AccountName",
+            AccountPhoneNumber = "AccountPhoneNumber",
+            AccountEmail = "AccountEmail",
+            AccountIsVip = "AccountIsVip",
             InsertUserId = "InsertUserId",
             InsertDate = "InsertDate",
             UpdateUserId = "UpdateUserId",
@@ -3290,6 +3304,8 @@ declare namespace PGMS.Erp {
         protected addButtonClick(): void;
         protected getInitialTitle(): any;
         protected getGridCanLoad(): boolean;
+        private _accountId;
+        accountId: number;
         private _orderId;
         orderId: number;
     }
@@ -3348,6 +3364,8 @@ declare namespace PGMS.Erp {
         protected addButtonClick(): void;
         protected getInitialTitle(): any;
         protected getGridCanLoad(): boolean;
+        private _accountId;
+        accountId: number;
         private _outsideOrderId;
         outsideOrderId: number;
     }
