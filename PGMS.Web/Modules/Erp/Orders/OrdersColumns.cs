@@ -18,13 +18,13 @@ namespace PGMS.Erp.Columns
         [FilterOnly()]
         public int UserId { get; set; }
         [QuickFilter(), FilterOnly()]
-        public int AccountId { get; set; }
+        public int AccountId { get; set; } 
         //[FilterOnly()]
         //public int CompanyId { get; set; }
         [EditLink,DisplayName("Db.Shared.RecordId"), Width(100)]
         public String OrderIdName { get; set; }
 
-        [EditLink,  Width(100)]
+        [OrdersIsRealFormatter(IsRealProperty = "NotReal"),  Width(100)]
         public String Name { get; set; }
         [EditLink]
         [AccountFormatter(IsVipProperty = "AccountIsVip")]

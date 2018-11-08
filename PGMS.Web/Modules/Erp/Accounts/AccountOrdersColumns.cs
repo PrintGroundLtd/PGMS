@@ -24,7 +24,7 @@ namespace PGMS.Erp.Columns
         [EditLink, DisplayName("Db.Shared.RecordId"), Width(100)]
         public String OrderIdName { get; set; }
 
-        [EditLink, Width(100)]
+        [OrdersIsRealFormatter(IsRealProperty = "NotReal"), Width(100)]
         public String Name { get; set; }
         //[EditLink]
         //public String CompanyName { get; set; }
