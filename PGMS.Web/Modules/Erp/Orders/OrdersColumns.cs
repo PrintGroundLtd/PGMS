@@ -21,9 +21,11 @@ namespace PGMS.Erp.Columns
         public int AccountId { get; set; }
         //[FilterOnly()]
         //public int CompanyId { get; set; }
+        [EditLink,DisplayName("Db.Shared.RecordId"), Width(100)]
+        public String OrderIdName { get; set; }
 
-        [EditLink, DisplayName("Db.Shared.RecordId"), Width(100)]
-        public Int32 OrderName { get; set; }
+        [EditLink,  Width(100)]
+        public String Name { get; set; }
         [EditLink]
         [AccountFormatter(IsVipProperty = "AccountIsVip")]
         public String AccountName { get; set; }
@@ -39,6 +41,9 @@ namespace PGMS.Erp.Columns
         public String OrderStatusName { get; set; }
 
         public decimal Total { get; set; }
+
+        [CheckboxColoredFormatter]
+        public Boolean CuttingByOne { get; set; }
         [CheckboxColoredFormatter]
         public Boolean CuttingManual { get; set; }
         [CheckboxColoredFormatter]
@@ -57,6 +62,7 @@ namespace PGMS.Erp.Columns
         [EditLink]
         public String PaymentTypeName { get; set; } 
         public DateTime OrderDate { get; set; }
+        public DateTime StartDate { get; set; }
         [DeadlineFormatter]
         public DateTime DeadLine { get; set; }
         public DateTime ShippedDate { get; set; }

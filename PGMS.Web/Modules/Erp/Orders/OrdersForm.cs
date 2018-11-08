@@ -15,15 +15,20 @@ namespace PGMS.Erp.Forms
     {
         [Tab("General")]
         [Category("Order")]
+        public String Name { get; set; }
+
         public Int32 AccountId { get; set; }
         //public Int32 CompanyId { get; set; }
         [DefaultValue(1)]
-        public Int32 PaymentTypeId { get; set; } 
-      
+        public Int32 PaymentTypeId { get; set; }
+ 
+
         [Category("Order Details")]
         [OrderDetailsEditor]
         public List<Entities.OrderDetailsRow> DetailList { get; set; }
 
+        [OneThirdWidth]
+        public Boolean CuttingByOne { get; set; }
         [OneThirdWidth]
         public Boolean CuttingManual { get; set; }
         [OneThirdWidth]
@@ -42,9 +47,18 @@ namespace PGMS.Erp.Forms
         public Int32 UserId { get; set; }
         public Int32 OrderStatusId { get; set; }
 
+        [HalfWidth]
+        [DefaultValue("now")]
+        public DateTime StartDate { get; set; }
+        [HalfWidth]
+        public DateTime DeadLine { get; set; }
+
+        [HalfWidth]
         [DefaultValue("now")]
         public DateTime OrderDate { get; set; }
-        public DateTime DeadLine { get; set; }
+        [HalfWidth]
+        public Boolean NotReal { get; set; }
+
         [Tab("Shipping")]
         [Category("Info")]
         public DateTime ShippedDate { get; set; }

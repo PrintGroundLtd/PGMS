@@ -1,8 +1,10 @@
 ﻿namespace PGMS.Erp {
     export interface OrdersForm {
+        Name: Serenity.StringEditor;
         AccountId: Serenity.LookupEditor;
         PaymentTypeId: Serenity.LookupEditor;
         DetailList: OrderDetailsEditor;
+        CuttingByOne: Serenity.BooleanEditor;
         CuttingManual: Serenity.BooleanEditor;
         CuttingMachine: Serenity.BooleanEditor;
         Printing: Serenity.BooleanEditor;
@@ -12,8 +14,10 @@
         Cashing: Serenity.BooleanEditor;
         UserId: Serenity.LookupEditor;
         OrderStatusId: Serenity.LookupEditor;
-        OrderDate: Serenity.DateEditor;
+        StartDate: Serenity.DateTimeEditor;
         DeadLine: Serenity.DateTimeEditor;
+        OrderDate: Serenity.DateEditor;
+        NotReal: Serenity.BooleanEditor;
         ShippedDate: Serenity.DateEditor;
         ShipName: Serenity.StringEditor;
         ShipAddress: Serenity.StringEditor;
@@ -33,34 +37,38 @@
                 OrdersForm.init = true;
 
                 var s = Serenity;
-                var w0 = s.LookupEditor;
-                var w1 = OrderDetailsEditor;
-                var w2 = s.BooleanEditor;
-                var w3 = s.DateEditor;
+                var w0 = s.StringEditor;
+                var w1 = s.LookupEditor;
+                var w2 = OrderDetailsEditor;
+                var w3 = s.BooleanEditor;
                 var w4 = s.DateTimeEditor;
-                var w5 = s.StringEditor;
+                var w5 = s.DateEditor;
                 var w6 = NotesEditor;
 
                 Q.initFormType(OrdersForm, [
-                    'AccountId', w0,
-                    'PaymentTypeId', w0,
-                    'DetailList', w1,
-                    'CuttingManual', w2,
-                    'CuttingMachine', w2,
-                    'Printing', w2,
-                    'Laminating', w2,
-                    'TransportFolio', w2,
-                    'Cleaning', w2,
-                    'Cashing', w2,
-                    'UserId', w0,
-                    'OrderStatusId', w0,
-                    'OrderDate', w3,
+                    'Name', w0,
+                    'AccountId', w1,
+                    'PaymentTypeId', w1,
+                    'DetailList', w2,
+                    'CuttingByOne', w3,
+                    'CuttingManual', w3,
+                    'CuttingMachine', w3,
+                    'Printing', w3,
+                    'Laminating', w3,
+                    'TransportFolio', w3,
+                    'Cleaning', w3,
+                    'Cashing', w3,
+                    'UserId', w1,
+                    'OrderStatusId', w1,
+                    'StartDate', w4,
                     'DeadLine', w4,
-                    'ShippedDate', w3,
-                    'ShipName', w5,
-                    'ShipAddress', w5,
-                    'ShipCity', w5,
-                    'ShipCountry', w5,
+                    'OrderDate', w5,
+                    'NotReal', w3,
+                    'ShippedDate', w5,
+                    'ShipName', w0,
+                    'ShipAddress', w0,
+                    'ShipCity', w0,
+                    'ShipCountry', w0,
                     'NoteList', w6
                 ]);
             }
