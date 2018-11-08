@@ -28,6 +28,7 @@ namespace PGMS.Erp.Columns
         public String Name { get; set; }
         public Decimal PriceTheyOffer { get; set; }
         public Decimal PriceWeSell { get; set; }
+        public Boolean WithVat { get; set; }
 
         [DeadlineFormatter]
         public DateTime DeadLine { get; set; }

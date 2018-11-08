@@ -349,6 +349,15 @@ namespace PGMS.Erp.Entities
             set { Fields.Cashing[this] = value; }
         }
 
+
+        [DisplayName("With Vat")]
+        [BooleanEditor]
+        public Boolean? WithVat
+        {
+            get { return Fields.WithVat[this]; }
+            set { Fields.WithVat[this] = value; }
+        }
+
         IIdField IIdRow.IdField
         {
             get { return Fields.OrderId; }
@@ -387,7 +396,7 @@ namespace PGMS.Erp.Entities
             public Int32Field UserId;
             public Int32Field OrderStatusId;
             public DecimalField Total;
-
+            public BooleanField WithVat;
             public BooleanField NotReal;
 
             public BooleanField CuttingByOne;

@@ -256,6 +256,15 @@ namespace PGMS.Erp.Entities
             set { Fields.AssignUserDisplayName[this] = value; }
         }
 
+
+        [DisplayName("With Vat")]
+        [BooleanEditor]
+        public Boolean? WithVat
+        {
+            get { return Fields.WithVat[this]; }
+            set { Fields.WithVat[this] = value; }
+        }
+
         [NotesEditor, NotMapped]
         public List<NoteRow> NoteList
         {
@@ -290,6 +299,7 @@ namespace PGMS.Erp.Entities
             public Int32Field CompanyRepresentsId;
             public DateTimeField DeadLine;
             public StringField Description;
+            public BooleanField WithVat;
 
             public StringField AccountRepresentsName;
             public StringField AccountRepresentsEmail;

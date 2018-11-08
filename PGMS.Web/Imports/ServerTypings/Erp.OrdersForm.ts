@@ -3,6 +3,7 @@
         Name: Serenity.StringEditor;
         AccountId: Serenity.LookupEditor;
         PaymentTypeId: Serenity.LookupEditor;
+        WithVat: Serenity.BooleanEditor;
         DetailList: OrderDetailsEditor;
         CuttingByOne: Serenity.BooleanEditor;
         CuttingManual: Serenity.BooleanEditor;
@@ -12,12 +13,12 @@
         TransportFolio: Serenity.BooleanEditor;
         Cleaning: Serenity.BooleanEditor;
         Cashing: Serenity.BooleanEditor;
-        UserId: Serenity.LookupEditor;
         OrderStatusId: Serenity.LookupEditor;
+        UserId: Serenity.LookupEditor;
         StartDate: Serenity.DateTimeEditor;
         DeadLine: Serenity.DateTimeEditor;
-        OrderDate: Serenity.DateEditor;
         NotReal: Serenity.BooleanEditor;
+        OrderDate: Serenity.DateEditor;
         ShippedDate: Serenity.DateEditor;
         ShipName: Serenity.StringEditor;
         ShipAddress: Serenity.StringEditor;
@@ -39,8 +40,8 @@
                 var s = Serenity;
                 var w0 = s.StringEditor;
                 var w1 = s.LookupEditor;
-                var w2 = OrderDetailsEditor;
-                var w3 = s.BooleanEditor;
+                var w2 = s.BooleanEditor;
+                var w3 = OrderDetailsEditor;
                 var w4 = s.DateTimeEditor;
                 var w5 = s.DateEditor;
                 var w6 = NotesEditor;
@@ -49,21 +50,22 @@
                     'Name', w0,
                     'AccountId', w1,
                     'PaymentTypeId', w1,
-                    'DetailList', w2,
-                    'CuttingByOne', w3,
-                    'CuttingManual', w3,
-                    'CuttingMachine', w3,
-                    'Printing', w3,
-                    'Laminating', w3,
-                    'TransportFolio', w3,
-                    'Cleaning', w3,
-                    'Cashing', w3,
-                    'UserId', w1,
+                    'WithVat', w2,
+                    'DetailList', w3,
+                    'CuttingByOne', w2,
+                    'CuttingManual', w2,
+                    'CuttingMachine', w2,
+                    'Printing', w2,
+                    'Laminating', w2,
+                    'TransportFolio', w2,
+                    'Cleaning', w2,
+                    'Cashing', w2,
                     'OrderStatusId', w1,
+                    'UserId', w1,
                     'StartDate', w4,
                     'DeadLine', w4,
+                    'NotReal', w2,
                     'OrderDate', w5,
-                    'NotReal', w3,
                     'ShippedDate', w5,
                     'ShipName', w0,
                     'ShipAddress', w0,

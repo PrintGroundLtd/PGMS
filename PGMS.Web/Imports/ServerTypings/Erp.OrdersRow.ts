@@ -19,6 +19,7 @@
         UserId?: number;
         OrderStatusId?: number;
         Total?: number;
+        WithVat?: boolean;
         NotReal?: boolean;
         CuttingByOne?: boolean;
         CuttingManual?: boolean;
@@ -83,6 +84,7 @@
             UserId = "UserId",
             OrderStatusId = "OrderStatusId",
             Total = "Total",
+            WithVat = "WithVat",
             NotReal = "NotReal",
             CuttingByOne = "CuttingByOne",
             CuttingManual = "CuttingManual",

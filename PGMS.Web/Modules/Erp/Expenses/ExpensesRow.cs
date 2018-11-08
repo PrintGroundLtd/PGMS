@@ -57,6 +57,14 @@ namespace PGMS.Erp.Entities
             set { Fields.Total[this] = value; }
         }
 
+        [DisplayName("Deposit Payment")]
+        [BooleanEditor]
+        public Boolean? DepositPayment
+        {
+            get { return Fields.DepositPayment[this]; }
+            set { Fields.DepositPayment[this] = value; }
+        }
+
         [DisplayName("With Vat")]
         [BooleanEditor]
         public Boolean? WithVat
@@ -252,6 +260,7 @@ namespace PGMS.Erp.Entities
             public DateTimeField TransactionDate;
             public RowListField<NoteRow> NoteList;
             public BooleanField WithVat;
+            public BooleanField DepositPayment;
             public Int16Field TransactionType;
             public Int32Field BudgetId;
             public Int32Field PaymentTypeId;

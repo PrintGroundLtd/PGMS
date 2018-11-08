@@ -3,10 +3,11 @@
         Name: Serenity.StringEditor;
         Total: Serenity.DecimalEditor;
         TransactionType: Serenity.EnumEditor;
-        WithVat: Serenity.BooleanEditor;
-        PaymentTypeId: Serenity.LookupEditor;
         TransactionDate: Serenity.DateTimeEditor;
+        PaymentTypeId: Serenity.LookupEditor;
         BudgetId: Serenity.LookupEditor;
+        WithVat: Serenity.BooleanEditor;
+        DepositPayment: Serenity.BooleanEditor;
         Description: Serenity.HtmlNoteContentEditor;
         AccountId: Serenity.LookupEditor;
         OrderId: Serenity.LookupEditor;
@@ -29,9 +30,9 @@
                 var w0 = s.StringEditor;
                 var w1 = s.DecimalEditor;
                 var w2 = s.EnumEditor;
-                var w3 = s.BooleanEditor;
+                var w3 = s.DateTimeEditor;
                 var w4 = s.LookupEditor;
-                var w5 = s.DateTimeEditor;
+                var w5 = s.BooleanEditor;
                 var w6 = s.HtmlNoteContentEditor;
                 var w7 = NotesEditor;
 
@@ -39,10 +40,11 @@
                     'Name', w0,
                     'Total', w1,
                     'TransactionType', w2,
-                    'WithVat', w3,
+                    'TransactionDate', w3,
                     'PaymentTypeId', w4,
-                    'TransactionDate', w5,
                     'BudgetId', w4,
+                    'WithVat', w5,
+                    'DepositPayment', w5,
                     'Description', w6,
                     'AccountId', w4,
                     'OrderId', w4,

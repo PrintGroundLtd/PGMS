@@ -2,11 +2,12 @@
     export interface OutsideOrdersForm {
         PriceTheyOffer: Serenity.DecimalEditor;
         PriceWeSell: Serenity.DecimalEditor;
+        WithVat: Serenity.BooleanEditor;
         Description: Serenity.HtmlNoteContentEditor;
         Name: Serenity.StringEditor;
         AccountRepresentsId: Serenity.LookupEditor;
-        CompanyRepresentsId: Serenity.LookupEditor;
         OrderStatusId: Serenity.LookupEditor;
+        CompanyRepresentsId: Serenity.LookupEditor;
         AssignUserId: Serenity.LookupEditor;
         DeadLine: Serenity.DateTimeEditor;
         NoteList: NotesEditor;
@@ -24,23 +25,25 @@
 
                 var s = Serenity;
                 var w0 = s.DecimalEditor;
-                var w1 = s.HtmlNoteContentEditor;
-                var w2 = s.StringEditor;
-                var w3 = s.LookupEditor;
-                var w4 = s.DateTimeEditor;
-                var w5 = NotesEditor;
+                var w1 = s.BooleanEditor;
+                var w2 = s.HtmlNoteContentEditor;
+                var w3 = s.StringEditor;
+                var w4 = s.LookupEditor;
+                var w5 = s.DateTimeEditor;
+                var w6 = NotesEditor;
 
                 Q.initFormType(OutsideOrdersForm, [
                     'PriceTheyOffer', w0,
                     'PriceWeSell', w0,
-                    'Description', w1,
-                    'Name', w2,
-                    'AccountRepresentsId', w3,
-                    'CompanyRepresentsId', w3,
-                    'OrderStatusId', w3,
-                    'AssignUserId', w3,
-                    'DeadLine', w4,
-                    'NoteList', w5
+                    'WithVat', w1,
+                    'Description', w2,
+                    'Name', w3,
+                    'AccountRepresentsId', w4,
+                    'OrderStatusId', w4,
+                    'CompanyRepresentsId', w4,
+                    'AssignUserId', w4,
+                    'DeadLine', w5,
+                    'NoteList', w6
                 ]);
             }
         }

@@ -8,6 +8,7 @@
         CompanyRepresentsId?: number;
         DeadLine?: string;
         Description?: string;
+        WithVat?: boolean;
         AccountRepresentsName?: string;
         AccountRepresentsEmail?: string;
         AccountRepresentsPhoneNumber?: string;
@@ -62,6 +63,7 @@
             CompanyRepresentsId = "CompanyRepresentsId",
             DeadLine = "DeadLine",
             Description = "Description",
+            WithVat = "WithVat",
             AccountRepresentsName = "AccountRepresentsName",
             AccountRepresentsEmail = "AccountRepresentsEmail",
             AccountRepresentsPhoneNumber = "AccountRepresentsPhoneNumber",

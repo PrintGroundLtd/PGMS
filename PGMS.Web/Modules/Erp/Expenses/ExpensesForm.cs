@@ -17,18 +17,27 @@ namespace PGMS.Erp.Forms
     {
         [Tab("General")]
         [Category("Required")]
+        [HalfWidth]
         public String Name { get; set; }
+        [HalfWidth]
         public Decimal Total { get; set; }
-        public Int16 TransactionType { get; set; } 
-        public Boolean WithVat { get; set; }
-
-        [DefaultValue(1)]
-        public Int32 PaymentTypeId { get; set; }
+        [HalfWidth]
+        public Int16 TransactionType { get; set; }
         [DefaultValue("now")]
+        [HalfWidth]
         public DateTime TransactionDate { get; set; }
 
-        public Int32 BudgetId { get; set; }
+        [DefaultValue(1)]
+        [HalfWidth]
+        public Int32 PaymentTypeId { get; set; }
 
+        [HalfWidth]
+        public Int32 BudgetId { get; set; }
+        [OneThirdWidth]
+        public Boolean WithVat { get; set; }
+        [OneThirdWidth]
+        public Boolean DepositPayment { get; set; }
+       
         [Category("Optional")]
         public String Description { get; set; }
 

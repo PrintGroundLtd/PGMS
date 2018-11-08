@@ -39,6 +39,7 @@ namespace PGMS.Erp.Columns
         [OrderStatusesFormatter(BackgroundProperty = "OrderStatusBackgroundColor", BorderProperty = "OrderStatusBorderColor")]
         [QuickFilter()]
         public String OrderStatusName { get; set; }
+        public Boolean WithVat { get; set; }
 
         public decimal Total { get; set; }
 
