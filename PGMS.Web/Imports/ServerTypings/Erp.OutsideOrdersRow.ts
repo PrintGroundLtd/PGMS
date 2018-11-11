@@ -9,6 +9,7 @@
         DeadLine?: string;
         Description?: string;
         WithVat?: boolean;
+        PaymentsTotal?: number;
         AccountRepresentsName?: string;
         AccountRepresentsEmail?: string;
         AccountRepresentsPhoneNumber?: string;
@@ -65,6 +66,7 @@
             DeadLine = "DeadLine",
             Description = "Description",
             WithVat = "WithVat",
+            PaymentsTotal = "PaymentsTotal",
             AccountRepresentsName = "AccountRepresentsName",
             AccountRepresentsEmail = "AccountRepresentsEmail",
             AccountRepresentsPhoneNumber = "AccountRepresentsPhoneNumber",

@@ -44,6 +44,7 @@ namespace PGMS.Erp.Columns
         public Boolean WithVat { get; set; }
 
         public decimal Total { get; set; }
+        public decimal PaymentsTotal { get; set; }
 
         [CheckboxColoredFormatter]
         public Boolean CuttingByOne { get; set; }

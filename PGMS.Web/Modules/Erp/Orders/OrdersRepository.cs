@@ -101,24 +101,55 @@ namespace PGMS.Erp.Repositories
             protected override void OnReturn()
             {
                 base.OnReturn();
+
+                if (!Response.Entities.Any())
+                    return;
+
+                var orderDetailsFields = OrderDetailsRow.Fields;
+                var orderDetailsListRequest = new ListRequest();
+                orderDetailsListRequest.ColumnSelection = ColumnSelection.Details;
+
+                orderDetailsListRequest.Criteria =
+                    (new Criteria(orderDetailsFields.OrderId.Name).In(Response.Entities.Select(o => o.OrderId)));
+                var orderDetailsList = new OrderDetailsRepository().List(Connection, orderDetailsListRequest)
+                    .Entities;
+
+                var expensesFields = ExpensesRow.Fields;
+                var expensesListRequest = new ListRequest();
+                expensesListRequest.ColumnSelection = ColumnSelection.Details;
+
+                expensesListRequest.Criteria =
+                    (new Criteria(expensesFields.OrderId.Name).In(Response.Entities.Select(o => o.OrderId)));
+                var expensesList = new ExpensesRepository().List(Connection, expensesListRequest)
+                    .Entities;
+
                 foreach (var responseEntity in Response.Entities)
                 {
-                    var orderDetailsFields = OrderDetailsRow.Fields;
-                    var orderDetailsListRequest = new ListRequest();
-                    orderDetailsListRequest.ColumnSelection = ColumnSelection.Details;
-
-                    orderDetailsListRequest.Criteria =
-                        (new Criteria(orderDetailsFields.OrderId.Name) == responseEntity.OrderId.Value);
-
-                    var orderDetails = new OrderDetailsRepository().List(Connection, orderDetailsListRequest)
-                        .Entities;
-
                     responseEntity.Total = Decimal.Zero;
+                    var orderDetails = orderDetailsList.Where(od => od.OrderId == responseEntity.OrderId).ToList();
                     if (orderDetails.Any())
+                    {
                         responseEntity.Total = orderDetails.Select(od => od.LineTotal).Aggregate((a, b) => a + b) ?? Decimal.Zero;
+                    }
+                    var expenses = expensesList.Where(e => e.OrderId == responseEntity.OrderId).ToList();
+                    responseEntity.PaymentsTotal = Decimal.Zero;
+                    if (expenses.Any())
+                    {
+                        var incomeList = expenses.Where(e => e.TransactionType == TransactionType.Income).ToList();
+                        var incomeTotal = Decimal.Zero;
+                        if (incomeList.Any())
+                            incomeTotal = incomeList.Select(e => e.Total).Aggregate((a, b) => a + b) ?? Decimal.Zero;
+
+                        var expenseList = expenses.Where(e => e.TransactionType == TransactionType.Expense).ToList();
+                        var expensesTotal = Decimal.Zero;
+                        if (expenseList.Any())
+                            expensesTotal = expenseList.Select(e => e.Total)?.Aggregate((a, b) => a + b) ?? Decimal.Zero;
+
+                        responseEntity.PaymentsTotal = incomeTotal - expensesTotal;
+                    }
 
                 }
-                
+
             }
 
             protected override void ApplyFilters(SqlQuery query)

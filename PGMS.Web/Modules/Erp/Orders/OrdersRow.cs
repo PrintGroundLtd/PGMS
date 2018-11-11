@@ -269,6 +269,14 @@ namespace PGMS.Erp.Entities
             set { Fields.Total[this] = value; }
         }
 
+        [DisplayName("Payments Total"), NotMapped]
+        [AlignRight, DisplayFormat("#,##0.00")]
+        public Decimal? PaymentsTotal
+        {
+            get { return Fields.PaymentsTotal[this]; }
+            set { Fields.PaymentsTotal[this] = value; }
+        }
+
         [NotesEditor, NotMapped]
         public List<NoteRow> NoteList
         {
@@ -402,6 +410,7 @@ namespace PGMS.Erp.Entities
             public Int32Field UserId;
             public Int32Field OrderStatusId;
             public DecimalField Total;
+            public DecimalField PaymentsTotal;
             public BooleanField WithVat;
             public BooleanField NotReal;
 

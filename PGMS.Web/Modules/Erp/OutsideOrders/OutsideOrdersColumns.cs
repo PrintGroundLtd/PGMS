@@ -32,6 +32,7 @@ namespace PGMS.Erp.Columns
 
         [DeadlineFormatter]
         public DateTime DeadLine { get; set; }
+        public decimal PaymentsTotal { get; set; }
 
         [EditLink(IdField = "AccountRepresentsId", ItemType = "Erp.Accounts")]
         [AccountFormatter(IsVipProperty = "AccountRepresentsIsVip")]

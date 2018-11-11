@@ -20,6 +20,7 @@
         UserId?: number;
         OrderStatusId?: number;
         Total?: number;
+        PaymentsTotal?: number;
         WithVat?: boolean;
         NotReal?: boolean;
         CuttingByOne?: boolean;
@@ -86,6 +87,7 @@
             UserId = "UserId",
             OrderStatusId = "OrderStatusId",
             Total = "Total",
+            PaymentsTotal = "PaymentsTotal",
             WithVat = "WithVat",
             NotReal = "NotReal",
             CuttingByOne = "CuttingByOne",

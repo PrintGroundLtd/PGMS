@@ -262,6 +262,13 @@ namespace PGMS.Erp.Entities
             set { Fields.AssignUserDisplayName[this] = value; }
         }
 
+        [DisplayName("Payments Total"), NotMapped]
+        [AlignRight, DisplayFormat("#,##0.00")]
+        public Decimal? PaymentsTotal
+        {
+            get { return Fields.PaymentsTotal[this]; }
+            set { Fields.PaymentsTotal[this] = value; }
+        }
 
         [DisplayName("With Vat"), QuickFilter()]
         [BooleanEditor]
@@ -306,6 +313,7 @@ namespace PGMS.Erp.Entities
             public DateTimeField DeadLine;
             public StringField Description;
             public BooleanField WithVat;
+            public DecimalField PaymentsTotal;
 
             public StringField AccountRepresentsName;
             public StringField AccountRepresentsEmail;

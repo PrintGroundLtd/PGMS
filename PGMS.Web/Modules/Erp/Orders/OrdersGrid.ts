@@ -45,7 +45,9 @@ namespace PGMS.Erp {
 
             this.view.setSummaryOptions({
                 aggregators: [
-                    new Slick.Aggregators.Sum('Total')
+                    new Slick.Aggregators.Sum('Total'),
+                    new Slick.Aggregators.Sum('PaymentsTotal')
+
                 ]
             });
 
