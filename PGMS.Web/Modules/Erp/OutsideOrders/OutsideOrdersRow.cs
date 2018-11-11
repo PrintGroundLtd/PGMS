@@ -58,6 +58,12 @@ namespace PGMS.Erp.Entities
             set { Fields.AccountRepresentsId[this] = value; }
         }
 
+        [DisplayName("Account Partner Type Name"), Expression("(SELECT [Name] FROM [dbo].[PartnerTypes] WHERE PartnerTypeId = jAccountRepresents.PartnerType)")]
+        public String AccountPartnerTypeName
+        {
+            get { return Fields.AccountPartnerTypeName[this]; }
+            set { Fields.AccountPartnerTypeName[this] = value; }
+        }
         [DisplayName("Company Represents"), ForeignKey(typeof(CompaniesRow)), LeftJoin("jCompanyRepresents"), TextualField("CompanyRepresentsName")]
         [LookupEditor(typeof(CompaniesRow), FilterField = "IsActive", FilterValue = 1)]
         public Int32? CompanyRepresentsId
@@ -309,6 +315,8 @@ namespace PGMS.Erp.Entities
             public StringField AccountRepresentsAddress;
             public StringField AccountRepresentsCity;
             public StringField AccountRepresentsCountry;
+
+            public StringField AccountPartnerTypeName;
 
             public StringField CompanyRepresentsName;
             public StringField CompanyRepresentsPhoneNumber;

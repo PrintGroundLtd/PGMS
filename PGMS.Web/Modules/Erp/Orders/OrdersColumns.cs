@@ -34,6 +34,8 @@ namespace PGMS.Erp.Columns
         [EditLink]
         public String AccountEmail { get; set; }
         public bool AccountIsVip { get; set; }
+        public String AccountPartnerTypeName { get; set; }
+
         //[EditLink]
         //public String CompanyName { get; set; }
         [OrderStatusesFormatter(BackgroundProperty = "OrderStatusBackgroundColor", BorderProperty = "OrderStatusBorderColor")]

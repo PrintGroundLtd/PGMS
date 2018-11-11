@@ -101,7 +101,6 @@ namespace PGMS.Erp.Repositories
             protected override void OnReturn()
             {
                 base.OnReturn();
-                 
                 foreach (var responseEntity in Response.Entities)
                 {
                     var orderDetailsFields = OrderDetailsRow.Fields;

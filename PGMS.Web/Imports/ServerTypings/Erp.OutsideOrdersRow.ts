@@ -17,6 +17,7 @@
         AccountRepresentsAddress?: string;
         AccountRepresentsCity?: string;
         AccountRepresentsCountry?: string;
+        AccountPartnerTypeName?: string;
         CompanyRepresentsName?: string;
         CompanyRepresentsPhoneNumber?: string;
         CompanyRepresentsAddress?: string;
@@ -72,6 +73,7 @@
             AccountRepresentsAddress = "AccountRepresentsAddress",
             AccountRepresentsCity = "AccountRepresentsCity",
             AccountRepresentsCountry = "AccountRepresentsCountry",
+            AccountPartnerTypeName = "AccountPartnerTypeName",
             CompanyRepresentsName = "CompanyRepresentsName",
             CompanyRepresentsPhoneNumber = "CompanyRepresentsPhoneNumber",
             CompanyRepresentsAddress = "CompanyRepresentsAddress",

@@ -186,8 +186,13 @@ namespace PGMS.Erp.Entities
             get { return Fields.AccountPartnerType[this]; }
             set { Fields.AccountPartnerType[this] = value; }
         }
-        
 
+        [DisplayName("Account Partner Type Name"), Expression("(SELECT [Name] FROM [dbo].[PartnerTypes] WHERE PartnerTypeId = jAccount.PartnerType)")]
+        public String AccountPartnerTypeName
+        {
+            get { return Fields.AccountPartnerTypeName[this]; }
+            set { Fields.AccountPartnerTypeName[this] = value; }
+        }
         [DisplayName("Company Name"), Expression("jCompany.[Name]")]
         public String CompanyName
         {
@@ -382,6 +387,7 @@ namespace PGMS.Erp.Entities
             public Int32Field CompanyId;
             public Int32Field PaymentTypeId;
             public StringField Name;
+            public StringField AccountPartnerTypeName;
             public Int16Field Width;
             public Int16Field Height;
             public DateTimeField OrderDate;

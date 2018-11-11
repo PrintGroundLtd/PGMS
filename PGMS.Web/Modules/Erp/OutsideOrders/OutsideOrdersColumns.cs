@@ -39,6 +39,8 @@ namespace PGMS.Erp.Columns
         public String AccountRepresentsName { get; set; }
         public String AccountRepresentsPhoneNumber { get; set; }
         public String AccountRepresentsEmail { get; set; }
+        public String AccountPartnerTypeName { get; set; }
+
         public String CompanyRepresentsName { get; set; }
 
         [OrderStatusesFormatter(BackgroundProperty = "OrderStatusBackgroundColor", BorderProperty = "OrderStatusBorderColor")]

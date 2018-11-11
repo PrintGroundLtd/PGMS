@@ -5,6 +5,7 @@
         CompanyId?: number;
         PaymentTypeId?: number;
         Name?: string;
+        AccountPartnerTypeName?: string;
         Width?: number;
         Height?: number;
         OrderDate?: string;
@@ -70,6 +71,7 @@
             CompanyId = "CompanyId",
             PaymentTypeId = "PaymentTypeId",
             Name = "Name",
+            AccountPartnerTypeName = "AccountPartnerTypeName",
             Width = "Width",
             Height = "Height",
             OrderDate = "OrderDate",
