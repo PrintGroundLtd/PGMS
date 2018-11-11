@@ -355,7 +355,7 @@ namespace PGMS.Erp.Entities
         }
 
 
-        [DisplayName("With Vat")]
+        [DisplayName("With Vat"), QuickFilter()]
         [BooleanEditor]
         public Boolean? WithVat
         {

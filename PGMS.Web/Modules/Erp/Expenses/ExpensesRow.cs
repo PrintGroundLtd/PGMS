@@ -65,7 +65,7 @@ namespace PGMS.Erp.Entities
             set { Fields.DepositPayment[this] = value; }
         }
 
-        [DisplayName("With Vat")]
+        [DisplayName("With Vat"), QuickFilter()]
         [BooleanEditor]
         public Boolean? WithVat
         {
