@@ -14,7 +14,11 @@ namespace PGMS.Erp {
         constructor(container: JQuery) {
             super(container);
         }
-
+        getViewOptions(): Slick.RemoteViewOptions {
+            var options = super.getViewOptions();
+            options.rowsPerPage = 2500;
+            return options;
+        }
         protected getQuickFilters(): Serenity.QuickFilter<Serenity.Widget<any>, any>[] {
 
             // get quick filter list from base class, e.g. columns

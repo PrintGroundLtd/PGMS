@@ -13,7 +13,11 @@ namespace PGMS.Erp {
         constructor(container: JQuery) {
             super(container);
         }
-
+        getViewOptions(): Slick.RemoteViewOptions {
+            var options = super.getViewOptions();
+            options.rowsPerPage = 2500;
+            return options;
+        }
 
         protected createSlickGrid() {
             var grid = super.createSlickGrid();
