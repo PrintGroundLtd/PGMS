@@ -421,6 +421,7 @@
   "Site.Expenses.ExpenseNameOrder": "Плащане към Поръчка ({0})",
   "Site.Expenses.ExpenseNameOutsideOrder": "Плащане към Външна Поръчка ({0})",
   "Site.GroupByButton": "Групирай по ",
+  "Site.GroupByButtonFormatter": "броя",
   "Site.NoGroupingButton": "Не групирай",
   "Site.OrderStatusNotEqualTo": "Статус на Поръчка Различен От",
   "Site.Reports.IncomeVSExpense": "Разходи и Приходи",

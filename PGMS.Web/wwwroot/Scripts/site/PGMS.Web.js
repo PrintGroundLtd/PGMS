@@ -977,6 +977,72 @@ var PGMS;
 (function (PGMS) {
     var Erp;
     (function (Erp) {
+        var OrderStatusesForm = /** @class */ (function (_super) {
+            __extends(OrderStatusesForm, _super);
+            function OrderStatusesForm(prefix) {
+                var _this = _super.call(this, prefix) || this;
+                if (!OrderStatusesForm.init) {
+                    OrderStatusesForm.init = true;
+                    var s = Serenity;
+                    var w0 = s.StringEditor;
+                    var w1 = PGMS.Common.ColorPickerEditor;
+                    Q.initFormType(OrderStatusesForm, [
+                        'Name', w0,
+                        'BackgroundColor', w1,
+                        'BorderColor', w1
+                    ]);
+                }
+                return _this;
+            }
+            OrderStatusesForm.formKey = 'Erp.OrderStatuses';
+            return OrderStatusesForm;
+        }(Serenity.PrefixedContext));
+        Erp.OrderStatusesForm = OrderStatusesForm;
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var OrderStatusesRow;
+        (function (OrderStatusesRow) {
+            OrderStatusesRow.idProperty = 'OrderStatusId';
+            OrderStatusesRow.isActiveProperty = 'IsActive';
+            OrderStatusesRow.nameProperty = 'Name';
+            OrderStatusesRow.localTextPrefix = 'Erp.OrderStatuses';
+            OrderStatusesRow.lookupKey = 'Erp.OrderStatuses';
+            function getLookup() {
+                return Q.getLookup('Erp.OrderStatuses');
+            }
+            OrderStatusesRow.getLookup = getLookup;
+        })(OrderStatusesRow = Erp.OrderStatusesRow || (Erp.OrderStatusesRow = {}));
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var OrderStatusesService;
+        (function (OrderStatusesService) {
+            OrderStatusesService.baseUrl = 'Erp/OrderStatuses';
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                OrderStatusesService[x] = function (r, s, o) {
+                    return Q.serviceRequest(OrderStatusesService.baseUrl + '/' + x, r, s, o);
+                };
+            });
+        })(OrderStatusesService = Erp.OrderStatusesService || (Erp.OrderStatusesService = {}));
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
         var OrdersForm = /** @class */ (function (_super) {
             __extends(OrdersForm, _super);
             function OrdersForm(prefix) {
@@ -1064,72 +1130,6 @@ var PGMS;
                 };
             });
         })(OrdersService = Erp.OrdersService || (Erp.OrdersService = {}));
-    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
-})(PGMS || (PGMS = {}));
-var PGMS;
-(function (PGMS) {
-    var Erp;
-    (function (Erp) {
-        var OrderStatusesForm = /** @class */ (function (_super) {
-            __extends(OrderStatusesForm, _super);
-            function OrderStatusesForm(prefix) {
-                var _this = _super.call(this, prefix) || this;
-                if (!OrderStatusesForm.init) {
-                    OrderStatusesForm.init = true;
-                    var s = Serenity;
-                    var w0 = s.StringEditor;
-                    var w1 = PGMS.Common.ColorPickerEditor;
-                    Q.initFormType(OrderStatusesForm, [
-                        'Name', w0,
-                        'BackgroundColor', w1,
-                        'BorderColor', w1
-                    ]);
-                }
-                return _this;
-            }
-            OrderStatusesForm.formKey = 'Erp.OrderStatuses';
-            return OrderStatusesForm;
-        }(Serenity.PrefixedContext));
-        Erp.OrderStatusesForm = OrderStatusesForm;
-    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
-})(PGMS || (PGMS = {}));
-var PGMS;
-(function (PGMS) {
-    var Erp;
-    (function (Erp) {
-        var OrderStatusesRow;
-        (function (OrderStatusesRow) {
-            OrderStatusesRow.idProperty = 'OrderStatusId';
-            OrderStatusesRow.isActiveProperty = 'IsActive';
-            OrderStatusesRow.nameProperty = 'Name';
-            OrderStatusesRow.localTextPrefix = 'Erp.OrderStatuses';
-            OrderStatusesRow.lookupKey = 'Erp.OrderStatuses';
-            function getLookup() {
-                return Q.getLookup('Erp.OrderStatuses');
-            }
-            OrderStatusesRow.getLookup = getLookup;
-        })(OrderStatusesRow = Erp.OrderStatusesRow || (Erp.OrderStatusesRow = {}));
-    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
-})(PGMS || (PGMS = {}));
-var PGMS;
-(function (PGMS) {
-    var Erp;
-    (function (Erp) {
-        var OrderStatusesService;
-        (function (OrderStatusesService) {
-            OrderStatusesService.baseUrl = 'Erp/OrderStatuses';
-            [
-                'Create',
-                'Update',
-                'Delete',
-                'Retrieve',
-                'List'
-            ].forEach(function (x) {
-                OrderStatusesService[x] = function (r, s, o) {
-                    return Q.serviceRequest(OrderStatusesService.baseUrl + '/' + x, r, s, o);
-                };
-            });
-        })(OrderStatusesService = Erp.OrderStatusesService || (Erp.OrderStatusesService = {}));
     })(Erp = PGMS.Erp || (PGMS.Erp = {}));
 })(PGMS || (PGMS = {}));
 var PGMS;
@@ -1284,6 +1284,69 @@ var PGMS;
 (function (PGMS) {
     var Erp;
     (function (Erp) {
+        var PartnerTypesForm = /** @class */ (function (_super) {
+            __extends(PartnerTypesForm, _super);
+            function PartnerTypesForm(prefix) {
+                var _this = _super.call(this, prefix) || this;
+                if (!PartnerTypesForm.init) {
+                    PartnerTypesForm.init = true;
+                    var s = Serenity;
+                    var w0 = s.StringEditor;
+                    Q.initFormType(PartnerTypesForm, [
+                        'Name', w0
+                    ]);
+                }
+                return _this;
+            }
+            PartnerTypesForm.formKey = 'Erp.PartnerTypes';
+            return PartnerTypesForm;
+        }(Serenity.PrefixedContext));
+        Erp.PartnerTypesForm = PartnerTypesForm;
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var PartnerTypesRow;
+        (function (PartnerTypesRow) {
+            PartnerTypesRow.idProperty = 'PartnerTypeId';
+            PartnerTypesRow.isActiveProperty = 'IsActive';
+            PartnerTypesRow.nameProperty = 'Name';
+            PartnerTypesRow.localTextPrefix = 'Erp.PartnerTypes';
+            PartnerTypesRow.lookupKey = 'Erp.PartnerTypes';
+            function getLookup() {
+                return Q.getLookup('Erp.PartnerTypes');
+            }
+            PartnerTypesRow.getLookup = getLookup;
+        })(PartnerTypesRow = Erp.PartnerTypesRow || (Erp.PartnerTypesRow = {}));
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var PartnerTypesService;
+        (function (PartnerTypesService) {
+            PartnerTypesService.baseUrl = 'Erp/PartnerTypes';
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                PartnerTypesService[x] = function (r, s, o) {
+                    return Q.serviceRequest(PartnerTypesService.baseUrl + '/' + x, r, s, o);
+                };
+            });
+        })(PartnerTypesService = Erp.PartnerTypesService || (Erp.PartnerTypesService = {}));
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
         var PartnersForm = /** @class */ (function (_super) {
             __extends(PartnersForm, _super);
             function PartnersForm(prefix) {
@@ -1345,69 +1408,6 @@ var PGMS;
                 };
             });
         })(PartnersService = Erp.PartnersService || (Erp.PartnersService = {}));
-    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
-})(PGMS || (PGMS = {}));
-var PGMS;
-(function (PGMS) {
-    var Erp;
-    (function (Erp) {
-        var PartnerTypesForm = /** @class */ (function (_super) {
-            __extends(PartnerTypesForm, _super);
-            function PartnerTypesForm(prefix) {
-                var _this = _super.call(this, prefix) || this;
-                if (!PartnerTypesForm.init) {
-                    PartnerTypesForm.init = true;
-                    var s = Serenity;
-                    var w0 = s.StringEditor;
-                    Q.initFormType(PartnerTypesForm, [
-                        'Name', w0
-                    ]);
-                }
-                return _this;
-            }
-            PartnerTypesForm.formKey = 'Erp.PartnerTypes';
-            return PartnerTypesForm;
-        }(Serenity.PrefixedContext));
-        Erp.PartnerTypesForm = PartnerTypesForm;
-    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
-})(PGMS || (PGMS = {}));
-var PGMS;
-(function (PGMS) {
-    var Erp;
-    (function (Erp) {
-        var PartnerTypesRow;
-        (function (PartnerTypesRow) {
-            PartnerTypesRow.idProperty = 'PartnerTypeId';
-            PartnerTypesRow.isActiveProperty = 'IsActive';
-            PartnerTypesRow.nameProperty = 'Name';
-            PartnerTypesRow.localTextPrefix = 'Erp.PartnerTypes';
-            PartnerTypesRow.lookupKey = 'Erp.PartnerTypes';
-            function getLookup() {
-                return Q.getLookup('Erp.PartnerTypes');
-            }
-            PartnerTypesRow.getLookup = getLookup;
-        })(PartnerTypesRow = Erp.PartnerTypesRow || (Erp.PartnerTypesRow = {}));
-    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
-})(PGMS || (PGMS = {}));
-var PGMS;
-(function (PGMS) {
-    var Erp;
-    (function (Erp) {
-        var PartnerTypesService;
-        (function (PartnerTypesService) {
-            PartnerTypesService.baseUrl = 'Erp/PartnerTypes';
-            [
-                'Create',
-                'Update',
-                'Delete',
-                'Retrieve',
-                'List'
-            ].forEach(function (x) {
-                PartnerTypesService[x] = function (r, s, o) {
-                    return Q.serviceRequest(PartnerTypesService.baseUrl + '/' + x, r, s, o);
-                };
-            });
-        })(PartnerTypesService = Erp.PartnerTypesService || (Erp.PartnerTypesService = {}));
     })(Erp = PGMS.Erp || (PGMS.Erp = {}));
 })(PGMS || (PGMS = {}));
 var PGMS;
@@ -1869,69 +1869,6 @@ var PGMS;
         }(Serenity.PrefixedContext));
         Membership.SignUpForm = SignUpForm;
     })(Membership = PGMS.Membership || (PGMS.Membership = {}));
-})(PGMS || (PGMS = {}));
-var PGMS;
-(function (PGMS) {
-    var LanguageList;
-    (function (LanguageList) {
-        function getValue() {
-            var result = [];
-            for (var _i = 0, _a = PGMS.Administration.LanguageRow.getLookup().items; _i < _a.length; _i++) {
-                var k = _a[_i];
-                if (k.LanguageId !== 'en') {
-                    result.push([k.Id.toString(), k.LanguageName]);
-                }
-            }
-            return result;
-        }
-        LanguageList.getValue = getValue;
-    })(LanguageList = PGMS.LanguageList || (PGMS.LanguageList = {}));
-})(PGMS || (PGMS = {}));
-var PGMS;
-(function (PGMS) {
-    var Common;
-    (function (Common) {
-        var UserPreferenceStorage = /** @class */ (function () {
-            function UserPreferenceStorage() {
-            }
-            UserPreferenceStorage.prototype.getItem = function (key) {
-                var value;
-                Common.UserPreferenceService.Retrieve({
-                    PreferenceType: "UserPreferenceStorage",
-                    Name: key
-                }, function (response) { return value = response.Value; }, {
-                    async: false
-                });
-                return value;
-            };
-            UserPreferenceStorage.prototype.setItem = function (key, data) {
-                Common.UserPreferenceService.Update({
-                    PreferenceType: "UserPreferenceStorage",
-                    Name: key,
-                    Value: data
-                });
-            };
-            return UserPreferenceStorage;
-        }());
-        Common.UserPreferenceStorage = UserPreferenceStorage;
-    })(Common = PGMS.Common || (PGMS.Common = {}));
-})(PGMS || (PGMS = {}));
-/// <reference path="../Common/Helpers/LanguageList.ts" />
-/// <reference path="../Common/UserPreference/UserPreferenceStorage.ts" />
-var PGMS;
-(function (PGMS) {
-    var ScriptInitialization;
-    (function (ScriptInitialization) {
-        Q.Config.responsiveDialogs = true;
-        Q.Config.rootNamespaces.push('PGMS');
-        Serenity.EntityDialog.defaultLanguageList = PGMS.LanguageList.getValue;
-        if ($.fn['colorbox']) {
-            $.fn['colorbox'].settings.maxWidth = "95%";
-            $.fn['colorbox'].settings.maxHeight = "95%";
-        }
-        window.onerror = Q.ErrorHandling.runtimeErrorHandler;
-        Serenity.DataGrid.defaultPersistanceStorage = new PGMS.Common.UserPreferenceStorage();
-    })(ScriptInitialization = PGMS.ScriptInitialization || (PGMS.ScriptInitialization = {}));
 })(PGMS || (PGMS = {}));
 var PGMS;
 (function (PGMS) {
@@ -2465,6 +2402,22 @@ var PGMS;
 })(PGMS || (PGMS = {}));
 var PGMS;
 (function (PGMS) {
+    var Authorization;
+    (function (Authorization) {
+        Object.defineProperty(Authorization, 'userDefinition', {
+            get: function () {
+                return Q.getRemoteData('UserData');
+            }
+        });
+        function hasPermission(permissionKey) {
+            var ud = Authorization.userDefinition;
+            return ud.Username === 'admin' || !!ud.Permissions[permissionKey];
+        }
+        Authorization.hasPermission = hasPermission;
+    })(Authorization = PGMS.Authorization || (PGMS.Authorization = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
     var Administration;
     (function (Administration) {
         var PermissionCheckEditor = /** @class */ (function (_super) {
@@ -2934,6 +2887,69 @@ var PGMS;
         }(Serenity.TemplatedDialog));
         Administration.UserRoleDialog = UserRoleDialog;
     })(Administration = PGMS.Administration || (PGMS.Administration = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var LanguageList;
+    (function (LanguageList) {
+        function getValue() {
+            var result = [];
+            for (var _i = 0, _a = PGMS.Administration.LanguageRow.getLookup().items; _i < _a.length; _i++) {
+                var k = _a[_i];
+                if (k.LanguageId !== 'en') {
+                    result.push([k.Id.toString(), k.LanguageName]);
+                }
+            }
+            return result;
+        }
+        LanguageList.getValue = getValue;
+    })(LanguageList = PGMS.LanguageList || (PGMS.LanguageList = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Common;
+    (function (Common) {
+        var UserPreferenceStorage = /** @class */ (function () {
+            function UserPreferenceStorage() {
+            }
+            UserPreferenceStorage.prototype.getItem = function (key) {
+                var value;
+                Common.UserPreferenceService.Retrieve({
+                    PreferenceType: "UserPreferenceStorage",
+                    Name: key
+                }, function (response) { return value = response.Value; }, {
+                    async: false
+                });
+                return value;
+            };
+            UserPreferenceStorage.prototype.setItem = function (key, data) {
+                Common.UserPreferenceService.Update({
+                    PreferenceType: "UserPreferenceStorage",
+                    Name: key,
+                    Value: data
+                });
+            };
+            return UserPreferenceStorage;
+        }());
+        Common.UserPreferenceStorage = UserPreferenceStorage;
+    })(Common = PGMS.Common || (PGMS.Common = {}));
+})(PGMS || (PGMS = {}));
+/// <reference path="../Common/Helpers/LanguageList.ts" />
+/// <reference path="../Common/UserPreference/UserPreferenceStorage.ts" />
+var PGMS;
+(function (PGMS) {
+    var ScriptInitialization;
+    (function (ScriptInitialization) {
+        Q.Config.responsiveDialogs = true;
+        Q.Config.rootNamespaces.push('PGMS');
+        Serenity.EntityDialog.defaultLanguageList = PGMS.LanguageList.getValue;
+        if ($.fn['colorbox']) {
+            $.fn['colorbox'].settings.maxWidth = "95%";
+            $.fn['colorbox'].settings.maxHeight = "95%";
+        }
+        window.onerror = Q.ErrorHandling.runtimeErrorHandler;
+        Serenity.DataGrid.defaultPersistanceStorage = new PGMS.Common.UserPreferenceStorage();
+    })(ScriptInitialization = PGMS.ScriptInitialization || (PGMS.ScriptInitialization = {}));
 })(PGMS || (PGMS = {}));
 var PGMS;
 (function (PGMS) {
@@ -4374,6 +4390,7 @@ var PGMS;
                     separator: true,
                     onClick: function () { return _this.view.setGrouping([
                         {
+                            formatter: function (x) { return x.value + ' (' + x.count + ' ' + Q.text("Site.GroupByButtonFormatter") + ')'; },
                             getter: 'AccountName'
                         }
                     ]); }
@@ -4393,6 +4410,7 @@ var PGMS;
                     cssClass: 'expand-all-button',
                     onClick: function () { return _this.view.setGrouping([
                         {
+                            formatter: function (x) { return x.value + ' (' + x.count + ' ' + Q.text("Site.GroupByButtonFormatter") + ')'; },
                             getter: 'OrderStatusName'
                         }
                     ]); }
@@ -4650,6 +4668,7 @@ var PGMS;
                     cssClass: 'expand-all-button',
                     onClick: function () { return _this.view.setGrouping([
                         {
+                            formatter: function (x) { return x.value + ' (' + x.count + ' ' + Q.text("Site.GroupByButtonFormatter") + ')'; },
                             getter: 'AccountRepresentsName'
                         }
                     ]); }
@@ -4659,6 +4678,7 @@ var PGMS;
                     cssClass: 'expand-all-button',
                     onClick: function () { return _this.view.setGrouping([
                         {
+                            formatter: function (x) { return x.value + ' (' + x.count + ' ' + Q.text("Site.GroupByButtonFormatter") + ')'; },
                             getter: 'CompanyRepresentsName'
                         }
                     ]); }
@@ -4668,6 +4688,7 @@ var PGMS;
                     cssClass: 'expand-all-button',
                     onClick: function () { return _this.view.setGrouping([
                         {
+                            formatter: function (x) { return x.value + ' (' + x.count + ' ' + Q.text("Site.GroupByButtonFormatter") + ')'; },
                             getter: 'OrderStatusName'
                         }
                     ]); }
@@ -5043,6 +5064,7 @@ var PGMS;
                     cssClass: 'expand-all-button',
                     onClick: function () { return _this.view.setGrouping([
                         {
+                            formatter: function (x) { return x.value + ' (' + x.count + ' ' + Q.text("Site.GroupByButtonFormatter") + ')'; },
                             getter: 'BudgetName'
                         }
                     ]); }
@@ -5052,6 +5074,7 @@ var PGMS;
                     cssClass: 'expand-all-button',
                     onClick: function () { return _this.view.setGrouping([
                         {
+                            formatter: function (x) { return x.value + ' (' + x.count + ' ' + Q.text("Site.GroupByButtonFormatter") + ')'; },
                             getter: 'AccountName'
                         }
                     ]); }
@@ -5061,6 +5084,7 @@ var PGMS;
                     cssClass: 'expand-all-button',
                     onClick: function () { return _this.view.setGrouping([
                         {
+                            formatter: function (x) { return x.value + ' (' + x.count + ' ' + Q.text("Site.GroupByButtonFormatter") + ')'; },
                             getter: 'UserUsername'
                         }
                     ]); }
@@ -5070,6 +5094,7 @@ var PGMS;
                     cssClass: 'expand-all-button',
                     onClick: function () { return _this.view.setGrouping([
                         {
+                            formatter: function (x) { return x.value + ' (' + x.count + ' ' + Q.text("Site.GroupByButtonFormatter") + ')'; },
                             getter: 'TransactionType'
                         }
                     ]); }
@@ -5079,6 +5104,7 @@ var PGMS;
                     cssClass: 'expand-all-button',
                     onClick: function () { return _this.view.setGrouping([
                         {
+                            formatter: function (x) { return x.value + ' (' + x.count + ' ' + Q.text("Site.GroupByButtonFormatter") + ')'; },
                             getter: 'PaymentTypeName'
                         }
                     ]); }
@@ -5812,6 +5838,90 @@ var PGMS;
 (function (PGMS) {
     var Erp;
     (function (Erp) {
+        var OrderStatusesDialog = /** @class */ (function (_super) {
+            __extends(OrderStatusesDialog, _super);
+            function OrderStatusesDialog() {
+                var _this = _super !== null && _super.apply(this, arguments) || this;
+                _this.form = new Erp.OrderStatusesForm(_this.idPrefix);
+                return _this;
+            }
+            OrderStatusesDialog.prototype.getFormKey = function () { return Erp.OrderStatusesForm.formKey; };
+            OrderStatusesDialog.prototype.getIdProperty = function () { return Erp.OrderStatusesRow.idProperty; };
+            OrderStatusesDialog.prototype.getLocalTextPrefix = function () { return Erp.OrderStatusesRow.localTextPrefix; };
+            OrderStatusesDialog.prototype.getNameProperty = function () { return Erp.OrderStatusesRow.nameProperty; };
+            OrderStatusesDialog.prototype.getService = function () { return Erp.OrderStatusesService.baseUrl; };
+            OrderStatusesDialog = __decorate([
+                Serenity.Decorators.registerClass()
+            ], OrderStatusesDialog);
+            return OrderStatusesDialog;
+        }(Serenity.EntityDialog));
+        Erp.OrderStatusesDialog = OrderStatusesDialog;
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var OrderStatusesFormatter = /** @class */ (function () {
+            function OrderStatusesFormatter() {
+            }
+            OrderStatusesFormatter.prototype.format = function (ctx) {
+                var text = Q.htmlEncode(ctx.value);
+                if (!this.backgroundProperty || !this.borderProperty) {
+                    return text;
+                }
+                var backgroundColor = ctx.item[this.backgroundProperty];
+                var borderColor = ctx.item[this.borderProperty];
+                //return "<span style='background-color: " + color +";'>" + text + '</span>';
+                return "<div style='height:100%; background-color: " + backgroundColor + "; border-color: " + borderColor + ";' >" + text + '</div>';
+            };
+            OrderStatusesFormatter.prototype.initializeColumn = function (column) {
+                column.referencedFields = column.referencedFields || [];
+                if (this.backgroundProperty)
+                    column.referencedFields.push(this.backgroundProperty);
+                if (this.borderProperty)
+                    column.referencedFields.push(this.borderProperty);
+            };
+            __decorate([
+                Serenity.Decorators.option()
+            ], OrderStatusesFormatter.prototype, "backgroundProperty", void 0);
+            __decorate([
+                Serenity.Decorators.option()
+            ], OrderStatusesFormatter.prototype, "borderProperty", void 0);
+            OrderStatusesFormatter = __decorate([
+                Serenity.Decorators.registerFormatter([Serenity.ISlickFormatter, Serenity.IInitializeColumn])
+            ], OrderStatusesFormatter);
+            return OrderStatusesFormatter;
+        }());
+        Erp.OrderStatusesFormatter = OrderStatusesFormatter;
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var OrderStatusesGrid = /** @class */ (function (_super) {
+            __extends(OrderStatusesGrid, _super);
+            function OrderStatusesGrid(container) {
+                return _super.call(this, container) || this;
+            }
+            OrderStatusesGrid.prototype.getColumnsKey = function () { return 'Erp.OrderStatuses'; };
+            OrderStatusesGrid.prototype.getDialogType = function () { return Erp.OrderStatusesDialog; };
+            OrderStatusesGrid.prototype.getIdProperty = function () { return Erp.OrderStatusesRow.idProperty; };
+            OrderStatusesGrid.prototype.getLocalTextPrefix = function () { return Erp.OrderStatusesRow.localTextPrefix; };
+            OrderStatusesGrid.prototype.getService = function () { return Erp.OrderStatusesService.baseUrl; };
+            OrderStatusesGrid = __decorate([
+                Serenity.Decorators.registerClass()
+            ], OrderStatusesGrid);
+            return OrderStatusesGrid;
+        }(Serenity.EntityGrid));
+        Erp.OrderStatusesGrid = OrderStatusesGrid;
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
         var DeadlineFormatter = /** @class */ (function () {
             function DeadlineFormatter() {
             }
@@ -6060,124 +6170,6 @@ var PGMS;
             return OrderExpensesGrid;
         }(Erp.ExpensesGrid));
         Erp.OrderExpensesGrid = OrderExpensesGrid;
-    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
-})(PGMS || (PGMS = {}));
-var PGMS;
-(function (PGMS) {
-    var Erp;
-    (function (Erp) {
-        var OrdersIsRealFormatter = /** @class */ (function () {
-            function OrdersIsRealFormatter() {
-            }
-            OrdersIsRealFormatter.prototype.format = function (ctx) {
-                var text = Q.htmlEncode(ctx.value);
-                if (!this.isRealProperty) {
-                    return text;
-                }
-                var _isRealProperty = ctx.item[this.isRealProperty];
-                if (_isRealProperty == 1)
-                    return "<div style='height:100%; background-color: #F00;' >" + text + '</div>';
-                else
-                    return text;
-            };
-            OrdersIsRealFormatter.prototype.initializeColumn = function (column) {
-                column.referencedFields = column.referencedFields || [];
-                if (this.isRealProperty)
-                    column.referencedFields.push(this.isRealProperty);
-            };
-            __decorate([
-                Serenity.Decorators.option()
-            ], OrdersIsRealFormatter.prototype, "isRealProperty", void 0);
-            OrdersIsRealFormatter = __decorate([
-                Serenity.Decorators.registerFormatter([Serenity.ISlickFormatter, Serenity.IInitializeColumn])
-            ], OrdersIsRealFormatter);
-            return OrdersIsRealFormatter;
-        }());
-        Erp.OrdersIsRealFormatter = OrdersIsRealFormatter;
-    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
-})(PGMS || (PGMS = {}));
-var PGMS;
-(function (PGMS) {
-    var Erp;
-    (function (Erp) {
-        var OrderStatusesDialog = /** @class */ (function (_super) {
-            __extends(OrderStatusesDialog, _super);
-            function OrderStatusesDialog() {
-                var _this = _super !== null && _super.apply(this, arguments) || this;
-                _this.form = new Erp.OrderStatusesForm(_this.idPrefix);
-                return _this;
-            }
-            OrderStatusesDialog.prototype.getFormKey = function () { return Erp.OrderStatusesForm.formKey; };
-            OrderStatusesDialog.prototype.getIdProperty = function () { return Erp.OrderStatusesRow.idProperty; };
-            OrderStatusesDialog.prototype.getLocalTextPrefix = function () { return Erp.OrderStatusesRow.localTextPrefix; };
-            OrderStatusesDialog.prototype.getNameProperty = function () { return Erp.OrderStatusesRow.nameProperty; };
-            OrderStatusesDialog.prototype.getService = function () { return Erp.OrderStatusesService.baseUrl; };
-            OrderStatusesDialog = __decorate([
-                Serenity.Decorators.registerClass()
-            ], OrderStatusesDialog);
-            return OrderStatusesDialog;
-        }(Serenity.EntityDialog));
-        Erp.OrderStatusesDialog = OrderStatusesDialog;
-    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
-})(PGMS || (PGMS = {}));
-var PGMS;
-(function (PGMS) {
-    var Erp;
-    (function (Erp) {
-        var OrderStatusesFormatter = /** @class */ (function () {
-            function OrderStatusesFormatter() {
-            }
-            OrderStatusesFormatter.prototype.format = function (ctx) {
-                var text = Q.htmlEncode(ctx.value);
-                if (!this.backgroundProperty || !this.borderProperty) {
-                    return text;
-                }
-                var backgroundColor = ctx.item[this.backgroundProperty];
-                var borderColor = ctx.item[this.borderProperty];
-                //return "<span style='background-color: " + color +";'>" + text + '</span>';
-                return "<div style='height:100%; background-color: " + backgroundColor + "; border-color: " + borderColor + ";' >" + text + '</div>';
-            };
-            OrderStatusesFormatter.prototype.initializeColumn = function (column) {
-                column.referencedFields = column.referencedFields || [];
-                if (this.backgroundProperty)
-                    column.referencedFields.push(this.backgroundProperty);
-                if (this.borderProperty)
-                    column.referencedFields.push(this.borderProperty);
-            };
-            __decorate([
-                Serenity.Decorators.option()
-            ], OrderStatusesFormatter.prototype, "backgroundProperty", void 0);
-            __decorate([
-                Serenity.Decorators.option()
-            ], OrderStatusesFormatter.prototype, "borderProperty", void 0);
-            OrderStatusesFormatter = __decorate([
-                Serenity.Decorators.registerFormatter([Serenity.ISlickFormatter, Serenity.IInitializeColumn])
-            ], OrderStatusesFormatter);
-            return OrderStatusesFormatter;
-        }());
-        Erp.OrderStatusesFormatter = OrderStatusesFormatter;
-    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
-})(PGMS || (PGMS = {}));
-var PGMS;
-(function (PGMS) {
-    var Erp;
-    (function (Erp) {
-        var OrderStatusesGrid = /** @class */ (function (_super) {
-            __extends(OrderStatusesGrid, _super);
-            function OrderStatusesGrid(container) {
-                return _super.call(this, container) || this;
-            }
-            OrderStatusesGrid.prototype.getColumnsKey = function () { return 'Erp.OrderStatuses'; };
-            OrderStatusesGrid.prototype.getDialogType = function () { return Erp.OrderStatusesDialog; };
-            OrderStatusesGrid.prototype.getIdProperty = function () { return Erp.OrderStatusesRow.idProperty; };
-            OrderStatusesGrid.prototype.getLocalTextPrefix = function () { return Erp.OrderStatusesRow.localTextPrefix; };
-            OrderStatusesGrid.prototype.getService = function () { return Erp.OrderStatusesService.baseUrl; };
-            OrderStatusesGrid = __decorate([
-                Serenity.Decorators.registerClass()
-            ], OrderStatusesGrid);
-            return OrderStatusesGrid;
-        }(Serenity.EntityGrid));
-        Erp.OrderStatusesGrid = OrderStatusesGrid;
     })(Erp = PGMS.Erp || (PGMS.Erp = {}));
 })(PGMS || (PGMS = {}));
 var PGMS;
@@ -6464,6 +6456,52 @@ var PGMS;
 (function (PGMS) {
     var Erp;
     (function (Erp) {
+        var PartnerTypesDialog = /** @class */ (function (_super) {
+            __extends(PartnerTypesDialog, _super);
+            function PartnerTypesDialog() {
+                var _this = _super !== null && _super.apply(this, arguments) || this;
+                _this.form = new Erp.PartnerTypesForm(_this.idPrefix);
+                return _this;
+            }
+            PartnerTypesDialog.prototype.getFormKey = function () { return Erp.PartnerTypesForm.formKey; };
+            PartnerTypesDialog.prototype.getIdProperty = function () { return Erp.PartnerTypesRow.idProperty; };
+            PartnerTypesDialog.prototype.getLocalTextPrefix = function () { return Erp.PartnerTypesRow.localTextPrefix; };
+            PartnerTypesDialog.prototype.getNameProperty = function () { return Erp.PartnerTypesRow.nameProperty; };
+            PartnerTypesDialog.prototype.getService = function () { return Erp.PartnerTypesService.baseUrl; };
+            PartnerTypesDialog = __decorate([
+                Serenity.Decorators.registerClass()
+            ], PartnerTypesDialog);
+            return PartnerTypesDialog;
+        }(Serenity.EntityDialog));
+        Erp.PartnerTypesDialog = PartnerTypesDialog;
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var PartnerTypesGrid = /** @class */ (function (_super) {
+            __extends(PartnerTypesGrid, _super);
+            function PartnerTypesGrid(container) {
+                return _super.call(this, container) || this;
+            }
+            PartnerTypesGrid.prototype.getColumnsKey = function () { return 'Erp.PartnerTypes'; };
+            PartnerTypesGrid.prototype.getDialogType = function () { return Erp.PartnerTypesDialog; };
+            PartnerTypesGrid.prototype.getIdProperty = function () { return Erp.PartnerTypesRow.idProperty; };
+            PartnerTypesGrid.prototype.getLocalTextPrefix = function () { return Erp.PartnerTypesRow.localTextPrefix; };
+            PartnerTypesGrid.prototype.getService = function () { return Erp.PartnerTypesService.baseUrl; };
+            PartnerTypesGrid = __decorate([
+                Serenity.Decorators.registerClass()
+            ], PartnerTypesGrid);
+            return PartnerTypesGrid;
+        }(Serenity.EntityGrid));
+        Erp.PartnerTypesGrid = PartnerTypesGrid;
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
         var PartnersDialog = /** @class */ (function (_super) {
             __extends(PartnersDialog, _super);
             function PartnersDialog() {
@@ -6520,52 +6558,6 @@ var PGMS;
             return PartnersGrid;
         }(Serenity.EntityGrid));
         Erp.PartnersGrid = PartnersGrid;
-    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
-})(PGMS || (PGMS = {}));
-var PGMS;
-(function (PGMS) {
-    var Erp;
-    (function (Erp) {
-        var PartnerTypesDialog = /** @class */ (function (_super) {
-            __extends(PartnerTypesDialog, _super);
-            function PartnerTypesDialog() {
-                var _this = _super !== null && _super.apply(this, arguments) || this;
-                _this.form = new Erp.PartnerTypesForm(_this.idPrefix);
-                return _this;
-            }
-            PartnerTypesDialog.prototype.getFormKey = function () { return Erp.PartnerTypesForm.formKey; };
-            PartnerTypesDialog.prototype.getIdProperty = function () { return Erp.PartnerTypesRow.idProperty; };
-            PartnerTypesDialog.prototype.getLocalTextPrefix = function () { return Erp.PartnerTypesRow.localTextPrefix; };
-            PartnerTypesDialog.prototype.getNameProperty = function () { return Erp.PartnerTypesRow.nameProperty; };
-            PartnerTypesDialog.prototype.getService = function () { return Erp.PartnerTypesService.baseUrl; };
-            PartnerTypesDialog = __decorate([
-                Serenity.Decorators.registerClass()
-            ], PartnerTypesDialog);
-            return PartnerTypesDialog;
-        }(Serenity.EntityDialog));
-        Erp.PartnerTypesDialog = PartnerTypesDialog;
-    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
-})(PGMS || (PGMS = {}));
-var PGMS;
-(function (PGMS) {
-    var Erp;
-    (function (Erp) {
-        var PartnerTypesGrid = /** @class */ (function (_super) {
-            __extends(PartnerTypesGrid, _super);
-            function PartnerTypesGrid(container) {
-                return _super.call(this, container) || this;
-            }
-            PartnerTypesGrid.prototype.getColumnsKey = function () { return 'Erp.PartnerTypes'; };
-            PartnerTypesGrid.prototype.getDialogType = function () { return Erp.PartnerTypesDialog; };
-            PartnerTypesGrid.prototype.getIdProperty = function () { return Erp.PartnerTypesRow.idProperty; };
-            PartnerTypesGrid.prototype.getLocalTextPrefix = function () { return Erp.PartnerTypesRow.localTextPrefix; };
-            PartnerTypesGrid.prototype.getService = function () { return Erp.PartnerTypesService.baseUrl; };
-            PartnerTypesGrid = __decorate([
-                Serenity.Decorators.registerClass()
-            ], PartnerTypesGrid);
-            return PartnerTypesGrid;
-        }(Serenity.EntityGrid));
-        Erp.PartnerTypesGrid = PartnerTypesGrid;
     })(Erp = PGMS.Erp || (PGMS.Erp = {}));
 })(PGMS || (PGMS = {}));
 var PGMS;
@@ -6705,6 +6697,122 @@ var PGMS;
             return ProductsGrid;
         }(Serenity.EntityGrid));
         Erp.ProductsGrid = ProductsGrid;
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var IncomeVSExpense = /** @class */ (function (_super) {
+            __extends(IncomeVSExpense, _super);
+            function IncomeVSExpense(elem, opt) {
+                var _this = _super.call(this, elem, opt) || this;
+                Erp.ReportsEndpointService.IncomeVSExpenseResponse({}, function (response) {
+                    var config = {
+                        type: 'line',
+                        data: {
+                            datasets: response.Entity.datasets,
+                            labels: response.Entity.labels
+                        },
+                        options: {
+                            responsive: true,
+                            legend: {
+                                display: true
+                            },
+                            tooltips: {
+                                mode: 'index',
+                                intersect: false,
+                            },
+                            hover: {
+                                mode: 'nearest',
+                                intersect: true
+                            },
+                            scales: {
+                                xAxes: [
+                                    {
+                                        display: true,
+                                        scaleLabel: {
+                                            display: true,
+                                        }
+                                    }
+                                ],
+                                yAxes: [
+                                    {
+                                        display: true,
+                                        scaleLabel: {
+                                            display: true,
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                    };
+                    var ctx = $(_this.byId("IncomeVSExpense")).get(0).getContext("2d", {});
+                    var myPie = new Chart(ctx, config);
+                });
+                return _this;
+            }
+            return IncomeVSExpense;
+        }(Serenity.TemplatedWidget));
+        Erp.IncomeVSExpense = IncomeVSExpense;
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var OrdersPerStatus = /** @class */ (function (_super) {
+            __extends(OrdersPerStatus, _super);
+            function OrdersPerStatus(elem, opt) {
+                var _this = _super.call(this, elem, opt) || this;
+                Erp.ReportsEndpointService.OrdersPerStatus({}, function (response) {
+                    var config = {
+                        type: 'line',
+                        data: {
+                            datasets: response.Entity.datasets,
+                            labels: response.Entity.labels
+                        },
+                        options: {
+                            responsive: true,
+                            legend: {
+                                display: true
+                            },
+                            tooltips: {
+                                mode: 'index',
+                                intersect: false,
+                            },
+                            hover: {
+                                mode: 'nearest',
+                                intersect: true
+                            },
+                            scales: {
+                                xAxes: [
+                                    {
+                                        display: true,
+                                        scaleLabel: {
+                                            display: true,
+                                        }
+                                    }
+                                ],
+                                yAxes: [
+                                    {
+                                        display: true,
+                                        scaleLabel: {
+                                            display: true,
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                    };
+                    var ctx = $(_this.byId("IncomeVSExpense")).get(0).getContext("2d", {});
+                    var myPie = new Chart(ctx, config);
+                });
+                return _this;
+            }
+            return OrdersPerStatus;
+        }(Serenity.TemplatedWidget));
+        Erp.OrdersPerStatus = OrdersPerStatus;
     })(Erp = PGMS.Erp || (PGMS.Erp = {}));
 })(PGMS || (PGMS = {}));
 var PGMS;
@@ -6912,138 +7020,6 @@ var PGMS;
 })(PGMS || (PGMS = {}));
 var PGMS;
 (function (PGMS) {
-    var Authorization;
-    (function (Authorization) {
-        Object.defineProperty(Authorization, 'userDefinition', {
-            get: function () {
-                return Q.getRemoteData('UserData');
-            }
-        });
-        function hasPermission(permissionKey) {
-            var ud = Authorization.userDefinition;
-            return ud.Username === 'admin' || !!ud.Permissions[permissionKey];
-        }
-        Authorization.hasPermission = hasPermission;
-    })(Authorization = PGMS.Authorization || (PGMS.Authorization = {}));
-})(PGMS || (PGMS = {}));
-var PGMS;
-(function (PGMS) {
-    var Erp;
-    (function (Erp) {
-        var IncomeVSExpense = /** @class */ (function (_super) {
-            __extends(IncomeVSExpense, _super);
-            function IncomeVSExpense(elem, opt) {
-                var _this = _super.call(this, elem, opt) || this;
-                Erp.ReportsEndpointService.IncomeVSExpenseResponse({}, function (response) {
-                    var config = {
-                        type: 'line',
-                        data: {
-                            datasets: response.Entity.datasets,
-                            labels: response.Entity.labels
-                        },
-                        options: {
-                            responsive: true,
-                            legend: {
-                                display: true
-                            },
-                            tooltips: {
-                                mode: 'index',
-                                intersect: false,
-                            },
-                            hover: {
-                                mode: 'nearest',
-                                intersect: true
-                            },
-                            scales: {
-                                xAxes: [
-                                    {
-                                        display: true,
-                                        scaleLabel: {
-                                            display: true,
-                                        }
-                                    }
-                                ],
-                                yAxes: [
-                                    {
-                                        display: true,
-                                        scaleLabel: {
-                                            display: true,
-                                        }
-                                    }
-                                ]
-                            }
-                        },
-                    };
-                    var ctx = $(_this.byId("IncomeVSExpense")).get(0).getContext("2d", {});
-                    var myPie = new Chart(ctx, config);
-                });
-                return _this;
-            }
-            return IncomeVSExpense;
-        }(Serenity.TemplatedWidget));
-        Erp.IncomeVSExpense = IncomeVSExpense;
-    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
-})(PGMS || (PGMS = {}));
-var PGMS;
-(function (PGMS) {
-    var Erp;
-    (function (Erp) {
-        var OrdersPerStatus = /** @class */ (function (_super) {
-            __extends(OrdersPerStatus, _super);
-            function OrdersPerStatus(elem, opt) {
-                var _this = _super.call(this, elem, opt) || this;
-                Erp.ReportsEndpointService.OrdersPerStatus({}, function (response) {
-                    var config = {
-                        type: 'line',
-                        data: {
-                            datasets: response.Entity.datasets,
-                            labels: response.Entity.labels
-                        },
-                        options: {
-                            responsive: true,
-                            legend: {
-                                display: true
-                            },
-                            tooltips: {
-                                mode: 'index',
-                                intersect: false,
-                            },
-                            hover: {
-                                mode: 'nearest',
-                                intersect: true
-                            },
-                            scales: {
-                                xAxes: [
-                                    {
-                                        display: true,
-                                        scaleLabel: {
-                                            display: true,
-                                        }
-                                    }
-                                ],
-                                yAxes: [
-                                    {
-                                        display: true,
-                                        scaleLabel: {
-                                            display: true,
-                                        }
-                                    }
-                                ]
-                            }
-                        },
-                    };
-                    var ctx = $(_this.byId("IncomeVSExpense")).get(0).getContext("2d", {});
-                    var myPie = new Chart(ctx, config);
-                });
-                return _this;
-            }
-            return OrdersPerStatus;
-        }(Serenity.TemplatedWidget));
-        Erp.OrdersPerStatus = OrdersPerStatus;
-    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
-})(PGMS || (PGMS = {}));
-var PGMS;
-(function (PGMS) {
     var Membership;
     (function (Membership) {
         var ChangePasswordPanel = /** @class */ (function (_super) {
@@ -7219,5 +7195,39 @@ var PGMS;
         }(Serenity.PropertyPanel));
         Membership.SignUpPanel = SignUpPanel;
     })(Membership = PGMS.Membership || (PGMS.Membership = {}));
+})(PGMS || (PGMS = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var OrdersIsRealFormatter = /** @class */ (function () {
+            function OrdersIsRealFormatter() {
+            }
+            OrdersIsRealFormatter.prototype.format = function (ctx) {
+                var text = Q.htmlEncode(ctx.value);
+                if (!this.isRealProperty) {
+                    return text;
+                }
+                var _isRealProperty = ctx.item[this.isRealProperty];
+                if (_isRealProperty == 1)
+                    return "<div style='height:100%; background-color: #F00;' >" + text + '</div>';
+                else
+                    return text;
+            };
+            OrdersIsRealFormatter.prototype.initializeColumn = function (column) {
+                column.referencedFields = column.referencedFields || [];
+                if (this.isRealProperty)
+                    column.referencedFields.push(this.isRealProperty);
+            };
+            __decorate([
+                Serenity.Decorators.option()
+            ], OrdersIsRealFormatter.prototype, "isRealProperty", void 0);
+            OrdersIsRealFormatter = __decorate([
+                Serenity.Decorators.registerFormatter([Serenity.ISlickFormatter, Serenity.IInitializeColumn])
+            ], OrdersIsRealFormatter);
+            return OrdersIsRealFormatter;
+        }());
+        Erp.OrdersIsRealFormatter = OrdersIsRealFormatter;
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
 })(PGMS || (PGMS = {}));
 //# sourceMappingURL=PGMS.Web.js.map

@@ -84,6 +84,7 @@ namespace PGMS.Erp {
                 onClick: () => this.view.setGrouping(
                     [
                         {
+                            formatter: x => x.value + ' (' + x.count + ' ' + Q.text("Site.GroupByButtonFormatter") + ')',
                             getter: 'AccountRepresentsName'
                         }
                     ])
@@ -94,6 +95,7 @@ namespace PGMS.Erp {
                 onClick: () => this.view.setGrouping(
                     [
                         {
+                            formatter: x => x.value + ' (' + x.count + ' ' + Q.text("Site.GroupByButtonFormatter") + ')',
                             getter: 'CompanyRepresentsName'
                         }
                     ])
@@ -104,6 +106,7 @@ namespace PGMS.Erp {
                 onClick: () => this.view.setGrouping(
                     [
                         {
+                            formatter: x => x.value + ' (' + x.count + ' ' + Q.text("Site.GroupByButtonFormatter") + ')',
                             getter: 'OrderStatusName'
                         }
                     ])

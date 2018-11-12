@@ -53,6 +53,7 @@ namespace PGMS.Erp {
 
             return grid;
         }
+        
         protected getSlickOptions() {
             var opt = super.getSlickOptions();
             opt.showFooterRow = true;
@@ -80,6 +81,7 @@ namespace PGMS.Erp {
                 onClick: () => this.view.setGrouping(
                     [
                         {
+                            formatter: x => x.value + ' (' + x.count + ' ' + Q.text("Site.GroupByButtonFormatter") +')',
                             getter: 'AccountName'
                         }
                     ])
@@ -102,6 +104,7 @@ namespace PGMS.Erp {
                 onClick: () => this.view.setGrouping(
                     [
                         {
+                            formatter: x => x.value + ' (' + x.count + ' ' + Q.text("Site.GroupByButtonFormatter") + ')',
                             getter: 'OrderStatusName'
                         }
                     ])

@@ -61,6 +61,7 @@ namespace PGMS.Erp {
                 onClick: () => this.view.setGrouping(
                     [
                         {
+                            formatter: x => x.value + ' (' + x.count + ' ' + Q.text("Site.GroupByButtonFormatter") + ')',
                             getter: 'BudgetName'
                         }
                     ])
@@ -71,6 +72,7 @@ namespace PGMS.Erp {
                 onClick: () => this.view.setGrouping(
                     [
                         {
+                            formatter: x => x.value + ' (' + x.count + ' ' + Q.text("Site.GroupByButtonFormatter") + ')',
                             getter: 'AccountName'
                         }
                     ])
@@ -81,6 +83,7 @@ namespace PGMS.Erp {
                 onClick: () => this.view.setGrouping(
                     [
                         {
+                            formatter: x => x.value + ' (' + x.count + ' ' + Q.text("Site.GroupByButtonFormatter") + ')',
                             getter: 'UserUsername'
                         }
                     ])
@@ -91,6 +94,7 @@ namespace PGMS.Erp {
                 onClick: () => this.view.setGrouping(
                     [
                         {
+                            formatter: x => x.value + ' (' + x.count + ' ' + Q.text("Site.GroupByButtonFormatter") + ')',
                             getter: 'TransactionType'
                         }
                     ])
@@ -102,6 +106,7 @@ namespace PGMS.Erp {
                 onClick: () => this.view.setGrouping(
                     [
                         {
+                            formatter: x => x.value + ' (' + x.count + ' ' + Q.text("Site.GroupByButtonFormatter") + ')',
                             getter: 'PaymentTypeName'
                         }
                     ])
