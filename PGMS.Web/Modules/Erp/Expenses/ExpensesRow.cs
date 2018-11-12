@@ -20,7 +20,7 @@ namespace PGMS.Erp.Entities
     [LookupScript]
     public sealed class ExpensesRow : ErpLoggingRow, IIdRow, INameRow
     {
-        [DisplayName("Expense Id"), Identity]
+        [DisplayName("Expense Id"), Identity, QuickSearch]
         public Int32? ExpenseId
         {
             get { return Fields.ExpenseId[this]; }
