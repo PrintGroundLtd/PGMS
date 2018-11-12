@@ -149,6 +149,7 @@
   "Db.Erp.OrderDetails.LineTotal": "Краен Тотал",
   "Db.Erp.OrderDetails.OrderAccountId": "ИД",
   "Db.Erp.OrderDetails.OrderCompanyId": "ИД",
+  "Db.Erp.OrderDetails.OrderDetailCounter": "Номер",
   "Db.Erp.OrderDetails.OrderDetailId": "ИД",
   "Db.Erp.OrderDetails.OrderId": "Поръчка",
   "Db.Erp.OrderDetails.OrderOrderStatusId": "Поръчка Статус",

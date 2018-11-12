@@ -13,14 +13,17 @@ namespace PGMS.Erp.Columns
     [BasedOnRow(typeof(Entities.OrderDetailsRow), CheckNames = true)]
     public class OrderDetailsColumns
     {
+        [EditLink, Width(100)]
+        public Int32 OrderDetailCounter { get; set; }
         [EditLink, Width(200)]
         public String ProductName { get; set; }
         [EditLink, Width(200)]
         public String ProductQuantityPerUnit { get; set; }
         [Width(100)]
         public Decimal UnitPrice { get; set; }
-
-        public Decimal Width { get; set; }
+        [Width(100)]
+        public Decimal Width { get; set; } 
+        [Width(100)]
         public Decimal Height { get; set; }
         [Width(100)]
         public Decimal Quadrature { get; set; }

@@ -25,6 +25,13 @@ namespace PGMS.Erp.Entities
             set { Fields.OrderDetailId[this] = value; }
         }
 
+        [DisplayName("Order Detail Counter"), NotMapped]
+        public Int32? OrderDetailCounter
+        {
+            get { return Fields.OrderDetailCounter[this]; }
+            set { Fields.OrderDetailCounter[this] = value; }
+        }
+
         [DisplayName("Product"), PrimaryKey, ForeignKey("[dbo].[Products]", "ProductId"), LeftJoin("jProduct"), TextualField("ProductName"), NotNull]
         [LookupEditor(typeof(ProductsRow), FilterField = "IsActive", FilterValue = 1, InplaceAdd = true, InplaceAddPermission = PermissionKeys.Products.UpdatePermission)]
         public Int32? ProductId
@@ -225,6 +232,7 @@ END
             public Int32Field OrderDetailId;
             public Int32Field ProductId;
             public Int32Field OrderId;
+            public Int32Field OrderDetailCounter;
             public DecimalField UnitPrice;
             public DecimalField Quantity;
             public DecimalField Discount;

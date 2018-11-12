@@ -3,6 +3,7 @@
         OrderDetailId?: number;
         ProductId?: number;
         OrderId?: number;
+        OrderDetailCounter?: number;
         UnitPrice?: number;
         Quantity?: number;
         Discount?: number;
@@ -36,6 +37,7 @@
             OrderDetailId = "OrderDetailId",
             ProductId = "ProductId",
             OrderId = "OrderId",
+            OrderDetailCounter = "OrderDetailCounter",
             UnitPrice = "UnitPrice",
             Quantity = "Quantity",
             Discount = "Discount",

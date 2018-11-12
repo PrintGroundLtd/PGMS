@@ -53,9 +53,11 @@ namespace PGMS.Erp.Repositories
                
                 if (Response.Entity.DetailList.Any())
                 {
+                    var counter = 0;
                     Response.Entity.DetailList.ForEach(od =>
                     {
-                        
+                        counter++;
+
                         od.NoteList = new NoteRepository().List(Connection, new ListRequest
                         {
                             ColumnSelection = ColumnSelection.List,
@@ -91,6 +93,9 @@ namespace PGMS.Erp.Repositories
                             }
                         }
                         #endregion
+
+                        od.OrderDetailCounter = counter;
+
                     });
                 }
 
