@@ -92,7 +92,7 @@ namespace PGMS.Migrations.DefaultDB
 
             this.CreateTableWithId32("AccountAttachments", "AccountAttachmentId", s => s
                 .WithColumn("Name").AsString(500).NotNullable()
-                .WithColumn("Description").AsString(Int32.MaxValue).NotNullable()
+                .WithColumn("Description").AsString(Int32.MaxValue).Nullable()
                 .WithColumn("FilePath").AsString(Int32.MaxValue).NotNullable()
                 .WithColumn("AccountId").AsInt32().NotNullable()
                 .ForeignKey("Accounts", "AccountId")
