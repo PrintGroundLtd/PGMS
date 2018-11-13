@@ -25,6 +25,13 @@ namespace PGMS.Erp.Entities
             set { Fields.OrderDetailId[this] = value; }
         }
 
+        [DisplayName("Notes Counter"), NotMapped]
+        public Int32? NotesCounter
+        {
+            get { return Fields.NotesCounter[this]; }
+            set { Fields.NotesCounter[this] = value; }
+        }
+
         [DisplayName("Order Detail Counter"), NotMapped]
         public Int32? OrderDetailCounter
         {
@@ -233,6 +240,7 @@ END
             public Int32Field ProductId;
             public Int32Field OrderId;
             public Int32Field OrderDetailCounter;
+            public Int32Field NotesCounter;
             public DecimalField UnitPrice;
             public DecimalField Quantity;
             public DecimalField Discount;

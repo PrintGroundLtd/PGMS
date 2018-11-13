@@ -65,10 +65,11 @@ namespace PGMS.Erp.Repositories
                                 (new Criteria(NoteRow.Fields.EntityType.Name) == "[dbo].[OrderDetails]")
                             & (new Criteria(NoteRow.Fields.EntityId.Name) == od.OrderDetailId.ToString())
                         }).Entities;
-
+                        od.NotesCounter = 0;
                         #region BUG With EMPTY NOTE list in master detail dialog 
                         if (od.NoteList.Any())
                         {
+                            od.NotesCounter = od.NoteList.Count;
 
                             // users might be in another database, in another db server, so we can't simply use a join here
                             var userIdList = od.NoteList.Where(x => x.InsertUserId != null)

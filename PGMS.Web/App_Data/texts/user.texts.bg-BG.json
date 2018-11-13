@@ -161,6 +161,7 @@
   "Db.Erp.OrderDetails.EntitySingular": "Детайл към Поръчка",
   "Db.Erp.OrderDetails.Height": "Височина",
   "Db.Erp.OrderDetails.LineTotal": "Краен Тотал",
+  "Db.Erp.OrderDetails.NotesCounter": "Бележки бр.",
   "Db.Erp.OrderDetails.OrderAccountId": "ИД",
   "Db.Erp.OrderDetails.OrderCompanyId": "ИД",
   "Db.Erp.OrderDetails.OrderDetailCounter": "Номер",

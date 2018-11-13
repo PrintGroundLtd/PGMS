@@ -13,8 +13,10 @@ namespace PGMS.Erp.Columns
     [BasedOnRow(typeof(Entities.OrderDetailsRow), CheckNames = true)]
     public class OrderDetailsColumns
     {
-        [EditLink, Width(100)]
+        [EditLink, Width(80)]
         public Int32 OrderDetailCounter { get; set; }
+        [EditLink, Width(80)]
+        public Int32 NotesCounter { get; set; }
         [EditLink, Width(200)]
         public String ProductName { get; set; }
         [EditLink, Width(200)]
