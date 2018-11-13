@@ -103,7 +103,14 @@ namespace PGMS
                 public static LocalText ExpenseNameOrder = "Expense - Order ({0})";
 
             }
-
+            public static class Orders
+            {
+                public static LocalText CloneNameSuffix = " (Clone)";
+            }
+            public static class OutsideOrders
+            {
+                public static LocalText CloneNameSuffix = " (Clone)";
+            }
             public static LocalText ExportToExcelButton = "Export to Excel";
             public static LocalText ExportToExcelHintButton = "Export current table to Excel";
 

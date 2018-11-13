@@ -4262,6 +4262,21 @@ var PGMS;
             OrdersDialog.prototype.getLocalTextPrefix = function () { return Erp.OrdersRow.localTextPrefix; };
             OrdersDialog.prototype.getNameProperty = function () { return Erp.OrdersRow.nameProperty; };
             OrdersDialog.prototype.getService = function () { return Erp.OrdersService.baseUrl; };
+            OrdersDialog.prototype.getCloningEntity = function () {
+                var clone = _super.prototype.getCloningEntity.call(this);
+                // add (Clone) suffix if it's not already added
+                var suffix = ' ' + Q.tryGetText("Site.Orders.CloneNameSuffix");
+                if (!Q.endsWith(clone.Name || '', suffix)) {
+                    clone.Name = (clone.Name || '') + suffix;
+                }
+                return clone;
+            };
+            OrdersDialog.prototype.updateInterface = function () {
+                // by default cloneButton is hidden in base UpdateInterface method
+                _super.prototype.updateInterface.call(this);
+                // here we show it if it is edit mode (not new)
+                this.cloneButton.toggle(this.isEditMode());
+            };
             OrdersDialog.prototype.loadEntity = function (entity) {
                 _super.prototype.loadEntity.call(this, entity);
                 Serenity.TabsExtensions.setDisabled(this.tabs, 'Notes', this.isNewOrDeleted());
@@ -4538,6 +4553,21 @@ var PGMS;
             OutsideOrdersDialog.prototype.getLocalTextPrefix = function () { return Erp.OutsideOrdersRow.localTextPrefix; };
             OutsideOrdersDialog.prototype.getNameProperty = function () { return Erp.OutsideOrdersRow.nameProperty; };
             OutsideOrdersDialog.prototype.getService = function () { return Erp.OutsideOrdersService.baseUrl; };
+            OutsideOrdersDialog.prototype.getCloningEntity = function () {
+                var clone = _super.prototype.getCloningEntity.call(this);
+                // add (Clone) suffix if it's not already added
+                var suffix = ' ' + Q.tryGetText("Site.OutsideOrders.CloneNameSuffix");
+                if (!Q.endsWith(clone.Name || '', suffix)) {
+                    clone.Name = (clone.Name || '') + suffix;
+                }
+                return clone;
+            };
+            OutsideOrdersDialog.prototype.updateInterface = function () {
+                // by default cloneButton is hidden in base UpdateInterface method
+                _super.prototype.updateInterface.call(this);
+                // here we show it if it is edit mode (not new)
+                this.cloneButton.toggle(this.isEditMode());
+            };
             OutsideOrdersDialog.prototype.loadEntity = function (entity) {
                 _super.prototype.loadEntity.call(this, entity);
                 Serenity.TabsExtensions.setDisabled(this.tabs, 'Expenses', this.isNewOrDeleted());

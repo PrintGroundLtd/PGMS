@@ -32,6 +32,27 @@ namespace PGMS.Erp {
             DialogUtils.pendingChangesConfirmation(this.element, () => this.getSaveState() != this.loadedState);
 
         }
+        protected getCloningEntity() {
+            var clone = super.getCloningEntity();
+
+            // add (Clone) suffix if it's not already added
+            var suffix = ' ' + Q.tryGetText("Site.Orders.CloneNameSuffix");
+            if (!Q.endsWith(clone.Name || '', suffix)) {
+                clone.Name = (clone.Name || '') + suffix;
+            }
+            
+            return clone;
+        }
+
+        protected updateInterface() {
+
+            // by default cloneButton is hidden in base UpdateInterface method
+            super.updateInterface();
+
+            // here we show it if it is edit mode (not new)
+            this.cloneButton.toggle(this.isEditMode());
+        }
+
         loadEntity(entity: Erp.OrdersRow): void {
             super.loadEntity(entity);
             Serenity.TabsExtensions.setDisabled(this.tabs, 'Notes', this.isNewOrDeleted());

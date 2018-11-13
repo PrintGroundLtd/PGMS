@@ -2905,6 +2905,8 @@ declare namespace PGMS.Erp {
         private attachmentsGrid;
         private expensesGrid;
         constructor();
+        protected getCloningEntity(): OrdersRow;
+        protected updateInterface(): void;
         loadEntity(entity: Erp.OrdersRow): void;
         loadResponse(data: any): void;
         getSaveState(): string;
@@ -2958,6 +2960,8 @@ declare namespace PGMS.Erp {
         private attachmentsGrid;
         private expensesGrid;
         constructor();
+        protected getCloningEntity(): OutsideOrdersRow;
+        protected updateInterface(): void;
         loadEntity(entity: Erp.OutsideOrdersRow): void;
         loadResponse(data: any): void;
         getSaveState(): string;
