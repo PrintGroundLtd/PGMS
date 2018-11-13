@@ -232,6 +232,8 @@ namespace PGMS.Erp.Entities
         
 
         [DisplayName("Order Status Name"), Expression("jOrderStatus.[Name]")]
+        [LookupEditor(typeof(OrderStatusesRow), FilterField = "IsActive", FilterValue = 1)]
+        [QuickFilter(), QuickFilterOption("multiple", true)]
         public String OrderStatusName
         {
             get { return Fields.OrderStatusName[this]; }
