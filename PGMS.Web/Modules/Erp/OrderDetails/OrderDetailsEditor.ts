@@ -12,6 +12,30 @@ namespace PGMS.Erp {
             super(container);
         }
 
+        protected getSlickOptions() {
+            var opt = super.getSlickOptions();
+            opt.showFooterRow = true;
+            return opt;
+        }
+        protected createSlickGrid() {
+            var grid = super.createSlickGrid();
+
+            // need to register this plugin for grouping or you'll have errors
+            grid.registerPlugin(new Slick.Data.GroupItemMetadataProvider());
+
+            this.view.setSummaryOptions({
+                aggregators: [
+                    new Slick.Aggregators.Sum('Quadrature'),
+                    new Slick.Aggregators.Sum('Quantity'),
+                    new Slick.Aggregators.Sum('Discount'),
+                    new Slick.Aggregators.Sum('AdditionalCosts'),
+                    new Slick.Aggregators.Sum('LineTotal')
+
+            ]
+            });
+
+            return grid;
+        }
         validateEntity(row, id) {
             row.ProductId = Q.toId(row.ProductId);
              

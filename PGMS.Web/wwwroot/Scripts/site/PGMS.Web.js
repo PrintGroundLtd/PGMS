@@ -5840,6 +5840,26 @@ var PGMS;
             OrderDetailsEditor.prototype.getColumnsKey = function () { return "Erp.OrderDetails"; };
             OrderDetailsEditor.prototype.getDialogType = function () { return Erp.OrderDetailsDialog; };
             OrderDetailsEditor.prototype.getLocalTextPrefix = function () { return Erp.OrderDetailsRow.localTextPrefix; };
+            OrderDetailsEditor.prototype.getSlickOptions = function () {
+                var opt = _super.prototype.getSlickOptions.call(this);
+                opt.showFooterRow = true;
+                return opt;
+            };
+            OrderDetailsEditor.prototype.createSlickGrid = function () {
+                var grid = _super.prototype.createSlickGrid.call(this);
+                // need to register this plugin for grouping or you'll have errors
+                grid.registerPlugin(new Slick.Data.GroupItemMetadataProvider());
+                this.view.setSummaryOptions({
+                    aggregators: [
+                        new Slick.Aggregators.Sum('Quadrature'),
+                        new Slick.Aggregators.Sum('Quantity'),
+                        new Slick.Aggregators.Sum('Discount'),
+                        new Slick.Aggregators.Sum('AdditionalCosts'),
+                        new Slick.Aggregators.Sum('LineTotal')
+                    ]
+                });
+                return grid;
+            };
             OrderDetailsEditor.prototype.validateEntity = function (row, id) {
                 row.ProductId = Q.toId(row.ProductId);
                 //var sameProduct = Q.tryFirst(this.view.getItems(), x => x.ProductId === row.ProductId);

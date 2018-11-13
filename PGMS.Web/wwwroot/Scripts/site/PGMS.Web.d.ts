@@ -3262,6 +3262,8 @@ declare namespace PGMS.Erp {
         protected getDialogType(): typeof OrderDetailsDialog;
         protected getLocalTextPrefix(): string;
         constructor(container: JQuery);
+        protected getSlickOptions(): Slick.GridOptions;
+        protected createSlickGrid(): Slick.Grid;
         validateEntity(row: any, id: any): boolean;
     }
 }

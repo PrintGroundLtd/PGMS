@@ -7848,6 +7848,9 @@ section.content > .s-DataGrid {
 .s-Erp-OrdersDialog .caption {
   width: 150px;
 }
+.s-Erp-OrdersDialog .grid-container {
+  min-height: 220px;
+}
 .s-Erp-OrderDetailsDialog > .size {
   width: 850px;
 }
