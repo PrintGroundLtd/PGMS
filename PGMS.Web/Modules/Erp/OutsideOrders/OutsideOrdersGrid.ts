@@ -15,6 +15,11 @@ namespace PGMS.Erp {
             super(container);
         }
 
+        protected onViewProcessData(response: Serenity.ListResponse<ExpensesRow>): Serenity.ListResponse<ExpensesRow> {
+            var listResponse = super.onViewProcessData(response);
+            Serenity.TabsExtensions.setCounter(this.element, listResponse.TotalCount, 'OutsideOrders');
+            return listResponse;
+        }
         getViewOptions(): Slick.RemoteViewOptions {
             var options = super.getViewOptions();
             options.rowsPerPage = 2500;

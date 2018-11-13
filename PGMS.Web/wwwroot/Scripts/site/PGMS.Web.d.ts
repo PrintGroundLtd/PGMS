@@ -2872,6 +2872,7 @@ declare namespace PGMS.Erp {
         protected getLocalTextPrefix(): string;
         protected getService(): string;
         constructor(container: JQuery);
+        protected onViewProcessData(response: Serenity.ListResponse<ExpensesRow>): Serenity.ListResponse<ExpensesRow>;
     }
 }
 declare namespace PGMS.Erp {
@@ -2927,6 +2928,7 @@ declare namespace PGMS.Erp {
         protected getService(): string;
         protected getIsActiveProperty(): string;
         constructor(container: JQuery);
+        protected onViewProcessData(response: Serenity.ListResponse<ExpensesRow>): Serenity.ListResponse<ExpensesRow>;
         getViewOptions(): Slick.RemoteViewOptions;
         protected getQuickFilters(): Serenity.QuickFilter<Serenity.Widget<any>, any>[];
         protected createSlickGrid(): Slick.Grid;
@@ -2982,6 +2984,7 @@ declare namespace PGMS.Erp {
         protected getService(): string;
         protected getIsActiveProperty(): string;
         constructor(container: JQuery);
+        protected onViewProcessData(response: Serenity.ListResponse<ExpensesRow>): Serenity.ListResponse<ExpensesRow>;
         getViewOptions(): Slick.RemoteViewOptions;
         protected getQuickFilters(): Serenity.QuickFilter<Serenity.Widget<any>, any>[];
         protected createSlickGrid(): Slick.Grid;
@@ -3078,6 +3081,7 @@ declare namespace PGMS.Erp {
         protected getIsActiveProperty(): string;
         constructor(container: JQuery);
         getViewOptions(): Slick.RemoteViewOptions;
+        protected onViewProcessData(response: Serenity.ListResponse<ExpensesRow>): Serenity.ListResponse<ExpensesRow>;
         protected createSlickGrid(): Slick.Grid;
         protected getSlickOptions(): Slick.GridOptions;
         protected getButtons(): Serenity.ToolButton[];
@@ -3176,6 +3180,7 @@ declare namespace PGMS.Erp {
         protected getLocalTextPrefix(): string;
         protected getService(): string;
         constructor(container: JQuery);
+        protected onViewProcessData(response: Serenity.ListResponse<ExpensesRow>): Serenity.ListResponse<ExpensesRow>;
     }
 }
 declare namespace PGMS.Erp {
@@ -3242,6 +3247,7 @@ declare namespace PGMS.Erp {
         protected getLocalTextPrefix(): string;
         protected getService(): string;
         constructor(container: JQuery);
+        protected onViewProcessData(response: Serenity.ListResponse<ExpensesRow>): Serenity.ListResponse<ExpensesRow>;
     }
 }
 declare namespace PGMS.Erp {
@@ -3370,6 +3376,7 @@ declare namespace PGMS.Erp {
         protected getLocalTextPrefix(): string;
         protected getService(): string;
         constructor(container: JQuery);
+        protected onViewProcessData(response: Serenity.ListResponse<ExpensesRow>): Serenity.ListResponse<ExpensesRow>;
     }
 }
 declare namespace PGMS.Erp {
@@ -3628,4 +3635,7 @@ declare namespace PGMS.Erp {
         isRealProperty: string;
         initializeColumn(column: Slick.Column): void;
     }
+}
+declare namespace Serenity.TabsExtensions {
+    function setCounter(grid: JQuery, totalCount: number, tabKey: string): void;
 }

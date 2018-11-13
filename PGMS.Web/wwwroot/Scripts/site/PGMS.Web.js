@@ -4158,6 +4158,11 @@ var PGMS;
             AccountAttachmentsGrid.prototype.getIdProperty = function () { return Erp.AccountAttachmentsRow.idProperty; };
             AccountAttachmentsGrid.prototype.getLocalTextPrefix = function () { return Erp.AccountAttachmentsRow.localTextPrefix; };
             AccountAttachmentsGrid.prototype.getService = function () { return Erp.AccountAttachmentsService.baseUrl; };
+            AccountAttachmentsGrid.prototype.onViewProcessData = function (response) {
+                var listResponse = _super.prototype.onViewProcessData.call(this, response);
+                Serenity.TabsExtensions.setCounter(this.element, listResponse.TotalCount, 'Attachments');
+                return listResponse;
+            };
             AccountAttachmentsGrid = __decorate([
                 Serenity.Decorators.registerClass()
             ], AccountAttachmentsGrid);
@@ -4351,6 +4356,11 @@ var PGMS;
             OrdersGrid.prototype.getLocalTextPrefix = function () { return Erp.OrdersRow.localTextPrefix; };
             OrdersGrid.prototype.getService = function () { return Erp.OrdersService.baseUrl; };
             OrdersGrid.prototype.getIsActiveProperty = function () { return Erp.OrdersRow.isActiveProperty; };
+            OrdersGrid.prototype.onViewProcessData = function (response) {
+                var listResponse = _super.prototype.onViewProcessData.call(this, response);
+                Serenity.TabsExtensions.setCounter(this.element, listResponse.TotalCount, 'Orders');
+                return listResponse;
+            };
             OrdersGrid.prototype.getViewOptions = function () {
                 var options = _super.prototype.getViewOptions.call(this);
                 options.rowsPerPage = 2500;
@@ -4641,6 +4651,11 @@ var PGMS;
             OutsideOrdersGrid.prototype.getLocalTextPrefix = function () { return Erp.OutsideOrdersRow.localTextPrefix; };
             OutsideOrdersGrid.prototype.getService = function () { return Erp.OutsideOrdersService.baseUrl; };
             OutsideOrdersGrid.prototype.getIsActiveProperty = function () { return Erp.OutsideOrdersRow.isActiveProperty; };
+            OutsideOrdersGrid.prototype.onViewProcessData = function (response) {
+                var listResponse = _super.prototype.onViewProcessData.call(this, response);
+                Serenity.TabsExtensions.setCounter(this.element, listResponse.TotalCount, 'OutsideOrders');
+                return listResponse;
+            };
             OutsideOrdersGrid.prototype.getViewOptions = function () {
                 var options = _super.prototype.getViewOptions.call(this);
                 options.rowsPerPage = 2500;
@@ -5060,6 +5075,11 @@ var PGMS;
                 options.rowsPerPage = 2500;
                 return options;
             };
+            ExpensesGrid.prototype.onViewProcessData = function (response) {
+                var listResponse = _super.prototype.onViewProcessData.call(this, response);
+                Serenity.TabsExtensions.setCounter(this.element, listResponse.TotalCount, 'Expenses');
+                return listResponse;
+            };
             ExpensesGrid.prototype.createSlickGrid = function () {
                 var grid = _super.prototype.createSlickGrid.call(this);
                 // need to register this plugin for grouping or you'll have errors
@@ -5441,6 +5461,11 @@ var PGMS;
             ExpensesAttachmentsGrid.prototype.getIdProperty = function () { return Erp.ExpensesAttachmentsRow.idProperty; };
             ExpensesAttachmentsGrid.prototype.getLocalTextPrefix = function () { return Erp.ExpensesAttachmentsRow.localTextPrefix; };
             ExpensesAttachmentsGrid.prototype.getService = function () { return Erp.ExpensesAttachmentsService.baseUrl; };
+            ExpensesAttachmentsGrid.prototype.onViewProcessData = function (response) {
+                var listResponse = _super.prototype.onViewProcessData.call(this, response);
+                Serenity.TabsExtensions.setCounter(this.element, listResponse.TotalCount, 'Attachments');
+                return listResponse;
+            };
             ExpensesAttachmentsGrid = __decorate([
                 Serenity.Decorators.registerClass()
             ], ExpensesAttachmentsGrid);
@@ -5601,6 +5626,8 @@ var PGMS;
                 noteList.children().remove();
                 if (this.items) {
                     var index = 0;
+                    // Notes counter in Tabs 
+                    Serenity.TabsExtensions.setCounter(this.element, this.items.length, 'Notes');
                     for (var t1 = 0; t1 < this.items.length; t1++) {
                         var item = this.items[t1];
                         var li = $('<li/>');
@@ -5742,6 +5769,11 @@ var PGMS;
             OrderAttachmentsGrid.prototype.getIdProperty = function () { return Erp.OrderAttachmentsRow.idProperty; };
             OrderAttachmentsGrid.prototype.getLocalTextPrefix = function () { return Erp.OrderAttachmentsRow.localTextPrefix; };
             OrderAttachmentsGrid.prototype.getService = function () { return Erp.OrderAttachmentsService.baseUrl; };
+            OrderAttachmentsGrid.prototype.onViewProcessData = function (response) {
+                var listResponse = _super.prototype.onViewProcessData.call(this, response);
+                Serenity.TabsExtensions.setCounter(this.element, listResponse.TotalCount, 'Attachments');
+                return listResponse;
+            };
             OrderAttachmentsGrid = __decorate([
                 Serenity.Decorators.registerClass()
             ], OrderAttachmentsGrid);
@@ -6261,6 +6293,11 @@ var PGMS;
             OutsideOrderAttachmentsGrid.prototype.getIdProperty = function () { return Erp.OutsideOrderAttachmentsRow.idProperty; };
             OutsideOrderAttachmentsGrid.prototype.getLocalTextPrefix = function () { return Erp.OutsideOrderAttachmentsRow.localTextPrefix; };
             OutsideOrderAttachmentsGrid.prototype.getService = function () { return Erp.OutsideOrderAttachmentsService.baseUrl; };
+            OutsideOrderAttachmentsGrid.prototype.onViewProcessData = function (response) {
+                var listResponse = _super.prototype.onViewProcessData.call(this, response);
+                Serenity.TabsExtensions.setCounter(this.element, listResponse.TotalCount, 'Attachments');
+                return listResponse;
+            };
             OutsideOrderAttachmentsGrid = __decorate([
                 Serenity.Decorators.registerClass()
             ], OutsideOrderAttachmentsGrid);
@@ -7281,4 +7318,33 @@ var PGMS;
         Erp.OrdersIsRealFormatter = OrdersIsRealFormatter;
     })(Erp = PGMS.Erp || (PGMS.Erp = {}));
 })(PGMS || (PGMS = {}));
+var Serenity;
+(function (Serenity) {
+    var TabsExtensions;
+    (function (TabsExtensions) {
+        function setCounter(grid, totalCount, tabKey) {
+            var tabs = grid.closest(".ui-tabs");
+            var indexByKey = Serenity.TabsExtensions.indexByKey(tabs);
+            var tabTitle = $(tabs.find("li[role='tab']")[indexByKey[tabKey]]).find('span');
+            var leftParenthesesPosition = tabTitle.text().indexOf('(');
+            var rightParenthesesPosition = tabTitle.text().indexOf(')');
+            if (leftParenthesesPosition != -1 && rightParenthesesPosition != -1) {
+                // counter already exists
+                if (totalCount > 0) {
+                    var prevCounter = tabTitle.text().substring(leftParenthesesPosition + 1, rightParenthesesPosition);
+                    tabTitle.text(tabTitle.text().replace(prevCounter, totalCount.toString()));
+                }
+                else {
+                    tabTitle.text(tabTitle.text().substring(0, leftParenthesesPosition - 1));
+                }
+            }
+            else {
+                // counter not exists
+                if (totalCount > 0)
+                    tabTitle.text(tabTitle.text() + ' (' + totalCount + ')');
+            }
+        }
+        TabsExtensions.setCounter = setCounter;
+    })(TabsExtensions = Serenity.TabsExtensions || (Serenity.TabsExtensions = {}));
+})(Serenity || (Serenity = {}));
 //# sourceMappingURL=PGMS.Web.js.map

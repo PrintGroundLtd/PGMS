@@ -18,7 +18,11 @@ namespace PGMS.Erp {
             options.rowsPerPage = 2500;
             return options;
         }
-
+        protected onViewProcessData(response: Serenity.ListResponse<ExpensesRow>): Serenity.ListResponse<ExpensesRow> {
+            var listResponse = super.onViewProcessData(response);
+            Serenity.TabsExtensions.setCounter(this.element, listResponse.TotalCount, 'Expenses');
+            return listResponse;
+        }
         protected createSlickGrid() {
             var grid = super.createSlickGrid();
 
