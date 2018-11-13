@@ -7949,7 +7949,8 @@ section.content > .s-DataGrid {
   padding: 4px;
 }
 .s-NoteDialog > .size {
-  width: 465px;
+  min-width: 750px;
+  width: 750px;
 }
 .s-NoteDialog .ui-dialog-content {
   padding-bottom: 10px;

@@ -3286,6 +3286,7 @@ declare namespace PGMS.Erp {
         protected getIdProperty(): string;
         protected getLocalTextPrefix(): string;
         protected getService(): string;
+        protected getIsActiveProperty(): string;
         constructor(container: JQuery);
     }
 }

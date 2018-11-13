@@ -5910,6 +5910,7 @@ var PGMS;
             OrderStatusesGrid.prototype.getIdProperty = function () { return Erp.OrderStatusesRow.idProperty; };
             OrderStatusesGrid.prototype.getLocalTextPrefix = function () { return Erp.OrderStatusesRow.localTextPrefix; };
             OrderStatusesGrid.prototype.getService = function () { return Erp.OrderStatusesService.baseUrl; };
+            OrderStatusesGrid.prototype.getIsActiveProperty = function () { return Erp.OrderStatusesRow.isActiveProperty; };
             OrderStatusesGrid = __decorate([
                 Serenity.Decorators.registerClass()
             ], OrderStatusesGrid);
