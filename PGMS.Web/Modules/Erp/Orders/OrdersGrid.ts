@@ -36,7 +36,7 @@ namespace PGMS.Erp {
                 // if filter is active, e.g. editor has some value
                 if (h.active) {
                     h.request.Criteria = Serenity.Criteria.and(h.request.Criteria,
-                        [[fld.OrderStatusId], '!=', h.value]);
+                        [[fld.OrderStatusId], 'not in', [h.value]]);
                 }
             }; 
             return filters;

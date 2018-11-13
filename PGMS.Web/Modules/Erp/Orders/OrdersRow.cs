@@ -145,7 +145,7 @@ namespace PGMS.Erp.Entities
 
         [DisplayName("Order Status"), ForeignKey("[dbo].[OrderStatuses]", "OrderStatusId"), LeftJoin("jOrderStatus"), TextualField("OrderStatusName"), NotNull]
         [LookupEditor(typeof(OrderStatusesRow), FilterField = "IsActive", FilterValue = 1)]
-        [QuickFilter()]
+        [QuickFilter(), QuickFilterOption("multiple", true)]
         public Int32? OrderStatusId
         {
             get { return Fields.OrderStatusId[this]; }
