@@ -2758,6 +2758,9 @@ declare namespace PGMS {
         hideLabel: boolean;
     }
 }
+declare namespace Serenity.TabsExtensions {
+    function setCounter(grid: JQuery, totalCount: number, tabKey: string): void;
+}
 declare namespace PGMS.Common {
     class LanguageSelection extends Serenity.Widget<any> {
         constructor(select: JQuery, currentLanguage: string);
@@ -3361,6 +3364,13 @@ declare namespace PGMS.Erp {
     }
 }
 declare namespace PGMS.Erp {
+    class OrdersIsRealFormatter implements Slick.Formatter {
+        format(ctx: Slick.FormatterContext): string;
+        isRealProperty: string;
+        initializeColumn(column: Slick.Column): void;
+    }
+}
+declare namespace PGMS.Erp {
     class OutsideOrderAttachmentsDialog extends Serenity.EntityDialog<OutsideOrderAttachmentsRow, any> {
         protected getFormKey(): string;
         protected getIdProperty(): string;
@@ -3492,6 +3502,26 @@ declare namespace PGMS.Erp {
         protected getLocalTextPrefix(): string;
         protected getService(): string;
         constructor(container: JQuery);
+    }
+}
+declare namespace PGMS.Erp {
+    class AccountOrdersDialog extends OrdersDialog {
+        constructor();
+        updateInterface(): void;
+    }
+}
+declare namespace PGMS.Erp {
+    class AccountOrdersGrid extends OrdersGrid {
+        protected getDialogType(): typeof AccountOrdersDialog;
+        constructor(container: JQuery);
+        getColumnsKey(): string;
+        protected getColumns(): Slick.Column[];
+        protected initEntityDialog(itemType: any, dialog: any): void;
+        protected addButtonClick(): void;
+        protected getInitialTitle(): any;
+        protected getGridCanLoad(): boolean;
+        private _accountId;
+        accountId: number;
     }
 }
 declare namespace PGMS.Erp {
@@ -3630,14 +3660,4 @@ declare namespace PGMS.Membership {
         private form;
         constructor(container: JQuery);
     }
-}
-declare namespace PGMS.Erp {
-    class OrdersIsRealFormatter implements Slick.Formatter {
-        format(ctx: Slick.FormatterContext): string;
-        isRealProperty: string;
-        initializeColumn(column: Slick.Column): void;
-    }
-}
-declare namespace Serenity.TabsExtensions {
-    function setCounter(grid: JQuery, totalCount: number, tabKey: string): void;
 }

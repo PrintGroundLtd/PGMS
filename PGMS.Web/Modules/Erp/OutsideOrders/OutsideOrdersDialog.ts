@@ -40,6 +40,7 @@ namespace PGMS.Erp {
             if (!Q.endsWith(clone.Name || '', suffix)) {
                 clone.Name = (clone.Name || '') + suffix;
             }
+            clone.NoteList = [];
 
             return clone;
         }
