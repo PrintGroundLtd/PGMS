@@ -177,8 +177,9 @@ namespace PGMS.Erp.Endpoints
                                               & new Criteria(orderFields.OrderDate.Name) <= lastDayOfMonth
                                               & new Criteria(orderFields.OrderStatusId.Name) == orderStatus.OrderStatusId.Value
                                               & new Criteria(orderFields.IsActive.Name) == 1
+                                              & new Criteria(orderFields.NotReal.Name) == 0
 
-                                              );
+                        );
 
                     var orders = new OrdersRepository().List(connection, ordersRequest).Entities;
                     if (!orders.Any())
