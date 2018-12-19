@@ -3584,35 +3584,6 @@ var PGMS;
     }(Serenity.Widget));
     PGMS.StaticTextBlock = StaticTextBlock;
 })(PGMS || (PGMS = {}));
-var Serenity;
-(function (Serenity) {
-    var TabsExtensions;
-    (function (TabsExtensions) {
-        function setCounter(grid, totalCount, tabKey) {
-            var tabs = grid.closest(".ui-tabs");
-            var indexByKey = Serenity.TabsExtensions.indexByKey(tabs);
-            var tabTitle = $(tabs.find("li[role='tab']")[indexByKey[tabKey]]).find('span');
-            var leftParenthesesPosition = tabTitle.text().indexOf('(');
-            var rightParenthesesPosition = tabTitle.text().indexOf(')');
-            if (leftParenthesesPosition != -1 && rightParenthesesPosition != -1) {
-                // counter already exists
-                if (totalCount > 0) {
-                    var prevCounter = tabTitle.text().substring(leftParenthesesPosition + 1, rightParenthesesPosition);
-                    tabTitle.text(tabTitle.text().replace(prevCounter, totalCount.toString()));
-                }
-                else {
-                    tabTitle.text(tabTitle.text().substring(0, leftParenthesesPosition - 1));
-                }
-            }
-            else {
-                // counter not exists
-                if (totalCount > 0)
-                    tabTitle.text(tabTitle.text() + ' (' + totalCount + ')');
-            }
-        }
-        TabsExtensions.setCounter = setCounter;
-    })(TabsExtensions = Serenity.TabsExtensions || (Serenity.TabsExtensions = {}));
-})(Serenity || (Serenity = {}));
 var PGMS;
 (function (PGMS) {
     var Common;
@@ -5584,7 +5555,7 @@ var PGMS;
             __extends(NoteDialog, _super);
             function NoteDialog() {
                 var _this = _super.call(this) || this;
-                _this.textEditor = new Serenity.HtmlNoteContentEditor(_this.byId('Text'));
+                _this.textEditor = new Serenity.HtmlNoteContentEditor(_this.byId('Text'), { rows: 25 });
                 return _this;
             }
             NoteDialog.prototype.getTemplate = function () {
@@ -6290,40 +6261,6 @@ var PGMS;
 (function (PGMS) {
     var Erp;
     (function (Erp) {
-        var OrdersIsRealFormatter = /** @class */ (function () {
-            function OrdersIsRealFormatter() {
-            }
-            OrdersIsRealFormatter.prototype.format = function (ctx) {
-                var text = Q.htmlEncode(ctx.value);
-                if (!this.isRealProperty) {
-                    return text;
-                }
-                var _isRealProperty = ctx.item[this.isRealProperty];
-                if (_isRealProperty == 1)
-                    return "<div style='height:100%; background-color: #F00;' >" + text + '</div>';
-                else
-                    return text;
-            };
-            OrdersIsRealFormatter.prototype.initializeColumn = function (column) {
-                column.referencedFields = column.referencedFields || [];
-                if (this.isRealProperty)
-                    column.referencedFields.push(this.isRealProperty);
-            };
-            __decorate([
-                Serenity.Decorators.option()
-            ], OrdersIsRealFormatter.prototype, "isRealProperty", void 0);
-            OrdersIsRealFormatter = __decorate([
-                Serenity.Decorators.registerFormatter([Serenity.ISlickFormatter, Serenity.IInitializeColumn])
-            ], OrdersIsRealFormatter);
-            return OrdersIsRealFormatter;
-        }());
-        Erp.OrdersIsRealFormatter = OrdersIsRealFormatter;
-    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
-})(PGMS || (PGMS = {}));
-var PGMS;
-(function (PGMS) {
-    var Erp;
-    (function (Erp) {
         var OutsideOrderAttachmentsDialog = /** @class */ (function (_super) {
             __extends(OutsideOrderAttachmentsDialog, _super);
             function OutsideOrderAttachmentsDialog() {
@@ -6757,81 +6694,6 @@ var PGMS;
             return PaymentTypesGrid;
         }(Serenity.EntityGrid));
         Erp.PaymentTypesGrid = PaymentTypesGrid;
-    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
-})(PGMS || (PGMS = {}));
-/// <reference path="../Orders/OrdersDialog.ts"/>
-var PGMS;
-(function (PGMS) {
-    var Erp;
-    (function (Erp) {
-        var AccountOrdersDialog = /** @class */ (function (_super) {
-            __extends(AccountOrdersDialog, _super);
-            function AccountOrdersDialog() {
-                return _super.call(this) || this;
-            }
-            AccountOrdersDialog.prototype.updateInterface = function () {
-                _super.prototype.updateInterface.call(this);
-                Serenity.EditorUtils.setReadOnly(this.form.AccountId, true);
-            };
-            AccountOrdersDialog = __decorate([
-                Serenity.Decorators.maximizable(),
-                Serenity.Decorators.registerClass()
-            ], AccountOrdersDialog);
-            return AccountOrdersDialog;
-        }(Erp.OrdersDialog));
-        Erp.AccountOrdersDialog = AccountOrdersDialog;
-    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
-})(PGMS || (PGMS = {}));
-/// <reference path="../Orders/OrdersGrid.ts"/>
-var PGMS;
-(function (PGMS) {
-    var Erp;
-    (function (Erp) {
-        var AccountOrdersGrid = /** @class */ (function (_super) {
-            __extends(AccountOrdersGrid, _super);
-            function AccountOrdersGrid(container) {
-                return _super.call(this, container) || this;
-            }
-            AccountOrdersGrid.prototype.getDialogType = function () { return Erp.AccountOrdersDialog; };
-            AccountOrdersGrid.prototype.getColumnsKey = function () {
-                return "Erp.AccountOrders";
-            };
-            AccountOrdersGrid.prototype.getColumns = function () {
-                return _super.prototype.getColumns.call(this);
-            };
-            AccountOrdersGrid.prototype.initEntityDialog = function (itemType, dialog) {
-                _super.prototype.initEntityDialog.call(this, itemType, dialog);
-                Serenity.SubDialogHelper.cascade(dialog, this.element.closest('.ui-dialog'));
-            };
-            AccountOrdersGrid.prototype.addButtonClick = function () {
-                this.editItem({ AccountId: this.accountId });
-            };
-            AccountOrdersGrid.prototype.getInitialTitle = function () {
-                return null;
-            };
-            AccountOrdersGrid.prototype.getGridCanLoad = function () {
-                return _super.prototype.getGridCanLoad.call(this) && !!this.accountId;
-            };
-            Object.defineProperty(AccountOrdersGrid.prototype, "accountId", {
-                get: function () {
-                    return this._accountId;
-                },
-                set: function (value) {
-                    if (this._accountId !== value) {
-                        this._accountId = value;
-                        this.setEquality('AccountId', value);
-                        this.refresh();
-                    }
-                },
-                enumerable: true,
-                configurable: true
-            });
-            AccountOrdersGrid = __decorate([
-                Serenity.Decorators.registerClass()
-            ], AccountOrdersGrid);
-            return AccountOrdersGrid;
-        }(Erp.OrdersGrid));
-        Erp.AccountOrdersGrid = AccountOrdersGrid;
     })(Erp = PGMS.Erp || (PGMS.Erp = {}));
 })(PGMS || (PGMS = {}));
 var PGMS;
@@ -7423,5 +7285,68 @@ var PGMS;
         }(Serenity.PropertyPanel));
         Membership.SignUpPanel = SignUpPanel;
     })(Membership = PGMS.Membership || (PGMS.Membership = {}));
+})(PGMS || (PGMS = {}));
+var Serenity;
+(function (Serenity) {
+    var TabsExtensions;
+    (function (TabsExtensions) {
+        function setCounter(grid, totalCount, tabKey) {
+            var tabs = grid.closest(".ui-tabs");
+            var indexByKey = Serenity.TabsExtensions.indexByKey(tabs);
+            var tabTitle = $(tabs.find("li[role='tab']")[indexByKey[tabKey]]).find('span');
+            var leftParenthesesPosition = tabTitle.text().indexOf('(');
+            var rightParenthesesPosition = tabTitle.text().indexOf(')');
+            if (leftParenthesesPosition != -1 && rightParenthesesPosition != -1) {
+                // counter already exists
+                if (totalCount > 0) {
+                    var prevCounter = tabTitle.text().substring(leftParenthesesPosition + 1, rightParenthesesPosition);
+                    tabTitle.text(tabTitle.text().replace(prevCounter, totalCount.toString()));
+                }
+                else {
+                    tabTitle.text(tabTitle.text().substring(0, leftParenthesesPosition - 1));
+                }
+            }
+            else {
+                // counter not exists
+                if (totalCount > 0)
+                    tabTitle.text(tabTitle.text() + ' (' + totalCount + ')');
+            }
+        }
+        TabsExtensions.setCounter = setCounter;
+    })(TabsExtensions = Serenity.TabsExtensions || (Serenity.TabsExtensions = {}));
+})(Serenity || (Serenity = {}));
+var PGMS;
+(function (PGMS) {
+    var Erp;
+    (function (Erp) {
+        var OrdersIsRealFormatter = /** @class */ (function () {
+            function OrdersIsRealFormatter() {
+            }
+            OrdersIsRealFormatter.prototype.format = function (ctx) {
+                var text = Q.htmlEncode(ctx.value);
+                if (!this.isRealProperty) {
+                    return text;
+                }
+                var _isRealProperty = ctx.item[this.isRealProperty];
+                if (_isRealProperty == 1)
+                    return "<div style='height:100%; background-color: #F00;' >" + text + '</div>';
+                else
+                    return text;
+            };
+            OrdersIsRealFormatter.prototype.initializeColumn = function (column) {
+                column.referencedFields = column.referencedFields || [];
+                if (this.isRealProperty)
+                    column.referencedFields.push(this.isRealProperty);
+            };
+            __decorate([
+                Serenity.Decorators.option()
+            ], OrdersIsRealFormatter.prototype, "isRealProperty", void 0);
+            OrdersIsRealFormatter = __decorate([
+                Serenity.Decorators.registerFormatter([Serenity.ISlickFormatter, Serenity.IInitializeColumn])
+            ], OrdersIsRealFormatter);
+            return OrdersIsRealFormatter;
+        }());
+        Erp.OrdersIsRealFormatter = OrdersIsRealFormatter;
+    })(Erp = PGMS.Erp || (PGMS.Erp = {}));
 })(PGMS || (PGMS = {}));
 //# sourceMappingURL=PGMS.Web.js.map
