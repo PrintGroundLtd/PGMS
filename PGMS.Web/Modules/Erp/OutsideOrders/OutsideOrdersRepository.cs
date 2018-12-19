@@ -65,6 +65,9 @@ namespace PGMS.Erp.Repositories
 
                 foreach (var responseEntity in Response.Entities)
                 {
+                    if (responseEntity.WithVat.HasValue && responseEntity.WithVat.Value)
+                        responseEntity.PriceWeSell *= new decimal(1.2);
+
                     var expenses = expensesList.Where(e => e.OutsideOrderId == responseEntity.OutsideOrderId).ToList();
                     responseEntity.PaymentsTotal = Decimal.Zero;
                     if (expenses.Any())

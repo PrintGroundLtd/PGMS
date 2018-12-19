@@ -136,6 +136,8 @@ namespace PGMS.Erp.Repositories
                     if (orderDetails.Any())
                     {
                         responseEntity.Total = orderDetails.Select(od => od.LineTotal).Aggregate((a, b) => a + b) ?? Decimal.Zero;
+                        if (responseEntity.WithVat.HasValue && responseEntity.WithVat.Value)
+                            responseEntity.Total *= new decimal(1.2);
                     }
                     var expenses = expensesList.Where(e => e.OrderId == responseEntity.OrderId).ToList();
                     responseEntity.PaymentsTotal = Decimal.Zero;
