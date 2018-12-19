@@ -33,6 +33,7 @@ namespace PGMS.Erp.Columns
         public Decimal Total { get; set; }
         [CheckboxColoredFormatter]
         public Boolean WithVat { get; set; }
+        public Boolean DepositPayment { get; set; }
         public DateTime TransactionDate { get; set; }
         public String BudgetName { get; set; }
         [TransactionTypeFormatter]

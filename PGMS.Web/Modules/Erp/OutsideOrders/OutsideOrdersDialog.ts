@@ -19,7 +19,6 @@ namespace PGMS.Erp {
         constructor() {
             super();
             this.byId('NoteList').closest('.field').hide().end().appendTo(this.byId('TabNotes'));
-            DialogUtils.pendingChangesConfirmation(this.element, () => this.getSaveState() != this.loadedState);
             
             this.attachmentsGrid = new OutsideOrderAttachmentsExtendedGrid(this.byId("AttachmentsPropertyGrid"));
             this.attachmentsGrid.openDialogsAsPanel = false;
@@ -28,9 +27,32 @@ namespace PGMS.Erp {
             this.expensesGrid = new OutsideOrderExpensesGrid(this.byId("ExpensesPropertyGrid"));
             this.expensesGrid.element.flexHeightOnly(1);
             this.expensesGrid.openDialogsAsPanel = false;
+
+
+            DialogUtils.pendingChangesConfirmation(this.element, () => this.getSaveState() != this.loadedState);
         }
 
+        protected getCloningEntity() {
+            var clone = super.getCloningEntity();
 
+            // add (Clone) suffix if it's not already added
+            var suffix = ' ' + Q.tryGetText("Site.OutsideOrders.CloneNameSuffix");
+            if (!Q.endsWith(clone.Name || '', suffix)) {
+                clone.Name = (clone.Name || '') + suffix;
+            }
+            clone.NoteList = [];
+
+            return clone;
+        }
+
+        protected updateInterface() {
+
+            // by default cloneButton is hidden in base UpdateInterface method
+            super.updateInterface();
+
+            // here we show it if it is edit mode (not new)
+            this.cloneButton.toggle(this.isEditMode());
+        }
         loadEntity(entity: Erp.OutsideOrdersRow): void {
             super.loadEntity(entity);
             Serenity.TabsExtensions.setDisabled(this.tabs, 'Expenses', this.isNewOrDeleted());

@@ -4,12 +4,15 @@
         AccountId?: number;
         CompanyId?: number;
         PaymentTypeId?: number;
+        Name?: string;
+        AccountPartnerTypeName?: string;
         Width?: number;
         Height?: number;
         OrderDate?: string;
+        StartDate?: string;
         DeadLine?: string;
         ShippedDate?: string;
-        OrderName?: string;
+        OrderIdName?: string;
         ShipName?: string;
         ShipAddress?: string;
         ShipCity?: string;
@@ -17,6 +20,10 @@
         UserId?: number;
         OrderStatusId?: number;
         Total?: number;
+        PaymentsTotal?: number;
+        WithVat?: boolean;
+        NotReal?: boolean;
+        CuttingByOne?: boolean;
         CuttingManual?: boolean;
         CuttingMachine?: boolean;
         Printing?: boolean;
@@ -51,7 +58,7 @@
     export namespace OrdersRow {
         export const idProperty = 'OrderId';
         export const isActiveProperty = 'IsActive';
-        export const nameProperty = 'OrderName';
+        export const nameProperty = 'Name';
         export const localTextPrefix = 'Erp.Orders';
         export const lookupKey = 'Erp.Orders';
 
@@ -64,12 +71,15 @@
             AccountId = "AccountId",
             CompanyId = "CompanyId",
             PaymentTypeId = "PaymentTypeId",
+            Name = "Name",
+            AccountPartnerTypeName = "AccountPartnerTypeName",
             Width = "Width",
             Height = "Height",
             OrderDate = "OrderDate",
+            StartDate = "StartDate",
             DeadLine = "DeadLine",
             ShippedDate = "ShippedDate",
-            OrderName = "OrderName",
+            OrderIdName = "OrderIdName",
             ShipName = "ShipName",
             ShipAddress = "ShipAddress",
             ShipCity = "ShipCity",
@@ -77,6 +87,10 @@
             UserId = "UserId",
             OrderStatusId = "OrderStatusId",
             Total = "Total",
+            PaymentsTotal = "PaymentsTotal",
+            WithVat = "WithVat",
+            NotReal = "NotReal",
+            CuttingByOne = "CuttingByOne",
             CuttingManual = "CuttingManual",
             CuttingMachine = "CuttingMachine",
             Printing = "Printing",

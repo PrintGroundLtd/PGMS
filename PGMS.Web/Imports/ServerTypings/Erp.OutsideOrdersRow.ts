@@ -8,6 +8,9 @@
         CompanyRepresentsId?: number;
         DeadLine?: string;
         Description?: string;
+        WithVat?: boolean;
+        PaymentsTotal?: number;
+        StartDate?: string;
         AccountRepresentsName?: string;
         AccountRepresentsEmail?: string;
         AccountRepresentsPhoneNumber?: string;
@@ -16,6 +19,7 @@
         AccountRepresentsAddress?: string;
         AccountRepresentsCity?: string;
         AccountRepresentsCountry?: string;
+        AccountPartnerTypeName?: string;
         CompanyRepresentsName?: string;
         CompanyRepresentsPhoneNumber?: string;
         CompanyRepresentsAddress?: string;
@@ -62,6 +66,9 @@
             CompanyRepresentsId = "CompanyRepresentsId",
             DeadLine = "DeadLine",
             Description = "Description",
+            WithVat = "WithVat",
+            PaymentsTotal = "PaymentsTotal",
+            StartDate = "StartDate",
             AccountRepresentsName = "AccountRepresentsName",
             AccountRepresentsEmail = "AccountRepresentsEmail",
             AccountRepresentsPhoneNumber = "AccountRepresentsPhoneNumber",
@@ -70,6 +77,7 @@
             AccountRepresentsAddress = "AccountRepresentsAddress",
             AccountRepresentsCity = "AccountRepresentsCity",
             AccountRepresentsCountry = "AccountRepresentsCountry",
+            AccountPartnerTypeName = "AccountPartnerTypeName",
             CompanyRepresentsName = "CompanyRepresentsName",
             CompanyRepresentsPhoneNumber = "CompanyRepresentsPhoneNumber",
             CompanyRepresentsAddress = "CompanyRepresentsAddress",

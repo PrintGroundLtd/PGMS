@@ -13,7 +13,11 @@ namespace PGMS.Erp {
             super(container);
         }
 
-        
+        protected onViewProcessData(response: Serenity.ListResponse<ExpensesRow>): Serenity.ListResponse<ExpensesRow> {
+            var listResponse = super.onViewProcessData(response);
+            Serenity.TabsExtensions.setCounter(this.element, listResponse.TotalCount, 'Attachments');
+            return listResponse;
+        }
 
     }
 }

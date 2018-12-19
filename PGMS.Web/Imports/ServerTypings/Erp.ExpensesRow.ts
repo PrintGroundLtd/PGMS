@@ -7,6 +7,7 @@
         TransactionDate?: string;
         NoteList?: NoteRow[];
         WithVat?: boolean;
+        DepositPayment?: boolean;
         TransactionType?: TransactionType;
         BudgetId?: number;
         PaymentTypeId?: number;
@@ -55,6 +56,7 @@
             TransactionDate = "TransactionDate",
             NoteList = "NoteList",
             WithVat = "WithVat",
+            DepositPayment = "DepositPayment",
             TransactionType = "TransactionType",
             BudgetId = "BudgetId",
             PaymentTypeId = "PaymentTypeId",

@@ -13,8 +13,16 @@ namespace PGMS.Erp {
         constructor(container: JQuery) {
             super(container);
         }
-
-
+        getViewOptions(): Slick.RemoteViewOptions {
+            var options = super.getViewOptions();
+            options.rowsPerPage = 2500;
+            return options;
+        }
+        protected onViewProcessData(response: Serenity.ListResponse<ExpensesRow>): Serenity.ListResponse<ExpensesRow> {
+            var listResponse = super.onViewProcessData(response);
+            Serenity.TabsExtensions.setCounter(this.element, listResponse.TotalCount, 'Expenses');
+            return listResponse;
+        }
         protected createSlickGrid() {
             var grid = super.createSlickGrid();
 
@@ -57,6 +65,7 @@ namespace PGMS.Erp {
                 onClick: () => this.view.setGrouping(
                     [
                         {
+                            formatter: x => x.value + ' (' + x.count + ' ' + Q.text("Site.GroupByButtonFormatter") + ')',
                             getter: 'BudgetName'
                         }
                     ])
@@ -67,6 +76,7 @@ namespace PGMS.Erp {
                 onClick: () => this.view.setGrouping(
                     [
                         {
+                            formatter: x => x.value + ' (' + x.count + ' ' + Q.text("Site.GroupByButtonFormatter") + ')',
                             getter: 'AccountName'
                         }
                     ])
@@ -77,6 +87,7 @@ namespace PGMS.Erp {
                 onClick: () => this.view.setGrouping(
                     [
                         {
+                            formatter: x => x.value + ' (' + x.count + ' ' + Q.text("Site.GroupByButtonFormatter") + ')',
                             getter: 'UserUsername'
                         }
                     ])
@@ -87,6 +98,7 @@ namespace PGMS.Erp {
                 onClick: () => this.view.setGrouping(
                     [
                         {
+                            formatter: x => x.value + ' (' + x.count + ' ' + Q.text("Site.GroupByButtonFormatter") + ')',
                             getter: 'TransactionType'
                         }
                     ])
@@ -98,6 +110,7 @@ namespace PGMS.Erp {
                 onClick: () => this.view.setGrouping(
                     [
                         {
+                            formatter: x => x.value + ' (' + x.count + ' ' + Q.text("Site.GroupByButtonFormatter") + ')',
                             getter: 'PaymentTypeName'
                         }
                     ])

@@ -32,6 +32,10 @@
             noteList.children().remove();
             if (this.items) {
                 var index = 0;
+
+                // Notes counter in Tabs 
+                Serenity.TabsExtensions.setCounter(this.element, this.items.length, 'Notes');
+
                 for (var t1 = 0; t1 < this.items.length; t1++) {
                     var item = this.items[t1];
                     var li = $('<li/>');

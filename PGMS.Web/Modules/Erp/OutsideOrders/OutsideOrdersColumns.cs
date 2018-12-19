@@ -28,9 +28,13 @@ namespace PGMS.Erp.Columns
         public String Name { get; set; }
         public Decimal PriceTheyOffer { get; set; }
         public Decimal PriceWeSell { get; set; }
+        public Boolean WithVat { get; set; }
+
+        public DateTime StartDate { get; set; }
 
         [DeadlineFormatter]
         public DateTime DeadLine { get; set; }
+        public decimal PaymentsTotal { get; set; }
 
         [EditLink(IdField = "AccountRepresentsId", ItemType = "Erp.Accounts")]
         [AccountFormatter(IsVipProperty = "AccountRepresentsIsVip")]
@@ -38,6 +42,8 @@ namespace PGMS.Erp.Columns
         public String AccountRepresentsName { get; set; }
         public String AccountRepresentsPhoneNumber { get; set; }
         public String AccountRepresentsEmail { get; set; }
+        public String AccountPartnerTypeName { get; set; }
+
         public String CompanyRepresentsName { get; set; }
 
         [OrderStatusesFormatter(BackgroundProperty = "OrderStatusBackgroundColor", BorderProperty = "OrderStatusBorderColor")]

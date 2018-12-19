@@ -275,7 +275,7 @@ a:focus {
   text-align: center;
   font-size: 9px;
   padding: 2px 3px;
-  line-height: .9;
+  line-height: 0.9;
 }
 .main-header .logo {
   -webkit-transition: width 0.3s ease-in-out;
@@ -974,15 +974,15 @@ a:focus {
   background-color: #fff;
   padding: 7px 10px;
   border-bottom: 1px solid #eeeeee;
-  color: #444!important;
+  color: #444 !important;
   text-align: center;
 }
 @media (max-width: 991px) {
   .navbar-nav > .notifications-menu > .dropdown-menu > li.footer > a,
   .navbar-nav > .messages-menu > .dropdown-menu > li.footer > a,
   .navbar-nav > .tasks-menu > .dropdown-menu > li.footer > a {
-    background: #fff!important;
-    color: #444!important;
+    background: #fff !important;
+    color: #444 !important;
   }
 }
 .navbar-nav > .notifications-menu > .dropdown-menu > li.footer > a:hover,
@@ -7789,115 +7789,118 @@ section.content > .s-DataGrid {
   border: 1px solid #a3b2d2;
 }
 .s-Erp-PartnerTypesDialog > .size {
-  width: 650px;
+  width: 850px;
 }
 .s-Erp-PartnerTypesDialog .caption {
   width: 150px;
 }
 .s-Erp-SuppliersDialog > .size {
-  width: 650px;
+  width: 850px;
 }
 .s-Erp-SuppliersDialog .caption {
   width: 150px;
 }
 .s-Erp-AccountsDialog > .size {
-  width: 650px;
+  width: 850px;
 }
 .s-Erp-AccountsDialog .caption {
   width: 150px;
 }
 .s-Erp-CompaniesDialog > .size {
-  width: 650px;
+  width: 850px;
 }
 .s-Erp-CompaniesDialog .caption {
   width: 150px;
 }
 .s-Erp-AttachmentsDialog > .size {
-  width: 650px;
+  width: 850px;
 }
 .s-Erp-AttachmentsDialog .caption {
   width: 150px;
 }
 .s-Erp-AccountAttachmentsDialog > .size {
-  width: 650px;
+  width: 850px;
 }
 .s-Erp-AccountAttachmentsDialog .caption {
   width: 150px;
 }
 .s-Erp-ProductsDialog > .size {
-  width: 650px;
+  width: 850px;
 }
 .s-Erp-ProductsDialog .caption {
   width: 150px;
 }
 .s-Erp-PaymentTypesDialog > .size {
-  width: 650px;
+  width: 850px;
 }
 .s-Erp-PaymentTypesDialog .caption {
   width: 150px;
 }
 .s-Erp-OrderStatusesDialog > .size {
-  width: 650px;
+  width: 850px;
 }
 .s-Erp-OrderStatusesDialog .caption {
   width: 150px;
 }
 .s-Erp-OrdersDialog > .size {
-  width: 650px;
+  width: 850px;
 }
 .s-Erp-OrdersDialog .caption {
   width: 150px;
 }
+.s-Erp-OrdersDialog .grid-container {
+  min-height: 220px;
+}
 .s-Erp-OrderDetailsDialog > .size {
-  width: 650px;
+  width: 850px;
 }
 .s-Erp-OrderDetailsDialog .caption {
   width: 150px;
 }
 .s-Erp-BudgetsDialog > .size {
-  width: 650px;
+  width: 850px;
 }
 .s-Erp-BudgetsDialog .caption {
   width: 150px;
 }
 .s-Erp-ExpensesDialog > .size {
-  width: 650px;
+  width: 850px;
 }
 .s-Erp-ExpensesDialog .caption {
   width: 150px;
 }
 .s-Erp-PartnersDialog > .size {
-  width: 650px;
+  width: 850px;
 }
 .s-Erp-PartnersDialog .caption {
   width: 150px;
 }
 .s-Erp-OutsideOrdersDialog > .size {
-  width: 650px;
+  width: 850px;
 }
 .s-Erp-OutsideOrdersDialog .caption {
   width: 150px;
 }
 .s-Erp-SentEmailsDialog > .size {
-  width: 650px;
+  width: 850px;
 }
 .s-Erp-SentEmailsDialog .caption {
   width: 150px;
 }
 .s-Erp-OutsideOrderAttachmentsDialog > .size {
-  width: 650px;
+  width: 850px;
 }
 .s-Erp-OutsideOrderAttachmentsDialog .caption {
   width: 150px;
 }
 .s-Erp-OrderAttachmentsDialog > .size {
-  width: 650px;
+  width: 850px;
 }
 .s-Erp-OrderAttachmentsDialog .caption {
   width: 150px;
 }
 .s-Erp-ExpensesAttachmentsDialog > .size {
-  width: 650px;
+  width: 850px;
 }
 .s-Erp-ExpensesAttachmentsDialog .caption {
   width: 150px;
@@ -7949,7 +7952,11 @@ section.content > .s-DataGrid {
   padding: 4px;
 }
 .s-NoteDialog > .size {
-  width: 465px;
+  width: 850px;
+  height: 700px;
+}
+.s-NoteDialog .caption {
+  width: 150px;
 }
 .s-NoteDialog .ui-dialog-content {
   padding-bottom: 10px;

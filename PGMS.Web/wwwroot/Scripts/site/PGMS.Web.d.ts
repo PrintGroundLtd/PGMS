@@ -954,10 +954,11 @@ declare namespace PGMS.Erp {
         Name: Serenity.StringEditor;
         Total: Serenity.DecimalEditor;
         TransactionType: Serenity.EnumEditor;
-        WithVat: Serenity.BooleanEditor;
-        PaymentTypeId: Serenity.LookupEditor;
         TransactionDate: Serenity.DateTimeEditor;
+        PaymentTypeId: Serenity.LookupEditor;
         BudgetId: Serenity.LookupEditor;
+        WithVat: Serenity.BooleanEditor;
+        DepositPayment: Serenity.BooleanEditor;
         Description: Serenity.HtmlNoteContentEditor;
         AccountId: Serenity.LookupEditor;
         OrderId: Serenity.LookupEditor;
@@ -980,6 +981,7 @@ declare namespace PGMS.Erp {
         TransactionDate?: string;
         NoteList?: NoteRow[];
         WithVat?: boolean;
+        DepositPayment?: boolean;
         TransactionType?: TransactionType;
         BudgetId?: number;
         PaymentTypeId?: number;
@@ -1023,6 +1025,7 @@ declare namespace PGMS.Erp {
             TransactionDate = "TransactionDate",
             NoteList = "NoteList",
             WithVat = "WithVat",
+            DepositPayment = "DepositPayment",
             TransactionType = "TransactionType",
             BudgetId = "BudgetId",
             PaymentTypeId = "PaymentTypeId",
@@ -1235,6 +1238,8 @@ declare namespace PGMS.Erp {
         OrderDetailId?: number;
         ProductId?: number;
         OrderId?: number;
+        OrderDetailCounter?: number;
+        NotesCounter?: number;
         UnitPrice?: number;
         Quantity?: number;
         Discount?: number;
@@ -1266,6 +1271,8 @@ declare namespace PGMS.Erp {
             OrderDetailId = "OrderDetailId",
             ProductId = "ProductId",
             OrderId = "OrderId",
+            OrderDetailCounter = "OrderDetailCounter",
+            NotesCounter = "NotesCounter",
             UnitPrice = "UnitPrice",
             Quantity = "Quantity",
             Discount = "Discount",
@@ -1312,6 +1319,185 @@ declare namespace PGMS.Erp {
 declare namespace PGMS.Erp {
     interface OrderListRequest extends Serenity.ListRequest {
         ProductId?: number;
+    }
+}
+declare namespace PGMS.Erp {
+}
+declare namespace PGMS.Erp {
+    interface OrdersForm {
+        Name: Serenity.StringEditor;
+        AccountId: Serenity.LookupEditor;
+        PaymentTypeId: Serenity.LookupEditor;
+        WithVat: Serenity.BooleanEditor;
+        DetailList: OrderDetailsEditor;
+        CuttingByOne: Serenity.BooleanEditor;
+        CuttingManual: Serenity.BooleanEditor;
+        CuttingMachine: Serenity.BooleanEditor;
+        Printing: Serenity.BooleanEditor;
+        Laminating: Serenity.BooleanEditor;
+        TransportFolio: Serenity.BooleanEditor;
+        Cleaning: Serenity.BooleanEditor;
+        Cashing: Serenity.BooleanEditor;
+        OrderStatusId: Serenity.LookupEditor;
+        UserId: Serenity.LookupEditor;
+        StartDate: Serenity.DateTimeEditor;
+        DeadLine: Serenity.DateTimeEditor;
+        NotReal: Serenity.BooleanEditor;
+        OrderDate: Serenity.DateEditor;
+        ShippedDate: Serenity.DateEditor;
+        ShipName: Serenity.StringEditor;
+        ShipAddress: Serenity.StringEditor;
+        ShipCity: Serenity.StringEditor;
+        ShipCountry: Serenity.StringEditor;
+        NoteList: NotesEditor;
+    }
+    class OrdersForm extends Serenity.PrefixedContext {
+        static formKey: string;
+        private static init;
+        constructor(prefix: string);
+    }
+}
+declare namespace PGMS.Erp {
+    interface OrdersPerStatusResponse {
+        labels?: string[];
+        datasets?: Dataset[];
+    }
+}
+declare namespace PGMS.Erp {
+    interface OrdersRow {
+        OrderId?: number;
+        AccountId?: number;
+        CompanyId?: number;
+        PaymentTypeId?: number;
+        Name?: string;
+        AccountPartnerTypeName?: string;
+        Width?: number;
+        Height?: number;
+        OrderDate?: string;
+        StartDate?: string;
+        DeadLine?: string;
+        ShippedDate?: string;
+        OrderIdName?: string;
+        ShipName?: string;
+        ShipAddress?: string;
+        ShipCity?: string;
+        ShipCountry?: string;
+        UserId?: number;
+        OrderStatusId?: number;
+        Total?: number;
+        PaymentsTotal?: number;
+        WithVat?: boolean;
+        NotReal?: boolean;
+        CuttingByOne?: boolean;
+        CuttingManual?: boolean;
+        CuttingMachine?: boolean;
+        Printing?: boolean;
+        Laminating?: boolean;
+        TransportFolio?: boolean;
+        Cleaning?: boolean;
+        Cashing?: boolean;
+        AccountName?: string;
+        AccountPhoneNumber?: string;
+        AccountEmail?: string;
+        AccountIsVip?: number;
+        AccountPartnerType?: number;
+        CompanyName?: string;
+        PaymentTypeName?: string;
+        UserUsername?: string;
+        UserDisplayName?: string;
+        UserUserImage?: string;
+        NoteList?: NoteRow[];
+        DetailList?: OrderDetailsRow[];
+        OrderStatusName?: string;
+        OrderStatusBorderColor?: string;
+        OrderStatusBackgroundColor?: string;
+        InsertUserId?: number;
+        InsertDate?: string;
+        UpdateUserId?: number;
+        UpdateDate?: string;
+        IsActive?: number;
+        InsertUserName?: string;
+        UpdateUserName?: string;
+    }
+    namespace OrdersRow {
+        const idProperty = "OrderId";
+        const isActiveProperty = "IsActive";
+        const nameProperty = "Name";
+        const localTextPrefix = "Erp.Orders";
+        const lookupKey = "Erp.Orders";
+        function getLookup(): Q.Lookup<OrdersRow>;
+        const enum Fields {
+            OrderId = "OrderId",
+            AccountId = "AccountId",
+            CompanyId = "CompanyId",
+            PaymentTypeId = "PaymentTypeId",
+            Name = "Name",
+            AccountPartnerTypeName = "AccountPartnerTypeName",
+            Width = "Width",
+            Height = "Height",
+            OrderDate = "OrderDate",
+            StartDate = "StartDate",
+            DeadLine = "DeadLine",
+            ShippedDate = "ShippedDate",
+            OrderIdName = "OrderIdName",
+            ShipName = "ShipName",
+            ShipAddress = "ShipAddress",
+            ShipCity = "ShipCity",
+            ShipCountry = "ShipCountry",
+            UserId = "UserId",
+            OrderStatusId = "OrderStatusId",
+            Total = "Total",
+            PaymentsTotal = "PaymentsTotal",
+            WithVat = "WithVat",
+            NotReal = "NotReal",
+            CuttingByOne = "CuttingByOne",
+            CuttingManual = "CuttingManual",
+            CuttingMachine = "CuttingMachine",
+            Printing = "Printing",
+            Laminating = "Laminating",
+            TransportFolio = "TransportFolio",
+            Cleaning = "Cleaning",
+            Cashing = "Cashing",
+            AccountName = "AccountName",
+            AccountPhoneNumber = "AccountPhoneNumber",
+            AccountEmail = "AccountEmail",
+            AccountIsVip = "AccountIsVip",
+            AccountPartnerType = "AccountPartnerType",
+            CompanyName = "CompanyName",
+            PaymentTypeName = "PaymentTypeName",
+            UserUsername = "UserUsername",
+            UserDisplayName = "UserDisplayName",
+            UserUserImage = "UserUserImage",
+            NoteList = "NoteList",
+            DetailList = "DetailList",
+            OrderStatusName = "OrderStatusName",
+            OrderStatusBorderColor = "OrderStatusBorderColor",
+            OrderStatusBackgroundColor = "OrderStatusBackgroundColor",
+            InsertUserId = "InsertUserId",
+            InsertDate = "InsertDate",
+            UpdateUserId = "UpdateUserId",
+            UpdateDate = "UpdateDate",
+            IsActive = "IsActive",
+            InsertUserName = "InsertUserName",
+            UpdateUserName = "UpdateUserName",
+        }
+    }
+}
+declare namespace PGMS.Erp {
+    namespace OrdersService {
+        const baseUrl = "Erp/Orders";
+        function Create(request: Serenity.SaveRequest<OrdersRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<OrdersRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<OrdersRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: OrderListRequest, onSuccess?: (response: Serenity.ListResponse<OrdersRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        const enum Methods {
+            Create = "Erp/Orders/Create",
+            Update = "Erp/Orders/Update",
+            Delete = "Erp/Orders/Delete",
+            Retrieve = "Erp/Orders/Retrieve",
+            List = "Erp/Orders/List",
+        }
     }
 }
 declare namespace PGMS.Erp {
@@ -1378,166 +1564,6 @@ declare namespace PGMS.Erp {
             Delete = "Erp/OrderStatuses/Delete",
             Retrieve = "Erp/OrderStatuses/Retrieve",
             List = "Erp/OrderStatuses/List",
-        }
-    }
-}
-declare namespace PGMS.Erp {
-}
-declare namespace PGMS.Erp {
-    interface OrdersForm {
-        AccountId: Serenity.LookupEditor;
-        PaymentTypeId: Serenity.LookupEditor;
-        DetailList: OrderDetailsEditor;
-        CuttingManual: Serenity.BooleanEditor;
-        CuttingMachine: Serenity.BooleanEditor;
-        Printing: Serenity.BooleanEditor;
-        Laminating: Serenity.BooleanEditor;
-        TransportFolio: Serenity.BooleanEditor;
-        Cleaning: Serenity.BooleanEditor;
-        Cashing: Serenity.BooleanEditor;
-        UserId: Serenity.LookupEditor;
-        OrderStatusId: Serenity.LookupEditor;
-        OrderDate: Serenity.DateEditor;
-        DeadLine: Serenity.DateTimeEditor;
-        ShippedDate: Serenity.DateEditor;
-        ShipName: Serenity.StringEditor;
-        ShipAddress: Serenity.StringEditor;
-        ShipCity: Serenity.StringEditor;
-        ShipCountry: Serenity.StringEditor;
-        NoteList: NotesEditor;
-    }
-    class OrdersForm extends Serenity.PrefixedContext {
-        static formKey: string;
-        private static init;
-        constructor(prefix: string);
-    }
-}
-declare namespace PGMS.Erp {
-    interface OrdersPerStatusResponse {
-        labels?: string[];
-        datasets?: Dataset[];
-    }
-}
-declare namespace PGMS.Erp {
-    interface OrdersRow {
-        OrderId?: number;
-        AccountId?: number;
-        CompanyId?: number;
-        PaymentTypeId?: number;
-        Width?: number;
-        Height?: number;
-        OrderDate?: string;
-        DeadLine?: string;
-        ShippedDate?: string;
-        OrderName?: string;
-        ShipName?: string;
-        ShipAddress?: string;
-        ShipCity?: string;
-        ShipCountry?: string;
-        UserId?: number;
-        OrderStatusId?: number;
-        Total?: number;
-        CuttingManual?: boolean;
-        CuttingMachine?: boolean;
-        Printing?: boolean;
-        Laminating?: boolean;
-        TransportFolio?: boolean;
-        Cleaning?: boolean;
-        Cashing?: boolean;
-        AccountName?: string;
-        AccountPhoneNumber?: string;
-        AccountEmail?: string;
-        AccountIsVip?: number;
-        AccountPartnerType?: number;
-        CompanyName?: string;
-        PaymentTypeName?: string;
-        UserUsername?: string;
-        UserDisplayName?: string;
-        UserUserImage?: string;
-        NoteList?: NoteRow[];
-        DetailList?: OrderDetailsRow[];
-        OrderStatusName?: string;
-        OrderStatusBorderColor?: string;
-        OrderStatusBackgroundColor?: string;
-        InsertUserId?: number;
-        InsertDate?: string;
-        UpdateUserId?: number;
-        UpdateDate?: string;
-        IsActive?: number;
-        InsertUserName?: string;
-        UpdateUserName?: string;
-    }
-    namespace OrdersRow {
-        const idProperty = "OrderId";
-        const isActiveProperty = "IsActive";
-        const nameProperty = "OrderName";
-        const localTextPrefix = "Erp.Orders";
-        const lookupKey = "Erp.Orders";
-        function getLookup(): Q.Lookup<OrdersRow>;
-        const enum Fields {
-            OrderId = "OrderId",
-            AccountId = "AccountId",
-            CompanyId = "CompanyId",
-            PaymentTypeId = "PaymentTypeId",
-            Width = "Width",
-            Height = "Height",
-            OrderDate = "OrderDate",
-            DeadLine = "DeadLine",
-            ShippedDate = "ShippedDate",
-            OrderName = "OrderName",
-            ShipName = "ShipName",
-            ShipAddress = "ShipAddress",
-            ShipCity = "ShipCity",
-            ShipCountry = "ShipCountry",
-            UserId = "UserId",
-            OrderStatusId = "OrderStatusId",
-            Total = "Total",
-            CuttingManual = "CuttingManual",
-            CuttingMachine = "CuttingMachine",
-            Printing = "Printing",
-            Laminating = "Laminating",
-            TransportFolio = "TransportFolio",
-            Cleaning = "Cleaning",
-            Cashing = "Cashing",
-            AccountName = "AccountName",
-            AccountPhoneNumber = "AccountPhoneNumber",
-            AccountEmail = "AccountEmail",
-            AccountIsVip = "AccountIsVip",
-            AccountPartnerType = "AccountPartnerType",
-            CompanyName = "CompanyName",
-            PaymentTypeName = "PaymentTypeName",
-            UserUsername = "UserUsername",
-            UserDisplayName = "UserDisplayName",
-            UserUserImage = "UserUserImage",
-            NoteList = "NoteList",
-            DetailList = "DetailList",
-            OrderStatusName = "OrderStatusName",
-            OrderStatusBorderColor = "OrderStatusBorderColor",
-            OrderStatusBackgroundColor = "OrderStatusBackgroundColor",
-            InsertUserId = "InsertUserId",
-            InsertDate = "InsertDate",
-            UpdateUserId = "UpdateUserId",
-            UpdateDate = "UpdateDate",
-            IsActive = "IsActive",
-            InsertUserName = "InsertUserName",
-            UpdateUserName = "UpdateUserName",
-        }
-    }
-}
-declare namespace PGMS.Erp {
-    namespace OrdersService {
-        const baseUrl = "Erp/Orders";
-        function Create(request: Serenity.SaveRequest<OrdersRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function Update(request: Serenity.SaveRequest<OrdersRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<OrdersRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function List(request: OrderListRequest, onSuccess?: (response: Serenity.ListResponse<OrdersRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        const enum Methods {
-            Create = "Erp/Orders/Create",
-            Update = "Erp/Orders/Update",
-            Delete = "Erp/Orders/Delete",
-            Retrieve = "Erp/Orders/Retrieve",
-            List = "Erp/Orders/List",
         }
     }
 }
@@ -1639,15 +1665,17 @@ declare namespace PGMS.Erp {
 }
 declare namespace PGMS.Erp {
     interface OutsideOrdersForm {
-        PriceTheyOffer: Serenity.DecimalEditor;
-        PriceWeSell: Serenity.DecimalEditor;
-        Description: Serenity.HtmlNoteContentEditor;
         Name: Serenity.StringEditor;
         AccountRepresentsId: Serenity.LookupEditor;
-        CompanyRepresentsId: Serenity.LookupEditor;
         OrderStatusId: Serenity.LookupEditor;
+        CompanyRepresentsId: Serenity.LookupEditor;
         AssignUserId: Serenity.LookupEditor;
+        StartDate: Serenity.DateTimeEditor;
         DeadLine: Serenity.DateTimeEditor;
+        PriceTheyOffer: Serenity.DecimalEditor;
+        PriceWeSell: Serenity.DecimalEditor;
+        WithVat: Serenity.BooleanEditor;
+        Description: Serenity.HtmlNoteContentEditor;
         NoteList: NotesEditor;
     }
     class OutsideOrdersForm extends Serenity.PrefixedContext {
@@ -1666,6 +1694,9 @@ declare namespace PGMS.Erp {
         CompanyRepresentsId?: number;
         DeadLine?: string;
         Description?: string;
+        WithVat?: boolean;
+        PaymentsTotal?: number;
+        StartDate?: string;
         AccountRepresentsName?: string;
         AccountRepresentsEmail?: string;
         AccountRepresentsPhoneNumber?: string;
@@ -1674,6 +1705,7 @@ declare namespace PGMS.Erp {
         AccountRepresentsAddress?: string;
         AccountRepresentsCity?: string;
         AccountRepresentsCountry?: string;
+        AccountPartnerTypeName?: string;
         CompanyRepresentsName?: string;
         CompanyRepresentsPhoneNumber?: string;
         CompanyRepresentsAddress?: string;
@@ -1715,6 +1747,9 @@ declare namespace PGMS.Erp {
             CompanyRepresentsId = "CompanyRepresentsId",
             DeadLine = "DeadLine",
             Description = "Description",
+            WithVat = "WithVat",
+            PaymentsTotal = "PaymentsTotal",
+            StartDate = "StartDate",
             AccountRepresentsName = "AccountRepresentsName",
             AccountRepresentsEmail = "AccountRepresentsEmail",
             AccountRepresentsPhoneNumber = "AccountRepresentsPhoneNumber",
@@ -1723,6 +1758,7 @@ declare namespace PGMS.Erp {
             AccountRepresentsAddress = "AccountRepresentsAddress",
             AccountRepresentsCity = "AccountRepresentsCity",
             AccountRepresentsCountry = "AccountRepresentsCountry",
+            AccountPartnerTypeName = "AccountPartnerTypeName",
             CompanyRepresentsName = "CompanyRepresentsName",
             CompanyRepresentsPhoneNumber = "CompanyRepresentsPhoneNumber",
             CompanyRepresentsAddress = "CompanyRepresentsAddress",
@@ -1764,67 +1800,6 @@ declare namespace PGMS.Erp {
             Delete = "Erp/OutsideOrders/Delete",
             Retrieve = "Erp/OutsideOrders/Retrieve",
             List = "Erp/OutsideOrders/List",
-        }
-    }
-}
-declare namespace PGMS.Erp {
-}
-declare namespace PGMS.Erp {
-    interface PartnerTypesForm {
-        Name: Serenity.StringEditor;
-    }
-    class PartnerTypesForm extends Serenity.PrefixedContext {
-        static formKey: string;
-        private static init;
-        constructor(prefix: string);
-    }
-}
-declare namespace PGMS.Erp {
-    interface PartnerTypesRow {
-        PartnerTypeId?: number;
-        Name?: string;
-        InsertUserId?: number;
-        InsertDate?: string;
-        UpdateUserId?: number;
-        UpdateDate?: string;
-        IsActive?: number;
-        InsertUserName?: string;
-        UpdateUserName?: string;
-    }
-    namespace PartnerTypesRow {
-        const idProperty = "PartnerTypeId";
-        const isActiveProperty = "IsActive";
-        const nameProperty = "Name";
-        const localTextPrefix = "Erp.PartnerTypes";
-        const lookupKey = "Erp.PartnerTypes";
-        function getLookup(): Q.Lookup<PartnerTypesRow>;
-        const enum Fields {
-            PartnerTypeId = "PartnerTypeId",
-            Name = "Name",
-            InsertUserId = "InsertUserId",
-            InsertDate = "InsertDate",
-            UpdateUserId = "UpdateUserId",
-            UpdateDate = "UpdateDate",
-            IsActive = "IsActive",
-            InsertUserName = "InsertUserName",
-            UpdateUserName = "UpdateUserName",
-        }
-    }
-}
-declare namespace PGMS.Erp {
-    namespace PartnerTypesService {
-        const baseUrl = "Erp/PartnerTypes";
-        function Create(request: Serenity.SaveRequest<PartnerTypesRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function Update(request: Serenity.SaveRequest<PartnerTypesRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<PartnerTypesRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<PartnerTypesRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
-        const enum Methods {
-            Create = "Erp/PartnerTypes/Create",
-            Update = "Erp/PartnerTypes/Update",
-            Delete = "Erp/PartnerTypes/Delete",
-            Retrieve = "Erp/PartnerTypes/Retrieve",
-            List = "Erp/PartnerTypes/List",
         }
     }
 }
@@ -1894,6 +1869,67 @@ declare namespace PGMS.Erp {
             Delete = "Erp/Partners/Delete",
             Retrieve = "Erp/Partners/Retrieve",
             List = "Erp/Partners/List",
+        }
+    }
+}
+declare namespace PGMS.Erp {
+}
+declare namespace PGMS.Erp {
+    interface PartnerTypesForm {
+        Name: Serenity.StringEditor;
+    }
+    class PartnerTypesForm extends Serenity.PrefixedContext {
+        static formKey: string;
+        private static init;
+        constructor(prefix: string);
+    }
+}
+declare namespace PGMS.Erp {
+    interface PartnerTypesRow {
+        PartnerTypeId?: number;
+        Name?: string;
+        InsertUserId?: number;
+        InsertDate?: string;
+        UpdateUserId?: number;
+        UpdateDate?: string;
+        IsActive?: number;
+        InsertUserName?: string;
+        UpdateUserName?: string;
+    }
+    namespace PartnerTypesRow {
+        const idProperty = "PartnerTypeId";
+        const isActiveProperty = "IsActive";
+        const nameProperty = "Name";
+        const localTextPrefix = "Erp.PartnerTypes";
+        const lookupKey = "Erp.PartnerTypes";
+        function getLookup(): Q.Lookup<PartnerTypesRow>;
+        const enum Fields {
+            PartnerTypeId = "PartnerTypeId",
+            Name = "Name",
+            InsertUserId = "InsertUserId",
+            InsertDate = "InsertDate",
+            UpdateUserId = "UpdateUserId",
+            UpdateDate = "UpdateDate",
+            IsActive = "IsActive",
+            InsertUserName = "InsertUserName",
+            UpdateUserName = "UpdateUserName",
+        }
+    }
+}
+declare namespace PGMS.Erp {
+    namespace PartnerTypesService {
+        const baseUrl = "Erp/PartnerTypes";
+        function Create(request: Serenity.SaveRequest<PartnerTypesRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Update(request: Serenity.SaveRequest<PartnerTypesRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function Retrieve(request: Serenity.RetrieveRequest, onSuccess?: (response: Serenity.RetrieveResponse<PartnerTypesRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        function List(request: Serenity.ListRequest, onSuccess?: (response: Serenity.ListResponse<PartnerTypesRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
+        const enum Methods {
+            Create = "Erp/PartnerTypes/Create",
+            Update = "Erp/PartnerTypes/Update",
+            Delete = "Erp/PartnerTypes/Delete",
+            Retrieve = "Erp/PartnerTypes/Retrieve",
+            List = "Erp/PartnerTypes/List",
         }
     }
 }
@@ -2381,6 +2417,17 @@ declare namespace PGMS {
         };
     }
 }
+declare namespace PGMS.LanguageList {
+    function getValue(): string[][];
+}
+declare namespace PGMS.Common {
+    class UserPreferenceStorage implements Serenity.SettingStorage {
+        getItem(key: string): string;
+        setItem(key: string, data: string): void;
+    }
+}
+declare namespace PGMS.ScriptInitialization {
+}
 declare namespace PGMS.Administration {
     class LanguageDialog extends Serenity.EntityDialog<LanguageRow, any> {
         protected getFormKey(): string;
@@ -2492,10 +2539,6 @@ declare namespace PGMS.Administration {
         protected getDefaultSortBy(): UserRow.Fields[];
     }
 }
-declare namespace PGMS.Authorization {
-    let userDefinition: ScriptUserDefinition;
-    function hasPermission(permissionKey: string): boolean;
-}
 declare namespace PGMS.Administration {
     class PermissionCheckEditor extends Serenity.DataGrid<PermissionCheckItem, PermissionCheckEditorOptions> {
         protected getIdProperty(): string;
@@ -2566,17 +2609,6 @@ declare namespace PGMS.Administration {
         userID: number;
         username: string;
     }
-}
-declare namespace PGMS.LanguageList {
-    function getValue(): string[][];
-}
-declare namespace PGMS.Common {
-    class UserPreferenceStorage implements Serenity.SettingStorage {
-        getItem(key: string): string;
-        setItem(key: string, data: string): void;
-    }
-}
-declare namespace PGMS.ScriptInitialization {
 }
 declare namespace PGMS {
     class BasicProgressDialog extends Serenity.TemplatedDialog<any> {
@@ -2725,6 +2757,9 @@ declare namespace PGMS {
         hideLabel: boolean;
     }
 }
+declare namespace Serenity.TabsExtensions {
+    function setCounter(grid: JQuery, totalCount: number, tabKey: string): void;
+}
 declare namespace PGMS.Common {
     class LanguageSelection extends Serenity.Widget<any> {
         constructor(select: JQuery, currentLanguage: string);
@@ -2841,6 +2876,7 @@ declare namespace PGMS.Erp {
         protected getLocalTextPrefix(): string;
         protected getService(): string;
         constructor(container: JQuery);
+        protected onViewProcessData(response: Serenity.ListResponse<ExpensesRow>): Serenity.ListResponse<ExpensesRow>;
     }
 }
 declare namespace PGMS.Erp {
@@ -2874,6 +2910,8 @@ declare namespace PGMS.Erp {
         private attachmentsGrid;
         private expensesGrid;
         constructor();
+        protected getCloningEntity(): OrdersRow;
+        protected updateInterface(): void;
         loadEntity(entity: Erp.OrdersRow): void;
         loadResponse(data: any): void;
         getSaveState(): string;
@@ -2894,6 +2932,8 @@ declare namespace PGMS.Erp {
         protected getService(): string;
         protected getIsActiveProperty(): string;
         constructor(container: JQuery);
+        protected onViewProcessData(response: Serenity.ListResponse<ExpensesRow>): Serenity.ListResponse<ExpensesRow>;
+        getViewOptions(): Slick.RemoteViewOptions;
         protected getQuickFilters(): Serenity.QuickFilter<Serenity.Widget<any>, any>[];
         protected createSlickGrid(): Slick.Grid;
         protected getSlickOptions(): Slick.GridOptions;
@@ -2926,6 +2966,8 @@ declare namespace PGMS.Erp {
         private attachmentsGrid;
         private expensesGrid;
         constructor();
+        protected getCloningEntity(): OutsideOrdersRow;
+        protected updateInterface(): void;
         loadEntity(entity: Erp.OutsideOrdersRow): void;
         loadResponse(data: any): void;
         getSaveState(): string;
@@ -2946,6 +2988,8 @@ declare namespace PGMS.Erp {
         protected getService(): string;
         protected getIsActiveProperty(): string;
         constructor(container: JQuery);
+        protected onViewProcessData(response: Serenity.ListResponse<ExpensesRow>): Serenity.ListResponse<ExpensesRow>;
+        getViewOptions(): Slick.RemoteViewOptions;
         protected getQuickFilters(): Serenity.QuickFilter<Serenity.Widget<any>, any>[];
         protected createSlickGrid(): Slick.Grid;
         protected getSlickOptions(): Slick.GridOptions;
@@ -3000,6 +3044,7 @@ declare namespace PGMS.Erp {
         protected getService(): string;
         protected getIsActiveProperty(): string;
         constructor(container: JQuery);
+        getViewOptions(): Slick.RemoteViewOptions;
         protected getButtons(): Serenity.ToolButton[];
     }
 }
@@ -3039,6 +3084,8 @@ declare namespace PGMS.Erp {
         protected getService(): string;
         protected getIsActiveProperty(): string;
         constructor(container: JQuery);
+        getViewOptions(): Slick.RemoteViewOptions;
+        protected onViewProcessData(response: Serenity.ListResponse<ExpensesRow>): Serenity.ListResponse<ExpensesRow>;
         protected createSlickGrid(): Slick.Grid;
         protected getSlickOptions(): Slick.GridOptions;
         protected getButtons(): Serenity.ToolButton[];
@@ -3137,6 +3184,7 @@ declare namespace PGMS.Erp {
         protected getLocalTextPrefix(): string;
         protected getService(): string;
         constructor(container: JQuery);
+        protected onViewProcessData(response: Serenity.ListResponse<ExpensesRow>): Serenity.ListResponse<ExpensesRow>;
     }
 }
 declare namespace PGMS.Erp {
@@ -3203,6 +3251,7 @@ declare namespace PGMS.Erp {
         protected getLocalTextPrefix(): string;
         protected getService(): string;
         constructor(container: JQuery);
+        protected onViewProcessData(response: Serenity.ListResponse<ExpensesRow>): Serenity.ListResponse<ExpensesRow>;
     }
 }
 declare namespace PGMS.Erp {
@@ -3223,35 +3272,9 @@ declare namespace PGMS.Erp {
         protected getDialogType(): typeof OrderDetailsDialog;
         protected getLocalTextPrefix(): string;
         constructor(container: JQuery);
+        protected getSlickOptions(): Slick.GridOptions;
+        protected createSlickGrid(): Slick.Grid;
         validateEntity(row: any, id: any): boolean;
-    }
-}
-declare namespace PGMS.Erp {
-    class OrderStatusesDialog extends Serenity.EntityDialog<OrderStatusesRow, any> {
-        protected getFormKey(): string;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getNameProperty(): string;
-        protected getService(): string;
-        protected form: OrderStatusesForm;
-    }
-}
-declare namespace PGMS.Erp {
-    class OrderStatusesFormatter implements Slick.Formatter {
-        format(ctx: Slick.FormatterContext): string;
-        backgroundProperty: string;
-        borderProperty: string;
-        initializeColumn(column: Slick.Column): void;
-    }
-}
-declare namespace PGMS.Erp {
-    class OrderStatusesGrid extends Serenity.EntityGrid<OrderStatusesRow, any> {
-        protected getColumnsKey(): string;
-        protected getDialogType(): typeof OrderStatusesDialog;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getService(): string;
-        constructor(container: JQuery);
     }
 }
 declare namespace PGMS.Erp {
@@ -3311,6 +3334,42 @@ declare namespace PGMS.Erp {
     }
 }
 declare namespace PGMS.Erp {
+    class OrdersIsRealFormatter implements Slick.Formatter {
+        format(ctx: Slick.FormatterContext): string;
+        isRealProperty: string;
+        initializeColumn(column: Slick.Column): void;
+    }
+}
+declare namespace PGMS.Erp {
+    class OrderStatusesDialog extends Serenity.EntityDialog<OrderStatusesRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected form: OrderStatusesForm;
+    }
+}
+declare namespace PGMS.Erp {
+    class OrderStatusesFormatter implements Slick.Formatter {
+        format(ctx: Slick.FormatterContext): string;
+        backgroundProperty: string;
+        borderProperty: string;
+        initializeColumn(column: Slick.Column): void;
+    }
+}
+declare namespace PGMS.Erp {
+    class OrderStatusesGrid extends Serenity.EntityGrid<OrderStatusesRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof OrderStatusesDialog;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        protected getIsActiveProperty(): string;
+        constructor(container: JQuery);
+    }
+}
+declare namespace PGMS.Erp {
     class OutsideOrderAttachmentsDialog extends Serenity.EntityDialog<OutsideOrderAttachmentsRow, any> {
         protected getFormKey(): string;
         protected getIdProperty(): string;
@@ -3328,6 +3387,18 @@ declare namespace PGMS.Erp {
         protected getLocalTextPrefix(): string;
         protected getService(): string;
         constructor(container: JQuery);
+        protected onViewProcessData(response: Serenity.ListResponse<ExpensesRow>): Serenity.ListResponse<ExpensesRow>;
+    }
+}
+declare namespace PGMS.Erp {
+    class MyOutsideOrdersGrid extends Erp.OutsideOrdersGrid {
+        protected totalRecord: number;
+        protected myLookupQuickFilter: Serenity.LookupEditor;
+        constructor(container: JQuery);
+        protected createQuickFilters(): void;
+        protected createView(): Slick.RemoteView<OutsideOrdersRow>;
+        protected onViewProcessData(response: Serenity.ListResponse<OutsideOrdersRow>): Serenity.ListResponse<OutsideOrdersRow>;
+        protected onViewSubmit(): boolean;
     }
 }
 declare namespace PGMS.Erp {
@@ -3371,26 +3442,6 @@ declare namespace PGMS.Erp {
     }
 }
 declare namespace PGMS.Erp {
-    class PartnerTypesDialog extends Serenity.EntityDialog<PartnerTypesRow, any> {
-        protected getFormKey(): string;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getNameProperty(): string;
-        protected getService(): string;
-        protected form: PartnerTypesForm;
-    }
-}
-declare namespace PGMS.Erp {
-    class PartnerTypesGrid extends Serenity.EntityGrid<PartnerTypesRow, any> {
-        protected getColumnsKey(): string;
-        protected getDialogType(): typeof PartnerTypesDialog;
-        protected getIdProperty(): string;
-        protected getLocalTextPrefix(): string;
-        protected getService(): string;
-        constructor(container: JQuery);
-    }
-}
-declare namespace PGMS.Erp {
     class PartnersDialog extends Serenity.EntityDialog<PartnersRow, any> {
         protected getFormKey(): string;
         protected getIdProperty(): string;
@@ -3410,6 +3461,26 @@ declare namespace PGMS.Erp {
         protected getIsActiveProperty(): string;
         constructor(container: JQuery);
         protected getButtons(): Serenity.ToolButton[];
+    }
+}
+declare namespace PGMS.Erp {
+    class PartnerTypesDialog extends Serenity.EntityDialog<PartnerTypesRow, any> {
+        protected getFormKey(): string;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getNameProperty(): string;
+        protected getService(): string;
+        protected form: PartnerTypesForm;
+    }
+}
+declare namespace PGMS.Erp {
+    class PartnerTypesGrid extends Serenity.EntityGrid<PartnerTypesRow, any> {
+        protected getColumnsKey(): string;
+        protected getDialogType(): typeof PartnerTypesDialog;
+        protected getIdProperty(): string;
+        protected getLocalTextPrefix(): string;
+        protected getService(): string;
+        constructor(container: JQuery);
     }
 }
 declare namespace PGMS.Erp {
@@ -3457,19 +3528,8 @@ declare namespace PGMS.Erp {
         protected getService(): string;
         protected getIsActiveProperty(): string;
         constructor(container: JQuery);
+        getViewOptions(): Slick.RemoteViewOptions;
         protected getButtons(): Serenity.ToolButton[];
-    }
-}
-declare var Chart: any;
-declare namespace PGMS.Erp {
-    class IncomeVSExpense extends Serenity.TemplatedWidget<any> {
-        constructor(elem: JQuery, opt: {});
-    }
-}
-declare var Chart: any;
-declare namespace PGMS.Erp {
-    class OrdersPerStatus extends Serenity.TemplatedWidget<any> {
-        constructor(elem: JQuery, opt: {});
     }
 }
 declare namespace PGMS.Erp {
@@ -3540,6 +3600,22 @@ declare namespace PGMS.Erp {
         protected getButtons(): Serenity.ToolButton[];
     }
 }
+declare namespace PGMS.Authorization {
+    let userDefinition: ScriptUserDefinition;
+    function hasPermission(permissionKey: string): boolean;
+}
+declare var Chart: any;
+declare namespace PGMS.Erp {
+    class IncomeVSExpense extends Serenity.TemplatedWidget<any> {
+        constructor(elem: JQuery, opt: {});
+    }
+}
+declare var Chart: any;
+declare namespace PGMS.Erp {
+    class OrdersPerStatus extends Serenity.TemplatedWidget<any> {
+        constructor(elem: JQuery, opt: {});
+    }
+}
 declare namespace PGMS.Membership {
     class ChangePasswordPanel extends Serenity.PropertyPanel<ChangePasswordRequest, any> {
         protected getFormKey(): string;
@@ -3566,16 +3642,5 @@ declare namespace PGMS.Membership {
         protected getFormKey(): string;
         private form;
         constructor(container: JQuery);
-    }
-}
-declare namespace PGMS.Erp {
-    class MyOutsideOrdersGrid extends Erp.OutsideOrdersGrid {
-        protected totalRecord: number;
-        protected myLookupQuickFilter: Serenity.LookupEditor;
-        constructor(container: JQuery);
-        protected createQuickFilters(): void;
-        protected createView(): Slick.RemoteView<OutsideOrdersRow>;
-        protected onViewProcessData(response: Serenity.ListResponse<OutsideOrdersRow>): Serenity.ListResponse<OutsideOrdersRow>;
-        protected onViewSubmit(): boolean;
     }
 }

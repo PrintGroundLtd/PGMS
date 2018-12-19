@@ -1,14 +1,16 @@
 ﻿namespace PGMS.Erp {
     export interface OutsideOrdersForm {
-        PriceTheyOffer: Serenity.DecimalEditor;
-        PriceWeSell: Serenity.DecimalEditor;
-        Description: Serenity.HtmlNoteContentEditor;
         Name: Serenity.StringEditor;
         AccountRepresentsId: Serenity.LookupEditor;
-        CompanyRepresentsId: Serenity.LookupEditor;
         OrderStatusId: Serenity.LookupEditor;
+        CompanyRepresentsId: Serenity.LookupEditor;
         AssignUserId: Serenity.LookupEditor;
+        StartDate: Serenity.DateTimeEditor;
         DeadLine: Serenity.DateTimeEditor;
+        PriceTheyOffer: Serenity.DecimalEditor;
+        PriceWeSell: Serenity.DecimalEditor;
+        WithVat: Serenity.BooleanEditor;
+        Description: Serenity.HtmlNoteContentEditor;
         NoteList: NotesEditor;
     }
 
@@ -23,24 +25,27 @@
                 OutsideOrdersForm.init = true;
 
                 var s = Serenity;
-                var w0 = s.DecimalEditor;
-                var w1 = s.HtmlNoteContentEditor;
-                var w2 = s.StringEditor;
-                var w3 = s.LookupEditor;
-                var w4 = s.DateTimeEditor;
-                var w5 = NotesEditor;
+                var w0 = s.StringEditor;
+                var w1 = s.LookupEditor;
+                var w2 = s.DateTimeEditor;
+                var w3 = s.DecimalEditor;
+                var w4 = s.BooleanEditor;
+                var w5 = s.HtmlNoteContentEditor;
+                var w6 = NotesEditor;
 
                 Q.initFormType(OutsideOrdersForm, [
-                    'PriceTheyOffer', w0,
-                    'PriceWeSell', w0,
-                    'Description', w1,
-                    'Name', w2,
-                    'AccountRepresentsId', w3,
-                    'CompanyRepresentsId', w3,
-                    'OrderStatusId', w3,
-                    'AssignUserId', w3,
-                    'DeadLine', w4,
-                    'NoteList', w5
+                    'Name', w0,
+                    'AccountRepresentsId', w1,
+                    'OrderStatusId', w1,
+                    'CompanyRepresentsId', w1,
+                    'AssignUserId', w1,
+                    'StartDate', w2,
+                    'DeadLine', w2,
+                    'PriceTheyOffer', w3,
+                    'PriceWeSell', w3,
+                    'WithVat', w4,
+                    'Description', w5,
+                    'NoteList', w6
                 ]);
             }
         }

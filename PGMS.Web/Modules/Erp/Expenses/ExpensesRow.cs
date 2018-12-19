@@ -20,7 +20,7 @@ namespace PGMS.Erp.Entities
     [LookupScript]
     public sealed class ExpensesRow : ErpLoggingRow, IIdRow, INameRow
     {
-        [DisplayName("Expense Id"), Identity]
+        [DisplayName("Expense Id"), Identity, QuickSearch]
         public Int32? ExpenseId
         {
             get { return Fields.ExpenseId[this]; }
@@ -57,7 +57,15 @@ namespace PGMS.Erp.Entities
             set { Fields.Total[this] = value; }
         }
 
-        [DisplayName("With Vat")]
+        [DisplayName("Deposit Payment")]
+        [BooleanEditor]
+        public Boolean? DepositPayment
+        {
+            get { return Fields.DepositPayment[this]; }
+            set { Fields.DepositPayment[this] = value; }
+        }
+
+        [DisplayName("With Vat"), QuickFilter()]
         [BooleanEditor]
         public Boolean? WithVat
         {
@@ -252,6 +260,7 @@ namespace PGMS.Erp.Entities
             public DateTimeField TransactionDate;
             public RowListField<NoteRow> NoteList;
             public BooleanField WithVat;
+            public BooleanField DepositPayment;
             public Int16Field TransactionType;
             public Int32Field BudgetId;
             public Int32Field PaymentTypeId;

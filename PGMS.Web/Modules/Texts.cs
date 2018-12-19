@@ -103,16 +103,24 @@ namespace PGMS
                 public static LocalText ExpenseNameOrder = "Expense - Order ({0})";
 
             }
-
+            public static class Orders
+            {
+                public static LocalText CloneNameSuffix = " (Clone)";
+            }
+            public static class OutsideOrders
+            {
+                public static LocalText CloneNameSuffix = " (Clone)";
+            }
             public static LocalText ExportToExcelButton = "Export to Excel";
             public static LocalText ExportToExcelHintButton = "Export current table to Excel";
 
             public static LocalText OrderStatusNotEqualTo = "Order Status Not Equal To";
 
             public static LocalText GroupByButton = "Group By ";
+            public static LocalText GroupByButtonFormatter = " items";
             public static LocalText NoGroupingButton = "No Grouping";
 
-            public static class Reports
+            public static class Reports 
             {
                 public static LocalText ReportsTitle = "Income";
                 public static LocalText OrdersPerStatus = "Orders Per Status";

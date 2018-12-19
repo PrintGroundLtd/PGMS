@@ -50,6 +50,15 @@ namespace PGMS.Erp.Entities
             set { Fields.PriceWeSell[this] = value; }
         }
 
+        [DisplayFormat("HH:mm dd/MM/yyyy"), DisplayName("Start Date"), QuickFilter()]
+        [Width(150)]
+        [DateTimeEditor]
+        public DateTime? StartDate
+        {
+            get { return Fields.StartDate[this]; }
+            set { Fields.StartDate[this] = value; }
+        }
+
         [DisplayName("Account Represents"), ForeignKey(typeof(AccountsRow)), LeftJoin("jAccountRepresents"), TextualField("AccountRepresentsName")]
         [LookupEditor(typeof(AccountsRow), FilterField = "IsActive", FilterValue = 1, InplaceAdd = true)]
         public Int32? AccountRepresentsId
@@ -58,6 +67,12 @@ namespace PGMS.Erp.Entities
             set { Fields.AccountRepresentsId[this] = value; }
         }
 
+        [DisplayName("Account Partner Type Name"), Expression("(SELECT [Name] FROM [dbo].[PartnerTypes] WHERE PartnerTypeId = jAccountRepresents.PartnerType)")]
+        public String AccountPartnerTypeName
+        {
+            get { return Fields.AccountPartnerTypeName[this]; }
+            set { Fields.AccountPartnerTypeName[this] = value; }
+        }
         [DisplayName("Company Represents"), ForeignKey(typeof(CompaniesRow)), LeftJoin("jCompanyRepresents"), TextualField("CompanyRepresentsName")]
         [LookupEditor(typeof(CompaniesRow), FilterField = "IsActive", FilterValue = 1)]
         public Int32? CompanyRepresentsId
@@ -201,7 +216,7 @@ namespace PGMS.Erp.Entities
 
         [DisplayName("Order Status"), ForeignKey("[dbo].[OrderStatuses]", "OrderStatusId"), LeftJoin("jOrderStatus"), TextualField("OrderStatusName"), NotNull]
         [LookupEditor(typeof(OrderStatusesRow), FilterField = "IsActive", FilterValue = 1)]
-        [QuickFilter()]
+        [QuickFilter(), QuickFilterOption("multiple", true)]
         public Int32? OrderStatusId
         {
             get { return Fields.OrderStatusId[this]; }
@@ -256,6 +271,22 @@ namespace PGMS.Erp.Entities
             set { Fields.AssignUserDisplayName[this] = value; }
         }
 
+        [DisplayName("Payments Total"), NotMapped]
+        [AlignRight, DisplayFormat("#,##0.00")]
+        public Decimal? PaymentsTotal
+        {
+            get { return Fields.PaymentsTotal[this]; }
+            set { Fields.PaymentsTotal[this] = value; }
+        }
+
+        [DisplayName("With Vat"), QuickFilter()]
+        [BooleanEditor]
+        public Boolean? WithVat
+        {
+            get { return Fields.WithVat[this]; }
+            set { Fields.WithVat[this] = value; }
+        }
+
         [NotesEditor, NotMapped]
         public List<NoteRow> NoteList
         {
@@ -290,6 +321,9 @@ namespace PGMS.Erp.Entities
             public Int32Field CompanyRepresentsId;
             public DateTimeField DeadLine;
             public StringField Description;
+            public BooleanField WithVat;
+            public DecimalField PaymentsTotal;
+            public DateTimeField StartDate;
 
             public StringField AccountRepresentsName;
             public StringField AccountRepresentsEmail;
@@ -299,6 +333,8 @@ namespace PGMS.Erp.Entities
             public StringField AccountRepresentsAddress;
             public StringField AccountRepresentsCity;
             public StringField AccountRepresentsCountry;
+
+            public StringField AccountPartnerTypeName;
 
             public StringField CompanyRepresentsName;
             public StringField CompanyRepresentsPhoneNumber;

@@ -7,8 +7,8 @@
 
         constructor() {
             super();
-
-            this.textEditor = new Serenity.HtmlNoteContentEditor(this.byId('Text'));
+            
+            this.textEditor = new Serenity.HtmlNoteContentEditor(this.byId('Text'), { rows: 25});
         }
 
         protected getTemplate() {

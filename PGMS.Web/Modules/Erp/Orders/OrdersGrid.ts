@@ -14,7 +14,16 @@ namespace PGMS.Erp {
         constructor(container: JQuery) {
             super(container);
         }
-
+        protected onViewProcessData(response: Serenity.ListResponse<ExpensesRow>): Serenity.ListResponse<ExpensesRow> {
+            var listResponse = super.onViewProcessData(response);
+            Serenity.TabsExtensions.setCounter(this.element, listResponse.TotalCount, 'Orders');
+            return listResponse;
+        }
+        getViewOptions(): Slick.RemoteViewOptions {
+            var options = super.getViewOptions();
+            options.rowsPerPage = 2500;
+            return options;
+        }
         protected getQuickFilters(): Serenity.QuickFilter<Serenity.Widget<any>, any>[] {
 
             // get quick filter list from base class, e.g. columns
@@ -27,7 +36,7 @@ namespace PGMS.Erp {
                 // if filter is active, e.g. editor has some value
                 if (h.active) {
                     h.request.Criteria = Serenity.Criteria.and(h.request.Criteria,
-                        [[fld.OrderStatusId], '!=', h.value]);
+                        [[fld.OrderStatusId], 'not in', [h.value]]);
                 }
             }; 
             return filters;
@@ -41,12 +50,15 @@ namespace PGMS.Erp {
 
             this.view.setSummaryOptions({
                 aggregators: [
-                    new Slick.Aggregators.Sum('Total')
+                    new Slick.Aggregators.Sum('Total'),
+                    new Slick.Aggregators.Sum('PaymentsTotal')
+
                 ]
             });
 
             return grid;
         }
+        
         protected getSlickOptions() {
             var opt = super.getSlickOptions();
             opt.showFooterRow = true;
@@ -74,6 +86,7 @@ namespace PGMS.Erp {
                 onClick: () => this.view.setGrouping(
                     [
                         {
+                            formatter: x => x.value + ' (' + x.count + ' ' + Q.text("Site.GroupByButtonFormatter") +')',
                             getter: 'AccountName'
                         }
                     ])
@@ -96,6 +109,7 @@ namespace PGMS.Erp {
                 onClick: () => this.view.setGrouping(
                     [
                         {
+                            formatter: x => x.value + ' (' + x.count + ' ' + Q.text("Site.GroupByButtonFormatter") + ')',
                             getter: 'OrderStatusName'
                         }
                     ])

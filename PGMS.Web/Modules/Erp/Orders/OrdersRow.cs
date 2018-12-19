@@ -27,6 +27,14 @@ namespace PGMS.Erp.Entities
             set { Fields.OrderId[this] = value; }
         }
 
+
+        [DisplayName("Name"), Size(500), NotNull, QuickSearch]
+        public String Name
+        {
+            get { return Fields.Name[this]; }
+            set { Fields.Name[this] = value; }
+        }
+
         [DisplayName("Account"), ForeignKey("[dbo].[Accounts]", "AccountId"), LeftJoin("jAccount"), TextualField("AccountName")]
         [LookupEditor(typeof(AccountsRow), FilterField = "IsActive", FilterValue = 1, InplaceAdd = true, InplaceAddPermission = PermissionKeys.Accounts.UpdatePermission)]
         public Int32? AccountId
@@ -71,6 +79,15 @@ namespace PGMS.Erp.Entities
         {
             get { return Fields.OrderDate[this]; }
             set { Fields.OrderDate[this] = value; }
+        }
+
+        [DisplayFormat("HH:mm dd/MM/yyyy"), DisplayName("Start Date"), QuickFilter()]
+        [Width(150)]
+        [DateTimeEditor]
+        public DateTime? StartDate
+        {
+            get { return Fields.StartDate[this]; }
+            set { Fields.StartDate[this] = value; }
         }
 
         [DisplayFormat("HH:mm dd/MM/yyyy"), DisplayName("Dead Line"), QuickFilter()]
@@ -128,7 +145,7 @@ namespace PGMS.Erp.Entities
 
         [DisplayName("Order Status"), ForeignKey("[dbo].[OrderStatuses]", "OrderStatusId"), LeftJoin("jOrderStatus"), TextualField("OrderStatusName"), NotNull]
         [LookupEditor(typeof(OrderStatusesRow), FilterField = "IsActive", FilterValue = 1)]
-        [QuickFilter()]
+        [QuickFilter(), QuickFilterOption("multiple", true)]
         public Int32? OrderStatusId
         {
             get { return Fields.OrderStatusId[this]; }
@@ -169,8 +186,13 @@ namespace PGMS.Erp.Entities
             get { return Fields.AccountPartnerType[this]; }
             set { Fields.AccountPartnerType[this] = value; }
         }
-        
 
+        [DisplayName("Account Partner Type Name"), Expression("(SELECT [Name] FROM [dbo].[PartnerTypes] WHERE PartnerTypeId = jAccount.PartnerType)")]
+        public String AccountPartnerTypeName
+        {
+            get { return Fields.AccountPartnerTypeName[this]; }
+            set { Fields.AccountPartnerTypeName[this] = value; }
+        }
         [DisplayName("Company Name"), Expression("jCompany.[Name]")]
         public String CompanyName
         {
@@ -210,6 +232,8 @@ namespace PGMS.Erp.Entities
         
 
         [DisplayName("Order Status Name"), Expression("jOrderStatus.[Name]")]
+        [LookupEditor(typeof(OrderStatusesRow), FilterField = "IsActive", FilterValue = 1)]
+        [QuickFilter(), QuickFilterOption("multiple", true)]
         public String OrderStatusName
         {
             get { return Fields.OrderStatusName[this]; }
@@ -247,6 +271,14 @@ namespace PGMS.Erp.Entities
             set { Fields.Total[this] = value; }
         }
 
+        [DisplayName("Payments Total"), NotMapped]
+        [AlignRight, DisplayFormat("#,##0.00")]
+        public Decimal? PaymentsTotal
+        {
+            get { return Fields.PaymentsTotal[this]; }
+            set { Fields.PaymentsTotal[this] = value; }
+        }
+
         [NotesEditor, NotMapped]
         public List<NoteRow> NoteList
         {
@@ -254,11 +286,26 @@ namespace PGMS.Erp.Entities
             set { Fields.NoteList[this] = value; }
         }
 
-        [DisplayName("Order Name"), Expression("CONCAT('#', T0.[OrderId])")]
-        public String OrderName
+        [DisplayName("Not Real"), QuickFilter()]
+        [BooleanEditor]
+        public Boolean? NotReal
         {
-            get { return Fields.OrderName[this]; }
-            set { Fields.OrderName[this] = value; }
+            get { return Fields.NotReal[this]; }
+            set { Fields.NotReal[this] = value; }
+        }
+
+        [DisplayName("Order Id"), Expression("CONCAT('#', T0.[OrderId])")]
+        public String OrderIdName
+        {
+            get { return Fields.OrderIdName[this]; }
+            set { Fields.OrderIdName[this] = value; }
+        }
+        [DisplayName("Cutting By One")]
+        [BooleanEditor]
+        public Boolean? CuttingByOne
+        {
+            get { return Fields.CuttingByOne[this]; }
+            set { Fields.CuttingByOne[this] = value; }
         }
 
         [DisplayName("Cutting Manual")]
@@ -317,6 +364,15 @@ namespace PGMS.Erp.Entities
             set { Fields.Cashing[this] = value; }
         }
 
+
+        [DisplayName("With Vat"), QuickFilter()]
+        [BooleanEditor]
+        public Boolean? WithVat
+        {
+            get { return Fields.WithVat[this]; }
+            set { Fields.WithVat[this] = value; }
+        }
+
         IIdField IIdRow.IdField
         {
             get { return Fields.OrderId; }
@@ -324,7 +380,7 @@ namespace PGMS.Erp.Entities
 
         StringField INameRow.NameField
         {
-            get { return  Fields.OrderName; }
+            get { return  Fields.Name; }
         }
 
         public static readonly RowFields Fields = new RowFields().Init();
@@ -340,12 +396,15 @@ namespace PGMS.Erp.Entities
             public Int32Field AccountId;
             public Int32Field CompanyId;
             public Int32Field PaymentTypeId;
+            public StringField Name;
+            public StringField AccountPartnerTypeName;
             public Int16Field Width;
             public Int16Field Height;
             public DateTimeField OrderDate;
+            public DateTimeField StartDate;
             public DateTimeField DeadLine;
             public DateTimeField ShippedDate;
-            public StringField OrderName;
+            public StringField OrderIdName;
             public StringField ShipName;
             public StringField ShipAddress;
             public StringField ShipCity;
@@ -353,7 +412,11 @@ namespace PGMS.Erp.Entities
             public Int32Field UserId;
             public Int32Field OrderStatusId;
             public DecimalField Total;
+            public DecimalField PaymentsTotal;
+            public BooleanField WithVat;
+            public BooleanField NotReal;
 
+            public BooleanField CuttingByOne;
             public BooleanField CuttingManual;
             public BooleanField CuttingMachine;
             public BooleanField Printing;

@@ -18,12 +18,14 @@ namespace PGMS.Erp.Columns
         [FilterOnly()]
         public int UserId { get; set; }
         [QuickFilter(), FilterOnly()]
-        public int AccountId { get; set; }
+        public int AccountId { get; set; } 
         //[FilterOnly()]
         //public int CompanyId { get; set; }
+        [EditLink,DisplayName("Db.Shared.RecordId"), Width(100)]
+        public String OrderIdName { get; set; }
 
-        [EditLink, DisplayName("Db.Shared.RecordId"), Width(100)]
-        public Int32 OrderName { get; set; }
+        [OrdersIsRealFormatter(IsRealProperty = "NotReal"),  Width(100)]
+        public String Name { get; set; }
         [EditLink]
         [AccountFormatter(IsVipProperty = "AccountIsVip")]
         public String AccountName { get; set; }
@@ -32,13 +34,20 @@ namespace PGMS.Erp.Columns
         [EditLink]
         public String AccountEmail { get; set; }
         public bool AccountIsVip { get; set; }
+        public String AccountPartnerTypeName { get; set; }
+
         //[EditLink]
         //public String CompanyName { get; set; }
         [OrderStatusesFormatter(BackgroundProperty = "OrderStatusBackgroundColor", BorderProperty = "OrderStatusBorderColor")]
         [QuickFilter()]
         public String OrderStatusName { get; set; }
+        public Boolean WithVat { get; set; }
 
         public decimal Total { get; set; }
+        public decimal PaymentsTotal { get; set; }
+
+        [CheckboxColoredFormatter]
+        public Boolean CuttingByOne { get; set; }
         [CheckboxColoredFormatter]
         public Boolean CuttingManual { get; set; }
         [CheckboxColoredFormatter]
@@ -57,6 +66,7 @@ namespace PGMS.Erp.Columns
         [EditLink]
         public String PaymentTypeName { get; set; } 
         public DateTime OrderDate { get; set; }
+        public DateTime StartDate { get; set; }
         [DeadlineFormatter]
         public DateTime DeadLine { get; set; }
         public DateTime ShippedDate { get; set; }
@@ -65,6 +75,8 @@ namespace PGMS.Erp.Columns
         public String ShipAddress { get; set; }
         public String ShipCity { get; set; }
         public String ShipCountry { get; set; }
+        public Boolean NotReal { get; set; }
+
         public String UserDisplayName { get; set; }
         public DateTime InsertDate { get; set; }
         public Int32 InsertUserName { get; set; }
