@@ -50,6 +50,15 @@ namespace PGMS.Erp.Entities
             set { Fields.PriceWeSell[this] = value; }
         }
 
+        [DisplayFormat("HH:mm dd/MM/yyyy"), DisplayName("Start Date"), QuickFilter()]
+        [Width(150)]
+        [DateTimeEditor]
+        public DateTime? StartDate
+        {
+            get { return Fields.StartDate[this]; }
+            set { Fields.StartDate[this] = value; }
+        }
+
         [DisplayName("Account Represents"), ForeignKey(typeof(AccountsRow)), LeftJoin("jAccountRepresents"), TextualField("AccountRepresentsName")]
         [LookupEditor(typeof(AccountsRow), FilterField = "IsActive", FilterValue = 1, InplaceAdd = true)]
         public Int32? AccountRepresentsId
@@ -314,6 +323,7 @@ namespace PGMS.Erp.Entities
             public StringField Description;
             public BooleanField WithVat;
             public DecimalField PaymentsTotal;
+            public DateTimeField StartDate;
 
             public StringField AccountRepresentsName;
             public StringField AccountRepresentsEmail;

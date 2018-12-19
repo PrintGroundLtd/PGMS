@@ -10,6 +10,7 @@
         Description?: string;
         WithVat?: boolean;
         PaymentsTotal?: number;
+        StartDate?: string;
         AccountRepresentsName?: string;
         AccountRepresentsEmail?: string;
         AccountRepresentsPhoneNumber?: string;
@@ -67,6 +68,7 @@
             Description = "Description",
             WithVat = "WithVat",
             PaymentsTotal = "PaymentsTotal",
+            StartDate = "StartDate",
             AccountRepresentsName = "AccountRepresentsName",
             AccountRepresentsEmail = "AccountRepresentsEmail",
             AccountRepresentsPhoneNumber = "AccountRepresentsPhoneNumber",

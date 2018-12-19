@@ -30,6 +30,8 @@ namespace PGMS.Erp.Columns
         public Decimal PriceWeSell { get; set; }
         public Boolean WithVat { get; set; }
 
+        public DateTime StartDate { get; set; }
+
         [DeadlineFormatter]
         public DateTime DeadLine { get; set; }
         public decimal PaymentsTotal { get; set; }

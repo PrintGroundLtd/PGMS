@@ -13,16 +13,6 @@ namespace PGMS.Erp.Forms
     [BasedOnRow(typeof(Entities.OutsideOrdersRow), CheckNames = true)]
     public class OutsideOrdersForm
     {
-        [Category("Prices")]
-        [OneThirdWidth]
-        public Decimal PriceTheyOffer { get; set; }
-        [OneThirdWidth]
-        public Decimal PriceWeSell { get; set; }
-
-        [OneThirdWidth]
-        public Boolean WithVat { get; set; }
-        public String Description { get; set; }
-
         [Category("General")]
         [HalfWidth]
         public String Name { get; set; }
@@ -35,8 +25,23 @@ namespace PGMS.Erp.Forms
         public Int32 CompanyRepresentsId { get; set; }
         [HalfWidth]
         public Int32 AssignUserId { get; set; }
+        [Category("Info")]
+
+        [HalfWidth]
+        [DefaultValue("now")]
+        public DateTime StartDate { get; set; }
         [HalfWidth]
         public DateTime DeadLine { get; set; }
+        [Category("Prices")]
+        [OneThirdWidth]
+        public Decimal PriceTheyOffer { get; set; }
+        [OneThirdWidth]
+        public Decimal PriceWeSell { get; set; }
+
+        [OneThirdWidth]
+        public Boolean WithVat { get; set; }
+        public String Description { get; set; }
+     
 
         public List<object> NoteList { get; set; }
 
