@@ -286,7 +286,7 @@ namespace PGMS.Erp.Entities
             set { Fields.NoteList[this] = value; }
         }
 
-        [DisplayName("Not Real")]
+        [DisplayName("Not Real"), QuickFilter()]
         [BooleanEditor]
         public Boolean? NotReal
         {
