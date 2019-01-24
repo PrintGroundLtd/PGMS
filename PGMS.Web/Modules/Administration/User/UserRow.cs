@@ -13,7 +13,7 @@ namespace PGMS.Administration.Entities
     [UpdatePermission(PermissionKeys.User.UpdatePermission)]
     [DeletePermission(PermissionKeys.User.DeletePermission)]
     [LookupScript(PermissionKeys.User.ReadPermission)]
-    public sealed class UserRow : LoggingRow, IIdRow, INameRow, IIsActiveRow
+    public sealed class UserRow : LoggingRow, IIdRow, INameRow, IIsActiveDeletedRow
     {
         [DisplayName("User Id"), Identity]
         public Int32? UserId
