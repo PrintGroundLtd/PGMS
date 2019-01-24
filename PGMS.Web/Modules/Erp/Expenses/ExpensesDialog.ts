@@ -33,30 +33,30 @@ namespace PGMS.Erp {
             Serenity.TabsExtensions.setDisabled(this.tabs, 'Notes', this.isNewOrDeleted());
             Serenity.TabsExtensions.setDisabled(this.tabs, 'Attachments', this.isNewOrDeleted());
             this.attachmentsGrid.expenseId = entity.ExpenseId;
-            var budgetsRowItems = BudgetsRow.getLookup().items;
-            console.log(budgetsRowItems);
+            //var budgetsRowItems = BudgetsRow.getLookup().items;
+            //console.log(budgetsRowItems);
 
-            if (!this.isEditMode()) {
+            //if (!this.isEditMode()) {
 
 
-                budgetsRowItems =
-                    budgetsRowItems.filter(s => new Date(s.StartDate) <= new Date() &&
-                        new Date(s.EndDate) >= new Date());
+            //    budgetsRowItems =
+            //        budgetsRowItems.filter(s => new Date(s.StartDate) <= new Date() &&
+            //            new Date(s.EndDate) >= new Date());
 
-                this.form.BudgetId.items = []; 
-                budgetsRowItems.forEach(s => {
-                     this.form.BudgetId.addOption(s.BudgetId + "", s.Name);
-                    //Q.addOption(this.form.BudgetId.element, s.BudgetId + "", s.Name);
-                });
-                //this.form.BudgetId.items.filter(s => s.StartDate <= startDate.toString() &&
-                //    s.EndDate >= endDate.toString());
-            }
-            //else {
-            //    this.form.BudgetId.items = [];
+            //    this.form.BudgetId.items = []; 
             //    budgetsRowItems.forEach(s => {
-            //        Q.addOption(this.form.BudgetId.element, s.BudgetId + "", s.Name);
+            //         this.form.BudgetId.addOption(s.BudgetId + "", s.Name);
+            //        //Q.addOption(this.form.BudgetId.element, s.BudgetId + "", s.Name);
             //    });
+            //    //this.form.BudgetId.items.filter(s => s.StartDate <= startDate.toString() &&
+            //    //    s.EndDate >= endDate.toString());
             //}
+            ////else {
+            ////    this.form.BudgetId.items = [];
+            ////    budgetsRowItems.forEach(s => {
+            ////        Q.addOption(this.form.BudgetId.element, s.BudgetId + "", s.Name);
+            ////    });
+            ////}
 
         }
 
